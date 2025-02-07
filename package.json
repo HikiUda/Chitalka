@@ -1,0 +1,11 @@
+{
+    "name": "chitalka",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "test:unit": "jest --config ./config/jest/jest.config.ts"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}
