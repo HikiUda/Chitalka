@@ -6,7 +6,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "storybook": "storybook dev -p 6006 -c ./.storybook",
-        "build:storybook": "storybook build"
+        "build-storybook": "storybook build"
     },
     "keywords": [],
     "author": "",
@@ -24,6 +24,7 @@
         "@storybook/test": "8.5.3",
         "@svgr/webpack": "^8.1.0",
         "@types/node": "^22.10.10",
+        "chromatic": "^11.25.2",
         "storybook": "8.5.3",
         "ts-node": "^10.9.2",
         "webpack": "^5.97.1",
