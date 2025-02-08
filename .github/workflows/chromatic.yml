@@ -1,0 +1,36 @@
+name: 'Chromatic'
+
+on: push
+
+env:
+    CHROMATIC_PROJECT_TOKEN: chpt_9c44700b8169ee5
+
+jobs:
+    chromatic:
+        name: Run Chromatic
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [22.x]
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+            - name: install pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                  version: 10
+            - name: use Node.js ${{matrix.node-version}}
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  cache: 'pnpm'
+            - name: install modules
+              run: pnpm install
+            - name: Run Chromatic
+              uses: chromaui/action@latest
+              with:
+                  projectToken: ${{ env.CHROMATIC_PROJECT_TOKEN }}
+                  workingDir: config/storybook
