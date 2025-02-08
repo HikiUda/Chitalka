@@ -25,14 +25,14 @@ jobs:
             - name: install modules
               run: pnpm install
             - name: build production project
-              run: npm run build:prod
+              run: pnpm -r run build:prod
               if: always()
             - name: linting typescript
-              run: npm run lint:ts
+              run: pnpm -r run lint:ts
               if: always()
             - name: linting css
-              run: npm run lint:scss
+              run: pnpm -r run lint:scss
               if: always()
             - name: unit testing
-              run: npm run test:unit
+              run: pnpm -r run test:unit
               if: always()
