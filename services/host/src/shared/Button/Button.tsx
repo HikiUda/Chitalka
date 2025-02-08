@@ -1,11 +1,11 @@
 import { FC } from 'react';
 
 interface ButtonProps {
-    className?: string;
+    classsName?: string;
 }
 
 export const Button: FC<ButtonProps> = (props) => {
-    const { className } = props;
+    const { classsName } = props;
 
-    return <button className={'button' + className}>Test</button>;
+    return <button className={'button' + classsName}>Test</button>;
 };
