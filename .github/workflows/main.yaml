@@ -1,0 +1,39 @@
+name: linting, testing, building
+on:
+    push:
+        branches: [master]
+    pull_request:
+        branches: [master]
+jobs:
+    pipeline:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [22.x]
+
+        steps:
+		- uses: actions/checkout@v4
+		- name: Install pnpm
+		  uses: pnpm/action-setup@v4
+		  with:
+			version: 10
+		- name: Use Node.js ${{ matrix.node-version }}
+			uses: actions/setup-node@v4
+			with:
+				node-version: ${{ matrix.node-version }}
+				cache: 'pnpm'
+		- name: Install dependencies
+			run: pnpm install
+		- name: build production project
+			run: pnpm -r run build:prod
+			if: always()
+		- name: linting typescript
+			run: pnpm -r run lint:ts
+			if: always()
+		- name: linting css
+			run: pnpm -r run lint:scss
+			if: always()
+		- name: unit testing
+			run: pnpm -r run test:unit
+			if: always()
+
