@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { classNames } from '@packages/model/lib/classNames/classNames';
-import { useTheme } from '@packages/model/lib/theme/useTheme';
-import { HeaderLayout } from '@packages/ui/layout/HeaderLayout/HeaderLayout';
+import { classNames } from '@packages/model/src/lib/classNames/classNames';
+import { useTheme } from '@packages/model/src/lib/theme/useTheme';
+import { HeaderLayout } from '@packages/ui/src/layout/HeaderLayout/HeaderLayout';
 import cls from './Header.module.scss';
 
 interface HeaderProps {

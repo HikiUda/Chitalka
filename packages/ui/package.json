@@ -10,8 +10,7 @@
         "lint:scss": "stylelint \"**/*.scss\"",
         "lint:scss:fix": "stylelint \"**/*.scss\" --fix",
         "storybook": "storybook dev -p 6006 -c ./.storybook",
-        "build-storybook": "storybook build",
-        "chromatic": "chromatic --project-token=chpt_e06d0921af08146"
+        "build-storybook": "storybook build"
     },
     "keywords": [],
     "author": "",

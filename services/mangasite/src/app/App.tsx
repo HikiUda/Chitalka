@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { AppRouter } from './providers/router';
-import { MainLayout } from '@packages/ui/layout/MainLayout/MainLayout';
+import { MainLayout } from '@packages/ui/src/layout/MainLayout/MainLayout';
 import { Header } from 'widgets/Header';
 
 interface AppProps {

@@ -13,8 +13,7 @@
         "lint:scss:fix": "stylelint \"**/*.scss\" --fix",
         "typecheck": "tsc",
         "storybook": "storybook dev -p 6006",
-        "build-storybook": "storybook build",
-        "chromatic": "chromatic --project-token=chpt_8c21a952953e6cd"
+        "build-storybook": "storybook build"
     },
     "author": "wendsew",
     "license": "ISC",

@@ -3,7 +3,7 @@ import path from 'path';
 import { buildWebpackConfig } from '@config/build';
 import { BuildMode, BuildPaths, EnvBuild } from '@config/build';
 import packageJson from './package.json';
-import { MANGASITE_PORT, HOST_PORT, LOCALHOST } from '@packages/model/const/microservides/microservices';
+import { MANGASITE_PORT, HOST_PORT, LOCALHOST } from '@packages/model/src/const/microservides/microservices';
 
 export default (env: EnvBuild) => {
     const mode: BuildMode = env.mode || 'development';
