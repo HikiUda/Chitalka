@@ -25,7 +25,7 @@ jobs:
             - name: install modules
               run: pnpm install
             - name: build production project
-              run: pnpm "./services/*" run build:prod
+              run: pnpm "./services/*" build:prod
               if: always()
             - name: linting typescript
               run: pnpm --filter "./services/*" --filter "./packages/*" lint:ts
