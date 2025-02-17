@@ -2,7 +2,7 @@
     "name": "@config/eslint",
     "version": "1.0.0",
     "description": "",
-    "main": "./src/index.ts",
+    "main": "./eslint.config.ts",
     "scripts": {
         "lint:ts": "eslint \"**/*.{ts,tsx}\"",
         "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix"

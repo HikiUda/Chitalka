@@ -1,2 +1,2 @@
-import config from './stylelint.config.mjs';
-export { config };
+// import config from './stylelint.config.mjs';
+// export { config };

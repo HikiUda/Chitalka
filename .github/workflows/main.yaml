@@ -25,14 +25,14 @@ jobs:
             - name: install modules
               run: pnpm install
             - name: build production project
-              run: pnpm -r run build:prod
+              run: pnpm "./services/*" run build:prod
               if: always()
             - name: linting typescript
-              run: pnpm -r run lint:ts
+              run: pnpm --filter "./services/*" --filter "./packages/*" lint:ts
               if: always()
             - name: linting css
-              run: pnpm -r run lint:scss
+              run: pnpm --filter "./services/*" --filter "./packages/*" lint:scss
               if: always()
             - name: unit testing
-              run: pnpm -r run test:unit
+              run: pnpm --filter "./services/*" --filter "./packages/*" test:unit
               if: always()

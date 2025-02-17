@@ -47,6 +47,7 @@ export default [
             'react-hooks/rules-of-hooks': 'warn',
             'react-hooks/exhaustive-deps': 'warn',
             'prefer-const': 'warn',
+            '@typescript-eslint/ban-ts-comment': 'warn',
         },
     },
 ];

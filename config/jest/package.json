@@ -2,7 +2,7 @@
     "name": "@config/jest",
     "version": "1.0.0",
     "description": "",
-    "main": "./src/index.ts",
+    "main": "./jest/index.ts",
     "scripts": {
         "test:unit": "jest --config ./jest/jest.config.ts"
     },

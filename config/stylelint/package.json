@@ -2,7 +2,7 @@
     "name": "@config/stylelint",
     "version": "1.0.0",
     "description": "",
-    "main": "./src/index.mjs",
+    "main": "./stylelint.config.mjs",
     "scripts": {
         "lint:scss": "stylelint \"**/*.scss\"",
         "lint:scss:fix": "stylelint \"**/*.scss\" --fix"

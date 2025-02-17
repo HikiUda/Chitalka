@@ -3,9 +3,7 @@
     "version": "1.0.0",
     "main": "index.tsx",
     "scripts": {
-        "start": "npx webpack serve",
-        "build:dev": "npx webpack --env mode=development",
-        "build:prod": "npx webpack --env mode=production"
+
     },
     "author": "wendsew",
     "license": "ISC",
