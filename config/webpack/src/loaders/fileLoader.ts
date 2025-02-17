@@ -10,5 +10,6 @@ export function createFileLoader(options: BuildOptions): webpack.RuleSetRule {
                 loader: 'file-loader',
             },
         ],
+        exclude: /node_modules/,
     };
 }

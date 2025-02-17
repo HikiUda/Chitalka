@@ -45,9 +45,21 @@ export function buildPlugins(options: BuildOptions): webpack.WebpackPluginInstan
 
     if (isDev) {
         plugins.push(new ReactRefreshWebpackPlugin());
-        plugins.push(new webpack.HotModuleReplacementPlugin());
-        //plugins.push(new BundleAnalyzerPlugin({ openAnalyzer: false }));
-        plugins.push(new ForkTsCheckerWebpackPlugin());
+        // plugins.push(
+        //     new ForkTsCheckerWebpackPlugin({
+        //         typescript: {
+        //             diagnosticOptions: {
+        //                 semantic: true,
+        //                 syntactic: true,
+        //             },
+        //             mode: 'write-references',
+        //         },
+        //     }),
+        // );
+        //plugins.push(new webpack.HotModuleReplacementPlugin());
+    }
+    if (options.analyzer) {
+        plugins.push(new BundleAnalyzerPlugin({ openAnalyzer: true }));
     }
 
     return plugins;

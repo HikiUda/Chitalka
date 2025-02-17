@@ -1,0 +1,10 @@
+.MainLayout {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    padding-top: var(--header-height);
+}
+.storybook {
+    height: 500px;
+}

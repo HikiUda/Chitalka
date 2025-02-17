@@ -20,4 +20,5 @@ export interface BuildOptions {
     isDev: boolean;
     mode: BuildMode;
     port: number;
+    analyzer: boolean;
 }

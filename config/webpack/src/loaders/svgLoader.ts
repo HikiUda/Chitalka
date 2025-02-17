@@ -23,5 +23,6 @@ export function createSvgLoader(options: BuildOptions): webpack.RuleSetRule {
                 },
             },
         ],
+        exclude: /node_modules/,
     };
 }

@@ -3,11 +3,12 @@ import path from 'path';
 import { buildWebpackConfig } from '@config/build';
 import { BuildMode, BuildPaths, EnvBuild } from '@config/build';
 import packageJson from './package.json';
+import { MANGASITE_PORT } from '@packages/model/const/microservides/microservices';
 
 export default (env: EnvBuild) => {
     const mode: BuildMode = env.mode || 'development';
     const isDev = mode === 'development';
-    const PORT = env.port || 3001;
+    const PORT = env.port || MANGASITE_PORT;
 
     const paths: BuildPaths = {
         entry: path.resolve(__dirname, 'src', 'index.tsx'),
@@ -22,6 +23,7 @@ export default (env: EnvBuild) => {
         isDev,
         mode,
         port: PORT,
+        analyzer: false,
     });
 
     config.plugins?.push(
@@ -29,7 +31,7 @@ export default (env: EnvBuild) => {
             name: 'mangasite',
             filename: 'remoteEntry.js',
             exposes: {
-                './App': './src/App.tsx',
+                './Router': './src/app/providers/router/index.ts',
             },
             shared: {
                 ...packageJson.dependencies,

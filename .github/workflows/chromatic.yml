@@ -26,8 +26,15 @@ jobs:
                   cache: 'pnpm'
             - name: install modules
               run: pnpm install
-            - name: Run Chromatic
+            - name: Run Chitalka shared
               uses: chromaui/action@latest
               with:
-                  projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-                  workingDir: config/storybook
+                  projectToken: ${{ secrets.CHROMATIC_CHITALKA }}
+                  workingDir: packages/ui
+                  onlyChanged: true
+            - name: Run Mangasite
+              uses: chromaui/action@latest
+              with:
+                  projectToken: ${{ secrets.CHROMATIC_MANGASITE }}
+                  workingDir: services/mangasite
+                  onlyChanged: true

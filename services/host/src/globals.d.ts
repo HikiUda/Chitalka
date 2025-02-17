@@ -17,5 +17,5 @@ declare module '*.gif';
 
 declare const __IS_DEV__: boolean;
 
-declare module 'artsite/App';
-declare module 'mangasite/App';
+declare module 'artsite/Router';
+declare module 'mangasite/Router';
