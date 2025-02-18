@@ -39,9 +39,9 @@ jobs:
             - name: install graphviz
               run: sudo apt install graphviz
               if: always()
-            - name: unit testing
+            - name: depcruise
               run: pnpm --filter "./services/*" depcruise
               if: always()
-            - name: unit testing
+            - name: create depcruise graph
               run: pnpm --filter "./services/*" depcruise:graph
               if: always()

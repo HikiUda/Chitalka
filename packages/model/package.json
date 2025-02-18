@@ -14,13 +14,15 @@
     "dependencies": {
         "@babel/runtime": "^7.26.9",
         "@config/eslint": "workspace:*",
-        "@packages/model": "workspace:*",
         "@config/jest": "workspace:*",
+        "@packages/model": "workspace:*",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
         "react-router-dom": "^7.1.5"
     },
     "devDependencies": {
+        "@babel/preset-react": "^7.26.3",
+        "@babel/preset-typescript": "^7.26.0",
         "@eslint/js": "^9.19.0",
         "@storybook/react": "8.5.3",
         "@testing-library/jest-dom": "^6.6.3",
