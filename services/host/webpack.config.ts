@@ -11,7 +11,6 @@ export default (env: EnvBuild) => {
     const PORT = env.port || HOST_PORT;
 
     const MANGASITE_REMOTE_URL = env.MANGASITE_REMOTE_URL || LOCALHOST + MANGASITE_PORT;
-    //const ARTSITE_REMOTE_URL = env.ARTSITE_REMOTE_URL || 'http://localhost:3002';
 
     const paths: BuildPaths = {
         entry: path.resolve(__dirname, 'src', 'index.tsx'),
@@ -35,8 +34,8 @@ export default (env: EnvBuild) => {
             filename: 'remoteEntry.js',
             remotes: {
                 mangasite: `mangasite@${MANGASITE_REMOTE_URL}/remoteEntry.js`,
-                //artsite: `artsite@${ARTSITE_REMOTE_URL}/remoteEntry.js`,
             },
+
             shared: {
                 ...packageJson.dependencies,
                 react: {

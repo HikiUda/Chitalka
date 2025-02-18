@@ -14,6 +14,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
             filename: '[name].[contenthash].js',
             path: paths.output,
             clean: true,
+            //publicPath: '/',
         },
         module: {
             rules: buildLoaders(options),
@@ -22,8 +23,9 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
         resolve: buildResolvers(options),
         devtool: isDev ? 'eval-cheap-module-source-map' : 'source-map',
         devServer: isDev ? buildDevServer(options) : undefined,
-        optimization: {
-            runtimeChunk: 'single',
-        },
+        // optimization: {
+        //     runtimeChunk: 'single',
+        //     splitChunks: false,
+        // },
     };
 }

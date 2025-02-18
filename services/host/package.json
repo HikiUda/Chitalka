@@ -59,9 +59,9 @@
         "webpack-dev-server": "^5.2.0"
     },
     "dependencies": {
-        "@packages/model": "workspace:*",
         "@config/build": "workspace:*",
         "@config/eslint": "workspace:*",
+        "@packages/model": "workspace:*",
         "eslint-plugin-jest": "^28.11.0",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",

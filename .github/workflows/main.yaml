@@ -36,3 +36,12 @@ jobs:
             - name: unit testing
               run: pnpm --filter "./services/*" --filter "./packages/*" test:unit
               if: always()
+            - name: install graphviz
+              run: sudo apt install graphviz
+              if: always()
+            - name: unit testing
+              run: pnpm --filter "./services/*" depcruise
+              if: always()
+            - name: unit testing
+              run: pnpm --filter "./services/*" depcruise:graph
+              if: always()
