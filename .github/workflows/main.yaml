@@ -4,6 +4,7 @@ on:
         branches: [master]
     pull_request:
         branches: [master]
+    workflow_dispatch:
 
 permissions:
     contents: read
@@ -57,7 +58,7 @@ jobs:
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v3
               with:
-                  path: './reports/report.html'
+                  path: './build'
             - name: Deploy to GitHub Pages
               id: deployment
               uses: actions/deploy-pages@v4
