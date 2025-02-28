@@ -4,8 +4,64 @@ on:
         branches: [master]
     pull_request:
         branches: [master]
+
+permissions:
+    contents: read
+    pages: write
+    id-token: write
+
+concurrency:
+    group: 'pages'
+    cancel-in-progress: false
+
 jobs:
-    pipeline:
+    depcruise-and-unit-testing:
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        concurrency: ci-${{ github.ref }}
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [22.x]
+        steps:
+            - uses: actions/checkout@v4
+            - name: install pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                  version: 10
+            - name: use Node.js ${{matrix.node-version}}
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  cache: 'pnpm'
+            - name: install modules
+              run: pnpm install
+            - name: build production project
+              run: pnpm --filter "./services/*" build:prod
+              if: always()
+            - name: unit testing
+              run: pnpm --filter "./services/*" --filter "./packages/*" test:unit
+              if: always()
+            - name: install graphviz
+              run: sudo apt install graphviz
+              if: always()
+            - name: depcruise
+              run: pnpm --filter "./services/*" depcruise
+              if: always()
+            - name: create depcruise graph
+              run: pnpm --filter "./services/*" depcruise:graph
+              if: always()
+            - name: Setup Pages
+              uses: actions/configure-pages@v5
+            - name: Upload artifact
+              uses: actions/upload-pages-artifact@v3
+              with:
+                  path: './reports/report.html'
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4
+    linting:
         runs-on: ubuntu-latest
         strategy:
             matrix:
@@ -24,24 +80,9 @@ jobs:
                   cache: 'pnpm'
             - name: install modules
               run: pnpm install
-            - name: build production project
-              run: pnpm --filter "./services/*" build:prod
-              if: always()
             - name: linting typescript
               run: pnpm --filter "./services/*" --filter "./packages/*" lint:ts
               if: always()
             - name: linting css
               run: pnpm --filter "./services/*" --filter "./packages/*" lint:scss
-              if: always()
-            - name: unit testing
-              run: pnpm --filter "./services/*" --filter "./packages/*" test:unit
-              if: always()
-            - name: install graphviz
-              run: sudo apt install graphviz
-              if: always()
-            - name: depcruise
-              run: pnpm --filter "./services/*" depcruise
-              if: always()
-            - name: create depcruise graph
-              run: pnpm --filter "./services/*" depcruise:graph
               if: always()

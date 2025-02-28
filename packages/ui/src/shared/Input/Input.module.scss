@@ -8,12 +8,15 @@
 .primaryBorder {
     border: 2px var(--primary-color) solid;
 }
+
 .secondaryBorder {
     border: 2px var(--secondary-color) solid;
 }
+
 .primaryBorder,
 .secondaryBorder {
     transition: border 0.2s ease;
+
     &[data-hovered],
     &[data-focused] {
         border: 2px var(--accent-color) solid;

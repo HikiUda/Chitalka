@@ -4,7 +4,7 @@ import { getMangaSiteRoute } from '@packages/model/src/config/router/mangaSiteRo
 import { AppLink } from '@ui/shared/AppLink';
 import ChitalkaSvg from '@ui/assets/icon/logo/Chitalka.svg';
 import Gid from '@ui/assets/animation/Gid/logo/shake.gif';
-import { Icon } from '@ui/shared/Icon/Icon';
+import { Icon } from '@ui/shared/Icon';
 import cls from './LogoMangaSite.module.scss';
 
 interface LogoMangaSiteProps {

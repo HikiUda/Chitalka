@@ -5,12 +5,13 @@
     transition: background 0.3s ease;
     overflow: hidden;
     color: inherit;
+
     &.bgHover[data-hovered] {
         background: var(--accent-color);
     }
 }
 
-.ripple:after {
+.ripple::after {
     content: '';
     background: var(--button-ripple-color);
     display: block;
@@ -23,7 +24,7 @@
     transition: all 0.8s;
 }
 
-.ripple:active:after {
+.ripple:active::after {
     padding: 0;
     margin: 0;
     opacity: 1;
@@ -31,7 +32,7 @@
 }
 
 .press:active {
-    box-shadow: -1px -1px 0px 2px var(--text-color);
+    box-shadow: -1px -1px 0 2px var(--text-color);
     padding: 8px 13px;
     transform: translate(3px, 3px);
 }
@@ -42,26 +43,32 @@
     &:not(.bgHover) {
         background: none;
         padding: 0;
+
         &.primary {
             color: var(--primary-color);
         }
+
         &.secondary {
             color: var(--secondary-color);
         }
     }
 }
+
 .outline {
     &.primary {
         border: 1px solid var(--primary-color);
     }
+
     &.secondary {
         border: 1px solid var(--secondary-color);
     }
 }
+
 .fill {
     &.primary {
         background: var(--primary-color);
     }
+
     &.secondary {
         background: var(--secondary-color);
     }
