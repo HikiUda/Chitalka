@@ -17,6 +17,10 @@
         "storybook": "storybook dev -p 6006",
         "build-storybook": "storybook build"
     },
+    "lint-staged": {
+        "**/*.{ts,tsx}": "eslint",
+        "**/*.scss": "stylelint"
+    },
     "author": "wendsew",
     "license": "ISC",
     "description": "mangasite",
@@ -53,6 +57,7 @@
         "fork-ts-checker-webpack-plugin": "9.0.2",
         "html-webpack-plugin": "^5.6.3",
         "jest": "^29.7.0",
+        "lint-staged": "12.3.2",
         "mini-css-extract-plugin": "^2.9.2",
         "prettier": "3.5.1",
         "react-refresh": "^0.16.0",

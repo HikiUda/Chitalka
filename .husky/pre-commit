@@ -1,2 +1,1 @@
-pnpm --filter "./services/*" --filter "./packages/*" lint:ts
-pnpm --filter "./services/*" --filter "./packages/*" lint:scss
+pnpm --filter "./services/*" --filter "./packages/*" lint-staged
