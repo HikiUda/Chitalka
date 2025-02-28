@@ -6,7 +6,8 @@
     "scripts": {
         "test:unit": "jest --config ./jest/jest.config.ts",
         "lint:ts": "eslint \"**/*.{ts,tsx}\"",
-        "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix"
+        "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
+        "lint-staged": "pnpx lint-staged"
     },
     "lint-staged": {
         "**/*.{ts,tsx}": "eslint"

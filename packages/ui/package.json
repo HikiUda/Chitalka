@@ -11,7 +11,8 @@
         "depcruise": "pnpm exec depcruise src",
         "depcruise:graph": "pnpm exec depcruise src --include-only \"^src\" --output-type dot | dot -T svg > reports/dependency-graph.svg",
         "storybook": "storybook dev -p 6006 -c ./.storybook",
-        "build-storybook": "storybook build"
+        "build-storybook": "storybook build",
+        "lint-staged": "pnpx lint-staged"
     },
     "lint-staged": {
         "**/*.{ts,tsx}": "eslint",

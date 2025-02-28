@@ -1,1 +1,1 @@
-pnpx --filter "./services/*" --filter "./packages/*" lint-staged
+pnpm --filter "./services/*" --filter "./packages/*" lint-staged
