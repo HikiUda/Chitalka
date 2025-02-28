@@ -55,12 +55,15 @@ jobs:
               if: always()
             - name: Setup Pages
               uses: actions/configure-pages@v5
+              if: always()
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v3
+              if: always()
               with:
-                  path: './build'
+                  path: 'services/mangasite/reports/report.html'
             - name: Deploy to GitHub Pages
               id: deployment
+              if: always()
               uses: actions/deploy-pages@v4
     linting:
         runs-on: ubuntu-latest
