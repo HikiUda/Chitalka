@@ -8,6 +8,8 @@
         "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
         "lint:scss": "stylelint \"**/*.scss\"",
         "lint:scss:fix": "stylelint \"**/*.scss\" --fix",
+        "depcruise": "pnpm exec depcruise src",
+        "depcruise:graph": "pnpm exec depcruise src --include-only \"^src\" --output-type dot | dot -T svg > reports/dependency-graph.svg",
         "storybook": "storybook dev -p 6006 -c ./.storybook",
         "build-storybook": "storybook build"
     },

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useCallback } from 'react';
 import { classNames } from '@packages/model/src/lib/classNames';
 import { useDisign, useTheme } from '@packages/model/src/lib/theme';
 import { LogoMangaSite } from '@packages/ui/src/entities/Logo';
@@ -20,6 +20,10 @@ export const Header: FC<HeaderProps> = (props) => {
     const onDisign = () => {
         toggleDisign();
     };
+
+    const l = useCallback(() => {
+        const i = className;
+    }, []);
 
     return (
         <HeaderLayout className={classNames(cls.Header, {}, [className])}>

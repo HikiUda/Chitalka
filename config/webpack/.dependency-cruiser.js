@@ -98,6 +98,7 @@ module.exports = {
             from: {},
             to: {
                 couldNotResolve: true,
+                pathNot: ['@ui', '@model'],
             },
         },
         {
@@ -281,6 +282,9 @@ module.exports = {
         babelConfig: {
             fileName: 'babel.config.json',
         },
+        webpackConfig: {
+            fileName: 'webpack.config.ts',
+        },
 
         /* List of strings you have in use in addition to cjs/ es6 requires
        & imports to declare module dependencies. Use this e.g. if you've
@@ -324,7 +328,7 @@ module.exports = {
          
          Defaults to an empty array (= don't use alias fields).
        */
-            // aliasFields: ["browser"],
+            // aliasFields: ['browser'],
         },
 
         /* skipAnalysisNotInRules will make dependency-cruiser execute 

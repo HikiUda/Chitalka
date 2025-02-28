@@ -1,8 +1,14 @@
 {
-    "name": "chitalka",
-    "version": "1.0.0",
-    "description": "",
-    "keywords": [],
-    "author": "",
-    "license": "ISC"
+  "name": "chitalka",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "husky": "^9.1.7"
+  },
+  "scripts": {
+    "prepare": "husky"
+  }
 }
