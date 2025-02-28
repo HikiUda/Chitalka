@@ -18,19 +18,20 @@ export const config: Config = {
     moduleNameMapper: {
         '\\.s?css$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+        '^@/(.*)$': '<rootDir>/src/$1',
     },
     globals: { __IS_DEV__: true },
-    // reporters: [
-    //     'default',
-    //     [
-    //         'jest-html-reporters',
-    //         {
-    //             publicPath: './reports',
-    //             filename: 'report.html',
-    //             openReport: true,
-    //             inlineSource: true,
-    //         },
-    //     ],
-    // ],
+    reporters: [
+        'default',
+        [
+            'jest-html-reporters',
+            {
+                publicPath: './reports',
+                filename: 'report.html',
+                openReport: false,
+                inlineSource: true,
+            },
+        ],
+    ],
 };
 export default config;

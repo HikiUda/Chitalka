@@ -1,9 +1,8 @@
-import webpack from 'webpack';
 import path from 'path';
-import { buildWebpackConfig } from '@config/build';
-import { BuildMode, BuildPaths, EnvBuild } from '@config/build';
-import packageJson from './package.json';
+import webpack from 'webpack';
+import { buildWebpackConfig, BuildMode, BuildPaths, EnvBuild } from '@config/build';
 import { MANGASITE_PORT } from '@packages/model/src/const/microservides/microservices';
+import packageJson from './package.json';
 
 export default (env: EnvBuild) => {
     const mode: BuildMode = env.mode || 'development';
@@ -25,6 +24,9 @@ export default (env: EnvBuild) => {
         port: PORT,
         analyzer: false,
     });
+
+    config!.optimization!.runtimeChunk = 'single';
+    // config!.experiments!.topLevelAwait = true;
 
     config.plugins?.push(
         new webpack.container.ModuleFederationPlugin({

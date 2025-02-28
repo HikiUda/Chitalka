@@ -1,4 +1,10 @@
 @use './reset';
 @use './varibles/globals';
-@use './theme/red/light';
-@use './theme/red/dark';
+@use './theme/red/red';
+@use './theme/green/green';
+
+body {
+    font: var(--font-m);
+    color: var(--text-color);
+    box-sizing: border-box;
+}

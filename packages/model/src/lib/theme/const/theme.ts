@@ -7,6 +7,7 @@ export const Theme = {
 
 export const Disign = {
     RED: 'red',
+    GREEN: 'green',
 } as const;
 
 export type ThemeProps = ValueOf<typeof Theme>;

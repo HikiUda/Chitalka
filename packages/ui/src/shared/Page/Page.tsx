@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 import { classNames } from '@packages/model/src/lib/classNames/classNames';
-import cls from './Page.module.scss';
 import { Container } from '../../shared/Container/Container';
+import cls from './Page.module.scss';
 
 interface PageProps {
     className?: string;

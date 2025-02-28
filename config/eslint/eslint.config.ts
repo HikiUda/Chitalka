@@ -1,10 +1,15 @@
+//@ts-ignore
 import globals from 'globals';
 import pluginJs from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import pluginReact from 'eslint-plugin-react';
 import pluginJest from 'eslint-plugin-jest';
 //@ts-ignore
+import importPlugin from 'eslint-plugin-import';
+//@ts-ignore
 import pluginReactHooks from 'eslint-plugin-react-hooks';
+import eslintConfigPrettier from 'eslint-config-prettier';
+import unusedImports from 'eslint-plugin-unused-imports';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -15,7 +20,14 @@ export default [
             },
         },
     },
-    { plugins: { jest: pluginJest, react: pluginReact, 'react-hooks': pluginReactHooks } },
+    {
+        plugins: {
+            jest: pluginJest,
+            react: pluginReact,
+            'react-hooks': pluginReactHooks,
+            'unused-imports': unusedImports,
+        },
+    },
     {
         files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
         languageOptions: {
@@ -33,9 +45,11 @@ export default [
             },
         },
     },
+    importPlugin.flatConfigs.recommended,
     pluginJs.configs.recommended,
     ...tseslint.configs.recommended,
     pluginReact.configs.flat.recommended,
+    eslintConfigPrettier,
     pluginReact.configs.flat['jsx-runtime'],
     { ignores: ['**/globals.d.ts'] },
     {
@@ -48,6 +62,11 @@ export default [
             'react-hooks/exhaustive-deps': 'error',
             'prefer-const': 'warn',
             '@typescript-eslint/ban-ts-comment': 'warn',
+            'react/display-name': 'off',
+            'import/no-unresolved': 'off',
+            'import/order': 'error',
+            'import/named': 'off',
+            'unused-imports/no-unused-imports': 'error',
         },
     },
 ];

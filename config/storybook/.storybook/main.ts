@@ -5,10 +5,10 @@ const config: StorybookConfig = {
     addons: [
         '@storybook/addon-links',
         '@storybook/addon-webpack5-compiler-swc',
-        '@storybook/addon-onboarding',
         '@storybook/addon-essentials',
         '@chromatic-com/storybook',
         '@storybook/addon-interactions',
+        '@storybook/addon-themes',
     ],
     framework: {
         name: '@storybook/react-webpack5',

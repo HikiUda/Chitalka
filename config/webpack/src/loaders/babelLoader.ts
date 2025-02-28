@@ -14,6 +14,7 @@ export function createBabelLoader(options: BuildBabelLoaderOptions): webpack.Rul
         use: {
             loader: 'babel-loader',
             options: {
+                cacheDirectory: true,
                 presets: ['@babel/preset-env'],
                 plugins: [
                     ['@babel/plugin-transform-typescript', { isTsx }],
@@ -26,5 +27,7 @@ export function createBabelLoader(options: BuildBabelLoaderOptions): webpack.Rul
     };
 }
 
-export const createBabelLoaderTsx = (options: BuildOptions) => createBabelLoader({ ...options, isTsx: true });
-export const createBabelLoaderTs = (options: BuildOptions) => createBabelLoader({ ...options, isTsx: false });
+export const createBabelLoaderTsx = (options: BuildOptions) =>
+    createBabelLoader({ ...options, isTsx: true });
+export const createBabelLoaderTs = (options: BuildOptions) =>
+    createBabelLoader({ ...options, isTsx: false });

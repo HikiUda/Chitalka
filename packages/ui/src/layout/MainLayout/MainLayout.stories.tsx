@@ -16,7 +16,9 @@ export const Primary: Story = {
     args: {
         className: cls.storybook,
         header: (
-            <header style={{ background: 'green', position: 'fixed', width: '100%', height: '30px' }}>
+            <header
+                style={{ background: 'green', position: 'fixed', width: '100%', height: '30px' }}
+            >
                 header
             </header>
         ),

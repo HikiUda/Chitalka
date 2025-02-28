@@ -1,0 +1,68 @@
+.modal {
+    background: var(--block-color);
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    flex-grow: 1;
+    &[data-entering] {
+        animation: modal-zoom 200ms;
+    }
+
+    &[data-exiting] {
+        animation: modal-zoom 150ms reverse ease-in;
+    }
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    padding: 45px 20px;
+    background: var(--modal-overlay);
+    &[data-entering] {
+        animation: modal-fade 200ms;
+    }
+
+    &[data-exiting] {
+        animation: modal-fade 150ms reverse ease-in;
+    }
+}
+.verticalCenter {
+    align-items: center;
+}
+.verticlalTop {
+    align-items: start;
+}
+.verticalBottom {
+    align-items: end;
+}
+.horizonCenter {
+    justify-content: center;
+}
+.horisonRight {
+    justify-content: end;
+}
+.horizonLeft {
+    justify-content: start;
+}
+@keyframes modal-fade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes modal-zoom {
+    from {
+        transform: scale(0.8);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}

@@ -4,7 +4,7 @@
         "outDir": "./dist/",
         "baseUrl": "./",
         "paths": {
-            "*": ["./src/*"]
+            "@/*": ["./src/*"]
         }
     },
     "include": ["../../config/jest/src/setupTests.ts", "./src/**/*.ts", "./src/**/*.tsx"]

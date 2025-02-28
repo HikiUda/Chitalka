@@ -14,18 +14,21 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
             filename: '[name].[contenthash].js',
             path: paths.output,
             clean: true,
-            //publicPath: '/',
+            // publicPath: '/',
         },
         module: {
             rules: buildLoaders(options),
         },
         plugins: buildPlugins(options),
         resolve: buildResolvers(options),
-        devtool: isDev ? 'eval-cheap-module-source-map' : 'source-map',
+        devtool: isDev ? 'eval-cheap-module-source-map' : undefined, //'source-map',
         devServer: isDev ? buildDevServer(options) : undefined,
-        // optimization: {
-        //     runtimeChunk: 'single',
-        //     splitChunks: false,
-        // },
+        optimization: {
+            runtimeChunk: undefined,
+            splitChunks: false,
+        },
+        experiments: {
+            topLevelAwait: false,
+        },
     };
 }

@@ -1,17 +1,15 @@
-import { MainPage } from 'pages/MainPage';
-import { MangaPage } from 'pages/MangaPage';
-
-import type { AppRouterProps, MangaSiteRoutesType } from '@packages/model/src/config/router/types/router';
-import { MangaSitePaths } from '@packages/model/src/config/router/mangaSiteRouter';
-import { MangaSiteRoutes } from '@packages/model/src/config/router/const/mangasite';
+import type { AppRouterProps, MangaSiteRoutesType } from '@packages/model/src/config/router';
+import { getMangaSiteRoute, MangaSiteRoutes } from '@packages/model/src/config/router';
+import { MangaPage } from '@/pages/MangaPage';
+import { MainPage } from '@/pages/MainPage';
 
 export const routerConfig: Record<MangaSiteRoutesType, AppRouterProps> = {
     [MangaSiteRoutes.MAIN]: {
-        path: MangaSitePaths.main,
+        path: getMangaSiteRoute.main(),
         element: <MainPage />,
     },
     [MangaSiteRoutes.MANGA]: {
-        path: MangaSitePaths.manga,
+        path: getMangaSiteRoute.manga(':id'),
         element: <MangaPage />,
     },
 };
