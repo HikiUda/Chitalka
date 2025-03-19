@@ -1,0 +1,12 @@
+.BottomMenuLayout {
+    position: fixed;
+    width: 100%;
+    height: var(--header-height);
+    padding: 0 10px;
+    z-index: var(--header-z-index);
+    bottom: 0;
+}
+
+.storybook {
+    background: rgb(176 39 116);
+}

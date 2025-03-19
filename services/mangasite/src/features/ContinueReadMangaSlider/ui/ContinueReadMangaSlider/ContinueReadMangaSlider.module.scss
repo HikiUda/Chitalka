@@ -1,0 +1,18 @@
+.ContinueReadMangaSlider {
+    padding: 10px 0;
+}
+
+.title {
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+.clean {
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.9;
+    }
+}

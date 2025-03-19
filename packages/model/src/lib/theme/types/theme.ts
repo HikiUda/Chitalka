@@ -1,4 +1,4 @@
-import type { ValueOf } from '../../../types/common/common';
+import type { ValueOf } from '@model/types/common/common';
 import { Disign, Theme } from '../const/theme';
 
 export type ThemeTypes = ValueOf<typeof Theme>;

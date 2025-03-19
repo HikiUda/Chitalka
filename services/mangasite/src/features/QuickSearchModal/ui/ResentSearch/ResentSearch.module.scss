@@ -1,0 +1,21 @@
+.itemChild {
+    flex-basis: 95%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @media (width <= 560px) {
+        flex-basis: 85%;
+    }
+}
+
+.ResentSearchItem {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+
+    &:hover {
+        background: var(--accent-color);
+    }
+}

@@ -37,6 +37,10 @@
     transform: translate(3px, 3px);
 }
 
+.max {
+    width: 100%;
+}
+
 .clear {
     border: none;
 
@@ -71,5 +75,9 @@
 
     &.secondary {
         background: var(--secondary-color);
+    }
+
+    &.block {
+        background: var(--block-color);
     }
 }

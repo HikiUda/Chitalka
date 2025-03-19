@@ -1,0 +1,58 @@
+.MangaCardInline {
+    color: var(--text-color);
+    display: flex;
+    gap: 10px;
+    padding: 5px 10px;
+    position: relative;
+    width: 100%;
+    height: 100px;
+}
+
+.img {
+    flex: 0 0 60px;
+    height: 100%;
+
+    // position: relative;
+    // & img {
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    //     width: 100%;
+    //     height: 100%;
+    //     object-fit: cover;
+    //     border-radius: 8px;
+    // }
+}
+
+.title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-break: break-all;
+    transition: color 0.2s ease;
+    max-width: 400px;
+
+    &:hover {
+        color: var(--accent-color);
+    }
+}
+
+.subtitle {
+    display: block;
+    max-width: 300px;
+    font: var(--font-s);
+    color: inherit;
+    opacity: 0.8;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    flex-grow: 1;
+}

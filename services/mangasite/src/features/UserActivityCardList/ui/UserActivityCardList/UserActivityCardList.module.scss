@@ -1,0 +1,15 @@
+.title {
+    margin-bottom: 15px;
+}
+
+.cardList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    grid-auto-rows: 70px;
+
+    @media (width <= 550px) {
+        display: flex;
+        flex-direction: column;
+    }
+}

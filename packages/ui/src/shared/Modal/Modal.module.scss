@@ -2,7 +2,6 @@
     background: var(--block-color);
     padding: 10px;
     border-radius: 4px;
-    display: flex;
     flex-grow: 1;
 
     &[data-entering] {
@@ -14,8 +13,13 @@
     }
 }
 
+.dialog {
+    flex-grow: 1;
+}
+
 .overlay {
-    position: absolute;
+    z-index: var(--modal-z-index);
+    position: fixed;
     inset: 0;
     display: flex;
     padding: 45px 20px;

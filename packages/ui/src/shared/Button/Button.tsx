@@ -5,7 +5,7 @@ import type { ButtonProps as AButtonProps } from 'react-aria-components';
 import cls from './Button.module.scss';
 
 type ButtonTheme = 'clear' | 'outline' | 'fill';
-type ButtonColor = 'primary' | 'secondary' | 'none';
+type ButtonColor = 'primary' | 'secondary' | 'block' | 'none';
 type ButtonPressAnimation = 'none' | 'ripple' | 'press';
 
 interface ButtonProps extends AButtonProps {
@@ -14,6 +14,7 @@ interface ButtonProps extends AButtonProps {
     color?: ButtonColor;
     noHover?: boolean;
     pressAnimation?: ButtonPressAnimation;
+    max?: boolean;
 }
 
 export const Button: FC<ButtonProps> = (props) => {
@@ -24,12 +25,13 @@ export const Button: FC<ButtonProps> = (props) => {
         noHover,
         theme = 'clear',
         pressAnimation = 'none',
+        max,
         ...otherProps
     } = props;
 
     return (
         <AButton
-            className={classNames(cls.Button, { [cls.bgHover]: !noHover }, [
+            className={classNames(cls.Button, { [cls.bgHover]: !noHover, [cls.max]: max }, [
                 className,
                 cls[color],
                 cls[theme],

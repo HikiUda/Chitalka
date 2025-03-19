@@ -1,40 +1,40 @@
-name: 'Chromatic'
+# name: 'Chromatic'
 
-on: push
+# on: push
 
-jobs:
-    chromatic:
-        name: Run Chromatic
-        runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                node-version: [22.x]
+# jobs:
+#     chromatic:
+#         name: Run Chromatic
+#         runs-on: ubuntu-latest
+#         strategy:
+#             matrix:
+#                 node-version: [22.x]
 
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
-            - name: install pnpm
-              uses: pnpm/action-setup@v4
-              with:
-                  version: 10
-            - name: use Node.js ${{matrix.node-version}}
-              uses: actions/setup-node@v4
-              with:
-                  node-version: ${{ matrix.node-version }}
-                  cache: 'pnpm'
-            - name: install modules
-              run: pnpm install
-            - name: Run Chitalka shared
-              uses: chromaui/action@latest
-              with:
-                  projectToken: ${{ secrets.CHROMATIC_CHITALKA }}
-                  workingDir: packages/ui
-                  onlyChanged: true
-            - name: Run Mangasite
-              uses: chromaui/action@latest
-              with:
-                  projectToken: ${{ secrets.CHROMATIC_MANGASITE }}
-                  workingDir: services/mangasite
-                  onlyChanged: true
+#         steps:
+#             - name: Checkout code
+#               uses: actions/checkout@v4
+#               with:
+#                   fetch-depth: 0
+#             - name: install pnpm
+#               uses: pnpm/action-setup@v4
+#               with:
+#                   version: 10
+#             - name: use Node.js ${{matrix.node-version}}
+#               uses: actions/setup-node@v4
+#               with:
+#                   node-version: ${{ matrix.node-version }}
+#                   cache: 'pnpm'
+#             - name: install modules
+#               run: pnpm install
+#             - name: Run Chitalka shared
+#               uses: chromaui/action@latest
+#               with:
+#                   projectToken: ${{ secrets.CHROMATIC_CHITALKA }}
+#                   workingDir: packages/ui
+#                   onlyChanged: true
+#             - name: Run Mangasite
+#               uses: chromaui/action@latest
+#               with:
+#                   projectToken: ${{ secrets.CHROMATIC_MANGASITE }}
+#                   workingDir: services/mangasite
+#                   onlyChanged: true

@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { classNames } from '@packages/model/src/lib/classNames/classNames';
-import { Container } from '../../shared/Container/Container';
+import { Container } from '@ui/shared/Container/Container';
 import cls from './HeaderLayout.module.scss';
 
 interface HeaderLayoutProps {

@@ -1,6 +1,7 @@
 import { FC, ReactNode } from 'react';
 import { Dialog, DialogTrigger, ModalOverlay, Modal as AModal } from 'react-aria-components';
 import { classNames } from '@packages/model/src/lib/classNames';
+import { preventDisableScroll } from '@packages/model/src/lib/helpers/preventDisableScroll/preventDisableScroll';
 import cls from './Modal.module.scss';
 
 type ModalVerticalPosition = 'center' | 'top' | 'bottom';
@@ -25,7 +26,7 @@ const modalHorizonClasses: Record<ModalHorizonPosition, string> = {
     right: cls.horisonRight,
     left: cls.horizonLeft,
 };
-
+//TODO block scroll
 export const Modal: FC<ModalProps> = (props) => {
     const {
         children,
@@ -35,9 +36,8 @@ export const Modal: FC<ModalProps> = (props) => {
         maxWidth = 600,
         defaultOpen,
     } = props;
-    console.log(maxWidth);
     return (
-        <DialogTrigger>
+        <DialogTrigger onOpenChange={preventDisableScroll}>
             {trigger}
             <ModalOverlay
                 defaultOpen={defaultOpen}
@@ -48,7 +48,7 @@ export const Modal: FC<ModalProps> = (props) => {
                 ])}
             >
                 <AModal style={{ maxWidth }} className={cls.modal}>
-                    <Dialog>{children}</Dialog>
+                    <Dialog className={cls.dialog}>{children}</Dialog>
                 </AModal>
             </ModalOverlay>
         </DialogTrigger>

@@ -3,15 +3,16 @@ import { classNames } from '@packages/model/src/lib/classNames/classNames';
 import { LinkProps, Link } from 'react-router-dom';
 import cls from './AppLink.module.scss';
 
-type AppLinkTheme = 'text' | 'primary' | 'secondary';
+type AppLinkTheme = 'text' | 'primary' | 'secondary' | 'none';
 type AppLinkStyle = 'normal' | 'bold' | 'italic';
 
-interface AppLinkProps extends LinkProps {
+export interface AppLinkProps extends LinkProps {
     className?: string;
     theme?: AppLinkTheme;
     textStyle?: AppLinkStyle;
     backgroundOnHover?: boolean;
     children: ReactNode;
+    disable?: boolean;
 }
 
 export const AppLink = memo((props: AppLinkProps) => {
@@ -22,17 +23,18 @@ export const AppLink = memo((props: AppLinkProps) => {
         theme = 'text',
         textStyle = 'normal',
         backgroundOnHover,
+        disable,
         ...otherProps
     } = props;
 
     return (
         <Link
             to={to}
-            className={classNames(cls.AppLink, { [cls.background]: backgroundOnHover }, [
-                className,
-                cls[theme],
-                cls[textStyle],
-            ])}
+            className={classNames(
+                cls.AppLink,
+                { [cls.background]: backgroundOnHover, [cls.disable]: disable },
+                [className, cls[theme], cls[textStyle]],
+            )}
             {...otherProps}
         >
             {children}

@@ -1,0 +1,35 @@
+.h1 {
+    font: var(--font-xl);
+}
+
+.h2 {
+    font: var(--font-l);
+}
+
+.h3 {
+    font: var(--font-m);
+}
+
+.h4 {
+    font: var(--font-s);
+}
+
+.primary {
+    color: var(--primary-color);
+}
+
+.secondary {
+    color: var(--secondary-color);
+}
+
+.plain {
+    color: var(--text-color);
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.italic {
+    font-style: italic;
+}

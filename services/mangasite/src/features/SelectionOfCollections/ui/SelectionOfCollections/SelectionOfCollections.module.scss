@@ -1,0 +1,14 @@
+.title {
+    margin-bottom: 15px;
+}
+
+.collectionList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+
+    @media (width <= 700px) {
+        display: flex;
+        flex-direction: column;
+    }
+}

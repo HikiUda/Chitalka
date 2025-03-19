@@ -1,0 +1,19 @@
+.TabScroll {
+    overflow: auto;
+    max-height: 1120px;
+
+    &::-webkit-scrollbar {
+        width: 2px; /* ширина всей полосы прокрутки */
+        height: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: var(--block-color); /* цвет зоны отслеживания */
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--accent-color); /* цвет бегунка */
+        border-radius: 20px; /* округлось бегунка */
+        border: 3px solid var(--primary-color); /* отступ вокруг бегунка */
+    }
+}

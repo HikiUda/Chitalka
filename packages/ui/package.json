@@ -29,10 +29,13 @@
         "@config/storybook": "workspace:*",
         "@config/stylelint": "workspace:*",
         "@packages/model": "workspace:*",
+        "framer-motion": "^12.5.0",
         "react": "^19.0.0",
         "react-aria-components": "^1.6.0",
+        "react-device-detect": "^2.2.3",
         "react-dom": "^19.0.0",
-        "react-router-dom": "^7.1.5"
+        "react-router-dom": "^7.1.5",
+        "swiper": "^11.2.4"
     },
     "devDependencies": {
         "@chromatic-com/storybook": "3.2.4",

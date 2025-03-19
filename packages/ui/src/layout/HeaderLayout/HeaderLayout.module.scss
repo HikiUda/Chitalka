@@ -3,6 +3,7 @@
     width: 100%;
     height: var(--header-height);
     padding: 0 10px;
+    z-index: var(--header-z-index);
 }
 
 .storybook {

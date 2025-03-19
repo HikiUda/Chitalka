@@ -1,10 +1,9 @@
 import { FC } from 'react';
 import { classNames } from '@packages/model/src/lib/classNames';
-import { useDisign, useTheme } from '@packages/model/src/lib/theme';
-import { LogoMangaSite } from '@packages/ui/src/entities/Logo';
-import { HStack } from '@packages/ui/src/shared/Stack';
+import { useRouteChange } from '@packages/model/src/lib/hooks/useRouteChange/useRouteChange';
 import { HeaderLayout } from '@packages/ui/src/layout/HeaderLayout';
-import { HeaderItems } from '../HeaderItems/HeaderItems';
+import { isMobile } from 'react-device-detect';
+import { mapHeaderContent } from '../../model/config/mapHeaderContent';
 import cls from './Header.module.scss';
 
 interface HeaderProps {
@@ -14,27 +13,13 @@ interface HeaderProps {
 export const Header: FC<HeaderProps> = (props) => {
     const { className } = props;
 
-    const { toggleTheme } = useTheme();
-    const { toggleDisign } = useDisign();
-
-    const onDisign = () => {
-        toggleDisign();
-    };
+    const currentRoute = useRouteChange();
 
     return (
         <HeaderLayout className={classNames(cls.Header, {}, [className])}>
-            <HStack justify="between">
-                <LogoMangaSite />
-                <HeaderItems />
-                <HStack>
-                    <button type="button" onClick={toggleTheme}>
-                        toggle theme
-                    </button>
-                    <button type="button" onClick={onDisign}>
-                        toggle disign
-                    </button>
-                </HStack>
-            </HStack>
+            {isMobile
+                ? mapHeaderContent[currentRoute]?.mobile || mapHeaderContent.default.mobile
+                : mapHeaderContent[currentRoute]?.desktop || mapHeaderContent.default.desktop}
         </HeaderLayout>
     );
 };

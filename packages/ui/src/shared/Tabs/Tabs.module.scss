@@ -1,0 +1,38 @@
+.Tabs {
+    width: 100%;
+}
+
+.tabList {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    &[data-orientation='horizontal'] {
+        margin-bottom: 15px;
+        border-bottom: 1px solid var(--accent-color);
+
+        .tab[data-selected]::after {
+            transform: translateY(0);
+        }
+    }
+}
+
+.tab {
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--accent-color);
+        transition: transform 0.2s ease-out;
+        transform: translateY(4px) scale(0.9);
+        border-radius: 3px 3px 0 0;
+    }
+
+    position: relative;
+    cursor: pointer;
+    padding: 5px 8px;
+}

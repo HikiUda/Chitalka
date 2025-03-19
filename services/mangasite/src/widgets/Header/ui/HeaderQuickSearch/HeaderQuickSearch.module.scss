@@ -1,0 +1,7 @@
+.HeaderQuickSearch {
+    height: calc(var(--header-height) - 10px);
+
+    & div {
+        width: 100%;
+    }
+}

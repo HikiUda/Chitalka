@@ -1,0 +1,50 @@
+.Select {
+    position: relative;
+}
+
+.popover {
+    background: var(--block-color);
+    padding: 5px;
+    min-width: 150px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px 1px var(--text-color);
+    transition: all 0.3s ease;
+    transform: translateY(0);
+    opacity: 1;
+
+    &[data-entering] {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+
+    &[data-exiting] {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+}
+
+.selectItem {
+    padding: 3px 5px;
+    border-radius: 4px;
+    background: var(--block-color);
+    cursor: pointer;
+
+    &[data-hovered] {
+        background: var(--accent-color);
+    }
+
+    &[data-selected] {
+        background: var(--accent-color);
+    }
+}
+
+.btn {
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon {
+    transform: rotate(180deg);
+}

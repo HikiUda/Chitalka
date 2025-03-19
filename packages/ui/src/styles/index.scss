@@ -2,6 +2,15 @@
 @use './varibles/globals';
 @use './theme/red/red';
 @use './theme/green/green';
+@use 'swiper/scss';
+
+html {
+    font-size: 16px;
+}
+
+.swiper-wrapper {
+    width: 300px;
+}
 
 body {
     font: var(--font-m);

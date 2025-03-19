@@ -1,4 +1,4 @@
-import { ValueOf } from '../../../types/common/common';
+import { ValueOf } from '@model/types/common/common';
 
 export const Theme = {
     LIGHT: 'light',

@@ -10,6 +10,8 @@ import importPlugin from 'eslint-plugin-import';
 import pluginReactHooks from 'eslint-plugin-react-hooks';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import unusedImports from 'eslint-plugin-unused-imports';
+//@ts-ignore
+import FsdPlugin from 'eslint-plugin-fsd-layer-import';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -26,6 +28,7 @@ export default [
             react: pluginReact,
             'react-hooks': pluginReactHooks,
             'unused-imports': unusedImports,
+            'fsd-layer-import': FsdPlugin,
         },
     },
     {
@@ -67,6 +70,21 @@ export default [
             'import/order': 'error',
             'import/named': 'off',
             'unused-imports/no-unused-imports': 'error',
+            'fsd-layer-import/path-checker': ['error', { alias: '@' }],
+            'fsd-layer-import/public-api-import': [
+                'error',
+                {
+                    alias: '@',
+                    testFilesPatterns: ['**/*.test.ts', '**/*.test.tsч', '**/*.stories.tsx'],
+                },
+            ],
+            'fsd-layer-import/layer-import': [
+                'error',
+                {
+                    alias: '@',
+                    ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
+                },
+            ],
         },
     },
 ];

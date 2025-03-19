@@ -1,0 +1,16 @@
+.CardBlock {
+    border-radius: 8px;
+    max-width: 100%;
+}
+
+.block {
+    background: var(--block-color);
+}
+
+.bg {
+    background: var(--bg-color);
+}
+
+.shadow {
+    box-shadow: 1px 5px 3px var(--text-color);
+}

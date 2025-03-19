@@ -1,0 +1,16 @@
+.OtherInfoOnMain {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+
+    @media (width <= 991px) {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
+
+.otherList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}

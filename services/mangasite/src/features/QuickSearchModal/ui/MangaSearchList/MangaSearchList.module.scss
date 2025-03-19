@@ -1,0 +1,9 @@
+.MangaSearchList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+
+    @media (width <= 710px) {
+        grid-template-columns: 1fr;
+    }
+}

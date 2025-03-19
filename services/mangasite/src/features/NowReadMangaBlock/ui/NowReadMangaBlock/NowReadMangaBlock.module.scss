@@ -1,0 +1,36 @@
+.NowReadMangaBlock {
+    padding: 10px 25px;
+}
+
+.scroll {
+    overflow: auto;
+    scrollbar-width: none;
+}
+
+.title {
+    margin-bottom: 20px;
+}
+
+.card {
+    flex: 0 0 33%;
+
+    @media (width <= 1050px) {
+        flex: 0 0 45%;
+    }
+
+    @media (width <= 900px) {
+        flex: 0 0 57%;
+    }
+
+    @media (width <= 670px) {
+        flex: 0 0 80%;
+    }
+
+    @media (width <= 460px) {
+        flex: 0 0 93%;
+    }
+
+    @media (width <= 350px) {
+        flex: 0 0 115%;
+    }
+}
