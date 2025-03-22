@@ -1,3 +1,35 @@
 .MangaPage {
-    background-color: var(--bg-color);
+    display: grid;
+    grid-template-rows: repeat(4, auto) 1fr;
+    grid-template-columns: 260px 1fr;
+    grid-template-areas:
+        'bg bg '
+        'cover title'
+        'cover content '
+        'btns content '
+        'sidebar content';
+    gap: 16px;
+}
+.banner {
+    grid-area: bg;
+    grid-row: 1 / 3;
+    margin: 0 -15px;
+}
+.cover {
+    grid-area: cover;
+    z-index: 2;
+}
+.title {
+    grid-area: title;
+    z-index: 2;
+}
+.content {
+    grid-area: content;
+    background: var(--block-color);
+}
+.btnBlock {
+    grid-area: btns;
+}
+.sidebar {
+    grid-area: sidebar;
 }

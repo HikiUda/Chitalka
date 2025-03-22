@@ -1,10 +1,12 @@
-import { memo, ReactNode } from 'react';
+import { DetailedHTMLProps, HTMLAttributes, memo, ReactNode } from 'react';
 import { classNames } from '@packages/model/src/lib/classNames';
 import errorFallback from '@ui/assets/image/forError/wrong-imageMini..jpg';
 import { AppImage } from '@ui/shared/AppImage';
 import cls from './AppAdaptiveImage.module.scss';
 
-interface AppAdaptiveImageProps {
+type DivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+
+interface AppAdaptiveImageProps extends DivProps {
     className?: string;
     img?: string;
     width?: number;
@@ -12,12 +14,16 @@ interface AppAdaptiveImageProps {
 }
 
 export const AppAdaptiveImage = memo((props: AppAdaptiveImageProps) => {
-    const { className, img, width, children } = props;
+    const { className, img, width, children, ...otherProps } = props;
 
     const height = width && width * 1.33;
 
     return (
-        <div style={{ width, height }} className={classNames(cls.AppMangaImage, {}, [className])}>
+        <div
+            {...otherProps}
+            style={{ width, height }}
+            className={classNames(cls.AppMangaImage, {}, [className])}
+        >
             <AppImage
                 src={img}
                 errorFallback={<AppImage src={errorFallback} alt="error" />}

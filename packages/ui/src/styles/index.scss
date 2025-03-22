@@ -16,4 +16,12 @@ body {
     font: var(--font-m);
     color: var(--text-color);
     box-sizing: border-box;
+    &.light {
+        --block-color-gradient: rgba(255, 255, 255, 0.6);
+        --block-color-gradient2: rgba(255, 255, 255, 0.4);
+    }
+    &.dark {
+        --block-color-gradient: rgba(0, 0, 0, 0.6);
+        --block-color-gradient2: rgba(0, 0, 0, 0.4);
+    }
 }

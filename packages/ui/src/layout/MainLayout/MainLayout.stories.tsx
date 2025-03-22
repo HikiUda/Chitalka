@@ -24,5 +24,6 @@ export const Primary: Story = {
         ),
         main: <main style={{ background: 'blue', margin: '30px 0 0 0' }}>main</main>,
         footer: <footer style={{ background: 'red' }}>footer</footer>,
+        bottomMenu: <nav style={{ background: 'orange' }}>bottomMenu</nav>,
     },
 };

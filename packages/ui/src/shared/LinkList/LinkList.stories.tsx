@@ -1,7 +1,30 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { LinkList } from './LinkList';
+import Svg from '@ui/assets/forStories/catalog.svg';
+import { LinkList, LinkListItem } from './LinkList';
+
+const items: LinkListItem[] = [
+    {
+        icon: Svg,
+        text: 'История чтения',
+        to: '',
+    },
+    {
+        icon: Svg,
+        text: 'Уведомления',
+        to: '',
+    },
+    {
+        icon: Svg,
+        text: 'Поддержка',
+        to: '',
+    },
+    {
+        icon: Svg,
+        text: 'Настройки',
+        to: '',
+    },
+];
 
 const meta: Meta<typeof LinkList> = {
     title: 'shared/LinkList',
@@ -13,4 +36,8 @@ const meta: Meta<typeof LinkList> = {
 export default meta;
 type Story = StoryObj<typeof LinkList>;
 
-export const Primary: Story = {};
+export const Primary: Story = {
+    args: {
+        items: items,
+    },
+};

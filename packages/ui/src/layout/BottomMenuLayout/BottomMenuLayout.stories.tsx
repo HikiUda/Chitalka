@@ -4,7 +4,7 @@ import cls from './BottomMenuLayout.module.scss';
 import { BottomMenuLayout } from './BottomMenuLayout';
 
 const meta: Meta<typeof BottomMenuLayout> = {
-    title: 'shared/BottomMenuLayout',
+    title: 'layout/BottomMenuLayout',
     component: BottomMenuLayout,
 
     tags: ['autodocs'],
@@ -15,7 +15,7 @@ type Story = StoryObj<typeof BottomMenuLayout>;
 
 export const Primary: Story = {
     args: {
-        children: 'header',
+        children: 'bottomMenu',
         className: cls.storybook,
     },
     decorators: [

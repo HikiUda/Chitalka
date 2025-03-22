@@ -26,7 +26,7 @@ export const MangaCardInline = memo((props: MangaCardInlineProps) => {
         >
             <AppAdaptiveImage className={cls.img} img={img} />
             <div className={cls.content}>
-                <Heading className={cls.title} HeaderTag="h3" style="bold">
+                <Heading className={cls.title} HeaderTag="h4" style="bold">
                     {title}
                 </Heading>
                 <span className={cls.subtitle}>{subtitle}</span>

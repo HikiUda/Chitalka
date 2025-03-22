@@ -45,7 +45,7 @@ export const MangaCard = memo((props: MangaCardProps) => {
                 {label3 && <span className={cls.label3}>{label3}</span>}
             </AppAdaptiveImage>
 
-            <Heading className={cls.title} HeaderTag="h3" style="bold">
+            <Heading className={cls.title} HeaderTag="h4" style="bold">
                 {title}
             </Heading>
             <span className={cls.subtitle}>{subtitle}</span>

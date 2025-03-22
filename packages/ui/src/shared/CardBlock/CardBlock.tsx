@@ -1,10 +1,12 @@
-import { memo, ReactNode } from 'react';
+import { DetailedHTMLProps, HTMLAttributes, memo, ReactNode } from 'react';
 import { classNames } from '@packages/model/src/lib/classNames';
 import cls from './CardBlock.module.scss';
 
+type DivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+
 type CardBlockBackgroundColor = 'bg' | 'block';
 
-interface CardBlockProps {
+interface CardBlockProps extends DivProps {
     className?: string;
     children?: ReactNode;
     shadow?: boolean;
@@ -12,7 +14,7 @@ interface CardBlockProps {
 }
 
 export const CardBlock = memo((props: CardBlockProps) => {
-    const { className, children, shadow, backgroundColor = 'block' } = props;
+    const { className, children, shadow, backgroundColor = 'block', ...otherProps } = props;
 
     return (
         <div
@@ -20,6 +22,7 @@ export const CardBlock = memo((props: CardBlockProps) => {
                 className,
                 cls[backgroundColor],
             ])}
+            {...otherProps}
         >
             {children}
         </div>

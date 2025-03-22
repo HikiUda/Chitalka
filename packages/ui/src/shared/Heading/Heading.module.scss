@@ -1,16 +1,19 @@
 .h1 {
-    font: var(--font-xl);
+    font: var(--font-xxl);
 }
 
 .h2 {
-    font: var(--font-l);
+    font: var(--font-xl);
 }
 
 .h3 {
+    font: var(--font-l);
+}
+.h4 {
     font: var(--font-m);
 }
 
-.h4 {
+.h5 {
     font: var(--font-s);
 }
 

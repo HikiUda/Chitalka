@@ -18,6 +18,6 @@ export const Primary: Story = {
         trigger: <Button>trigger</Button>,
         children: <Button slot="close">close</Button>,
         maxWidth: '200px',
-        defaultOpen: true,
+        isOpen: true,
     },
 };
