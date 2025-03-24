@@ -4,7 +4,7 @@ import cls from './Heading.module.scss';
 
 type HeaderTagType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
 type HeaderColor = 'plain' | 'primary' | 'secondary';
-type HeaderStyle = 'none' | 'bold' | 'italic';
+type HeaderStyle = 'none' | 'bold' | 'italic' | 'opacity';
 
 interface HeadingProps {
     className?: string;

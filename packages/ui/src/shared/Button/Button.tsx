@@ -6,7 +6,7 @@ import cls from './Button.module.scss';
 
 type ButtonTheme = 'clear' | 'outline' | 'fill';
 type ButtonColor = 'primary' | 'secondary' | 'block' | 'none';
-type ButtonPressAnimation = 'none' | 'ripple' | 'press';
+type ButtonPressAnimation = 'none' | 'ripple' | 'press' | 'scale';
 
 interface ButtonProps extends AButtonProps {
     className?: string;

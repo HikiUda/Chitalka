@@ -12,7 +12,7 @@ interface MainPageProps {
     className?: string;
 }
 
-export const MainPage: FC<MainPageProps> = (props) => {
+const MainPage: FC<MainPageProps> = (props) => {
     const { className } = props;
 
     return (
@@ -24,3 +24,4 @@ export const MainPage: FC<MainPageProps> = (props) => {
         </Page>
     );
 };
+export default MainPage;

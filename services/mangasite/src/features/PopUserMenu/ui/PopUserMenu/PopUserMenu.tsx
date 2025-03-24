@@ -30,7 +30,7 @@ export const PopUserMenu: FC<PopUserMenuProps> = (props) => {
     const onDisign = () => {
         toggleDisign();
     };
-
+    //TODO possible lazy
     return (
         <Popover button={trigger} className={classNames(cls.PopUserMenu, {}, [className])}>
             <VStack>

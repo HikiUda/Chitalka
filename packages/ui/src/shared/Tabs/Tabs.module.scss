@@ -3,9 +3,8 @@
 }
 
 .tabList {
-    display: flex;
-    align-items: center;
     overflow: hidden;
+    padding-left: 10px;
 
     &[data-orientation='horizontal'] {
         margin-bottom: 15px;

@@ -1,4 +1,8 @@
 .Sidebar {
     padding: 10px;
     background: var(--block-color);
+    border-radius: 8px;
+    //TODO
+    max-height: 500px;
+    overflow: auto;
 }

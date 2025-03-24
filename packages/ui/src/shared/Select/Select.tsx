@@ -1,7 +1,6 @@
 import {
     Select,
     Label,
-    SelectValue,
     ListBox,
     ListBoxItem,
     FieldError,
@@ -10,14 +9,13 @@ import {
     SelectContext,
 } from 'react-aria-components';
 import type { ListBoxItemProps, SelectProps, ValidationResult } from 'react-aria-components';
-import SelectArrowIcon from '@ui/assets/icon/common/selectArrow.svg';
 import { preventDisableScroll } from '@packages/model/src/lib/helpers/preventDisableScroll/preventDisableScroll';
 
 import { ReactNode } from 'react';
-import { Button } from '../Button';
-import { Icon } from '../Icon';
+import { classNames } from '@packages/model/src/lib/classNames';
 import { useFreePopover } from '../Popover';
 import cls from './Select.module.scss';
+import { MiniOutline } from './SelectButtons/MiniOutline/MiniOutline';
 
 interface MySelectProps<T extends object> extends Omit<SelectProps<T>, 'children'> {
     label?: string;
@@ -25,23 +23,25 @@ interface MySelectProps<T extends object> extends Omit<SelectProps<T>, 'children
     errorMessage?: string | ((validation: ValidationResult) => string);
     items?: Iterable<T>;
     children: ReactNode | ((item: T) => ReactNode);
+    selectButton?: ReactNode;
+    max?: boolean;
 }
 
 export const MySelect = <T extends object>(props: MySelectProps<T>) => {
-    const { label, description, errorMessage, children, items, ...otherProps } = props;
+    const { label, description, errorMessage, children, items, selectButton, max, ...otherProps } =
+        props;
     const { isOpen, handleIsOpne } = useFreePopover();
 
     return (
-        <SelectContext.Provider value={{ isOpen, onOpenChange: handleIsOpne }}>
+        <SelectContext.Provider
+            value={{ isOpen, onOpenChange: handleIsOpne, className: max ? cls.max : undefined }}
+        >
             <Select {...otherProps} onOpenChange={preventDisableScroll}>
                 <Label>{label}</Label>
-                <Button theme="outline" className={cls.btn}>
-                    <SelectValue />
-                    <Icon Svg={SelectArrowIcon} width={10} height={10} className={cls.icon} />
-                </Button>
+                {selectButton ? selectButton : <MiniOutline />}
                 {description && <Text slot="description">{description}</Text>}
                 <FieldError>{errorMessage}</FieldError>
-                <Popover className={cls.popover}>
+                <Popover className={classNames(cls.popover, { [cls.minWidthTarget]: max })}>
                     <ListBox items={items}>{children}</ListBox>
                 </Popover>
             </Select>

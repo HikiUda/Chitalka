@@ -3,7 +3,7 @@ import ImageSvg from '@packages/ui/src/assets/icon/common/image.svg';
 import { Icon } from '@packages/ui/src/shared/Icon';
 import { Button } from '@packages/ui/src/shared/Button';
 import { Modal } from '@packages/ui/src/shared/Modal';
-import { PaginationSlider } from '@packages/ui/src/entities/Slider';
+import { CoverModalContent } from '../CoverModalContent';
 import cls from './Cover.module.scss';
 
 interface CoverProps {
@@ -24,7 +24,7 @@ export const Cover = (props: CoverProps) => {
 
     return (
         <Modal className={cls.modal} trigger={button}>
-            <PaginationSlider />
+            <CoverModalContent />
         </Modal>
     );
 };

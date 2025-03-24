@@ -3,19 +3,6 @@
     padding: 10px;
 }
 
-.mainHeading {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-.secondHeading {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
 .rate {
     font: var(--font-l);
     line-height: 1.7rem;

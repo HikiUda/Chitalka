@@ -13,6 +13,7 @@ export interface AppLinkProps extends LinkProps {
     backgroundOnHover?: boolean;
     children: ReactNode;
     disable?: boolean;
+    underlineOnHover?: boolean;
 }
 
 export const AppLink = memo((props: AppLinkProps) => {
@@ -24,6 +25,7 @@ export const AppLink = memo((props: AppLinkProps) => {
         textStyle = 'normal',
         backgroundOnHover,
         disable,
+        underlineOnHover,
         ...otherProps
     } = props;
 
@@ -32,7 +34,11 @@ export const AppLink = memo((props: AppLinkProps) => {
             to={to}
             className={classNames(
                 cls.AppLink,
-                { [cls.background]: backgroundOnHover, [cls.disable]: disable },
+                {
+                    [cls.background]: backgroundOnHover,
+                    [cls.disable]: disable,
+                    [cls.underline]: underlineOnHover,
+                },
                 [className, cls[theme], cls[textStyle]],
             )}
             {...otherProps}

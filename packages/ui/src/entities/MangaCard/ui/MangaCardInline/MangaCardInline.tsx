@@ -3,6 +3,7 @@ import { classNames } from '@packages/model/src/lib/classNames';
 import { Heading } from '@ui/shared/Heading';
 import { AppLink } from '@ui/shared/AppLink';
 import { AppAdaptiveImage } from '@ui/shared/AppAdaptiveImage';
+import { getStyleLineClamp } from '@ui/shared/StyleHooks';
 import cls from './MangaCardInline.module.scss';
 
 interface MangaCardInlineProps {
@@ -26,7 +27,11 @@ export const MangaCardInline = memo((props: MangaCardInlineProps) => {
         >
             <AppAdaptiveImage className={cls.img} img={img} />
             <div className={cls.content}>
-                <Heading className={cls.title} HeaderTag="h4" style="bold">
+                <Heading
+                    className={classNames(cls.title, {}, [getStyleLineClamp({ wordBreak: true })])}
+                    HeaderTag="h4"
+                    style="bold"
+                >
                     {title}
                 </Heading>
                 <span className={cls.subtitle}>{subtitle}</span>

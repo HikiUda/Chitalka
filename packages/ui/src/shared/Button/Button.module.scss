@@ -37,6 +37,13 @@
     transform: translate(3px, 3px);
 }
 
+.scale {
+    transition: transform 0.3s ease;
+    &:hover {
+        transform: scale(0.9);
+    }
+}
+
 .max {
     width: 100%;
 }

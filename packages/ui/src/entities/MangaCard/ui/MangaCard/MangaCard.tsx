@@ -4,6 +4,7 @@ import { classNames } from '@packages/model/src/lib/classNames';
 import { Heading } from '@ui/shared/Heading';
 import { AppLink } from '@ui/shared/AppLink';
 import { AppAdaptiveImage } from '@ui/shared/AppAdaptiveImage';
+import { getStyleLineClamp } from '@ui/shared/StyleHooks';
 import cls from './MangaCard.module.scss';
 
 type MangaCardAdaptive = 'dynamic' | 'media';
@@ -45,10 +46,22 @@ export const MangaCard = memo((props: MangaCardProps) => {
                 {label3 && <span className={cls.label3}>{label3}</span>}
             </AppAdaptiveImage>
 
-            <Heading className={cls.title} HeaderTag="h4" style="bold">
+            <Heading
+                className={classNames(cls.title, {}, [
+                    getStyleLineClamp({ huphens: true, wordBreak: true }),
+                ])}
+                HeaderTag="h4"
+                style="bold"
+            >
                 {title}
             </Heading>
-            <span className={cls.subtitle}>{subtitle}</span>
+            <span
+                className={classNames(cls.subtitle, {}, [
+                    getStyleLineClamp({ huphens: true, wordBreak: true, lineClamp: '1' }),
+                ])}
+            >
+                {subtitle}
+            </span>
         </AppLink>
     );
 });

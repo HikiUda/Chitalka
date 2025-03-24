@@ -5,7 +5,9 @@ import { getFlex, HStack, VStack } from '@packages/ui/src/shared/Stack';
 import StarSvg from '@packages/ui/src/assets/icon/common/star.svg';
 import { Icon } from '@packages/ui/src/shared/Icon';
 import { Button } from '@packages/ui/src/shared/Button';
+import { getStyleLineClamp } from '@packages/ui/src/shared/StyleHooks';
 import cls from './MangaTitle.module.scss';
+import { RateModal } from '@/features/RateModal';
 
 interface MangaTitleProps {
     className?: string;
@@ -14,14 +16,21 @@ interface MangaTitleProps {
 export const MangaTitle = memo((props: MangaTitleProps) => {
     const { className } = props;
 
+    const rateBtn = (
+        <Button theme="fill" color="secondary" className={classNames(cls.rateBtn, {}, [getFlex()])}>
+            <Icon Svg={StarSvg} width={20} hanging={20} />
+            Оценить
+        </Button>
+    );
+
     return (
         <div className={classNames(cls.MangaTitle, {}, [className])}>
             <HStack gap="32" max align="end">
-                <VStack max>
-                    <Heading className={cls.mainHeading} style="bold" HeaderTag="h2">
+                <VStack max gap="4">
+                    <Heading className={getStyleLineClamp()} style="bold" HeaderTag="h2">
                         Title of Manga
                     </Heading>
-                    <Heading className={cls.secondHeading} HeaderTag="h3">
+                    <Heading className={getStyleLineClamp({ lineClamp: '1' })} HeaderTag="h3">
                         eng Title of Manga
                     </Heading>
                 </VStack>
@@ -31,14 +40,7 @@ export const MangaTitle = memo((props: MangaTitleProps) => {
                         <span className={cls.rate}>9.5</span>
                         <span className={cls.rateNumber}>12.5mil</span>
                     </HStack>
-                    <Button
-                        theme="fill"
-                        color="secondary"
-                        className={classNames(cls.rateBtn, {}, [getFlex()])}
-                    >
-                        <Icon Svg={StarSvg} width={20} hanging={20} />
-                        Оценить
-                    </Button>
+                    <RateModal button={rateBtn} />
                 </VStack>
             </HStack>
         </div>

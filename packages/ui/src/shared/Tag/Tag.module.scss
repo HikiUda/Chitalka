@@ -1,0 +1,11 @@
+.Tag {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+    background: var(--secondary-color);
+    border: 1px solid var(--primary-color);
+    &:hover {
+        background: var(--accent-color);
+    }
+}

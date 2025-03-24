@@ -1,5 +1,7 @@
 import { memo, ReactNode } from 'react';
 import { Collection, Tab, TabList, TabPanel, Tabs } from 'react-aria-components';
+import { classNames } from '@packages/model/src/lib/classNames';
+import { getFlex } from '../Stack';
 import cls from './Tabs.module.scss';
 
 export interface TabItem<T extends string> {
@@ -18,7 +20,11 @@ export const MyTabs = memo(<T extends string>(props: MyTabsProps<T>) => {
 
     return (
         <Tabs className={cls.Tabs}>
-            <TabList className={cls.tabList} items={tabs} style={{ flex: 1 }}>
+            <TabList
+                className={classNames(cls.tabList, {}, [getFlex({ justify: 'start' })])}
+                items={tabs}
+                style={{ flex: 1 }}
+            >
                 {(item) => <Tab className={cls.tab}>{item.title}</Tab>}
             </TabList>
 

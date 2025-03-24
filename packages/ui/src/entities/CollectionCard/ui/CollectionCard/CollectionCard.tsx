@@ -11,6 +11,7 @@ import { HStack, VStack } from '@ui/shared/Stack';
 
 import { AppAdaptiveImage } from '@ui/shared/AppAdaptiveImage';
 import { IconInfoBirka } from '@ui/shared/IconInfoBirka';
+import { getStyleLineClamp } from '@ui/shared/StyleHooks';
 import cls from './CollectionCard.module.scss';
 
 interface CollectionCardProps {
@@ -23,7 +24,7 @@ export const CollectionCard = memo((props: CollectionCardProps) => {
     return (
         <AppLink to={'/'} className={classNames(cls.CollectionCard, {}, [className])}>
             <VStack justify="center" align="center">
-                <Heading className={cls.title} style="bold">
+                <Heading className={classNames(cls.title, {}, [getStyleLineClamp()])} style="bold">
                     Tittle of collection
                 </Heading>
                 <HStack justify="center" align="center" className={cls.tagInfo}>

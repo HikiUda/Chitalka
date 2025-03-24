@@ -38,13 +38,9 @@
     }
 }
 
-.btn {
-    padding: 4px 8px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.max {
+    width: 100%;
 }
-
-.icon {
-    transform: rotate(180deg);
+.minWidthTarget {
+    min-width: var(--trigger-width);
 }

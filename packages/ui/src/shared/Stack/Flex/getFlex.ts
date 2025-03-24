@@ -5,6 +5,7 @@ export type FlexJustify = 'start' | 'end' | 'center' | 'between';
 export type FlexAlign = 'start' | 'end' | 'center';
 export type FlexDirection = 'row' | 'column';
 export type FlexGap = '4' | '8' | '16' | '32';
+export type FlexWrap = 'wrap' | 'wrapReverse' | 'nowrap';
 
 const justifyClasses: Record<FlexJustify, string> = {
     start: cls.justifyStart,
@@ -27,6 +28,11 @@ const gapClasses: Record<FlexGap, string> = {
     16: cls.gap16,
     32: cls.gap32,
 };
+const wrapClasses: Record<FlexWrap, string> = {
+    wrap: cls.wrap,
+    wrapReverse: cls.wrapReverse,
+    nowrap: cls.nowrap,
+};
 
 export interface GetFlexProps {
     justify?: FlexJustify;
@@ -34,16 +40,25 @@ export interface GetFlexProps {
     direction?: FlexDirection;
     gap?: FlexGap;
     max?: boolean;
+    wrap?: FlexWrap;
 }
 
 export function getFlex(props: GetFlexProps = {}): string {
-    const { justify = 'center', align = 'center', direction = 'row', gap = '8', max } = props;
+    const {
+        justify = 'center',
+        align = 'center',
+        direction = 'row',
+        gap = '8',
+        max,
+        wrap = 'nowrap',
+    } = props;
 
     const classes = [
         justifyClasses[justify],
         alignClasses[align],
         directionClasses[direction],
         gapClasses[gap],
+        wrapClasses[wrap],
     ];
 
     const mods: Mods = {

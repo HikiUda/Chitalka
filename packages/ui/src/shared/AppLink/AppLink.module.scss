@@ -60,3 +60,8 @@
 .disable {
     pointer-events: none;
 }
+.underline {
+    &:hover {
+        text-decoration: underline;
+    }
+}

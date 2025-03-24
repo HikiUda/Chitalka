@@ -13,7 +13,7 @@ interface MangaPageProps {
     className?: string;
 }
 
-export const MangaPage: FC<MangaPageProps> = (props) => {
+const MangaPage: FC<MangaPageProps> = (props) => {
     const { className } = props;
     return (
         <Page>
@@ -28,3 +28,4 @@ export const MangaPage: FC<MangaPageProps> = (props) => {
         </Page>
     );
 };
+export default MangaPage;

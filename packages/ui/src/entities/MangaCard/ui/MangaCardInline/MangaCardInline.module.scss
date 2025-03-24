@@ -11,25 +11,9 @@
 .img {
     flex: 0 0 60px;
     height: 100%;
-
-    // position: relative;
-    // & img {
-    //     position: absolute;
-    //     top: 0;
-    //     left: 0;
-    //     width: 100%;
-    //     height: 100%;
-    //     object-fit: cover;
-    //     border-radius: 8px;
-    // }
 }
 
 .title {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    word-break: break-all;
     transition: color 0.2s ease;
     max-width: 400px;
 
