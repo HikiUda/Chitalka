@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { classNames } from '@packages/model/src/lib/classNames';
 import { VStack } from '@ui/shared/Stack';
-import { PrimaryMangaCardInline } from '@ui/entities/MangaCard/ui/PrimaryMangaCardInline/PrimaryMangaCardInline';
+import { PrimaryMangaCardInline } from '@ui/entities/MangaCard';
 import { Heading } from '@ui/shared/Heading';
 import cls from './ColumePrimaryMangaCardInline.module.scss';
 

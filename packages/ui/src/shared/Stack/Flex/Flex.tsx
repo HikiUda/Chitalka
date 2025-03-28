@@ -10,9 +10,13 @@ export interface FlexProps extends GetFlexProps, DivProps {
 }
 
 export const Flex: FC<FlexProps> = (props) => {
-    const { className, children, justify, align, direction, gap, max, wrap } = props;
+    const { className, children, justify, align, direction, gap, max, wrap, ...otherProps } = props;
 
     const classes = getFlex({ justify, align, direction, gap, max, wrap });
 
-    return <div className={classNames(className || '', {}, [classes])}>{children}</div>;
+    return (
+        <div {...otherProps} className={classNames(className || '', {}, [classes])}>
+            {children}
+        </div>
+    );
 };

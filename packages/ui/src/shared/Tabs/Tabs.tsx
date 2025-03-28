@@ -19,7 +19,7 @@ export const MyTabs = memo(<T extends string>(props: MyTabsProps<T>) => {
     const { className, tabs } = props;
 
     return (
-        <Tabs className={cls.Tabs}>
+        <Tabs className={classNames(cls.Tabs, {}, [className])}>
             <TabList
                 className={classNames(cls.tabList, {}, [getFlex({ justify: 'start' })])}
                 items={tabs}

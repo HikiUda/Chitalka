@@ -12,7 +12,6 @@ interface ModalProps {
     trigger?: ReactNode;
     modalVerticalPosition?: ModalVerticalPosition;
     modalHorizonPosition?: ModalHorizonPosition;
-    maxWidth?: number | string;
     isOpen?: boolean;
 }
 
@@ -34,7 +33,6 @@ export const Modal: FC<ModalProps> = (props) => {
         trigger,
         modalVerticalPosition = 'center',
         modalHorizonPosition = 'center',
-        maxWidth = 600,
         isOpen,
     } = props;
 
@@ -49,7 +47,7 @@ export const Modal: FC<ModalProps> = (props) => {
                     modalHorizonClasses[modalHorizonPosition],
                 ])}
             >
-                <AModal style={{ maxWidth }} className={classNames(cls.modal, {}, [className])}>
+                <AModal className={classNames(cls.modal, {}, [className])}>
                     <Dialog aria-label="modal" className={cls.dialog}>
                         {children}
                     </Dialog>

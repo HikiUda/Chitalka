@@ -2,11 +2,19 @@ import { classNames } from '@packages/model/src/lib/classNames';
 import { MenuItem, type MenuItemProps } from 'react-aria-components';
 import cls from './MenuItem.module.scss';
 
-export const MyItem = (props: MenuItemProps) => {
+interface MyMenuItemProps extends MenuItemProps {
+    className?: string;
+}
+
+export const MyItem = (props: MyMenuItemProps) => {
     const textValue =
         props.textValue || (typeof props.children === 'string' ? props.children : undefined);
     return (
-        <MenuItem {...props} textValue={textValue} className={classNames(cls.MenuItem)}>
+        <MenuItem
+            {...props}
+            textValue={textValue}
+            className={classNames(cls.MenuItem, {}, [props.className])}
+        >
             {({ hasSubmenu }) => (
                 <>
                     {props.children}

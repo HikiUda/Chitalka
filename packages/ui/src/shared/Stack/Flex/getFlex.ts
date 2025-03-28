@@ -3,7 +3,7 @@ import cls from './Flex.module.scss';
 
 export type FlexJustify = 'start' | 'end' | 'center' | 'between';
 export type FlexAlign = 'start' | 'end' | 'center';
-export type FlexDirection = 'row' | 'column';
+export type FlexDirection = 'row' | 'column' | 'rowReverse' | 'columnReverse';
 export type FlexGap = '4' | '8' | '16' | '32';
 export type FlexWrap = 'wrap' | 'wrapReverse' | 'nowrap';
 
@@ -21,6 +21,8 @@ const alignClasses: Record<FlexAlign, string> = {
 const directionClasses: Record<FlexDirection, string> = {
     row: cls.directionRow,
     column: cls.directionColumn,
+    rowReverse: cls.directionRowReverse,
+    columnReverse: cls.directionColumnReverse,
 };
 const gapClasses: Record<FlexGap, string> = {
     4: cls.gap4,

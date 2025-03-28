@@ -1,1 +1,1 @@
-export { AboutManga } from './ui/AboutManga/AboutManga';
+export { AboutMangaAsync as AboutManga } from './ui/AboutManga/AboutManga.async';

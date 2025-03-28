@@ -1,0 +1,15 @@
+.CommentForm {
+    padding: 10px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 8px;
+}
+.textarea {
+    width: 100%;
+    resize: none;
+    max-height: 20px;
+}
+.startEdit {
+    min-height: 150px;
+    max-height: none;
+    resize: vertical;
+}

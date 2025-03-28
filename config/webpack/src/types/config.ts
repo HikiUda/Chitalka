@@ -5,6 +5,7 @@ export interface EnvBuild {
     port: number;
     MANGASITE_REMOTE_URL: string;
     ARTSITE_REMOTE_URL: string;
+    apiUrl: string;
 }
 
 export interface BuildPaths {
@@ -21,4 +22,5 @@ export interface BuildOptions {
     mode: BuildMode;
     port: number;
     analyzer: boolean;
+    apiUrl: string;
 }

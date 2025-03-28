@@ -15,6 +15,7 @@ export const Sidebar = memo((props: SidebarProps) => {
 
     return (
         <VStack
+            justify="start"
             className={classNames(cls.Sidebar, {}, [
                 className,
                 getStyleScrollbar({ size: 'thin' }),

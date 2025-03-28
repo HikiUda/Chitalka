@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { classNames } from '@packages/model/src/lib/classNames';
 import { Page } from '@packages/ui/src/shared/Page';
 
+
 import cls from './MainPage.module.scss';
 import { RecentUpdatedPopularMangaSlider } from '@/features/RecentUpdatedPopularMangaSlider';
 import { ContinueReadMangaSlider } from '@/features/ContinueReadMangaSlider';

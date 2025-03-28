@@ -19,7 +19,6 @@ export function useDisign(): UseDisignReturn {
             newDisign = disign === Disign.RED ? Disign.GREEN : Disign.RED;
         }
         setDisign?.(newDisign);
-        console.log(newDisign);
         document.body.className = `${newDisign} ${theme}`;
     };
     return { disign, toggleDisign };

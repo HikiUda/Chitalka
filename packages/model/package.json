@@ -20,6 +20,8 @@
         "@config/eslint": "workspace:*",
         "@config/jest": "workspace:*",
         "@packages/ui": "workspace:*",
+        "@tanstack/react-query": "^5.69.0",
+        "axios": "^1.8.4",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
         "react-router-dom": "^7.1.5"
@@ -32,6 +34,7 @@
         "@storybook/react": "8.5.3",
         "@testing-library/jest-dom": "^6.6.3",
         "@testing-library/react": "^16.2.0",
+        "@types/axios": "^0.14.4",
         "@types/jest": "^29.5.14",
         "@types/node": "^22.10.10",
         "@types/react": "^19.0.8",

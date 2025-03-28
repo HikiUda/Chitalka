@@ -3,6 +3,8 @@ import { classNames } from '@packages/model/src/lib/classNames';
 import { TabItem, Tabs } from '@packages/ui/src/shared/Tabs';
 import cls from './MangaPageContent.module.scss';
 import { AboutManga } from '@/widgets/AboutManga';
+import { MangaChapters } from '@/widgets/MangaChapters';
+import { MangaComments } from '@/widgets/MangaComments';
 
 interface MangaPageContentProps {
     className?: string;
@@ -11,18 +13,18 @@ interface MangaPageContentProps {
 const tabs: TabItem<string>[] = [
     {
         id: 1,
-        title: 'Главная',
+        title: 'О тайтле',
         content: <AboutManga />,
     },
     {
         id: 2,
         title: 'Главы',
-        content: <div>Главы</div>,
+        content: <MangaChapters />,
     },
     {
         id: 3,
         title: 'Комментарии',
-        content: <div>Комментарии</div>,
+        content: <MangaComments />,
     },
 ];
 

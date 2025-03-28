@@ -20,7 +20,7 @@ export const config: Config = {
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
         '^@/(.*)$': '<rootDir>/src/$1',
     },
-    globals: { __IS_DEV__: true },
+    globals: { __IS_DEV__: true, __API_URL__: true },
     reporters: [
         'default',
         [

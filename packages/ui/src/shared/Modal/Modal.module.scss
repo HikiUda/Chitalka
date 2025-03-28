@@ -3,6 +3,7 @@
     padding: 10px;
     border-radius: 4px;
     flex-grow: 1;
+    max-width: 600px;
 
     &[data-entering] {
         animation: modal-zoom 200ms;

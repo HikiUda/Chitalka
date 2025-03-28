@@ -1,8 +1,12 @@
 import { FC } from 'react';
 import { classNames } from '@packages/model/src/lib/classNames';
 import { TextDisclosure } from '@packages/ui/src/shared/TextDisclosure';
+import { HStack } from '@packages/ui/src/shared/Stack';
 import cls from './AboutManga.module.scss';
 import { JanresAndTagsList } from '@/features/JanresAndTagsList';
+import { SimilarMangaSlider } from '@/features/SimilarMangaSlider';
+import { MangaRateStatistic } from '@/features/MangaRateStatistic';
+import { MangaBookmarksStatistic } from '@/features/MangaBookmarksStatistic';
 
 interface AboutMangaProps {
     className?: string;
@@ -28,13 +32,19 @@ const text = `
 ....Но почему моё сердце так бьется?
 `;
 
-export const AboutManga: FC<AboutMangaProps> = (props) => {
+const AboutManga: FC<AboutMangaProps> = (props) => {
     const { className } = props;
 
     return (
         <div className={classNames(cls.AboutManga, {}, [className])}>
             <TextDisclosure className={cls.textDisclosure} text={text} />
             <JanresAndTagsList className={cls.janresAndTagsList} />
+            <SimilarMangaSlider className={cls.similarMangaSlider} />
+            <HStack align="start" className={cls.statistic}>
+                <MangaRateStatistic className={cls.statisticBlock} />
+                <MangaBookmarksStatistic className={cls.statisticBlock} />
+            </HStack>
         </div>
     );
 };
+export default AboutManga;

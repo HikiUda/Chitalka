@@ -4,3 +4,4 @@ export { LastChapterMangaCard } from './ui/LastChapterMangaCard/LastChapterManga
 export { ProgressReadMangaCardInline } from './ui/ProgressReadMangaCardInline/ProgressReadMangaCardInline';
 export { LastUpdatedMangaCardInline } from './ui/LastUpdatedMangaCardInline/LastUpdatedMangaCardInline';
 export { StatisticsMangaCardInline } from './ui/StatisticsMangaCardInline/StatisticsMangaCardInline';
+export { PrimaryMangaCardInline } from './ui/PrimaryMangaCardInline/PrimaryMangaCardInline';
