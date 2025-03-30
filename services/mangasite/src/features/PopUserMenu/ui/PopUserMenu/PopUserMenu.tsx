@@ -7,6 +7,7 @@ import { VStack } from '@packages/ui/src/shared/Stack';
 import { LinkList } from '@packages/ui/src/shared/LinkList';
 import { Avatar } from '@packages/ui/src/shared/Avatar';
 import { Divider } from '@packages/ui/src/shared/Divider';
+import { useGetUserDataQuery } from '@packages/model/src/api/auth';
 import { ProfileLink } from '../ProfileLink/ProfileLink';
 import { commonLink } from '../../model/config/commonLink';
 import { ExitButton } from '../ExitButton/ExitButton';
@@ -18,10 +19,11 @@ interface PopUserMenuProps {
 
 export const PopUserMenu: FC<PopUserMenuProps> = (props) => {
     const { className } = props;
-
+    const { data } = useGetUserDataQuery();
+    //TODO avatar
     const trigger = (
         <Button theme="clear" noHover>
-            <Avatar />
+            <Avatar img={data?.avatar} />
         </Button>
     );
     const { toggleTheme } = useTheme();

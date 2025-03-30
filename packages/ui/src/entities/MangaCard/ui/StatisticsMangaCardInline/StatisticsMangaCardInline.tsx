@@ -6,33 +6,39 @@ import BookmarkSvg from '@ui/assets/icon/common/bookmark.svg';
 import LikeSvg from '@ui/assets/icon/common/like.svg';
 import { Icon } from '@ui/shared/Icon';
 import { HStack } from '@ui/shared/Stack';
+import { getMangaSiteRoute } from '@packages/model/src/config/router/mangaSiteRouter';
 import { MangaCardInline } from '../MangaCardInline/MangaCardInline';
+import { MangaListItemStatistic } from '../../model/types/mangaListItemStatistic';
 import cls from './StatisticsMangaCardInline.module.scss';
 
 interface StatisticsMangaCardInlineProps {
     className?: string;
-    views?: number;
-    likes?: number;
-    inBookmarks?: number;
+    manga: MangaListItemStatistic;
 }
 
 export const StatisticsMangaCardInline = memo((props: StatisticsMangaCardInlineProps) => {
-    const { className, views = 0, likes = 0, inBookmarks = 0 } = props;
+    const { className, manga } = props;
 
     return (
-        <MangaCardInline className={classNames('', {}, [className])} title="Title" subtitle="Manga">
-            <HStack align="center">
+        <MangaCardInline
+            className={classNames('', {}, [className])}
+            to={getMangaSiteRoute.manga(manga.urlId)}
+            img={manga.cover}
+            title={manga.title}
+            subtitle={manga.type}
+        >
+            <HStack justify="start">
                 <HStack className={cls.info} gap="4">
                     <Icon Svg={EyeSvg} width={20} height={20} />
-                    {toShortcutNumber(views)}
+                    {toShortcutNumber(manga.views)}
                 </HStack>
                 <HStack className={cls.info} gap="4">
                     <Icon Svg={LikeSvg} width={20} height={20} />
-                    {toShortcutNumber(likes)}
+                    {toShortcutNumber(manga.likes)}
                 </HStack>
                 <HStack className={cls.info} gap="4">
                     <Icon Svg={BookmarkSvg} width={20} height={20} />
-                    {toShortcutNumber(inBookmarks)}
+                    {toShortcutNumber(manga.bookmarks)}
                 </HStack>
             </HStack>
         </MangaCardInline>

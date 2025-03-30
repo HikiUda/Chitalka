@@ -32,7 +32,7 @@ export const ProfileLink = memo((props: ProfileLinkProps) => {
                 <HStack className={cls.subtitle}>
                     Мой Профиль <Icon Svg={ArrowSvg} width={14} height={14} />
                 </HStack>
-                <div>{isLoading ? '######' : data?.data.name}</div>
+                <div>{isLoading ? '######' : data?.name}</div>
             </VStack>
         </AppLink>
     );

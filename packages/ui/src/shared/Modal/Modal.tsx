@@ -1,6 +1,7 @@
-import { FC, ReactNode } from 'react';
-import { Dialog, DialogTrigger, ModalOverlay, Modal as AModal } from 'react-aria-components';
+import { FC, ReactNode, useEffect, useState } from 'react';
+import { Dialog, ModalOverlay, Modal as AModal, ButtonContext } from 'react-aria-components';
 import { classNames } from '@packages/model/src/lib/classNames';
+import { useLocation } from 'react-router-dom';
 import cls from './Modal.module.scss';
 
 type ModalVerticalPosition = 'center' | 'top' | 'bottom';
@@ -12,7 +13,8 @@ interface ModalProps {
     trigger?: ReactNode;
     modalVerticalPosition?: ModalVerticalPosition;
     modalHorizonPosition?: ModalHorizonPosition;
-    isOpen?: boolean;
+    defaultOpen?: boolean;
+    shouldCloseOnInteractOutside?: (elm: Element) => boolean;
 }
 
 const modalVerticalClasses: Record<ModalVerticalPosition, string> = {
@@ -33,14 +35,25 @@ export const Modal: FC<ModalProps> = (props) => {
         trigger,
         modalVerticalPosition = 'center',
         modalHorizonPosition = 'center',
-        isOpen,
+        defaultOpen,
+        shouldCloseOnInteractOutside,
     } = props;
 
+    const [isOpen, setIsOpen] = useState(false);
+    const location = useLocation();
+
+    useEffect(() => {
+        setIsOpen(false);
+    }, [location.pathname]);
+
     return (
-        <DialogTrigger>
+        <ButtonContext.Provider value={{ onPress: () => setIsOpen(true) }}>
             {trigger}
             <ModalOverlay
-                defaultOpen={isOpen}
+                isOpen={isOpen}
+                onOpenChange={setIsOpen}
+                shouldCloseOnInteractOutside={shouldCloseOnInteractOutside}
+                defaultOpen={defaultOpen}
                 isDismissable
                 className={classNames(cls.overlay, {}, [
                     modalVerticalClasses[modalVerticalPosition],
@@ -53,6 +66,6 @@ export const Modal: FC<ModalProps> = (props) => {
                     </Dialog>
                 </AModal>
             </ModalOverlay>
-        </DialogTrigger>
+        </ButtonContext.Provider>
     );
 };

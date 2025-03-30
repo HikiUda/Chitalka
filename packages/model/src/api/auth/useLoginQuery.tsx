@@ -5,6 +5,7 @@ import { AuthUserType, LoginUserData } from './types/authTypes';
 
 export const useLoginQuery = () => {
     const queryClient = useQueryClient();
+    //TODO validateError
     const mutate = useMutation({
         mutationFn: (user: LoginUserData) => $api.post<AuthUserType>('/auth/login', user),
         onSuccess: (res) => {

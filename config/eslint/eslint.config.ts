@@ -12,6 +12,7 @@ import eslintConfigPrettier from 'eslint-config-prettier';
 import unusedImports from 'eslint-plugin-unused-imports';
 //@ts-ignore
 import FsdPlugin from 'eslint-plugin-fsd-layer-import';
+import pluginQuery from '@tanstack/eslint-plugin-query';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -52,6 +53,7 @@ export default [
     pluginJs.configs.recommended,
     ...tseslint.configs.recommended,
     pluginReact.configs.flat.recommended,
+    ...pluginQuery.configs['flat/recommended'],
     eslintConfigPrettier,
     pluginReact.configs.flat['jsx-runtime'],
     { ignores: ['**/globals.d.ts'] },

@@ -2,6 +2,7 @@ import { DetailedHTMLProps, HTMLAttributes, memo, ReactNode } from 'react';
 import { classNames } from '@packages/model/src/lib/classNames';
 import errorFallback from '@ui/assets/image/forError/wrong-imageMini..jpg';
 import { AppImage } from '@ui/shared/AppImage';
+import Skeleton from 'react-loading-skeleton';
 import cls from './AppAdaptiveImage.module.scss';
 
 type DivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
@@ -26,7 +27,14 @@ export const AppAdaptiveImage = memo((props: AppAdaptiveImageProps) => {
         >
             <AppImage
                 src={img}
-                errorFallback={<AppImage src={errorFallback} alt="error" />}
+                errorFallback={
+                    <AppImage
+                        src={errorFallback}
+                        alt="error"
+                        loadFallback={<Skeleton height="100%" />}
+                    />
+                }
+                loadFallback={<Skeleton height="100%" />}
                 alt="manga"
             />
             {children}

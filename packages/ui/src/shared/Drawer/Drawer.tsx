@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState } from 'react';
+import { FC, ReactNode, useEffect, useState } from 'react';
 import { Dialog, Modal, ModalOverlay, ButtonContext } from 'react-aria-components';
 
 import {
@@ -9,6 +9,7 @@ import {
     useMotionValue,
     useTransform,
 } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 import cls from './Drawer.module.scss';
 
 interface DrawerProps {
@@ -35,7 +36,11 @@ const SHEET_MARGIN = 34;
 export const Drawer: FC<DrawerProps> = (props) => {
     const { children, trigger } = props;
     const [isOpen, setOpen] = useState(false);
-    const [dragSheet, setDragSheet] = useState(false);
+    const location = useLocation();
+
+    useEffect(() => {
+        setOpen(false);
+    }, [location.pathname]);
     const h = window.innerHeight - SHEET_MARGIN;
     const y = useMotionValue(h);
     const bgOpacity = useTransform(y, [0, h], [0.4, 0]);

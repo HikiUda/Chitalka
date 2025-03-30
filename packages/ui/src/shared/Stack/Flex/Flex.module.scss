@@ -29,6 +29,9 @@
 .alignEnd {
     align-items: end;
 }
+.alignStretch {
+    align-items: stretch;
+}
 
 .directionRow {
     flex-direction: row;
@@ -73,4 +76,11 @@
 }
 .wrapReverse {
     flex-wrap: wrap-reverse;
+}
+
+.flexGrow {
+    flex-grow: 1;
+}
+.flexShrink {
+    flex-shrink: 1;
 }

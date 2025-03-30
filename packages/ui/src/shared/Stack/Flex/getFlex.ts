@@ -2,7 +2,7 @@ import { classNames, Mods } from '@packages/model/src/lib/classNames';
 import cls from './Flex.module.scss';
 
 export type FlexJustify = 'start' | 'end' | 'center' | 'between';
-export type FlexAlign = 'start' | 'end' | 'center';
+export type FlexAlign = 'start' | 'end' | 'center' | 'stretch';
 export type FlexDirection = 'row' | 'column' | 'rowReverse' | 'columnReverse';
 export type FlexGap = '4' | '8' | '16' | '32';
 export type FlexWrap = 'wrap' | 'wrapReverse' | 'nowrap';
@@ -17,6 +17,7 @@ const alignClasses: Record<FlexAlign, string> = {
     start: cls.alignStart,
     center: cls.alignCenter,
     end: cls.alignEnd,
+    stretch: cls.alignStretch,
 };
 const directionClasses: Record<FlexDirection, string> = {
     row: cls.directionRow,
@@ -43,6 +44,8 @@ export interface GetFlexProps {
     gap?: FlexGap;
     max?: boolean;
     wrap?: FlexWrap;
+    flexGrow?: boolean;
+    flexShrink?: boolean;
 }
 
 export function getFlex(props: GetFlexProps = {}): string {
@@ -53,6 +56,8 @@ export function getFlex(props: GetFlexProps = {}): string {
         gap = '8',
         max,
         wrap = 'nowrap',
+        flexGrow,
+        flexShrink,
     } = props;
 
     const classes = [
@@ -65,6 +70,8 @@ export function getFlex(props: GetFlexProps = {}): string {
 
     const mods: Mods = {
         [cls.max]: max,
+        [cls.flexGrow]: flexGrow,
+        [cls.flexShrink]: flexShrink,
     };
 
     return classNames(cls.Flex, mods, classes);

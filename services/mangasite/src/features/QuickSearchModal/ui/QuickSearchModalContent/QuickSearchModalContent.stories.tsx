@@ -1,7 +1,6 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { QuickSearchModalContent } from './QuickSearchModalContent';
+import QuickSearchModalContent from './QuickSearchModalContent';
 
 const meta: Meta<typeof QuickSearchModalContent> = {
     title: 'shared/QuickSearchModalContent',

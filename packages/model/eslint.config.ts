@@ -6,7 +6,10 @@ export default [
         rules: {
             'fsd-layer-import/to-absolute': [
                 'error',
-                { alias: '@model', absoluteDir: ['api', 'config', 'const', 'lib', 'types'] },
+                {
+                    alias: '@model',
+                    absoluteDir: ['api', 'config', 'const', 'lib', 'types', 'entities'],
+                },
             ],
         },
     },
