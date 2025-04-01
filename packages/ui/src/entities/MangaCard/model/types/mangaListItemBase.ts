@@ -13,4 +13,7 @@ export interface MangaListItemBase {
     bookmarks: number;
     //TODO bookmark
     bookmark: BookmarksType | null;
+    tome: number;
+    chapter: number;
+    chapterCreatedAt: Date;
 }

@@ -1,20 +1,24 @@
 import { memo } from 'react';
+import { getMangaSiteRoute } from '@packages/model/src/config/router/mangaSiteRouter';
 import { MangaCard } from '../MangaCard/MangaCard';
+import { MangaListItemLastUpdated } from '../../model/types/mangaListItemLastUpdated';
 
 interface LastChapterMangaCardProps {
     className?: string;
+    manga: MangaListItemLastUpdated;
 }
 
 export const LastChapterMangaCard = memo((props: LastChapterMangaCardProps) => {
-    const { className } = props;
-
+    const { className, manga } = props;
+    //TODO link to manga chapter
     return (
         <MangaCard
             className={className}
-            title="Title"
-            subtitle="Manga"
-            label3="Chapter 45"
-            to="/mangasite/f"
+            title={manga.title}
+            subtitle={manga.type}
+            label3={'Глава ' + manga.chapter}
+            img={manga.cover}
+            to={getMangaSiteRoute.manga(manga.urlId)}
         />
     );
 });

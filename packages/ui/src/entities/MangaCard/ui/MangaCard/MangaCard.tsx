@@ -5,6 +5,7 @@ import { Heading } from '@ui/shared/Heading';
 import { AppLink } from '@ui/shared/AppLink';
 import { AppAdaptiveImage } from '@ui/shared/AppAdaptiveImage';
 import { getStyleLineClamp } from '@ui/shared/StyleHooks';
+import Skeleton from 'react-loading-skeleton';
 import cls from './MangaCard.module.scss';
 
 type MangaCardAdaptive = 'dynamic' | 'media';
@@ -40,16 +41,22 @@ export const MangaCard = memo((props: MangaCardProps) => {
             disable={!to}
             className={classNames(cls.MangaCard, {}, [className, cls[adaptive]])}
         >
-            <AppAdaptiveImage className={cls.img} img={img}>
+            <AppAdaptiveImage
+                loadFallback={
+                    <Skeleton
+                        style={{ top: 0, left: 0, bottom: 0, right: 0, position: 'absolute' }}
+                    />
+                }
+                className={cls.img}
+                img={img}
+            >
                 {label1 && <span className={cls.label1}>{label1}</span>}
                 {label2 && <span className={cls.label2}>{label2}</span>}
                 {label3 && <span className={cls.label3}>{label3}</span>}
             </AppAdaptiveImage>
 
             <Heading
-                className={classNames(cls.title, {}, [
-                    getStyleLineClamp({ huphens: true, wordBreak: true }),
-                ])}
+                className={classNames(cls.title, {}, [getStyleLineClamp({ huphens: true })])}
                 HeaderTag="h4"
                 style="bold"
             >

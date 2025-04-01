@@ -1,23 +1,30 @@
 import { memo } from 'react';
 import { classNames } from '@packages/model/src/lib/classNames';
+import { formatDate } from '@packages/model/src/lib/helpers/formatDate';
+import { getMangaSiteRoute } from '@packages/model/src/config/router/mangaSiteRouter';
 import { MangaCardInline } from '../MangaCardInline/MangaCardInline';
+import { MangaListItemLastUpdated } from '../../model/types/mangaListItemLastUpdated';
 import cls from './LastUpdatedMangaCardInline.module.scss';
 
 interface LastUpdatedMangaCardInlineProps {
     className?: string;
+    manga: MangaListItemLastUpdated;
 }
 
 export const LastUpdatedMangaCardInline = memo((props: LastUpdatedMangaCardInlineProps) => {
-    const { className } = props;
-
+    const { className, manga } = props;
+    //TODO link to manga chapter
     return (
         <MangaCardInline
             className={classNames('', {}, [className])}
-            title="This is big Title for check style sdfadfasf"
-            to="/mangasite"
+            title={manga.title}
+            to={getMangaSiteRoute.manga(manga.urlId)}
+            img={manga.cover}
         >
-            <span className={cls.charecter}>Tom 1 Chapter 3</span>
-            <span className={cls.time}>10 minutes ago</span>
+            <span className={cls.charecter}>
+                Tome {manga.tome} Chapter {manga.chapter}
+            </span>
+            <span className={cls.time}>{formatDate(new Date(manga.chapterCreatedAt))}</span>
         </MangaCardInline>
     );
 });

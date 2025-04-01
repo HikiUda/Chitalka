@@ -18,7 +18,7 @@ export const QuickSearchModal: FC<QuickSearchModalProps> = (props) => {
     const { className } = props;
 
     const modalTrigger = (
-        <Button className={classNames(cls.modalTrigger, { [cls.mobile]: isMobile })}>
+        <Button className={classNames(cls.modalTrigger, { [cls.mobile]: isMobile }, [className])}>
             <Icon Svg={SearchSvg} width={20} height={20} /> {isMobile ? 'Быстрый поиск' : 'Поиск'}
         </Button>
     );

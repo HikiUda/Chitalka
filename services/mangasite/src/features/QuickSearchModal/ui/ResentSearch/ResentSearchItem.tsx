@@ -6,28 +6,17 @@ import HistoryBackSvg from '@packages/ui/src/assets/icon/common/historyBack.svg'
 import CrossoutSvg from '@packages/ui/src/assets/icon/common/crossout.svg';
 import { classNames } from '@packages/model/src/lib/classNames';
 import { useDeleteUserLastSearchQuery } from '../../model/api/useDeleteUserLastSearchQuery';
-import { useSearchInputStore } from '../../model/store/SearchInput';
-import { useQuickSearchManga } from '../../model/api/useQuickSearchManga';
 import cls from './ResentSearch.module.scss';
 
 interface ResentSearchItemProps {
     className?: string;
     children?: string;
+    onSelectSearch?: (value: string) => void;
 }
 
 export const ResentSearchItem = memo((props: ResentSearchItemProps) => {
-    const { className, children } = props;
+    const { className, children, onSelectSearch } = props;
     const deleteSearchQuery = useDeleteUserLastSearchQuery();
-
-    const setSearch = useSearchInputStore((state) => state.setSearch);
-    const { refetch } = useQuickSearchManga({ search: children || '' });
-
-    const handleSelectSearch = (value: string | undefined) => {
-        if (value) {
-            setSearch(value);
-            refetch();
-        }
-    };
 
     const handleDelete = useCallback(
         (value: string | undefined) => {
@@ -40,9 +29,9 @@ export const ResentSearchItem = memo((props: ResentSearchItemProps) => {
 
     return (
         <HStack
-            onClick={() => handleSelectSearch(children)}
+            onClick={() => children && onSelectSearch?.(children)}
             max
-            className={classNames(cls.ResentSearchItem)}
+            className={classNames(cls.ResentSearchItem, {}, [className])}
         >
             <Icon Svg={HistoryBackSvg} width={20} height={20} />
             <p className={cls.itemChild}>{children}</p>

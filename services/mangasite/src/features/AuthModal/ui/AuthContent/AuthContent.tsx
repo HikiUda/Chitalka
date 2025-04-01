@@ -58,10 +58,10 @@ const AuthContent: FC<AuthContentProps> = (props) => {
                         setAuthType((prev) => (prev === 'login' ? 'registration' : 'login'))
                     }
                 >
-                    {authType ? 'Зарегестрироваться' : 'Войти'}
+                    {authType === 'login' ? 'Зарегестрироваться' : 'Войти'}
                 </Button>
                 <Button onPress={handleAuth} theme="fill">
-                    {authType ? 'Войти' : 'Зарегестрироваться'}
+                    {authType === 'login' ? 'Войти' : 'Зарегестрироваться'}
                 </Button>
             </HStack>
         </VStack>

@@ -8,7 +8,7 @@ import path from 'path';
 export const config: Config = {
     clearMocks: true,
     coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
-    testEnvironment: 'jsdom',
+    testEnvironment: 'jest-fixed-jsdom', //jsdom
     moduleDirectories: ['node_modules'],
     moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
     rootDir: '../',
@@ -19,8 +19,10 @@ export const config: Config = {
         '\\.s?css$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
         '^@/(.*)$': '<rootDir>/src/$1',
+        '^@model/(.*)$': '<rootDir>/../../packages/model/src/$1',
+        '^@ui/(.*)$': '<rootDir>/../../packages/ui/src/$1',
     },
-    globals: { __IS_DEV__: true, __API_URL__: true },
+    globals: { __IS_DEV__: true, __API_URL__: 'http://localhost:8000' },
     reporters: [
         'default',
         [

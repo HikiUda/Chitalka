@@ -9,6 +9,11 @@
     &.bgHover[data-hovered] {
         background: var(--accent-color);
     }
+
+    &[data-disabled] {
+        opacity: 0.8;
+        cursor: auto;
+    }
 }
 
 .ripple::after {

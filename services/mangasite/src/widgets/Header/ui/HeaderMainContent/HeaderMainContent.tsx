@@ -26,14 +26,10 @@ export const HeaderMainContent: FC<HeaderMainContentProps> = (props) => {
                 <CollectionLink />
                 <QuickSearchModal />
             </HStack>
-            {data ? (
-                <HStack gap="16">
-                    <Icon Svg={QuestionSvg} width={30} height={30} />
-                    <PopUserMenu />
-                </HStack>
-            ) : (
-                <AuthModal />
-            )}
+            <HStack gap="16">
+                <Icon Svg={QuestionSvg} width={30} height={30} />
+                {data ? <PopUserMenu /> : <AuthModal />}
+            </HStack>
         </HStack>
     );
 };

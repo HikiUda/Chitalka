@@ -6,28 +6,20 @@ import SearchSvg from '@packages/ui/src/assets/icon/common/search.svg';
 import { useDebounce } from '@packages/model/src/lib/hooks/useDebounce/useDebounce';
 import { MangaSearchList } from '../MangaSearchList/MangaSearchList';
 import { ResentSearch } from '../ResentSearch/ResentSearch';
-import { useQuickSearchManga } from '../../model/api/useQuickSearchManga';
-import { useSearchInputStore } from '../../model/store/SearchInput';
+import { useQuickSearchManga } from '../../model/api/useQuickSearchManga/useQuickSearchManga';
+import { useQuickSearchStore } from '../../model/slices/QuickSearchStore';
 import cls from './QuickSearchModalContent.module.scss';
 
-interface QuickSearchModalContentProps {
-    className?: string;
-}
+const QuickSearchModalContent: FC = () => {
+    const search = useQuickSearchStore.use.search();
+    const setSearch = useQuickSearchStore.use.setSearch();
+    const { data, refetch, isFetching } = useQuickSearchManga(search);
 
-const QuickSearchModalContent: FC<QuickSearchModalContentProps> = (props) => {
-    const { className } = props;
-    //const [search, setSearch] = useState('');
-    const search = useSearchInputStore((state) => state.search);
-    const setSearch = useSearchInputStore((state) => state.setSearch);
-    //TODO Loading state
-    const { data, refetch, isFetching } = useQuickSearchManga({ search });
-
-    const goSearch = useDebounce(() => refetch(), 500);
+    const goSearch = useDebounce(() => refetch(), 200);
 
     const handleSetSearch = useCallback(
         (value: string) => {
             setSearch(value);
-
             goSearch();
         },
         [goSearch, setSearch],
@@ -36,7 +28,7 @@ const QuickSearchModalContent: FC<QuickSearchModalContentProps> = (props) => {
     return (
         <>
             <HStack max align="center" className={cls.block}>
-                <Icon Svg={SearchSvg} width={20} height={20} />{' '}
+                <Icon Svg={SearchSvg} width={20} height={20} />
                 <Input
                     value={search}
                     onChange={handleSetSearch}
@@ -44,7 +36,7 @@ const QuickSearchModalContent: FC<QuickSearchModalContentProps> = (props) => {
                     maxWidth
                 />
             </HStack>
-            <ResentSearch className={cls.block} />
+            <ResentSearch onSelectSearch={handleSetSearch} className={cls.block} />
             <MangaSearchList mangaList={data ?? []} isLoading={isFetching} />
         </>
     );
