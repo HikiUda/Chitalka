@@ -4,29 +4,19 @@ import { Tag } from '@packages/ui/src/shared/Tag';
 import { HStack } from '@packages/ui/src/shared/Stack';
 import { AppLink } from '@packages/ui/src/shared/AppLink';
 import { Button } from '@packages/ui/src/shared/Button';
+import { MangaJanresAndTagType } from '@packages/model/src/api/manga/types/manga';
 import cls from './JanresAndTagsList.module.scss';
 
 interface JanresAndTagsListProps {
     className?: string;
+    janres: MangaJanresAndTagType[];
+    tags: MangaJanresAndTagType[];
 }
 
-const janres = [
-    { id: 1, title: 'Janre1' },
-    { id: 2, title: 'Janre2' },
-    { id: 3, title: 'Janre3' },
-];
-const tags = [
-    { id: 1, title: 'Tag1' },
-    { id: 2, title: 'Tag2' },
-    { id: 3, title: 'Tag3' },
-    { id: 4, title: 'Tag4' },
-    { id: 5, title: 'Tag5' },
-];
-
 export const JanresAndTagsList: FC<JanresAndTagsListProps> = (props) => {
-    const { className } = props;
+    const { className, janres, tags } = props;
     const [close, setClose] = useState(true);
-
+    //TODO link to cotolog
     const allTags = useMemo(() => {
         let arr: ReactNode[] = [];
         arr = arr.concat(
@@ -44,7 +34,9 @@ export const JanresAndTagsList: FC<JanresAndTagsListProps> = (props) => {
             )),
         );
         return arr;
-    }, []);
+    }, [janres, tags]);
+
+    if (!allTags.length) return null;
 
     return (
         <HStack

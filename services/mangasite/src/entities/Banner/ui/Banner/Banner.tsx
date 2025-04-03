@@ -5,10 +5,11 @@ import cls from './Banner.module.scss';
 
 interface BannerProps {
     className?: string;
+    banner: string | null;
 }
 
 export const Banner = memo((props: BannerProps) => {
-    const { className } = props;
+    const { className, banner } = props;
 
-    return <AppAdaptiveImage className={classNames(cls.Banner, {}, [className])} />;
+    return <AppAdaptiveImage img={banner} className={classNames(cls.Banner, {}, [className])} />;
 });

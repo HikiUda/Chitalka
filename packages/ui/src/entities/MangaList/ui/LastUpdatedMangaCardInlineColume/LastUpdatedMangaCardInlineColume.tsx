@@ -1,12 +1,12 @@
 import { memo } from 'react';
 import { classNames } from '@packages/model/src/lib/classNames';
-import { LastUpdatedMangaCardInline, MangaListItemLastUpdated } from '@ui/entities/MangaCard';
+import { LastUpdatedMangaCardInline, MangaListItemLastUpdatedType } from '@ui/entities/MangaCard';
 import { VStack } from '@ui/shared/Stack';
 import cls from './LastUpdatedMangaCardInlineColume.module.scss';
 
 interface LastUpdatedMangaCardInlineColumeProps {
     className?: string;
-    mangaList?: MangaListItemLastUpdated[];
+    mangaList?: MangaListItemLastUpdatedType[];
 }
 
 export const LastUpdatedMangaCardInlineColume = memo(

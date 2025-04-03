@@ -1,7 +1,6 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { RateModalContent } from './RateModalContent';
+import RateModalContent from './RateModalContent';
 
 const meta: Meta<typeof RateModalContent> = {
     title: 'shared/RateModalContent',

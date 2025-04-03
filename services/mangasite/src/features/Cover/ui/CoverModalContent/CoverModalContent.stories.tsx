@@ -1,7 +1,6 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { CoverModalContent } from './CoverModalContent';
+import CoverModalContent from './CoverModalContent';
 
 const meta: Meta<typeof CoverModalContent> = {
     title: 'shared/CoverModalContent',

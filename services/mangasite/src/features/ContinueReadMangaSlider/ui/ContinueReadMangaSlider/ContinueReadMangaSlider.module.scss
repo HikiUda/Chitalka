@@ -4,7 +4,7 @@
 
 .title {
     padding: 0 20px;
-    margin-bottom: 20px;
+    //margin-bottom: 20px;
 }
 
 .clean {
@@ -15,4 +15,8 @@
     &:hover {
         opacity: 0.9;
     }
+}
+.cardBlockSkeleton {
+    width: 300px;
+    margin: 15px 0 0;
 }

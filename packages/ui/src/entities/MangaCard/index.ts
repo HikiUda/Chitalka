@@ -8,5 +8,6 @@ export { LastUpdatedMangaCardInline } from './ui/LastUpdatedMangaCardInline/Last
 export { StatisticsMangaCardInline } from './ui/StatisticsMangaCardInline/StatisticsMangaCardInline';
 export { PrimaryMangaCardInline } from './ui/PrimaryMangaCardInline/PrimaryMangaCardInline';
 
-export type { MangaListItemStatistic } from './model/types/mangaListItemStatistic';
-export type { MangaListItemLastUpdated } from './model/types/mangaListItemLastUpdated';
+export type { MangaListItemStatisticType } from './model/types/mangaListItemStatistic';
+export type { MangaListItemLastUpdatedType } from './model/types/mangaListItemLastUpdated';
+export type { MangaListItemContinueReadType } from './model/types/mangaListItemContinueRead';

@@ -1,7 +1,7 @@
 import { classNames, Mods } from '@packages/model/src/lib/classNames';
 import cls from './Flex.module.scss';
 
-export type FlexJustify = 'start' | 'end' | 'center' | 'between';
+export type FlexJustify = 'start' | 'end' | 'center' | 'between' | 'around';
 export type FlexAlign = 'start' | 'end' | 'center' | 'stretch';
 export type FlexDirection = 'row' | 'column' | 'rowReverse' | 'columnReverse';
 export type FlexGap = '4' | '8' | '16' | '32';
@@ -12,6 +12,7 @@ const justifyClasses: Record<FlexJustify, string> = {
     center: cls.justifyCenter,
     end: cls.justifyEnd,
     between: cls.justifyBetween,
+    around: cls.justifyAround,
 };
 const alignClasses: Record<FlexAlign, string> = {
     start: cls.alignStart,

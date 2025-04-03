@@ -35,10 +35,6 @@
 
 //TODO getFlex
 .content {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    justify-content: center;
     flex-grow: 1;
 }
 .skeletonContainer {

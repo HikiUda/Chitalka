@@ -17,7 +17,9 @@ export const TabScroll: FC<TabScrollProps> = (props) => {
     const { className, children, callback, disabled, isFetching } = props;
 
     const skeletons = useMemo(() => {
-        return Array(7).fill(<MangaCardInlineSkeleton />);
+        return Array(7)
+            .fill(0)
+            .map((sk, ind) => <MangaCardInlineSkeleton key={ind} />);
     }, []);
 
     return (

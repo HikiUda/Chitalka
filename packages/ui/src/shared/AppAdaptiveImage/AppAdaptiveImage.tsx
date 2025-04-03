@@ -9,7 +9,7 @@ type DivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement
 
 interface AppAdaptiveImageProps extends DivProps {
     className?: string;
-    img?: string;
+    img?: string | null;
     width?: number;
     children?: ReactNode;
     loadFallback?: ReactElement;
@@ -26,7 +26,7 @@ export const AppAdaptiveImage = memo((props: AppAdaptiveImageProps) => {
             className={classNames(cls.AppMangaImage, {}, [className])}
         >
             <AppImage
-                src={img}
+                src={img || 'none'}
                 errorFallback={
                     <AppImage
                         src={errorFallback}

@@ -2,7 +2,7 @@ import { memo, useMemo } from 'react';
 import { classNames } from '@packages/model/src/lib/classNames';
 import {
     StatisticsMangaCardInline,
-    MangaListItemStatistic,
+    MangaListItemStatisticType,
     MangaCardInlineSkeleton,
 } from '@packages/ui/src/entities/MangaCard';
 import { Heading } from '@packages/ui/src/shared/Heading';
@@ -10,7 +10,7 @@ import cls from './MangaSearchList.module.scss';
 
 interface MangaSearchListProps {
     className?: string;
-    mangaList: MangaListItemStatistic[];
+    mangaList: MangaListItemStatisticType[];
     isLoading?: boolean;
 }
 

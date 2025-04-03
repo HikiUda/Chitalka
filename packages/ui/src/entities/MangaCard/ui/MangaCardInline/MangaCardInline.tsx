@@ -4,6 +4,7 @@ import { Heading } from '@ui/shared/Heading';
 import { AppLink } from '@ui/shared/AppLink';
 import { AppAdaptiveImage } from '@ui/shared/AppAdaptiveImage';
 import { getStyleLineClamp } from '@ui/shared/StyleHooks';
+import { VStack } from '@ui/shared/Stack';
 import cls from './MangaCardInline.module.scss';
 
 interface MangaCardInlineProps {
@@ -26,7 +27,7 @@ export const MangaCardInline = memo((props: MangaCardInlineProps) => {
             className={classNames(cls.MangaCardInline, {}, [className])}
         >
             <AppAdaptiveImage className={cls.img} img={img} />
-            <div className={cls.content}>
+            <VStack align="stretch" gap="4" className={cls.content}>
                 <Heading
                     className={classNames(cls.title, {}, [getStyleLineClamp({ wordBreak: true })])}
                     HeaderTag="h4"
@@ -36,7 +37,7 @@ export const MangaCardInline = memo((props: MangaCardInlineProps) => {
                 </Heading>
                 <span className={cls.subtitle}>{subtitle}</span>
                 {children}
-            </div>
+            </VStack>
         </AppLink>
     );
 });

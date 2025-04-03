@@ -1,11 +1,11 @@
 import { memo } from 'react';
 import { getMangaSiteRoute } from '@packages/model/src/config/router/mangaSiteRouter';
 import { MangaCard } from '../MangaCard/MangaCard';
-import { MangaListItemLastUpdated } from '../../model/types/mangaListItemLastUpdated';
+import { MangaListItemLastUpdatedType } from '../../model/types/mangaListItemLastUpdated';
 
 interface LastChapterMangaCardProps {
     className?: string;
-    manga: MangaListItemLastUpdated;
+    manga: MangaListItemLastUpdatedType;
 }
 
 export const LastChapterMangaCard = memo((props: LastChapterMangaCardProps) => {

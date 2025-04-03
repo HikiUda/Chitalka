@@ -8,13 +8,15 @@ import cls from './Cover.module.scss';
 
 interface CoverProps {
     className?: string;
+    cover: string | null;
+    mangaId: number;
 }
 
 export const Cover = (props: CoverProps) => {
-    const { className } = props;
+    const { className, cover, mangaId } = props;
     const button = (
         <Button className={className} theme="clear" noHover>
-            <AppAdaptiveImage className={cls.Cover}>
+            <AppAdaptiveImage img={cover} className={cls.Cover}>
                 <div className={cls.moreCover}>
                     <Icon Svg={ImageSvg} width={20} height={20} />
                 </div>
@@ -24,7 +26,7 @@ export const Cover = (props: CoverProps) => {
 
     return (
         <Modal className={cls.modal} trigger={button}>
-            <CoverModalContent />
+            <CoverModalContent mangaId={mangaId} />
         </Modal>
     );
 };

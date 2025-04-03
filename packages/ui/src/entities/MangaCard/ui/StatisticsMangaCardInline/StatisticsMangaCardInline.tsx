@@ -8,12 +8,12 @@ import { Icon } from '@ui/shared/Icon';
 import { HStack } from '@ui/shared/Stack';
 import { getMangaSiteRoute } from '@packages/model/src/config/router/mangaSiteRouter';
 import { MangaCardInline } from '../MangaCardInline/MangaCardInline';
-import { MangaListItemStatistic } from '../../model/types/mangaListItemStatistic';
+import { MangaListItemStatisticType } from '../../model/types/mangaListItemStatistic';
 import cls from './StatisticsMangaCardInline.module.scss';
 
 interface StatisticsMangaCardInlineProps {
     className?: string;
-    manga: MangaListItemStatistic;
+    manga: MangaListItemStatisticType;
 }
 
 export const StatisticsMangaCardInline = memo((props: StatisticsMangaCardInlineProps) => {

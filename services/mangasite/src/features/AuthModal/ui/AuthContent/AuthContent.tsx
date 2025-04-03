@@ -1,4 +1,4 @@
-import { FC, useCallback, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 import { classNames } from '@packages/model/src/lib/classNames';
 import { Button } from '@packages/ui/src/shared/Button';
 import { HStack, VStack } from '@packages/ui/src/shared/Stack';
@@ -29,6 +29,22 @@ const AuthContent: FC<AuthContentProps> = (props) => {
             registration({ login: userLogin, password });
         }
     }, [authType, login, password, registration, userLogin]);
+
+    const handleAuthEnter = useCallback(
+        (e: KeyboardEvent) => {
+            if (e.key === 'Enter') {
+                handleAuth();
+            }
+        },
+        [handleAuth],
+    );
+
+    useEffect(() => {
+        document.addEventListener('keydown', handleAuthEnter);
+        return () => {
+            document.removeEventListener('keydown', handleAuthEnter);
+        };
+    }, [handleAuthEnter]);
 
     return (
         <VStack max className={classNames(cls.AuthContent, {}, [className])}>

@@ -1,9 +1,9 @@
 import type { Preview } from '@storybook/react';
 import { GlobalStoryDecorator } from '@packages/model/src/config/storybook';
-import { parameters } from '@config/storybook/.storybook/preview';
+import basePreview from '@config/storybook/.storybook/preview'; //{ parameters }
 
 const preview: Preview = {
-    parameters,
+    ...basePreview,
     decorators: GlobalStoryDecorator(),
 };
 

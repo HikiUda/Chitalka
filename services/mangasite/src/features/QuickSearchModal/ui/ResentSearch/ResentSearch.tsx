@@ -11,7 +11,7 @@ interface ResentSearchProps {
 
 export const ResentSearch = memo((props: ResentSearchProps) => {
     const { className, onSelectSearch } = props;
-    const { data } = useGetUserLastSearchQueries();
+    const { data = [] } = useGetUserLastSearchQueries();
 
     if (!data.length) return null;
 
