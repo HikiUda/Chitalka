@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { Heading } from '@packages/ui/src/shared/Heading';
-import { CollectionCard } from '@packages/ui/src/entities/CollectionCard';
 import cls from './SelectionOfCollections.module.scss';
+import { CollectionCard } from '@/entities/CollectionCard';
 
 interface SelectionOfCollectionsProps {
     className?: string;

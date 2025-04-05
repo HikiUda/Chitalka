@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
-import { useDisign, useTheme } from '@packages/model/src/lib/theme';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
+import { useDisign, useTheme } from '@packages/model/src/config/theme';
 import { Popover } from '@packages/ui/src/shared/Popover';
 import { Button } from '@packages/ui/src/shared/Button';
 import { VStack } from '@packages/ui/src/shared/Stack';

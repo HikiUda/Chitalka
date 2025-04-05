@@ -1,5 +1,5 @@
 import { FC, useCallback, useMemo, useState } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { getFlex } from '@packages/ui/src/shared/Stack';
 import { MangaChaptersNavbar } from '../MangaChaptersNavbar/MangaChaptersNavbar';
 import { ChapterLine } from '../ChapterLine/ChapterLine';

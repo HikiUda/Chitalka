@@ -1,5 +1,5 @@
 import { ChangeEvent, FC } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames/classNames';
 import type { InputProps as AInputProps } from 'react-aria-components';
 import { Input as AInput } from 'react-aria-components';
 import cls from './Input.module.scss';

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { Button as AButton } from 'react-aria-components';
 import type { ButtonProps as AButtonProps } from 'react-aria-components';
 import cls from './Button.module.scss';
@@ -17,6 +17,8 @@ interface ButtonProps extends AButtonProps {
     pressAnimation?: ButtonPressAnimation;
     hoverAnimation?: ButtonHoverAnimation;
     max?: boolean;
+    bold?: boolean;
+    italic?: boolean;
 }
 
 export const Button: FC<ButtonProps> = (props) => {
@@ -29,18 +31,18 @@ export const Button: FC<ButtonProps> = (props) => {
         pressAnimation = 'none',
         hoverAnimation = 'none',
         max,
+        bold,
+        italic,
         ...otherProps
     } = props;
 
     return (
         <AButton
-            className={classNames(cls.Button, { [cls.bgHover]: !noHover, [cls.max]: max }, [
-                className,
-                cls[color],
-                cls[theme],
-                cls[pressAnimation],
-                cls[hoverAnimation],
-            ])}
+            className={classNames(
+                cls.Button,
+                { [cls.bgHover]: !noHover, [cls.max]: max, [cls.bold]: bold, [cls.italic]: italic },
+                [className, cls[color], cls[theme], cls[pressAnimation], cls[hoverAnimation]],
+            )}
             {...otherProps}
         >
             {children}

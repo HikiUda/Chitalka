@@ -1,5 +1,5 @@
 import { FC, memo, SVGProps } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { Icon } from '../Icon/Icon';
 import { getFlex } from '../Stack';
 import cls from './IconInfoBirka.module.scss';

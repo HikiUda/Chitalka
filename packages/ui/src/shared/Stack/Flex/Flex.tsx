@@ -1,5 +1,5 @@
 import { DetailedHTMLProps, FC, HTMLAttributes, ReactNode } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames/classNames';
 import { getFlex, GetFlexProps } from './getFlex';
 
 type DivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;

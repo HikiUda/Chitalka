@@ -1,5 +1,5 @@
 import { FC, memo, SVGProps } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { getFlex, VStack } from '../Stack';
 import { AppLink } from '../AppLink';
 import { Icon } from '../Icon';

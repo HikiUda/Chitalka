@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { $api } from '@packages/model/src/api/kyBase';
+import { $api } from '@packages/model/src/api/baseApi/kyBase';
 import { QUERY_KEY_GET_USER_LAST_SEARCHQEURIES } from './useGetUserLastSearchQueries';
 
 export const useDeleteUserLastSearchQuery = () => {

@@ -1,1 +1,0 @@
-export { mockUseGetLastUpdatedMangas } from './mockUseGetLastUpdatedMangas';

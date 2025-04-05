@@ -1,10 +1,10 @@
 import { FC, useMemo } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
-import { Slider } from '@packages/ui/src/entities/Slider';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { CardBlock } from '@packages/ui/src/shared/CardBlock';
-import { LastChapterMangaCard, MangaCardSkeleton } from '@packages/ui/src/entities/MangaCard';
 import cls from './RecentUpdatedPopularMangaSlider.module.scss';
-import { useGetLastUpdatedMangas } from '@/shared/api/useGetLastUpdatedMangas';
+import { Slider } from '@/entities/Slider';
+import { LastChapterMangaCard, MangaCardSkeleton } from '@/entities/MangaCard';
+import { useGetLastUpdatedMangas } from '@/entities/MangaCard';
 
 interface RecentUpdatedPopularMangaSliderProps {
     className?: string;

@@ -1,4 +1,4 @@
-import { classNames, Mods } from '@packages/model/src/lib/classNames';
+import { classNames, Mods } from '@packages/model/src/lib/helpers/classNames';
 import cls from './Flex.module.scss';
 
 export type FlexJustify = 'start' | 'end' | 'center' | 'between' | 'around';

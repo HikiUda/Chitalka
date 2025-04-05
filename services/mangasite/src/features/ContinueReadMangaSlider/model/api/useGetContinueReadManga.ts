@@ -1,10 +1,7 @@
-import { $api } from '@packages/model/src/api/kyBase';
-import {
-    MangaListItemContinueReadType,
-    MangaListItemLastUpdatedType,
-} from '@packages/ui/src/entities/MangaCard';
+import { $api } from '@packages/model/src/api/baseApi/kyBase';
 import { useQuery } from '@tanstack/react-query';
 import type { Pagination } from '@packages/model/src/types/pagination';
+import { MangaListItemContinueReadType, MangaListItemLastUpdatedType } from '@/entities/MangaCard';
 
 export type MangaListItemLastUpdatedTypeScope = 'all' | 'popular' | 'my';
 export type MangaListItemLastUpdatedTypePagination = Pagination<MangaListItemLastUpdatedType>;

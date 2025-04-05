@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { getFlex } from '@packages/ui/src/shared/Stack';
 import { Heading } from '@packages/ui/src/shared/Heading';
-import { Slider } from '@packages/ui/src/entities/Slider';
-import { PrimaryMangaCardInline } from '@packages/ui/src/entities/MangaCard';
 import cls from './SimilarMangaSlider.module.scss';
+import { Slider } from '@/entities/Slider';
+import { PrimaryMangaCardInline } from '@/entities/MangaCard';
 
 interface SimilarMangaSliderProps {
     className?: string;

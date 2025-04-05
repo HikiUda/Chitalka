@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { Modal } from '@packages/ui/src/shared/Modal';
 import { Button } from '@packages/ui/src/shared/Button';
 import { AuthContent } from '../AuthContent';

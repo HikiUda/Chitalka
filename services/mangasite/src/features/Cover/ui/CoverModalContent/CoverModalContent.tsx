@@ -1,8 +1,8 @@
 import { memo, useMemo } from 'react';
 import { AppAdaptiveImage } from '@packages/ui/src/shared/AppAdaptiveImage';
-import { PaginationSlider } from '@packages/ui/src/entities/Slider';
 import { useGetMangaCovers } from '../../model/api/useGetMangaCovers';
 import cls from './CoverModalContent.module.scss';
+import { PaginationSlider } from '@/entities/Slider';
 
 interface CoverModalContentProps {
     mangaId: number;

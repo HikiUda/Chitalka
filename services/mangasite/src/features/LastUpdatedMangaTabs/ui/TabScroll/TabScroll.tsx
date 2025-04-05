@@ -1,9 +1,9 @@
 import { FC, ReactNode, useMemo } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { Button } from '@packages/ui/src/shared/Button';
-import { MangaCardInlineSkeleton } from '@packages/ui/src/entities/MangaCard';
 import { VStack } from '@packages/ui/src/shared/Stack';
 import cls from './TabScroll.module.scss';
+import { MangaCardInlineSkeleton } from '@/entities/MangaCard';
 
 interface TabScrollProps {
     className?: string;

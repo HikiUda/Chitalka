@@ -1,11 +1,11 @@
 import { FC } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { CardBlock } from '@packages/ui/src/shared/CardBlock';
-import { SelectTimeRange } from '@packages/ui/src/entities/SelectTimeRange';
 import { Heading } from '@packages/ui/src/shared/Heading';
-import { ColumePrimaryMangaCardInline } from '@packages/ui/src/entities/MangaList';
 import { HStack } from '@packages/ui/src/shared/Stack';
 import cls from './NowReadMangaBlock.module.scss';
+import { ColumePrimaryMangaCardInline } from '@/entities/MangaList';
+import { SelectTimeRange } from '@/entities/SelectTimeRange';
 
 interface NowReadMangaBlockProps {
     className?: string;

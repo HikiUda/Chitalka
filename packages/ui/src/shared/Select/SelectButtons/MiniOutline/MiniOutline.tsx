@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { Button } from '@ui/shared/Button';
 import { SelectValue } from 'react-aria-components';
 import { Icon } from '@ui/shared/Icon';

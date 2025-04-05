@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { BottomMenuLayout } from '@packages/ui/src/layout/BottomMenuLayout';
 import { isMobile } from 'react-device-detect';
 import { useRouteChange } from '@packages/model/src/lib/hooks/useRouteChange/useRouteChange';

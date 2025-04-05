@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames/classNames';
 import { Container } from '@ui/shared/Container/Container';
 import cls from './HeaderLayout.module.scss';
 

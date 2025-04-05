@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import PersonSvg from '@packages/ui/src/assets/icon/common/person.svg';
 import ArrowSvg from '@packages/ui/src/assets/icon/common/arrow.svg';
 import { AppLink } from '@packages/ui/src/shared/AppLink';

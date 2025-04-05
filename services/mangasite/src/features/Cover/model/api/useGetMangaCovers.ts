@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { $api } from '@packages/model/src/api/kyBase';
+import { $api } from '@packages/model/src/api/baseApi/kyBase';
 
 export interface MangaCoverstypes {
     id: number;

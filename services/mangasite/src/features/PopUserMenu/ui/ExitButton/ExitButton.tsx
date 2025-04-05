@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import ExitSvg from '@packages/ui/src/assets/icon/common/exit.svg';
 import { Button } from '@packages/ui/src/shared/Button';
 import { Icon } from '@packages/ui/src/shared/Icon';

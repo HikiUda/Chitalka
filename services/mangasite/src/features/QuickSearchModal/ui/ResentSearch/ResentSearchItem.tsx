@@ -4,7 +4,7 @@ import { Button } from '@packages/ui/src/shared/Button';
 import { memo, useCallback } from 'react';
 import HistoryBackSvg from '@packages/ui/src/assets/icon/common/historyBack.svg';
 import CrossoutSvg from '@packages/ui/src/assets/icon/common/crossout.svg';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { useDeleteUserLastSearchQuery } from '../../model/api/useDeleteUserLastSearchQuery';
 import cls from './ResentSearch.module.scss';
 

@@ -5,6 +5,7 @@ import { FC, ReactNode } from 'react';
 interface QueryClientProviderProps {
     children: ReactNode;
 }
+//TODO set styleTime more
 const queryClient = new QueryClient();
 export const MyQueryClientProvider: FC<QueryClientProviderProps> = (props) => {
     const { children } = props;

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { TextDisclosure } from '@packages/ui/src/shared/TextDisclosure';
 import { HStack } from '@packages/ui/src/shared/Stack';
 import { MangaType } from '@packages/model/src/api/manga/types/manga';

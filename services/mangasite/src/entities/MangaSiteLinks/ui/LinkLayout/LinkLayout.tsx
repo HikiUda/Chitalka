@@ -1,5 +1,5 @@
 import { FC, SVGProps } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { AppLink } from '@packages/ui/src/shared/AppLink';
 import { Icon } from '@packages/ui/src/shared/Icon';
 import { getFlex } from '@packages/ui/src/shared/Stack';
@@ -22,7 +22,8 @@ export const LinkLayout: FC<LinkLayoutProps> = (props) => {
     return (
         <AppLink
             backgroundOnHover
-            textStyle="bold"
+            noOpacityHover
+            bold
             className={classNames('', {}, [className, getFlex()])}
             to={to}
         >

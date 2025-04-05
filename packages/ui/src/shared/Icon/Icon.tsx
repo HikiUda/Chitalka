@@ -1,5 +1,5 @@
 import React, { FC, memo, SVGProps } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames/classNames';
 import cls from './Icon.module.scss';
 
 interface IconProps extends React.SVGProps<SVGSVGElement> {

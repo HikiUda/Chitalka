@@ -5,7 +5,7 @@ import { Drawer } from '@packages/ui/src/shared/Drawer';
 import { Button } from '@packages/ui/src/shared/Button';
 import SearchSvg from '@packages/ui/src/assets/icon/common/search.svg';
 import { Icon } from '@packages/ui/src/shared/Icon/Icon';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 
 import { QuickSearchModalContent } from '../QuickSearchModalContent';
 import cls from './QuickSearchModal.module.scss';
@@ -20,6 +20,7 @@ export const QuickSearchModal: FC<QuickSearchModalProps> = (props) => {
     const modalTrigger = (
         <Button
             color="none"
+            bold={!isMobile}
             className={classNames(cls.modalTrigger, { [cls.mobile]: isMobile }, [className])}
         >
             <Icon Svg={SearchSvg} width={20} height={20} /> {isMobile ? 'Быстрый поиск' : 'Поиск'}

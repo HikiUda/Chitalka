@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { Heading } from '@packages/ui/src/shared/Heading';
 import { getFlex, HStack, VStack } from '@packages/ui/src/shared/Stack';
 import StarSvg from '@packages/ui/src/assets/icon/common/star.svg';
@@ -33,7 +33,12 @@ export const MangaTitle = memo((props: MangaTitleProps) => {
                     <Heading className={getStyleLineClamp()} bold HeadingTag="h2">
                         {manga.title.ru}
                     </Heading>
-                    <Heading className={getStyleLineClamp({ lineClamp: '1' })} HeadingTag="h3">
+                    <Heading
+                        bold
+                        italic
+                        className={getStyleLineClamp({ lineClamp: '1' })}
+                        HeadingTag="h3"
+                    >
                         {manga.title.en}
                     </Heading>
                 </VStack>

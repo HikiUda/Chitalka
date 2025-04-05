@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import EyeOffSvg from '@packages/ui/src/assets/icon/common/eyeOff.svg';
 import { AppLink } from '@packages/ui/src/shared/AppLink';
 // import EyeSvg from '@packages/ui/src/assets/icon/common/eye.svg';

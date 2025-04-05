@@ -1,12 +1,12 @@
 import { memo, useMemo } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
+import { Heading } from '@packages/ui/src/shared/Heading';
+import cls from './MangaSearchList.module.scss';
 import {
     StatisticsMangaCardInline,
     MangaListItemStatisticType,
     MangaCardInlineSkeleton,
-} from '@packages/ui/src/entities/MangaCard';
-import { Heading } from '@packages/ui/src/shared/Heading';
-import cls from './MangaSearchList.module.scss';
+} from '@/entities/MangaCard';
 
 interface MangaSearchListProps {
     className?: string;

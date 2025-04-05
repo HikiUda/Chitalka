@@ -1,5 +1,5 @@
 import { FC, useCallback, useState } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { Button } from '../Button';
 import cls from './TextDisclosure.module.scss';
 

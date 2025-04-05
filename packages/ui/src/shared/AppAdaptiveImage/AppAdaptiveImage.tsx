@@ -1,5 +1,5 @@
 import { DetailedHTMLProps, HTMLAttributes, memo, ReactElement, ReactNode } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import ErrorImg from '@ui/assets/image/forError/wrong-imageMini..jpg';
 import { AppImage } from '@ui/shared/AppImage';
 import Skeleton from 'react-loading-skeleton';

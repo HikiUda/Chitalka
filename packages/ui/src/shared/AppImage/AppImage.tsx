@@ -1,4 +1,4 @@
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { ImgHTMLAttributes, memo, ReactElement, useLayoutEffect, useState } from 'react';
 
 interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {

@@ -1,4 +1,4 @@
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { MenuItem, type MenuItemProps } from 'react-aria-components';
 import cls from './MenuItem.module.scss';
 

@@ -1,6 +1,6 @@
 import { FC, ReactNode, useEffect, useState } from 'react';
 import { Dialog, ModalOverlay, Modal as AModal, ButtonContext } from 'react-aria-components';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { useLocation } from 'react-router-dom';
 import cls from './Modal.module.scss';
 

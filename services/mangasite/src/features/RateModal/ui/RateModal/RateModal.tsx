@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { Modal } from '@packages/ui/src/shared/Modal';
 import { RateModalContent } from '../RateModalContent';
 import cls from './RateModal.module.scss';

@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
-import { CommentForm } from '@packages/ui/src/entities/CommentForm';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import cls from './MangaComments.module.scss';
+import { CommentForm } from '@/entities/CommentForm';
 
 interface MangaCommentsProps {
     className?: string;

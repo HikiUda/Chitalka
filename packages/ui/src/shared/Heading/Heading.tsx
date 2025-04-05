@@ -1,5 +1,5 @@
 import { memo, ReactNode } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import cls from './Heading.module.scss';
 
 type HeadingTagType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';

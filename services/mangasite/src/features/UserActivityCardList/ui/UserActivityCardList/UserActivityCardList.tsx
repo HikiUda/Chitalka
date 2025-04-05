@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { Heading } from '@packages/ui/src/shared/Heading';
-import { UserActivityCard } from '@packages/ui/src/entities/UserCard';
 import cls from './UserActivityCardList.module.scss';
+import { UserActivityCard } from '@/entities/UserCard';
 
 interface UserActivityCardListProps {
     className?: string;

@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { $api } from '@packages/model/src/api/kyBase';
-import { MangaListItemStatisticType } from '@packages/ui/src/entities/MangaCard';
+import { $api } from '@packages/model/src/api/baseApi/kyBase';
+import { MangaListItemStatisticType } from '@/entities/MangaCard';
 
 export const API_QUICKSEARCH = 'manga/quicksearch';
 

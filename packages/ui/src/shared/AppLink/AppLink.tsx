@@ -1,5 +1,5 @@
 import { memo, ReactNode } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames/classNames';
 import { LinkProps, Link } from 'react-router-dom';
 import cls from './AppLink.module.scss';
 
@@ -12,6 +12,7 @@ export interface AppLinkProps extends LinkProps {
     children: ReactNode;
     disable?: boolean;
     underlineOnHover?: boolean;
+    noOpacityHover?: boolean;
     bold?: boolean;
     italic?: boolean;
 }
@@ -27,6 +28,7 @@ export const AppLink = memo((props: AppLinkProps) => {
         underlineOnHover,
         bold,
         italic,
+        noOpacityHover,
         ...otherProps
     } = props;
 
@@ -40,6 +42,7 @@ export const AppLink = memo((props: AppLinkProps) => {
                     [cls.disable]: disable,
                     [cls.underline]: underlineOnHover,
                     [cls.italic]: italic,
+                    [cls.opacityHover]: !noOpacityHover,
                     [cls.bold]: bold,
                 },
                 [className, cls[theme]],

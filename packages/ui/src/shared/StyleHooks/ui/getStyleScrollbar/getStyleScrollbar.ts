@@ -1,4 +1,4 @@
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import cls from './getStyleScrollbar.module.scss';
 
 type ScrollSize = 'thin' | 'bold';

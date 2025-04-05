@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { VStack } from '@packages/ui/src/shared/Stack';
 import { Heading } from '@packages/ui/src/shared/Heading';
 import { LineBookmarkStatistic } from '../LineBookmarkStatistic/LineBookmarkStatistic';

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { HStack } from '@packages/ui/src/shared/Stack';
 import cls from './HeaderQuickSearch.module.scss';
 import { QuickSearchModal } from '@/features/QuickSearchModal';

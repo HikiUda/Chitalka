@@ -1,9 +1,9 @@
 import { FC } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { HStack } from '@packages/ui/src/shared/Stack';
-import { LogoMangaSite } from '@packages/ui/src/entities/Logo';
 import { Icon } from '@packages/ui/src/shared/Icon';
 import QuestionSvg from '@packages/ui/src/assets/icon/common/question.svg';
+import { LogoMangaSite } from '@/entities/Logo';
 import { CatalogLink, CollectionLink } from '@/entities/MangaSiteLinks';
 import { PopUserMenu } from '@/features/PopUserMenu';
 

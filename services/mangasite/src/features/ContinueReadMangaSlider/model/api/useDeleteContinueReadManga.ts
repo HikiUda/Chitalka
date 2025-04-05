@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { $api } from '@packages/model/src/api/kyBase';
-import { MangaListItemContinueReadType } from '@packages/ui/src/entities/MangaCard';
+import { $api } from '@packages/model/src/api/baseApi/kyBase';
 import { QUERY_KEY_GET_CONTINUE_READ_MANGA } from './useGetContinueReadManga';
+import { MangaListItemContinueReadType } from '@/entities/MangaCard';
 export const useDeleteContinueReadManga = () => {
     const queryClient = useQueryClient();
     const mutate = useMutation({

@@ -9,7 +9,7 @@ import {
 import type { ListBoxItemProps, SelectProps } from 'react-aria-components';
 
 import { ReactNode, useEffect } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { useFreePopover } from '../Popover';
 import cls from './Select.module.scss';
 import { MiniOutline } from './SelectButtons/MiniOutline/MiniOutline';

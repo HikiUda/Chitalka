@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { $api } from '../kyBase';
+import { $api } from '../baseApi/kyBase';
 import { User } from './types/user';
 
 export const useGetUserDataQuery = () => {

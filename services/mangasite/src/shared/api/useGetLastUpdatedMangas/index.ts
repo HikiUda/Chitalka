@@ -1,1 +1,0 @@
-export { useGetLastUpdatedMangas } from './useGetLastUpdatedMangas';

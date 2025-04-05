@@ -1,4 +1,4 @@
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import cls from './getStyleLineClamp.module.scss';
 
 type LineClampType = '1' | '2' | '3' | '4';

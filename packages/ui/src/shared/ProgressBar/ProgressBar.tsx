@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import {
     ProgressBar as AProgressBar,
     ProgressBarProps as AProgressBarProps,

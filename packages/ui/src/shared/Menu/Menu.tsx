@@ -1,4 +1,4 @@
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { ReactElement, ReactNode } from 'react';
 import type { MenuProps, MenuTriggerProps } from 'react-aria-components';
 import { Menu, Popover, MenuTrigger } from 'react-aria-components';

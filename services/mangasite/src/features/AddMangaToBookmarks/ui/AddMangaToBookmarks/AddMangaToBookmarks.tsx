@@ -1,5 +1,5 @@
 import { memo, useState } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { BigFill, Key, Select, SelectItem } from '@packages/ui/src/shared/Select';
 import cls from './AddMangaToBookmarks.module.scss';
 

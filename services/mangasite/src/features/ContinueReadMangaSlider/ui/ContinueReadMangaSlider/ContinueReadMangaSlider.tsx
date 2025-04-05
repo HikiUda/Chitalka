@@ -1,17 +1,14 @@
 import { FC, useMemo } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
-import { Slider } from '@packages/ui/src/entities/Slider';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { CardBlock } from '@packages/ui/src/shared/CardBlock';
 import { Heading } from '@packages/ui/src/shared/Heading';
-import {
-    MangaCardInlineSkeleton,
-    ProgressReadMangaCardInline,
-} from '@packages/ui/src/entities/MangaCard';
 import { HStack } from '@packages/ui/src/shared/Stack';
 import { Button } from '@packages/ui/src/shared/Button';
 import { useGetContinueReadManga } from '../../model/api/useGetContinueReadManga';
 import { useDeleteContinueReadManga } from '../../model/api/useDeleteContinueReadManga';
 import cls from './ContinueReadMangaSlider.module.scss';
+import { MangaCardInlineSkeleton, ProgressReadMangaCardInline } from '@/entities/MangaCard';
+import { Slider } from '@/entities/Slider';
 
 interface ContinueReadMangaSliderProps {
     className?: string;

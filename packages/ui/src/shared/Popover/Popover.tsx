@@ -1,4 +1,4 @@
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { memo, ReactNode, useEffect, useRef } from 'react';
 import {
     ButtonContext,
@@ -31,7 +31,7 @@ export const Popover = memo((props: MyPopoverProps) => {
                 value={{ isOpen: isOpenPop, onOpenChange: handleIsOpne, triggerRef }}
             >
                 {button}
-                <APopover className={classNames(cls.Popover, {}, [className])} {...otherProps}>
+                <APopover {...otherProps} className={classNames(cls.Popover, {}, [className])}>
                     <Dialog aria-label="popover">{children}</Dialog>
                 </APopover>
             </PopoverContext.Provider>

@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { getFlex } from '@packages/ui/src/shared/Stack';
 import cls from './ButtonBlock.module.scss';
 import { StartOrContinueReadButton } from '@/features/StartOrContinueReadButton';

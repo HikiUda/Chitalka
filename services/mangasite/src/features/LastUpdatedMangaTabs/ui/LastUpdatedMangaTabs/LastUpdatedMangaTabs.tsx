@@ -1,12 +1,15 @@
-import { FC, useMemo } from 'react';
+import { FC, lazy, useMemo } from 'react';
 import { TabItem, Tabs } from '@packages/ui/src/shared/Tabs';
 import { VStack } from '@packages/ui/src/shared/Stack';
 import { Heading } from '@packages/ui/src/shared/Heading';
 import { useGetUserDataQuery } from '@packages/model/src/api/auth';
 import { CardBlock } from '@packages/ui/src/shared/CardBlock';
-import { MyLastUpdatedTab } from '../MyLastUpdatedTab/MyLastUpdatedTab';
-import { AllLastUpdatedTab } from '../AllLastUpdatedTab/AllLastUpdatedTab';
+// import { MyLastUpdatedTab } from '../MyLastUpdatedTab/MyLastUpdatedTab';
+// import { AllLastUpdatedTab } from '../AllLastUpdatedTab/AllLastUpdatedTab';
 import cls from './LastUpdatedMangaTabs.module.scss';
+
+const MyLastUpdatedTab = lazy(() => import('../MyLastUpdatedTab/MyLastUpdatedTab'));
+const AllLastUpdatedTab = lazy(() => import('../AllLastUpdatedTab/AllLastUpdatedTab'));
 
 interface LastUpdatedMangaTabsProps {
     className?: string;

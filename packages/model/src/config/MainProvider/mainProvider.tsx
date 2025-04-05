@@ -1,5 +1,5 @@
 import { BrowserRouter } from 'react-router-dom';
-import { ThemeProvider } from '@model/lib/theme';
+import { ThemeProvider } from '@model/config/theme';
 import { ReactNode } from 'react';
 import { QueryClientProvider } from '../queryClient';
 

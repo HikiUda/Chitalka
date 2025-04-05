@@ -1,5 +1,5 @@
 import { FC, ReactNode, useMemo, useState } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { Tag } from '@packages/ui/src/shared/Tag';
 import { HStack } from '@packages/ui/src/shared/Stack';
 import { AppLink } from '@packages/ui/src/shared/AppLink';

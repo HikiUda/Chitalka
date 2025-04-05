@@ -1,5 +1,5 @@
 import { FC, useMemo } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { TabItem, Tabs } from '@packages/ui/src/shared/Tabs';
 import { MangaType } from '@packages/model/src/api/manga/types/manga';
 import cls from './MangaPageContent.module.scss';

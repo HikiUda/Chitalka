@@ -1,6 +1,6 @@
 import { memo, ReactNode } from 'react';
 import { Collection, Tab, TabList, TabPanel, Tabs, TabsProps, Key } from 'react-aria-components';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { getFlex } from '../Stack';
 import cls from './Tabs.module.scss';
 

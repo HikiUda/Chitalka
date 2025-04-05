@@ -1,14 +1,14 @@
 import { FC } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
-import { LastUpdatedMangaCardInlineColume } from '@packages/ui/src/entities/MangaList';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { TabScroll } from '../TabScroll/TabScroll';
-import { useGetLastUpdatedMangas } from '@/shared/api/useGetLastUpdatedMangas';
+import { LastUpdatedMangaCardInlineColume } from '@/entities/MangaList';
+import { useGetLastUpdatedMangas } from '@/entities/MangaCard';
 
 interface MyLastUpdatedTabProps {
     className?: string;
 }
 
-export const MyLastUpdatedTab: FC<MyLastUpdatedTabProps> = (props) => {
+const MyLastUpdatedTab: FC<MyLastUpdatedTabProps> = (props) => {
     const { className } = props;
 
     const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isFetching } =
@@ -25,3 +25,4 @@ export const MyLastUpdatedTab: FC<MyLastUpdatedTabProps> = (props) => {
         </TabScroll>
     );
 };
+export default MyLastUpdatedTab;

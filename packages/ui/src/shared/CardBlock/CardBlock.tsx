@@ -1,5 +1,5 @@
 import { DetailedHTMLProps, HTMLAttributes, memo, ReactNode } from 'react';
-import { classNames } from '@packages/model/src/lib/classNames';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import cls from './CardBlock.module.scss';
 
 type DivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;

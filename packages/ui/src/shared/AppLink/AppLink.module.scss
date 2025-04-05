@@ -4,10 +4,11 @@
 
 .text {
     color: var(--text-color);
-    transition: opacity 0.3s ease;
-
-    &:hover {
-        opacity: 0.7;
+    &.opacityHover {
+        transition: opacity 0.3s ease;
+        &:hover {
+            opacity: 0.7;
+        }
     }
 }
 

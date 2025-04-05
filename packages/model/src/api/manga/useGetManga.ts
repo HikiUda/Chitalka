@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { $api } from '../kyBase';
+import { $api } from '../baseApi/kyBase';
 import { MangaType } from './types/manga';
 
 export const useGetManga = (id: number | string) => {
