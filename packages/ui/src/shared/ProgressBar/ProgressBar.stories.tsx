@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { ProgressBar } from './ProgressBar';
 
+/** Other props see in the react aria documentation ProgressBar */
 const meta: Meta<typeof ProgressBar> = {
     title: 'shared/ProgressBar',
     component: ProgressBar,

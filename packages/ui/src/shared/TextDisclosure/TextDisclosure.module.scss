@@ -1,5 +1,9 @@
-.TextDisclosure {
-}
 .text {
     white-space: pre-line;
+    max-height: 6rem;
+    overflow: hidden;
+
+    &.expanded {
+        max-height: none;
+    }
 }

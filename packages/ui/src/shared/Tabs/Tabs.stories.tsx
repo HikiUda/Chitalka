@@ -9,6 +9,24 @@ const content2 =
 const content3 =
     'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum, architecto. Veniam id nihil nesciunt aperiam, expedita mollitia eius magnam similique obcaecati adipisci est atque impedit, nisi recusandae quia quo praesentium delectus reprehenderit repellat! Velit, unde! Ipsum, dolorem. Quo tempore labore, pariatur excepturi qui suscipit magni dolor, rem, laborum porro ab quam quae sint! Quos totam non dolor quia omnis asperiores?';
 
+const tabs = [
+    {
+        id: 1,
+        title: 'tab1',
+        content: content1,
+    },
+    {
+        id: 2,
+        title: 'tab2',
+        content: content2,
+    },
+    {
+        id: 3,
+        title: 'tab3',
+        content: content3,
+    },
+];
+/** Other props see in the react aria documentation Tabs */
 const meta: Meta<typeof Tabs> = {
     title: 'shared/Tabs',
     component: Tabs,
@@ -21,22 +39,6 @@ type Story = StoryObj<typeof Tabs>;
 
 export const Primary: Story = {
     args: {
-        tabs: [
-            {
-                id: 1,
-                title: 'tab1',
-                content: content1,
-            },
-            {
-                id: 2,
-                title: 'tab2',
-                content: content2,
-            },
-            {
-                id: 3,
-                title: 'tab3',
-                content: content3,
-            },
-        ],
+        tabs,
     },
 };

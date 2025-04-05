@@ -1,17 +1,14 @@
 import {
-    Select,
+    Select as ASelect,
     Label,
     ListBox,
     ListBoxItem,
-    FieldError,
-    Text,
     Popover,
     SelectContext,
 } from 'react-aria-components';
-import type { ListBoxItemProps, SelectProps, ValidationResult } from 'react-aria-components';
-import { preventDisableScroll } from '@packages/model/src/lib/helpers/preventDisableScroll/preventDisableScroll';
+import type { ListBoxItemProps, SelectProps } from 'react-aria-components';
 
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { classNames } from '@packages/model/src/lib/classNames';
 import { useFreePopover } from '../Popover';
 import cls from './Select.module.scss';
@@ -19,36 +16,46 @@ import { MiniOutline } from './SelectButtons/MiniOutline/MiniOutline';
 
 interface MySelectProps<T extends object> extends Omit<SelectProps<T>, 'children'> {
     label?: string;
-    description?: string;
-    errorMessage?: string | ((validation: ValidationResult) => string);
     items?: Iterable<T>;
     children: ReactNode | ((item: T) => ReactNode);
+    /**
+     * * Select have own custom button
+     *
+     * ! You may not use other buttons
+     *
+     * * Just use existed (impot from public api Select)
+     */
     selectButton?: ReactNode;
     max?: boolean;
 }
 
-export const MySelect = <T extends object>(props: MySelectProps<T>) => {
-    const { label, description, errorMessage, children, items, selectButton, max, ...otherProps } =
-        props;
-    const { isOpen, handleIsOpne } = useFreePopover();
+export const Select = <T extends object>(props: MySelectProps<T>) => {
+    const { label, children, items, selectButton, max, isOpen, ...otherProps } = props;
+    const { isOpen: isOpenPop, handleIsOpne } = useFreePopover();
+    useEffect(() => {
+        handleIsOpne(!!isOpen);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <SelectContext.Provider
-            value={{ isOpen, onOpenChange: handleIsOpne, className: max ? cls.max : undefined }}
+            value={{
+                isOpen: isOpenPop,
+                onOpenChange: handleIsOpne,
+                className: max ? cls.max : undefined,
+            }}
         >
-            <Select {...otherProps} onOpenChange={preventDisableScroll}>
+            <ASelect {...otherProps}>
                 <Label>{label}</Label>
                 {selectButton ? selectButton : <MiniOutline />}
-                {description && <Text slot="description">{description}</Text>}
-                <FieldError>{errorMessage}</FieldError>
                 <Popover className={classNames(cls.popover, { [cls.minWidthTarget]: max })}>
                     <ListBox items={items}>{children}</ListBox>
                 </Popover>
-            </Select>
+            </ASelect>
         </SelectContext.Provider>
     );
 };
 
-export const MyItem = (props: ListBoxItemProps) => {
+export const SelectItem = (props: ListBoxItemProps) => {
     return <ListBoxItem {...props} className={cls.selectItem} />;
 };

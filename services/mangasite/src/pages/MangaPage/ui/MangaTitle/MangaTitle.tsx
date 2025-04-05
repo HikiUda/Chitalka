@@ -30,10 +30,10 @@ export const MangaTitle = memo((props: MangaTitleProps) => {
         <div className={classNames(cls.MangaTitle, {}, [className])}>
             <HStack gap="32" max align="end">
                 <VStack max gap="4">
-                    <Heading className={getStyleLineClamp()} style="bold" HeaderTag="h2">
+                    <Heading className={getStyleLineClamp()} bold HeadingTag="h2">
                         {manga.title.ru}
                     </Heading>
-                    <Heading className={getStyleLineClamp({ lineClamp: '1' })} HeaderTag="h3">
+                    <Heading className={getStyleLineClamp({ lineClamp: '1' })} HeadingTag="h3">
                         {manga.title.en}
                     </Heading>
                 </VStack>

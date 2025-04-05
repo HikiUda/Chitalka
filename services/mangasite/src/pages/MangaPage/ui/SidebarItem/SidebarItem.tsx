@@ -14,8 +14,8 @@ export const SidebarItem = memo((props: SidebarItemProps) => {
     const { className, title, children } = props;
 
     return (
-        <VStack gap="4" className={classNames(cls.SidebarItem, {}, [className])}>
-            <Heading HeaderTag="h5" style="opacity">
+        <VStack gap="4" className={classNames('', {}, [className])}>
+            <Heading HeadingTag="h5" className={cls.title}>
                 {title}
             </Heading>
             <HStack wrap="wrap" justify="start" max>

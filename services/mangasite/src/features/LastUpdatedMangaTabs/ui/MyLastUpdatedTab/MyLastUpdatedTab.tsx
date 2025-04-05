@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { classNames } from '@packages/model/src/lib/classNames';
 import { LastUpdatedMangaCardInlineColume } from '@packages/ui/src/entities/MangaList';
 import { TabScroll } from '../TabScroll/TabScroll';
-import { useGetLastUpdatedMangas } from '@/shared/api/mangaList/useGetLastUpdatedMangas';
+import { useGetLastUpdatedMangas } from '@/shared/api/useGetLastUpdatedMangas';
 
 interface MyLastUpdatedTabProps {
     className?: string;

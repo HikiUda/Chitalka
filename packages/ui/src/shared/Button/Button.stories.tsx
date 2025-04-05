@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from './Button';
-
+/** Other props see in the react aria documentation Input */
 const meta: Meta<typeof Button> = {
     title: 'shared/Button',
     component: Button,
@@ -15,12 +15,12 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-export const Clear: Story = {};
-export const ClearNoHover: Story = {
+export const Clear: Story = {
     args: {
-        noHover: true,
+        color: 'none',
     },
 };
+
 export const Outline: Story = {
     args: {
         theme: 'outline',
@@ -29,18 +29,5 @@ export const Outline: Story = {
 export const Fill: Story = {
     args: {
         theme: 'fill',
-        color: 'secondary',
-    },
-};
-export const RippleAnimation: Story = {
-    args: {
-        theme: 'fill',
-        pressAnimation: 'ripple',
-    },
-};
-export const PressAnimation: Story = {
-    args: {
-        theme: 'fill',
-        pressAnimation: 'press',
     },
 };

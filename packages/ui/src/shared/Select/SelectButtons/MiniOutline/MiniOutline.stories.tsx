@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { StoryDecorator } from '../StoryDecorator/StoryDecorator';
 import { MiniOutline } from './MiniOutline';
 
 const meta: Meta<typeof MiniOutline> = {
@@ -7,6 +8,8 @@ const meta: Meta<typeof MiniOutline> = {
     component: MiniOutline,
 
     tags: ['autodocs'],
+
+    decorators: [StoryDecorator()],
 };
 
 export default meta;

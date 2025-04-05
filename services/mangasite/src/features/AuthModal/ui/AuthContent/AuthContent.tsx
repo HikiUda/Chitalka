@@ -48,7 +48,7 @@ const AuthContent: FC<AuthContentProps> = (props) => {
 
     return (
         <VStack max className={classNames(cls.AuthContent, {}, [className])}>
-            <Heading HeaderTag="h2">{authType ? 'Вход' : 'Регестрация'}</Heading>
+            <Heading HeadingTag="h2">{authType ? 'Вход' : 'Регестрация'}</Heading>
             <VStack max>
                 <Input
                     value={userLogin}

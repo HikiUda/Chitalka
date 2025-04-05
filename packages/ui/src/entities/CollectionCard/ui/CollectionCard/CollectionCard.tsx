@@ -24,7 +24,7 @@ export const CollectionCard = memo((props: CollectionCardProps) => {
     return (
         <AppLink to={'/'} className={classNames(cls.CollectionCard, {}, [className])}>
             <VStack justify="center" align="center">
-                <Heading className={classNames(cls.title, {}, [getStyleLineClamp()])} style="bold">
+                <Heading className={classNames(cls.title, {}, [getStyleLineClamp()])} bold>
                     Tittle of collection
                 </Heading>
                 <HStack justify="center" align="center" className={cls.tagInfo}>

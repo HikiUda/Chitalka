@@ -13,7 +13,7 @@ export const UserActivityCardList: FC<UserActivityCardListProps> = (props) => {
 
     return (
         <div className={classNames('', {}, [className])}>
-            <Heading className={cls.title} HeaderTag="h2" color="primary">
+            <Heading className={cls.title} HeadingTag="h2" color="primary">
                 Топ активных пользователей
             </Heading>
             <div className={cls.cardList}>

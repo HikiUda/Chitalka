@@ -1,9 +1,9 @@
 import { classNames } from '@packages/model/src/lib/classNames';
-import { memo, ReactNode, useRef } from 'react';
+import { memo, ReactNode, useEffect, useRef } from 'react';
 import {
     ButtonContext,
     Dialog,
-    Popover,
+    Popover as APopover,
     PopoverContext,
     PopoverProps,
 } from 'react-aria-components';
@@ -16,18 +16,24 @@ interface MyPopoverProps extends Omit<PopoverProps, 'children'> {
     button?: ReactNode;
 }
 
-export const MyPopover = memo((props: MyPopoverProps) => {
-    const { className, children, button, ...otherProps } = props;
+export const Popover = memo((props: MyPopoverProps) => {
+    const { className, children, button, isOpen, ...otherProps } = props;
     const triggerRef = useRef(null);
-    const { isOpen, handleIsOpne } = useFreePopover();
+    const { isOpen: isOpenPop, handleIsOpne } = useFreePopover();
+    useEffect(() => {
+        handleIsOpne(!!isOpen);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <ButtonContext.Provider value={{ onPress: () => handleIsOpne(true), ref: triggerRef }}>
-            <PopoverContext.Provider value={{ isOpen, onOpenChange: handleIsOpne, triggerRef }}>
+            <PopoverContext.Provider
+                value={{ isOpen: isOpenPop, onOpenChange: handleIsOpne, triggerRef }}
+            >
                 {button}
-                <Popover className={classNames(cls.Popover, {}, [className])} {...otherProps}>
+                <APopover className={classNames(cls.Popover, {}, [className])} {...otherProps}>
                     <Dialog aria-label="popover">{children}</Dialog>
-                </Popover>
+                </APopover>
             </PopoverContext.Provider>
         </ButtonContext.Provider>
     );

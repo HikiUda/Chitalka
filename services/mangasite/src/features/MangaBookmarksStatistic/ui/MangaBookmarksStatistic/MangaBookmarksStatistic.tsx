@@ -14,7 +14,7 @@ export const MangaBookmarksStatistic = memo((props: MangaBookmarksStatisticProps
 
     return (
         <VStack max className={classNames(cls.MangaBookmarksStatistic, {}, [className])}>
-            <Heading color="primary" HeaderTag="h3">
+            <Heading color="primary" HeadingTag="h3">
                 В закладках у 9034 пользователей
             </Heading>
             <LineBookmarkStatistic />

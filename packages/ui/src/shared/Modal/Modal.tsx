@@ -27,7 +27,6 @@ const modalHorizonClasses: Record<ModalHorizonPosition, string> = {
     right: cls.horisonRight,
     left: cls.horizonLeft,
 };
-//TODO block scroll
 export const Modal: FC<ModalProps> = (props) => {
     const {
         className,
@@ -35,16 +34,23 @@ export const Modal: FC<ModalProps> = (props) => {
         trigger,
         modalVerticalPosition = 'center',
         modalHorizonPosition = 'center',
-        defaultOpen,
+        defaultOpen = false,
         shouldCloseOnInteractOutside,
     } = props;
 
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(defaultOpen);
     const location = useLocation();
 
     useEffect(() => {
         setIsOpen(false);
     }, [location.pathname]);
+
+    useEffect(() => {
+        if (defaultOpen) {
+            setIsOpen(true);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <ButtonContext.Provider value={{ onPress: () => setIsOpen(true) }}>
@@ -53,7 +59,6 @@ export const Modal: FC<ModalProps> = (props) => {
                 isOpen={isOpen}
                 onOpenChange={setIsOpen}
                 shouldCloseOnInteractOutside={shouldCloseOnInteractOutside}
-                defaultOpen={defaultOpen}
                 isDismissable
                 className={classNames(cls.overlay, {}, [
                     modalVerticalClasses[modalVerticalPosition],

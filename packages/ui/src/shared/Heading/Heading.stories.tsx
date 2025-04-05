@@ -14,13 +14,13 @@ type Story = StoryObj<typeof Heading>;
 
 export const H1: Story = {
     args: {
-        HeaderTag: 'h1',
+        HeadingTag: 'h1',
         children: 'Title',
     },
 };
 export const H2: Story = {
     args: {
-        HeaderTag: 'h2',
+        HeadingTag: 'h2',
         children: 'Title',
     },
 };
@@ -31,14 +31,13 @@ export const H3: Story = {
 };
 export const H4: Story = {
     args: {
-        HeaderTag: 'h4',
+        HeadingTag: 'h4',
         children: 'Title',
     },
 };
-export const BoldPrimaryColor: Story = {
+export const H5: Story = {
     args: {
-        color: 'primary',
+        HeadingTag: 'h5',
         children: 'Title',
-        style: 'bold',
     },
 };

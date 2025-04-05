@@ -20,7 +20,7 @@ export const SimilarMangaSlider: FC<SimilarMangaSliderProps> = (props) => {
                 getFlex({ direction: 'column', max: true, align: 'start' }),
             ])}
         >
-            <Heading className={cls.title} HeaderTag="h3" color="primary">
+            <Heading className={cls.title} HeadingTag="h3" color="primary">
                 Связаное
             </Heading>
 

@@ -15,6 +15,7 @@ import cls from './Drawer.module.scss';
 interface DrawerProps {
     children: ReactNode;
     trigger?: ReactNode;
+    defaultOpen?: boolean;
 }
 
 const MotionModal = motion.create(Modal);
@@ -34,13 +35,19 @@ const staticTransition = {
 const SHEET_MARGIN = 34;
 
 export const Drawer: FC<DrawerProps> = (props) => {
-    const { children, trigger } = props;
+    const { children, trigger, defaultOpen = false } = props;
     const [isOpen, setOpen] = useState(false);
     const location = useLocation();
 
     useEffect(() => {
         setOpen(false);
     }, [location.pathname]);
+    useEffect(() => {
+        if (defaultOpen) {
+            setOpen(true);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
     const h = window.innerHeight - SHEET_MARGIN;
     const y = useMotionValue(h);
     const bgOpacity = useTransform(y, [0, h], [0.4, 0]);

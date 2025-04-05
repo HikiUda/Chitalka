@@ -15,7 +15,7 @@ export const MangaRateStatistic = memo((props: MangaRateStatisticProps) => {
     //TODO rate button
     return (
         <VStack max className={classNames(cls.MangaRateStatistic, {}, [className])}>
-            <Heading color="primary" HeaderTag="h3">
+            <Heading color="primary" HeadingTag="h3">
                 Оценки пользователей
             </Heading>
             <LineRateStatistic />

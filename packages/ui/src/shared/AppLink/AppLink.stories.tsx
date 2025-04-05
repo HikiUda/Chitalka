@@ -13,39 +13,17 @@ const meta: Meta<typeof AppLink> = {
 export default meta;
 type Story = StoryObj<typeof AppLink>;
 
-export const PlainText: Story = {
-    args: {
-        children: 'link',
-    },
-};
-
 export const Primary: Story = {
     args: {
         theme: 'primary',
         children: 'link',
     },
 };
-export const Secondary: Story = {
+export const BoldItalic: Story = {
     args: {
-        theme: 'secondary',
+        theme: 'primary',
         children: 'link',
-    },
-};
-export const backgroundOnHover: Story = {
-    args: {
-        backgroundOnHover: true,
-        children: 'link',
-    },
-};
-export const Bold: Story = {
-    args: {
-        textStyle: 'bold',
-        children: 'link',
-    },
-};
-export const Italic: Story = {
-    args: {
-        textStyle: 'italic',
-        children: 'link',
+        bold: true,
+        italic: true,
     },
 };

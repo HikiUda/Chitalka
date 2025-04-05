@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { http, HttpResponse } from 'msw';
 import { RecentUpdatedPopularMangaSlider } from './RecentUpdatedPopularMangaSlider';
+import { mockUseGetLastUpdatedMangas } from '@/shared/api/useGetLastUpdatedMangas/testing';
 
 const meta: Meta<typeof RecentUpdatedPopularMangaSlider> = {
     title: 'features/RecentUpdatedPopularMangaSlider',
@@ -10,27 +10,10 @@ const meta: Meta<typeof RecentUpdatedPopularMangaSlider> = {
     tags: ['autodocs'],
     parameters: {
         msw: {
-            handlers: [
-                http.get('*/manga/last-updated-mangas', () => {
-                    return HttpResponse.json({
-                        data: [
-                            {
-                                title: 'Title',
-                                type: 'Manga',
-                                id: 1,
-                                urlId: 'jjj',
-                                cover: 'ssss',
-                                chapter: 1,
-                            },
-                        ],
-                        nextPage: null,
-                    });
-                }),
-            ],
+            handlers: [mockUseGetLastUpdatedMangas],
         },
     },
 };
-
 export default meta;
 type Story = StoryObj<typeof RecentUpdatedPopularMangaSlider>;
 

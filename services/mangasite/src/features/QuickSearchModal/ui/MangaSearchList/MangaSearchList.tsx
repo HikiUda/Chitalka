@@ -25,7 +25,7 @@ export const MangaSearchList = memo((props: MangaSearchListProps) => {
 
     if (!isLoading && !mangaList.length) {
         return (
-            <Heading className={cls.notFound} color="primary" HeaderTag="h3">
+            <Heading className={cls.notFound} color="primary" HeadingTag="h3">
                 Тайтл не найден
             </Heading>
         );

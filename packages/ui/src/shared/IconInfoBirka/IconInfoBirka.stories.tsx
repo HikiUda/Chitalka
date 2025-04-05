@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Svg from '@ui/assets/forStories/bookmark.svg';
+import Svg from '@ui/assets/forStories/eye.svg';
 import { IconInfoBirka } from './IconInfoBirka';
 import cls from './IconInfoBirka.module.scss';
 

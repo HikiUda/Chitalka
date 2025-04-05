@@ -77,7 +77,7 @@ export default [
                 'error',
                 {
                     alias: '@',
-                    testFilesPatterns: ['**/*.test.ts', '**/*.test.tsч', '**/*.stories.tsx'],
+                    testFilesPatterns: ['**/*.test.ts', '**/*.test.tsx', '**/*.stories.tsx'],
                 },
             ],
             'fsd-layer-import/layer-import': [

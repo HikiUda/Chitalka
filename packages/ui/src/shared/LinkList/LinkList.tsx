@@ -13,6 +13,13 @@ export interface LinkListItem {
 
 interface LinkListProps extends Omit<AppLinkProps, 'className' | 'children' | 'to'> {
     className?: string;
+    /**
+     * icon - svg
+     *
+     * text - string
+     *
+     * to - string
+     */
     items?: LinkListItem[];
 }
 

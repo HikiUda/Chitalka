@@ -4,12 +4,11 @@ import { Slider } from '@packages/ui/src/entities/Slider';
 import { CardBlock } from '@packages/ui/src/shared/CardBlock';
 import { LastChapterMangaCard, MangaCardSkeleton } from '@packages/ui/src/entities/MangaCard';
 import cls from './RecentUpdatedPopularMangaSlider.module.scss';
-import { useGetLastUpdatedMangas } from '@/shared/api/mangaList/useGetLastUpdatedMangas';
+import { useGetLastUpdatedMangas } from '@/shared/api/useGetLastUpdatedMangas';
 
 interface RecentUpdatedPopularMangaSliderProps {
     className?: string;
 }
-
 export const RecentUpdatedPopularMangaSlider: FC<RecentUpdatedPopularMangaSliderProps> = (
     props,
 ) => {

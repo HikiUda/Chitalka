@@ -20,18 +20,13 @@ export const MangaCardInline = memo((props: MangaCardInlineProps) => {
     const { className, to = '', img, title, subtitle, children } = props;
 
     return (
-        <AppLink
-            theme="none"
-            to={to}
-            disable={!to}
-            className={classNames(cls.MangaCardInline, {}, [className])}
-        >
+        <AppLink to={to} disable={!to} className={classNames(cls.MangaCardInline, {}, [className])}>
             <AppAdaptiveImage className={cls.img} img={img} />
             <VStack align="stretch" gap="4" className={cls.content}>
                 <Heading
                     className={classNames(cls.title, {}, [getStyleLineClamp({ wordBreak: true })])}
-                    HeaderTag="h4"
-                    style="bold"
+                    HeadingTag="h4"
+                    bold
                 >
                     {title}
                 </Heading>

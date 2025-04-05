@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
-import { http, HttpResponse } from 'msw';
 import { MyLastUpdatedTab } from './MyLastUpdatedTab';
+import { mockUseGetLastUpdatedMangas } from '@/shared/api/useGetLastUpdatedMangas/testing';
 
 const meta: Meta<typeof MyLastUpdatedTab> = {
     title: 'features/LastUpdatedMangaTabs/MyLastUpdatedTab',
@@ -10,11 +9,7 @@ const meta: Meta<typeof MyLastUpdatedTab> = {
     tags: ['autodocs'],
     parameters: {
         msw: {
-            handlers: [
-                http.get('*/manga/last-updated-mangas', () => {
-                    return HttpResponse.json([{ title: 'Title', type: 'Manga' }]);
-                }),
-            ],
+            handlers: [mockUseGetLastUpdatedMangas],
         },
     },
 };

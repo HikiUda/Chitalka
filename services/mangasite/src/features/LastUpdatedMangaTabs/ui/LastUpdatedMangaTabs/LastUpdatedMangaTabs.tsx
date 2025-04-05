@@ -11,7 +11,7 @@ import cls from './LastUpdatedMangaTabs.module.scss';
 interface LastUpdatedMangaTabsProps {
     className?: string;
 }
-
+//TODO vertualized
 export const LastUpdatedMangaTabs: FC<LastUpdatedMangaTabsProps> = (props) => {
     const { className } = props;
     const { data: userData } = useGetUserDataQuery();
@@ -35,7 +35,7 @@ export const LastUpdatedMangaTabs: FC<LastUpdatedMangaTabsProps> = (props) => {
     return (
         <CardBlock className={cls.LastUpdatedMangaTabs}>
             <VStack className={className} max>
-                <Heading HeaderTag="h2" color="primary">
+                <Heading HeadingTag="h2" color="primary">
                     Последнии обновления
                 </Heading>
                 <Tabs tabs={tabs} />

@@ -36,7 +36,6 @@ export const MangaCard = memo((props: MangaCardProps) => {
     } = props;
     return (
         <AppLink
-            theme="none"
             to={to}
             disable={!to}
             className={classNames(cls.MangaCard, {}, [className, cls[adaptive]])}
@@ -57,8 +56,8 @@ export const MangaCard = memo((props: MangaCardProps) => {
 
             <Heading
                 className={classNames(cls.title, {}, [getStyleLineClamp({ huphens: true })])}
-                HeaderTag="h4"
-                style="bold"
+                HeadingTag="h4"
+                bold
             >
                 {title}
             </Heading>

@@ -1,17 +1,9 @@
 .IconInfoBirka {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
     height: 20px;
     max-width: 200px;
     text-overflow: ellipsis;
     padding: 2px 4px;
     border-radius: 4px;
-
-    &.primary {
-        background: var(--primary-color);
-    }
 
     &.secondary {
         background: var(--secondary-color);
@@ -27,10 +19,6 @@
 
     &.primary {
         color: var(--primary-color);
-    }
-
-    &.secondary {
-        color: var(--secondary-color);
     }
 
     &.default {

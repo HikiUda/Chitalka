@@ -43,7 +43,7 @@ export const ContinueReadMangaSlider: FC<ContinueReadMangaSliderProps> = (props)
     return (
         <CardBlock className={classNames(cls.ContinueReadMangaSlider, {}, [className])}>
             <HStack justify="between" className={cls.title}>
-                <Heading HeaderTag="h2" color="primary">
+                <Heading HeadingTag="h2" color="primary">
                     Продолжить читать
                 </Heading>
                 <Button

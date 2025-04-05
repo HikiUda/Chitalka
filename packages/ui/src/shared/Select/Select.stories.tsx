@@ -1,8 +1,25 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { MySelect as Select } from './Select';
-import { SelectItem } from '.';
+import { userEvent, within } from '@storybook/testing-library';
+import { Select } from './Select';
+import { BigFill, MiniOutline, SelectItem } from '.';
 
+const items: { value: string; content: string }[] = [
+    { value: 'day', content: 'За день' },
+    { value: 'week', content: 'За неделю' },
+    { value: 'month', content: 'За месяц' },
+];
+
+const iteratedChildren = items.map((item) => (
+    <SelectItem key={item.value} id={item.value}>
+        {item.content}
+    </SelectItem>
+));
+
+/** Other props see in the react aria documentation Select
+ *
+ * All child elements inside a Select must be wrapped in a SelectItem
+ */
 const meta: Meta<typeof Select> = {
     title: 'shared/Select',
     component: Select,
@@ -13,28 +30,42 @@ const meta: Meta<typeof Select> = {
 export default meta;
 type Story = StoryObj<typeof Select>;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const Primary = (args: any) => (
-    <Select {...args}>
-        <SelectItem>Chocolate</SelectItem>
-        <SelectItem>Mint</SelectItem>
-        <SelectItem>Strawberry</SelectItem>
-        <SelectItem>Vanilla</SelectItem>
-    </Select>
-);
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const Example = (args: any) => (
-    <Select isOpen={true} {...args}>
-        <SelectItem>Chocolate</SelectItem>
-        <SelectItem>Mint</SelectItem>
-        <SelectItem>Strawberry</SelectItem>
-        <SelectItem>Vanilla</SelectItem>
-    </Select>
-);
-Example.args = {
-    label: 'Ice cream flavor',
+export const Primary: Story = {
+    args: {
+        items: items,
+        children: iteratedChildren,
+        selectButton: <MiniOutline data-testid="SelectButton" />,
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        await userEvent.click(canvas.getByTestId('SelectButton'));
+    },
 };
-Primary.args = {
-    label: 'Ice cream flavor',
+export const MaxWidth: Story = {
+    args: {
+        items: items,
+        children: iteratedChildren,
+        selectButton: <BigFill data-testid="SelectButton" />,
+        max: true,
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        await userEvent.click(canvas.getByTestId('SelectButton'));
+    },
+};
+/**
+ * You can show element by iteration in the children props
+ *
+ * (item)=>item
+ */
+export const ChildrenIteration: Story = {
+    args: {
+        items: items,
+        selectedKey: 'day',
+
+        children: (item) => (
+            //@ts-ignore
+            <SelectItem id={item?.value || 'value'}>{item?.content || 'content'}</SelectItem>
+        ),
+    },
 };

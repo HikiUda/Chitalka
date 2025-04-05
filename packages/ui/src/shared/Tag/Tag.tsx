@@ -5,6 +5,7 @@ import cls from './Tag.module.scss';
 interface TagProps {
     className?: string;
     text?: string;
+    /** simbol # on start of component */
     withHash?: boolean;
 }
 

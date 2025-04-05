@@ -2,26 +2,30 @@ import { memo, ReactNode } from 'react';
 import { classNames } from '@packages/model/src/lib/classNames';
 import cls from './Heading.module.scss';
 
-type HeaderTagType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
+type HeadingTagType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
 type HeaderColor = 'plain' | 'primary' | 'secondary';
-type HeaderStyle = 'none' | 'bold' | 'italic' | 'opacity';
 
 interface HeadingProps {
     className?: string;
     children?: ReactNode;
-    HeaderTag?: HeaderTagType;
+    HeadingTag?: HeadingTagType;
     color?: HeaderColor;
-    style?: HeaderStyle;
+    italic?: boolean;
+    bold?: boolean;
 }
 
 export const Heading = memo((props: HeadingProps) => {
-    const { className, HeaderTag = 'h4', children, color = 'plain', style = 'none' } = props;
+    const { className, HeadingTag = 'h4', children, color = 'plain', italic, bold } = props;
 
     return (
-        <HeaderTag
-            className={classNames('', {}, [className, cls[HeaderTag], cls[color], cls[style]])}
+        <HeadingTag
+            className={classNames('', { [cls.italic]: italic, [cls.bold]: bold }, [
+                className,
+                cls[HeadingTag],
+                cls[color],
+            ])}
         >
             {children}
-        </HeaderTag>
+        </HeadingTag>
     );
 });

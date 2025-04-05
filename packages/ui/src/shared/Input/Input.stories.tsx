@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Input } from './Input';
 
+/** Other props see in the react aria documentation Input */
 const meta: Meta<typeof Input> = {
     title: 'shared/Input',
     component: Input,
@@ -23,5 +24,11 @@ export const Primary: Story = {
 export const Secondary: Story = {
     args: {
         border: 'secondaryBorder',
+    },
+};
+export const MaxWidth: Story = {
+    args: {
+        border: 'secondaryBorder',
+        maxWidth: true,
     },
 };

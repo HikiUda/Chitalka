@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { userEvent, within } from '@storybook/testing-library';
 import { Button } from '../Button';
 import { Modal } from './Modal';
 
@@ -15,8 +16,11 @@ type Story = StoryObj<typeof Modal>;
 
 export const Primary: Story = {
     args: {
-        trigger: <Button>trigger</Button>,
+        trigger: <Button data-testid="ModalTrigger">trigger</Button>,
         children: <Button slot="close">close</Button>,
-        defaultOpen: true,
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        await userEvent.click(canvas.getByTestId('ModalTrigger'));
     },
 };

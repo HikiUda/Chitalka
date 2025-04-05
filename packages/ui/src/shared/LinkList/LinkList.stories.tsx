@@ -25,7 +25,7 @@ const items: LinkListItem[] = [
         to: '',
     },
 ];
-
+/** Have all props from AppLink */
 const meta: Meta<typeof LinkList> = {
     title: 'shared/LinkList',
     component: LinkList,

@@ -9,13 +9,18 @@ import cls from './MiniOutline.module.scss';
 
 interface MiniOutlineProps {
     className?: string;
+    'data-testid'?: string;
 }
 
 export const MiniOutline = memo((props: MiniOutlineProps) => {
-    const { className } = props;
+    const { className, ...otherProps } = props;
 
     return (
-        <Button theme="outline" className={classNames(cls.MiniOutline, {}, [getFlex()])}>
+        <Button
+            {...otherProps}
+            theme="outline"
+            className={classNames(cls.MiniOutline, {}, [getFlex(), className])}
+        >
             <SelectValue />
             <Icon Svg={SelectArrowIcon} width={10} height={10} className={cls.icon} />
         </Button>

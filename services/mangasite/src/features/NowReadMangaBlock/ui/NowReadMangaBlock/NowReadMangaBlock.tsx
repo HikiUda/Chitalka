@@ -17,7 +17,7 @@ export const NowReadMangaBlock: FC<NowReadMangaBlockProps> = (props) => {
     return (
         <CardBlock className={classNames(cls.NowReadMangaBlock, {}, [className])}>
             <HStack justify="between" className={cls.title}>
-                <Heading HeaderTag="h2" color="primary">
+                <Heading HeadingTag="h2" color="primary">
                     Сейчас читают
                 </Heading>
                 <SelectTimeRange />

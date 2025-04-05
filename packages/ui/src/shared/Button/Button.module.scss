@@ -59,14 +59,13 @@
     &:not(.bgHover) {
         background: none;
         padding: 0;
+    }
+    &.primary {
+        color: var(--primary-color);
+    }
 
-        &.primary {
-            color: var(--primary-color);
-        }
-
-        &.secondary {
-            color: var(--secondary-color);
-        }
+    &.secondary {
+        color: var(--secondary-color);
     }
 }
 
@@ -87,9 +86,5 @@
 
     &.secondary {
         background: var(--secondary-color);
-    }
-
-    &.block {
-        background: var(--block-color);
     }
 }

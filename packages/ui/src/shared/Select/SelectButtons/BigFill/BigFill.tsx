@@ -9,17 +9,19 @@ import cls from './BigFill.module.scss';
 
 interface BigFillProps {
     className?: string;
+    'data-testid'?: string;
 }
 
 export const BigFill = memo((props: BigFillProps) => {
-    const { className } = props;
+    const { className, ...otherProps } = props;
 
     return (
         <Button
+            {...otherProps}
             max
             theme="fill"
             color="secondary"
-            className={classNames(cls.BigFill, {}, [getFlex({ justify: 'between' })])}
+            className={classNames(cls.BigFill, {}, [getFlex({ justify: 'between' }), className])}
         >
             <SelectValue />
             <Icon Svg={SelectArrowIcon} width={10} height={10} className={cls.icon} />

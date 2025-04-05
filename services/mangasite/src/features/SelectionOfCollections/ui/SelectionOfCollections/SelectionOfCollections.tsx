@@ -13,7 +13,7 @@ export const SelectionOfCollections: FC<SelectionOfCollectionsProps> = (props) =
 
     return (
         <div className={classNames('', {}, [className])}>
-            <Heading className={cls.title} HeaderTag="h2" color="primary">
+            <Heading className={cls.title} HeadingTag="h2" color="primary">
                 Коллекции других пользователей
             </Heading>
             <div className={cls.collectionList}>
