@@ -17,18 +17,18 @@ interface MangaPageProps {
 
 const MangaPage: FC<MangaPageProps> = (props) => {
     const { className } = props;
+    //TODO handle mangaId is undefinded
     const { id: mangaId } = useParams();
-    const { data: manga } = useGetManga(mangaId || 0);
-    if (!manga) return null;
+    const { data: manga, isLoading } = useGetManga(mangaId || 0);
     return (
         <Page>
             <div className={classNames(cls.MangaPage, {}, [className])}>
-                <Banner banner={manga.banner} className={cls.banner} />
-                <Cover mangaId={manga.id} cover={manga.cover} className={cls.cover} />
-                <MangaTitle manga={manga} className={cls.title} />
+                <Banner banner={manga?.banner} className={cls.banner} />
+                <Cover mangaId={manga?.id} cover={manga?.cover} className={cls.cover} />
+                <MangaTitle manga={manga} className={cls.title} isLoading={isLoading} />
                 <ButtonBlock className={cls.btnBlock} />
-                <Sidebar manga={manga} className={cls.sidebar} />
-                <MangaPageContent manga={manga} className={cls.content} />
+                <Sidebar manga={manga} className={cls.sidebar} isLaoding={isLoading} />
+                <MangaPageContent mangaId={mangaId || 0} className={cls.content} />
             </div>
         </Page>
     );

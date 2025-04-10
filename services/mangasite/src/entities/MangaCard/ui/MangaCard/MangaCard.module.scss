@@ -40,7 +40,7 @@
 .label2,
 .label3 {
     position: absolute;
-    background: var(--primary-color);
+
     padding: 2px 4px;
     border-radius: 2px;
     font: var(--font-s);
@@ -51,6 +51,7 @@
     top: 7px;
     left: -5px;
     max-width: 30px;
+    background: var(--primary-color);
 }
 
 .label2 {
@@ -59,6 +60,7 @@
     max-width: 60px;
     text-overflow: ellipsis;
     text-align: center;
+    background: var(--secondary-color);
 }
 
 .label3 {

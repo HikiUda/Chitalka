@@ -14,20 +14,25 @@ interface ProgressReadMangaCardInlineProps {
     className?: string;
     manga: MangaListItemContinueReadType;
     onDelete?: (mangaId: number) => void;
+    isDisabled?: boolean;
 }
 
 export const ProgressReadMangaCardInline = memo((props: ProgressReadMangaCardInlineProps) => {
-    const { className, manga, onDelete } = props;
+    const { className, manga, onDelete, isDisabled } = props;
     //TODO link
     return (
         <CardBlock
-            className={classNames(cls.ProgressReadMangaCardInline, {}, [className])}
+            className={classNames(
+                cls.ProgressReadMangaCardInline,
+                { [cls.cardDisabled]: isDisabled },
+                [className],
+            )}
             backgroundColor="bg"
         >
             <MangaCardInline
                 img={manga.cover}
                 title={manga.title}
-                to={getMangaSiteRoute.manga(manga.urlId)}
+                to={isDisabled ? '' : getMangaSiteRoute.manga(manga.urlId)}
                 className={cls.card}
             >
                 <ProgressBar
@@ -38,15 +43,18 @@ export const ProgressReadMangaCardInline = memo((props: ProgressReadMangaCardInl
                     valueLabel={`${manga.readedChapters} из ${manga.chapterCount}`}
                 />
             </MangaCardInline>
-            <Button
-                onPress={() => onDelete?.(manga.id)}
-                className={cls.deleteBtn}
-                theme="fill"
-                color="none"
-                noHover
-            >
-                <Icon width={12} height={12} Svg={CrossoutSvg} />
-            </Button>
+            {onDelete && (
+                <Button
+                    onPress={() => onDelete?.(manga.id)}
+                    className={cls.deleteBtn}
+                    theme="fill"
+                    color="none"
+                    noHover
+                    isDisabled={isDisabled}
+                >
+                    <Icon width={12} height={12} Svg={CrossoutSvg} />
+                </Button>
+            )}
         </CardBlock>
     );
 });

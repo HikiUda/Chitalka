@@ -4,7 +4,7 @@ import { parameters } from '@config/storybook/.storybook/preview';
 
 const preview: Preview = {
     parameters,
-    decorators: GlobalStoryDecorator(false),
+    decorators: GlobalStoryDecorator(),
 };
 
 export default preview;

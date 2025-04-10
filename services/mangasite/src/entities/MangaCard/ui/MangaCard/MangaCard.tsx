@@ -8,7 +8,7 @@ import { Heading } from '@packages/ui/src/shared/Heading';
 import { getStyleLineClamp } from '@packages/ui/src/shared/StyleHooks';
 import cls from './MangaCard.module.scss';
 
-type MangaCardAdaptive = 'dynamic' | 'media';
+export type MangaCardAdaptive = 'dynamic' | 'media';
 
 interface MangaCardProps {
     className?: string;

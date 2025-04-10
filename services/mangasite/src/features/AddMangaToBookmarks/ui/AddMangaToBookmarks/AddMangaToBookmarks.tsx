@@ -1,21 +1,32 @@
 import { memo, useState } from 'react';
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
-import { BigFill, Key, Select, SelectItem } from '@packages/ui/src/shared/Select';
+import { BigFill, Select, SelectItem } from '@packages/ui/src/shared/Select';
+import { Bookmarks, BookmarksType } from '@packages/model/src/entities/manga';
+import { useGetUserMangaBookmark } from '../../model/api/useGetUserMangaBookmark';
+import { useSetUserMangaBookmark } from '../../model/api/useSetUserMangaBookmark';
+import { useDeleteUserMangaBookmark } from '../../model/api/useDeleteMangaBookmark';
 import cls from './AddMangaToBookmarks.module.scss';
 
 interface AddMangaToBookmarksProps {
     className?: string;
+    mangaId: number;
 }
 
 const items = [
-    { id: 1, text: 'Читаю' },
-    { id: 2, text: 'В планах' },
-    { id: 3, text: 'Бросил' },
+    { bookmark: Bookmarks.Reading },
+    { bookmark: Bookmarks.Planned },
+    { bookmark: Bookmarks.Readed },
+    { bookmark: Bookmarks.Abandoned },
+    { bookmark: Bookmarks.Postponed },
 ];
 
 export const AddMangaToBookmarks = memo((props: AddMangaToBookmarksProps) => {
-    const { className } = props;
-    const [bookmark, setBookmark] = useState<Key>();
+    const { className, mangaId } = props;
+    const [bookmark, setBookmark] = useState<BookmarksType>();
+
+    const { data } = useGetUserMangaBookmark(mangaId);
+    const setUserBookmark = useSetUserMangaBookmark(mangaId);
+    const deleteUserBookmark = useDeleteUserMangaBookmark(mangaId);
 
     return (
         <Select
@@ -27,7 +38,7 @@ export const AddMangaToBookmarks = memo((props: AddMangaToBookmarksProps) => {
             selectButton={<BigFill />}
             max
         >
-            {(item) => <SelectItem id={item.id}>{item.text}</SelectItem>}
+            {(item) => <SelectItem id={item.bookmark}>{item.bookmark}</SelectItem>}
         </Select>
     );
 });

@@ -1,8 +1,9 @@
 import { FC } from 'react';
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
-import { TextDisclosure } from '@packages/ui/src/shared/TextDisclosure';
 import { HStack } from '@packages/ui/src/shared/Stack';
-import { MangaType } from '@packages/model/src/api/manga/types/manga';
+import { useGetManga } from '@packages/model/src/api/manga/useGetManga';
+import { MangaIdType } from '@packages/model/src/entities/manga/types/types';
+import { Description } from '../Description/Description';
 import cls from './AboutManga.module.scss';
 import { JanresAndTagsList } from '@/features/JanresAndTagsList';
 import { SimilarMangaSlider } from '@/features/SimilarMangaSlider';
@@ -11,21 +12,23 @@ import { MangaBookmarksStatistic } from '@/features/MangaBookmarksStatistic';
 
 interface AboutMangaProps {
     className?: string;
-    manga: MangaType;
+    mangaId: MangaIdType;
 }
 
 const AboutManga: FC<AboutMangaProps> = (props) => {
-    const { className, manga } = props;
+    const { className, mangaId } = props;
+    const { data: manga, isLoading } = useGetManga(mangaId);
     return (
         <div className={classNames(cls.AboutManga, {}, [className])}>
-            <TextDisclosure
+            <Description
+                description={manga?.description}
+                isLoading={isLoading}
                 className={cls.textDisclosure}
-                text={manga.description || 'Описание отсутствует'}
             />
-
             <JanresAndTagsList
-                janres={manga.janres}
-                tags={manga.tags}
+                janres={manga?.janres}
+                tags={manga?.tags}
+                isLoading={isLoading}
                 className={cls.janresAndTagsList}
             />
             <SimilarMangaSlider className={cls.similarMangaSlider} />

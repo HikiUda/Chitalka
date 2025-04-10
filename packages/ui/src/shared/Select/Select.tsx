@@ -47,7 +47,7 @@ export const Select = <T extends object>(props: MySelectProps<T>) => {
         >
             <ASelect {...otherProps}>
                 <Label>{label}</Label>
-                {selectButton ? selectButton : <MiniOutline />}
+                {selectButton ? selectButton : <MiniOutline data-testid="SelectButtonByDefault" />}
                 <Popover className={classNames(cls.popover, { [cls.minWidthTarget]: max })}>
                     <ListBox items={items}>{children}</ListBox>
                 </Popover>

@@ -4,8 +4,8 @@ import { CardBlock } from '@packages/ui/src/shared/CardBlock';
 import { Heading } from '@packages/ui/src/shared/Heading';
 import { HStack } from '@packages/ui/src/shared/Stack';
 import { Button } from '@packages/ui/src/shared/Button';
-import { useGetContinueReadManga } from '../../model/api/useGetContinueReadManga';
-import { useDeleteContinueReadManga } from '../../model/api/useDeleteContinueReadManga';
+import { useGetContinueReadManga } from '../../model/api/useGetContinueReadManga/useGetContinueReadManga';
+import { useDeleteContinueReadManga } from '../../model/api/useDeleteContinueReadManga/useDeleteContinueReadManga';
 import cls from './ContinueReadMangaSlider.module.scss';
 import { MangaCardInlineSkeleton, ProgressReadMangaCardInline } from '@/entities/MangaCard';
 import { Slider } from '@/entities/Slider';
@@ -17,7 +17,7 @@ interface ContinueReadMangaSliderProps {
 export const ContinueReadMangaSlider: FC<ContinueReadMangaSliderProps> = (props) => {
     const { className } = props;
     const { data, isLoading } = useGetContinueReadManga();
-    const { deleteContinueReadManga } = useDeleteContinueReadManga();
+    const { deleteContinueReadManga, getIsPending } = useDeleteContinueReadManga();
     const slides = useMemo(() => {
         if (!data && isLoading) {
             return Array(4).fill(
@@ -30,11 +30,12 @@ export const ContinueReadMangaSlider: FC<ContinueReadMangaSliderProps> = (props)
         return data.map((manga) => (
             <ProgressReadMangaCardInline
                 onDelete={deleteContinueReadManga}
+                isDisabled={getIsPending(manga.id)}
                 key={manga.id}
                 manga={manga}
             />
         ));
-    }, [data, isLoading, deleteContinueReadManga]);
+    }, [data, isLoading, deleteContinueReadManga, getIsPending]);
 
     if (!isLoading && !data?.length) return null;
     return (
@@ -48,6 +49,7 @@ export const ContinueReadMangaSlider: FC<ContinueReadMangaSliderProps> = (props)
                     theme="clear"
                     noHover
                     className={cls.clean}
+                    isDisabled={getIsPending(0)}
                 >
                     очистить
                 </Button>

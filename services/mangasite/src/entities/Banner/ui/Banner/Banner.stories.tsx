@@ -1,10 +1,9 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Banner } from './Banner';
 
 const meta: Meta<typeof Banner> = {
-    title: 'shared/Banner',
+    title: 'entities/Banner',
     component: Banner,
 
     tags: ['autodocs'],

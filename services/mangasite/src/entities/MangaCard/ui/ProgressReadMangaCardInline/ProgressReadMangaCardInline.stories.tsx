@@ -1,10 +1,10 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { mangaListItem } from '../../model/mocks/mangaListItem';
 import { ProgressReadMangaCardInline } from './ProgressReadMangaCardInline';
 
 const meta: Meta<typeof ProgressReadMangaCardInline> = {
-    title: 'shared/ProgressReadMangaCardInline',
+    title: 'entities/MangaCard/ProgressReadMangaCardInline',
     component: ProgressReadMangaCardInline,
 
     tags: ['autodocs'],
@@ -13,4 +13,14 @@ const meta: Meta<typeof ProgressReadMangaCardInline> = {
 export default meta;
 type Story = StoryObj<typeof ProgressReadMangaCardInline>;
 
-export const Primary: Story = {};
+export const Primary: Story = {
+    args: {
+        manga: mangaListItem,
+    },
+};
+export const WithDelete: Story = {
+    args: {
+        manga: mangaListItem,
+        onDelete: () => 8,
+    },
+};

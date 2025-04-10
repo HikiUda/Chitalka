@@ -6,10 +6,9 @@ import BookmarkSvg from '@ui/assets/icon/common/bookmark.svg';
 import LikeSvg from '@ui/assets/icon/common/like.svg';
 import { getMangaSiteRoute } from '@packages/model/src/config/router/mangaSiteRouter';
 import { HStack } from '@packages/ui/src/shared/Stack';
-import { Icon } from '@packages/ui/src/shared/Icon';
+import { IconInfoBirka } from '@packages/ui/src/shared/IconInfoBirka';
 import { MangaCardInline } from '../MangaCardInline/MangaCardInline';
 import { MangaListItemStatisticType } from '../../model/types/mangaListItemStatistic';
-import cls from './StatisticsMangaCardInline.module.scss';
 
 interface StatisticsMangaCardInlineProps {
     className?: string;
@@ -28,18 +27,13 @@ export const StatisticsMangaCardInline = memo((props: StatisticsMangaCardInlineP
             subtitle={manga.type}
         >
             <HStack justify="start">
-                <HStack className={cls.info} gap="4">
-                    <Icon Svg={EyeSvg} width={20} height={20} />
-                    {toShortcutNumber(manga.views)}
-                </HStack>
-                <HStack className={cls.info} gap="4">
-                    <Icon Svg={LikeSvg} width={20} height={20} />
-                    {toShortcutNumber(manga.likes)}
-                </HStack>
-                <HStack className={cls.info} gap="4">
-                    <Icon Svg={BookmarkSvg} width={20} height={20} />
-                    {toShortcutNumber(manga.bookmarks)}
-                </HStack>
+                <IconInfoBirka bgColor="none" Svg={EyeSvg} info={toShortcutNumber(manga.views)} />
+                <IconInfoBirka bgColor="none" Svg={LikeSvg} info={toShortcutNumber(manga.likes)} />
+                <IconInfoBirka
+                    bgColor="none"
+                    Svg={BookmarkSvg}
+                    info={toShortcutNumber(manga.bookmarks)}
+                />
             </HStack>
         </MangaCardInline>
     );

@@ -5,7 +5,7 @@ import { getFlex } from '../Stack';
 import cls from './IconInfoBirka.module.scss';
 
 type InfoColor = 'primary' | 'default';
-type BackgroundColor = 'secondary' | 'default';
+type BackgroundColor = 'secondary' | 'default' | 'none';
 
 interface IconInfoBirkaProps {
     className?: string;

@@ -15,6 +15,10 @@
     &:hover {
         opacity: 0.9;
     }
+
+    &[data-disabled] {
+        opacity: 0.7;
+    }
 }
 .cardBlockSkeleton {
     width: 300px;

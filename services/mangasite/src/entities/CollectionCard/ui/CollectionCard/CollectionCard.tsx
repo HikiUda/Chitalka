@@ -1,17 +1,16 @@
 import { memo } from 'react';
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
-import { AppLink } from '@ui/shared/AppLink';
-import { Heading } from '@ui/shared/Heading';
 import LikeIcon from '@ui/assets/icon/common/like.svg';
 import BookmarkIcon from '@ui/assets/icon/common/bookmark.svg';
 import BookIcon from '@ui/assets/icon/common/book.svg';
 import EyeIcon from '@ui/assets/icon/common/eye.svg';
 
-import { HStack, VStack } from '@ui/shared/Stack';
-
-import { AppAdaptiveImage } from '@ui/shared/AppAdaptiveImage';
-import { IconInfoBirka } from '@ui/shared/IconInfoBirka';
-import { getStyleLineClamp } from '@ui/shared/StyleHooks';
+import { AppLink } from '@packages/ui/src/shared/AppLink';
+import { HStack, VStack } from '@packages/ui/src/shared/Stack';
+import { Heading } from '@packages/ui/src/shared/Heading';
+import { AppAdaptiveImage } from '@packages/ui/src/shared/AppAdaptiveImage';
+import { IconInfoBirka } from '@packages/ui/src/shared/IconInfoBirka';
+import { getStyleLineClamp } from '@packages/ui/src/shared/StyleHooks';
 import cls from './CollectionCard.module.scss';
 
 interface CollectionCardProps {

@@ -1,10 +1,9 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { ColumePrimaryMangaCardInline } from './ColumePrimaryMangaCardInline';
 
 const meta: Meta<typeof ColumePrimaryMangaCardInline> = {
-    title: 'shared/ColumePrimaryMangaCardInline',
+    title: 'entities/MangaList/ColumePrimaryMangaCardInline',
     component: ColumePrimaryMangaCardInline,
 
     tags: ['autodocs'],

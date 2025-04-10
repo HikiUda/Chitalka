@@ -1,11 +1,12 @@
-import { $api } from '@packages/model/src/api/baseApi/kyBase';
+import { $apiManga } from '@packages/model/src/api/baseApi/kyBase';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import type { Pagination } from '@packages/model/src/types/pagination';
 import { MangaListItemLastUpdatedType } from '../../types/mangaListItemLastUpdated';
-// eslint-disable-next-line fsd-layer-import/layer-import
 
 export type MangaListItemLastUpdatedTypeScope = 'all' | 'popular' | 'my';
 export type MangaListItemLastUpdatedTypePagination = Pagination<MangaListItemLastUpdatedType>;
+
+export const GET_LAST_UPDATED_MANGA = 'last-updated-manga';
 
 export const useGetLastUpdatedMangas = (
     scope: MangaListItemLastUpdatedTypeScope = 'all',
@@ -13,10 +14,10 @@ export const useGetLastUpdatedMangas = (
 ) => {
     //TODO add lang
     const query = useInfiniteQuery({
-        queryKey: ['lastUpdatedMangas', scope, limit],
+        queryKey: [GET_LAST_UPDATED_MANGA, scope, limit],
         queryFn: async ({ pageParam }) => {
-            const data = await $api
-                .get<MangaListItemLastUpdatedTypePagination>('manga/last-updated-mangas', {
+            const data = await $apiManga
+                .get<MangaListItemLastUpdatedTypePagination>(GET_LAST_UPDATED_MANGA, {
                     searchParams: {
                         limit,
                         page: pageParam,

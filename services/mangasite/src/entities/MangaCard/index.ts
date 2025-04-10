@@ -12,3 +12,4 @@ export type { MangaListItemStatisticType } from './model/types/mangaListItemStat
 export type { MangaListItemLastUpdatedType } from './model/types/mangaListItemLastUpdated';
 export type { MangaListItemContinueReadType } from './model/types/mangaListItemContinueRead';
 export { useGetLastUpdatedMangas } from './model/api/useGetLastUpdatedMangas/useGetLastUpdatedMangas';
+export { mockGetMangaListItemRequest } from './model/mocks/mangaListItem';

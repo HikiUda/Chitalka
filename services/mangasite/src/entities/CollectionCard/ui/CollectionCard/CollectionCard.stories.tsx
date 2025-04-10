@@ -1,10 +1,9 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { CollectionCard } from './CollectionCard';
 
 const meta: Meta<typeof CollectionCard> = {
-    title: 'shared/CollectionCard',
+    title: 'entities/CollectionCard',
     component: CollectionCard,
 
     tags: ['autodocs'],
@@ -13,4 +12,12 @@ const meta: Meta<typeof CollectionCard> = {
 export default meta;
 type Story = StoryObj<typeof CollectionCard>;
 
-export const Primary: Story = {};
+export const Primary: Story = {
+    decorators: [
+        (Story) => (
+            <div style={{ width: 320 }}>
+                <Story />
+            </div>
+        ),
+    ],
+};

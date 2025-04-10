@@ -5,7 +5,7 @@ import { AuthUserType } from './types/authTypes';
 export const useLogoutQuery = () => {
     const queryClient = useQueryClient();
     const mutate = useMutation({
-        mutationFn: () => $api.post<AuthUserType>('auth/logout'),
+        mutationFn: () => $api.delete<AuthUserType>('auth/logout'),
         onSuccess: () => {
             sessionStorage.removeItem(ACCESS_TOKEN_SESSIONSTORAGE);
             queryClient.resetQueries();

@@ -59,7 +59,7 @@ export const mockGetMangaListItemRequest = (props: MockMangaListItemRequestProps
             };
         } else {
             const mangaList = getArrayMangaListItme(mangaCount);
-            json = mangaList;
+            json = { data: mangaList };
         }
 
         return HttpResponse.json(json);

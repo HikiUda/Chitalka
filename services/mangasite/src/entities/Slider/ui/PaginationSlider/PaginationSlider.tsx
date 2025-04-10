@@ -23,7 +23,6 @@ export const PaginationSlider: FC<PaginationSliderProps> = (props) => {
             className={classNames(cls.PaginationSlider, {}, [className])}
             slidesPerView={1}
             spaceBetween={30}
-            onSlideChange={() => console.log('slide change')}
             modules={[Pagination]}
             pagination={pagination}
         >

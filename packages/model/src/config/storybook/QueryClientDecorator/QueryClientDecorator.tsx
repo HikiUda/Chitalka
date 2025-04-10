@@ -1,15 +1,38 @@
 import { Decorator } from '@storybook/react/*';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+
+type ClientStateType = 'query' | 'loading' | 'error';
 
 const queryClient = new QueryClient({
     defaultOptions: { queries: { retry: false } },
 });
-export function QueryClientDecorator(withDevTools: boolean = true): Decorator {
+const errorClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            queryFn: () => Promise.reject(new Error('Forced error')),
+            retry: false,
+        },
+    },
+});
+const loadingClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            queryFn: () => new Promise(() => {}),
+            retry: true,
+            retryDelay: 100000000000,
+        },
+    },
+});
+
+const clientMap: Record<ClientStateType, QueryClient> = {
+    query: queryClient,
+    loading: loadingClient,
+    error: errorClient,
+};
+export function QueryClientDecorator(clientState: ClientStateType = 'query'): Decorator {
     return (Story) => (
-        <QueryClientProvider client={queryClient}>
+        <QueryClientProvider client={clientMap[clientState]}>
             <Story />
-            {withDevTools && <ReactQueryDevtools initialIsOpen={false} />}
         </QueryClientProvider>
     );
 }

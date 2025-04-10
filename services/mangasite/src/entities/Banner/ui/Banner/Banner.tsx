@@ -5,7 +5,7 @@ import cls from './Banner.module.scss';
 
 interface BannerProps {
     className?: string;
-    banner: string | null;
+    banner?: string | null;
 }
 
 export const Banner = memo((props: BannerProps) => {

@@ -3,12 +3,16 @@ import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { CardBlock } from '@packages/ui/src/shared/CardBlock';
 import cls from './RecentUpdatedPopularMangaSlider.module.scss';
 import { Slider } from '@/entities/Slider';
-import { LastChapterMangaCard, MangaCardSkeleton } from '@/entities/MangaCard';
-import { useGetLastUpdatedMangas } from '@/entities/MangaCard';
+import {
+    LastChapterMangaCard,
+    MangaCardSkeleton,
+    useGetLastUpdatedMangas,
+} from '@/entities/MangaCard';
 
 interface RecentUpdatedPopularMangaSliderProps {
     className?: string;
 }
+
 export const RecentUpdatedPopularMangaSlider: FC<RecentUpdatedPopularMangaSliderProps> = (
     props,
 ) => {

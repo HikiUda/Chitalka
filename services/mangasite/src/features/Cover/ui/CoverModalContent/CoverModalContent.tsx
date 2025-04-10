@@ -5,12 +5,12 @@ import cls from './CoverModalContent.module.scss';
 import { PaginationSlider } from '@/entities/Slider';
 
 interface CoverModalContentProps {
-    mangaId: number;
+    mangaId?: number;
 }
 
 const CoverModalContent = memo(({ mangaId }: CoverModalContentProps) => {
     //TODO loader
-    const { data: covers, isLoading } = useGetMangaCovers(mangaId);
+    const { data: covers, isLoading } = useGetMangaCovers(mangaId || 0);
     const slides = useMemo(() => {
         if (!covers && isLoading) return [<div key={0} className={cls.loader} />];
         if (!covers) return [];

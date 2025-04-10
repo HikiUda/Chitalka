@@ -1,4 +1,4 @@
-import { MangaTypeType, BookmarksType } from '@packages/model/src/entities/manga';
+import { BookmarksType, MangaTypeType } from '@packages/model/src/entities/manga';
 
 export interface MangaListItemBase {
     id: number;

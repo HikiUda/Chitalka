@@ -1,10 +1,10 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { mangaListItem } from '../../model/mocks/mangaListItem';
 import { LastUpdatedMangaCardInline } from './LastUpdatedMangaCardInline';
 
 const meta: Meta<typeof LastUpdatedMangaCardInline> = {
-    title: 'shared/LastUpdatedMangaCardInline',
+    title: 'entities/MangaCard/LastUpdatedMangaCardInline',
     component: LastUpdatedMangaCardInline,
 
     tags: ['autodocs'],
@@ -13,4 +13,8 @@ const meta: Meta<typeof LastUpdatedMangaCardInline> = {
 export default meta;
 type Story = StoryObj<typeof LastUpdatedMangaCardInline>;
 
-export const Primary: Story = {};
+export const Primary: Story = {
+    args: {
+        manga: mangaListItem,
+    },
+};

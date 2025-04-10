@@ -1,8 +1,9 @@
 import { memo } from 'react';
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { VStack } from '@packages/ui/src/shared/Stack';
-import { useGetUserLastSearchQueries } from '../../model/api/useGetUserLastSearchQueries';
+import { useQuery } from '@tanstack/react-query';
 import { ResentSearchItem } from './ResentSearchItem';
+import { QuickSearch } from '@/shared/api/mangaList';
 
 interface ResentSearchProps {
     className?: string;
@@ -11,7 +12,7 @@ interface ResentSearchProps {
 
 export const ResentSearch = memo((props: ResentSearchProps) => {
     const { className, onSelectSearch } = props;
-    const { data = [] } = useGetUserLastSearchQueries();
+    const { data = [] } = useQuery(QuickSearch.getLastSearchQueryOptions());
 
     if (!data.length) return null;
 

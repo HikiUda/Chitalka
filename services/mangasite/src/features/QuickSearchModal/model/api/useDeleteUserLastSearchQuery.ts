@@ -1,20 +1,17 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { $api } from '@packages/model/src/api/baseApi/kyBase';
-import { QUERY_KEY_GET_USER_LAST_SEARCHQEURIES } from './useGetUserLastSearchQueries';
+import { QuickSearch } from '@/shared/api/mangaList';
 
 export const useDeleteUserLastSearchQuery = () => {
     const queryClient = useQueryClient();
     const mutate = useMutation({
-        mutationFn: async (search: string) => {
-            await $api.delete('/manga/user-last-search-query', { json: { search } });
-        },
+        mutationFn: (search: string) => QuickSearch.deleteLastSearch(search),
         onSuccess: (_, search) => {
-            const lastSearch = queryClient.getQueryData([
-                QUERY_KEY_GET_USER_LAST_SEARCHQEURIES,
-            ]) as string[];
+            const lastSearch = queryClient.getQueryData(
+                QuickSearch.getLastSearchQueryOptions().queryKey,
+            );
             if (lastSearch) {
                 queryClient.setQueryData(
-                    [QUERY_KEY_GET_USER_LAST_SEARCHQEURIES],
+                    QuickSearch.getLastSearchQueryOptions().queryKey,
                     lastSearch.filter((s) => s !== search),
                 );
             }

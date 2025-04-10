@@ -1,10 +1,15 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Slider } from './Slider';
+import { getArrayMangaListItme } from '@/entities/MangaCard/testing';
+import { LastChapterMangaCard } from '@/entities/MangaCard';
+
+const slides = getArrayMangaListItme(10).map((manga) => {
+    return <LastChapterMangaCard key={manga.id} manga={manga} />;
+});
 
 const meta: Meta<typeof Slider> = {
-    title: 'shared/Slider',
+    title: 'entities/Slider/Slider',
     component: Slider,
 
     tags: ['autodocs'],
@@ -13,4 +18,6 @@ const meta: Meta<typeof Slider> = {
 export default meta;
 type Story = StoryObj<typeof Slider>;
 
-export const Primary: Story = {};
+export const Primary: Story = {
+    args: { slides },
+};
