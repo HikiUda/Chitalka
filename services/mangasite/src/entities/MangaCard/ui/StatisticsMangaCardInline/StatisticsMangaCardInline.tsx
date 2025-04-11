@@ -8,7 +8,7 @@ import { getMangaSiteRoute } from '@packages/model/src/config/router/mangaSiteRo
 import { HStack } from '@packages/ui/src/shared/Stack';
 import { IconInfoBirka } from '@packages/ui/src/shared/IconInfoBirka';
 import { MangaCardInline } from '../MangaCardInline/MangaCardInline';
-import { MangaListItemStatisticType } from '../../model/types/mangaListItemStatistic';
+import { MangaListItemStatisticType } from '@/shared/api/mangaList';
 
 interface StatisticsMangaCardInlineProps {
     className?: string;

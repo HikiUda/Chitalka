@@ -1,4 +1,4 @@
-import { FC, useCallback } from 'react';
+import { FC, useCallback, useState } from 'react';
 import { HStack } from '@packages/ui/src/shared/Stack';
 import { Icon } from '@packages/ui/src/shared/Icon';
 import { Input } from '@packages/ui/src/shared/Input';
@@ -7,14 +7,16 @@ import { useDebounce } from '@packages/model/src/lib/hooks/useDebounce/useDeboun
 import { useQuery } from '@tanstack/react-query';
 import { MangaSearchList } from '../MangaSearchList/MangaSearchList';
 import { ResentSearch } from '../ResentSearch/ResentSearch';
-import { useQuickSearchStore } from '../../model/slices/QuickSearchStore';
+import { QuickSearchApi } from '../../model/api/quickSearch';
 import cls from './QuickSearchModalContent.module.scss';
-import { QuickSearch } from '@/shared/api/mangaList';
 
 const QuickSearchModalContent: FC = () => {
-    const search = useQuickSearchStore.use.search();
-    const setSearch = useQuickSearchStore.use.setSearch();
-    const { data, refetch, isFetching } = useQuery(QuickSearch.quickSearchQueryOptions(search));
+    const [search, setSearch] = useState('');
+    const {
+        data = [],
+        refetch,
+        isFetching,
+    } = useQuery(QuickSearchApi.quickSearchQueryOptions(search));
 
     const goSearch = useDebounce(() => refetch(), 200);
 
@@ -38,7 +40,7 @@ const QuickSearchModalContent: FC = () => {
                 />
             </HStack>
             <ResentSearch onSelectSearch={handleSetSearch} className={cls.block} />
-            <MangaSearchList mangaList={data ?? []} isLoading={isFetching} />
+            <MangaSearchList mangaList={data} isLoading={isFetching} />
         </>
     );
 };

@@ -1,13 +1,11 @@
 import { FC, useMemo } from 'react';
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { CardBlock } from '@packages/ui/src/shared/CardBlock';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import cls from './RecentUpdatedPopularMangaSlider.module.scss';
 import { Slider } from '@/entities/Slider';
-import {
-    LastChapterMangaCard,
-    MangaCardSkeleton,
-    useGetLastUpdatedMangas,
-} from '@/entities/MangaCard';
+import { LastChapterMangaCard, MangaCardSkeleton } from '@/entities/MangaCard';
+import { LastUpdatedMangaApi } from '@/shared/api/mangaList';
 
 interface RecentUpdatedPopularMangaSliderProps {
     className?: string;
@@ -17,7 +15,9 @@ export const RecentUpdatedPopularMangaSlider: FC<RecentUpdatedPopularMangaSlider
     props,
 ) => {
     const { className } = props;
-    const { data, isLoading } = useGetLastUpdatedMangas('popular', 15);
+    const { data, isLoading } = useInfiniteQuery(
+        LastUpdatedMangaApi.getLastUpdatedInfinityQueryOptions('popular', 15),
+    );
     const slides = useMemo(() => {
         if (!data && isLoading) {
             return Array(8).fill(<MangaCardSkeleton />);

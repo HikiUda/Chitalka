@@ -1,8 +1,9 @@
 import { FC } from 'react';
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import { TabScroll } from '../TabScroll/TabScroll';
 import { LastUpdatedMangaCardInlineColume } from '@/entities/MangaList';
-import { useGetLastUpdatedMangas } from '@/entities/MangaCard';
+import { LastUpdatedMangaApi } from '@/shared/api/mangaList';
 
 interface AllLastUpdatedTabProps {
     className?: string;
@@ -11,8 +12,9 @@ interface AllLastUpdatedTabProps {
 const AllLastUpdatedTab: FC<AllLastUpdatedTabProps> = (props) => {
     const { className } = props;
 
-    const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isFetching } =
-        useGetLastUpdatedMangas();
+    const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isFetching } = useInfiniteQuery(
+        LastUpdatedMangaApi.getLastUpdatedInfinityQueryOptions(),
+    );
 
     return (
         <TabScroll

@@ -406,6 +406,9 @@ importers:
       lint-staged:
         specifier: 12.3.2
         version: 12.3.2
+      msw:
+        specifier: ^2.7.3
+        version: 2.7.3(@types/node@22.13.17)(typescript@5.8.2)
       regenerator-runtime:
         specifier: ^0.14.1
         version: 0.14.1

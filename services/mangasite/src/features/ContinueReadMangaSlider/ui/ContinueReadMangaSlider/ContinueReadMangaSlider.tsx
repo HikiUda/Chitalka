@@ -4,8 +4,10 @@ import { CardBlock } from '@packages/ui/src/shared/CardBlock';
 import { Heading } from '@packages/ui/src/shared/Heading';
 import { HStack } from '@packages/ui/src/shared/Stack';
 import { Button } from '@packages/ui/src/shared/Button';
-import { useGetContinueReadManga } from '../../model/api/useGetContinueReadManga/useGetContinueReadManga';
-import { useDeleteContinueReadManga } from '../../model/api/useDeleteContinueReadManga/useDeleteContinueReadManga';
+import { useQuery } from '@tanstack/react-query';
+import { UserDataApi } from '@packages/model/src/api/auth';
+import { useDeleteContinueReadManga } from '../../model/api/useDeleteContinueReadManga';
+import { ContinueReadMangaApi } from '../../model/api/continueReadMangaApi';
 import cls from './ContinueReadMangaSlider.module.scss';
 import { MangaCardInlineSkeleton, ProgressReadMangaCardInline } from '@/entities/MangaCard';
 import { Slider } from '@/entities/Slider';
@@ -16,7 +18,9 @@ interface ContinueReadMangaSliderProps {
 
 export const ContinueReadMangaSlider: FC<ContinueReadMangaSliderProps> = (props) => {
     const { className } = props;
-    const { data, isLoading } = useGetContinueReadManga();
+    const { data, isLoading } = useQuery(ContinueReadMangaApi.getContinueReadMangaQueryOptions());
+    const user = useQuery(UserDataApi.getUserDataQueryOptions());
+
     const { deleteContinueReadManga, getIsPending } = useDeleteContinueReadManga();
     const slides = useMemo(() => {
         if (!data && isLoading) {
@@ -36,7 +40,7 @@ export const ContinueReadMangaSlider: FC<ContinueReadMangaSliderProps> = (props)
             />
         ));
     }, [data, isLoading, deleteContinueReadManga, getIsPending]);
-
+    if (!user.data) return null;
     if (!isLoading && !data?.length) return null;
     return (
         <CardBlock className={classNames(cls.ContinueReadMangaSlider, {}, [className])}>

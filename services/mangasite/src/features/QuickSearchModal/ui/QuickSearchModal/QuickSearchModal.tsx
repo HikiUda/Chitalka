@@ -20,6 +20,7 @@ export const QuickSearchModal: FC<QuickSearchModalProps> = (props) => {
     const modalTrigger = (
         <Button
             color="none"
+            data-testid="QuickSearchModal-Button"
             bold={!isMobile}
             className={classNames(cls.modalTrigger, { [cls.mobile]: isMobile }, [className])}
         >

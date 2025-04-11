@@ -5,7 +5,8 @@ import ArrowSvg from '@packages/ui/src/assets/icon/common/arrow.svg';
 import { AppLink } from '@packages/ui/src/shared/AppLink';
 import { getFlex, HStack, VStack } from '@packages/ui/src/shared/Stack';
 import { Icon } from '@packages/ui/src/shared/Icon';
-import { useGetUserDataQuery } from '@packages/model/src/api/auth';
+import { UserDataApi } from '@packages/model/src/api/auth';
+import { useQuery } from '@tanstack/react-query';
 import cls from './ProfileLink.module.scss';
 
 interface ProfileLinkProps {
@@ -15,13 +16,12 @@ interface ProfileLinkProps {
 export const ProfileLink = memo((props: ProfileLinkProps) => {
     const { className } = props;
 
-    const { data, isLoading } = useGetUserDataQuery();
+    const { data, isLoading } = useQuery(UserDataApi.getUserDataQueryOptions());
 
     return (
         <AppLink
             //TODO link
             to={'/mangasite'}
-            theme="none"
             className={classNames(cls.ProfileLink, {}, [
                 className,
                 getFlex({ gap: '16', max: true, justify: 'start' }),

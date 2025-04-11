@@ -7,8 +7,8 @@ import CrossoutSvg from '@ui/assets/icon/common/crossout.svg';
 import { Icon } from '@packages/ui/src/shared/Icon/Icon';
 import { getMangaSiteRoute } from '@packages/model/src/config/router/mangaSiteRouter';
 import { MangaCardInline } from '../MangaCardInline/MangaCardInline';
-import { MangaListItemContinueReadType } from '../../model/types/mangaListItemContinueRead';
 import cls from './ProgressReadMangaCardInline.module.scss';
+import { MangaListItemContinueReadType } from '@/shared/api/mangaList';
 
 interface ProgressReadMangaCardInlineProps {
     className?: string;

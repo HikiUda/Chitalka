@@ -16,26 +16,35 @@ interface ResentSearchItemProps {
 
 export const ResentSearchItem = memo((props: ResentSearchItemProps) => {
     const { className, children, onSelectSearch } = props;
-    const deleteSearchQuery = useDeleteUserLastSearchQuery();
+    const { deleteLastSearch, getIsPending } = useDeleteUserLastSearchQuery();
 
     const handleDelete = useCallback(
         (value: string | undefined) => {
             if (value) {
-                deleteSearchQuery(value);
+                deleteLastSearch(value);
             }
         },
-        [deleteSearchQuery],
+        [deleteLastSearch],
     );
 
     return (
         <HStack
             onClick={() => children && onSelectSearch?.(children)}
             max
-            className={classNames(cls.ResentSearchItem, {}, [className])}
+            className={classNames(
+                cls.ResentSearchItem,
+                { [cls.disabled]: getIsPending(children || '') },
+                [className],
+            )}
         >
             <Icon Svg={HistoryBackSvg} width={20} height={20} />
             <p className={cls.itemChild}>{children}</p>
-            <Button theme="clear" noHover onPress={() => handleDelete(children)}>
+            <Button
+                isDisabled={getIsPending(children || '')}
+                theme="clear"
+                noHover
+                onPress={() => handleDelete(children)}
+            >
                 <Icon Svg={CrossoutSvg} width={12} height={12} />
             </Button>
         </HStack>

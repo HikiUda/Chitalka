@@ -2,7 +2,8 @@ import { FC } from 'react';
 import { HStack } from '@packages/ui/src/shared/Stack';
 import { Icon } from '@packages/ui/src/shared/Icon';
 import QuestionSvg from '@packages/ui/src/assets/icon/common/question.svg';
-import { useGetUserDataQuery } from '@packages/model/src/api/auth/useGetUserDataQuery';
+import { useQuery } from '@tanstack/react-query';
+import { UserDataApi } from '@packages/model/src/api/auth';
 import { LogoMangaSite } from '@/entities/Logo';
 import { CatalogLink, CollectionLink } from '@/entities/MangaSiteLinks';
 import { QuickSearchModal } from '@/features/QuickSearchModal';
@@ -16,7 +17,7 @@ interface HeaderMainContentProps {
 export const HeaderMainContent: FC<HeaderMainContentProps> = (props) => {
     const { className } = props;
 
-    const { data } = useGetUserDataQuery();
+    const { data } = useQuery(UserDataApi.getUserDataQueryOptions());
 
     return (
         <HStack justify="between">

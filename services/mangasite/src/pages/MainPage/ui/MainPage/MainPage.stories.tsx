@@ -1,8 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { PageDecorator } from '@packages/model/src/config/storybook/PageDecorator/PageDecorator';
+import { mockGetUserData } from '@packages/model/src/api/auth/mockAuthApi';
 import MainPage from './MainPage';
 import { Header } from '@/widgets/Header';
-import { mockUseGetLastUpdatedMangas } from '@/entities/MangaCard/testing';
+import { mockLastUpdatedMangaApi } from '@/shared/api/mangaList/testing';
+import { mockContinueReadMangaApi } from '@/features/ContinueReadMangaSlider/testing';
+import { mockQuickSearchApi } from '@/features/QuickSearchModal/testing';
 
 const meta: Meta<typeof MainPage> = {
     title: 'page/MainPage',
@@ -11,7 +14,12 @@ const meta: Meta<typeof MainPage> = {
     tags: ['autodocs'],
     parameters: {
         msw: {
-            handlers: [mockUseGetLastUpdatedMangas],
+            handlers: [
+                mockLastUpdatedMangaApi,
+                ...mockContinueReadMangaApi,
+                mockGetUserData,
+                ...mockQuickSearchApi,
+            ],
         },
     },
 };

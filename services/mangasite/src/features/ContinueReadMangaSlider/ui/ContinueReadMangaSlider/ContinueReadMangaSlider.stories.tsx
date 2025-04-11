@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { mockUseGetContinueReadManga } from '../../model/api/useGetContinueReadManga/mockUseGetContinueReadManga';
+import { mockContinueReadMangaApi } from '../../model/api/mockContinueReadMangaApi';
 import { ContinueReadMangaSlider } from './ContinueReadMangaSlider';
 
 const meta: Meta<typeof ContinueReadMangaSlider> = {
@@ -10,7 +10,7 @@ const meta: Meta<typeof ContinueReadMangaSlider> = {
     tags: ['autodocs'],
     parameters: {
         msw: {
-            handlers: [mockUseGetContinueReadManga],
+            handlers: mockContinueReadMangaApi,
         },
     },
 };

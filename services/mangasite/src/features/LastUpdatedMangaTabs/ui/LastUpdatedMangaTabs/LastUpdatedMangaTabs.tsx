@@ -2,10 +2,9 @@ import { FC, lazy, useMemo } from 'react';
 import { TabItem, Tabs } from '@packages/ui/src/shared/Tabs';
 import { VStack } from '@packages/ui/src/shared/Stack';
 import { Heading } from '@packages/ui/src/shared/Heading';
-import { useGetUserDataQuery } from '@packages/model/src/api/auth';
 import { CardBlock } from '@packages/ui/src/shared/CardBlock';
-// import { MyLastUpdatedTab } from '../MyLastUpdatedTab/MyLastUpdatedTab';
-// import { AllLastUpdatedTab } from '../AllLastUpdatedTab/AllLastUpdatedTab';
+import { useQuery } from '@tanstack/react-query';
+import { UserDataApi } from '@packages/model/src/api/auth';
 import cls from './LastUpdatedMangaTabs.module.scss';
 
 const MyLastUpdatedTab = lazy(() => import('../MyLastUpdatedTab/MyLastUpdatedTab'));
@@ -17,7 +16,7 @@ interface LastUpdatedMangaTabsProps {
 //TODO vertualized
 export const LastUpdatedMangaTabs: FC<LastUpdatedMangaTabsProps> = (props) => {
     const { className } = props;
-    const { data: userData } = useGetUserDataQuery();
+    const { data: userData } = useQuery(UserDataApi.getUserDataQueryOptions());
     const tabs: TabItem<string>[] = useMemo(() => {
         const tabArr = [
             {

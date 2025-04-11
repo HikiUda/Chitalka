@@ -48,7 +48,7 @@ const fetchIsAuth = async () => {
         sessionStorage.setItem(ACCESS_TOKEN_SESSIONSTORAGE, response.tokens.access);
         return response;
     } catch (e) {
-        console.log('⚠️ Token refresh failed:', e);
+        console.log('⚠️ Token refresh failed:');
         return null;
     }
 };

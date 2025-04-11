@@ -2,11 +2,8 @@ import { memo, useMemo } from 'react';
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { Heading } from '@packages/ui/src/shared/Heading';
 import cls from './MangaSearchList.module.scss';
-import {
-    StatisticsMangaCardInline,
-    MangaListItemStatisticType,
-    MangaCardInlineSkeleton,
-} from '@/entities/MangaCard';
+import { StatisticsMangaCardInline, MangaCardInlineSkeleton } from '@/entities/MangaCard';
+import { MangaListItemStatisticType } from '@/shared/api/mangaList';
 
 interface MangaSearchListProps {
     className?: string;

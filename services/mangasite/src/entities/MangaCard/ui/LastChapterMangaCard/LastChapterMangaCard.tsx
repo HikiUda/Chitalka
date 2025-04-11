@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { getMangaSiteRoute } from '@packages/model/src/config/router/mangaSiteRouter';
 import { MangaCard } from '../MangaCard/MangaCard';
-import { MangaListItemLastUpdatedType } from '../../model/types/mangaListItemLastUpdated';
+import { MangaListItemLastUpdatedType } from '@/shared/api/mangaList';
 
 interface LastChapterMangaCardProps {
     className?: string;

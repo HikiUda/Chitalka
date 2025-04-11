@@ -3,8 +3,8 @@ import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { formatDate } from '@packages/model/src/lib/helpers/formatDate';
 import { getMangaSiteRoute } from '@packages/model/src/config/router/mangaSiteRouter';
 import { MangaCardInline } from '../MangaCardInline/MangaCardInline';
-import { MangaListItemLastUpdatedType } from '../../model/types/mangaListItemLastUpdated';
 import cls from './LastUpdatedMangaCardInline.module.scss';
+import { MangaListItemLastUpdatedType } from '@/shared/api/mangaList';
 
 interface LastUpdatedMangaCardInlineProps {
     className?: string;

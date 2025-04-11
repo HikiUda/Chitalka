@@ -1,22 +1,25 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { QuickSearch } from '@/shared/api/mangaList';
+import { QuickSearchApi } from './quickSearch';
 
 export const useDeleteUserLastSearchQuery = () => {
     const queryClient = useQueryClient();
-    const mutate = useMutation({
-        mutationFn: (search: string) => QuickSearch.deleteLastSearch(search),
+    const { mutate, variables, isPending } = useMutation({
+        mutationFn: (search: string) => QuickSearchApi.deleteLastSearch(search),
         onSuccess: (_, search) => {
             const lastSearch = queryClient.getQueryData(
-                QuickSearch.getLastSearchQueryOptions().queryKey,
+                QuickSearchApi.getLastSearchQueryOptions().queryKey,
             );
             if (lastSearch) {
                 queryClient.setQueryData(
-                    QuickSearch.getLastSearchQueryOptions().queryKey,
+                    QuickSearchApi.getLastSearchQueryOptions().queryKey,
                     lastSearch.filter((s) => s !== search),
                 );
             }
         },
     });
 
-    return mutate.mutate;
+    return {
+        deleteLastSearch: mutate,
+        getIsPending: (search: string) => isPending && variables === search,
+    };
 };

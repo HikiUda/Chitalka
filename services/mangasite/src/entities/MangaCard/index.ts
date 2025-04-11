@@ -7,9 +7,3 @@ export { ProgressReadMangaCardInline } from './ui/ProgressReadMangaCardInline/Pr
 export { LastUpdatedMangaCardInline } from './ui/LastUpdatedMangaCardInline/LastUpdatedMangaCardInline';
 export { StatisticsMangaCardInline } from './ui/StatisticsMangaCardInline/StatisticsMangaCardInline';
 export { PrimaryMangaCardInline } from './ui/PrimaryMangaCardInline/PrimaryMangaCardInline';
-
-export type { MangaListItemStatisticType } from './model/types/mangaListItemStatistic';
-export type { MangaListItemLastUpdatedType } from './model/types/mangaListItemLastUpdated';
-export type { MangaListItemContinueReadType } from './model/types/mangaListItemContinueRead';
-export { useGetLastUpdatedMangas } from './model/api/useGetLastUpdatedMangas/useGetLastUpdatedMangas';
-export { mockGetMangaListItemRequest } from './model/mocks/mangaListItem';
