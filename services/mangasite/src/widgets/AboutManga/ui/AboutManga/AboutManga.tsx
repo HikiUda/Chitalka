@@ -1,14 +1,15 @@
 import { FC } from 'react';
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { HStack } from '@packages/ui/src/shared/Stack';
-import { useGetManga } from '@packages/model/src/api/manga/useGetManga';
-import { MangaIdType } from '@packages/model/src/entities/manga/types/types';
-import { Description } from '../Description/Description';
+import { useQuery } from '@tanstack/react-query';
+import { TextDisclosure } from '@packages/ui/src/shared/TextDisclosure';
+import { MangaIdType } from '@packages/model/src/entities/manga';
 import cls from './AboutManga.module.scss';
-import { JanresAndTagsList } from '@/features/JanresAndTagsList';
-import { SimilarMangaSlider } from '@/features/SimilarMangaSlider';
+import { GenresAndTagsList } from '@/features/GenresAndTagsList';
 import { MangaRateStatistic } from '@/features/MangaRateStatistic';
 import { MangaBookmarksStatistic } from '@/features/MangaBookmarksStatistic';
+import { MangaApi } from '@/shared/api/individualManga';
+import { RelatedMangaSlider } from '@/features/RelatedMangaSlider';
 
 interface AboutMangaProps {
     className?: string;
@@ -17,24 +18,25 @@ interface AboutMangaProps {
 
 const AboutManga: FC<AboutMangaProps> = (props) => {
     const { className, mangaId } = props;
-    const { data: manga, isLoading } = useGetManga(mangaId);
+    const { data: manga, isLoading, isError } = useQuery(MangaApi.getMangaQueryOptions(mangaId));
+    //TODO loading and error
+    if (!manga && isLoading) return <div>Loadign...</div>;
+    if (!manga || isError) return <div>Error</div>;
     return (
         <div className={classNames(cls.AboutManga, {}, [className])}>
-            <Description
-                description={manga?.description}
-                isLoading={isLoading}
+            <TextDisclosure
                 className={cls.textDisclosure}
+                text={manga.description || 'Описание отсутствует'}
             />
-            <JanresAndTagsList
-                janres={manga?.janres}
-                tags={manga?.tags}
-                isLoading={isLoading}
-                className={cls.janresAndTagsList}
+            <GenresAndTagsList
+                genres={manga.genres}
+                tags={manga.tags}
+                className={cls.genresAndTagsList}
             />
-            <SimilarMangaSlider className={cls.similarMangaSlider} />
+            <RelatedMangaSlider className={cls.relatedMangaSlider} mangaId={manga.id} />
             <HStack align="start" className={cls.statistic}>
-                <MangaRateStatistic className={cls.statisticBlock} />
-                <MangaBookmarksStatistic className={cls.statisticBlock} />
+                <MangaRateStatistic className={cls.statisticBlock} mangaId={manga.id} />
+                <MangaBookmarksStatistic className={cls.statisticBlock} mangaId={manga.id} />
             </HStack>
         </div>
     );

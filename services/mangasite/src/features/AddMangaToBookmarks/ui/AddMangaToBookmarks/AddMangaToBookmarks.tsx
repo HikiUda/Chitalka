@@ -1,10 +1,16 @@
-import { memo, useState } from 'react';
+import { memo, useCallback } from 'react';
+import { Menu, MenuItem } from '@packages/ui/src/shared/Menu';
+import ArrowSvg from '@packages/ui/src/assets/icon/common/sliderArrow.svg';
+import { Button } from '@packages/ui/src/shared/Button';
+import { useQuery } from '@tanstack/react-query';
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
-import { BigFill, Select, SelectItem } from '@packages/ui/src/shared/Select';
-import { Bookmarks, BookmarksType } from '@packages/model/src/entities/manga';
-import { useGetUserMangaBookmark } from '../../model/api/useGetUserMangaBookmark';
-import { useSetUserMangaBookmark } from '../../model/api/useSetUserMangaBookmark';
-import { useDeleteUserMangaBookmark } from '../../model/api/useDeleteMangaBookmark';
+import { getFlex } from '@packages/ui/src/shared/Stack';
+import { Icon } from '@packages/ui/src/shared/Icon';
+import { BookmarksType } from '@packages/model/src/entities/manga';
+import { MangaUserBookmarkApi } from '../../model/api/mangaUserBookmarkApi';
+import { bookmarks } from '../../model/const/bookmarks';
+import { useSetMangaUserBookmark } from '../../model/api/hooks/useSetMangaUserBookmark';
+import { useDeleteUserMangaBookmark } from '../../model/api/hooks/useDeleteMangaUserBookmark';
 import cls from './AddMangaToBookmarks.module.scss';
 
 interface AddMangaToBookmarksProps {
@@ -12,33 +18,55 @@ interface AddMangaToBookmarksProps {
     mangaId: number;
 }
 
-const items = [
-    { bookmark: Bookmarks.Reading },
-    { bookmark: Bookmarks.Planned },
-    { bookmark: Bookmarks.Readed },
-    { bookmark: Bookmarks.Abandoned },
-    { bookmark: Bookmarks.Postponed },
-];
-
 export const AddMangaToBookmarks = memo((props: AddMangaToBookmarksProps) => {
     const { className, mangaId } = props;
-    const [bookmark, setBookmark] = useState<BookmarksType>();
 
-    const { data } = useGetUserMangaBookmark(mangaId);
-    const setUserBookmark = useSetUserMangaBookmark(mangaId);
-    const deleteUserBookmark = useDeleteUserMangaBookmark(mangaId);
+    const { data } = useQuery(MangaUserBookmarkApi.getQueryOption(mangaId));
+    const { setBookmark, isPending: isPendingOnSet } = useSetMangaUserBookmark(mangaId);
+    const { deleteBookmark, isPending: isPendingOnDelete } = useDeleteUserMangaBookmark(mangaId);
 
-    return (
-        <Select
-            placeholder="+ Добавить в закладки"
-            items={items}
-            selectedKey={bookmark}
-            onSelectionChange={setBookmark}
-            className={classNames(cls.AddMangaToBookmarks, {}, [className])}
-            selectButton={<BigFill />}
+    const button = (
+        <Button
+            className={classNames(cls.button, {}, [className, getFlex({ justify: 'between' })])}
+            isDisabled={isPendingOnSet || isPendingOnDelete}
+            color="secondary"
+            theme="fill"
             max
         >
-            {(item) => <SelectItem id={item.bookmark}>{item.bookmark}</SelectItem>}
-        </Select>
+            {isPendingOnDelete || isPendingOnSet ? (
+                <div className={cls.loader} />
+            ) : (
+                <>
+                    {data?.bookmark ? data.bookmark : '+ Добавить в закладки'}
+                    <Icon className={cls.arrow} Svg={ArrowSvg} size={20} />
+                </>
+            )}
+        </Button>
+    );
+
+    const handleSetBookmark = useCallback(
+        (bookmark: BookmarksType) => {
+            if (bookmark !== data?.bookmark) setBookmark(bookmark);
+        },
+        [data?.bookmark, setBookmark],
+    );
+
+    return (
+        <Menu max button={button}>
+            {bookmarks.map((mark) => (
+                <MenuItem
+                    onAction={() => handleSetBookmark(mark.bookmark)}
+                    className={cls.menuItem}
+                    key={mark.bookmark}
+                >
+                    {mark.bookmark}
+                </MenuItem>
+            ))}
+            {data?.bookmark && (
+                <MenuItem onAction={deleteBookmark} className={cls.menuItem}>
+                    Удалить закладку
+                </MenuItem>
+            )}
+        </Menu>
     );
 });

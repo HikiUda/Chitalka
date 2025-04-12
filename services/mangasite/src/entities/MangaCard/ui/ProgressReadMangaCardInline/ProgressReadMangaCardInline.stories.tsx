@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { mangaListItem } from '../../model/mocks/mangaListItem';
 import { ProgressReadMangaCardInline } from './ProgressReadMangaCardInline';
+import { mangaListItem } from '@/shared/api/mangaList';
 
 const meta: Meta<typeof ProgressReadMangaCardInline> = {
     title: 'entities/MangaCard/ProgressReadMangaCardInline',

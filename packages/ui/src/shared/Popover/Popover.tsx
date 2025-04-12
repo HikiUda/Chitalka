@@ -19,16 +19,16 @@ interface MyPopoverProps extends Omit<PopoverProps, 'children'> {
 export const Popover = memo((props: MyPopoverProps) => {
     const { className, children, button, isOpen, ...otherProps } = props;
     const triggerRef = useRef(null);
-    const { isOpen: isOpenPop, handleIsOpne } = useFreePopover();
+    const { isOpen: isOpenPop, handleIsOpen } = useFreePopover();
     useEffect(() => {
-        handleIsOpne(!!isOpen);
+        handleIsOpen(!!isOpen);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
-        <ButtonContext.Provider value={{ onPress: () => handleIsOpne(true), ref: triggerRef }}>
+        <ButtonContext.Provider value={{ onPress: () => handleIsOpen(true), ref: triggerRef }}>
             <PopoverContext.Provider
-                value={{ isOpen: isOpenPop, onOpenChange: handleIsOpne, triggerRef }}
+                value={{ isOpen: isOpenPop, onOpenChange: handleIsOpen, triggerRef }}
             >
                 {button}
                 <APopover {...otherProps} className={classNames(cls.Popover, {}, [className])}>

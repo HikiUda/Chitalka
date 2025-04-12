@@ -1,21 +1,28 @@
 import { memo } from 'react';
-import { HStack } from '@packages/ui/src/shared/Stack';
 import { ProgressBar } from '@packages/ui/src/shared/ProgressBar';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import cls from './LineBookmarkStatistic.module.scss';
 
 interface LineBookmarkStatisticProps {
     className?: string;
+    percent?: number;
+    count?: number;
+    title?: string;
 }
 
 export const LineBookmarkStatistic = memo((props: LineBookmarkStatisticProps) => {
-    const { className } = props;
+    const { className, count, percent, title } = props;
 
     return (
-        <HStack max justify="start">
-            <span>Читаю</span>
-            <ProgressBar valueVisible={false} className={cls.max} value={50} />
-            <span>50%</span>
-            <span className={cls.count}>545</span>
-        </HStack>
+        <div className={classNames(cls.row, {}, [className])}>
+            <span className={cls.cell}>{title}</span>
+            <ProgressBar
+                valueVisible={false}
+                className={classNames(cls.max, {}, [cls.cell])}
+                value={percent}
+            />
+            <span className={cls.cell}>{`${percent}%`}</span>
+            <span className={classNames(cls.count, {}, [cls.cell])}>{count}</span>
+        </div>
     );
 });

@@ -31,9 +31,9 @@ interface MySelectProps<T extends object> extends Omit<SelectProps<T>, 'children
 
 export const Select = <T extends object>(props: MySelectProps<T>) => {
     const { label, children, items, selectButton, max, isOpen, ...otherProps } = props;
-    const { isOpen: isOpenPop, handleIsOpne } = useFreePopover();
+    const { isOpen: isOpenPop, handleIsOpen } = useFreePopover();
     useEffect(() => {
-        handleIsOpne(!!isOpen);
+        handleIsOpen(!!isOpen);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -41,7 +41,7 @@ export const Select = <T extends object>(props: MySelectProps<T>) => {
         <SelectContext.Provider
             value={{
                 isOpen: isOpenPop,
-                onOpenChange: handleIsOpne,
+                onOpenChange: handleIsOpen,
                 className: max ? cls.max : undefined,
             }}
         >

@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import AboutManga from './AboutManga';
 
 const meta: Meta<typeof AboutManga> = {
-    title: 'shared/AboutManga',
+    title: 'widgets/AboutManga',
     component: AboutManga,
 
     tags: ['autodocs'],

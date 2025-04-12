@@ -9,8 +9,8 @@ import cls from './Cover.module.scss';
 
 interface CoverProps {
     className?: string;
-    cover?: string | null;
-    mangaId?: number;
+    cover: string | null;
+    mangaId: number;
 }
 
 export const Cover = (props: CoverProps) => {

@@ -1,10 +1,9 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { MangaTitle } from './MangaTitle';
 
 const meta: Meta<typeof MangaTitle> = {
-    title: 'shared/MangaTitle',
+    title: 'page/MangaPage/MangaTitle',
     component: MangaTitle,
 
     tags: ['autodocs'],

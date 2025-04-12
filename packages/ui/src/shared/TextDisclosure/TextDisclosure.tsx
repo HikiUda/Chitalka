@@ -1,5 +1,6 @@
-import { FC, useCallback, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
+import { useLocation } from 'react-router-dom';
 import { Button } from '../Button';
 import cls from './TextDisclosure.module.scss';
 
@@ -14,16 +15,18 @@ export const TextDisclosure: FC<TextDisclosureProps> = (props) => {
     const [close, setClose] = useState(true);
     const [isOverflowing, setIsOverflowing] = useState(false);
 
-    const textRef = useCallback(
-        (el: HTMLDivElement | null) => {
-            if (el) {
-                const isOverflow = el.scrollHeight > el.clientHeight + 10;
-                setIsOverflowing(isOverflow);
-                setClose(!defaultOpen);
-            }
-        },
-        [defaultOpen],
-    );
+    const location = useLocation();
+
+    const textRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        const el = textRef.current;
+        if (el) {
+            const isOverflow = el.scrollHeight > el.clientHeight + 10;
+            setIsOverflowing(isOverflow);
+            setClose(!defaultOpen);
+        }
+    }, [location.pathname, text, defaultOpen]);
 
     return (
         <div className={classNames('', {}, [className])}>

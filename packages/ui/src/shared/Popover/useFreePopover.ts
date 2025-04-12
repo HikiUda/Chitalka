@@ -10,7 +10,7 @@ export function useFreePopover() {
         }
     }, [isOpen]);
 
-    const handleIsOpne = (state: boolean) => {
+    const handleIsOpen = (state: boolean) => {
         setIsOpen(state);
         preventDisableScroll(state);
     };
@@ -21,5 +21,5 @@ export function useFreePopover() {
             window.removeEventListener('scroll', cancel);
         };
     }, [cancel]);
-    return { isOpen, handleIsOpne };
+    return { isOpen, handleIsOpen };
 }

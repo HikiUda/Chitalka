@@ -9,20 +9,22 @@ interface MyMenuProps<T> extends MenuProps<T>, Omit<MenuTriggerProps, 'children'
     button: ReactElement;
     className?: string;
     children?: ReactNode;
+    max?: boolean;
 }
-// ? useless component
 export const MyMenu = <T extends object>({
     button,
     children,
     className,
+    max,
     ...props
 }: MyMenuProps<T>) => {
-    const { isOpen, handleIsOpne } = useFreePopover();
+    const { isOpen, handleIsOpen } = useFreePopover();
+
     return (
-        <MenuTrigger {...props} isOpen={isOpen} onOpenChange={handleIsOpne}>
+        <MenuTrigger {...props} isOpen={isOpen} onOpenChange={handleIsOpen}>
             {button}
-            <Popover>
-                <Menu {...props} className={classNames(cls.Menu, {}, [className])}>
+            <Popover className={cls.popover}>
+                <Menu {...props} className={classNames(cls.Menu, { [cls.max]: max }, [className])}>
                     {children}
                 </Menu>
             </Popover>

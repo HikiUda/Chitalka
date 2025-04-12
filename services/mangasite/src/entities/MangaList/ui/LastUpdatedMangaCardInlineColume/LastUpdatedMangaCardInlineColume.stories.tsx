@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { LastUpdatedMangaCardInlineColume } from './LastUpdatedMangaCardInlineColume';
-import { getArrayMangaListItme } from '@/entities/MangaCard/testing';
+import { getArrayMangaListItme } from '@/shared/api/mangaList';
 
 const meta: Meta<typeof LastUpdatedMangaCardInlineColume> = {
     title: 'entities/MangaList/LastUpdatedMangaCardInlineColume',

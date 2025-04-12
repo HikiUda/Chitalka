@@ -1,7 +1,7 @@
 export const mockUserData: UserData = {
     id: 1,
     name: 'wendsew',
-    avatar: 'wendsew',
+    avatar: null,
     jsonSettings: {},
 };
 
@@ -20,4 +20,4 @@ export const mockGetUserData = http.get('*/user', () => {
     return HttpResponse.json(mockUserData);
 });
 
-export const mockAuthApi = [mockLogin, mockLogout, mockRegistration, mockUserData];
+export const mockAuthApi = [mockLogin, mockLogout, mockRegistration, mockGetUserData];

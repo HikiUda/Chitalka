@@ -29,7 +29,7 @@ export const MangaCardInline = memo((props: MangaCardInlineProps) => {
             <AppAdaptiveImage className={cls.img} img={img} />
             <VStack align="stretch" gap="4" className={cls.content}>
                 <Heading
-                    className={classNames(cls.title, {}, [getStyleLineClamp({ wordBreak: true })])}
+                    className={classNames(cls.title, {}, [getStyleLineClamp({ huphens: true })])}
                     HeadingTag="h4"
                     bold
                 >

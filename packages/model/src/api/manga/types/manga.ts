@@ -1,4 +1,4 @@
-import type { User } from '@model/api/auth/types/user';
+import type { UserData } from '@model/api/auth/types/user';
 import type { BookmarksType, MangaStatusType, MangaTypeType } from '@model/entities/manga';
 
 export interface MangaTitle {
@@ -7,7 +7,7 @@ export interface MangaTitle {
     origin: string | null;
 }
 
-export interface MangaJanresAndTagType {
+export interface MangaGenresAndTagType {
     id: number;
     title: string;
 }
@@ -24,11 +24,11 @@ export interface MangaType {
     releaseDate: Date | null;
     status: MangaStatusType;
     type: MangaTypeType;
-    janres: MangaJanresAndTagType[];
-    tags: MangaJanresAndTagType[];
+    genres: MangaGenresAndTagType[];
+    tags: MangaGenresAndTagType[];
     cover: string | null;
     banner: string | null;
-    owner: Omit<User, 'jsonSettings'>;
+    owner: Omit<UserData, 'jsonSettings'>;
     authors: string[];
     artists: string[];
     publishers: string[];

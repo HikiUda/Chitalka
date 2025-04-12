@@ -1,6 +1,5 @@
 import { Decorator } from '@storybook/react/*';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-
 type ClientStateType = 'query' | 'loading' | 'error';
 
 const queryClient = new QueryClient({
@@ -30,9 +29,11 @@ const clientMap: Record<ClientStateType, QueryClient> = {
     error: errorClient,
 };
 export function QueryClientDecorator(clientState: ClientStateType = 'query'): Decorator {
-    return (Story) => (
-        <QueryClientProvider client={clientMap[clientState]}>
-            <Story />
-        </QueryClientProvider>
-    );
+    return (Story) => {
+        return (
+            <QueryClientProvider client={clientMap[clientState]}>
+                <Story />
+            </QueryClientProvider>
+        );
+    };
 }

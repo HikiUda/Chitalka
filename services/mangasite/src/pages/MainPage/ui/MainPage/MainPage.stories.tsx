@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { PageDecorator } from '@packages/model/src/config/storybook/PageDecorator/PageDecorator';
+import { BodyNotPaddingDecorator } from '@packages/model/src/config/storybook/StyleDecorator/BodyNotPaddingDecorator';
 import { mockGetUserData } from '@packages/model/src/api/auth/mockAuthApi';
 import MainPage from './MainPage';
 import { Header } from '@/widgets/Header';
@@ -12,6 +13,13 @@ const meta: Meta<typeof MainPage> = {
     component: MainPage,
 
     tags: ['autodocs'],
+    decorators: [BodyNotPaddingDecorator],
+};
+
+export default meta;
+type Story = StoryObj<typeof MainPage>;
+
+export const Primary: Story = {
     parameters: {
         msw: {
             handlers: [
@@ -22,11 +30,13 @@ const meta: Meta<typeof MainPage> = {
             ],
         },
     },
+    decorators: [PageDecorator(<Header />)],
 };
-
-export default meta;
-type Story = StoryObj<typeof MainPage>;
-
-export const Primary: Story = {
+export const NotAuth: Story = {
+    parameters: {
+        msw: {
+            handlers: [mockLastUpdatedMangaApi, ...mockContinueReadMangaApi, ...mockQuickSearchApi],
+        },
+    },
     decorators: [PageDecorator(<Header />)],
 };

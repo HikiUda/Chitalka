@@ -8,19 +8,18 @@ import { Rate } from './Rate';
 
 interface MangaTitleProps {
     className?: string;
-    manga?: MangaType;
-    isLoading?: boolean;
+    manga: MangaType;
 }
 
 export const MangaTitle = memo((props: MangaTitleProps) => {
-    const { className, manga, isLoading } = props;
+    const { className, manga } = props;
 
     //TODO long
     return (
         <div className={classNames(cls.MangaTitle, {}, [className])}>
             <HStack gap="32" max align="end">
-                <Titles title={manga?.title} isLoading={isLoading} />
-                <Rate rate={manga?.rate} countRate={manga?.countRate} isLoading={isLoading} />
+                <Titles title={manga.title} />
+                <Rate rate={manga.rate} countRate={manga.countRate} />
             </HStack>
         </div>
     );

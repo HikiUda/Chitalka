@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { $api } from '@packages/model/src/api/baseApi/kyBase';
-import { MangaIdType } from '@packages/model/src/entities/manga/types/types';
+import { MangaIdType } from '@packages/model/src/entities/manga';
 
 export interface MangaCoverstypes {
     id: number;

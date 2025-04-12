@@ -7,10 +7,11 @@ import { AddMangaToBookmarks } from '@/features/AddMangaToBookmarks';
 
 interface ButtonBlockProps {
     className?: string;
+    mangaId: number;
 }
 
 export const ButtonBlock = memo((props: ButtonBlockProps) => {
-    const { className } = props;
+    const { className, mangaId } = props;
 
     return (
         <div
@@ -20,7 +21,7 @@ export const ButtonBlock = memo((props: ButtonBlockProps) => {
             ])}
         >
             <StartOrContinueReadButton />
-            <AddMangaToBookmarks />
+            <AddMangaToBookmarks mangaId={mangaId} />
         </div>
     );
 });

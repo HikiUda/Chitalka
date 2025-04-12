@@ -1,7 +1,7 @@
 import { FC, useCallback, useEffect, useMemo } from 'react';
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { TabItem, Tabs } from '@packages/ui/src/shared/Tabs';
-import type { MangaIdType } from '@packages/model/src/entities/manga/types/types';
+import type { MangaIdType } from '@packages/model/src/entities/manga';
 import { useSearchParams } from 'react-router-dom';
 import cls from './MangaPageContent.module.scss';
 import { AboutManga } from '@/widgets/AboutManga';

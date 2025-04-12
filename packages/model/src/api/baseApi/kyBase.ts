@@ -35,8 +35,6 @@ export const $api = ky.create({
     },
 });
 
-export const $apiManga = $api.extend((options) => ({ prefixUrl: `${options.prefixUrl}/manga` }));
-
 const fetchIsAuth = async () => {
     try {
         const response = await ky

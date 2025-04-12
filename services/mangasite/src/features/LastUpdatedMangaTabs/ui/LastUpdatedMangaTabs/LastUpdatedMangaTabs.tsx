@@ -17,6 +17,7 @@ interface LastUpdatedMangaTabsProps {
 export const LastUpdatedMangaTabs: FC<LastUpdatedMangaTabsProps> = (props) => {
     const { className } = props;
     const { data: userData } = useQuery(UserDataApi.getUserDataQueryOptions());
+
     const tabs: TabItem<string>[] = useMemo(() => {
         const tabArr = [
             {

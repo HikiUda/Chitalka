@@ -1,10 +1,9 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Sidebar } from './Sidebar';
 
 const meta: Meta<typeof Sidebar> = {
-    title: 'shared/Sidebar',
+    title: 'page/MangaPage/Sidebar',
     component: Sidebar,
 
     tags: ['autodocs'],

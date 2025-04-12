@@ -4,9 +4,9 @@
 }
 
 .loader {
-    width: 80px;
+    width: 200px;
     aspect-ratio: 1;
-    --c: #8d7958 91%, #0000;
+    --c: var(--accent-color) 91%, #0000;
     background:
         radial-gradient(30% 50% at -3px 55%, var(--c)) top right,
         radial-gradient(30% 50% at -3px 45%, var(--c)) bottom right,
