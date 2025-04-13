@@ -1,20 +1,19 @@
 import { FC, ReactNode, useMemo } from 'react';
-import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { Button } from '@packages/ui/src/shared/Button';
-import { VStack } from '@packages/ui/src/shared/Stack';
+import { HStack } from '@packages/ui/src/shared/Stack';
 import cls from './TabScroll.module.scss';
 import { MangaCardInlineSkeleton } from '@/entities/MangaCard';
 
 interface TabScrollProps {
     className?: string;
     children?: ReactNode;
-    callback?: () => void;
-    disabled?: boolean;
-    isFetching?: boolean;
+    setPage: (v: number) => void;
+    page: number;
+    hasNext: boolean;
 }
 
 export const TabScroll: FC<TabScrollProps> = (props) => {
-    const { className, children, callback, disabled, isFetching } = props;
+    const { className, children, setPage, page, hasNext } = props;
 
     const skeletons = useMemo(() => {
         return Array(7)
@@ -23,12 +22,29 @@ export const TabScroll: FC<TabScrollProps> = (props) => {
     }, []);
 
     return (
-        <div className={classNames(cls.TabScroll, {}, [className])}>
+        <div className={className}>
             {children}
-            {isFetching && <VStack>{skeletons.map((sk) => sk)}</VStack>}
-            <Button isDisabled={disabled} max onPress={callback} theme="fill">
-                {disabled ? 'Кажеться это все' : 'Показать еще'}
-            </Button>
+            <HStack>
+                <Button className={cls.button} onPress={() => setPage(1)} theme="fill">
+                    1
+                </Button>
+                <Button
+                    className={cls.button}
+                    isDisabled={page === 1}
+                    onPress={() => setPage(Math.min(1, page - 1))}
+                    theme="fill"
+                >
+                    prev
+                </Button>
+                <Button
+                    className={cls.button}
+                    isDisabled={!hasNext}
+                    onPress={() => hasNext && setPage(page + 1)}
+                    theme="fill"
+                >
+                    next
+                </Button>
+            </HStack>
         </div>
     );
 };

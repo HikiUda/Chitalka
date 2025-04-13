@@ -1,4 +1,5 @@
 import { createDevValidator } from '@model/lib/zod/createDevValidator';
+import { HTTPError } from 'ky';
 import { $api } from '../baseApi/kyBase';
 import { LoginUserData } from './types/authTypes';
 
@@ -8,15 +9,31 @@ const validateAuth = createDevValidator(() =>
 
 class Auth {
     async login(user: LoginUserData) {
-        const res = await $api.post('auth/login', { json: user }).json();
-        return validateAuth(res);
+        try {
+            const response = await $api.post('auth/login', { json: user });
+            return validateAuth(await response.json());
+        } catch (error) {
+            if (error instanceof HTTPError) {
+                const serverError = await error.response.json();
+                throw new Error(serverError.message);
+            }
+            throw error;
+        }
     }
     async logout() {
         await $api.delete('auth/logout');
     }
     async registration(user: LoginUserData) {
-        const res = $api.post('auth/registration', { json: user }).json();
-        return validateAuth(res);
+        try {
+            const response = await $api.post('auth/registration', { json: user });
+            return validateAuth(await response.json());
+        } catch (error) {
+            if (error instanceof HTTPError) {
+                const serverError = await error.response.json();
+                throw new Error(serverError.message);
+            }
+            throw error;
+        }
     }
 }
 

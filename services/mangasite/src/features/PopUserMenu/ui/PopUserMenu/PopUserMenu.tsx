@@ -17,13 +17,11 @@ import cls from './PopUserMenu.module.scss';
 interface PopUserMenuProps {
     className?: string;
 }
-
 export const PopUserMenu: FC<PopUserMenuProps> = (props) => {
     const { className } = props;
     const { data } = useQuery(UserDataApi.getUserDataQueryOptions());
-    //TODO avatar
     const trigger = (
-        <Button theme="clear" noHover>
+        <Button data-testid="PopUserMenu-Button" theme="clear" noHover>
             <Avatar img={data?.avatar} />
         </Button>
     );
@@ -33,11 +31,10 @@ export const PopUserMenu: FC<PopUserMenuProps> = (props) => {
     const onDisign = () => {
         toggleDisign();
     };
-    //TODO possible lazy
     return (
         <Popover button={trigger} className={classNames(cls.PopUserMenu, {}, [className])}>
             <VStack>
-                <ProfileLink />
+                <ProfileLink username={data?.name} />
                 <Divider />
                 <LinkList backgroundOnHover items={commonLink} />
                 <Divider />

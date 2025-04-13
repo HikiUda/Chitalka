@@ -134,6 +134,9 @@ importers:
       '@storybook/addon-themes':
         specifier: ^8.6.11
         version: 8.6.11(storybook@8.6.11(prettier@3.5.1))
+      '@storybook/addon-viewport':
+        specifier: ^8.6.12
+        version: 8.6.12(storybook@8.6.11(prettier@3.5.1))
       '@storybook/addon-webpack5-compiler-swc':
         specifier: 2.0.0
         version: 2.0.0(@swc/helpers@0.5.15)(webpack@5.98.0)
@@ -321,6 +324,9 @@ importers:
       react:
         specifier: ^19.1.0
         version: 19.1.0
+      react-device-detect:
+        specifier: ^2.2.3
+        version: 2.2.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react-dom:
         specifier: ^19.1.0
         version: 19.1.0(react@19.1.0)
@@ -817,6 +823,9 @@ importers:
       '@storybook/addon-themes':
         specifier: ^8.6.11
         version: 8.6.11(storybook@8.6.11(prettier@3.5.1))
+      '@storybook/addon-viewport':
+        specifier: ^8.6.12
+        version: 8.6.12(storybook@8.6.11(prettier@3.5.1))
       '@storybook/react':
         specifier: 8.6.11
         version: 8.6.11(@storybook/test@8.6.11(storybook@8.6.11(prettier@3.5.1)))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@8.6.11(prettier@3.5.1))(typescript@5.8.2)
@@ -2911,6 +2920,11 @@ packages:
     resolution: {integrity: sha512-EdzrkUyMvm0epYkUspBF5osU0rIHglD1+YK84C8ibJjx3JpnpLFaDpecwjFaFgxjQQVveHKatYcHpz09aEywqQ==}
     peerDependencies:
       storybook: ^8.6.11
+
+  '@storybook/addon-viewport@8.6.12':
+    resolution: {integrity: sha512-EXK2LArAnABsPP0leJKy78L/lbMWow+EIJfytEP5fHaW4EhMR6h7Hzaqzre6U0IMMr/jVFa1ci+m0PJ0eQc2bw==}
+    peerDependencies:
+      storybook: ^8.6.12
 
   '@storybook/addon-webpack5-compiler-swc@2.0.0':
     resolution: {integrity: sha512-8lL6vzXMgBFYQ89TFNPG4KjQ1WcRjKOubCTsnv0lRWC6KbF1ipyMFiEDpHOxxHbKhfk2kvQKZVqt8KLNV5zwcg==}
@@ -10380,6 +10394,11 @@ snapshots:
       storybook: 8.6.11(prettier@3.5.1)
 
   '@storybook/addon-viewport@8.6.11(storybook@8.6.11(prettier@3.5.1))':
+    dependencies:
+      memoizerific: 1.11.3
+      storybook: 8.6.11(prettier@3.5.1)
+
+  '@storybook/addon-viewport@8.6.12(storybook@8.6.11(prettier@3.5.1))':
     dependencies:
       memoizerific: 1.11.3
       storybook: 8.6.11(prettier@3.5.1)

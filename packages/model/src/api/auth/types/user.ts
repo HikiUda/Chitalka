@@ -9,5 +9,5 @@ export const UserDataScheme = z.object({
     jsonSettings: JsonSettingsScheme,
 });
 
-export type UserData = z.infer<typeof UserDataScheme>;
+export type UserDataType = z.infer<typeof UserDataScheme>;
 export type JsonSettings = z.infer<typeof JsonSettingsScheme>;

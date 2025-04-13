@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { PageDecorator } from '@packages/model/src/config/storybook/PageDecorator/PageDecorator';
 import { BodyNotPaddingDecorator } from '@packages/model/src/config/storybook/StyleDecorator/BodyNotPaddingDecorator';
-import { mockGetUserData } from '@packages/model/src/api/auth/mockAuthApi';
+import { mockAuthApi, mockGetUserData } from '@packages/model/src/api/auth/mockAuthApi';
 import MainPage from './MainPage';
 import { Header } from '@/widgets/Header';
 import { mockLastUpdatedMangaApi } from '@/shared/api/mangaList/testing';
@@ -23,10 +23,11 @@ export const Primary: Story = {
     parameters: {
         msw: {
             handlers: [
-                mockLastUpdatedMangaApi,
+                mockLastUpdatedMangaApi(),
                 ...mockContinueReadMangaApi,
                 mockGetUserData,
                 ...mockQuickSearchApi,
+                ...mockAuthApi,
             ],
         },
     },
@@ -35,7 +36,11 @@ export const Primary: Story = {
 export const NotAuth: Story = {
     parameters: {
         msw: {
-            handlers: [mockLastUpdatedMangaApi, ...mockContinueReadMangaApi, ...mockQuickSearchApi],
+            handlers: [
+                mockLastUpdatedMangaApi(),
+                ...mockContinueReadMangaApi,
+                ...mockQuickSearchApi,
+            ],
         },
     },
     decorators: [PageDecorator(<Header />)],

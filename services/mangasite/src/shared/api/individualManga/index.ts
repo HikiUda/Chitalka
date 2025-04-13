@@ -1,2 +1,2 @@
 export { MangaApi } from './mangaApi/mangaApi';
-export type { MangaType } from './mangaApi/mangaScheme';
+export type { MangaType, MangaCategoriesType } from './mangaApi/mangaScheme';

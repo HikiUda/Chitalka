@@ -2,6 +2,7 @@ import { memo, useCallback } from 'react';
 import { Menu, MenuItem } from '@packages/ui/src/shared/Menu';
 import ArrowSvg from '@packages/ui/src/assets/icon/common/sliderArrow.svg';
 import { Button } from '@packages/ui/src/shared/Button';
+import { Loader } from '@packages/ui/src/shared/Loader';
 import { useQuery } from '@tanstack/react-query';
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { getFlex } from '@packages/ui/src/shared/Stack';
@@ -21,20 +22,23 @@ interface AddMangaToBookmarksProps {
 export const AddMangaToBookmarks = memo((props: AddMangaToBookmarksProps) => {
     const { className, mangaId } = props;
 
-    const { data } = useQuery(MangaUserBookmarkApi.getQueryOption(mangaId));
+    const { data, isLoading } = useQuery(MangaUserBookmarkApi.getQueryOption(mangaId));
     const { setBookmark, isPending: isPendingOnSet } = useSetMangaUserBookmark(mangaId);
     const { deleteBookmark, isPending: isPendingOnDelete } = useDeleteUserMangaBookmark(mangaId);
+
+    const isPending = isPendingOnDelete || isPendingOnSet || isLoading;
 
     const button = (
         <Button
             className={classNames(cls.button, {}, [className, getFlex({ justify: 'between' })])}
-            isDisabled={isPendingOnSet || isPendingOnDelete}
+            data-testid="AddMangaToBookmarks-Button"
+            isDisabled={isPending}
             color="secondary"
             theme="fill"
             max
         >
-            {isPendingOnDelete || isPendingOnSet ? (
-                <div className={cls.loader} />
+            {isPending ? (
+                <Loader width={22} />
             ) : (
                 <>
                     {data?.bookmark ? data.bookmark : '+ Добавить в закладки'}
@@ -55,6 +59,7 @@ export const AddMangaToBookmarks = memo((props: AddMangaToBookmarksProps) => {
         <Menu max button={button}>
             {bookmarks.map((mark) => (
                 <MenuItem
+                    data-testid={`AddMangaToBookmarks-${mark.bookmark}`}
                     onAction={() => handleSetBookmark(mark.bookmark)}
                     className={cls.menuItem}
                     key={mark.bookmark}

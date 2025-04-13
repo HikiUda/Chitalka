@@ -5,18 +5,15 @@ import ArrowSvg from '@packages/ui/src/assets/icon/common/arrow.svg';
 import { AppLink } from '@packages/ui/src/shared/AppLink';
 import { getFlex, HStack, VStack } from '@packages/ui/src/shared/Stack';
 import { Icon } from '@packages/ui/src/shared/Icon';
-import { UserDataApi } from '@packages/model/src/api/auth';
-import { useQuery } from '@tanstack/react-query';
 import cls from './ProfileLink.module.scss';
 
 interface ProfileLinkProps {
     className?: string;
+    username?: string;
 }
 
 export const ProfileLink = memo((props: ProfileLinkProps) => {
-    const { className } = props;
-
-    const { data, isLoading } = useQuery(UserDataApi.getUserDataQueryOptions());
+    const { className, username } = props;
 
     return (
         <AppLink
@@ -32,7 +29,7 @@ export const ProfileLink = memo((props: ProfileLinkProps) => {
                 <HStack className={cls.subtitle}>
                     Мой Профиль <Icon Svg={ArrowSvg} width={14} height={14} />
                 </HStack>
-                <div>{isLoading ? '######' : data?.name}</div>
+                <div>{username ? username : '######'}</div>
             </VStack>
         </AppLink>
     );

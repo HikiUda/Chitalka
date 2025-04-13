@@ -9,22 +9,21 @@ const meta: Meta<typeof LastUpdatedMangaTabs> = {
     component: LastUpdatedMangaTabs,
 
     tags: ['autodocs'],
+    parameters: {
+        msw: {
+            handlers: [mockLastUpdatedMangaApi()],
+        },
+    },
 };
 
 export default meta;
 type Story = StoryObj<typeof LastUpdatedMangaTabs>;
 
-export const Primary: Story = {
-    parameters: {
-        msw: {
-            handlers: [mockLastUpdatedMangaApi],
-        },
-    },
-};
+export const Primary: Story = {};
 export const ForAuth: Story = {
     parameters: {
         msw: {
-            handlers: [mockGetUserData, mockLastUpdatedMangaApi],
+            handlers: [mockGetUserData, mockLastUpdatedMangaApi()],
         },
     },
 };

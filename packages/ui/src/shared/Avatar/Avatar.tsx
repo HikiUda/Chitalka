@@ -5,7 +5,7 @@ import cls from './Avatar.module.scss';
 
 interface AvatarProps {
     className?: string;
-    img?: string;
+    img?: string | null;
 }
 
 export const Avatar = memo((props: AvatarProps) => {

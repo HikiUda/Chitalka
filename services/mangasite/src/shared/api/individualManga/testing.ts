@@ -1,1 +1,1 @@
-export { mockGetManga, mockManga } from './mangaApi/mockMangaApi';
+export { mockGetManga, mockManga, mockGenresArray, mockTagsArray } from './mangaApi/mockMangaApi';

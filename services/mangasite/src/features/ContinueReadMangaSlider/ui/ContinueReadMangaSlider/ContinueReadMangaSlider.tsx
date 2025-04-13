@@ -53,7 +53,7 @@ export const ContinueReadMangaSlider: FC<ContinueReadMangaSliderProps> = (props)
                     theme="clear"
                     noHover
                     className={cls.clean}
-                    isDisabled={getIsPending(0)}
+                    isDisabled={isLoading || getIsPending(0)}
                 >
                     очистить
                 </Button>

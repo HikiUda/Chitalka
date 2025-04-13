@@ -10,7 +10,7 @@ const meta: Meta<typeof AllLastUpdatedTab> = {
     tags: ['autodocs'],
     parameters: {
         msw: {
-            handlers: [mockLastUpdatedMangaApi],
+            handlers: [mockLastUpdatedMangaApi()],
         },
     },
 };

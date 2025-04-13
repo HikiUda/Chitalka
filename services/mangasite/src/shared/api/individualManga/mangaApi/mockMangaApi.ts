@@ -1,5 +1,15 @@
 import { http, HttpResponse } from 'msw';
-import { MangaType } from './mangaScheme';
+import { MangaCategoriesType, MangaType } from './mangaScheme';
+
+export const mockGenresArray: MangaCategoriesType[] = [
+    { id: 1, title: 'Horror' },
+    { id: 2, title: 'Romantic' },
+];
+export const mockTagsArray: MangaCategoriesType[] = [
+    { id: 1, title: 'GG Woman' },
+    { id: 2, title: 'Magic' },
+    { id: 3, title: 'Boom' },
+];
 
 export const mockManga: MangaType = {
     id: 1,
@@ -17,15 +27,8 @@ export const mockManga: MangaType = {
     rate: 9,
     countRate: 89,
     releaseDate: new Date(),
-    genres: [
-        { id: 1, title: 'Horror' },
-        { id: 2, title: 'Romantic' },
-    ],
-    tags: [
-        { id: 1, title: 'GG Woman' },
-        { id: 2, title: 'Magic' },
-        { id: 3, title: 'Boom' },
-    ],
+    genres: mockGenresArray,
+    tags: mockTagsArray,
     cover: null,
     banner: null,
     owner: { id: 1, name: 'wendsew', avatar: null },

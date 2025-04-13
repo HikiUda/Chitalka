@@ -18,6 +18,7 @@
     "@storybook/addon-links": "^8.6.11",
     "@storybook/addon-onboarding": "8.5.3",
     "@storybook/addon-themes": "^8.6.11",
+    "@storybook/addon-viewport": "^8.6.12",
     "@storybook/addon-webpack5-compiler-swc": "2.0.0",
     "@storybook/blocks": "8.5.3",
     "@storybook/react": "8.6.11",

@@ -5,11 +5,10 @@ import { useQuery } from '@tanstack/react-query';
 import { TextDisclosure } from '@packages/ui/src/shared/TextDisclosure';
 import { MangaIdType } from '@packages/model/src/entities/manga';
 import cls from './AboutManga.module.scss';
-import { GenresAndTagsList } from '@/features/GenresAndTagsList';
-import { MangaRateStatistic } from '@/features/MangaRateStatistic';
-import { MangaBookmarksStatistic } from '@/features/MangaBookmarksStatistic';
+import { GenresAndTagsList } from '@/entities/GenresAndTagsList';
 import { MangaApi } from '@/shared/api/individualManga';
 import { RelatedMangaSlider } from '@/features/RelatedMangaSlider';
+import { MangaBookmarksStatistic, MangaRateStatistic } from '@/features/TablePercentageStatistic';
 
 interface AboutMangaProps {
     className?: string;

@@ -1,13 +1,19 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { mockGetUserData } from '@packages/model/src/api/auth/mockAuthApi';
 import { OtherInfoOnMain } from './OtherInfoOnMain';
+import { mockLastUpdatedMangaApi } from '@/shared/api/mangaList/testing';
 
 const meta: Meta<typeof OtherInfoOnMain> = {
-    title: 'shared/OtherInfoOnMain',
+    title: 'widgets/OtherInfoOnMain',
     component: OtherInfoOnMain,
 
     tags: ['autodocs'],
+    parameters: {
+        msw: {
+            handlers: [mockLastUpdatedMangaApi(), mockGetUserData],
+        },
+    },
 };
 
 export default meta;

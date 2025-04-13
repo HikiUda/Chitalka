@@ -1,4 +1,4 @@
-import { http, HttpResponse } from 'msw';
+import { delay, http, HttpResponse } from 'msw';
 import {
     MangaListItemBaseType,
     MangaListItemBasePaginationType,
@@ -40,14 +40,15 @@ interface MockMangaListItemRequestProps {
     subRoute?: string;
     withPagination?: boolean;
     mangaCount?: number;
+    timeout?: number;
 }
 
 type JsonType = MangaListItemBasePaginationType | MangaListItemBaseResponseArrayDataType | null;
 
 export const createMockMangaListItemRequest = (props: MockMangaListItemRequestProps = {}) => {
-    const { subRoute = '*', mangaCount = 10, withPagination } = props;
+    const { subRoute = '*', mangaCount = 10, withPagination, timeout } = props;
 
-    return http.get(`*/manga/${subRoute}`, ({ request }) => {
+    return http.get(`*/manga/${subRoute}`, async ({ request }) => {
         let json: JsonType = null;
         if (withPagination) {
             const page =
@@ -67,7 +68,7 @@ export const createMockMangaListItemRequest = (props: MockMangaListItemRequestPr
             const mangaList = getArrayMangaListItme(mangaCount);
             json = { data: mangaList };
         }
-
+        if (timeout) await delay(timeout);
         return HttpResponse.json(json);
     });
 };

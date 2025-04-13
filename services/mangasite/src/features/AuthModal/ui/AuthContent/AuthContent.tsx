@@ -1,28 +1,29 @@
 import { FC, useCallback, useState } from 'react';
 import { useKeyBoardEvent } from '@packages/model/src/lib/hooks/useKeyBoardEvent';
 import { Button } from '@packages/ui/src/shared/Button';
-import { HStack, VStack } from '@packages/ui/src/shared/Stack';
+import { getFlex, HStack, VStack } from '@packages/ui/src/shared/Stack';
 import { Heading } from '@packages/ui/src/shared/Heading';
 import { Input } from '@packages/ui/src/shared/Input';
 import { useRegistrationQuery, useLoginQuery } from '@packages/model/src/api/auth';
+import { Loader } from '@packages/ui/src/shared/Loader';
 import { LoginFromType, validateLoginForm } from '../../model/loginFromScheme';
 
 interface AuthContentProps {
     className?: string;
 }
-
+//TODO i18next error
 const AuthContent: FC<AuthContentProps> = (props) => {
     const { className } = props;
     const [isLogin, setIsLogin] = useState(true);
-    const [isError, setIsError] = useState(false);
+    const [showError, setShowError] = useState(false);
     const [loginForm, setLoginFrom] = useState<LoginFromType>({ login: '', password: '' });
 
-    const { login } = useLoginQuery();
-    const { registration } = useRegistrationQuery();
+    const { login, isPending: loginPending, error: loginError } = useLoginQuery();
+    const { registration, isPending: regPending, error: regError } = useRegistrationQuery();
 
     const handleAuth = useCallback(() => {
         if (validateLoginForm(loginForm)) {
-            setIsError(true);
+            setShowError(true);
             return;
         }
         if (isLogin) {
@@ -34,12 +35,15 @@ const AuthContent: FC<AuthContentProps> = (props) => {
 
     useKeyBoardEvent(handleAuth, 'Enter');
 
-    const errors = isError ? validateLoginForm(loginForm)?.fieldErrors : undefined;
+    const isSend = regPending || loginPending;
+
+    const errors = showError ? validateLoginForm(loginForm)?.fieldErrors : undefined;
     return (
         <VStack max className={className}>
             <Heading HeadingTag="h2">{isLogin ? 'Вход' : 'Регестрация'}</Heading>
             <VStack max>
                 <Input
+                    disabled={isSend}
                     value={loginForm.login}
                     onChange={(v) => setLoginFrom((prev) => ({ ...prev, login: v }))}
                     maxWidth
@@ -48,6 +52,7 @@ const AuthContent: FC<AuthContentProps> = (props) => {
                 />
                 {errors?.login}
                 <Input
+                    disabled={isSend}
                     value={loginForm.password}
                     onChange={(v) => setLoginFrom((prev) => ({ ...prev, password: v }))}
                     maxWidth
@@ -56,14 +61,21 @@ const AuthContent: FC<AuthContentProps> = (props) => {
                     placeholder="Пароль"
                 />
                 {errors?.password}
+                {loginError?.message || regError?.message}
             </VStack>
 
             <HStack max justify="end">
-                <Button theme="clear" noHover onPress={() => setIsLogin((prev) => !prev)}>
+                <Button
+                    isDisabled={isSend}
+                    theme="clear"
+                    noHover
+                    onPress={() => setIsLogin((prev) => !prev)}
+                >
                     {isLogin ? 'Зарегестрироваться' : 'Войти'}
                 </Button>
-                <Button onPress={handleAuth} theme="fill">
+                <Button isDisabled={isSend} onPress={handleAuth} theme="fill" className={getFlex()}>
                     {isLogin ? 'Войти' : 'Зарегестрироваться'}
+                    {isSend && <Loader width={22} />}
                 </Button>
             </HStack>
         </VStack>

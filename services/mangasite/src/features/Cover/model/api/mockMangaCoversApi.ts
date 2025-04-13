@@ -1,4 +1,4 @@
-import { http, HttpResponse } from 'msw';
+import { delay, http, HttpResponse } from 'msw';
 import { MangaCoverType } from './mangaCoversScheme';
 
 export const mockMangaCover: MangaCoverType = {
@@ -9,6 +9,8 @@ export const mockMangaCovers: MangaCoverType[] = Array(7)
     .fill(0)
     .map((item, ind) => ({ ...mockMangaCover, id: ind }));
 
-export const mockGetMangaCovers = http.get('*/manga/byId/:id/covers', () => {
-    return HttpResponse.json({ data: mockMangaCovers });
-});
+export const mockGetMangaCovers = (timeoout?: number) =>
+    http.get('*/manga/byId/:id/covers', async () => {
+        if (timeoout) await delay(timeoout);
+        return HttpResponse.json({ data: mockMangaCovers });
+    });

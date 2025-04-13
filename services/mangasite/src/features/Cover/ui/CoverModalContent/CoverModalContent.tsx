@@ -3,6 +3,7 @@ import { AppAdaptiveImage } from '@packages/ui/src/shared/AppAdaptiveImage';
 import { useQuery } from '@tanstack/react-query';
 import { getFlex } from '@packages/ui/src/shared/Stack';
 import Skeleton from 'react-loading-skeleton';
+import { Loader } from '@packages/ui/src/shared/Loader';
 import { MangaCoverApi } from '../../model/api/mangaCoversApi';
 import cls from './CoverModalContent.module.scss';
 import { PaginationSlider } from '@/entities/Slider';
@@ -36,7 +37,7 @@ const CoverModalContent = memo(({ mangaId }: CoverModalContentProps) => {
     if (isLoading)
         return (
             <div className={getFlex()}>
-                <div key={0} className={cls.loader} />
+                <Loader width={200} loader="flower" />
             </div>
         );
     if (!slides.length || isError)

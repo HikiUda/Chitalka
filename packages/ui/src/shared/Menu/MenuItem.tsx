@@ -4,6 +4,7 @@ import cls from './MenuItem.module.scss';
 
 interface MyMenuItemProps extends MenuItemProps {
     className?: string;
+    'data-testid'?: string;
 }
 
 export const MyItem = (props: MyMenuItemProps) => {

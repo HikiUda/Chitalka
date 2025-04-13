@@ -10,7 +10,7 @@ const meta: Meta<typeof RecentUpdatedPopularMangaSlider> = {
     tags: ['autodocs'],
     parameters: {
         msw: {
-            handlers: [mockLastUpdatedMangaApi],
+            handlers: [mockLastUpdatedMangaApi()],
         },
     },
 };
@@ -18,3 +18,10 @@ export default meta;
 type Story = StoryObj<typeof RecentUpdatedPopularMangaSlider>;
 
 export const Primary: Story = {};
+export const Loading: Story = {
+    parameters: {
+        msw: {
+            handlers: [mockLastUpdatedMangaApi(5000)],
+        },
+    },
+};

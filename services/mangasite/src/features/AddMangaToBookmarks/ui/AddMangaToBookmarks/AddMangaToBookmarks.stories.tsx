@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { userEvent, within } from '@storybook/testing-library';
+import { delay } from 'msw';
 import { mockMangaUserBookmarkApi } from '../../testing';
+import { mockGetMangaUserBookmark } from '../../model/api/mockMangaUserBookmarkApi';
 import { AddMangaToBookmarks } from './AddMangaToBookmarks';
 
 const meta: Meta<typeof AddMangaToBookmarks> = {
@@ -8,6 +11,14 @@ const meta: Meta<typeof AddMangaToBookmarks> = {
     component: AddMangaToBookmarks,
 
     tags: ['autodocs'],
+
+    decorators: [
+        (Story) => (
+            <div style={{ width: 250 }}>
+                <Story />
+            </div>
+        ),
+    ],
     parameters: {
         msw: {
             handlers: mockMangaUserBookmarkApi,
@@ -17,5 +28,23 @@ const meta: Meta<typeof AddMangaToBookmarks> = {
 
 export default meta;
 type Story = StoryObj<typeof AddMangaToBookmarks>;
-//TODO story
-export const Primary: Story = {};
+export const Primary: Story = {
+    args: {
+        mangaId: 0,
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        await delay(500);
+        await userEvent.click(canvas.getByTestId('AddMangaToBookmarks-Button'));
+    },
+};
+export const Loading: Story = {
+    args: {
+        mangaId: 0,
+    },
+    parameters: {
+        msw: {
+            handlers: [mockGetMangaUserBookmark(5000)],
+        },
+    },
+};

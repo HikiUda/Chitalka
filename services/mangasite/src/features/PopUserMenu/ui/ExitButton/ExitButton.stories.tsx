@@ -1,10 +1,9 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { ExitButton } from './ExitButton';
 
 const meta: Meta<typeof ExitButton> = {
-    title: 'shared/ExitButton',
+    title: 'features/PopUserMenu/ExitButton',
     component: ExitButton,
 
     tags: ['autodocs'],

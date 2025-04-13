@@ -1,10 +1,9 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { BottomMenuMainContent } from './BottomMenuMainContent';
 
 const meta: Meta<typeof BottomMenuMainContent> = {
-    title: 'shared/BottomMenuMainContent',
+    title: 'widgets/BottomMenu/BottomMenuMainContent',
     component: BottomMenuMainContent,
 
     tags: ['autodocs'],

@@ -10,7 +10,7 @@ const meta: Meta<typeof CoverModalContent> = {
     tags: ['autodocs'],
     parameters: {
         msw: {
-            handlers: [mockGetMangaCovers],
+            handlers: [mockGetMangaCovers()],
         },
     },
 };

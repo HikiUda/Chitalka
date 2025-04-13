@@ -16,7 +16,7 @@ interface CoverProps {
 export const Cover = (props: CoverProps) => {
     const { className, cover, mangaId } = props;
     const button = (
-        <Button className={className} theme="clear" noHover>
+        <Button data-testid="Cover-Button" className={className} theme="clear" noHover>
             <AppAdaptiveImage
                 img={cover}
                 className={cls.Cover}
