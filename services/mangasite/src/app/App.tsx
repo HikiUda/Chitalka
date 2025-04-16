@@ -14,6 +14,7 @@ export const App: FC<AppProps> = () => {
     const user = useQuery(UserDataApi.getUserDataQueryOptions());
     //TODO loader
     //if (user.isLoading) return <div>Loading...</div>;
+
     return <MainLayout header={<Header />} main={<AppRouter />} bottomMenu={<BottomMenu />} />;
 };
 export default App;

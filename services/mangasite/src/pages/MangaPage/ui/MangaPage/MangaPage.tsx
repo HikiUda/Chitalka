@@ -3,6 +3,9 @@ import { classNames } from '@packages/model/src/lib/helpers/classNames/className
 import { Page } from '@packages/ui/src/shared/Page';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import { Loader } from '@packages/ui/src/shared/Loader';
+import { isMobile } from 'react-device-detect';
+import { getFlex } from '@packages/ui/src/shared/Stack';
 import { MangaTitle } from '../MangaTitle/MangaTitle';
 import { MangaPageContent } from '../MangaPageContent/MangaPageContent';
 import { ButtonBlock } from '../ButtonBlock/ButtonBlock';
@@ -25,16 +28,34 @@ const MangaPage: FC<MangaPageProps> = (props) => {
         isError,
     } = useQuery(MangaApi.getMangaQueryOptions(mangaId || 0));
     //TODO loading end error state
-    if (!manga && isLoading) return <Page>Loading...</Page>;
+    if (!manga && isLoading)
+        return (
+            <Page>
+                <Loader loader="flower" />
+            </Page>
+        );
     if (!manga || isError) return <Page>Manga not Found</Page>;
     return (
         <Page>
-            <div className={classNames(cls.MangaPage, {}, [className])}>
-                {manga.banner && <Banner banner={manga?.banner} className={cls.banner} />}
+            <div
+                className={classNames(
+                    isMobile ? getFlex({ direction: 'column', gap: '4' }) : cls.MangaPage,
+                    { [cls.pagePedding]: isMobile },
+                    [className],
+                )}
+            >
+                {!isMobile && manga.banner && (
+                    <Banner banner={manga?.banner} className={cls.banner} />
+                )}
+                {isMobile && (
+                    <Banner className={cls.mobileBanner} banner={manga.banner || manga.cover} />
+                )}
                 <Cover mangaId={manga.id} cover={manga.cover} className={cls.cover} />
                 <MangaTitle manga={manga} className={cls.title} />
+
                 <ButtonBlock className={cls.btnBlock} mangaId={manga.id} />
-                <Sidebar manga={manga} className={cls.sidebar} />
+                {!isMobile && <Sidebar manga={manga} className={cls.sidebar} />}
+
                 <MangaPageContent mangaId={mangaId || 0} className={cls.content} />
             </div>
         </Page>

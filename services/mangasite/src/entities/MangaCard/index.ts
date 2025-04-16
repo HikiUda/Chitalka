@@ -7,3 +7,4 @@ export { ProgressReadMangaCardInline } from './ui/ProgressReadMangaCardInline/Pr
 export { LastUpdatedMangaCardInline } from './ui/LastUpdatedMangaCardInline/LastUpdatedMangaCardInline';
 export { StatisticsMangaCardInline } from './ui/StatisticsMangaCardInline/StatisticsMangaCardInline';
 export { PrimaryMangaCardInline } from './ui/PrimaryMangaCardInline/PrimaryMangaCardInline';
+export { CatalogCard } from './ui/CatalogCard/CatalogCard';

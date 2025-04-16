@@ -1,19 +1,21 @@
 import { FC, ReactNode, useMemo } from 'react';
 import { Button } from '@packages/ui/src/shared/Button';
-import { HStack } from '@packages/ui/src/shared/Stack';
-import cls from './TabScroll.module.scss';
+import { VStack } from '@packages/ui/src/shared/Stack';
+import { AppLink } from '@packages/ui/src/shared/AppLink';
+import { getMangaSiteRoute } from '@packages/model/src/config/router';
 import { MangaCardInlineSkeleton } from '@/entities/MangaCard';
 
 interface TabScrollProps {
     className?: string;
     children?: ReactNode;
-    setPage: (v: number) => void;
-    page: number;
-    hasNext: boolean;
+    callback?: () => void;
+    disabled?: boolean;
+    isFetching?: boolean;
+    queryParams?: string;
 }
 
 export const TabScroll: FC<TabScrollProps> = (props) => {
-    const { className, children, setPage, page, hasNext } = props;
+    const { className, children, callback, disabled, isFetching, queryParams = '' } = props;
 
     const skeletons = useMemo(() => {
         return Array(7)
@@ -24,27 +26,21 @@ export const TabScroll: FC<TabScrollProps> = (props) => {
     return (
         <div className={className}>
             {children}
-            <HStack>
-                <Button className={cls.button} onPress={() => setPage(1)} theme="fill">
-                    1
-                </Button>
-                <Button
-                    className={cls.button}
-                    isDisabled={page === 1}
-                    onPress={() => setPage(Math.min(1, page - 1))}
-                    theme="fill"
-                >
-                    prev
-                </Button>
-                <Button
-                    className={cls.button}
-                    isDisabled={!hasNext}
-                    onPress={() => hasNext && setPage(page + 1)}
-                    theme="fill"
-                >
-                    next
-                </Button>
-            </HStack>
+            {isFetching && <VStack>{skeletons.map((sk) => sk)}</VStack>}
+
+            <Button
+                max
+                onPress={() => !disabled && setTimeout(() => callback?.(), 200)}
+                theme="fill"
+            >
+                {disabled ? (
+                    <AppLink to={`${getMangaSiteRoute.catalog()}?${queryParams}`}>
+                        В Каталог
+                    </AppLink>
+                ) : (
+                    'Показать еще'
+                )}
+            </Button>
         </div>
     );
 };

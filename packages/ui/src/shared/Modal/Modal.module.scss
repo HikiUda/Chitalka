@@ -10,7 +10,7 @@
     }
 
     &[data-exiting] {
-        animation: modal-zoom 150ms reverse ease-in;
+        animation: modal-zoom 300ms reverse ease-in;
     }
 }
 
@@ -31,7 +31,7 @@
     }
 
     &[data-exiting] {
-        animation: modal-fade 150ms reverse ease-in;
+        animation: modal-fade 300ms reverse ease-in;
     }
 }
 

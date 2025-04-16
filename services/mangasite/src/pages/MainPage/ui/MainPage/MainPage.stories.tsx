@@ -9,7 +9,7 @@ import { mockContinueReadMangaApi } from '@/features/ContinueReadMangaSlider/tes
 import { mockQuickSearchApi } from '@/features/QuickSearchModal/testing';
 
 const meta: Meta<typeof MainPage> = {
-    title: 'page/MainPage',
+    title: 'pages/MainPage/MainPage',
     component: MainPage,
 
     tags: ['autodocs'],

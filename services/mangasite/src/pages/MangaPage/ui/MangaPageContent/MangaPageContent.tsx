@@ -3,8 +3,8 @@ import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { TabItem, Tabs } from '@packages/ui/src/shared/Tabs';
 import type { MangaIdType } from '@packages/model/src/entities/manga';
 import { useSearchParams } from 'react-router-dom';
+import { AboutManga } from '../AboutManga';
 import cls from './MangaPageContent.module.scss';
-import { AboutManga } from '@/widgets/AboutManga';
 import { MangaChapters } from '@/widgets/MangaChapters';
 import { MangaComments } from '@/widgets/MangaComments';
 
@@ -28,7 +28,8 @@ export const MangaPageContent: FC<MangaPageContentProps> = (props) => {
         if (!searchParams.get('section')) {
             handleSetSection('info');
         }
-    }, [handleSetSection, searchParams]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const tabs: TabItem<string>[] = useMemo(() => {
         return [

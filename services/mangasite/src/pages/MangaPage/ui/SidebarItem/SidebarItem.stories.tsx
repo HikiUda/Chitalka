@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { SidebarItem } from './SidebarItem';
 
 const meta: Meta<typeof SidebarItem> = {
-    title: 'pageMangaPage/SidebarItem',
+    title: 'pages/MangaPage/SidebarItem',
     component: SidebarItem,
 
     tags: ['autodocs'],
@@ -12,4 +12,9 @@ const meta: Meta<typeof SidebarItem> = {
 export default meta;
 type Story = StoryObj<typeof SidebarItem>;
 
-export const Primary: Story = {};
+export const Primary: Story = {
+    args: {
+        title: 'Title',
+        children: 'Children',
+    },
+};

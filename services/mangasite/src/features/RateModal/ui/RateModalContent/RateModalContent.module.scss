@@ -1,2 +1,14 @@
 .RateModalContent {
 }
+.selectedStar {
+    svg {
+        fill: var(--secondary-color);
+    }
+}
+.buttons {
+    align-self: end;
+}
+.notAuthHeading {
+    text-align: center;
+    margin: 10px 15px;
+}

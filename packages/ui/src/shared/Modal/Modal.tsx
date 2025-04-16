@@ -43,7 +43,7 @@ export const Modal: FC<ModalProps> = (props) => {
 
     useEffect(() => {
         setIsOpen(false);
-    }, [location.pathname]);
+    }, [location.key]);
 
     useEffect(() => {
         if (defaultOpen) {

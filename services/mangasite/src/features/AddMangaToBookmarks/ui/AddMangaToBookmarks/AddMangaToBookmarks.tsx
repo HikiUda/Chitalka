@@ -57,16 +57,22 @@ export const AddMangaToBookmarks = memo((props: AddMangaToBookmarksProps) => {
 
     return (
         <Menu max button={button}>
-            {bookmarks.map((mark) => (
-                <MenuItem
-                    data-testid={`AddMangaToBookmarks-${mark.bookmark}`}
-                    onAction={() => handleSetBookmark(mark.bookmark)}
-                    className={cls.menuItem}
-                    key={mark.bookmark}
-                >
-                    {mark.bookmark}
+            {data ? (
+                bookmarks.map((mark) => (
+                    <MenuItem
+                        data-testid={`AddMangaToBookmarks-${mark.bookmark}`}
+                        onAction={() => handleSetBookmark(mark.bookmark)}
+                        className={cls.menuItem}
+                        key={mark.bookmark}
+                    >
+                        {mark.bookmark}
+                    </MenuItem>
+                ))
+            ) : (
+                <MenuItem className={cls.notAuth} key={0} isDisabled>
+                    Вы не авторизованы
                 </MenuItem>
-            ))}
+            )}
             {data?.bookmark && (
                 <MenuItem onAction={deleteBookmark} className={cls.menuItem}>
                     Удалить закладку

@@ -3,9 +3,9 @@ import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { VStack } from '@packages/ui/src/shared/Stack';
 import { getStyleScrollbar } from '@packages/ui/src/shared/StyleHooks';
 import { AppLink } from '@packages/ui/src/shared/AppLink';
-import { MangaType } from '@packages/model/src/api/manga/types/manga';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import cls from './Sidebar.module.scss';
+import { MangaType } from '@/shared/api/individualManga';
 
 interface SidebarProps {
     className?: string;

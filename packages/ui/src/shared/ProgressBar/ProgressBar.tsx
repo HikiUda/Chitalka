@@ -27,6 +27,7 @@ export const ProgressBar = memo((props: ProgressBarProps) => {
                     </HStack>
                     <div className={cls.bar}>
                         <div className={cls.fill} style={{ width: percentage + '%' }} />
+                        <div className={cls.fillOpacity} />
                     </div>
                 </>
             )}

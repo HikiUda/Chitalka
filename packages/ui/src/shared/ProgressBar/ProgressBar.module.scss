@@ -2,9 +2,19 @@
     background: var(--primary-color);
     height: 100%;
 }
+.fillOpacity {
+    background: var(--primary-color);
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    opacity: 0.4;
+}
 
 .bar {
-    box-shadow: inset 0 0 0 1px var(--primary-color);
+    position: relative;
+    //box-shadow: inset 0 0 0 1px var(--primary-color);
     forced-color-adjust: none;
     height: 7px;
     border-radius: 5px;

@@ -1,4 +1,4 @@
-import { keepPreviousData, queryOptions } from '@tanstack/react-query';
+import { infiniteQueryOptions } from '@tanstack/react-query';
 import { $apiManga } from '../base';
 import { validateMangaListItemLastUpdatedPagination } from '../validate/lastUpdatedPagination';
 
@@ -22,15 +22,13 @@ class LastUpdatedManga {
 
         return await validateMangaListItemLastUpdatedPagination(data);
     }
-    getLastUpdatedQueryOptions(
-        scope: LastUpdatedMangaScope = 'all',
-        limit: number = 10,
-        page: number = 1,
-    ) {
-        return queryOptions({
-            queryKey: ['last-updated', scope, limit, page],
-            queryFn: () => this.getLastUpdated({ page, scope, limit }),
-            placeholderData: keepPreviousData,
+    getLastUpdatedInfinityQueryOptions(scope: LastUpdatedMangaScope = 'all', limit: number = 10) {
+        return infiniteQueryOptions({
+            queryKey: ['last-updated', scope, limit],
+            queryFn: ({ pageParam }) => this.getLastUpdated({ page: pageParam, scope, limit }),
+            initialPageParam: 1,
+            getNextPageParam: (result) => result.nextPage,
+            select: (result) => result.pages.flatMap((page) => page.data),
         });
     }
 }

@@ -41,7 +41,7 @@ export const Drawer: FC<DrawerProps> = (props) => {
 
     useEffect(() => {
         setOpen(false);
-    }, [location.pathname]);
+    }, [location.key]);
     useEffect(() => {
         if (defaultOpen) {
             setOpen(true);

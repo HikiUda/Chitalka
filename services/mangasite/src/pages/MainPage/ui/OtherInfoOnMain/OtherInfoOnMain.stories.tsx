@@ -5,7 +5,7 @@ import { OtherInfoOnMain } from './OtherInfoOnMain';
 import { mockLastUpdatedMangaApi } from '@/shared/api/mangaList/testing';
 
 const meta: Meta<typeof OtherInfoOnMain> = {
-    title: 'widgets/OtherInfoOnMain',
+    title: 'pages/MainPage/OtherInfoOnMain',
     component: OtherInfoOnMain,
 
     tags: ['autodocs'],

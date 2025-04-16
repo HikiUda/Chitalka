@@ -1,5 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { classNames } from '@packages/model/src/lib/helpers/classNames/classNames';
+import { Toast } from '@ui/shared/Toast';
 import cls from './MainLayout.module.scss';
 
 interface MainLayoutProps {
@@ -23,6 +24,7 @@ export const MainLayout: FC<MainLayoutProps> = (props) => {
             {main}
             {footer}
             {bottomMenu}
+            <Toast />
         </div>
     );
 };

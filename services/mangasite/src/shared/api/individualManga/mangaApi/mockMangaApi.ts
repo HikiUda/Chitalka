@@ -1,4 +1,4 @@
-import { http, HttpResponse } from 'msw';
+import { delay, http, HttpResponse } from 'msw';
 import { MangaCategoriesType, MangaType } from './mangaScheme';
 
 export const mockGenresArray: MangaCategoriesType[] = [
@@ -38,6 +38,8 @@ export const mockManga: MangaType = {
     bookmark: 'Reading',
 };
 
-export const mockGetManga = http.get('*/manga/byId/:id', () => {
-    return HttpResponse.json(mockManga);
-});
+export const mockGetManga = (timeout?: number) =>
+    http.get('*/manga/byId/:id', async () => {
+        if (timeout) await delay(timeout);
+        return HttpResponse.json(mockManga);
+    });

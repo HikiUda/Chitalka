@@ -1,5 +1,5 @@
 .Banner {
-    height: 360px;
+    min-height: 360px;
     &::before {
         content: '';
         position: absolute;
@@ -7,7 +7,7 @@
         left: 0;
         top: 0;
         bottom: 0;
-        opacity: 0.3;
+        // opacity: 1;
         background:
             linear-gradient(to top, var(--block-color-gradient), transparent 180px),
             var(--block-color-gradient2);

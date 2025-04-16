@@ -14,7 +14,7 @@ export const OtherInfoOnMain: FC<OtherInfoOnMainProps> = (props) => {
 
     return (
         <div className={classNames(cls.OtherInfoOnMain, {}, [className])}>
-            <LastUpdatedMangaTabs className={cls.blockMargin} />
+            <LastUpdatedMangaTabs className={cls.lastUpdated} />
             <div className={cls.otherList}>
                 <SelectionOfCollections />
                 <UserActivityCardList />

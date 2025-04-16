@@ -1,9 +1,10 @@
 import { FC } from 'react';
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
-import { HStack } from '@packages/ui/src/shared/Stack';
+import { getFlex } from '@packages/ui/src/shared/Stack';
 import { useQuery } from '@tanstack/react-query';
 import { TextDisclosure } from '@packages/ui/src/shared/TextDisclosure';
 import { MangaIdType } from '@packages/model/src/entities/manga';
+import { isMobile } from 'react-device-detect';
 import cls from './AboutManga.module.scss';
 import { GenresAndTagsList } from '@/entities/GenresAndTagsList';
 import { MangaApi } from '@/shared/api/individualManga';
@@ -17,10 +18,8 @@ interface AboutMangaProps {
 
 const AboutManga: FC<AboutMangaProps> = (props) => {
     const { className, mangaId } = props;
-    const { data: manga, isLoading, isError } = useQuery(MangaApi.getMangaQueryOptions(mangaId));
-    //TODO loading and error
-    if (!manga && isLoading) return <div>Loadign...</div>;
-    if (!manga || isError) return <div>Error</div>;
+    const { data: manga } = useQuery(MangaApi.getMangaQueryOptions(mangaId));
+    if (!manga) return null;
     return (
         <div className={classNames(cls.AboutManga, {}, [className])}>
             <TextDisclosure
@@ -33,10 +32,14 @@ const AboutManga: FC<AboutMangaProps> = (props) => {
                 className={cls.genresAndTagsList}
             />
             <RelatedMangaSlider className={cls.relatedMangaSlider} mangaId={manga.id} />
-            <HStack align="start" className={cls.statistic}>
+            <div
+                className={classNames(cls.statistic, {}, [
+                    getFlex(isMobile ? { direction: 'column' } : { align: 'start' }),
+                ])}
+            >
                 <MangaRateStatistic className={cls.statisticBlock} mangaId={manga.id} />
                 <MangaBookmarksStatistic className={cls.statisticBlock} mangaId={manga.id} />
-            </HStack>
+            </div>
         </div>
     );
 };

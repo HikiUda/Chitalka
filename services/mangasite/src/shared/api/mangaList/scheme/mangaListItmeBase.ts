@@ -12,7 +12,7 @@ export const MangaListItemBaseScheme = z.object({
     views: z.number().int(),
     likes: z.number().int(),
     bookmarks: z.number().int(),
-    bookmark: BookmarksEnum,
+    bookmark: BookmarksEnum.nullable(),
     tome: z.number().int(),
     chapter: z.number(),
     chapterCount: z.number().int(),
