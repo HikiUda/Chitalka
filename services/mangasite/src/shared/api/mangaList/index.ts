@@ -15,4 +15,4 @@ export { LastUpdatedMangaApi } from './lastUpdatedMangaApi/lastUpdatedMangaApi';
 
 export { CatalogApi } from './catalogApi/catalogApi';
 export { CatalogFiltersScheme } from './catalogApi/catalogScheme';
-export type { CatalogFiltersType } from './catalogApi/catalogScheme';
+export type { CatalogFiltersType, SortByType, OrderType } from './catalogApi/catalogScheme';

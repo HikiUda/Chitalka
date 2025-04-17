@@ -1,11 +1,21 @@
 .CatalogPage {
 }
-
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 330px;
+    gap: 16px;
+}
 .catalog {
     width: 100%;
-    flex-basis: auto;
+    // flex-basis: auto;
+    height: 5000px;
 }
 .filters {
-    flex-basis: 300px;
-    flex-shrink: 0;
+    position: sticky;
+    width: 330px;
+    height: 90vh;
+    top: calc(15px + var(--header-height));
+
+    // flex-basis: 300px;
+    // flex-shrink: 0;
 }
