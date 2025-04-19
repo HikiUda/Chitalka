@@ -9,22 +9,7 @@ export const createGenresSlice: StateCreator<
 > = (set) => ({
     genres: [],
     notGenres: [],
-    switchGenre: (genre, toState) =>
-        set(
-            (state) => {
-                switch (toState) {
-                    case 'include':
-                        return { genres: state.genres.concat([genre]) };
-                    case 'exclude':
-                        return {
-                            notGenres: state.notGenres.concat([genre]),
-                            genres: state.genres.filter((g) => g !== genre),
-                        };
-                    default:
-                        return { notGenres: state.notGenres.filter((g) => g !== genre) };
-                }
-            },
-            false,
-            'CatalogFiltersStore/switchGenre',
-        ),
+    setGenres: (genres) => set(() => ({ genres }), false, 'CatalogFiltersStore/setGenres'),
+    setNotGenres: (notGenres) =>
+        set(() => ({ notGenres }), false, 'CatalogFiltersStore/setNotGenres'),
 });

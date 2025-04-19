@@ -1,7 +1,5 @@
 import { StateCreator } from 'zustand';
 import { CatalogFiltersStoreType, ReleaseDateSlice } from '../../types/catalogFilters';
-import { fromNoBiggerTo } from '../../helpers/fromNoBiggerTo';
-import { toNoLessFrom } from '../../helpers/toNoLessFrom';
 
 export const createReleaseDateSlice: StateCreator<
     CatalogFiltersStoreType,
@@ -9,20 +7,20 @@ export const createReleaseDateSlice: StateCreator<
     [],
     ReleaseDateSlice
 > = (set) => ({
-    releaseDateFrom: NaN,
-    releaseDateTo: NaN,
+    releaseDateFrom: null,
+    releaseDateTo: null,
     setReleaseDateFrom: (releaseDateFrom) =>
         set(
-            (state) => ({
-                releaseDateFrom: fromNoBiggerTo(releaseDateFrom, state.releaseDateTo),
+            () => ({
+                releaseDateFrom,
             }),
             false,
             'CatalogFiltersStore/setReleaseDateFrom',
         ),
     setReleaseDateTo: (releaseDateTo) =>
         set(
-            (state) => ({
-                releaseDateTo: toNoLessFrom(state.releaseDateFrom, releaseDateTo),
+            () => ({
+                releaseDateTo,
             }),
             false,
             'CatalogFiltersStore/setReleaseDateTo',

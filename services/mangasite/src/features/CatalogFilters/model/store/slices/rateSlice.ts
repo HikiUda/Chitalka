@@ -1,5 +1,7 @@
 import { StateCreator } from 'zustand';
 import { CatalogFiltersStoreType, RateSlice } from '../../types/catalogFilters';
+import { fromNoBiggerTo } from '../../helpers/fromNoBiggerTo';
+import { toNoLessFrom } from '../../helpers/toNoLessFrom';
 
 export const createRateSlice: StateCreator<
     CatalogFiltersStoreType,
@@ -12,9 +14,7 @@ export const createRateSlice: StateCreator<
     setRateFrom: (rateFrom) =>
         set(
             (state) => ({
-                rateFrom: Number.isFinite(state.rateTo)
-                    ? Math.min(rateFrom, state.rateTo, 10)
-                    : rateFrom,
+                rateFrom: fromNoBiggerTo(rateFrom, state.rateTo),
             }),
             false,
             'CatalogFiltersStore/setRateFrom',
@@ -22,9 +22,7 @@ export const createRateSlice: StateCreator<
     setRateTo: (rateTo) =>
         set(
             (state) => ({
-                rateTo: Number.isFinite(state.rateFrom)
-                    ? Math.min(Math.max(state.rateFrom, rateTo), 10)
-                    : rateTo,
+                rateTo: toNoLessFrom(state.rateFrom, rateTo),
             }),
             false,
             'CatalogFiltersStore/setRateTo',

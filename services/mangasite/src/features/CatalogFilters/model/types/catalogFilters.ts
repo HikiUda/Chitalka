@@ -1,4 +1,5 @@
 import { BookmarksType, MangaStatusType, MangaTypeType } from '@packages/model/src/entities/manga';
+import { DateValue } from '@packages/ui/src/shared/DatePicker';
 import { OrderType, SortByType } from '@/shared/api/mangaList';
 
 export interface SearchSlice {
@@ -36,22 +37,22 @@ export interface AgeRateSlice {
     setAgeRateTo: (ageRateTo: number) => void;
 }
 export interface ReleaseDateSlice {
-    releaseDateFrom: number;
-    releaseDateTo: number;
-    setReleaseDateFrom: (releaseDateFrom: number) => void;
-    setReleaseDateTo: (releaseDateTo: number) => void;
+    releaseDateFrom: DateValue | null;
+    releaseDateTo: DateValue | null;
+    setReleaseDateFrom: (releaseDateFrom: DateValue | null) => void;
+    setReleaseDateTo: (releaseDateTo: DateValue | null) => void;
 }
 export interface MangaTypeSlice {
     type: MangaTypeType[];
-    setType: (t: MangaTypeType) => void;
+    setType: (type: MangaTypeType[]) => void;
 }
 export interface MangaStatusSlice {
     status: MangaStatusType[];
-    setStatus: (t: MangaStatusType) => void;
+    setStatus: (status: MangaStatusType[]) => void;
 }
 export interface BookmarksSlice {
     bookmarks: BookmarksType[];
-    setBookmarks: (t: BookmarksType) => void;
+    setBookmarks: (bookmarks: BookmarksType[]) => void;
 }
 
 export type TriSwitchState = 'include' | 'exclude' | 'none';
@@ -59,12 +60,14 @@ export type TriSwitchState = 'include' | 'exclude' | 'none';
 export interface GenresSlice {
     genres: number[];
     notGenres: number[];
-    switchGenre: (genre: number, toState: TriSwitchState) => void;
+    setGenres: (genres: number[]) => void;
+    setNotGenres: (notGenres: number[]) => void;
 }
 export interface TagsSlice {
     tags: number[];
     notTags: number[];
-    switchTag: (genre: number, toState: TriSwitchState) => void;
+    setTags: (tags: number[]) => void;
+    setNotTags: (notTags: number[]) => void;
 }
 
 export type CatalogFiltersStoreType = SearchSlice &

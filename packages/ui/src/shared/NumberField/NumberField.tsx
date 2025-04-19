@@ -14,7 +14,7 @@ import cls from './NumberField.module.scss';
 
 type InputBorder = 'none' | 'primaryBorder' | 'secondaryBorder';
 
-interface NumberFieldProps extends ANumberFieldProps {
+export interface NumberFieldProps extends ANumberFieldProps {
     className?: string;
     border?: InputBorder;
     placeholder?: string;

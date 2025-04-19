@@ -1,0 +1,99 @@
+.DatePicker {
+    color: var(--text-color);
+
+    .Group {
+        display: flex;
+        width: fit-content;
+        align-items: center;
+        justify-content: space-between;
+        padding-right: 5px;
+        border: 2px solid var(--primary-color);
+        border-radius: 4px;
+    }
+
+    .Button {
+        background: var(--secondary-color);
+        color: var(--text-color);
+        border: 2px solid var(--secondary-color);
+        forced-color-adjust: none;
+        border-radius: 4px;
+        border: none;
+        margin-left: -1.929rem;
+        width: 1.429rem;
+        height: 1.429rem;
+        padding: 0;
+        font-size: 0.857rem;
+        box-sizing: content-box;
+
+        &[data-pressed] {
+            box-shadow: none;
+            background: var(--accent-background);
+        }
+
+        &[data-focus-visible] {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+    }
+
+    .DateInput {
+        padding: 4px 2.5rem 4px 8px;
+    }
+    .DateSegment {
+        padding: 0 2px;
+        font-variant-numeric: tabular-nums;
+        text-align: end;
+        color: var(--text-color);
+
+        &[data-type='literal'] {
+            padding: 0;
+        }
+
+        &[data-placeholder] {
+            color: var(--text-color);
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        &:focus {
+            color: var(--text-color);
+            background: var(--accent-color);
+            outline: none;
+            border-radius: 4px;
+            caret-color: transparent;
+        }
+    }
+}
+.popover {
+    border-radius: 6px;
+    background: var(--bg-color);
+    color: var(--text-color);
+    outline: none;
+    box-shadow: 1px 1px 10px var(--text-color);
+    transition: transform 200ms, opacity 200ms;
+
+    &[data-entering],
+    &[data-exiting] {
+        transform: var(--origin);
+        opacity: 0;
+    }
+
+    &[data-placement='top'] {
+        --origin: translateY(8px);
+    }
+
+    &[data-placement='bottom'] {
+        --origin: translateY(-8px);
+    }
+
+    &[data-placement='right'] {
+        --origin: translateX(-8px);
+    }
+
+    &[data-placement='left'] {
+        --origin: translateX(8px);
+    }
+}
+.dialog {
+    padding: 10px;
+}

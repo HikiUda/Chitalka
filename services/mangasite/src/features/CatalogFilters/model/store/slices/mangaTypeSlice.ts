@@ -1,6 +1,5 @@
 import { StateCreator } from 'zustand';
 import { CatalogFiltersStoreType, MangaTypeSlice } from '../../types/catalogFilters';
-import { checkBoxArray } from '../../helpers/checkBoxArray';
 
 export const createMangaTypeSlice: StateCreator<
     CatalogFiltersStoreType,
@@ -9,10 +8,10 @@ export const createMangaTypeSlice: StateCreator<
     MangaTypeSlice
 > = (set) => ({
     type: [],
-    setType: (t) =>
+    setType: (type) =>
         set(
-            (state) => ({
-                type: checkBoxArray(state.type, t),
+            () => ({
+                type,
             }),
             false,
             'CatalogFiltersStore/setType',

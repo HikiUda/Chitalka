@@ -1,6 +1,5 @@
 import { StateCreator } from 'zustand';
 import { BookmarksSlice, CatalogFiltersStoreType } from '../../types/catalogFilters';
-import { checkBoxArray } from '../../helpers/checkBoxArray';
 
 export const createBookmarksSlice: StateCreator<
     CatalogFiltersStoreType,
@@ -9,10 +8,10 @@ export const createBookmarksSlice: StateCreator<
     BookmarksSlice
 > = (set) => ({
     bookmarks: [],
-    setBookmarks: (b) =>
+    setBookmarks: (bookmarks) =>
         set(
-            (state) => ({
-                bookmarks: checkBoxArray(state.bookmarks, b),
+            () => ({
+                bookmarks,
             }),
             false,
             'CatalogFiltersStore/setBookmarks',
