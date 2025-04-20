@@ -62,12 +62,18 @@ export interface GenresSlice {
     notGenres: number[];
     setGenres: (genres: number[]) => void;
     setNotGenres: (notGenres: number[]) => void;
+    resetGenres: () => void;
 }
 export interface TagsSlice {
     tags: number[];
     notTags: number[];
     setTags: (tags: number[]) => void;
     setNotTags: (notTags: number[]) => void;
+    resetTags: () => void;
+}
+export interface GlobalSlice {
+    resetAll: () => void;
+    getFilters: () => void;
 }
 
 export type CatalogFiltersStoreType = SearchSlice &
@@ -81,4 +87,5 @@ export type CatalogFiltersStoreType = SearchSlice &
     MangaStatusSlice &
     BookmarksSlice &
     GenresSlice &
-    TagsSlice;
+    TagsSlice &
+    GlobalSlice;

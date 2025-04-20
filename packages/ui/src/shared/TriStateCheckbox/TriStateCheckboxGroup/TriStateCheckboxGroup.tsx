@@ -1,33 +1,31 @@
-import { FC, ReactNode, useCallback, useState } from 'react';
-import { classNames } from '@packages/model/src/lib/helpers/classNames';
-import { Heading } from '@ui/shared/Heading';
+import { ReactNode, useCallback, useState } from 'react';
 import {
-    IncludeExcludeType,
     TriStateCheckboxGroupContext,
     TriSwitchState,
 } from '../TriStateCheckboxGroupContext/TriStateCheckboxGroupContext';
-import cls from './TriStateCheckboxGroup.module.scss';
 
-interface TriStateCheckboxGroupProps {
+interface TriStateCheckboxGroupProps<T extends string | number> {
     className?: string;
-    include?: IncludeExcludeType;
-    exclude?: IncludeExcludeType;
-    onChangeInclude?: (include: IncludeExcludeType) => void;
-    onChangeExclude?: (exclude: IncludeExcludeType) => void;
+    include?: T[];
+    exclude?: T[];
+    onChangeInclude?: (include: T[]) => void;
+    onChangeExclude?: (exclude: T[]) => void;
     children?: ReactNode;
     label?: string;
 }
 
-export const TriStateCheckboxGroup: FC<TriStateCheckboxGroupProps> = (props) => {
+export const TriStateCheckboxGroup = <T extends string | number>(
+    props: TriStateCheckboxGroupProps<T>,
+) => {
     const { className, include, exclude, onChangeExclude, onChangeInclude, children, label } =
         props;
     const controlled = !!include && !!exclude && !!onChangeExclude && !!onChangeInclude;
 
-    const [internalInclude, setInclude] = useState<IncludeExcludeType>([]);
-    const [internalExclude, setExclude] = useState<IncludeExcludeType>([]);
+    const [internalInclude, setInclude] = useState<T[]>([]);
+    const [internalExclude, setExclude] = useState<T[]>([]);
 
     const onCheck = useCallback(
-        (value: string | number, nextState: TriSwitchState) => {
+        (value: T, nextState: TriSwitchState) => {
             switch (nextState) {
                 case 'include':
                     if (controlled) {
@@ -66,10 +64,7 @@ export const TriStateCheckboxGroup: FC<TriStateCheckboxGroupProps> = (props) => 
                 onCheck,
             }}
         >
-            <div className={classNames(cls.TriStateCheckboxGroup, {}, [className])}>
-                {label && <Heading>{label}</Heading>}
-                {children}
-            </div>
+            {children}
         </TriStateCheckboxGroupContext>
     );
 };

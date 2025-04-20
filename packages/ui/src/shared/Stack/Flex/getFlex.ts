@@ -58,7 +58,7 @@ export function getFlex(props: GetFlexProps = {}): string {
         max,
         wrap = 'nowrap',
         flexGrow,
-        flexShrink,
+        flexShrink = true,
     } = props;
 
     const classes = [
@@ -73,6 +73,8 @@ export function getFlex(props: GetFlexProps = {}): string {
         [cls.max]: max,
         [cls.flexGrow]: flexGrow,
         [cls.flexShrink]: flexShrink,
+        [cls.flexNotGrow]: !flexGrow,
+        [cls.flexNotShrink]: !flexShrink,
     };
 
     return classNames(cls.Flex, mods, classes);

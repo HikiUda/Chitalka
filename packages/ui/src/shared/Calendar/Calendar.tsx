@@ -18,7 +18,11 @@ export const Calendar = <T extends DateValue>(props: CalendarProps<T>) => {
     const { className, ...otherProps } = props;
 
     return (
-        <ACalendar {...otherProps} className={classNames(cls.Calendar, {}, [className])}>
+        <ACalendar
+            firstDayOfWeek="mon"
+            {...otherProps}
+            className={classNames(cls.Calendar, {}, [className])}
+        >
             <header>
                 <Button className={cls.Button} slot="previous">
                     ◀

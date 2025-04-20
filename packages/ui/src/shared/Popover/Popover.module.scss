@@ -16,45 +16,17 @@
 
     &[data-placement='top'] {
         --origin: translateY(8px);
-
-        // &:has(.react-aria-OverlayArrow) {
-        //     margin-bottom: 6px;
-        // }
     }
 
     &[data-placement='bottom'] {
         --origin: translateY(-8px);
-
-        // &:has(.react-aria-OverlayArrow) {
-        //     margin-top: 6px;
-        // }
-
-        // .react-aria-OverlayArrow svg {
-        //     transform: rotate(180deg);
-        // }
     }
 
     &[data-placement='right'] {
         --origin: translateX(-8px);
-
-        // &:has(.react-aria-OverlayArrow) {
-        //     margin-left: 6px;
-        // }
-
-        // .react-aria-OverlayArrow svg {
-        //     transform: rotate(90deg);
-        // }
     }
 
     &[data-placement='left'] {
         --origin: translateX(8px);
-
-        // &:has(.react-aria-OverlayArrow) {
-        //     margin-right: 6px;
-        // }
-
-        // .react-aria-OverlayArrow svg {
-        //     transform: rotate(-90deg);
-        // }
     }
 }

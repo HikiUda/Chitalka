@@ -12,4 +12,6 @@ export const createGenresSlice: StateCreator<
     setGenres: (genres) => set(() => ({ genres }), false, 'CatalogFiltersStore/setGenres'),
     setNotGenres: (notGenres) =>
         set(() => ({ notGenres }), false, 'CatalogFiltersStore/setNotGenres'),
+    resetGenres: () =>
+        set(() => ({ genres: [], notGenres: [] }), false, 'CatalogFiltersStore/resetGenres'),
 });

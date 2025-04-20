@@ -2,15 +2,17 @@ import { z, ZodTypeAny } from 'zod';
 import { BookmarksEnum, MangaStatusEnum, MangaTypeEnum } from '@packages/model/src/entities/manga';
 import { RangeScheme } from './rangeScheme';
 
-const SortByEnum = z.enum([
-    'rating',
-    'updateDate',
-    'ruAlphabetically',
-    'enAlphabetically',
-    'views',
-    'likes',
-    'chapterCount',
-]);
+export const SortByConst = {
+    rating: 'rating',
+    updateDate: 'updateDate',
+    ruAlphabetically: 'ruAlphabetically',
+    enAlphabetically: 'enAlphabetically',
+    views: 'views',
+    likes: 'likes',
+    chapterCount: 'chapterCount',
+} as const;
+
+const SortByEnum = z.nativeEnum(SortByConst);
 export type SortByType = z.infer<typeof SortByEnum>;
 
 export const OrderEnum = z.enum(['asc', 'desc']);

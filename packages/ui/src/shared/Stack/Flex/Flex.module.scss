@@ -87,3 +87,9 @@
 .flexShrink {
     flex-shrink: 1;
 }
+.flexNotGrow {
+    flex-grow: 0;
+}
+.flexNotShrink {
+    flex-shrink: 0;
+}

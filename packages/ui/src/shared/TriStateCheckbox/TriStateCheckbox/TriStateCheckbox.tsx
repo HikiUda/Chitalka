@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react';
+import { memo, useState } from 'react';
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { getFlex } from '@ui/shared/Stack';
 import {
@@ -27,22 +27,22 @@ export const TriStateCheckbox = memo((props: TriStateCheckboxProps) => {
     const [internalState, setInternalState] = useState(defaultState || 'none');
     const context = useTriStateCheckboxGroupContext();
 
-    const handleOnCheck = useCallback(
-        (newState: TriSwitchState) => {
-            if (value && context) {
-                context.onCheck(value, newState);
-            }
-        },
-        [context, value],
-    );
+    const contextState =
+        !value || !context
+            ? null
+            : context.include.includes(value)
+            ? 'include'
+            : context.exclude.includes(value)
+            ? 'exclude'
+            : 'none';
 
     const handleClick = () => {
-        if (state && onChange) {
+        if (value && context && contextState) {
+            context.onCheck(value, getNextState(contextState));
+        } else if (state && onChange) {
             onChange(getNextState(state));
-            handleOnCheck(getNextState(state));
         } else {
             setInternalState(getNextState(internalState));
-            handleOnCheck(getNextState(internalState));
         }
     };
 
@@ -52,12 +52,12 @@ export const TriStateCheckbox = memo((props: TriStateCheckboxProps) => {
             className={classNames(cls.TriStateCheckbox, {}, [
                 className,
                 getFlex(),
-                cls[state || internalState],
+                cls[contextState || state || internalState],
             ])}
         >
             <div className={classNames(cls.checkbox, {}, [getFlex({ flexShrink: false })])}>
                 <svg viewBox="0 0 18 18" aria-hidden="true">
-                    {(state || internalState) === 'exclude' ? (
+                    {(contextState || state || internalState) === 'exclude' ? (
                         <rect x={1} y={7.5} width={15} height={3} />
                     ) : (
                         <polyline points="1 9 7 14 15 4" />

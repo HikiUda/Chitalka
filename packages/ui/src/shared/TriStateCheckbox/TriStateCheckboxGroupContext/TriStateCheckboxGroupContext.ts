@@ -3,11 +3,12 @@ import { createContext, useContext } from 'react';
 export type TriSwitchState = 'include' | 'exclude' | 'none';
 
 export type IncludeExcludeType = (string | number)[];
-
+//TODO type
 interface TriStateCheckboxGroupContextProps {
     include: IncludeExcludeType;
     exclude: IncludeExcludeType;
-    onCheck: (value: string | number, nextState: TriSwitchState) => void;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    onCheck: (value: any, nextState: TriSwitchState) => void;
 }
 
 export const TriStateCheckboxGroupContext = createContext<TriStateCheckboxGroupContextProps | null>(

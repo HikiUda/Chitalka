@@ -11,4 +11,5 @@ export const createTagsSlice: StateCreator<
     notTags: [],
     setTags: (tags) => set(() => ({ tags }), false, 'CatalogFiltersStore/setTags'),
     setNotTags: (notTags) => set(() => ({ notTags }), false, 'CatalogFiltersStore/setNotTags'),
+    resetTags: () => set(() => ({ tags: [], notTags: [] }), false, 'CatalogFiltersStore/resetTags'),
 });

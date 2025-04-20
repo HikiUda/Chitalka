@@ -1,0 +1,18 @@
+.CatalogSearchInput {
+    position: relative;
+}
+.input {
+    padding-left: 25px;
+}
+.search {
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    transform: translateY(-52%);
+}
+.crossout {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+}

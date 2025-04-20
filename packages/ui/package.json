@@ -28,6 +28,7 @@
         "@config/jest": "workspace:*",
         "@config/storybook": "workspace:*",
         "@config/stylelint": "workspace:*",
+        "@internationalized/date": "^3.8.0",
         "@packages/model": "workspace:*",
         "framer-motion": "^12.6.3",
         "react": "^19.1.0",

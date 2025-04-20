@@ -16,9 +16,6 @@
 .filters {
     position: sticky;
     width: 330px;
-    height: 90vh;
+    max-height: calc(100vh - 88px);
     top: calc(15px + var(--header-height));
-
-    // flex-basis: 300px;
-    // flex-shrink: 0;
 }

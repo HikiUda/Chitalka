@@ -12,8 +12,9 @@ import { createMangaTypeSlice } from './slices/mangaTypeSlice';
 import { createMangaStatusSlice } from './slices/mangaStatusSlice';
 import { createAgeRateSlice } from './slices/ageRateSlice';
 import { createBookmarksSlice } from './slices/bookmarksSlice';
-import { createTagsSlice } from './slices/TagsSlice';
-import { createGenresSlice } from './slices/GenresSlice';
+import { createTagsSlice } from './slices/tagsSlice';
+import { createGenresSlice } from './slices/genresSlice';
+import { createGlobalSlice } from './slices/globalSlice';
 
 export const useCatalogFiltersStoreBase = create<CatalogFiltersStoreType>()(
     devtools(
@@ -30,6 +31,7 @@ export const useCatalogFiltersStoreBase = create<CatalogFiltersStoreType>()(
             ...createRateSlice(...a),
             ...createAgeRateSlice(...a),
             ...createReleaseDateSlice(...a),
+            ...createGlobalSlice(...a),
         }),
         { name: 'CatalogFiltersStore' },
     ),
