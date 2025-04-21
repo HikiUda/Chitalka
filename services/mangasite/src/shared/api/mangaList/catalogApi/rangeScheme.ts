@@ -11,7 +11,7 @@ const RateFromToScheme = z
     .max(10)
     .transform((val) => String(val))
     .optional();
-const releaseDateFromToScheme = z
+const releaseDateFromToScheme = z.coerce
     .date()
     .transform((val) => val.toISOString())
     .optional();

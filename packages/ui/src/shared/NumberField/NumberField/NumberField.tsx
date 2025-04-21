@@ -8,8 +8,8 @@ import {
 } from 'react-aria-components';
 import SvgArrow from '@ui/assets/icon/common/selectArrow.svg';
 
-import { getFlex } from '../Stack';
-import { Icon } from '../Icon';
+import { getFlex } from '../../Stack';
+import { Icon } from '../../Icon';
 import cls from './NumberField.module.scss';
 
 type InputBorder = 'none' | 'primaryBorder' | 'secondaryBorder';
@@ -26,10 +26,10 @@ export const NumberField: FC<NumberFieldProps> = (props) => {
     return (
         <ANumberField
             {...otherProps}
-            className={classNames(cls.NumberField, {}, [className, getFlex({}), cls[border]])}
+            className={classNames(cls.NumberField, {}, [className, getFlex(), cls[border]])}
         >
             <Input placeholder={placeholder} className={cls.input} />
-            <div className={cls.buttons}>
+            <div className={getFlex({ direction: 'column', gap: '4' })}>
                 <Button className={cls.increment} slot="increment">
                     <Icon Svg={SvgArrow} size={10} />
                 </Button>

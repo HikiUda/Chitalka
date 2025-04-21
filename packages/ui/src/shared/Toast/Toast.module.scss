@@ -20,6 +20,7 @@
     border-radius: 8px;
     outline: none;
     max-width: 250px;
+    font: var(--font-s);
 
     &[data-focus-visible] {
         outline: 2px solid var(--primary-color);

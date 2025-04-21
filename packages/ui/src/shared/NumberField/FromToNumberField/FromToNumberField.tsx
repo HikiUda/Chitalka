@@ -1,6 +1,6 @@
 import { memo } from 'react';
-import { HStack } from '@packages/ui/src/shared/Stack';
-import { NumberField, NumberFieldProps } from '@packages/ui/src/shared/NumberField';
+import { HStack } from '@ui/shared/Stack';
+import { NumberField, NumberFieldProps } from '../NumberField/NumberField';
 import cls from './FromToNumberField.module.scss';
 
 interface FromToNumberFieldProps extends Omit<NumberFieldProps, 'placeholder'> {

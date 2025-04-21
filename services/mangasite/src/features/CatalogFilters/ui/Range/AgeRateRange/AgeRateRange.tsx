@@ -1,7 +1,7 @@
 import { FC } from 'react';
+import { FromToNumberField } from '@packages/ui/src/shared/NumberField';
 import { RangeWrapper } from '../RangeWrapper/RangeWrapper';
 import { useCatalogFiltersStore } from '../../../model/store/catalogFiltersStore';
-import { FromToNumberField } from '@/entities/FromToNumberField';
 
 interface AgeRageRangeProps {
     className?: string;

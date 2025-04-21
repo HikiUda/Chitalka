@@ -1,2 +1,3 @@
-export { NumberField } from './NumberField';
-export type { NumberFieldProps } from './NumberField';
+export { NumberField } from './NumberField/NumberField';
+export { FromToNumberField } from './FromToNumberField/FromToNumberField';
+export type { NumberFieldProps } from './NumberField/NumberField';

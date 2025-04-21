@@ -1,7 +1,7 @@
 import { FC } from 'react';
+import { FromToNumberField } from '@packages/ui/src/shared/NumberField';
 import { useCatalogFiltersStore } from '../../../model/store/catalogFiltersStore';
 import { RangeWrapper } from '../RangeWrapper/RangeWrapper';
-import { FromToNumberField } from '@/entities/FromToNumberField';
 
 interface RateRangeProps {
     className?: string;

@@ -1,5 +1,15 @@
 import { StateCreator } from 'zustand';
-import { CatalogFiltersStoreType, MangaStatusSlice } from '../../types/catalogFilters';
+import { MangaStatusType } from '@packages/model/src/entities/manga';
+import { CatalogFiltersStoreType } from '../catalogFiltersStroe.type';
+
+export interface MangaStatusSlice {
+    status: MangaStatusType[];
+    setStatus: (status: MangaStatusType[]) => void;
+}
+
+export const mangaStatusSliceInitialState: Pick<MangaStatusSlice, 'status'> = {
+    status: [],
+};
 
 export const createMangaStatusSlice: StateCreator<
     CatalogFiltersStoreType,
@@ -7,7 +17,7 @@ export const createMangaStatusSlice: StateCreator<
     [],
     MangaStatusSlice
 > = (set) => ({
-    status: [],
+    ...mangaStatusSliceInitialState,
     setStatus: (status) =>
         set(
             () => ({

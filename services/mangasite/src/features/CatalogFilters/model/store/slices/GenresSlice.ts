@@ -1,5 +1,18 @@
 import { StateCreator } from 'zustand';
-import { CatalogFiltersStoreType, GenresSlice } from '../../types/catalogFilters';
+import { CatalogFiltersStoreType } from '../catalogFiltersStroe.type';
+
+export interface GenresSlice {
+    genres: number[];
+    notGenres: number[];
+    setGenres: (genres: number[]) => void;
+    setNotGenres: (notGenres: number[]) => void;
+    resetGenres: () => void;
+}
+
+export const genresSliceInitialState: Pick<GenresSlice, 'genres' | 'notGenres'> = {
+    genres: [],
+    notGenres: [],
+};
 
 export const createGenresSlice: StateCreator<
     CatalogFiltersStoreType,
@@ -7,11 +20,9 @@ export const createGenresSlice: StateCreator<
     [],
     GenresSlice
 > = (set) => ({
-    genres: [],
-    notGenres: [],
+    ...genresSliceInitialState,
     setGenres: (genres) => set(() => ({ genres }), false, 'CatalogFiltersStore/setGenres'),
     setNotGenres: (notGenres) =>
         set(() => ({ notGenres }), false, 'CatalogFiltersStore/setNotGenres'),
-    resetGenres: () =>
-        set(() => ({ genres: [], notGenres: [] }), false, 'CatalogFiltersStore/resetGenres'),
+    resetGenres: () => set(() => genresSliceInitialState, false, 'CatalogFiltersStore/resetGenres'),
 });

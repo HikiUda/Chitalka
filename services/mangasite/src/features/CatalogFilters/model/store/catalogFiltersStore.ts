@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import { createSelectorsForVanillaStore } from '@packages/model/src/lib/zustand/createSelectorsForVanillaStore';
-import { CatalogFiltersStoreType } from '../types/catalogFilters';
+import { CatalogFiltersStoreType } from './catalogFiltersStroe.type';
 import { createSearchSlice } from './slices/searchSlice';
 import { createSortByOrderSlice } from './slices/sortByOrderSlice';
 import { createChapterCountSlice } from './slices/chapterCountSlice';

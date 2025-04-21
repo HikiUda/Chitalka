@@ -16,11 +16,10 @@ class Catalog {
             .json();
         return await validateMangaListItemCatalogPagination(data);
     }
-    getMangaInfinityQueryOptions(filters: CatalogFiltersType, limit: number = 20) {
+    getMangaInfinityQueryOptions(filters: () => CatalogFiltersType, limit: number = 20) {
         return infiniteQueryOptions({
-            // eslint-disable-next-line @tanstack/query/exhaustive-deps
-            queryKey: ['catalog'],
-            queryFn: ({ pageParam }) => this.getManga(pageParam, limit, filters),
+            queryKey: ['catalog', limit],
+            queryFn: ({ pageParam }) => this.getManga(pageParam, limit, filters()),
             initialPageParam: 1,
             getNextPageParam: (result) => result.nextPage,
             select: (result) => result.pages.flatMap((page) => page.data),

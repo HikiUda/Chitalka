@@ -26,7 +26,7 @@ export const GenresList: FC<GenresListProps> = (props) => {
 
     return (
         <VStack justify="start" className={classNames(cls.GenresList, {}, [className])}>
-            <NavButtons onBack={onBack} title="Жанры" onReset={() => resetGenres()} />
+            <NavButtons title="Жанры" onBack={onBack} onReset={resetGenres} />
             <Divider />
             <TriStateCheckboxGroup
                 include={genres}
@@ -41,7 +41,7 @@ export const GenresList: FC<GenresListProps> = (props) => {
                     ]}
                 />
             </TriStateCheckboxGroup>
-            <Button onPress={onApply} theme="fill" max>
+            <Button slot="close" onPress={onApply} theme="fill" max>
                 Применить
             </Button>
         </VStack>

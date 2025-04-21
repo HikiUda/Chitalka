@@ -1,5 +1,18 @@
 import { StateCreator } from 'zustand';
-import { CatalogFiltersStoreType, TagsSlice } from '../../types/catalogFilters';
+import { CatalogFiltersStoreType } from '../catalogFiltersStroe.type';
+
+export interface TagsSlice {
+    tags: number[];
+    notTags: number[];
+    setTags: (tags: number[]) => void;
+    setNotTags: (notTags: number[]) => void;
+    resetTags: () => void;
+}
+
+export const tagsSliceInitialState: Pick<TagsSlice, 'tags' | 'notTags'> = {
+    tags: [],
+    notTags: [],
+};
 
 export const createTagsSlice: StateCreator<
     CatalogFiltersStoreType,
@@ -7,9 +20,8 @@ export const createTagsSlice: StateCreator<
     [],
     TagsSlice
 > = (set) => ({
-    tags: [],
-    notTags: [],
+    ...tagsSliceInitialState,
     setTags: (tags) => set(() => ({ tags }), false, 'CatalogFiltersStore/setTags'),
     setNotTags: (notTags) => set(() => ({ notTags }), false, 'CatalogFiltersStore/setNotTags'),
-    resetTags: () => set(() => ({ tags: [], notTags: [] }), false, 'CatalogFiltersStore/resetTags'),
+    resetTags: () => set(() => tagsSliceInitialState, false, 'CatalogFiltersStore/resetTags'),
 });

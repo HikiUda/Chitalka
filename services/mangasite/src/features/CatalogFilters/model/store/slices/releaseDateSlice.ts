@@ -1,5 +1,21 @@
 import { StateCreator } from 'zustand';
-import { CatalogFiltersStoreType, ReleaseDateSlice } from '../../types/catalogFilters';
+import { DateValue } from '@packages/ui/src/shared/DatePicker';
+import { CatalogFiltersStoreType } from '../catalogFiltersStroe.type';
+
+export interface ReleaseDateSlice {
+    releaseDateFrom: DateValue | null;
+    releaseDateTo: DateValue | null;
+    setReleaseDateFrom: (releaseDateFrom: DateValue | null) => void;
+    setReleaseDateTo: (releaseDateTo: DateValue | null) => void;
+}
+
+export const releaseDateSliceInitialState: Pick<
+    ReleaseDateSlice,
+    'releaseDateFrom' | 'releaseDateTo'
+> = {
+    releaseDateFrom: null,
+    releaseDateTo: null,
+};
 
 export const createReleaseDateSlice: StateCreator<
     CatalogFiltersStoreType,
@@ -7,8 +23,7 @@ export const createReleaseDateSlice: StateCreator<
     [],
     ReleaseDateSlice
 > = (set) => ({
-    releaseDateFrom: null,
-    releaseDateTo: null,
+    ...releaseDateSliceInitialState,
     setReleaseDateFrom: (releaseDateFrom) =>
         set(
             () => ({

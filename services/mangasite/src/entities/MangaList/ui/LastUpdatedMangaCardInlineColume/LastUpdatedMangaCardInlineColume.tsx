@@ -1,7 +1,8 @@
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { VStack } from '@packages/ui/src/shared/Stack';
 import cls from './LastUpdatedMangaCardInlineColume.module.scss';
-import { LastUpdatedMangaCardInline, MangaListItemLastUpdatedType } from '@/entities/MangaCard';
+import { LastUpdatedMangaCardInline } from '@/entities/MangaCard';
+import { MangaListItemLastUpdatedType } from '@/shared/api/mangaList';
 
 interface LastUpdatedMangaCardInlineColumeProps {
     className?: string;

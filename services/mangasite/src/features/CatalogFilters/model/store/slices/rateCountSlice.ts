@@ -1,7 +1,19 @@
 import { StateCreator } from 'zustand';
-import { CatalogFiltersStoreType, RateCountSlice } from '../../types/catalogFilters';
+import { CatalogFiltersStoreType } from '../catalogFiltersStroe.type';
 import { fromNoBiggerTo } from '../../helpers/fromNoBiggerTo';
 import { toNoLessFrom } from '../../helpers/toNoLessFrom';
+
+export interface RateCountSlice {
+    rateCountFrom: number;
+    rateCountTo: number;
+    setRateCountFrom: (rateCountFrom: number) => void;
+    setRateCountTo: (rateCountTo: number) => void;
+}
+
+export const rateCountSliceInitialState: Pick<RateCountSlice, 'rateCountFrom' | 'rateCountTo'> = {
+    rateCountFrom: NaN,
+    rateCountTo: NaN,
+};
 
 export const createRateCountSlice: StateCreator<
     CatalogFiltersStoreType,
@@ -9,8 +21,7 @@ export const createRateCountSlice: StateCreator<
     [],
     RateCountSlice
 > = (set) => ({
-    rateCountFrom: NaN,
-    rateCountTo: NaN,
+    ...rateCountSliceInitialState,
     setRateCountFrom: (rateCountFrom) =>
         set(
             (state) => ({

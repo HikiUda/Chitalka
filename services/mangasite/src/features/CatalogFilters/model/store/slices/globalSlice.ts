@@ -1,33 +1,28 @@
 import { StateCreator } from 'zustand';
-import { CatalogFiltersStoreType, GlobalSlice } from '../../types/catalogFilters';
+import { CatalogFiltersStoreType } from '../catalogFiltersStroe.type';
+import { ageRateSliceInitialState } from './ageRateSlice';
+import { bookmarksSliceInitialState } from './bookmarksSlice';
+import { chapterCountSliceInitialState } from './chapterCountSlice';
+import { genresSliceInitialState } from './genresSlice';
+import { tagsSliceInitialState } from './tagsSlice';
+import { mangaStatusSliceInitialState } from './mangaStatusSlice';
+import { mangaTypeSliceInitialState } from './mangaTypeSlice';
+import { rateCountSliceInitialState } from './rateCountSlice';
+import { rateSliceInitialState } from './rateSlice';
+import { releaseDateSliceInitialState } from './releaseDateSlice';
 
 const initialState = {
-    type: [],
-    status: [],
-    bookmarks: [],
-    genres: [],
-    notGenres: [],
-    tags: [],
-    notTags: [],
-    ageRateFrom: NaN,
-    ageRateTo: NaN,
-    chapterCountFrom: NaN,
-    chapterCountTo: NaN,
-    rateCountFrom: NaN,
-    rateCountTo: NaN,
-    rateFrom: NaN,
-    rateTo: NaN,
-    releaseDateFrom: null,
-    releaseDateTo: null,
+    ...genresSliceInitialState,
+    ...tagsSliceInitialState,
+    ...mangaStatusSliceInitialState,
+    ...mangaTypeSliceInitialState,
+    ...ageRateSliceInitialState,
+    ...bookmarksSliceInitialState,
+    ...chapterCountSliceInitialState,
+    ...rateCountSliceInitialState,
+    ...rateSliceInitialState,
+    ...releaseDateSliceInitialState,
 };
-
-function clearObj<T extends object>(original: T) {
-    return Object.fromEntries(
-        Object.entries(original).filter(
-            ([_, value]) => value !== null && value !== undefined && !Number.isNaN(value),
-        ),
-    );
-}
 
 export const createGlobalSlice: StateCreator<
     CatalogFiltersStoreType,
@@ -36,27 +31,13 @@ export const createGlobalSlice: StateCreator<
     GlobalSlice
 > = (set, get) => ({
     resetAll: () => set(() => initialState, false, 'CatalogFiltersStore/resetAll'),
-    getFilters: () =>
-        clearObj({
-            search: get().search,
-            sortBy: get().sortBy,
-            order: get().order,
-            type: get().type,
-            status: get().status,
-            bookmarks: get().bookmarks,
-            genres: get().genres,
-            notGenres: get().notGenres,
-            tags: get().tags,
-            notTags: get().notTags,
-            ageRateFrom: get().ageRateFrom,
-            ageRateTo: get().ageRateTo,
-            chapterCountFrom: get().chapterCountFrom,
-            chapterCountTo: get().chapterCountTo,
-            rateCountFrom: get().rateCountFrom,
-            rateCountTo: get().rateCountTo,
-            rateFrom: get().rateFrom,
-            rateTo: get().rateTo,
-            releaseDateFrom: get().releaseDateFrom?.toString(),
-            releaseDateTo: get().releaseDateTo?.toString(),
-        }),
+    getFilters: () => ({
+        ...get(),
+        releaseDateFrom: get().releaseDateFrom?.toString(),
+        releaseDateTo: get().releaseDateTo?.toString(),
+    }),
 });
+export interface GlobalSlice {
+    resetAll: () => void;
+    getFilters: () => object;
+}

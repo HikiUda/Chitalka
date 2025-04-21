@@ -3,6 +3,7 @@ import { Button } from '@packages/ui/src/shared/Button';
 import { VStack } from '@packages/ui/src/shared/Stack';
 import { AppLink } from '@packages/ui/src/shared/AppLink';
 import { getMangaSiteRoute } from '@packages/model/src/config/router';
+import cls from './TabScroll.module.scss';
 import { MangaCardInlineSkeleton } from '@/entities/MangaCard';
 
 interface TabScrollProps {
@@ -28,19 +29,19 @@ export const TabScroll: FC<TabScrollProps> = (props) => {
             {children}
             {isFetching && <VStack>{skeletons.map((sk) => sk)}</VStack>}
 
-            <Button
-                max
-                onPress={() => !disabled && setTimeout(() => callback?.(), 200)}
-                theme="fill"
-            >
-                {disabled ? (
-                    <AppLink to={`${getMangaSiteRoute.catalog()}?${queryParams}`}>
-                        В Каталог
-                    </AppLink>
-                ) : (
-                    'Показать еще'
-                )}
-            </Button>
+            {!disabled ? (
+                <Button
+                    max
+                    onPress={() => !disabled && setTimeout(() => callback?.(), 200)}
+                    theme="fill"
+                >
+                    Показать еще
+                </Button>
+            ) : (
+                <AppLink className={cls.link} to={`${getMangaSiteRoute.catalog()}?${queryParams}`}>
+                    В Каталог
+                </AppLink>
+            )}
         </div>
     );
 };

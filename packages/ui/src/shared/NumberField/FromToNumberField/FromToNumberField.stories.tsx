@@ -1,10 +1,9 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { FromToNumberField } from './FromToNumberField';
 
 const meta: Meta<typeof FromToNumberField> = {
-    title: 'shared/FromToNumberField',
+    title: 'shared/NumberField/FromToNumberField',
     component: FromToNumberField,
 
     tags: ['autodocs'],

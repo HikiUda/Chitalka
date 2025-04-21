@@ -1,11 +1,25 @@
-.SortByOrderMenu {
-}
-.separator {
-    width: 100%;
-    height: 1px;
-    background-color: var(--accent-color);
-}
 .button {
     padding: 5px 10px;
     font: var(--font-s);
+}
+.menuItem {
+    position: relative;
+    padding-left: 20px;
+    &::before {
+        content: '';
+        position: absolute;
+        left: 3px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 1px solid var(--secondary-color);
+    }
+}
+.selectedItem {
+    &::before {
+        border: 1px solid var(--accent-color);
+        background: var(--accent-color);
+    }
 }

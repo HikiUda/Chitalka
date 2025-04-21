@@ -41,7 +41,7 @@ export const Button: FC<ButtonProps> = (props) => {
             className={classNames(
                 cls.Button,
                 { [cls.bgHover]: !noHover, [cls.max]: max, [cls.bold]: bold, [cls.italic]: italic },
-                [className, cls[color], cls[theme], cls[pressAnimation], cls[hoverAnimation]],
+                [cls[color], cls[theme], cls[pressAnimation], cls[hoverAnimation], className],
             )}
             {...otherProps}
         >

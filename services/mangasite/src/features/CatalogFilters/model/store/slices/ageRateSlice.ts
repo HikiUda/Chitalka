@@ -1,7 +1,19 @@
 import { StateCreator } from 'zustand';
-import { AgeRateSlice, CatalogFiltersStoreType } from '../../types/catalogFilters';
+import { CatalogFiltersStoreType } from '../catalogFiltersStroe.type';
 import { fromNoBiggerTo } from '../../helpers/fromNoBiggerTo';
 import { toNoLessFrom } from '../../helpers/toNoLessFrom';
+
+export interface AgeRateSlice {
+    ageRateFrom: number;
+    ageRateTo: number;
+    setAgeRateFrom: (ageRateFrom: number) => void;
+    setAgeRateTo: (ageRateTo: number) => void;
+}
+
+export const ageRateSliceInitialState: Pick<AgeRateSlice, 'ageRateFrom' | 'ageRateTo'> = {
+    ageRateFrom: NaN,
+    ageRateTo: NaN,
+};
 
 export const createAgeRateSlice: StateCreator<
     CatalogFiltersStoreType,
@@ -9,8 +21,7 @@ export const createAgeRateSlice: StateCreator<
     [],
     AgeRateSlice
 > = (set) => ({
-    ageRateFrom: NaN,
-    ageRateTo: NaN,
+    ...ageRateSliceInitialState,
     setAgeRateFrom: (ageRateFrom) =>
         set(
             (state) => ({

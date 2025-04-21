@@ -2,12 +2,12 @@
     position: relative;
 }
 .input {
-    padding-left: 25px;
+    padding-left: 30px;
 }
 .search {
     position: absolute;
     top: 50%;
-    left: 3px;
+    left: 6px;
     transform: translateY(-52%);
 }
 .crossout {
@@ -15,4 +15,8 @@
     top: 50%;
     right: 10px;
     transform: translateY(-50%);
+    transition: opacity 0.2s ease;
+    &:hover {
+        opacity: 0.8;
+    }
 }

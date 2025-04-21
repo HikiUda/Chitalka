@@ -25,10 +25,6 @@
     width: 100%;
     flex-grow: 1;
 }
-.buttons {
-    display: flex;
-    flex-direction: column;
-}
 .decrement {
     transform: rotate(180deg) scale(1);
     &:hover {

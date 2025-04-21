@@ -1,4 +1,5 @@
 .TriStateCheckbox {
+    color: var(--text-color);
     .checkbox {
         width: 1.143rem;
         height: 1.143rem;
@@ -20,8 +21,8 @@
     &.include,
     &.exclude {
         .checkbox {
-            border-color: var(--accent-color);
-            background: var(--accent-color);
+            border-color: var(--secondary-color);
+            background: var(--secondary-color);
         }
 
         &[data-pressed] .checkbox {

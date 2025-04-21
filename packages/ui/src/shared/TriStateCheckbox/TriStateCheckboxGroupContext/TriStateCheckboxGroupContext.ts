@@ -1,13 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createContext, useContext } from 'react';
 
 export type TriSwitchState = 'include' | 'exclude' | 'none';
 
-export type IncludeExcludeType = (string | number)[];
-//TODO type
 interface TriStateCheckboxGroupContextProps {
-    include: IncludeExcludeType;
-    exclude: IncludeExcludeType;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    include: any[];
+    exclude: any[];
     onCheck: (value: any, nextState: TriSwitchState) => void;
 }
 

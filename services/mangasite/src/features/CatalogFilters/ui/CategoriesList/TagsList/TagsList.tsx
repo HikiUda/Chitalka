@@ -17,14 +17,16 @@ interface TagsListProps {
 
 export const TagsList: FC<TagsListProps> = (props) => {
     const { className, onApply, onBack } = props;
+
     const tags = useCatalogFiltersStore.use.tags();
     const notTags = useCatalogFiltersStore.use.notTags();
     const setTags = useCatalogFiltersStore.use.setTags();
     const setNotTags = useCatalogFiltersStore.use.setNotTags();
     const resetTags = useCatalogFiltersStore.use.resetTags();
+
     return (
         <VStack justify="start" className={classNames(cls.TagsList, {}, [className])}>
-            <NavButtons onBack={onBack} title="Теги" onReset={() => resetTags()} />
+            <NavButtons title="Теги" onBack={onBack} onReset={resetTags} />
             <Divider />
             <TriStateCheckboxGroup
                 include={tags}
@@ -40,7 +42,7 @@ export const TagsList: FC<TagsListProps> = (props) => {
                     ]}
                 />
             </TriStateCheckboxGroup>
-            <Button onPress={onApply} theme="fill" max>
+            <Button slot="close" onPress={onApply} theme="fill" max>
                 Применить
             </Button>
         </VStack>

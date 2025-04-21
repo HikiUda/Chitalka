@@ -5,20 +5,17 @@ import {
 } from '../TriStateCheckboxGroupContext/TriStateCheckboxGroupContext';
 
 interface TriStateCheckboxGroupProps<T extends string | number> {
-    className?: string;
     include?: T[];
     exclude?: T[];
     onChangeInclude?: (include: T[]) => void;
     onChangeExclude?: (exclude: T[]) => void;
     children?: ReactNode;
-    label?: string;
 }
 
 export const TriStateCheckboxGroup = <T extends string | number>(
     props: TriStateCheckboxGroupProps<T>,
 ) => {
-    const { className, include, exclude, onChangeExclude, onChangeInclude, children, label } =
-        props;
+    const { include, exclude, onChangeExclude, onChangeInclude, children } = props;
     const controlled = !!include && !!exclude && !!onChangeExclude && !!onChangeInclude;
 
     const [internalInclude, setInclude] = useState<T[]>([]);

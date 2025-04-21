@@ -56,10 +56,10 @@ export const CommonFilters: FC<CommonFiltersProps> = (props) => {
                 <BookmarksCheckbox />
             </VStack>
             <HStack justify="around" max>
-                <Button theme="fill" onPress={onApply}>
+                <Button slot="close" theme="fill" onPress={onApply}>
                     Применить
                 </Button>
-                <Button theme="fill" color="secondary" onPress={() => resetAll()}>
+                <Button theme="fill" color="secondary" onPress={resetAll}>
                     Сбросить все
                 </Button>
             </HStack>

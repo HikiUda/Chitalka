@@ -1,0 +1,39 @@
+import { ReactNode, useMemo } from 'react';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
+import { useTrottle } from '@packages/model/src/lib/hooks/useTrottle/useTrottle';
+import { useIntersection } from '@packages/model/src/lib/hooks/useIntersection/useIntersection';
+import cls from './InfinityMangaList.module.scss';
+import { MangaCardSkeleton } from '@/entities/MangaCard';
+
+interface InfinityMangaListProps<T> {
+    className?: string;
+    list: T[];
+    renderList: (item: T) => ReactNode;
+    fetchNextPage?: () => void;
+    isLoading?: boolean;
+    skeletonsNumber?: number;
+}
+
+export const InfinityMangaList = <T extends object>(props: InfinityMangaListProps<T>) => {
+    const { className, list, renderList, fetchNextPage, isLoading, skeletonsNumber = 20 } = props;
+
+    const skeletons = useMemo(() => {
+        return Array(skeletonsNumber)
+            .fill(0)
+            .map((item, ind) => <MangaCardSkeleton adaptive="dynamic" key={ind} />);
+    }, [skeletonsNumber]);
+
+    const trottleIntersect = useTrottle(() => fetchNextPage?.(), 1000);
+    const intersect = useIntersection(() => trottleIntersect());
+
+    //TODO Error
+    if (!isLoading && !list.length) return <div>Error</div>;
+
+    return (
+        <div className={classNames(cls.InfinityMangaList, {}, [className])}>
+            {list.map(renderList)}
+            {isLoading && skeletons.map((sk) => sk)}
+            <div ref={intersect} />
+        </div>
+    );
+};

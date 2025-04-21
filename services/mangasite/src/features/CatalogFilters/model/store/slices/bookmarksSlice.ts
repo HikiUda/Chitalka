@@ -1,13 +1,22 @@
 import { StateCreator } from 'zustand';
-import { BookmarksSlice, CatalogFiltersStoreType } from '../../types/catalogFilters';
+import { BookmarksType } from '@packages/model/src/entities/manga';
+import { CatalogFiltersStoreType } from '../catalogFiltersStroe.type';
 
+export interface BookmarksSlice {
+    bookmarks: BookmarksType[];
+    setBookmarks: (bookmarks: BookmarksType[]) => void;
+}
+
+export const bookmarksSliceInitialState: Pick<BookmarksSlice, 'bookmarks'> = {
+    bookmarks: [],
+};
 export const createBookmarksSlice: StateCreator<
     CatalogFiltersStoreType,
     [['zustand/devtools', never]],
     [],
     BookmarksSlice
 > = (set) => ({
-    bookmarks: [],
+    ...bookmarksSliceInitialState,
     setBookmarks: (bookmarks) =>
         set(
             () => ({

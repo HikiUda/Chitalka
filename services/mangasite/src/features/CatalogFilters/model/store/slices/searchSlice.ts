@@ -1,5 +1,14 @@
 import { StateCreator } from 'zustand';
-import { CatalogFiltersStoreType, SearchSlice } from '../../types/catalogFilters';
+import { CatalogFiltersStoreType } from '../catalogFiltersStroe.type';
+
+export interface SearchSlice {
+    search: string;
+    setSearch: (search: string) => void;
+}
+
+export const searchSliceInitialState: Pick<SearchSlice, 'search'> = {
+    search: '',
+};
 
 export const createSearchSlice: StateCreator<
     CatalogFiltersStoreType,
@@ -7,6 +16,6 @@ export const createSearchSlice: StateCreator<
     [],
     SearchSlice
 > = (set) => ({
-    search: '',
+    ...searchSliceInitialState,
     setSearch: (search) => set(() => ({ search }), false, 'CatalogFiltersStore/setSearch'),
 });

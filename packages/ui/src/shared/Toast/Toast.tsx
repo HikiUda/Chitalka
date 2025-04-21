@@ -24,7 +24,6 @@ interface ToastContent {
 }
 
 export const queue = new ToastQueue<ToastContent>({
-    // Wrap state updates in a CSS view transition.
     wrapUpdate(fn) {
         if ('startViewTransition' in document) {
             document.startViewTransition(() => {

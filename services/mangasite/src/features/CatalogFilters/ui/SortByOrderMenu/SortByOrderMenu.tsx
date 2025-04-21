@@ -1,54 +1,83 @@
 import { FC } from 'react';
-import { classNames } from '@packages/model/src/lib/helpers/classNames';
-import { Menu, MenuItem, MenuSection, Separator } from '@packages/ui/src/shared/Menu';
+import { Menu, MenuItem, MenuSection, MenuSeparator } from '@packages/ui/src/shared/Menu';
 import { Button } from '@packages/ui/src/shared/Button';
+import SortBySvg from '@packages/ui/src/assets/icon/common/sortBy.svg';
+import { Icon } from '@packages/ui/src/shared/Icon';
+import { classNames } from '@packages/model/src/lib/helpers/classNames';
+import { getFlex } from '@packages/ui/src/shared/Stack';
 import { useCatalogFiltersStore } from '../../model/store/catalogFiltersStore';
 import cls from './SortByOrderMenu.module.scss';
 import { OrderType, SortByConst, SortByType } from '@/shared/api/mangaList';
 
 interface SortByOrderMenuProps {
     className?: string;
+    onApply?: () => void;
 }
 
 export const SortByOrderMenu: FC<SortByOrderMenuProps> = (props) => {
-    const { className } = props;
+    const { className, onApply } = props;
 
     const sortBy = useCatalogFiltersStore.use.sortBy();
     const setSortBy = useCatalogFiltersStore.use.setSortBy();
     const order = useCatalogFiltersStore.use.order();
     const setOrder = useCatalogFiltersStore.use.setOrder();
 
+    const handleSetSortBy = (sort: SortByType) => {
+        setSortBy(sort);
+        onApply?.();
+    };
+    const handleSetOrder = (order: OrderType) => {
+        setOrder(order);
+        onApply?.();
+    };
+
     return (
         <Menu
             button={
-                <Button theme="outline" className={cls.button}>
+                <Button
+                    theme="outline"
+                    className={classNames(cls.button, {}, [getFlex({ gap: '4' })])}
+                >
+                    <Icon Svg={SortBySvg} size={12} />
                     {sortBy}
                 </Button>
             }
-            className={classNames(cls.SortByOrderMenu, {}, [className])}
+            className={className}
         >
-            <MenuSection
-                selectionMode="single"
-                selectedKeys={sortBy}
-                onSelectionChange={(key) => setSortBy(Array.from(key)[0] as SortByType)}
-            >
+            <MenuSection>
                 {Object.values(SortByConst).map((sort) => (
-                    <MenuItem key={sort} id={sort}>
+                    <MenuItem
+                        className={classNames(cls.menuItem, {
+                            [cls.selectedItem]: sort === sortBy,
+                        })}
+                        onAction={() => handleSetSortBy(sort)}
+                        key={sort}
+                        id={sort}
+                    >
                         {sort}
                     </MenuItem>
                 ))}
             </MenuSection>
-            <Separator className={cls.separator} />
-            <MenuSection
-                selectionMode="single"
-                selectedKeys={order}
-                onSelectionChange={(key) => setOrder(Array.from(key)[0] as OrderType)}
-            >
-                <MenuItem key={'desc'} id={'desc'}>
+            <MenuSeparator />
+            <MenuSection>
+                <MenuItem
+                    className={classNames(cls.menuItem, {
+                        [cls.selectedItem]: order === 'desc',
+                    })}
+                    key={'desc'}
+                    id={'desc'}
+                    onAction={() => handleSetOrder('desc')}
+                >
                     {'desc'}
                 </MenuItem>
-
-                <MenuItem key={'asc'} id={'asc'}>
+                <MenuItem
+                    className={classNames(cls.menuItem, {
+                        [cls.selectedItem]: order === 'asc',
+                    })}
+                    key={'asc'}
+                    id={'asc'}
+                    onAction={() => handleSetOrder('asc')}
+                >
                     {'asc'}
                 </MenuItem>
             </MenuSection>
