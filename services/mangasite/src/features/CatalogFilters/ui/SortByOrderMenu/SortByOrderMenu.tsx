@@ -4,6 +4,7 @@ import { Button } from '@packages/ui/src/shared/Button';
 import SortBySvg from '@packages/ui/src/assets/icon/common/sortBy.svg';
 import { Icon } from '@packages/ui/src/shared/Icon';
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
+import { useUrlSearchParams } from '@packages/model/src/lib/hooks/useUrlSearchParams';
 import { getFlex } from '@packages/ui/src/shared/Stack';
 import { useCatalogFiltersStore } from '../../model/store/catalogFiltersStore';
 import cls from './SortByOrderMenu.module.scss';
@@ -17,6 +18,8 @@ interface SortByOrderMenuProps {
 export const SortByOrderMenu: FC<SortByOrderMenuProps> = (props) => {
     const { className, onApply } = props;
 
+    const { setSearchParam } = useUrlSearchParams();
+
     const sortBy = useCatalogFiltersStore.use.sortBy();
     const setSortBy = useCatalogFiltersStore.use.setSortBy();
     const order = useCatalogFiltersStore.use.order();
@@ -24,10 +27,12 @@ export const SortByOrderMenu: FC<SortByOrderMenuProps> = (props) => {
 
     const handleSetSortBy = (sort: SortByType) => {
         setSortBy(sort);
+        setSearchParam('sortBy', sort);
         onApply?.();
     };
     const handleSetOrder = (order: OrderType) => {
         setOrder(order);
+        setSearchParam('order', order);
         onApply?.();
     };
 

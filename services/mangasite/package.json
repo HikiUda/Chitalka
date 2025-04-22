@@ -87,6 +87,7 @@
         "@config/jest": "workspace:*",
         "@config/storybook": "workspace:*",
         "@config/stylelint": "workspace:*",
+        "@internationalized/date": "^3.8.0",
         "@packages/model": "workspace:*",
         "@packages/ui": "workspace:*",
         "@tanstack/react-query": "^5.71.1",

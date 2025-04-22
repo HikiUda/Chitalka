@@ -3,6 +3,7 @@
     grid-auto-rows: max-content;
     grid-template-columns: repeat(5, 1fr);
     gap: 16px;
+    align-items: start;
 
     @media (max-width: 991px) {
         grid-template-columns: repeat(6, 1fr);

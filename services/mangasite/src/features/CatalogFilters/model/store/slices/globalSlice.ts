@@ -24,6 +24,12 @@ const initialState = {
     ...releaseDateSliceInitialState,
 };
 
+export interface GlobalSlice {
+    resetAll: () => void;
+    getFilters: () => object;
+    setInitialState: (init: object) => void;
+}
+
 export const createGlobalSlice: StateCreator<
     CatalogFiltersStoreType,
     [['zustand/devtools', never]],
@@ -36,8 +42,5 @@ export const createGlobalSlice: StateCreator<
         releaseDateFrom: get().releaseDateFrom?.toString(),
         releaseDateTo: get().releaseDateTo?.toString(),
     }),
+    setInitialState: (init) => set(() => init, false, 'CatalogFiltersStore/setInitialState'),
 });
-export interface GlobalSlice {
-    resetAll: () => void;
-    getFilters: () => object;
-}

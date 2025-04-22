@@ -1,4 +1,4 @@
-import { FC, useCallback } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { Page } from '@packages/ui/src/shared/Page';
 import { isMobile } from 'react-device-detect';
@@ -6,7 +6,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useKeyBoardEvent } from '@packages/model/src/lib/hooks/useKeyBoardEvent';
 import { CatalogContent } from '../CatalogContent/CatalogContent';
 import cls from './CatalogPage.module.scss';
-import { CatalogFilters } from '@/features/CatalogFilters';
+import { CatalogFilters, useSetCatalogFiltersFromSearchParams } from '@/features/CatalogFilters';
 import { CatalogApi } from '@/shared/api/mangaList';
 
 interface CatalogPageProps {
@@ -24,6 +24,23 @@ const CatalogPage: FC<CatalogPageProps> = (props) => {
     }, [queryClient]);
 
     useKeyBoardEvent(onApplyFilters, 'Enter');
+
+    const [init, setInit] = useState(false);
+
+    const setInitialFilters = useSetCatalogFiltersFromSearchParams();
+
+    useEffect(() => {
+        setInitialFilters();
+        setInit(true);
+        return () => {
+            queryClient.removeQueries({
+                queryKey: CatalogApi.getMangaInfinityQueryOptions(() => ({}) as never).queryKey,
+            });
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    if (!init) return null;
 
     return (
         <Page className={classNames(cls.CatalogPage, {}, [className])}>

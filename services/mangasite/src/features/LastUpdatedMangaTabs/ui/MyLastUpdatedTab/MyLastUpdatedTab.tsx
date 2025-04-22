@@ -1,10 +1,10 @@
 import { FC, useEffect } from 'react';
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { useInfiniteQuery } from '@tanstack/react-query';
+import { useClearInfinityPages } from '@packages/model/src/lib/hooks/useClearInfinityPages';
 import { TabScroll } from '../TabScroll/TabScroll';
 import { LastUpdatedMangaCardInlineColume } from '@/entities/MangaList';
 import { LastUpdatedMangaApi } from '@/shared/api/mangaList';
-import { useClearInfinityPages } from '@packages/model/src/lib/hooks/useClearInfinityPages';
 
 interface MyLastUpdatedTabProps {
     className?: string;

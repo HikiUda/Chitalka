@@ -3,6 +3,7 @@ import { HStack } from '@packages/ui/src/shared/Stack';
 import { AppLink } from '@packages/ui/src/shared/AppLink';
 import { Tag } from '@packages/ui/src/shared/Tag';
 import { Button } from '@packages/ui/src/shared/Button';
+import { getMangaSiteRoute } from '@packages/model/src/config/router';
 import { MangaCategoriesType } from '@/shared/api/individualManga';
 
 interface GenresAndTagsListProps {
@@ -19,15 +20,15 @@ export const GenresAndTagsList: FC<GenresAndTagsListProps> = (props) => {
     const allTags = useMemo(() => {
         let arr: ReactNode[] = [];
         arr = arr.concat(
-            genres.map((janre, ind) => (
-                <AppLink key={ind} to={''}>
-                    <Tag text={janre.title} withHash={false} />
+            genres.map((genre, ind) => (
+                <AppLink key={ind} to={`${getMangaSiteRoute.catalog()}?genres=${genre.id}`}>
+                    <Tag text={genre.title} withHash={false} />
                 </AppLink>
             )),
         );
         arr = arr.concat(
             tags.map((tag, ind) => (
-                <AppLink key={ind + 1000} to={''}>
+                <AppLink key={ind + 1000} to={`${getMangaSiteRoute.catalog()}?tags=${tag.id}`}>
                     <Tag text={tag.title} />
                 </AppLink>
             )),

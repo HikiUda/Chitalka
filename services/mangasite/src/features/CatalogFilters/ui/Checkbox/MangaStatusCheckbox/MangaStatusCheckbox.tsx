@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import { Checkbox, CheckboxGroup } from '@packages/ui/src/shared/Checkbox';
 import { HStack } from '@packages/ui/src/shared/Stack';
-import { MangaStatus } from '@packages/model/src/entities/manga';
+import { MangaStatus, MangaStatusType } from '@packages/model/src/entities/manga';
+import { useUrlSearchParams } from '@packages/model/src/lib/hooks/useUrlSearchParams';
 import { useCatalogFiltersStore } from '../../../model/store/catalogFiltersStore';
 
 interface MangaStatusCheckboxProps {
@@ -10,13 +11,20 @@ interface MangaStatusCheckboxProps {
 
 export const MangaStatusCheckbox: FC<MangaStatusCheckboxProps> = (props) => {
     const { className } = props;
+
+    const { setSearchParam } = useUrlSearchParams();
     const status = useCatalogFiltersStore.use.status();
     const setStatus = useCatalogFiltersStore.use.setStatus();
+
+    const handleSetStatus = (statuses: MangaStatusType[]) => {
+        setStatus(statuses);
+        setSearchParam('status', statuses.join(','));
+    };
 
     return (
         <CheckboxGroup
             value={status}
-            onChange={setStatus}
+            onChange={handleSetStatus}
             label="Статус тайтла"
             className={className}
             aria-label="manga status"

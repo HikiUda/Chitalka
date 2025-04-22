@@ -7,7 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { getFlex } from '@packages/ui/src/shared/Stack';
 import { Icon } from '@packages/ui/src/shared/Icon';
-import { BookmarksType } from '@packages/model/src/entities/manga';
+import { BookmarksType, MangaIdType } from '@packages/model/src/entities/manga';
 import { MangaUserBookmarkApi } from '../../model/api/mangaUserBookmarkApi';
 import { bookmarks } from '../../model/const/bookmarks';
 import { useSetMangaUserBookmark } from '../../model/api/hooks/useSetMangaUserBookmark';
@@ -16,7 +16,7 @@ import cls from './AddMangaToBookmarks.module.scss';
 
 interface AddMangaToBookmarksProps {
     className?: string;
-    mangaId: number;
+    mangaId: MangaIdType;
 }
 
 export const AddMangaToBookmarks = memo((props: AddMangaToBookmarksProps) => {

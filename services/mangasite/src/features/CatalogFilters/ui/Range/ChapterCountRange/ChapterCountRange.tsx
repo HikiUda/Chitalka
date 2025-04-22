@@ -1,7 +1,10 @@
 import { FC } from 'react';
 import { FromToNumberField } from '@packages/ui/src/shared/NumberField';
+import { useUrlSearchParams } from '@packages/model/src/lib/hooks/useUrlSearchParams';
 import { useCatalogFiltersStore } from '../../../model/store/catalogFiltersStore';
 import { RangeWrapper } from '../RangeWrapper/RangeWrapper';
+import { fromNoBiggerTo } from '../../../model/helpers/fromNoBiggerTo';
+import { toNoLessFrom } from '../../../model/helpers/toNoLessFrom';
 
 interface ChapterCountRangeProps {
     className?: string;
@@ -9,18 +12,28 @@ interface ChapterCountRangeProps {
 
 export const ChapterCountRange: FC<ChapterCountRangeProps> = (props) => {
     const { className } = props;
+    const { setSearchParam } = useUrlSearchParams();
     const chapterCountFrom = useCatalogFiltersStore.use.chapterCountFrom();
     const setChapterCountFrom = useCatalogFiltersStore.use.setChapterCountFrom();
     const chapterCountTo = useCatalogFiltersStore.use.chapterCountTo();
     const setChapterCountTo = useCatalogFiltersStore.use.setChapterCountTo();
+
+    const handleSetChapterCountFrom = (chapterCount: number) => {
+        setChapterCountFrom(chapterCount);
+        setSearchParam('chapterCountFrom', String(fromNoBiggerTo(chapterCount, chapterCountTo)));
+    };
+    const handleSetChapterCountTo = (chapterCount: number) => {
+        setChapterCountTo(chapterCount);
+        setSearchParam('chapterCountTo', String(toNoLessFrom(chapterCountFrom, chapterCount)));
+    };
 
     return (
         <RangeWrapper className={className} title="Количество глав">
             <FromToNumberField
                 fromValue={chapterCountFrom}
                 toValue={chapterCountTo}
-                setFromValue={setChapterCountFrom}
-                setToValue={setChapterCountTo}
+                setFromValue={handleSetChapterCountFrom}
+                setToValue={handleSetChapterCountTo}
                 minValue={0}
                 aria-label="chapterCount"
             />

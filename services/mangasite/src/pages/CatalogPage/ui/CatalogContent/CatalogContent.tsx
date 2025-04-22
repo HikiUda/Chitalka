@@ -13,6 +13,7 @@ import {
     useGetCatalogFilters,
 } from '@/features/CatalogFilters';
 import { InfinityMangaList } from '@/features/InfinityMangaList';
+import { TooltipManga } from '@/features/TooltipManga';
 
 interface CatalogContentProps {
     className?: string;
@@ -24,7 +25,6 @@ export const CatalogContent: FC<CatalogContentProps> = (props) => {
     const { data, fetchNextPage, isLoading, isFetchingNextPage, refetch } = useInfiniteQuery(
         CatalogApi.getMangaInfinityQueryOptions(getFilters),
     );
-    //TODO optimization api query
 
     return (
         <CardBlock className={classNames(cls.CatalogContent, {}, [className])}>
@@ -37,7 +37,13 @@ export const CatalogContent: FC<CatalogContentProps> = (props) => {
             <CatalogSearchInput className={cls.input} />
             <InfinityMangaList
                 list={data || []}
-                renderList={(manga) => <CatalogCard key={manga.id} manga={manga} />}
+                renderList={(manga) => (
+                    <TooltipManga
+                        key={manga.id}
+                        mangaId={manga.id}
+                        trigger={<CatalogCard key={manga.id} manga={manga} />}
+                    />
+                )}
                 fetchNextPage={fetchNextPage}
                 isLoading={isLoading || isFetchingNextPage}
             />

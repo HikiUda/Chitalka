@@ -12,7 +12,7 @@ export const SortByConst = {
     chapterCount: 'chapterCount',
 } as const;
 
-const SortByEnum = z.nativeEnum(SortByConst);
+export const SortByEnum = z.nativeEnum(SortByConst);
 export type SortByType = z.infer<typeof SortByEnum>;
 
 export const OrderEnum = z.enum(['asc', 'desc']);
