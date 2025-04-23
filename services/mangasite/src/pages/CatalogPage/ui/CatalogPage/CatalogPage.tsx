@@ -15,6 +15,8 @@ interface CatalogPageProps {
 
 const CatalogPage: FC<CatalogPageProps> = (props) => {
     const { className } = props;
+
+    const [init, setInit] = useState(false);
     const queryClient = useQueryClient();
 
     const onApplyFilters = useCallback(() => {
@@ -24,8 +26,6 @@ const CatalogPage: FC<CatalogPageProps> = (props) => {
     }, [queryClient]);
 
     useKeyBoardEvent(onApplyFilters, 'Enter');
-
-    const [init, setInit] = useState(false);
 
     const setInitialFilters = useSetCatalogFiltersFromSearchParams();
 
@@ -40,6 +40,7 @@ const CatalogPage: FC<CatalogPageProps> = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    //TODO add loader
     if (!init) return null;
 
     return (

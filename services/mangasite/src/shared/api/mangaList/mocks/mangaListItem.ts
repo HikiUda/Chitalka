@@ -5,7 +5,7 @@ import {
     MangaListItemBaseResponseArrayDataType,
 } from '../scheme/mangaListItmeBase';
 
-export const mangaListItem: MangaListItemBaseType = {
+export const mockMangaListItem: MangaListItemBaseType = {
     id: 1,
     urlId: 'shazav-is-big-hero',
     title: 'Shazam ultra',
@@ -30,9 +30,9 @@ export const getArrayMangaListItme = (
     return Array(count)
         .fill(count)
         .map((manga, ind) => ({
-            ...mangaListItem,
+            ...mockMangaListItem,
             id: ind + count * idIncrement,
-            urlId: mangaListItem.urlId + (ind + count * idIncrement),
+            urlId: mockMangaListItem.urlId + (ind + count * idIncrement),
         }));
 };
 

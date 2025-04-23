@@ -4,6 +4,10 @@
 
 .title {
     padding: 0 20px;
+
+    @media (max-width: 991px) {
+        padding: 0 5px;
+    }
 }
 
 .clean {

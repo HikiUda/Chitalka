@@ -12,4 +12,12 @@ const meta: Meta<typeof CatalogFilters> = {
 export default meta;
 type Story = StoryObj<typeof CatalogFilters>;
 
-export const Primary: Story = {};
+export const Primary: Story = {
+    decorators: [
+        (Story) => (
+            <div style={{ width: 330 }}>
+                <Story />
+            </div>
+        ),
+    ],
+};

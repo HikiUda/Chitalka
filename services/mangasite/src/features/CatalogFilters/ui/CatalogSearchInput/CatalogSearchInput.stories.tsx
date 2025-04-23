@@ -1,10 +1,9 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { CatalogSearchInput } from './CatalogSearchInput';
 
 const meta: Meta<typeof CatalogSearchInput> = {
-    title: 'shared/CatalogSearchInput',
+    title: 'features/CatalogFilters/CatalogSearchInput',
     component: CatalogSearchInput,
 
     tags: ['autodocs'],

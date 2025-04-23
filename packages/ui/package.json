@@ -30,6 +30,7 @@
         "@config/stylelint": "workspace:*",
         "@internationalized/date": "^3.8.0",
         "@packages/model": "workspace:*",
+        "@radix-ui/react-hover-card": "^1.1.11",
         "framer-motion": "^12.6.3",
         "react": "^19.1.0",
         "react-aria-components": "^1.7.1",

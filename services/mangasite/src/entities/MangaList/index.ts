@@ -1,2 +1,2 @@
-export { ColumePrimaryMangaCardInline } from './ui/ColumePrimaryMangaCardInline/ColumePrimaryMangaCardInline';
-export { LastUpdatedMangaCardInlineColume } from './ui/LastUpdatedMangaCardInlineColume/LastUpdatedMangaCardInlineColume';
+export { MangaCardInlineColumn } from './ui/MangaCardInlineColumn/MangaCardInlineColumn';
+export { InfinityMangaList } from './ui/InfinityMangaList/InfinityMangaList';

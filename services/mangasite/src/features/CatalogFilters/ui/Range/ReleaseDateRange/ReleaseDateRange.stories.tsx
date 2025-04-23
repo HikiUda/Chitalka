@@ -1,10 +1,9 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { ReleaseDateRange } from './ReleaseDateRange';
 
 const meta: Meta<typeof ReleaseDateRange> = {
-    title: 'shared/ReleaseDateRange',
+    title: 'features/CatalogFilters/Ranges/ReleaseDateRange',
     component: ReleaseDateRange,
 
     tags: ['autodocs'],

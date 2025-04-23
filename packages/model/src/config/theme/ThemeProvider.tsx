@@ -25,7 +25,7 @@ const ThemeProvider: FC<ThemeProviderProps> = (props) => {
         [theme, disign],
     );
 
-    return <ThemeContext value={defaultProps}>{children}</ThemeContext>;
+    return <ThemeContext.Provider value={defaultProps}>{children}</ThemeContext.Provider>;
 };
 
 export default ThemeProvider;

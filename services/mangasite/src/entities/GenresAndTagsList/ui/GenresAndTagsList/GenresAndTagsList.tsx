@@ -11,30 +11,30 @@ interface GenresAndTagsListProps {
     genres: MangaCategoriesType[];
     tags: MangaCategoriesType[];
     visibleCount?: number;
+    mini?: boolean;
 }
 
 export const GenresAndTagsList: FC<GenresAndTagsListProps> = (props) => {
-    const { className, genres = [], tags = [], visibleCount = 3 } = props;
+    const { className, genres = [], tags = [], visibleCount = 3, mini } = props;
     const [close, setClose] = useState(true);
-    //TODO link to cotolog
     const allTags = useMemo(() => {
         let arr: ReactNode[] = [];
         arr = arr.concat(
             genres.map((genre, ind) => (
                 <AppLink key={ind} to={`${getMangaSiteRoute.catalog()}?genres=${genre.id}`}>
-                    <Tag text={genre.title} withHash={false} />
+                    <Tag mini={mini} text={genre.title} withHash={false} />
                 </AppLink>
             )),
         );
         arr = arr.concat(
             tags.map((tag, ind) => (
                 <AppLink key={ind + 1000} to={`${getMangaSiteRoute.catalog()}?tags=${tag.id}`}>
-                    <Tag text={tag.title} />
+                    <Tag mini={mini} text={tag.title} />
                 </AppLink>
             )),
         );
         return arr;
-    }, [genres, tags]);
+    }, [genres, tags, mini]);
 
     if (!allTags.length) return null;
 
@@ -50,11 +50,15 @@ export const GenresAndTagsList: FC<GenresAndTagsListProps> = (props) => {
                         noHover
                         onPress={() => setClose(false)}
                     >
-                        <Tag text={'+еще ' + (allTags.length - visibleCount)} withHash={false} />
+                        <Tag
+                            mini={mini}
+                            text={'+еще ' + (allTags.length - visibleCount)}
+                            withHash={false}
+                        />
                     </Button>
                 ) : (
                     <Button theme="clear" color="none" noHover onPress={() => setClose(true)}>
-                        <Tag text="...свернуть" withHash={false} />
+                        <Tag mini={mini} text="...свернуть" withHash={false} />
                     </Button>
                 ))}
         </HStack>

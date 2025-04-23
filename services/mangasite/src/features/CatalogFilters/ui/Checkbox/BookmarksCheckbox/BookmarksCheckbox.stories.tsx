@@ -1,10 +1,9 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { BookmarksCheckbox } from './BookmarksCheckbox';
 
 const meta: Meta<typeof BookmarksCheckbox> = {
-    title: 'shared/BookmarksCheckbox',
+    title: 'features/CatalogFilters/Checkbox/BookmarksCheckbox',
     component: BookmarksCheckbox,
 
     tags: ['autodocs'],

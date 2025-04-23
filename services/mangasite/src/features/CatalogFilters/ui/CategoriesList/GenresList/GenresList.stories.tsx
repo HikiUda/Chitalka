@@ -1,10 +1,9 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { GenresList } from './GenresList';
 
 const meta: Meta<typeof GenresList> = {
-    title: 'shared/GenresList',
+    title: 'features/CatalogFilters/CategoriesList/GenresList',
     component: GenresList,
 
     tags: ['autodocs'],

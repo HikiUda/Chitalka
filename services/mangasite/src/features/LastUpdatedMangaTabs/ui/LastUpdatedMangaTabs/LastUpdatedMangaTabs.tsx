@@ -13,7 +13,6 @@ const AllLastUpdatedTab = lazy(() => import('../AllLastUpdatedTab/AllLastUpdated
 interface LastUpdatedMangaTabsProps {
     className?: string;
 }
-//TODO vertualized
 export const LastUpdatedMangaTabs: FC<LastUpdatedMangaTabsProps> = (props) => {
     const { className } = props;
     const { data: userData } = useQuery(UserDataApi.getUserDataQueryOptions());

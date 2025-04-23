@@ -1,10 +1,9 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { MangaTypeCheckbox } from './MangaTypeCheckbox';
 
 const meta: Meta<typeof MangaTypeCheckbox> = {
-    title: 'shared/MangaTypeCheckbox',
+    title: 'features/CatalogFilters/Checkbox/MangaTypeCheckbox',
     component: MangaTypeCheckbox,
 
     tags: ['autodocs'],

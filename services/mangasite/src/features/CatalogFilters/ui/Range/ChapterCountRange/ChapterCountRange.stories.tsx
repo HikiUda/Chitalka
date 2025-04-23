@@ -1,10 +1,9 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { ChapterCountRange } from './ChapterCountRange';
 
 const meta: Meta<typeof ChapterCountRange> = {
-    title: 'shared/ChapterCountRange',
+    title: 'features/CatalogFilters/Ranges/ChapterCountRange',
     component: ChapterCountRange,
 
     tags: ['autodocs'],

@@ -17,7 +17,7 @@ interface TooltipProps extends Omit<ATooltipProps, 'children'> {
     isDisabled?: boolean;
     tooltipTrigger?: 'focus';
 }
-
+// ? usless component
 export const Tooltip: FC<TooltipProps> = (props) => {
     const {
         className,

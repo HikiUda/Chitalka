@@ -5,7 +5,7 @@ export type { MangaListItemLastUpdatedType } from './scheme/mangaListItemLastUpd
 export type { MangaListItemCatalogType } from './scheme/mangaListitemCatalog';
 export {
     getArrayMangaListItme,
-    mangaListItem,
+    mockMangaListItem,
     createMockMangaListItemRequest,
 } from './mocks/mangaListItem';
 

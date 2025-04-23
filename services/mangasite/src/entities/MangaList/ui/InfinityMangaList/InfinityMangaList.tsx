@@ -8,14 +8,14 @@ import { MangaCardSkeleton } from '@/entities/MangaCard';
 interface InfinityMangaListProps<T> {
     className?: string;
     list: T[];
-    renderList: (item: T) => ReactNode;
+    renderItem: (item: T) => ReactNode;
     fetchNextPage?: () => void;
     isLoading?: boolean;
     skeletonsNumber?: number;
 }
 
 export const InfinityMangaList = <T extends object>(props: InfinityMangaListProps<T>) => {
-    const { className, list, renderList, fetchNextPage, isLoading, skeletonsNumber = 20 } = props;
+    const { className, list, renderItem, fetchNextPage, isLoading, skeletonsNumber = 20 } = props;
 
     const skeletons = useMemo(() => {
         return Array(skeletonsNumber)
@@ -31,7 +31,7 @@ export const InfinityMangaList = <T extends object>(props: InfinityMangaListProp
 
     return (
         <div className={classNames(cls.InfinityMangaList, {}, [className])}>
-            {list.map(renderList)}
+            {list.map(renderItem)}
             {isLoading && skeletons.map((sk) => sk)}
             <div ref={intersect} />
         </div>

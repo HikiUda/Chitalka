@@ -23,6 +23,12 @@ export const Primary: Story = {
         text: 'tag',
     },
 };
+export const Mini: Story = {
+    args: {
+        text: 'tag',
+        mini: true,
+    },
+};
 export const WithoutHash: Story = {
     args: {
         text: 'tag',

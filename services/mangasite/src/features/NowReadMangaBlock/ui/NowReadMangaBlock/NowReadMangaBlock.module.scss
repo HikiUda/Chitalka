@@ -1,36 +1,32 @@
 .NowReadMangaBlock {
     padding: 10px 25px;
-}
-
-.scroll {
-    overflow: auto;
-    scrollbar-width: none;
+    @media (max-width: 991px) {
+        padding: 10px 5px;
+    }
 }
 
 .title {
+    padding-left: 10px;
     margin-bottom: 20px;
 }
 
-.card {
-    flex: 0 0 33%;
+.rowTitle {
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
 
-    @media (width <= 1050px) {
-        flex: 0 0 45%;
+.row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    @media (max-width: 991px) {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        grid-template-columns: 48% 48% 52%;
+        scrollbar-width: none;
+        //-ms-overflow-style: none;
     }
-
-    @media (width <= 900px) {
-        flex: 0 0 57%;
-    }
-
-    @media (width <= 670px) {
-        flex: 0 0 80%;
-    }
-
-    @media (width <= 460px) {
-        flex: 0 0 93%;
-    }
-
-    @media (width <= 350px) {
-        flex: 0 0 115%;
+    @media (max-width: 650px) {
+        grid-template-columns: 92% 92% 100%;
     }
 }

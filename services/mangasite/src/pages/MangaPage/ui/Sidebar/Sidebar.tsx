@@ -3,6 +3,7 @@ import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { VStack } from '@packages/ui/src/shared/Stack';
 import { getStyleScrollbar } from '@packages/ui/src/shared/StyleHooks';
 import { AppLink } from '@packages/ui/src/shared/AppLink';
+import { getMangaSiteRoute } from '@packages/model/src/config/router';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import cls from './Sidebar.module.scss';
 import { MangaType } from '@/shared/api/individualManga';
@@ -25,12 +26,17 @@ export const Sidebar = memo((props: SidebarProps) => {
             ])}
         >
             <SidebarItem title="Type">
-                <AppLink underlineOnHover to="">
-                    {manga?.type}
+                <AppLink underlineOnHover to={`${getMangaSiteRoute.catalog()}?type=${manga.type}`}>
+                    {manga.type}
                 </AppLink>
             </SidebarItem>
             <SidebarItem title="Status">
-                <AppLink to="">{manga.status}</AppLink>
+                <AppLink
+                    underlineOnHover
+                    to={`${getMangaSiteRoute.catalog()}?status=${manga.status}`}
+                >
+                    {manga.status}
+                </AppLink>
             </SidebarItem>
             {!!manga?.authors.length && (
                 <SidebarItem title="Authors">

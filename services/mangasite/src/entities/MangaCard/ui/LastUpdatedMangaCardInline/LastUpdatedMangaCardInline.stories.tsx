@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { LastUpdatedMangaCardInline } from './LastUpdatedMangaCardInline';
-import { mangaListItem } from '@/shared/api/mangaList';
+import { mockMangaListItem } from '@/shared/api/mangaList';
 
 const meta: Meta<typeof LastUpdatedMangaCardInline> = {
     title: 'entities/MangaCard/LastUpdatedMangaCardInline',
@@ -15,6 +15,6 @@ type Story = StoryObj<typeof LastUpdatedMangaCardInline>;
 
 export const Primary: Story = {
     args: {
-        manga: mangaListItem,
+        manga: mockMangaListItem,
     },
 };

@@ -20,6 +20,13 @@ export const Primary: Story = {
         tags: mockTagsArray,
     },
 };
+export const Mini: Story = {
+    args: {
+        genres: mockGenresArray,
+        tags: mockTagsArray,
+        mini: true,
+    },
+};
 export const Open: Story = {
     args: {
         genres: mockGenresArray,

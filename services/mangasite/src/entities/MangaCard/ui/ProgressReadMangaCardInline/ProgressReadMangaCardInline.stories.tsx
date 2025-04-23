@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { ProgressReadMangaCardInline } from './ProgressReadMangaCardInline';
-import { mangaListItem } from '@/shared/api/mangaList';
+import { mockMangaListItem } from '@/shared/api/mangaList';
 
 const meta: Meta<typeof ProgressReadMangaCardInline> = {
     title: 'entities/MangaCard/ProgressReadMangaCardInline',
@@ -15,12 +15,12 @@ type Story = StoryObj<typeof ProgressReadMangaCardInline>;
 
 export const Primary: Story = {
     args: {
-        manga: mangaListItem,
+        manga: mockMangaListItem,
     },
 };
 export const WithDelete: Story = {
     args: {
-        manga: mangaListItem,
+        manga: mockMangaListItem,
         onDelete: () => 8,
     },
 };

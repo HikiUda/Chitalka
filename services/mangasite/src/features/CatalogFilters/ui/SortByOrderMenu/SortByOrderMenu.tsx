@@ -42,6 +42,7 @@ export const SortByOrderMenu: FC<SortByOrderMenuProps> = (props) => {
                 <Button
                     theme="outline"
                     className={classNames(cls.button, {}, [getFlex({ gap: '4' })])}
+                    data-testid="SortByOrder-Button"
                 >
                     <Icon Svg={SortBySvg} size={12} />
                     {sortBy}

@@ -2,10 +2,12 @@ import { FC } from 'react';
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { CardBlock } from '@packages/ui/src/shared/CardBlock';
 import { Heading } from '@packages/ui/src/shared/Heading';
-import { HStack } from '@packages/ui/src/shared/Stack';
+import { useInfiniteQuery } from '@tanstack/react-query';
+import { getStyleLineClamp } from '@packages/ui/src/shared/StyleHooks';
 import cls from './NowReadMangaBlock.module.scss';
-import { ColumePrimaryMangaCardInline } from '@/entities/MangaList';
-import { SelectTimeRange } from '@/entities/SelectTimeRange';
+import { MangaCardInlineColumn } from '@/entities/MangaList';
+import { CatalogApi } from '@/shared/api/mangaList';
+import { PrimaryMangaCardInline } from '@/entities/MangaCard';
 
 interface NowReadMangaBlockProps {
     className?: string;
@@ -14,32 +16,68 @@ interface NowReadMangaBlockProps {
 export const NowReadMangaBlock: FC<NowReadMangaBlockProps> = (props) => {
     const { className } = props;
 
+    //TODO createDate not updateDate
+    const { data: newManga, isLoading: newMangaIsLoading } = useInfiniteQuery(
+        CatalogApi.getMangaInfinityQueryOptions(() => ({ sortBy: 'updateDate', order: 'desc' }), 3),
+    );
+    const { data: ratingManga, isLoading: ratingMangaIsLoading } = useInfiniteQuery(
+        CatalogApi.getMangaInfinityQueryOptions(() => ({ sortBy: 'rating', order: 'desc' }), 4),
+    );
+    const { data: viewedManga, isLoading: viewedMangaIsLoading } = useInfiniteQuery(
+        CatalogApi.getMangaInfinityQueryOptions(() => ({ sortBy: 'views', order: 'desc' }), 5),
+    );
+
     return (
         <CardBlock className={classNames(cls.NowReadMangaBlock, {}, [className])}>
-            <HStack justify="between" className={cls.title}>
-                <Heading HeadingTag="h2" color="primary">
-                    Сейчас читают
+            <Heading className={cls.title} HeadingTag="h2" color="primary">
+                Сейчас читают
+            </Heading>
+            <div className={cls.row}>
+                <Heading
+                    HeadingTag="h3"
+                    color="secondary"
+                    className={classNames(cls.rowTitle, {}, [
+                        getStyleLineClamp({ lineClamp: '1' }),
+                    ])}
+                >
+                    Новинки
                 </Heading>
-                <SelectTimeRange />
-            </HStack>
-            <div className={cls.scroll}>
-                <HStack gap="16" justify="between">
-                    <ColumePrimaryMangaCardInline
-                        className={cls.card}
-                        title="Title"
-                        mangaList={[1, 2, 3]}
-                    />
-                    <ColumePrimaryMangaCardInline
-                        className={cls.card}
-                        title="Title"
-                        mangaList={[1, 2, 3]}
-                    />
-                    <ColumePrimaryMangaCardInline
-                        className={cls.card}
-                        title="Title"
-                        mangaList={[1, 2, 3]}
-                    />
-                </HStack>
+                <Heading
+                    HeadingTag="h3"
+                    color="secondary"
+                    className={classNames(cls.rowTitle, {}, [
+                        getStyleLineClamp({ lineClamp: '1' }),
+                    ])}
+                >
+                    Рейтинговые
+                </Heading>
+                <Heading
+                    HeadingTag="h3"
+                    color="secondary"
+                    className={classNames(cls.rowTitle, {}, [
+                        getStyleLineClamp({ lineClamp: '1' }),
+                    ])}
+                >
+                    Просматриваемые
+                </Heading>
+                <MangaCardInlineColumn
+                    className={cls.card}
+                    list={newManga || []}
+                    renderItem={(manga) => <PrimaryMangaCardInline key={manga.id} manga={manga} />}
+                    isLoading={newMangaIsLoading}
+                />
+                <MangaCardInlineColumn
+                    className={cls.card}
+                    list={ratingManga?.slice(0, 3) || []}
+                    renderItem={(manga) => <PrimaryMangaCardInline key={manga.id} manga={manga} />}
+                    isLoading={ratingMangaIsLoading}
+                />
+                <MangaCardInlineColumn
+                    className={cls.card}
+                    list={viewedManga?.slice(0, 3) || []}
+                    renderItem={(manga) => <PrimaryMangaCardInline key={manga.id} manga={manga} />}
+                    isLoading={viewedMangaIsLoading}
+                />
             </div>
         </CardBlock>
     );

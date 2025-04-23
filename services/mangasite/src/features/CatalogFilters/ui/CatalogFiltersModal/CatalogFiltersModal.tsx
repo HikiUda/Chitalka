@@ -21,7 +21,13 @@ export const CatalogFiltersModal: FC<CatalogFiltersModalProps> = (props) => {
         <ModalSidebar
             className={className}
             trigger={
-                <Button theme="clear" color="none" noHover className={getFlex({ gap: '4' })}>
+                <Button
+                    data-testid="CatalogFiltersModal-Button"
+                    theme="clear"
+                    color="none"
+                    noHover
+                    className={getFlex({ gap: '4' })}
+                >
                     <Icon Svg={FilterSvg} />
                     Фильтры
                 </Button>

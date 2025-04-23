@@ -54,7 +54,7 @@ export const TriStateCheckboxGroup = <T extends string | number>(
     );
 
     return (
-        <TriStateCheckboxGroupContext
+        <TriStateCheckboxGroupContext.Provider
             value={{
                 include: include || internalInclude,
                 exclude: exclude || internalExclude,
@@ -62,6 +62,6 @@ export const TriStateCheckboxGroup = <T extends string | number>(
             }}
         >
             {children}
-        </TriStateCheckboxGroupContext>
+        </TriStateCheckboxGroupContext.Provider>
     );
 };

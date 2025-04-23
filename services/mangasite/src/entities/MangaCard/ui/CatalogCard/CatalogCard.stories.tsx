@@ -1,10 +1,10 @@
-
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { CatalogCard } from './CatalogCard';
+import { mockMangaListItem } from '@/shared/api/mangaList';
 
 const meta: Meta<typeof CatalogCard> = {
-    title: 'shared/CatalogCard',
+    title: 'entities/MangaCard/CatalogCard',
     component: CatalogCard,
 
     tags: ['autodocs'],
@@ -13,4 +13,15 @@ const meta: Meta<typeof CatalogCard> = {
 export default meta;
 type Story = StoryObj<typeof CatalogCard>;
 
-export const Primary: Story = {};
+export const Primary: Story = {
+    args: {
+        manga: mockMangaListItem,
+    },
+    decorators: [
+        (Story) => (
+            <div style={{ width: 300 }}>
+                <Story />
+            </div>
+        ),
+    ],
+};

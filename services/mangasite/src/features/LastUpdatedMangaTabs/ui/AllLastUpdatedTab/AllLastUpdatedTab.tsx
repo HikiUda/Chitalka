@@ -1,10 +1,11 @@
 import { FC, useEffect } from 'react';
-import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { useClearInfinityPages } from '@packages/model/src/lib/hooks/useClearInfinityPages';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { TabScroll } from '../TabScroll/TabScroll';
-import { LastUpdatedMangaCardInlineColume } from '@/entities/MangaList';
+import cls from './AllLastUpdatedTab.module.scss';
+import { MangaCardInlineColumn } from '@/entities/MangaList';
 import { LastUpdatedMangaApi } from '@/shared/api/mangaList';
+import { LastUpdatedMangaCardInline } from '@/entities/MangaCard';
 
 interface AllLastUpdatedTabProps {
     className?: string;
@@ -31,11 +32,21 @@ const AllLastUpdatedTab: FC<AllLastUpdatedTabProps> = (props) => {
         <TabScroll
             disabled={!hasNextPage || (data?.length || 1) >= 50}
             callback={() => fetchNextPage()}
-            className={classNames('', {}, [className])}
-            isFetching={isFetchingNextPage || isFetching}
-            queryParams="sortBy=updateDate"
+            className={className}
+            searchParams="sortBy=updateDate"
         >
-            <LastUpdatedMangaCardInlineColume mangaList={data} />
+            <MangaCardInlineColumn
+                list={data || []}
+                renderItem={(manga, ind) => (
+                    <LastUpdatedMangaCardInline
+                        key={ind}
+                        manga={manga}
+                        className={data?.length === ind + 1 ? '' : cls.card}
+                    />
+                )}
+                isLoading={isFetchingNextPage || isFetching}
+                skeletonsCount={10}
+            />
         </TabScroll>
     );
 };

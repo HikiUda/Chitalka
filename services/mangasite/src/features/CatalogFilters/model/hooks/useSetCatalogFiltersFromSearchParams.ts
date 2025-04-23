@@ -6,9 +6,13 @@ import { useCatalogFiltersStore } from '../store/catalogFiltersStore';
 export function useSetCatalogFiltersFromSearchParams() {
     const { getAllSearchParams } = useUrlSearchParams();
     const setInitialState = useCatalogFiltersStore.use.setInitialState();
+    const resetAll = useCatalogFiltersStore.use.resetAll();
 
     const validateFilters = () =>
         clearObj(categorierSearchParamsScheme.parse(getAllSearchParams()));
-    const setInitialFilters = () => setInitialState(validateFilters());
+    const setInitialFilters = () => {
+        resetAll();
+        return setInitialState(validateFilters());
+    };
     return setInitialFilters;
 }

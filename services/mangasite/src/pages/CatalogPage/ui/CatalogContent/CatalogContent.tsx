@@ -12,8 +12,8 @@ import {
     SortByOrderMenu,
     useGetCatalogFilters,
 } from '@/features/CatalogFilters';
-import { InfinityMangaList } from '@/features/InfinityMangaList';
-import { TooltipManga } from '@/features/TooltipManga';
+import { HoverCardManga } from '@/widgets/HoverCardManga';
+import { InfinityMangaList } from '@/entities/MangaList';
 
 interface CatalogContentProps {
     className?: string;
@@ -37,10 +37,10 @@ export const CatalogContent: FC<CatalogContentProps> = (props) => {
             <CatalogSearchInput className={cls.input} />
             <InfinityMangaList
                 list={data || []}
-                renderList={(manga) => (
-                    <TooltipManga
+                renderItem={(manga) => (
+                    <HoverCardManga
                         key={manga.id}
-                        mangaId={manga.id}
+                        mangaId={manga.urlId}
                         trigger={<CatalogCard key={manga.id} manga={manga} />}
                     />
                 )}

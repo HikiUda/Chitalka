@@ -1,9 +1,8 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { CommonFilters } from '../CommonFilters/CommonFilters';
 import { GenresList } from '../CategoriesList/GenresList/GenresList';
 import { TagsList } from '../CategoriesList/TagsList/TagsList';
-import { useCatalogFiltersStore } from '../../model/store/catalogFiltersStore';
 import cls from './CatalogFilters.module.scss';
 
 interface CatalogFiltersProps {
@@ -15,14 +14,6 @@ const CatalogFilters: FC<CatalogFiltersProps> = (props) => {
     const { className, onApply } = props;
     const [tagsOpen, setTagsOpen] = useState(false);
     const [genresOpen, setGenresOpen] = useState(false);
-
-    const resetAll = useCatalogFiltersStore.use.resetAll();
-    useEffect(() => {
-        return () => {
-            resetAll();
-        };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
     return (
         <div className={classNames(cls.CatalogFilters, {}, [className])}>
