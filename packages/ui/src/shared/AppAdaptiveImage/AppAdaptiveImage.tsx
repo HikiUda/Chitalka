@@ -27,7 +27,7 @@ export const AppAdaptiveImage = memo((props: AppAdaptiveImageProps) => {
             className={classNames(cls.AppMangaImage, {}, [className])}
         >
             <AppImage
-                src={img || 'none'}
+                src={img || ''}
                 errorFallback={
                     <AppImage
                         src={errorFallback || ErrorImg}

@@ -1,7 +1,8 @@
 import { BookmarksEnum, MangaStatusEnum, MangaTypeEnum } from '@packages/model/src/entities/manga';
 import { z, ZodTypeAny } from 'zod';
 import { parseDate } from '@internationalized/date';
-import { SortByEnum, OrderEnum } from '@/shared/api/mangaList';
+import { OrderEnum } from '@packages/model/src/types/order';
+import { SortByEnum } from '@/shared/api/mangaList';
 
 const RangeFromToScheme = z.coerce.number().int().optional().catch(undefined);
 const RateFromToScheme = z.coerce.number().min(0).max(10).optional().catch(undefined);

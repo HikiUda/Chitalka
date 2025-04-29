@@ -5,7 +5,7 @@ import type { MangaIdType } from '@packages/model/src/entities/manga';
 import { useSearchParams } from 'react-router-dom';
 import { AboutManga } from '../AboutManga';
 import cls from './MangaPageContent.module.scss';
-import { MangaChapters } from '@/widgets/MangaChapters';
+import { MangaChapters } from '@/features/MangaChapters';
 import { MangaComments } from '@/widgets/MangaComments';
 
 interface MangaPageContentProps {

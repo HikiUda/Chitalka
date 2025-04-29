@@ -18,7 +18,7 @@ export const NowReadMangaBlock: FC<NowReadMangaBlockProps> = (props) => {
 
     //TODO createDate not updateDate
     const { data: newManga, isLoading: newMangaIsLoading } = useInfiniteQuery(
-        CatalogApi.getMangaInfinityQueryOptions(() => ({ sortBy: 'updateDate', order: 'desc' }), 3),
+        CatalogApi.getMangaInfinityQueryOptions(() => ({ sortBy: 'createDate', order: 'desc' }), 3),
     );
     const { data: ratingManga, isLoading: ratingMangaIsLoading } = useInfiniteQuery(
         CatalogApi.getMangaInfinityQueryOptions(() => ({ sortBy: 'rating', order: 'desc' }), 4),

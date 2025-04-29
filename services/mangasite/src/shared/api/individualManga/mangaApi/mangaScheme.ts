@@ -8,6 +8,7 @@ const MangaTitleScheme = z.object({
     origin: z.string().nullable(),
 });
 
+// ? have dublicate in categoriesApi
 const MangaCategoriesScheme = z.object({
     id: z.number().int(),
     title: z.string(),

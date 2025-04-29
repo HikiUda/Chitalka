@@ -1,14 +1,18 @@
-import { FC } from 'react';
+import { FC, useCallback } from 'react';
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { VStack } from '@packages/ui/src/shared/Stack';
 import { TriStateCheckboxGroup } from '@packages/ui/src/shared/TriStateCheckbox';
 import { Button } from '@packages/ui/src/shared/Button';
 import { Divider } from '@packages/ui/src/shared/Divider';
 import { useUrlSearchParams } from '@packages/model/src/lib/hooks/useUrlSearchParams';
+import { useQuery } from '@tanstack/react-query';
+import { Input } from '@packages/ui/src/shared/Input';
+import { useDebounce } from '@packages/model/src/lib/hooks/useDebounce/useDebounce';
 import { NavButtons } from '../NavButtons/NavButtons';
 import { CategoriesList } from '../CategoriesList/CategoriesList';
 import { useCatalogFiltersStore } from '../../../model/store/catalogFiltersStore';
 import cls from './GenresList.module.scss';
+import { CategoriesApi } from '@/shared/api/categoriesApi';
 
 interface GenresListProps {
     className?: string;
@@ -23,9 +27,29 @@ export const GenresList: FC<GenresListProps> = (props) => {
 
     const genres = useCatalogFiltersStore.use.genres();
     const notGenres = useCatalogFiltersStore.use.notGenres();
+    const searchGenres = useCatalogFiltersStore.use.searchGenres();
     const setGenres = useCatalogFiltersStore.use.setGenres();
     const setNotGenres = useCatalogFiltersStore.use.setNotGenres();
+    const setSearchGenres = useCatalogFiltersStore.use.setSearchGenres();
     const resetGenres = useCatalogFiltersStore.use.resetGenres();
+
+    const { data, isLoading, refetch } = useQuery(
+        CategoriesApi.getGenresQueryOptions(searchGenres),
+    );
+
+    const goSearch = useDebounce(() => refetch(), 500);
+
+    const handleSetSerachGenres = useCallback(
+        (value: string) => {
+            setSearchGenres(value);
+            goSearch();
+        },
+        [goSearch, setSearchGenres],
+    );
+    const handleReset = useCallback(() => {
+        resetGenres();
+        goSearch();
+    }, [goSearch, resetGenres]);
 
     const handleSetGenres = (arr: number[]) => {
         setGenres(arr);
@@ -38,7 +62,13 @@ export const GenresList: FC<GenresListProps> = (props) => {
 
     return (
         <VStack justify="start" className={classNames(cls.GenresList, {}, [className])}>
-            <NavButtons title="Жанры" onBack={onBack} onReset={resetGenres} />
+            <NavButtons title="Жанры" onBack={onBack} onReset={handleReset} />
+            <Divider />
+            <Input
+                placeholder="Поиск жанров"
+                value={searchGenres}
+                onChange={handleSetSerachGenres}
+            />
             <Divider />
             <TriStateCheckboxGroup
                 include={genres}
@@ -46,12 +76,7 @@ export const GenresList: FC<GenresListProps> = (props) => {
                 onChangeInclude={handleSetGenres}
                 onChangeExclude={handleSetNotGenres}
             >
-                <CategoriesList
-                    categories={[
-                        { id: 1, title: 'Romantic' },
-                        { id: 2, title: 'Horror' },
-                    ]}
-                />
+                <CategoriesList categories={data || []} isLoading={isLoading} />
             </TriStateCheckboxGroup>
             <Button slot="close" onPress={onApply} theme="fill" max>
                 Применить

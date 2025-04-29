@@ -6,9 +6,10 @@ import { Icon } from '@packages/ui/src/shared/Icon';
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { useUrlSearchParams } from '@packages/model/src/lib/hooks/useUrlSearchParams';
 import { getFlex } from '@packages/ui/src/shared/Stack';
+import { OrderType } from '@packages/model/src/types/order';
 import { useCatalogFiltersStore } from '../../model/store/catalogFiltersStore';
 import cls from './SortByOrderMenu.module.scss';
-import { OrderType, SortByConst, SortByType } from '@/shared/api/mangaList';
+import { SortByConst, SortByType } from '@/shared/api/mangaList';
 
 interface SortByOrderMenuProps {
     className?: string;

@@ -1,4 +1,3 @@
-import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { ImgHTMLAttributes, memo, ReactElement, useLayoutEffect, useState } from 'react';
 
 interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
@@ -14,7 +13,7 @@ export const AppImage = memo((props: ImageProps) => {
 
     useLayoutEffect(() => {
         const img = new Image();
-        img.src = src ?? '';
+        img.src = src?.match(/https?:\/\//i) ? src : 'http://localhost:8000/' + src;
         img.onload = () => {
             setIsLoading(false);
         };
@@ -27,10 +26,15 @@ export const AppImage = memo((props: ImageProps) => {
     if (isLoading && loadFallback) {
         return loadFallback;
     }
-
     if (error && errorFallback) {
         return errorFallback;
     }
 
-    return <img className={classNames('', {}, [className])} src={src || 'error'} {...otherProps} />;
+    return (
+        <img
+            className={className}
+            src={src?.match(/https?:\/\//i) ? src : 'http://localhost:8000/' + src}
+            {...otherProps}
+        />
+    );
 });

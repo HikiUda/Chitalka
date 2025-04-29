@@ -50,9 +50,9 @@ export const MangaCard = memo((props: MangaCardProps) => {
                 className={cls.img}
                 img={img}
             >
-                {label1 && <span className={cls.label1}>{label1}</span>}
-                {label2 && <span className={cls.label2}>{label2}</span>}
-                {label3 && <span className={cls.label3}>{label3}</span>}
+                {label1 != null ? <span className={cls.label1}>{label1}</span> : null}
+                {label2 != null ? <span className={cls.label2}>{label2}</span> : null}
+                {label3 != null ? <span className={cls.label3}>{label3}</span> : null}
             </AppAdaptiveImage>
 
             <Heading
