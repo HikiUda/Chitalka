@@ -18,6 +18,7 @@ export const MangaListItemBaseScheme = z.object({
     chapterCount: z.number().int(),
     chapterCreatedAt: z.coerce.date(),
     readedChapters: z.number().int(),
+    chapterId: z.number().int(),
 });
 
 export const MangaListItemBaseResponseArrayData = ResponseArrayDataScheme(MangaListItemBaseScheme);

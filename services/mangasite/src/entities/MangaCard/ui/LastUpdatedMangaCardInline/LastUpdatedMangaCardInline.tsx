@@ -1,10 +1,10 @@
 import { memo } from 'react';
-import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { formatDate } from '@packages/model/src/lib/helpers/formatDate';
 import { getMangaSiteRoute } from '@packages/model/src/config/router/mangaSiteRouter';
 import { MangaCardInline } from '../MangaCardInline/MangaCardInline';
 import cls from './LastUpdatedMangaCardInline.module.scss';
 import { MangaListItemLastUpdatedType } from '@/shared/api/mangaList';
+import { getUrlChapterId } from '@/entities/ChapterList';
 
 interface LastUpdatedMangaCardInlineProps {
     className?: string;
@@ -13,12 +13,14 @@ interface LastUpdatedMangaCardInlineProps {
 
 export const LastUpdatedMangaCardInline = memo((props: LastUpdatedMangaCardInlineProps) => {
     const { className, manga } = props;
-    //TODO link to manga chapter
     return (
         <MangaCardInline
-            className={classNames('', {}, [className])}
+            className={className}
             title={manga.title}
-            to={getMangaSiteRoute.manga(manga.urlId)}
+            to={getMangaSiteRoute.readChapter(
+                manga.urlId,
+                getUrlChapterId(manga.tome, manga.chapter, manga.chapterId),
+            )}
             img={manga.cover}
         >
             <span className={cls.charecter}>

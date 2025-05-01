@@ -2,6 +2,7 @@ import { memo } from 'react';
 import { getMangaSiteRoute } from '@packages/model/src/config/router/mangaSiteRouter';
 import { MangaCard } from '../MangaCard/MangaCard';
 import { MangaListItemLastUpdatedType } from '@/shared/api/mangaList';
+import { getUrlChapterId } from '@/entities/ChapterList';
 
 interface LastChapterMangaCardProps {
     className?: string;
@@ -18,7 +19,10 @@ export const LastChapterMangaCard = memo((props: LastChapterMangaCardProps) => {
             subtitle={manga.type}
             label3={'Глава ' + manga.chapter}
             img={manga.cover}
-            to={getMangaSiteRoute.manga(manga.urlId)}
+            to={getMangaSiteRoute.readChapter(
+                manga.urlId,
+                getUrlChapterId(manga.tome, manga.chapter, manga.chapterId),
+            )}
         />
     );
 });

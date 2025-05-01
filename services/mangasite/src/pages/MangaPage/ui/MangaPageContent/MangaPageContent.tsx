@@ -41,7 +41,7 @@ export const MangaPageContent: FC<MangaPageContentProps> = (props) => {
             {
                 id: 'chapters',
                 title: 'Главы',
-                content: <MangaChapters />,
+                content: <MangaChapters mangaId={mangaId} />,
             },
             {
                 id: 'comments',

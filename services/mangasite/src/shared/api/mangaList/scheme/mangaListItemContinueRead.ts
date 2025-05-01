@@ -11,6 +11,7 @@ export const MangaListItemContinueReadScheme = MangaListItemBaseScheme.pick({
     chapter: true,
     chapterCount: true,
     readedChapters: true,
+    chapterId: true,
 });
 
 export const MangaListItemContinueReadResponseArrayData = ResponseArrayDataScheme(

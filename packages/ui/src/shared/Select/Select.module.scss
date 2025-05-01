@@ -28,13 +28,29 @@
     border-radius: 4px;
     background: var(--block-color);
     cursor: pointer;
+    position: relative;
+    padding-left: 20px;
+    &::before {
+        content: '';
+        position: absolute;
+        left: 3px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 1px solid var(--secondary-color);
+    }
 
     &[data-hovered] {
-        background: var(--accent-color);
+        background: var(--secondary-color);
     }
 
     &[data-selected] {
-        background: var(--accent-color);
+        &::before {
+            border: 1px solid var(--accent-color);
+            background: var(--accent-color);
+        }
     }
 }
 

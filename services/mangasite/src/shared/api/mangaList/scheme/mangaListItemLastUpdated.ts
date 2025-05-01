@@ -11,6 +11,7 @@ export const MangaListItemLastUpdatedScheme = MangaListItemBaseScheme.pick({
     tome: true,
     chapter: true,
     chapterCreatedAt: true,
+    chapterId: true,
 });
 
 export const MangaListItemLastUpdatedPagination = PaginationScheme(MangaListItemLastUpdatedScheme);

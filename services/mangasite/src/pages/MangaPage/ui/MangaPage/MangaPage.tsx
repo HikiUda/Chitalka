@@ -26,7 +26,7 @@ const MangaPage: FC<MangaPageProps> = (props) => {
         data: manga,
         isLoading,
         isError,
-    } = useQuery(MangaApi.getMangaQueryOptions(mangaId || 0));
+    } = useQuery(MangaApi.getMangaQueryOptions(mangaId || 0)); //TODO thinking about 0
     //TODO loading end error state
     if (!manga && isLoading)
         return (

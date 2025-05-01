@@ -9,6 +9,7 @@ import { getMangaSiteRoute } from '@packages/model/src/config/router/mangaSiteRo
 import { MangaCardInline } from '../MangaCardInline/MangaCardInline';
 import cls from './ProgressReadMangaCardInline.module.scss';
 import { MangaListItemContinueReadType } from '@/shared/api/mangaList';
+import { getUrlChapterId } from '@/entities/ChapterList';
 
 interface ProgressReadMangaCardInlineProps {
     className?: string;
@@ -19,7 +20,6 @@ interface ProgressReadMangaCardInlineProps {
 
 export const ProgressReadMangaCardInline = memo((props: ProgressReadMangaCardInlineProps) => {
     const { className, manga, onDelete, isDisabled } = props;
-    //TODO link
     return (
         <CardBlock
             className={classNames(
@@ -32,7 +32,14 @@ export const ProgressReadMangaCardInline = memo((props: ProgressReadMangaCardInl
             <MangaCardInline
                 img={manga.cover}
                 title={manga.title}
-                to={isDisabled ? '' : getMangaSiteRoute.manga(manga.urlId)}
+                to={
+                    isDisabled
+                        ? ''
+                        : getMangaSiteRoute.readChapter(
+                              manga.urlId,
+                              getUrlChapterId(manga.tome, manga.chapter, manga.chapterId),
+                          )
+                }
                 className={cls.card}
             >
                 <ProgressBar

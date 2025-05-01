@@ -1,7 +1,7 @@
 import { ReactNode, useMemo } from 'react';
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
-import { useTrottle } from '@packages/model/src/lib/hooks/useTrottle/useTrottle';
-import { useIntersection } from '@packages/model/src/lib/hooks/useIntersection/useIntersection';
+import { useTrottle } from '@packages/model/src/lib/hooks/useTrottle';
+import { useIntersection } from '@packages/model/src/lib/hooks/useIntersection';
 import cls from './InfinityMangaList.module.scss';
 import { MangaCardSkeleton } from '@/entities/MangaCard';
 
