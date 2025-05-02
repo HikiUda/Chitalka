@@ -1,10 +1,15 @@
 .BottomMenuLayout {
-    position: fixed;
+    position: sticky;
+    bottom: 0;
     width: 100%;
     height: var(--header-height);
-    padding: 0 10px;
+    padding: 5px 10px;
     z-index: var(--header-z-index);
-    bottom: 0;
+    transition: bottom 0.3s ease;
+}
+
+.hidden {
+    bottom: calc(-1 * var(--header-height));
 }
 
 .storybook {

@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { useParams } from 'react-router-dom';
+import { Page } from '@packages/ui/src/shared/Page';
 import cls from './ReadChapterPage.module.scss';
 
 interface ReadChapterPageProps {
@@ -11,7 +12,11 @@ const ReadChapterPage: FC<ReadChapterPageProps> = (props) => {
     const { className } = props;
     const { mangaId, chapterId } = useParams();
 
-    return <div className={classNames(cls.ReadChapterPage, {}, [className])}>readChapter Lol</div>;
+    return (
+        <Page className={classNames(cls.ReadChapterPage, {}, [className])}>
+            <div style={{ height: 5000, backgroundColor: '#fc5' }} />
+        </Page>
+    );
 };
 
 export default ReadChapterPage;

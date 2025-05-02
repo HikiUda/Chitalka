@@ -25,6 +25,8 @@
     outline: none;
     border-left: 1px solid var(--accent-color);
     box-shadow: -8px 0 20px rgba(0 0 0 / 0.1);
+    overflow-y: auto;
+    scrollbar-width: none;
 
     &[data-entering] {
         animation: mymodal-slide 300ms;

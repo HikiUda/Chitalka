@@ -1,2 +1,13 @@
 .ReadChapterHeader {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    height: 100%;
+}
+.mobileGrid {
+    grid-template-columns: 1fr auto;
+}
+.Header {
+    background: var(--secondary-color);
+    padding: 5px 10px;
 }

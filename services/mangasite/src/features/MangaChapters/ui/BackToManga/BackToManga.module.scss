@@ -1,0 +1,18 @@
+.BackToManga {
+    svg {
+        fill: none;
+    }
+    padding: 0;
+    overflow: hidden;
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
+
+.heading {
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

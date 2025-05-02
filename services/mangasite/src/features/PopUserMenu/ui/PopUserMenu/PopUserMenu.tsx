@@ -36,7 +36,7 @@ export const PopUserMenu: FC<PopUserMenuProps> = (props) => {
             <VStack>
                 <ProfileLink username={data?.name} />
                 <Divider />
-                <LinkList backgroundOnHover items={commonLink} />
+                <LinkList noOpacityHover backgroundOnHover items={commonLink} />
                 <Divider />
                 <button type="button" onClick={toggleTheme}>
                     theme

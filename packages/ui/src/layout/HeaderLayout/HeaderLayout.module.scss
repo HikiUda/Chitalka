@@ -1,11 +1,21 @@
 .HeaderLayout {
-    position: fixed;
+    position: sticky;
+    top: 0;
     width: 100%;
     height: var(--header-height);
     padding: 0 10px;
     z-index: var(--header-z-index);
+    transition: top 0.3s ease;
+}
+
+.hidden {
+    top: calc(-1 * var(--header-height));
 }
 
 .storybook {
     background: rgb(16 99 16);
+}
+
+.container {
+    height: 100%;
 }

@@ -19,6 +19,7 @@ export const ProfileLink = memo((props: ProfileLinkProps) => {
         <AppLink
             //TODO link
             to={'/mangasite'}
+            noOpacityHover
             className={classNames(cls.ProfileLink, {}, [
                 className,
                 getFlex({ gap: '16', max: true, justify: 'start' }),

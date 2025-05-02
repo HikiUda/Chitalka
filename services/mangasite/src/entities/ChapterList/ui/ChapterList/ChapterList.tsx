@@ -31,7 +31,7 @@ export const ChapterList = <T extends object>(props: ChapterListProps<T>) => {
         <div className={classNames(cls.ChapterList, {}, [className])}>
             {chapters.map(renderChapter)}
             {isLoading && skeletons.map((sk) => sk)}
-            <div ref={intersect} />
+            <div ref={intersect} style={{ height: 1 }} />
         </div>
     );
 };

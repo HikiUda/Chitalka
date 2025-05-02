@@ -3,13 +3,13 @@
     min-height: 100vh;
     display: grid;
     grid-template-rows: 1fr auto;
-    padding-top: var(--header-height);
+    //padding-top: var(--header-height);
     //overflow-x: hidden;
     background: var(--bg-color);
 }
 
 .bottomMenu:has(nav) {
-    padding-bottom: var(--header-height);
+    //padding-bottom: var(--header-height);
 }
 
 .storybook {
