@@ -4,7 +4,7 @@ import { VStack } from '@packages/ui/src/shared/Stack';
 import { Heading } from '@packages/ui/src/shared/Heading';
 import { CardBlock } from '@packages/ui/src/shared/CardBlock';
 import { useQuery } from '@tanstack/react-query';
-import { UserDataApi } from '@packages/model/src/api/auth';
+import { UserDataApi } from '@packages/model/src/api/user';
 import cls from './LastUpdatedMangaTabs.module.scss';
 
 const MyLastUpdatedTab = lazy(() => import('../MyLastUpdatedTab/MyLastUpdatedTab'));

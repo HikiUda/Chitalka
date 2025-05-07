@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 export const MangaCoverScheme = z.object({
     id: z.number().int(),
-    cover: z.string().url(),
+    cover: z.string(),
 });
 
 export const MangaCoverResponseArrayDataScheme = ResponseArrayDataScheme(MangaCoverScheme);

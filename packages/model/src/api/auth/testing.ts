@@ -1,8 +1,1 @@
-export {
-    mockAuthApi,
-    mockGetUserData,
-    mockLogin,
-    mockLogout,
-    mockRegistration,
-    mockUserData,
-} from './mockAuthApi';
+export { mockAuthApi, mockLogin, mockLogout, mockRegistration } from './mockAuthApi';

@@ -5,7 +5,7 @@ import { Heading } from '@packages/ui/src/shared/Heading';
 import { HStack } from '@packages/ui/src/shared/Stack';
 import { Button } from '@packages/ui/src/shared/Button';
 import { useQuery } from '@tanstack/react-query';
-import { UserDataApi } from '@packages/model/src/api/auth';
+import { UserDataApi } from '@packages/model/src/api/user';
 import { useDeleteContinueReadManga } from '../../model/api/useDeleteContinueReadManga';
 import { ContinueReadMangaApi } from '../../model/api/continueReadMangaApi';
 import cls from './ContinueReadMangaSlider.module.scss';

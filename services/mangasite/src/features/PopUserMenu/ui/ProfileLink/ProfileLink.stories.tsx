@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { mockGetUserData } from '@packages/model/src/api/auth/testing';
+import { mockGetUserData } from '@packages/model/src/api/user/testing';
 import { ProfileLink } from './ProfileLink';
 
 const meta: Meta<typeof ProfileLink> = {

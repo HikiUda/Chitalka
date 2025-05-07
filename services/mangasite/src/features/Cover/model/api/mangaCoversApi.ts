@@ -6,6 +6,7 @@ import { $apiMangaById } from '@/shared/api/individualManga/base';
 class MangaCover {
     async getCovers(id: MangaIdType) {
         const covers = await $apiMangaById.get(`${id}/covers`).json();
+        console.log(covers);
         return (await validateMangaCoversResponseArrayData(covers)).data;
     }
     getCoversQueryOptions(id: MangaIdType) {

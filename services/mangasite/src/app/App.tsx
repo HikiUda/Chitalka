@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { MainLayout } from '@packages/ui/src/layout/MainLayout/MainLayout';
 import { useQuery } from '@tanstack/react-query';
-import { UserDataApi } from '@packages/model/src/api/auth';
+import { UserDataApi } from '@packages/model/src/api/user';
 import { AppRouter } from './providers/router';
 import { Header } from '@/widgets/Header';
 import { BottomMenu } from '@/widgets/BottomMenu';

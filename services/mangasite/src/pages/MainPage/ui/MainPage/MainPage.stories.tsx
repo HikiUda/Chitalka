@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { PageDecorator } from '@packages/model/src/config/storybook/PageDecorator/PageDecorator';
 import { BodyNotPaddingDecorator } from '@packages/model/src/config/storybook/StyleDecorator/BodyNotPaddingDecorator';
-import { mockAuthApi, mockGetUserData } from '@packages/model/src/api/auth/mockAuthApi';
+import { mockAuthApi } from '@packages/model/src/api/auth/testing';
+import { mockGetUserData } from '@packages/model/src/api/user/testing';
 import MainPage from './MainPage';
 import { Header } from '@/widgets/Header';
 import { mockLastUpdatedMangaApi } from '@/shared/api/mangaList/testing';

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { mockGetUserData } from '@packages/model/src/api/auth/testing';
+import { mockGetUserData } from '@packages/model/src/api/user/testing';
 
 import { LastUpdatedMangaTabs } from './LastUpdatedMangaTabs';
 import { mockLastUpdatedMangaApi } from '@/shared/api/mangaList/testing';

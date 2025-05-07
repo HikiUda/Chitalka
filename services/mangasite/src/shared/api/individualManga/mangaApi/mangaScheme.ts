@@ -1,4 +1,4 @@
-import { UserDataScheme } from '@packages/model/src/api/auth';
+import { UserDataScheme } from '@packages/model/src/api/user';
 import { BookmarksEnum, MangaStatusEnum, MangaTypeEnum } from '@packages/model/src/entities/manga';
 import { z } from 'zod';
 

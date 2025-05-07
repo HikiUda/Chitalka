@@ -4,11 +4,11 @@ import { useMatch } from 'react-router-dom';
 import { getMangaSiteRoute } from '@packages/model/src/config/router';
 import { HStack } from '@packages/ui/src/shared/Stack';
 import { useQuery } from '@tanstack/react-query';
-import { UserDataApi } from '@packages/model/src/api/auth';
+import { UserDataApi } from '@packages/model/src/api/user';
 import { isMobile } from 'react-device-detect';
 import { HeaderLayout } from '@packages/ui/src/layout/HeaderLayout';
 import cls from './ReadChapterHeader.module.scss';
-import { BackToManga, ChaptersNavigation } from '@/features/MangaChapters';
+import { BackToManga, ChaptersNavigation, ReadSettingsModal } from '@/features/MangaChapters';
 import { PopUserMenu } from '@/features/PopUserMenu';
 import { AuthModal } from '@/features/AuthModal';
 
@@ -34,7 +34,10 @@ export const ReadChapterHeader: FC<ReadChapterHeaderProps> = (props) => {
             >
                 <BackToManga mangaId={mangaId} chapterId={chapterId} />
                 {!isMobile && <ChaptersNavigation mangaId={mangaId} chapterId={chapterId} />}
-                <HStack justify="end">{data ? <PopUserMenu /> : <AuthModal />}</HStack>
+                <HStack justify="end">
+                    <ReadSettingsModal />
+                    {data ? <PopUserMenu /> : <AuthModal />}
+                </HStack>
             </div>
         </HeaderLayout>
     );

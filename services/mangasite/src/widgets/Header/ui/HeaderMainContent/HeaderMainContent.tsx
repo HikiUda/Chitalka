@@ -3,7 +3,7 @@ import { HStack } from '@packages/ui/src/shared/Stack';
 import { Icon } from '@packages/ui/src/shared/Icon';
 import QuestionSvg from '@packages/ui/src/assets/icon/common/question.svg';
 import { useQuery } from '@tanstack/react-query';
-import { UserDataApi } from '@packages/model/src/api/auth';
+import { UserDataApi } from '@packages/model/src/api/user';
 import { HeaderLayout } from '@packages/ui/src/layout/HeaderLayout';
 import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import cls from './HeaderMainContent.module.scss';

@@ -5,7 +5,6 @@ export function useHideLayout(mayHide: boolean = false) {
 
     const toggleHidden = useCallback((e: MouseEvent) => {
         const target = e.target as HTMLElement;
-        console.log(target.closest('main'));
         if (target.closest('main')) setHidden((prev) => !prev);
     }, []);
 

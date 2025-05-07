@@ -1,5 +1,6 @@
 import { delay, HttpResponse } from 'msw';
-import { ChapterPageType, ChapterType, ChapterPagesType } from './chapterScheme';
+import { ChapterType } from './chapterScheme';
+import { ChapterPageType, ChapterPagesType } from '@/entities/ChapterView';
 
 export const mockChapterPage: ChapterPageType = {
     src: 'pass/pass/pass.jpg',

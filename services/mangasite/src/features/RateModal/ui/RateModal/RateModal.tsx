@@ -3,7 +3,7 @@ import { classNames } from '@packages/model/src/lib/helpers/classNames';
 import { Modal } from '@packages/ui/src/shared/Modal';
 import { MangaIdType } from '@packages/model/src/entities/manga';
 import { useQuery } from '@tanstack/react-query';
-import { UserDataApi } from '@packages/model/src/api/auth';
+import { UserDataApi } from '@packages/model/src/api/user';
 import { ButtonContext } from '@packages/ui/src/shared/Button';
 import { ToastQueue } from '@packages/ui/src/shared/Toast';
 import { isMobile } from 'react-device-detect';

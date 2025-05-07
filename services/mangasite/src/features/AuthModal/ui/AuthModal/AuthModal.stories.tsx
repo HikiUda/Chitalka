@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { userEvent, within } from '@storybook/testing-library';
-import { mockAuthApi } from '@packages/model/src/api/auth/mockAuthApi';
+import { mockAuthApi } from '@packages/model/src/api/auth/testing';
+import { mockGetUserData } from '@packages/model/src/api/user/testing';
 import { AuthModal } from './AuthModal';
 
 const meta: Meta<typeof AuthModal> = {
@@ -11,7 +12,7 @@ const meta: Meta<typeof AuthModal> = {
     tags: ['autodocs'],
     parameters: {
         msw: {
-            handlers: mockAuthApi,
+            handlers: [...mockAuthApi, mockGetUserData],
         },
     },
 };

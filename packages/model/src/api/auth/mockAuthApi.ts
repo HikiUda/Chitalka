@@ -1,13 +1,5 @@
 import { delay, http, HttpResponse } from 'msw';
-import { UserDataType } from './types/user';
 import { AuthUserType } from './types/authTypes';
-
-export const mockUserData: UserDataType = {
-    id: 1,
-    name: 'wendsew',
-    avatar: null,
-    jsonSettings: {},
-};
 
 export const mockAuthUser: AuthUserType = {
     user: {
@@ -33,8 +25,5 @@ export const mockRegistration = http.post('*/auth/registration', async () => {
     await delay(1000);
     return HttpResponse.json(mockAuthUser);
 });
-export const mockGetUserData = http.get('*/user', () => {
-    return HttpResponse.json(mockUserData);
-});
 
-export const mockAuthApi = [mockLogin, mockLogout, mockRegistration, mockGetUserData];
+export const mockAuthApi = [mockLogin, mockLogout, mockRegistration];

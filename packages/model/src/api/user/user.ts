@@ -5,7 +5,7 @@ const JsonSettingsScheme = z.object({});
 export const UserDataScheme = z.object({
     id: z.number(),
     name: z.string(),
-    avatar: z.string().url().nullable(),
+    avatar: z.string().nullable(),
     jsonSettings: JsonSettingsScheme,
 });
 
