@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { AuthApi } from '../authApi';
-import { ACCESS_TOKEN_SESSIONSTORAGE } from '@/shared/const/sessionStorage/sessionStorage';
+import { ACCESS_TOKEN_SESSIONSTORAGE } from '../../baseApi/kyBase';
 
 export const useRegistrationQuery = () => {
     const queryClient = useQueryClient();

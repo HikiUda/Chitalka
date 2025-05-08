@@ -1,8 +1,8 @@
-export const MangaSiteRoutes = {
+export const RoutesConst = {
     MAIN: 'main',
     MANGA: 'manga',
     CATALOG: 'catalog',
-    READ_CHAPTER: 'read_chapter',
+    READ_CHAPTER: 'readChapter',
     COLLECTIONS: 'collections',
     // COLLECTION: 'collection',
     // PROFILE: 'profile'

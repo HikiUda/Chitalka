@@ -1,5 +1,5 @@
-import { BookmarksEnum, MangaTypeEnum } from '@/shared/entities/manga';
-import { PaginationScheme, ResponseArrayDataScheme } from '@/shared/types/pagination';
+import { BookmarksEnum, MangaTypeEnum } from '@/shared/kernel/manga';
+import { PaginationScheme, ResponseArrayDataScheme } from '@/shared/kernel/pagination';
 import { z } from 'zod';
 
 export const MangaListItemBaseScheme = z.object({

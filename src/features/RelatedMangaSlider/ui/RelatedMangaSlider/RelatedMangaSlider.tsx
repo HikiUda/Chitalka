@@ -2,7 +2,7 @@ import { FC, useMemo } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { getFlex } from '@/shared/ui/Stack';
 import { Heading } from '@/shared/ui/Heading';
-import { MangaIdType } from '@/shared/entities/manga';
+import { MangaIdType } from '@/shared/kernel/manga';
 import { useQuery } from '@tanstack/react-query';
 import { RelatedMangaApi } from '../../model/api/relatedMangaApi';
 import cls from './RelatedMangaSlider.module.scss';

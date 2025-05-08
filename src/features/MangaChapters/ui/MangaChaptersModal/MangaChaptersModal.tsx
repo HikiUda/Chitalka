@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { ModalSidebar } from '@/shared/ui/ModalSidebar';
-import { MangaIdType } from '@/shared/entities/manga';
+import { MangaIdType } from '@/shared/kernel/manga';
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import ArrowSvg from '@/shared/assets/icon/common/arrow.svg';

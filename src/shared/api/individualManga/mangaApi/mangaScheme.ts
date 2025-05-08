@@ -1,5 +1,5 @@
 import { UserDataScheme } from '@/shared/api/user';
-import { BookmarksEnum, MangaStatusEnum, MangaTypeEnum } from '@/shared/entities/manga';
+import { BookmarksEnum, MangaStatusEnum, MangaTypeEnum } from '@/shared/kernel/manga';
 import { z } from 'zod';
 
 const MangaTitleScheme = z.object({

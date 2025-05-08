@@ -1,10 +1,11 @@
 import ky, { Options } from 'ky';
 import { AuthUserType } from '../auth/types/authTypes';
-import { ACCESS_TOKEN_SESSIONSTORAGE } from '@/shared/const/sessionStorage/sessionStorage';
 
 interface CustomOptions extends Options {
     _retry?: boolean;
 }
+
+export const ACCESS_TOKEN_SESSIONSTORAGE = 'accessToken';
 
 export const $api = ky.create({
     prefixUrl: __API_URL__,

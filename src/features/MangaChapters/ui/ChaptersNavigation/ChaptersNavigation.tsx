@@ -2,13 +2,13 @@ import { FC } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { HStack } from '@/shared/ui/Stack';
 import { Button } from '@/shared/ui/Button';
-import { MangaIdType } from '@/shared/entities/manga';
+import { MangaIdType } from '@/shared/kernel/manga';
 import ArrowSvg from '@/shared/assets/icon/common/sliderArrow.svg';
 import { Icon } from '@/shared/ui/Icon';
 import BurgerSvg from '@/shared/assets/icon/common/numberList.svg';
 import { isMobile } from 'react-device-detect';
 import { useQuery } from '@tanstack/react-query';
-import { getMangaSiteRoute } from '@/shared/config/router';
+import { getRoute } from '@/shared/config/router';
 import { AppLink } from '@/shared/ui/AppLink';
 import { Heading } from '@/shared/ui/Heading';
 import { MangaChaptersModal } from '../MangaChaptersModal/MangaChaptersModal';
@@ -31,7 +31,7 @@ export const ChaptersNavigation: FC<ChaptersNavigationProps> = (props) => {
         <HStack gap="4" className={classNames(cls.ChaptersNavigation, {}, [className])}>
             <AppLink
                 disable={!data?.prevChapterId}
-                to={getMangaSiteRoute.readChapter(
+                to={getRoute.readChapter(
                     mangaId,
                     getUrlChapterId(data?.tome || 0, data?.chapter || 0, data?.prevChapterId || 0),
                 )}
@@ -61,7 +61,7 @@ export const ChaptersNavigation: FC<ChaptersNavigationProps> = (props) => {
             />
             <AppLink
                 disable={!data?.nextChapterId}
-                to={getMangaSiteRoute.readChapter(
+                to={getRoute.readChapter(
                     mangaId,
                     getUrlChapterId(data?.tome || 0, data?.chapter || 0, data?.nextChapterId || 0),
                 )}

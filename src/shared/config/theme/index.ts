@@ -1,5 +1,5 @@
-import ThemeProvider from './ThemeProvider';
-export { ThemeProvider };
-export { useTheme } from './useTheme';
-export { useDisign } from './useDisign';
-export { Theme, Disign } from './const/theme';
+import AppThemeProvider from './AppThemeProvider';
+export { AppThemeProvider };
+export { useAppTheme } from './useAppTheme';
+export { useAppDisign } from './useAppDisign';
+export { AppTheme, AppDisign } from './appThemeConst';

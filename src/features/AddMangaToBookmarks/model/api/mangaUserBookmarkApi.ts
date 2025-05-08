@@ -1,4 +1,4 @@
-import { BookmarksType, MangaIdType } from '@/shared/entities/manga';
+import { BookmarksType, MangaIdType } from '@/shared/kernel/manga';
 import { queryOptions } from '@tanstack/react-query';
 import { validateMangaUserBookmark } from './validate';
 import { $apiMangaById } from '@/shared/api/individualManga/base';

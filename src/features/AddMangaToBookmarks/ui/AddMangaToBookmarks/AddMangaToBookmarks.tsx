@@ -7,7 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { getFlex } from '@/shared/ui/Stack';
 import { Icon } from '@/shared/ui/Icon';
-import { BookmarksType, MangaIdType } from '@/shared/entities/manga';
+import { BookmarksType, MangaIdType } from '@/shared/kernel/manga';
 import { MangaUserBookmarkApi } from '../../model/api/mangaUserBookmarkApi';
 import { bookmarks } from '../../model/const/bookmarks';
 import { useSetMangaUserBookmark } from '../../model/api/hooks/useSetMangaUserBookmark';

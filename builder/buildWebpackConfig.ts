@@ -23,12 +23,5 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
         resolve: buildResolvers(options),
         devtool: isDev ? 'eval-cheap-module-source-map' : undefined, //'source-map',
         devServer: isDev ? buildDevServer(options) : undefined,
-        // optimization: {
-        //     runtimeChunk: undefined,
-        //     splitChunks: false,
-        // },
-        // experiments: {
-        //     topLevelAwait: false,
-        // },
     };
 }

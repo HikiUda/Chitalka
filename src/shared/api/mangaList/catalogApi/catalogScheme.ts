@@ -1,6 +1,6 @@
 import { z, ZodTypeAny } from 'zod';
-import { BookmarksEnum, MangaStatusEnum, MangaTypeEnum } from '@/shared/entities/manga';
-import { OrderEnum } from '@/shared/types/order';
+import { BookmarksEnum, MangaStatusEnum, MangaTypeEnum } from '@/shared/kernel/manga';
+import { OrderEnum } from '@/shared/kernel/order';
 import { RangeScheme } from './rangeScheme';
 
 export const SortByConst = {

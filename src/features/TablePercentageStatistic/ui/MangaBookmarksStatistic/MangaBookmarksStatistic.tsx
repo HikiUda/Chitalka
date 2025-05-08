@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { MangaIdType } from '@/shared/entities/manga';
+import { MangaIdType } from '@/shared/kernel/manga';
 import { MangaBookmarkStatisticApi } from '../../model/api/bookmark/mangaBookmarkStatisticApi';
 import { TableStatistic } from '../TableStatistic/TableStatistic';
 

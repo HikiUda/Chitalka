@@ -1,5 +1,5 @@
 import { StateCreator } from 'zustand';
-import { OrderType } from '@/shared/types/order';
+import { OrderType } from '@/shared/kernel/order';
 import { CatalogFiltersStoreType } from '../catalogFiltersStroe.type';
 import { SortByType } from '@/shared/api/mangaList';
 

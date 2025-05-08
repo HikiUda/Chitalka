@@ -1,7 +1,7 @@
-import { BookmarksEnum, MangaStatusEnum, MangaTypeEnum } from '@/shared/entities/manga';
+import { BookmarksEnum, MangaStatusEnum, MangaTypeEnum } from '@/shared/kernel/manga';
 import { z, ZodTypeAny } from 'zod';
 import { parseDate } from '@internationalized/date';
-import { OrderEnum } from '@/shared/types/order';
+import { OrderEnum } from '@/shared/kernel/order';
 import { SortByEnum } from '@/shared/api/mangaList';
 
 const RangeFromToScheme = z.coerce.number().int().optional().catch(undefined);

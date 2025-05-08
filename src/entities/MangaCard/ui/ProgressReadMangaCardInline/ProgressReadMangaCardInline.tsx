@@ -7,7 +7,7 @@ import { ProgressBar } from '@/shared/ui/ProgressBar';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon/Icon';
-import { getMangaSiteRoute } from '@/shared/config/router/mangaSiteRouter';
+import { getRoute } from '@/shared/config/router/routerConfig';
 import { MangaListItemContinueReadType } from '@/shared/api/mangaList';
 import { getUrlChapterId } from '@/entities/ChapterList';
 
@@ -35,7 +35,7 @@ export const ProgressReadMangaCardInline = memo((props: ProgressReadMangaCardInl
                 to={
                     isDisabled
                         ? ''
-                        : getMangaSiteRoute.readChapter(
+                        : getRoute.readChapter(
                               manga.urlId,
                               getUrlChapterId(manga.tome, manga.chapter, manga.chapterId),
                           )

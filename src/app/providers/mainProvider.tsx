@@ -1,15 +1,15 @@
 import { BrowserRouter } from 'react-router-dom';
 import { ReactNode } from 'react';
-import { QueryClientProvider } from '../queryClient';
-import ErrorBoundary from '../errorBoundary/ErrorBoundary';
-import { ThemeProvider } from '../theme';
+import { QueryClientProvider } from './queryClient';
+import ErrorBoundary from './errorBoundary/ErrorBoundary';
+import { AppThemeProvider } from '@/shared/config/theme';
 
 export const MainProvider = ({ children }: { children: ReactNode }) => {
     return (
         <BrowserRouter>
             <QueryClientProvider>
                 <ErrorBoundary>
-                    <ThemeProvider>{children}</ThemeProvider>
+                    <AppThemeProvider>{children}</AppThemeProvider>
                 </ErrorBoundary>
             </QueryClientProvider>
         </BrowserRouter>

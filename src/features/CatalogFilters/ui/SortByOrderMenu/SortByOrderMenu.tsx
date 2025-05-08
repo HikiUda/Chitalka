@@ -8,7 +8,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { useUrlSearchParams } from '@/shared/lib/hooks/useUrlSearchParams';
 import { getFlex } from '@/shared/ui/Stack';
-import { OrderType } from '@/shared/types/order';
+import { OrderType } from '@/shared/kernel/order';
 import { SortByConst, SortByType } from '@/shared/api/mangaList';
 
 interface SortByOrderMenuProps {

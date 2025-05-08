@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { MangaIdType } from '@/shared/entities/manga';
+import { MangaIdType } from '@/shared/kernel/manga';
 import StartSvg from '@/shared/assets/icon/common/star.svg';
 import { Icon } from '@/shared/ui/Icon';
 import { MangaRateStatisticApi } from '../../model/api/rate/mangaRateStatisticApi';

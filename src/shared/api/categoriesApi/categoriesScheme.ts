@@ -1,4 +1,4 @@
-import { ResponseArrayDataScheme } from '@/shared/types/pagination';
+import { ResponseArrayDataScheme } from '@/shared/kernel/pagination';
 import { z } from 'zod';
 
 export const CategoriesScheme = z.object({

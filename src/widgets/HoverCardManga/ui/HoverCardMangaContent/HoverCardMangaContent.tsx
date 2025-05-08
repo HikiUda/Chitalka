@@ -6,7 +6,7 @@ import cls from './HoverCardMangaContent.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { CardBlock } from '@/shared/ui/CardBlock';
 import { Heading } from '@/shared/ui/Heading';
-import { MangaIdType } from '@/shared/entities/manga';
+import { MangaIdType } from '@/shared/kernel/manga';
 import { TextDisclosure } from '@/shared/ui/TextDisclosure';
 import { getFlex, HStack } from '@/shared/ui/Stack';
 import { MangaApi } from '@/shared/api/individualManga';

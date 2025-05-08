@@ -5,7 +5,7 @@ import { RateModalContent } from '../RateModalContent';
 import cls from './RateModal.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { Modal } from '@/shared/ui/Modal';
-import { MangaIdType } from '@/shared/entities/manga';
+import { MangaIdType } from '@/shared/kernel/manga';
 import { UserDataApi } from '@/shared/api/user';
 import { ButtonContext } from '@/shared/ui/Button';
 import { ToastQueue } from '@/shared/ui/Toast';

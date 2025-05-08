@@ -15,11 +15,7 @@ export const MainLayout: FC<MainLayoutProps> = (props) => {
     const { className, header, footer, main, bottomMenu } = props;
 
     return (
-        <div
-            className={classNames(cls.MainLayout, { [cls.bottomMenu]: bottomMenu !== null }, [
-                className,
-            ])}
-        >
+        <div className={classNames(cls.MainLayout, {}, [className])}>
             {header}
             {main}
             {footer}

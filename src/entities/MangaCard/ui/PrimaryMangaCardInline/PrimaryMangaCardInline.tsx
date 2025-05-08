@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { getMangaSiteRoute } from '@/shared/config/router';
+import { getRoute } from '@/shared/config/router';
 import { MangaCardInline } from '../MangaCardInline/MangaCardInline';
 import { MangaListItemCatalogType } from '@/shared/api/mangaList';
 
@@ -18,7 +18,7 @@ export const PrimaryMangaCardInline = memo((props: PrimaryMangaCardInlineProps) 
             title={manga.title}
             subtitle={manga.type}
             img={manga.cover}
-            to={getMangaSiteRoute.manga(manga.urlId)}
+            to={getRoute.manga(manga.urlId)}
         />
     );
 });

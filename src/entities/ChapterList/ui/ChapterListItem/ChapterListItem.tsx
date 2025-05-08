@@ -2,8 +2,8 @@ import { FC, ReactNode } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { dateToString } from '@/shared/lib/helpers/dateToString';
 import { AppLink } from '@/shared/ui/AppLink';
-import { MangaIdType } from '@/shared/entities/manga';
-import { getMangaSiteRoute } from '@/shared/config/router';
+import { MangaIdType } from '@/shared/kernel/manga';
+import { getRoute } from '@/shared/config/router';
 import { getUrlChapterId } from '../../model/helpers/getUrlCahpterId';
 import cls from './ChapterListItem.module.scss';
 
@@ -30,7 +30,7 @@ export const ChapterListItem: FC<ChapterListItemProps> = (props) => {
         <AppLink
             backgroundOnHover
             noOpacityHover
-            to={getMangaSiteRoute.readChapter(
+            to={getRoute.readChapter(
                 mangaId,
                 getUrlChapterId(chapter.tome, chapter.chapter, chapter.id),
             )}

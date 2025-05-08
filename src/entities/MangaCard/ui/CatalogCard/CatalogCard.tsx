@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { getMangaSiteRoute } from '@/shared/config/router';
+import { getRoute } from '@/shared/config/router';
 import { MangaCard } from '../MangaCard/MangaCard';
 import { MangaListItemCatalogType } from '@/shared/api/mangaList';
 
@@ -14,7 +14,7 @@ export const CatalogCard = memo((props: CatalogCardProps) => {
     return (
         <MangaCard
             className={className}
-            to={getMangaSiteRoute.manga(manga.urlId)}
+            to={getRoute.manga(manga.urlId)}
             title={manga.title}
             subtitle={manga.type}
             label1={manga.rate}

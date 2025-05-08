@@ -5,7 +5,7 @@ import { toShortcutNumber } from '@/shared/lib/helpers/toShortcutNumber/toShortc
 import EyeSvg from '@/shared/assets/icon/common/eye.svg';
 import BookmarkSvg from '@/shared/assets/icon/common/bookmark.svg';
 import LikeSvg from '@/shared/assets/icon/common/like.svg';
-import { getMangaSiteRoute } from '@/shared/config/router/mangaSiteRouter';
+import { getRoute } from '@/shared/config/router/routerConfig';
 import { HStack } from '@/shared/ui/Stack';
 import { IconInfoBirka } from '@/shared/ui/IconInfoBirka';
 import { MangaListItemStatisticType } from '@/shared/api/mangaList';
@@ -21,7 +21,7 @@ export const StatisticsMangaCardInline = memo((props: StatisticsMangaCardInlineP
     return (
         <MangaCardInline
             className={classNames('', {}, [className])}
-            to={getMangaSiteRoute.manga(manga.urlId)}
+            to={getRoute.manga(manga.urlId)}
             img={manga.cover}
             title={manga.title}
             subtitle={manga.type}

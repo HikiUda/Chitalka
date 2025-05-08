@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { BookmarksType, MangaIdType } from '@/shared/entities/manga';
+import { BookmarksType, MangaIdType } from '@/shared/kernel/manga';
 import { MangaUserBookmarkApi } from '../mangaUserBookmarkApi';
 
 export const useSetMangaUserBookmark = (id: MangaIdType) => {

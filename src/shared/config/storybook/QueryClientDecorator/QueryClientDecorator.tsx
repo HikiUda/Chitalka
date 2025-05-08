@@ -1,7 +1,8 @@
 import { Decorator } from '@storybook/react/*';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-type ClientStateType = 'query' | 'loading' | 'error';
 
+type ClientStateType = 'query' | 'loading' | 'error';
+// ? I realy need in error and loading Client
 const queryClient = new QueryClient({
     defaultOptions: { queries: { retry: false } },
 });
@@ -13,6 +14,7 @@ const errorClient = new QueryClient({
         },
     },
 });
+
 const loadingClient = new QueryClient({
     defaultOptions: {
         queries: {

@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ResponseArrayDataScheme } from '@/shared/types/pagination';
+import { ResponseArrayDataScheme } from '@/shared/kernel/pagination';
 import { MangaListItemBaseScheme } from './mangaListItmeBase';
 
 export const MangaListItemStatisticScheme = MangaListItemBaseScheme.pick({

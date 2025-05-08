@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { MainLayout } from '@/shared/layout/MainLayout/MainLayout';
 import { useQuery } from '@tanstack/react-query';
+import { AppRouter } from './providers/router/AppRouter';
+import { MainLayout } from '@/shared/layout/MainLayout/MainLayout';
 import { UserDataApi } from '@/shared/api/user';
-import { AppRouter } from './providers/router';
 import { Header } from '@/widgets/Header';
 import { BottomMenu } from '@/widgets/BottomMenu';
 

@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { isMobile } from 'react-device-detect';
 import cls from './LogoMangaSite.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { getMangaSiteRoute } from '@/shared/config/router/mangaSiteRouter';
+import { getRoute } from '@/shared/config/router/routerConfig';
 import { AppLink } from '@/shared/ui/AppLink';
 import ChitalkaSvg from '@/shared/assets/icon/logo/Chitalka.svg';
 import CSvg from '@/shared/assets/icon/logo/C.svg';
@@ -19,7 +19,7 @@ export const LogoMangaSite = memo((props: LogoMangaSiteProps) => {
     return (
         <AppLink
             theme="primary"
-            to={getMangaSiteRoute.main()}
+            to={getRoute.main()}
             className={classNames(cls.LogoMangaSite, {}, [className])}
         >
             <Icon

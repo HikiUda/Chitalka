@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import cls from './FooterLayout.module.scss';
+import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 
 interface FooterLayoutProps {
     className?: string;

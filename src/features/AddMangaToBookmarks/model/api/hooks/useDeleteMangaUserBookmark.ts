@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { MangaIdType } from '@/shared/entities/manga';
+import { MangaIdType } from '@/shared/kernel/manga';
 import { MangaUserBookmarkApi } from '../mangaUserBookmarkApi';
 
 export const useDeleteUserMangaBookmark = (id: MangaIdType) => {

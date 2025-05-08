@@ -1,5 +1,5 @@
 import { FC, useCallback, useState } from 'react';
-import { OrderType } from '@/shared/types/order';
+import { OrderType } from '@/shared/kernel/order';
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import SortSvg from '@/shared/assets/icon/common/sortArrow.svg';

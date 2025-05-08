@@ -5,7 +5,7 @@ import { commonLink } from '../../model/config/commonLink';
 import { ExitButton } from '../ExitButton/ExitButton';
 import cls from './PopUserMenu.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { useDisign, useTheme } from '@/shared/config/theme';
+import { useAppDisign, useAppTheme } from '@/shared/config/theme';
 import { Popover } from '@/shared/ui/Popover';
 import { Button } from '@/shared/ui/Button';
 import { VStack } from '@/shared/ui/Stack';
@@ -25,8 +25,8 @@ export const PopUserMenu: FC<PopUserMenuProps> = (props) => {
             <Avatar img={data?.avatar} />
         </Button>
     );
-    const { toggleTheme } = useTheme();
-    const { toggleDisign } = useDisign();
+    const { toggleTheme } = useAppTheme();
+    const { toggleDisign } = useAppDisign();
 
     const onDisign = () => {
         toggleDisign();

@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 import { Button } from '@/shared/ui/Button';
 import { AppLink } from '@/shared/ui/AppLink';
-import { getMangaSiteRoute } from '@/shared/config/router';
+import { getRoute } from '@/shared/config/router';
 import cls from './TabScroll.module.scss';
 
 interface TabScrollProps {
@@ -28,7 +28,7 @@ export const TabScroll: FC<TabScrollProps> = (props) => {
                     Показать еще
                 </Button>
             ) : (
-                <AppLink className={cls.link} to={`${getMangaSiteRoute.catalog()}?${searchParams}`}>
+                <AppLink className={cls.link} to={`${getRoute.catalog()}?${searchParams}`}>
                     В Каталог
                 </AppLink>
             )}

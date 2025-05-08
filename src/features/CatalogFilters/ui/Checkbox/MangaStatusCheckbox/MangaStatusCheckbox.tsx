@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Checkbox, CheckboxGroup } from '@/shared/ui/Checkbox';
 import { HStack } from '@/shared/ui/Stack';
-import { MangaStatus, MangaStatusType } from '@/shared/entities/manga';
+import { MangaStatus, MangaStatusType } from '@/shared/kernel/manga';
 import { useUrlSearchParams } from '@/shared/lib/hooks/useUrlSearchParams';
 import { useCatalogFiltersStore } from '../../../model/store/catalogFiltersStore';
 

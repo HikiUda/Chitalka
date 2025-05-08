@@ -1,4 +1,4 @@
-import { BookmarksEnum } from '@/shared/entities/manga';
+import { BookmarksEnum } from '@/shared/kernel/manga';
 import { z } from 'zod';
 
 export const MangaUserBookmarkScheme = z.object({

@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { formatDate } from '@/shared/lib/helpers/formatDate';
-import { getMangaSiteRoute } from '@/shared/config/router/mangaSiteRouter';
+import { getRoute } from '@/shared/config/router/routerConfig';
 import { MangaCardInline } from '../MangaCardInline/MangaCardInline';
 import cls from './LastUpdatedMangaCardInline.module.scss';
 import { MangaListItemLastUpdatedType } from '@/shared/api/mangaList';
@@ -17,7 +17,7 @@ export const LastUpdatedMangaCardInline = memo((props: LastUpdatedMangaCardInlin
         <MangaCardInline
             className={className}
             title={manga.title}
-            to={getMangaSiteRoute.readChapter(
+            to={getRoute.readChapter(
                 manga.urlId,
                 getUrlChapterId(manga.tome, manga.chapter, manga.chapterId),
             )}

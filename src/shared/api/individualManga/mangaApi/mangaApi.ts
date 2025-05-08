@@ -1,5 +1,5 @@
 import { queryOptions } from '@tanstack/react-query';
-import { MangaIdType } from '@/shared/entities/manga';
+import { MangaIdType } from '@/shared/kernel/manga';
 import { $apiMangaById } from '../base';
 import { validateManga } from './validateManga';
 

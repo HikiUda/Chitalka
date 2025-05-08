@@ -1,5 +1,5 @@
 import { StateCreator } from 'zustand';
-import { MangaTypeType } from '@/shared/entities/manga';
+import { MangaTypeType } from '@/shared/kernel/manga';
 import { CatalogFiltersStoreType } from '../catalogFiltersStroe.type';
 
 export interface MangaTypeSlice {

@@ -1,6 +1,6 @@
 import { FC, useMemo } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { MangaIdType } from '@/shared/entities/manga';
+import { MangaIdType } from '@/shared/kernel/manga';
 import { useQuery } from '@tanstack/react-query';
 import { useUrlSearchParams } from '@/shared/lib/hooks/useUrlSearchParams';
 import { ChapterApi } from '../../model/api/chapterApi/chapterApi';

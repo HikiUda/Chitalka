@@ -6,7 +6,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { Button } from '@/shared/ui/Button';
 import StarSvg from '@/shared/assets/icon/common/star.svg';
 import { toShortcutNumber } from '@/shared/lib/helpers/toShortcutNumber/toShortcutNumber';
-import { MangaIdType } from '@/shared/entities/manga';
+import { MangaIdType } from '@/shared/kernel/manga';
 import { useQuery } from '@tanstack/react-query';
 import { isMobile } from 'react-device-detect';
 import cls from './MangaTitle.module.scss';

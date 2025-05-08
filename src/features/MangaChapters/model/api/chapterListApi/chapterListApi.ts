@@ -1,7 +1,7 @@
 import { $api } from '@/shared/api/baseApi/kyBase';
-import { MangaIdType } from '@/shared/entities/manga';
+import { MangaIdType } from '@/shared/kernel/manga';
 import { infiniteQueryOptions } from '@tanstack/react-query';
-import { OrderType } from '@/shared/types/order';
+import { OrderType } from '@/shared/kernel/order';
 import { validateChapterList } from './validateChapters';
 
 class ChapterList {

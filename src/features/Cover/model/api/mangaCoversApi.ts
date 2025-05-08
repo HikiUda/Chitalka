@@ -1,4 +1,4 @@
-import { MangaIdType } from '@/shared/entities/manga';
+import { MangaIdType } from '@/shared/kernel/manga';
 import { queryOptions } from '@tanstack/react-query';
 import { validateMangaCoversResponseArrayData } from './validate';
 import { $apiMangaById } from '@/shared/api/individualManga/base';

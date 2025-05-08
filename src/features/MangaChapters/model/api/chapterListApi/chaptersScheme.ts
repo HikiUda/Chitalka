@@ -1,4 +1,4 @@
-import { PaginationScheme } from '@/shared/types/pagination';
+import { PaginationScheme } from '@/shared/kernel/pagination';
 import { z } from 'zod';
 
 export const ChapterListItemScheme = z.object({

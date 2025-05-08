@@ -1,12 +1,12 @@
 import { FC, useCallback, useEffect, useState } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { MangaIdType } from '@/shared/entities/manga';
+import { MangaIdType } from '@/shared/kernel/manga';
 import EyeOffSvg from '@/shared/assets/icon/common/eyeOff.svg';
 import EyeSvg from '@/shared/assets/icon/common/eye.svg';
 import { Icon } from '@/shared/ui/Icon';
 import { HStack } from '@/shared/ui/Stack';
 import { Input } from '@/shared/ui/Input';
-import { OrderType } from '@/shared/types/order';
+import { OrderType } from '@/shared/kernel/order';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 import { useClearInfinityPages } from '@/shared/lib/hooks/useClearInfinityPages';
 import { Divider } from '@/shared/ui/Divider';

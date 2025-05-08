@@ -1,4 +1,4 @@
-import { Bookmarks } from '@/shared/entities/manga';
+import { Bookmarks } from '@/shared/kernel/manga';
 import { z } from 'zod';
 import { createStatisticItem } from '../scheme/percentItemScheme';
 

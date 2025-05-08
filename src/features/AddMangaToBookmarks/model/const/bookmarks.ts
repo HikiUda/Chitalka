@@ -1,4 +1,4 @@
-import { Bookmarks } from '@/shared/entities/manga';
+import { Bookmarks } from '@/shared/kernel/manga';
 
 export const bookmarks = [
     { bookmark: Bookmarks.Reading },

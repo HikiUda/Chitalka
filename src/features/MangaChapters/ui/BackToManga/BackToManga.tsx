@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { useQuery } from '@tanstack/react-query';
-import { MangaIdType } from '@/shared/entities/manga';
+import { MangaIdType } from '@/shared/kernel/manga';
 import { AppLink } from '@/shared/ui/AppLink';
-import { getMangaSiteRoute } from '@/shared/config/router';
+import { getRoute } from '@/shared/config/router';
 import { Heading } from '@/shared/ui/Heading';
 import { getFlex, VStack } from '@/shared/ui/Stack';
 import ArrowSvg from '@/shared/assets/icon/common/arrow.svg';
@@ -22,7 +22,7 @@ export const BackToManga: FC<BackToMangaProps> = (props) => {
     const { data } = useQuery(ChapterApi.getQueryOptions(chapterId));
     return (
         <AppLink
-            to={`${getMangaSiteRoute.manga(mangaId)}?section=chapters`}
+            to={`${getRoute.manga(mangaId)}?section=chapters`}
             backgroundOnHover
             noOpacityHover
             className={classNames(cls.BackToManga, {}, [className, getFlex({ justify: 'start' })])}

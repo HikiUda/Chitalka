@@ -5,7 +5,7 @@ import { classNames } from '@/shared/lib/helpers/classNames';
 import { VStack } from '@/shared/ui/Stack';
 import { getStyleScrollbar } from '@/shared/ui/StyleHooks';
 import { AppLink } from '@/shared/ui/AppLink';
-import { getMangaSiteRoute } from '@/shared/config/router';
+import { getRoute } from '@/shared/config/router';
 import { MangaType } from '@/shared/api/individualManga';
 
 interface SidebarProps {
@@ -26,15 +26,12 @@ export const Sidebar = memo((props: SidebarProps) => {
             ])}
         >
             <SidebarItem title="Type">
-                <AppLink underlineOnHover to={`${getMangaSiteRoute.catalog()}?type=${manga.type}`}>
+                <AppLink underlineOnHover to={`${getRoute.catalog()}?type=${manga.type}`}>
                     {manga.type}
                 </AppLink>
             </SidebarItem>
             <SidebarItem title="Status">
-                <AppLink
-                    underlineOnHover
-                    to={`${getMangaSiteRoute.catalog()}?status=${manga.status}`}
-                >
+                <AppLink underlineOnHover to={`${getRoute.catalog()}?status=${manga.status}`}>
                     {manga.status}
                 </AppLink>
             </SidebarItem>

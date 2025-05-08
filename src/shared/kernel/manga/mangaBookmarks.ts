@@ -1,5 +1,4 @@
 import { z } from 'zod';
-import { ValueOf } from '@/shared/types/common/common';
 
 export const Bookmarks = {
     Reading: 'Reading',

@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { useCatalogFiltersStore } from '../../../model/store/catalogFiltersStore';
 import { Checkbox, CheckboxGroup } from '@/shared/ui/Checkbox';
 import { HStack } from '@/shared/ui/Stack';
-import { Bookmarks, BookmarksType } from '@/shared/entities/manga';
+import { Bookmarks, BookmarksType } from '@/shared/kernel/manga';
 import { useUrlSearchParams } from '@/shared/lib/hooks/useUrlSearchParams';
 
 interface BookmarksCheckboxProps {
