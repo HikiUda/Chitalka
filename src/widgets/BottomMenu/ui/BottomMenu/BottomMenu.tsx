@@ -1,6 +1,6 @@
 import { isMobile } from 'react-device-detect';
-import { useRouteChange } from '@/shared/lib/hooks/useRouteChange/useRouteChange';
-import { mapBottomMenuContent } from '../../model/config/mapBottomMenuContent';
+import { mapBottomMenuContent } from '../../model/mapBottomMenuContent';
+import { useRouteChange } from '@/shared/config/router';
 
 export const BottomMenu = () => {
     const currentRoute = useRouteChange();

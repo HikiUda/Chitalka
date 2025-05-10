@@ -1,5 +1,5 @@
-import { createDevValidator } from '@/shared/lib/zod/createDevValidator';
-export const validateMangaListItemStatisticResponseArrayData = createDevValidator(() =>
+import { createZodDevValidator } from '@/shared/lib/helpers/createZodDevValidator';
+export const validateMangaListItemStatisticResponseArrayData = createZodDevValidator(() =>
     import('./../scheme/mangaListItemStatistic').then(
         (r) => r.MangaListItemStatisticResponseArrayDataScheme,
     ),

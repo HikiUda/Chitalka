@@ -24,7 +24,7 @@ export const ChapterByPage: FC<ChapterByPageProps> = (props) => {
         (e: MouseEvent) => {
             const target = e.target as HTMLElement;
             if (!target.closest('main')) return;
-            const middle = Math.floor(innerWidth / 2);
+            const middle = Math.floor(window.innerWidth / 2);
             const middleGap = 50;
             const leftClick = middle - middleGap;
             const rightClick = middle + middleGap;

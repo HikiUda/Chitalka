@@ -1,15 +1,15 @@
 import { memo } from 'react';
 
+import { useQuery } from '@tanstack/react-query';
+import { isMobile } from 'react-device-detect';
+import cls from './MangaTitle.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { getFlex, HStack } from '@/shared/ui/Stack';
 import { Icon } from '@/shared/ui/Icon';
 import { Button } from '@/shared/ui/Button';
 import StarSvg from '@/shared/assets/icon/common/star.svg';
-import { toShortcutNumber } from '@/shared/lib/helpers/toShortcutNumber/toShortcutNumber';
+import { toShortcutNumber } from '@/shared/lib/helpers/toShortcutNumber';
 import { MangaIdType } from '@/shared/kernel/manga';
-import { useQuery } from '@tanstack/react-query';
-import { isMobile } from 'react-device-detect';
-import cls from './MangaTitle.module.scss';
 import { RateModal } from '@/features/RateModal';
 import { RateMangaApi } from '@/shared/api/individualManga';
 

@@ -1,5 +1,5 @@
-import { createDevValidator } from '@/shared/lib/zod/createDevValidator';
+import { createZodDevValidator } from '@/shared/lib/helpers/createZodDevValidator';
 
-export const validateMangaListItemCatalogPagination = createDevValidator(() =>
+export const validateMangaListItemCatalogPagination = createZodDevValidator(() =>
     import('../scheme/mangaListitemCatalog').then((r) => r.MangaListItemCatalogPagination),
 );

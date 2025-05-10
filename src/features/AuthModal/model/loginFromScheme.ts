@@ -1,11 +1,12 @@
-import { LoginUserDataScheme } from '@/shared/api/auth';
-import { emptyStringToUndefined } from '@/shared/lib/helpers/emptyStringToUndefined';
 import { z } from 'zod';
+import { LoginUserDataScheme } from '@/shared/api/auth';
+
+const noEmpty = (val: string) => (val.trim() === '' ? undefined : val);
 
 const LoginFromScheme = z
     .object({
-        login: z.string().transform(emptyStringToUndefined),
-        password: z.string().transform(emptyStringToUndefined),
+        login: z.string().transform(noEmpty),
+        password: z.string().transform(noEmpty),
     })
     .pipe(LoginUserDataScheme);
 

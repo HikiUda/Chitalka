@@ -1,11 +1,11 @@
 import { FC, ReactNode } from 'react';
+import { getUrlChapterId } from '../../model/helpers/getUrlCahpterId';
+import cls from './ChapterListItem.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { dateToString } from '@/shared/lib/helpers/dateToString';
+import { toShortDate } from '@/shared/lib/helpers/dateFormat';
 import { AppLink } from '@/shared/ui/AppLink';
 import { MangaIdType } from '@/shared/kernel/manga';
 import { getRoute } from '@/shared/config/router';
-import { getUrlChapterId } from '../../model/helpers/getUrlCahpterId';
-import cls from './ChapterListItem.module.scss';
 
 type ChapterListItem = {
     id: number;
@@ -40,7 +40,7 @@ export const ChapterListItem: FC<ChapterListItemProps> = (props) => {
             <div className={cls.chapter}>
                 {`${chapter.tome} том ${chapter.chapter} глава${chapter.title ? ` - ${chapter.title}` : ''}`}
             </div>
-            <div>{dateToString(chapter.createdAt)}</div>
+            <div>{toShortDate(chapter.createdAt)}</div>
             {after}
         </AppLink>
     );

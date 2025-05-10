@@ -1,5 +1,5 @@
-import { createDevValidator } from '@/shared/lib/zod/createDevValidator';
+import { createZodDevValidator } from '@/shared/lib/helpers/createZodDevValidator';
 
-export const validateCategories = createDevValidator(() =>
+export const validateCategories = createZodDevValidator(() =>
     import('./categoriesScheme').then((r) => r.CategoriesResponseArrayData),
 );

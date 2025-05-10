@@ -1,4 +1,3 @@
-import { preventDisableScroll } from '@/shared/lib/helpers/preventDisableScroll/preventDisableScroll';
 import { useCallback, useEffect, useState } from 'react';
 
 export function useFreePopover() {
@@ -12,7 +11,9 @@ export function useFreePopover() {
 
     const handleIsOpen = (state: boolean) => {
         setIsOpen(state);
-        preventDisableScroll(state);
+        setTimeout(() => {
+            document.documentElement.style = '';
+        });
     };
 
     useEffect(() => {

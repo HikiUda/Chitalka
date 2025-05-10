@@ -1,4 +1,4 @@
-import type { Mods } from './types/classNamesType';
+export type Mods = Record<string, boolean | string | undefined>;
 
 export function classNames(
     cls: string | undefined,

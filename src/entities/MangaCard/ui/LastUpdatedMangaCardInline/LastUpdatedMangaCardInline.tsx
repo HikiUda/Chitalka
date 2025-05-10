@@ -1,8 +1,8 @@
 import { memo } from 'react';
-import { formatDate } from '@/shared/lib/helpers/formatDate';
-import { getRoute } from '@/shared/config/router/routerConfig';
 import { MangaCardInline } from '../MangaCardInline/MangaCardInline';
 import cls from './LastUpdatedMangaCardInline.module.scss';
+import { getTimeRelativeNow } from '@/shared/lib/helpers/dateFormat';
+import { getRoute } from '@/shared/config/router/routerConfig';
 import { MangaListItemLastUpdatedType } from '@/shared/api/mangaList';
 import { getUrlChapterId } from '@/entities/ChapterList';
 
@@ -26,7 +26,7 @@ export const LastUpdatedMangaCardInline = memo((props: LastUpdatedMangaCardInlin
             <span className={cls.charecter}>
                 Tome {manga.tome} Chapter {manga.chapter}
             </span>
-            <span className={cls.time}>{formatDate(new Date(manga.chapterCreatedAt))}</span>
+            <span className={cls.time}>{getTimeRelativeNow(new Date(manga.chapterCreatedAt))}</span>
         </MangaCardInline>
     );
 });

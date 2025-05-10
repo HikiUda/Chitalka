@@ -1,5 +1,5 @@
-import { createDevValidator } from '@/shared/lib/zod/createDevValidator';
+import { createZodDevValidator } from '@/shared/lib/helpers/createZodDevValidator';
 
-export const validateMangaCoversResponseArrayData = createDevValidator(() =>
+export const validateMangaCoversResponseArrayData = createZodDevValidator(() =>
     import('./mangaCoversScheme').then((r) => r.MangaCoverResponseArrayDataScheme),
 );

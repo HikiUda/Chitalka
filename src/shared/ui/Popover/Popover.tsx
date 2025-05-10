@@ -1,4 +1,3 @@
-import { classNames } from '@/shared/lib/helpers/classNames';
 import { memo, ReactNode, useEffect, useRef } from 'react';
 import {
     ButtonContext,
@@ -9,6 +8,7 @@ import {
 } from 'react-aria-components';
 import cls from './Popover.module.scss';
 import { useFreePopover } from './useFreePopover';
+import { classNames } from '@/shared/lib/helpers/classNames';
 
 interface MyPopoverProps extends Omit<PopoverProps, 'children'> {
     className?: string;

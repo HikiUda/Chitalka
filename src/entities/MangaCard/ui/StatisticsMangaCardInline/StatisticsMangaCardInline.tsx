@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { MangaCardInline } from '../MangaCardInline/MangaCardInline';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { toShortcutNumber } from '@/shared/lib/helpers/toShortcutNumber/toShortcutNumber';
+import { toShortcutNumber } from '@/shared/lib/helpers/toShortcutNumber';
 import EyeSvg from '@/shared/assets/icon/common/eye.svg';
 import BookmarkSvg from '@/shared/assets/icon/common/bookmark.svg';
 import LikeSvg from '@/shared/assets/icon/common/like.svg';

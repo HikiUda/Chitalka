@@ -4,7 +4,7 @@ export function useClearInfinityPages(queryKey: (number | string)[]) {
     const queryClient = useQueryClient();
 
     const clearPages = () => {
-        const data = queryClient.getQueryData<{ pages?: unknown[]; pageParams: number[] }>(
+        const data = queryClient.getQueryData<{ pages?: unknown[]; pageParams?: number[] }>(
             queryKey,
         );
 

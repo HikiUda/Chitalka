@@ -1,5 +1,5 @@
-import { createDevValidator } from '@/shared/lib/zod/createDevValidator';
+import { createZodDevValidator } from '@/shared/lib/helpers/createZodDevValidator';
 
-export const validateManga = createDevValidator(() =>
+export const validateManga = createZodDevValidator(() =>
     import('./mangaScheme').then((r) => r.MangaScheme),
 );

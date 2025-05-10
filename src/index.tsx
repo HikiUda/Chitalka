@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import '@/shared/styles/index.scss';
+import '@/app/styles/index.scss';
 import { App } from './app/App';
 import { MainProvider } from '@/app/providers/mainProvider';
 

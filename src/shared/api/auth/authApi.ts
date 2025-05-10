@@ -1,9 +1,9 @@
 import { HTTPError } from 'ky';
 import { $api } from '../baseApi/kyBase';
 import { LoginUserData } from './types/authTypes';
-import { createDevValidator } from '@/shared/lib/zod/createDevValidator';
+import { createZodDevValidator } from '@/shared/lib/helpers/createZodDevValidator';
 
-const validateAuth = createDevValidator(() =>
+const validateAuth = createZodDevValidator(() =>
     import('./types/authTypes').then((r) => r.AuthUserScheme),
 );
 

@@ -1,9 +1,11 @@
 import { queryOptions } from '@tanstack/react-query';
 import { $api } from '../baseApi/kyBase';
 import type { UserDataType } from './user';
-import { createDevValidator } from '@/shared/lib/zod/createDevValidator';
+import { createZodDevValidator } from '@/shared/lib/helpers/createZodDevValidator';
 
-const validateUserData = createDevValidator(() => import('./user').then((r) => r.UserDataScheme));
+const validateUserData = createZodDevValidator(() =>
+    import('./user').then((r) => r.UserDataScheme),
+);
 
 class UserData {
     async getUserData() {

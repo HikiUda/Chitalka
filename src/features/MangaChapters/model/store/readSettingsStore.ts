@@ -1,6 +1,6 @@
-import { createSelectorsForVanillaStore } from '@/shared/lib/zustand/createSelectorsForVanillaStore';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
+import { createZustandStoreSelectors } from '@/shared/lib/helpers/createZustandStoreSelectors';
 
 type ChapterViewType = 'byPage' | 'tape';
 
@@ -25,4 +25,4 @@ const useReadSettingsStoreBase = create<ReadSettingsStoreType>()(
     ),
 );
 
-export const useReadSettingsStore = createSelectorsForVanillaStore(useReadSettingsStoreBase);
+export const useReadSettingsStore = createZustandStoreSelectors(useReadSettingsStoreBase);

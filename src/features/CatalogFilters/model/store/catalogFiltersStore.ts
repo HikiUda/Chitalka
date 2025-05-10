@@ -1,6 +1,5 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
-import { createSelectorsForVanillaStore } from '@/shared/lib/zustand/createSelectorsForVanillaStore';
 import { CatalogFiltersStoreType } from './catalogFiltersStroe.type';
 import { createSearchSlice } from './slices/searchSlice';
 import { createSortByOrderSlice } from './slices/sortByOrderSlice';
@@ -15,6 +14,7 @@ import { createBookmarksSlice } from './slices/bookmarksSlice';
 import { createTagsSlice } from './slices/tagsSlice';
 import { createGenresSlice } from './slices/genresSlice';
 import { createGlobalSlice } from './slices/globalSlice';
+import { createZustandStoreSelectors } from '@/shared/lib/helpers/createZustandStoreSelectors';
 
 export const useCatalogFiltersStoreBase = create<CatalogFiltersStoreType>()(
     devtools(
@@ -37,4 +37,4 @@ export const useCatalogFiltersStoreBase = create<CatalogFiltersStoreType>()(
     ),
 );
 
-export const useCatalogFiltersStore = createSelectorsForVanillaStore(useCatalogFiltersStoreBase);
+export const useCatalogFiltersStore = createZustandStoreSelectors(useCatalogFiltersStoreBase);

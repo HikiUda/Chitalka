@@ -1,5 +1,5 @@
-import { createDevValidator } from '@/shared/lib/zod/createDevValidator';
+import { createZodDevValidator } from '@/shared/lib/helpers/createZodDevValidator';
 
-export const validateMangaUserBookmark = createDevValidator(() =>
+export const validateMangaUserBookmark = createZodDevValidator(() =>
     import('./mangaUserBookmarkScheme').then((r) => r.MangaUserBookmarkScheme),
 );

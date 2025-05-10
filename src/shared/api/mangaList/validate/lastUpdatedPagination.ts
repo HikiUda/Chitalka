@@ -1,5 +1,5 @@
-import { createDevValidator } from '@/shared/lib/zod/createDevValidator';
-export const validateMangaListItemLastUpdatedPagination = createDevValidator(() =>
+import { createZodDevValidator } from '@/shared/lib/helpers/createZodDevValidator';
+export const validateMangaListItemLastUpdatedPagination = createZodDevValidator(() =>
     import('./../scheme/mangaListItemLastUpdated').then(
         (r) => r.MangaListItemLastUpdatedPagination,
     ),

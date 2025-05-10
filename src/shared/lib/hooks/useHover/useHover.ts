@@ -1,5 +1,6 @@
 import { useState, useCallback, useRef } from 'react';
 
+// ? is useless hook
 export function useHover<T extends HTMLElement>() {
     const [isHovered, setIsHovered] = useState(false);
     const ref = useRef<T | null>(null);
