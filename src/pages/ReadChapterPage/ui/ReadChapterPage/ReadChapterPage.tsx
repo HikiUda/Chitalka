@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { useParams } from 'react-router-dom';
 import cls from './ReadChapterPage.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { Page } from '@/shared/ui/Page';
+import { Page } from '@/shared/layout/Page';
 import { ChapterSelectView } from '@/features/MangaChapters';
 
 interface ReadChapterPageProps {

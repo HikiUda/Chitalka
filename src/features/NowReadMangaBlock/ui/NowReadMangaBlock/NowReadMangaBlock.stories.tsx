@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { NowReadMangaBlock } from './NowReadMangaBlock';
-import { mockCatalogApi } from '@/shared/api/mangaList/testing';
+import { mockCatalogApi } from '@/shared/api/deprecated/mangaList/testing';
 
 const meta: Meta<typeof NowReadMangaBlock> = {
     title: 'features/NowReadMangaBlock',

@@ -2,7 +2,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ReactNode } from 'react';
 import { QueryClientProvider } from './queryClient';
 import ErrorBoundary from './errorBoundary/ErrorBoundary';
-import { AppThemeProvider } from '@/shared/config/theme';
+import { AppThemeProvider } from '@/shared/kernel/theme';
 
 export const MainProvider = ({ children }: { children: ReactNode }) => {
     return (

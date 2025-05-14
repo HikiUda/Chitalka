@@ -1,11 +1,11 @@
 import { FC, useMemo } from 'react';
-import { classNames } from '@/shared/lib/helpers/classNames';
-import { CardBlock } from '@/shared/ui/CardBlock';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import cls from './RecentUpdatedPopularMangaSlider.module.scss';
+import { classNames } from '@/shared/lib/helpers/classNames';
+import { CardBlock } from '@/shared/ui/CardBlock';
 import { Slider } from '@/entities/Slider';
 import { LastChapterMangaCard, MangaCardSkeleton } from '@/entities/MangaCard';
-import { LastUpdatedMangaApi } from '@/shared/api/mangaList';
+import { LastUpdatedMangaApi } from '@/shared/api/deprecated/mangaList';
 
 interface RecentUpdatedPopularMangaSliderProps {
     className?: string;

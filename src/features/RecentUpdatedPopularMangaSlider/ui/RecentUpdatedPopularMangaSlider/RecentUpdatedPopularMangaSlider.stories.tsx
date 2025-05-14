@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { RecentUpdatedPopularMangaSlider } from './RecentUpdatedPopularMangaSlider';
-import { mockLastUpdatedMangaApi } from '@/shared/api/mangaList/testing';
+import { mockLastUpdatedMangaApi } from '@/shared/api/deprecated/mangaList/testing';
 
 const meta: Meta<typeof RecentUpdatedPopularMangaSlider> = {
     title: 'features/RecentUpdatedPopularMangaSlider',

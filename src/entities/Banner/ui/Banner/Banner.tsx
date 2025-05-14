@@ -1,7 +1,7 @@
 import { memo } from 'react';
+import cls from './Banner.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { AppAdaptiveImage } from '@/shared/ui/AppAdaptiveImage';
-import cls from './Banner.module.scss';
 
 interface BannerProps {
     className?: string;

@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
+import { Container } from '../Container/Container';
 import cls from './HeaderLayout.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { Container } from '@/shared/ui/Container/Container';
 
 interface HeaderLayoutProps {
     className?: string;

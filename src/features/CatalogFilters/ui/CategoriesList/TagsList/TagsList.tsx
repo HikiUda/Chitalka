@@ -12,7 +12,7 @@ import { NavButtons } from '../NavButtons/NavButtons';
 import { CategoriesList } from '../CategoriesList/CategoriesList';
 import { useCatalogFiltersStore } from '../../../model/store/catalogFiltersStore';
 import cls from './TagsList.module.scss';
-import { CategoriesApi } from '@/shared/api/categoriesApi';
+import { CategoriesApi } from '@/shared/api/deprecated/categoriesApi';
 
 interface TagsListProps {
     className?: string;

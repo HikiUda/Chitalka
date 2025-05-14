@@ -1,5 +1,6 @@
 import { Decorator } from '@storybook/react';
-import '@/shared/styles/index.scss';
+// eslint-disable-next-line fsd-layer-import/layer-import
+import '@/app/styles/index.scss';
 
 export const StyleDecorator: Decorator = (Story) => {
     document.body.style.background = 'var(--bg-color)';

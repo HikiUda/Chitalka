@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import MyLastUpdatedTab from './MyLastUpdatedTab';
-import { mockLastUpdatedMangaApi } from '@/shared/api/mangaList/testing';
+import { mockLastUpdatedMangaApi } from '@/shared/api/deprecated/mangaList/testing';
 
 const meta: Meta<typeof MyLastUpdatedTab> = {
     title: 'features/LastUpdatedMangaTabs/MyLastUpdatedTab',

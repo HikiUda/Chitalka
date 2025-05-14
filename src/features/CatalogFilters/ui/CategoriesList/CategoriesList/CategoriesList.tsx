@@ -4,7 +4,7 @@ import { VStack } from '@/shared/ui/Stack';
 import { TriStateCheckbox } from '@/shared/ui/TriStateCheckbox';
 import Skeleton from 'react-loading-skeleton';
 import cls from './CategoriesList.module.scss';
-import { CategoriesType } from '@/shared/api/categoriesApi';
+import { CategoriesType } from '@/shared/api/deprecated/categoriesApi';
 
 interface CategoriesListProps {
     className?: string;

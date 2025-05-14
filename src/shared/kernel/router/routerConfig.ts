@@ -1,5 +1,7 @@
 import { RoutesConst } from './routesConst';
-import type { RoutesConstType, RouteID } from './routerTypes';
+import type { RoutesConstType } from './routesConst';
+
+type RouteID = string | number;
 
 export const getRoute = {
     main: () => '/',

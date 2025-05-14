@@ -1,5 +1,5 @@
 import { delay, http, HttpResponse } from 'msw';
-import { createMockMangaListItemRequest } from '@/shared/api/mangaList';
+import { createMockMangaListItemRequest } from '@/shared/api/deprecated/mangaList';
 
 export const mockGetContinueReadManga = (timeout?: number) =>
     createMockMangaListItemRequest({

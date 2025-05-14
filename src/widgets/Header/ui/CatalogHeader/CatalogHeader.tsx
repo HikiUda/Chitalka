@@ -3,7 +3,7 @@ import { HStack } from '@/shared/ui/Stack';
 import { useQueryClient } from '@tanstack/react-query';
 import { LogoMangaSite } from '@/entities/Logo';
 import { CatalogFiltersModal, SortByOrderMenu } from '@/features/CatalogFilters';
-import { CatalogApi } from '@/shared/api/mangaList';
+import { CatalogApi } from '@/shared/api/deprecated/mangaList';
 
 interface CatalogHeaderProps {
     className?: string;

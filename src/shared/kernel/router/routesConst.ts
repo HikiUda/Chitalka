@@ -7,3 +7,5 @@ export const RoutesConst = {
     // COLLECTION: 'collection',
     // PROFILE: 'profile'
 } as const;
+
+export type RoutesConstType = ValueOf<typeof RoutesConst>;

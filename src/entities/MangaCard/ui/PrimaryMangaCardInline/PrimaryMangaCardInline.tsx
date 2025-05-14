@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { getRoute } from '@/shared/config/router';
+import { getRoute } from '@/shared/kernel/router';
 import { MangaCardInline } from '../MangaCardInline/MangaCardInline';
-import { MangaListItemCatalogType } from '@/shared/api/mangaList';
+import { MangaListItemCatalogType } from '@/shared/api/deprecated/mangaList';
 
 interface PrimaryMangaCardInlineProps {
     className?: string;

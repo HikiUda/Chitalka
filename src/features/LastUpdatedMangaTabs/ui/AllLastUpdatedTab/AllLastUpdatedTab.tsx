@@ -4,7 +4,7 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { TabScroll } from '../TabScroll/TabScroll';
 import cls from './AllLastUpdatedTab.module.scss';
 import { MangaCardInlineColumn } from '@/entities/MangaList';
-import { LastUpdatedMangaApi } from '@/shared/api/mangaList';
+import { LastUpdatedMangaApi } from '@/shared/api/deprecated/mangaList';
 import { LastUpdatedMangaCardInline } from '@/entities/MangaCard';
 
 interface AllLastUpdatedTabProps {

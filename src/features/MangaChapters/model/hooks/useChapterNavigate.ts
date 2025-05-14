@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { getRoute } from '@/shared/config/router';
+import { getRoute } from '@/shared/kernel/router';
 import { MangaIdType } from '@/shared/kernel/manga';
 import { useCallback, useMemo } from 'react';
 import { ChapterType } from '../api/chapterApi/chapterScheme';

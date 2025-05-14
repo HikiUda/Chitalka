@@ -9,11 +9,11 @@ import { Sidebar } from '../Sidebar/Sidebar';
 import cls from './MangaPage.module.scss';
 import { getFlex } from '@/shared/ui/Stack';
 import { Loader } from '@/shared/ui/Loader';
-import { Page } from '@/shared/ui/Page';
+import { Page } from '@/shared/layout/Page';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Banner } from '@/entities/Banner';
 import { Cover } from '@/features/Cover';
-import { MangaApi } from '@/shared/api/individualManga';
+import { MangaApi } from '@/shared/api/deprecated/individualManga';
 
 interface MangaPageProps {
     className?: string;

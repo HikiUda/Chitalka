@@ -1,5 +1,5 @@
 import { http, HttpResponse, delay } from 'msw';
-import { createMockMangaListItemRequest } from '@/shared/api/mangaList';
+import { createMockMangaListItemRequest } from '@/shared/api/deprecated/mangaList';
 
 export const mockQuickSearch = (timeout?: number) =>
     createMockMangaListItemRequest({

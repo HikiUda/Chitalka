@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { StatisticsMangaCardInline } from './StatisticsMangaCardInline';
-import { mockMangaListItem } from '@/shared/api/mangaList';
+import { mockMangaListItem } from '@/shared/api/deprecated/mangaList';
 
 const meta: Meta<typeof StatisticsMangaCardInline> = {
     title: 'entities/MangaCard/StatisticsMangaCardInline',

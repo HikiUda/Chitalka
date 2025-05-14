@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { userEvent, within } from '@storybook/testing-library';
 import { GenresAndTagsList } from './GenresAndTagsList';
-import { mockGenresArray, mockTagsArray } from '@/shared/api/individualManga/testing';
+import { mockGenresArray, mockTagsArray } from '@/shared/api/deprecated/individualManga/testing';
 
 const meta: Meta<typeof GenresAndTagsList> = {
     title: 'entities/GenresAndTagsList',

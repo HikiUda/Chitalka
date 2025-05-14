@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import HoverCardMangaContent from './HoverCardMangaContent';
-import { mockGetManga } from '@/shared/api/individualManga/testing';
+import { mockGetManga } from '@/shared/api/deprecated/individualManga/testing';
 import { mockMangaUserBookmarkApi } from '@/features/AddMangaToBookmarks/testing';
 
 const meta: Meta<typeof HoverCardMangaContent> = {

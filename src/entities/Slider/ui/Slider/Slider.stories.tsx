@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Slider } from './Slider';
 import { LastChapterMangaCard } from '@/entities/MangaCard';
-import { getArrayMangaListItme } from '@/shared/api/mangaList';
+import { getArrayMangaListItme } from '@/shared/api/deprecated/mangaList';
 
 const slides = getArrayMangaListItme(10).map((manga) => {
     return <LastChapterMangaCard key={manga.id} manga={manga} />;

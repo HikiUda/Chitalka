@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { MangaCardInlineColumn } from './MangaCardInlineColumn';
-import { getArrayMangaListItme } from '@/shared/api/mangaList';
+import { getArrayMangaListItme } from '@/shared/api/deprecated/mangaList';
 import { PrimaryMangaCardInline } from '@/entities/MangaCard';
 
 const meta: Meta<typeof MangaCardInlineColumn> = {

@@ -3,7 +3,7 @@ import { HeaderMainContent } from '../ui/HeaderMainContent/HeaderMainContent';
 import { HeaderQuickSearch } from '../ui/HeaderQuickSearch/HeaderQuickSearch';
 import { CatalogHeader } from '../ui/CatalogHeader/CatalogHeader';
 import { ReadChapterHeader } from '../ui/ReadChapterHeader/ReadChapterHeader';
-import { RoutesConst, RoutesConstType } from '@/shared/config/router';
+import { RoutesConst, RoutesConstType } from '@/shared/kernel/router';
 
 type Platforms = { desktop?: ReactNode; mobile?: ReactNode };
 

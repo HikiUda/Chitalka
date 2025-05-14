@@ -1,7 +1,7 @@
 import { memo } from 'react';
-import { getRoute } from '@/shared/config/router';
+import { getRoute } from '@/shared/kernel/router';
 import { MangaCard } from '../MangaCard/MangaCard';
-import { MangaListItemCatalogType } from '@/shared/api/mangaList';
+import { MangaListItemCatalogType } from '@/shared/api/deprecated/mangaList';
 
 interface CatalogCardProps {
     className?: string;

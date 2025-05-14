@@ -11,7 +11,7 @@ import { Loader } from '@/shared/ui/Loader';
 import { isMobile } from 'react-device-detect';
 import { useSetMangaRate } from '../../model/api/useSetRate';
 import cls from './RateModalContent.module.scss';
-import { RateMangaApi } from '@/shared/api/individualManga';
+import { RateMangaApi } from '@/shared/api/deprecated/individualManga';
 
 interface RateModalContentProps {
     className?: string;

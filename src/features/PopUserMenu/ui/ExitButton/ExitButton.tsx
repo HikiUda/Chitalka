@@ -4,7 +4,7 @@ import ExitSvg from '@/shared/assets/icon/common/exit.svg';
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
 import { getFlex } from '@/shared/ui/Stack';
-import { useLogoutQuery } from '@/shared/api/auth';
+import { useLogoutQuery } from '@/shared/api/deprecated/auth';
 
 interface ExitButtonProps {
     className?: string;

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { userEvent, within } from '@storybook/testing-library';
-import { mockAuthApi } from '@/shared/api/auth/testing';
-import { mockGetUserData } from '@/shared/api/user/testing';
+import { mockAuthApi } from '@/shared/api/deprecated/auth/testing';
+import { mockGetUserData } from '@/shared/api/deprecated/user/testing';
 import { AuthModal } from './AuthModal';
 
 const meta: Meta<typeof AuthModal> = {

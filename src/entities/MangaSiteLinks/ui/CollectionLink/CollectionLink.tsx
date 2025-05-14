@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { getRoute } from '@/shared/config/router';
+import { getRoute } from '@/shared/kernel/router';
 import CollectionSvg from '@/shared/assets/icon/common/collection.svg';
 import { LinkLayout, LinkLayoutCommonProps } from '../LinkLayout/LinkLayout';
 

@@ -6,7 +6,7 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { getStyleLineClamp } from '@/shared/ui/StyleHooks';
 import cls from './NowReadMangaBlock.module.scss';
 import { MangaCardInlineColumn } from '@/entities/MangaList';
-import { CatalogApi } from '@/shared/api/mangaList';
+import { CatalogApi } from '@/shared/api/deprecated/mangaList';
 import { PrimaryMangaCardInline } from '@/entities/MangaCard';
 
 interface NowReadMangaBlockProps {

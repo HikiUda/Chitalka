@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
-import { classNames } from '@/shared/lib/helpers/classNames';
 import cls from './Container.module.scss';
+import { classNames } from '@/shared/lib/helpers/classNames';
 
 interface ContainerProps {
     className?: string;

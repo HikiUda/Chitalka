@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { MangaIdType } from '@/shared/kernel/manga';
-import { RateMangaApi } from '@/shared/api/individualManga';
+import { RateMangaApi } from '@/shared/api/deprecated/individualManga';
 
 export const useSetMangaRate = (id: MangaIdType) => {
     const queryClient = useQueryClient();

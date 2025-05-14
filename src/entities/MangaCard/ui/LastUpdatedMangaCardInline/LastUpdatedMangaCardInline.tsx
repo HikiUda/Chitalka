@@ -2,8 +2,8 @@ import { memo } from 'react';
 import { MangaCardInline } from '../MangaCardInline/MangaCardInline';
 import cls from './LastUpdatedMangaCardInline.module.scss';
 import { getTimeRelativeNow } from '@/shared/lib/helpers/dateFormat';
-import { getRoute } from '@/shared/config/router/routerConfig';
-import { MangaListItemLastUpdatedType } from '@/shared/api/mangaList';
+import { getRoute } from '@/shared/kernel/router/routerConfig';
+import { MangaListItemLastUpdatedType } from '@/shared/api/deprecated/mangaList';
 import { getUrlChapterId } from '@/entities/ChapterList';
 
 interface LastUpdatedMangaCardInlineProps {

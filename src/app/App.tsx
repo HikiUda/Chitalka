@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { AppRouter } from './providers/router/AppRouter';
 import { MainLayout } from '@/shared/layout/MainLayout/MainLayout';
-import { UserDataApi } from '@/shared/api/user';
+import { UserDataApi } from '@/shared/api/deprecated/user';
 import { Header } from '@/widgets/Header';
 import { BottomMenu } from '@/widgets/BottomMenu';
 

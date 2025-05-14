@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { CatalogCard } from './CatalogCard';
-import { mockMangaListItem } from '@/shared/api/mangaList';
+import { mockMangaListItem } from '@/shared/api/deprecated/mangaList';
 
 const meta: Meta<typeof CatalogCard> = {
     title: 'entities/MangaCard/CatalogCard',

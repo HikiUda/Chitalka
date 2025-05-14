@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { HoverCardManga } from './HoverCardManga';
-import { mockGetManga } from '@/shared/api/individualManga/testing';
+import { mockGetManga } from '@/shared/api/deprecated/individualManga/testing';
 import { mockMangaUserBookmarkApi } from '@/features/AddMangaToBookmarks/testing';
 import { CatalogCard } from '@/entities/MangaCard';
-import { mockMangaListItem } from '@/shared/api/mangaList';
+import { mockMangaListItem } from '@/shared/api/deprecated/mangaList';
 
 const meta: Meta<typeof HoverCardManga> = {
     title: 'widgets/HoverCardManga/HoverCardManga',

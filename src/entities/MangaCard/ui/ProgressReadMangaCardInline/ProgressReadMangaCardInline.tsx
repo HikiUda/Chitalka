@@ -7,8 +7,8 @@ import { ProgressBar } from '@/shared/ui/ProgressBar';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon/Icon';
-import { getRoute } from '@/shared/config/router/routerConfig';
-import { MangaListItemContinueReadType } from '@/shared/api/mangaList';
+import { getRoute } from '@/shared/kernel/router/routerConfig';
+import { MangaListItemContinueReadType } from '@/shared/api/deprecated/mangaList';
 import { getUrlChapterId } from '@/entities/ChapterList';
 
 interface ProgressReadMangaCardInlineProps {

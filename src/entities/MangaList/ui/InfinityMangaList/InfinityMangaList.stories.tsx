@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { InfinityMangaList } from './InfinityMangaList';
-import { getArrayMangaListItme } from '@/shared/api/mangaList';
+import { getArrayMangaListItme } from '@/shared/api/deprecated/mangaList';
 import { CatalogCard } from '@/entities/MangaCard';
 
 const meta: Meta<typeof InfinityMangaList> = {

@@ -2,7 +2,7 @@ import { queryOptions } from '@tanstack/react-query';
 import {
     $apiManga,
     validateMangaListItemContinueReadResponseArrayData,
-} from '@/shared/api/mangaList';
+} from '@/shared/api/deprecated/mangaList';
 
 class ContinueReadManga {
     async getContinueReadManga() {

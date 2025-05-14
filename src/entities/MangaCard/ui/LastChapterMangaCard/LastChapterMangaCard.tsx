@@ -1,7 +1,7 @@
 import { memo } from 'react';
-import { getRoute } from '@/shared/config/router/routerConfig';
+import { getRoute } from '@/shared/kernel/router/routerConfig';
 import { MangaCard } from '../MangaCard/MangaCard';
-import { MangaListItemLastUpdatedType } from '@/shared/api/mangaList';
+import { MangaListItemLastUpdatedType } from '@/shared/api/deprecated/mangaList';
 import { getUrlChapterId } from '@/entities/ChapterList';
 
 interface LastChapterMangaCardProps {

@@ -7,7 +7,7 @@ import { isMobile } from 'react-device-detect';
 import cls from './MangaTitle.module.scss';
 import { Rate } from './Rate';
 import { Info } from './Info';
-import { MangaType } from '@/shared/api/individualManga';
+import { MangaType } from '@/shared/api/deprecated/individualManga';
 
 interface MangaTitleProps {
     className?: string;

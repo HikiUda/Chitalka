@@ -4,7 +4,7 @@ import { Button } from '@/shared/ui/Button';
 import { getFlex, HStack, VStack } from '@/shared/ui/Stack';
 import { Heading } from '@/shared/ui/Heading';
 import { Input } from '@/shared/ui/Input';
-import { useRegistrationQuery, useLoginQuery } from '@/shared/api/auth';
+import { useRegistrationQuery, useLoginQuery } from '@/shared/api/deprecated/auth';
 import { Loader } from '@/shared/ui/Loader';
 import { LoginFromType, validateLoginForm } from '../../model/loginFromScheme';
 

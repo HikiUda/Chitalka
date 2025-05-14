@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { isMobile } from 'react-device-detect';
 import cls from './LogoMangaSite.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { getRoute } from '@/shared/config/router/routerConfig';
+import { getRoute } from '@/shared/kernel/router/routerConfig';
 import { AppLink } from '@/shared/ui/AppLink';
 import ChitalkaSvg from '@/shared/assets/icon/logo/Chitalka.svg';
 import CSvg from '@/shared/assets/icon/logo/C.svg';

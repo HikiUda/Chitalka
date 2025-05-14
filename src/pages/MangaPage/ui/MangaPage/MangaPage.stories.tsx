@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { PageDecorator } from '@/shared/config/storybook/PageDecorator/PageDecorator';
-import { BodyNotPaddingDecorator } from '@/shared/config/storybook/StyleDecorator/BodyNotPaddingDecorator';
+import { PageDecorator } from '@/shared/lib/storybook/PageDecorator/PageDecorator';
+import { BodyNotPaddingDecorator } from '@/shared/lib/storybook/StyleDecorator/BodyNotPaddingDecorator';
 import { Header } from '../../../../widgets/Header';
 
 import MangaPage from './MangaPage';
-import { mockGetManga } from '@/shared/api/individualManga/testing';
+import { mockGetManga } from '@/shared/api/deprecated/individualManga/testing';
 import {
     mockMangaBookmarkStatisticApi,
     mockMangaRateStatisticApi,

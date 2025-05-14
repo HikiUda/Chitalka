@@ -11,7 +11,7 @@ import StarSvg from '@/shared/assets/icon/common/star.svg';
 import { toShortcutNumber } from '@/shared/lib/helpers/toShortcutNumber';
 import { MangaIdType } from '@/shared/kernel/manga';
 import { RateModal } from '@/features/RateModal';
-import { RateMangaApi } from '@/shared/api/individualManga';
+import { RateMangaApi } from '@/shared/api/deprecated/individualManga';
 
 interface RateProps {
     className?: string;

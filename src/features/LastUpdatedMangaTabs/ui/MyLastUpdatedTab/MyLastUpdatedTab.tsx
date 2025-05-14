@@ -4,7 +4,7 @@ import { useClearInfinityPages } from '@/shared/lib/hooks/useClearInfinityPages'
 import { TabScroll } from '../TabScroll/TabScroll';
 import cls from './MyLastUpdatedTab.module.scss';
 import { MangaCardInlineColumn } from '@/entities/MangaList';
-import { LastUpdatedMangaApi } from '@/shared/api/mangaList';
+import { LastUpdatedMangaApi } from '@/shared/api/deprecated/mangaList';
 import { LastUpdatedMangaCardInline } from '@/entities/MangaCard';
 
 interface MyLastUpdatedTabProps {

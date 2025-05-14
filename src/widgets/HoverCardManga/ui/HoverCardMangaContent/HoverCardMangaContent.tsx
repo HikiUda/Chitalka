@@ -9,7 +9,7 @@ import { Heading } from '@/shared/ui/Heading';
 import { MangaIdType } from '@/shared/kernel/manga';
 import { TextDisclosure } from '@/shared/ui/TextDisclosure';
 import { getFlex, HStack } from '@/shared/ui/Stack';
-import { MangaApi } from '@/shared/api/individualManga';
+import { MangaApi } from '@/shared/api/deprecated/individualManga';
 import { GenresAndTagsList } from '@/entities/GenresAndTagsList';
 import { AddMangaToBookmarks } from '@/features/AddMangaToBookmarks';
 

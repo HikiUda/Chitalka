@@ -3,7 +3,7 @@ import { classNames } from '@/shared/lib/helpers/classNames';
 import { useQuery } from '@tanstack/react-query';
 import { MangaIdType } from '@/shared/kernel/manga';
 import { AppLink } from '@/shared/ui/AppLink';
-import { getRoute } from '@/shared/config/router';
+import { getRoute } from '@/shared/kernel/router';
 import { Heading } from '@/shared/ui/Heading';
 import { getFlex, VStack } from '@/shared/ui/Stack';
 import ArrowSvg from '@/shared/assets/icon/common/arrow.svg';

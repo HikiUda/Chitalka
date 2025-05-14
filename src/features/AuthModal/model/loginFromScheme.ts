@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { LoginUserDataScheme } from '@/shared/api/auth';
+import { LoginUserDataScheme } from '@/shared/api/deprecated/auth';
 
 const noEmpty = (val: string) => (val.trim() === '' ? undefined : val);
 

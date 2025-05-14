@@ -1,4 +1,4 @@
-import { UserDataScheme } from '@/shared/api/user';
+import { UserDataScheme } from '@/shared/api/deprecated/user';
 import { BookmarksEnum, MangaStatusEnum, MangaTypeEnum } from '@/shared/kernel/manga';
 import { z } from 'zod';
 

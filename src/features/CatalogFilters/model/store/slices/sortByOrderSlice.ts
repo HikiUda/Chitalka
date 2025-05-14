@@ -1,7 +1,7 @@
 import { StateCreator } from 'zustand';
 import { OrderType } from '@/shared/kernel/order';
 import { CatalogFiltersStoreType } from '../catalogFiltersStroe.type';
-import { SortByType } from '@/shared/api/mangaList';
+import { SortByType } from '@/shared/api/deprecated/mangaList';
 
 export interface SortByOrderSlice {
     sortBy: SortByType;

@@ -5,10 +5,10 @@ import { toShortcutNumber } from '@/shared/lib/helpers/toShortcutNumber';
 import EyeSvg from '@/shared/assets/icon/common/eye.svg';
 import BookmarkSvg from '@/shared/assets/icon/common/bookmark.svg';
 import LikeSvg from '@/shared/assets/icon/common/like.svg';
-import { getRoute } from '@/shared/config/router/routerConfig';
+import { getRoute } from '@/shared/kernel/router/routerConfig';
 import { HStack } from '@/shared/ui/Stack';
 import { IconInfoBirka } from '@/shared/ui/IconInfoBirka';
-import { MangaListItemStatisticType } from '@/shared/api/mangaList';
+import { MangaListItemStatisticType } from '@/shared/api/deprecated/mangaList';
 
 interface StatisticsMangaCardInlineProps {
     className?: string;

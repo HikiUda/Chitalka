@@ -13,7 +13,7 @@ export const Page: FC<PageProps> = (props) => {
     const { className, children } = props;
 
     return (
-        <main id="main" className={classNames(isMobile ? '' : cls.Page, {}, [className])}>
+        <main id="main" className={classNames(className, { [cls.Page]: !isMobile })}>
             <Container>{children}</Container>
         </main>
     );

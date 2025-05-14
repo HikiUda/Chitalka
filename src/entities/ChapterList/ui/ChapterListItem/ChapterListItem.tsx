@@ -5,7 +5,7 @@ import { classNames } from '@/shared/lib/helpers/classNames';
 import { toShortDate } from '@/shared/lib/helpers/dateFormat';
 import { AppLink } from '@/shared/ui/AppLink';
 import { MangaIdType } from '@/shared/kernel/manga';
-import { getRoute } from '@/shared/config/router';
+import { getRoute } from '@/shared/kernel/router';
 
 type ChapterListItem = {
     id: number;

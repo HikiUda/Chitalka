@@ -5,7 +5,7 @@ import { HStack } from '@/shared/ui/Stack';
 import { Heading } from '@/shared/ui/Heading';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import cls from './CatalogContent.module.scss';
-import { CatalogApi } from '@/shared/api/mangaList';
+import { CatalogApi } from '@/shared/api/deprecated/mangaList';
 import { CatalogCard } from '@/entities/MangaCard';
 import {
     CatalogSearchInput,

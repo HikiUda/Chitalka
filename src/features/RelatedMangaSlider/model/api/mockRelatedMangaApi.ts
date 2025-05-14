@@ -1,4 +1,4 @@
-import { createMockMangaListItemRequest } from '@/shared/api/mangaList';
+import { createMockMangaListItemRequest } from '@/shared/api/deprecated/mangaList';
 
 export const mockRelatedMangaApi = (timeout?: number) =>
     createMockMangaListItemRequest({

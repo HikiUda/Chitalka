@@ -3,8 +3,8 @@ import { HStack } from '@/shared/ui/Stack';
 import { AppLink } from '@/shared/ui/AppLink';
 import { Tag } from '@/shared/ui/Tag';
 import { Button } from '@/shared/ui/Button';
-import { getRoute } from '@/shared/config/router';
-import { MangaCategoriesType } from '@/shared/api/individualManga';
+import { getRoute } from '@/shared/kernel/router';
+import { MangaCategoriesType } from '@/shared/api/deprecated/individualManga';
 
 interface GenresAndTagsListProps {
     className?: string;

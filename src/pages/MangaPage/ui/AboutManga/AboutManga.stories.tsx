@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import AboutManga from './AboutManga';
-import { mockGetManga } from '@/shared/api/individualManga/testing';
+import { mockGetManga } from '@/shared/api/deprecated/individualManga/testing';
 import {
     mockMangaRateStatisticApi,
     mockMangaBookmarkStatisticApi,

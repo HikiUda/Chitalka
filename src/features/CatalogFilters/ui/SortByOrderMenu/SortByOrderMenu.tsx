@@ -9,7 +9,7 @@ import { classNames } from '@/shared/lib/helpers/classNames';
 import { useUrlSearchParams } from '@/shared/lib/hooks/useUrlSearchParams';
 import { getFlex } from '@/shared/ui/Stack';
 import { OrderType } from '@/shared/kernel/order';
-import { SortByConst, SortByType } from '@/shared/api/mangaList';
+import { SortByConst, SortByType } from '@/shared/api/deprecated/mangaList';
 
 interface SortByOrderMenuProps {
     className?: string;

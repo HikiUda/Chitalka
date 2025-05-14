@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { PageDecorator } from '@/shared/config/storybook/PageDecorator/PageDecorator';
-import { BodyNotPaddingDecorator } from '@/shared/config/storybook/StyleDecorator/BodyNotPaddingDecorator';
-import { mockAuthApi } from '@/shared/api/auth/testing';
-import { mockGetUserData } from '@/shared/api/user/testing';
+import { PageDecorator } from '@/shared/lib/storybook/PageDecorator/PageDecorator';
+import { BodyNotPaddingDecorator } from '@/shared/lib/storybook/StyleDecorator/BodyNotPaddingDecorator';
+import { mockAuthApi } from '@/shared/api/deprecated/auth/testing';
+import { mockGetUserData } from '@/shared/api/deprecated/user/testing';
 import MainPage from './MainPage';
 import { Header } from '@/widgets/Header';
-import { mockLastUpdatedMangaApi } from '@/shared/api/mangaList/testing';
+import { mockLastUpdatedMangaApi } from '@/shared/api/deprecated/mangaList/testing';
 import { mockContinueReadMangaApi } from '@/features/ContinueReadMangaSlider/testing';
 import { mockQuickSearchApi } from '@/features/QuickSearchModal/testing';
 

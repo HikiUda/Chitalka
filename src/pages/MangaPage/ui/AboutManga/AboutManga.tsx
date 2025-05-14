@@ -7,7 +7,7 @@ import { MangaIdType } from '@/shared/kernel/manga';
 import { isMobile } from 'react-device-detect';
 import cls from './AboutManga.module.scss';
 import { GenresAndTagsList } from '@/entities/GenresAndTagsList';
-import { MangaApi } from '@/shared/api/individualManga';
+import { MangaApi } from '@/shared/api/deprecated/individualManga';
 import { RelatedMangaSlider } from '@/features/RelatedMangaSlider';
 import { MangaBookmarksStatistic, MangaRateStatistic } from '@/features/TablePercentageStatistic';
 

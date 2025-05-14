@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import CatalogPage from './CatalogPage';
-import { mockCatalogApi } from '@/shared/api/mangaList/testing';
-import { mockGetManga } from '@/shared/api/individualManga/testing';
+import { mockCatalogApi } from '@/shared/api/deprecated/mangaList/testing';
+import { mockGetManga } from '@/shared/api/deprecated/individualManga/testing';
 import { mockMangaUserBookmarkApi } from '@/features/AddMangaToBookmarks/testing';
 
 const meta: Meta<typeof CatalogPage> = {

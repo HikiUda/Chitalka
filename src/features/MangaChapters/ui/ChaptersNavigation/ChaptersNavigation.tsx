@@ -8,7 +8,7 @@ import { Icon } from '@/shared/ui/Icon';
 import BurgerSvg from '@/shared/assets/icon/common/numberList.svg';
 import { isMobile } from 'react-device-detect';
 import { useQuery } from '@tanstack/react-query';
-import { getRoute } from '@/shared/config/router';
+import { getRoute } from '@/shared/kernel/router';
 import { AppLink } from '@/shared/ui/AppLink';
 import { Heading } from '@/shared/ui/Heading';
 import { MangaChaptersModal } from '../MangaChaptersModal/MangaChaptersModal';

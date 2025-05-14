@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { mockGetUserData } from '@/shared/api/user/testing';
+import { mockGetUserData } from '@/shared/api/deprecated/user/testing';
 import {
     mockContinueReadMangaApi,
     mockGetContinueReadManga,

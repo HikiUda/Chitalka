@@ -5,14 +5,14 @@ import { commonLink } from '../../model/config/commonLink';
 import { ExitButton } from '../ExitButton/ExitButton';
 import cls from './PopUserMenu.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { useAppDisign, useAppTheme } from '@/shared/config/theme';
+import { useAppDisign, useAppTheme } from '@/shared/kernel/theme';
 import { Popover } from '@/shared/ui/Popover';
 import { Button } from '@/shared/ui/Button';
 import { VStack } from '@/shared/ui/Stack';
 import { LinkList } from '@/shared/ui/LinkList';
 import { Avatar } from '@/shared/ui/Avatar';
 import { Divider } from '@/shared/ui/Divider';
-import { UserDataApi } from '@/shared/api/user';
+import { UserDataApi } from '@/shared/api/deprecated/user';
 
 interface PopUserMenuProps {
     className?: string;

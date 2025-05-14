@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { Page } from '@/shared/ui/Page';
+import { Page } from '@/shared/layout/Page';
 import { OtherInfoOnMain } from '../OtherInfoOnMain/OtherInfoOnMain';
 import cls from './MainPage.module.scss';
 import { RecentUpdatedPopularMangaSlider } from '@/features/RecentUpdatedPopularMangaSlider';

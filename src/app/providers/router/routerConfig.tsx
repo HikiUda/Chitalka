@@ -1,9 +1,14 @@
-import type { AppRouteProps, RoutesConstType } from '@/shared/config/router';
-import { getRoute, RoutesConst } from '@/shared/config/router';
+import { RouteProps } from 'react-router-dom';
+import type { RoutesConstType } from '@/shared/kernel/router';
+import { getRoute, RoutesConst } from '@/shared/kernel/router';
 import { MangaPage } from '@/pages/MangaPage';
 import { MainPage } from '@/pages/MainPage';
 import { CatalogPage } from '@/pages/CatalogPage';
 import { ReadChapterPage } from '@/pages/ReadChapterPage';
+
+export type AppRouteProps = RouteProps & {
+    authOnly?: boolean;
+};
 
 export const routerConfig: Record<RoutesConstType, AppRouteProps> = {
     [RoutesConst.MAIN]: {

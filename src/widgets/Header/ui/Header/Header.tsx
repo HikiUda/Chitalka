@@ -1,6 +1,6 @@
 import { isMobile } from 'react-device-detect';
 import { mapHeaderContent } from '../../model/mapHeaderContent';
-import { useRouteChange } from '@/shared/config/router';
+import { useRouteChange } from '@/shared/kernel/router';
 
 export const Header = () => {
     const currentRoute = useRouteChange();

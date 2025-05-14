@@ -4,7 +4,7 @@ import cls from './HeaderMainContent.module.scss';
 import { HStack } from '@/shared/ui/Stack';
 import { Icon } from '@/shared/ui/Icon';
 import QuestionSvg from '@/shared/assets/icon/common/question.svg';
-import { UserDataApi } from '@/shared/api/user';
+import { UserDataApi } from '@/shared/api/deprecated/user';
 import { HeaderLayout } from '@/shared/layout/HeaderLayout';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { LogoMangaSite } from '@/entities/Logo';

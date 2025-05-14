@@ -1,6 +1,9 @@
-import { MangaIdType } from '@/shared/kernel/manga';
 import { queryOptions } from '@tanstack/react-query';
-import { $apiManga, validateMangaListItemStatisticResponseArrayData } from '@/shared/api/mangaList';
+import { MangaIdType } from '@/shared/kernel/manga';
+import {
+    $apiManga,
+    validateMangaListItemStatisticResponseArrayData,
+} from '@/shared/api/deprecated/mangaList';
 
 class RelatedManga {
     async get(mangaId: MangaIdType) {

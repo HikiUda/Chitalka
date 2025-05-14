@@ -1,7 +1,7 @@
 import { queryOptions } from '@tanstack/react-query';
 
 import { validateGetLastSearch, validateQuickSearch } from './validate';
-import { $apiManga } from '@/shared/api/mangaList';
+import { $apiManga } from '@/shared/api/deprecated/mangaList';
 
 class QuickSearch {
     async quickSearch(search: string) {

@@ -1,4 +1,4 @@
-import { $api } from '@/shared/api/baseApi/kyBase';
+import { $api } from '@/shared/api/deprecated/baseApi/kyBase';
 import { MangaIdType } from '@/shared/kernel/manga';
 import { infiniteQueryOptions } from '@tanstack/react-query';
 import { OrderType } from '@/shared/kernel/order';

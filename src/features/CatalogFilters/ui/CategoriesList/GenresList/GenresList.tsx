@@ -12,7 +12,7 @@ import { Divider } from '@/shared/ui/Divider';
 import { useUrlSearchParams } from '@/shared/lib/hooks/useUrlSearchParams';
 import { Input } from '@/shared/ui/Input';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
-import { CategoriesApi } from '@/shared/api/categoriesApi';
+import { CategoriesApi } from '@/shared/api/deprecated/categoriesApi';
 
 interface GenresListProps {
     className?: string;

@@ -5,7 +5,7 @@ import { classNames } from '@/shared/lib/helpers/classNames';
 import { HStack } from '@/shared/ui/Stack';
 import { Icon } from '@/shared/ui/Icon';
 import QuestionSvg from '@/shared/assets/icon/common/question.svg';
-import { getRoute } from '@/shared/config/router';
+import { getRoute } from '@/shared/kernel/router';
 import { BottomMenuLayout } from '@/shared/layout/BottomMenuLayout';
 import { ChaptersNavigation } from '@/features/MangaChapters';
 import { LogoMangaSite } from '@/entities/Logo';

@@ -3,7 +3,7 @@ import { classNames } from '@/shared/lib/helpers/classNames';
 import { Heading } from '@/shared/ui/Heading';
 import cls from './MangaSearchList.module.scss';
 import { StatisticsMangaCardInline, MangaCardInlineSkeleton } from '@/entities/MangaCard';
-import { MangaListItemStatisticType } from '@/shared/api/mangaList';
+import { MangaListItemStatisticType } from '@/shared/api/deprecated/mangaList';
 
 interface MangaSearchListProps {
     className?: string;

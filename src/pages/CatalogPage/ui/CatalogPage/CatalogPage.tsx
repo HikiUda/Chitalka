@@ -1,13 +1,13 @@
 import { FC, useCallback, useEffect, useState } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { Page } from '@/shared/ui/Page';
+import { Page } from '@/shared/layout/Page';
 import { isMobile } from 'react-device-detect';
 import { useQueryClient } from '@tanstack/react-query';
 import { useKeyBoardEvent } from '@/shared/lib/hooks/useKeyBoardEvent';
 import { CatalogContent } from '../CatalogContent/CatalogContent';
 import cls from './CatalogPage.module.scss';
 import { CatalogFilters, useSetCatalogFiltersFromSearchParams } from '@/features/CatalogFilters';
-import { CatalogApi } from '@/shared/api/mangaList';
+import { CatalogApi } from '@/shared/api/deprecated/mangaList';
 
 interface CatalogPageProps {
     className?: string;

@@ -5,8 +5,8 @@ import { classNames } from '@/shared/lib/helpers/classNames';
 import { VStack } from '@/shared/ui/Stack';
 import { getStyleScrollbar } from '@/shared/ui/StyleHooks';
 import { AppLink } from '@/shared/ui/AppLink';
-import { getRoute } from '@/shared/config/router';
-import { MangaType } from '@/shared/api/individualManga';
+import { getRoute } from '@/shared/kernel/router';
+import { MangaType } from '@/shared/api/deprecated/individualManga';
 
 interface SidebarProps {
     className?: string;
