@@ -1,10 +1,12 @@
 import { create } from 'zustand';
 import { jwtDecode } from 'jwt-decode';
-import { publicFetchClient } from './instance';
+import { baseFetchClient } from './instance';
 
 type Session = {
-    userId: string;
-    email: string;
+    id: number;
+    login: string;
+    name: string;
+    sub: number;
     exp: number;
     iat: number;
 };
@@ -47,10 +49,9 @@ export const useSession = create<SessionStore>((set, get) => {
 
             const session = jwtDecode<Session>(token);
             const now = Date.now() / 1000;
-
             if (session.exp < now) {
                 if (!refreshTokenPromise) {
-                    refreshTokenPromise = publicFetchClient
+                    refreshTokenPromise = baseFetchClient
                         .GET('/auth/refresh')
                         .then((r) => r.data?.tokens.access ?? null)
                         .then((newToken) => {

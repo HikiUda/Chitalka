@@ -1,11 +1,11 @@
 import { FC, useCallback, useState } from 'react';
 import cls from './SelectOrder.module.scss';
 import { OrderType } from '@/shared/kernel/order';
-import { Button } from '@/shared/ui/Button';
-import { Icon } from '@/shared/ui/Icon';
-import SortSvg from '@/shared/assets/icon/common/sortArrow.svg';
+import { Button } from '@/shared/deprecate-ui/Button';
+import { Icon } from '@/shared/deprecate-ui/Icon';
+import SortSvg from '@/shared/assets/icon/common/sortArrow.svg?react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { getFlex } from '@/shared/ui/Stack';
+import { getFlex } from '@/shared/deprecate-ui/Stack';
 
 interface SelectOrderProps {
     className?: string;

@@ -1,7 +1,7 @@
 import { FC, lazy } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { Modal } from '@/shared/ui/Modal';
-import { Button } from '@/shared/ui/Button';
+import { Modal } from '@/shared/deprecate-ui/Modal';
+import { Button } from '@/shared/deprecate-ui/Button';
 export const AuthContent = lazy(() => import('./../AuthContent/AuthContent'));
 import cls from './AuthModal.module.scss';
 

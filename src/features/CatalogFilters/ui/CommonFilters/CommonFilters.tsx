@@ -1,9 +1,4 @@
 import { FC } from 'react';
-import { classNames } from '@/shared/lib/helpers/classNames';
-import { getFlex, HStack, VStack } from '@/shared/ui/Stack';
-import { Button } from '@/shared/ui/Button';
-import ArrowSvg from '@/shared/assets/icon/common/arrow.svg';
-import { Icon } from '@/shared/ui/Icon';
 import { RateCountRange } from '../Range/RateCountRange/RateCountRange';
 import { RateRange } from '../Range/RateRange/RateRange';
 import { ChapterCountRange } from '../Range/ChapterCountRange/ChapterCountRange';
@@ -14,6 +9,11 @@ import { BookmarksCheckbox } from '../Checkbox/BookmarksCheckbox/BookmarksCheckb
 import { ReleaseDateRange } from '../Range/ReleaseDateRange/ReleaseDateRange';
 import { useCatalogFiltersStore } from '../../model/store/catalogFiltersStore';
 import cls from './CommonFilters.module.scss';
+import { Icon } from '@/shared/deprecate-ui/Icon';
+import ArrowSvg from '@/shared/assets/icon/common/arrow.svg?react';
+import { Button } from '@/shared/deprecate-ui/Button';
+import { getFlex, HStack, VStack } from '@/shared/deprecate-ui/Stack';
+import { classNames } from '@/shared/lib/helpers/classNames';
 
 interface CommonFiltersProps {
     className?: string;

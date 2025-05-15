@@ -2,11 +2,11 @@ import { FC } from 'react';
 import { useCatalogFiltersStore } from '../../model/store/catalogFiltersStore';
 import cls from './CatalogSearchInput.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { Input } from '@/shared/ui/Input';
-import SearchSvg from '@/shared/assets/icon/common/search.svg';
-import CrossoutSvg from '@/shared/assets/icon/common/crossout.svg';
-import { Icon } from '@/shared/ui/Icon';
-import { Button } from '@/shared/ui/Button';
+import { Input } from '@/shared/deprecate-ui/Input';
+import SearchSvg from '@/shared/assets/icon/common/search.svg?react';
+import CrossoutSvg from '@/shared/assets/icon/common/crossout.svg?react';
+import { Icon } from '@/shared/deprecate-ui/Icon';
+import { Button } from '@/shared/deprecate-ui/Button';
 import { useUrlSearchParams } from '@/shared/lib/hooks/useUrlSearchParams';
 
 interface CatalogSearchInputProps {

@@ -1,7 +1,7 @@
 import { memo, ReactNode } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { HStack, VStack } from '@/shared/ui/Stack';
-import { Heading } from '@/shared/ui/Heading';
+import { HStack, VStack } from '@/shared/deprecate-ui/Stack';
+import { Heading } from '@/shared/deprecate-ui/Heading';
 import cls from './SidebarItem.module.scss';
 
 interface SidebarItemProps {

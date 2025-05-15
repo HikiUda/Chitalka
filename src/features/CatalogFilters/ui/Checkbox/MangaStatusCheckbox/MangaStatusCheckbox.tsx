@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { Checkbox, CheckboxGroup } from '@/shared/ui/Checkbox';
-import { HStack } from '@/shared/ui/Stack';
+import { Checkbox, CheckboxGroup } from '@/shared/deprecate-ui/Checkbox';
+import { HStack } from '@/shared/deprecate-ui/Stack';
 import { MangaStatus, MangaStatusType } from '@/shared/kernel/manga';
 import { useUrlSearchParams } from '@/shared/lib/hooks/useUrlSearchParams';
 import { useCatalogFiltersStore } from '../../../model/store/catalogFiltersStore';

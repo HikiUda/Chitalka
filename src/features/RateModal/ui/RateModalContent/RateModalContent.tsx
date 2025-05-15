@@ -1,16 +1,16 @@
 import { FC, useMemo, useState } from 'react';
-import { classNames } from '@/shared/lib/helpers/classNames';
-import { HStack, VStack } from '@/shared/ui/Stack';
-import { Heading } from '@/shared/ui/Heading';
-import StarSvg from '@/shared/assets/icon/common/star.svg';
-import { Icon } from '@/shared/ui/Icon';
-import { MangaIdType } from '@/shared/kernel/manga';
 import { useQuery } from '@tanstack/react-query';
-import { Button } from '@/shared/ui/Button';
-import { Loader } from '@/shared/ui/Loader';
 import { isMobile } from 'react-device-detect';
 import { useSetMangaRate } from '../../model/api/useSetRate';
 import cls from './RateModalContent.module.scss';
+import { classNames } from '@/shared/lib/helpers/classNames';
+import { HStack, VStack } from '@/shared/deprecate-ui/Stack';
+import { Heading } from '@/shared/deprecate-ui/Heading';
+import StarSvg from '@/shared/assets/icon/common/star.svg?react';
+import { Icon } from '@/shared/deprecate-ui/Icon';
+import { MangaIdType } from '@/shared/kernel/manga';
+import { Button } from '@/shared/deprecate-ui/Button';
+import { Loader } from '@/shared/deprecate-ui/Loader';
 import { RateMangaApi } from '@/shared/api/deprecated/individualManga';
 
 interface RateModalContentProps {

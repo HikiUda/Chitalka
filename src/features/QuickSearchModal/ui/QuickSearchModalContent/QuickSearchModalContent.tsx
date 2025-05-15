@@ -1,14 +1,14 @@
 import { FC, useCallback, useState } from 'react';
-import { HStack } from '@/shared/ui/Stack';
-import { Icon } from '@/shared/ui/Icon';
-import { Input } from '@/shared/ui/Input';
-import SearchSvg from '@/shared/assets/icon/common/search.svg';
-import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 import { useQuery } from '@tanstack/react-query';
 import { MangaSearchList } from '../MangaSearchList/MangaSearchList';
 import { ResentSearch } from '../ResentSearch/ResentSearch';
 import { QuickSearchApi } from '../../model/api/quickSearch';
 import cls from './QuickSearchModalContent.module.scss';
+import { HStack } from '@/shared/deprecate-ui/Stack';
+import { Icon } from '@/shared/deprecate-ui/Icon';
+import { Input } from '@/shared/deprecate-ui/Input';
+import SearchSvg from '@/shared/assets/icon/common/search.svg?react';
+import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 
 const QuickSearchModalContent: FC = () => {
     const [search, setSearch] = useState('');

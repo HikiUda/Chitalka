@@ -1,9 +1,9 @@
 import { FC } from 'react';
-import { getFlex, HStack } from '@/shared/ui/Stack';
-import { Button } from '@/shared/ui/Button';
-import ArrowSvg from '@/shared/assets/icon/common/arrow.svg';
-import { Icon } from '@/shared/ui/Icon';
 import cls from './NavButtons.module.scss';
+import { getFlex, HStack } from '@/shared/deprecate-ui/Stack';
+import { Button } from '@/shared/deprecate-ui/Button';
+import ArrowSvg from '@/shared/assets/icon/common/arrow.svg?react';
+import { Icon } from '@/shared/deprecate-ui/Icon';
 
 interface NavButtonsProps {
     className?: string;

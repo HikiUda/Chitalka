@@ -1,8 +1,8 @@
 import { memo, ReactNode } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { VStack } from '@/shared/ui/Stack';
+import { VStack } from '@/shared/deprecate-ui/Stack';
 
-import { Heading } from '@/shared/ui/Heading';
+import { Heading } from '@/shared/deprecate-ui/Heading';
 import Skeleton from 'react-loading-skeleton';
 import { LineStatistic } from '../LineStatistic/LineStatistic';
 import { StatisticItemType } from '../../model/api/scheme/percentItemScheme';

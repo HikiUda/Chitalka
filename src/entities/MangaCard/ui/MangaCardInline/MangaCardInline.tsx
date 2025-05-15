@@ -1,10 +1,10 @@
 import { memo, ReactNode } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { Heading } from '@/shared/ui/Heading';
-import { AppLink } from '@/shared/ui/AppLink';
-import { AppAdaptiveImage } from '@/shared/ui/AppAdaptiveImage';
-import { getStyleLineClamp } from '@/shared/ui/StyleHooks';
-import { VStack } from '@/shared/ui/Stack';
+import { Heading } from '@/shared/deprecate-ui/Heading';
+import { AppLink } from '@/shared/deprecate-ui/AppLink';
+import { AppAdaptiveImage } from '@/shared/deprecate-ui/AppAdaptiveImage';
+import { getStyleLineClamp } from '@/shared/deprecate-ui/StyleHooks';
+import { VStack } from '@/shared/deprecate-ui/Stack';
 import cls from './MangaCardInline.module.scss';
 
 interface MangaCardInlineProps {

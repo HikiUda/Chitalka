@@ -5,7 +5,7 @@ import { isMobile } from 'react-device-detect';
 import cls from './ReadChapterHeader.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { getRoute } from '@/shared/kernel/router';
-import { HStack } from '@/shared/ui/Stack';
+import { HStack } from '@/shared/deprecate-ui/Stack';
 import { UserDataApi } from '@/shared/api/deprecated/user';
 import { HeaderLayout } from '@/shared/layout/HeaderLayout';
 import { BackToManga, ChaptersNavigation, ReadSettingsModal } from '@/features/MangaChapters';

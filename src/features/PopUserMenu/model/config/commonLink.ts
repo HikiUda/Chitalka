@@ -1,8 +1,8 @@
-import { LinkListItem } from '@/shared/ui/LinkList/LinkList';
-import HistorySvg from '@/shared/assets/icon/common/historyBack.svg';
-import SupportSvg from '@/shared/assets/icon/common/support.svg';
-import SettingsSvg from '@/shared/assets/icon/common/settings.svg';
-import NotificationSvg from '@/shared/assets/icon/common/notification.svg';
+import { LinkListItem } from '@/shared/deprecate-ui/LinkList/LinkList';
+import HistorySvg from '@/shared/assets/icon/common/historyBack.svg?react';
+import SupportSvg from '@/shared/assets/icon/common/support.svg?react';
+import SettingsSvg from '@/shared/assets/icon/common/settings.svg?react';
+import NotificationSvg from '@/shared/assets/icon/common/notification.svg?react';
 
 //TODO auth guard throw createSelector
 export const commonLink: LinkListItem[] = [

@@ -2,9 +2,9 @@ import { memo } from 'react';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import cls from './Sidebar.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { VStack } from '@/shared/ui/Stack';
-import { getStyleScrollbar } from '@/shared/ui/StyleHooks';
-import { AppLink } from '@/shared/ui/AppLink';
+import { VStack } from '@/shared/deprecate-ui/Stack';
+import { getStyleScrollbar } from '@/shared/deprecate-ui/StyleHooks';
+import { AppLink } from '@/shared/deprecate-ui/AppLink';
 import { getRoute } from '@/shared/kernel/router';
 import { MangaType } from '@/shared/api/deprecated/individualManga';
 

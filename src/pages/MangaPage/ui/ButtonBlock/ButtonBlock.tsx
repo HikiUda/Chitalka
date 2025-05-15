@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { getFlex } from '@/shared/ui/Stack';
+import { getFlex } from '@/shared/deprecate-ui/Stack';
 import { isMobile } from 'react-device-detect';
 import cls from './ButtonBlock.module.scss';
 import { StartOrContinueReadButton } from '@/features/StartOrContinueReadButton';

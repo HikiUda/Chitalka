@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { VStack } from '@/shared/ui/Stack';
+import { VStack } from '@/shared/deprecate-ui/Stack';
 import { useQuery } from '@tanstack/react-query';
 import { QuickSearchApi } from '../../model/api/quickSearch';
 import { ResentSearchItem } from './ResentSearchItem';

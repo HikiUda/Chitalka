@@ -1,8 +1,8 @@
 import { FC, ReactNode, useMemo, useState } from 'react';
-import { HStack } from '@/shared/ui/Stack';
-import { AppLink } from '@/shared/ui/AppLink';
-import { Tag } from '@/shared/ui/Tag';
-import { Button } from '@/shared/ui/Button';
+import { HStack } from '@/shared/deprecate-ui/Stack';
+import { AppLink } from '@/shared/deprecate-ui/AppLink';
+import { Tag } from '@/shared/deprecate-ui/Tag';
+import { Button } from '@/shared/deprecate-ui/Button';
 import { getRoute } from '@/shared/kernel/router';
 import { MangaCategoriesType } from '@/shared/api/deprecated/individualManga';
 

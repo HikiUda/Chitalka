@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import Skeleton from 'react-loading-skeleton';
 
-import { getFlex } from '@/shared/ui/Stack';
+import { getFlex } from '@/shared/deprecate-ui/Stack';
 import cls from './MangaCardInline.module.scss';
 
 interface MangaCardInlineSkeletonProps {

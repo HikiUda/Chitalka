@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { HStack } from '@/shared/ui/Stack';
+import { HStack } from '@/shared/deprecate-ui/Stack';
 import Skeleton from 'react-loading-skeleton';
 import cls from './ChapterListItemSkeleton.module.scss';
 

@@ -5,12 +5,12 @@ import { CategoriesList } from '../CategoriesList/CategoriesList';
 import { useCatalogFiltersStore } from '../../../model/store/catalogFiltersStore';
 import cls from './GenresList.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { VStack } from '@/shared/ui/Stack';
-import { TriStateCheckboxGroup } from '@/shared/ui/TriStateCheckbox';
-import { Button } from '@/shared/ui/Button';
-import { Divider } from '@/shared/ui/Divider';
+import { VStack } from '@/shared/deprecate-ui/Stack';
+import { TriStateCheckboxGroup } from '@/shared/deprecate-ui/TriStateCheckbox';
+import { Button } from '@/shared/deprecate-ui/Button';
+import { Divider } from '@/shared/deprecate-ui/Divider';
 import { useUrlSearchParams } from '@/shared/lib/hooks/useUrlSearchParams';
-import { Input } from '@/shared/ui/Input';
+import { Input } from '@/shared/deprecate-ui/Input';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 import { CategoriesApi } from '@/shared/api/deprecated/categoriesApi';
 

@@ -3,12 +3,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Keyboard } from 'swiper/modules';
 import type { SwiperOptions } from 'swiper/types';
 import { Swiper as SwiperRef } from 'swiper';
-import sliderArrow from '@/shared/assets/icon/common/sliderArrow.svg';
 import cls from './Slider.module.scss';
+import sliderArrow from '@/shared/assets/icon/common/sliderArrow.svg?react';
 import { classNames } from '@/shared/lib/helpers/classNames';
 
-import { Icon } from '@/shared/ui/Icon';
-import { Button } from '@/shared/ui/Button';
+import { Icon } from '@/shared/deprecate-ui/Icon';
+import { Button } from '@/shared/deprecate-ui/Button';
 
 interface SliderProps {
     className?: string;

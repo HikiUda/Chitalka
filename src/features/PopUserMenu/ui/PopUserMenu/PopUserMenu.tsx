@@ -6,12 +6,12 @@ import { ExitButton } from '../ExitButton/ExitButton';
 import cls from './PopUserMenu.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { useAppDisign, useAppTheme } from '@/shared/kernel/theme';
-import { Popover } from '@/shared/ui/Popover';
-import { Button } from '@/shared/ui/Button';
-import { VStack } from '@/shared/ui/Stack';
-import { LinkList } from '@/shared/ui/LinkList';
-import { Avatar } from '@/shared/ui/Avatar';
-import { Divider } from '@/shared/ui/Divider';
+import { Popover } from '@/shared/deprecate-ui/Popover';
+import { Button } from '@/shared/deprecate-ui/Button';
+import { VStack } from '@/shared/deprecate-ui/Stack';
+import { LinkList } from '@/shared/deprecate-ui/LinkList';
+import { Avatar } from '@/shared/deprecate-ui/Avatar';
+import { Divider } from '@/shared/deprecate-ui/Divider';
 import { UserDataApi } from '@/shared/api/deprecated/user';
 
 interface PopUserMenuProps {

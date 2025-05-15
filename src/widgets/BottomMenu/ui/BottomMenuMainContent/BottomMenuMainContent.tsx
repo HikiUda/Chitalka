@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import { classNames } from '@/shared/lib/helpers/classNames';
-import { HStack } from '@/shared/ui/Stack';
-import { Icon } from '@/shared/ui/Icon';
-import QuestionSvg from '@/shared/assets/icon/common/question.svg';
-import { BottomMenuLayout } from '@/shared/layout/BottomMenuLayout';
 import cls from './BottomMenuMainContent.module.scss';
+import { classNames } from '@/shared/lib/helpers/classNames';
+import { HStack } from '@/shared/deprecate-ui/Stack';
+import { Icon } from '@/shared/deprecate-ui/Icon';
+import QuestionSvg from '@/shared/assets/icon/common/question.svg?react';
+import { BottomMenuLayout } from '@/shared/layout/BottomMenuLayout';
 import { LogoMangaSite } from '@/entities/Logo';
 import { CatalogLink, CollectionLink } from '@/entities/MangaSiteLinks';
 import { PopUserMenu } from '@/features/PopUserMenu';

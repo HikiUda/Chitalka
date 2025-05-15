@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { AboutManga } from '../AboutManga';
 import cls from './MangaPageContent.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { TabItem, Tabs } from '@/shared/ui/Tabs';
+import { TabItem, Tabs } from '@/shared/deprecate-ui/Tabs';
 import type { MangaIdType } from '@/shared/kernel/manga';
 import { MangaChapters } from '@/features/MangaChapters';
 import { MangaComments } from '@/widgets/MangaComments';

@@ -1,11 +1,11 @@
 import { memo } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { MangaIdType } from '@/shared/kernel/manga';
-import StartSvg from '@/shared/assets/icon/common/star.svg';
-import { Icon } from '@/shared/ui/Icon';
 import { MangaRateStatisticApi } from '../../model/api/rate/mangaRateStatisticApi';
 import { TableStatistic } from '../TableStatistic/TableStatistic';
 import { LineStatistic } from '../LineStatistic/LineStatistic';
+import { MangaIdType } from '@/shared/kernel/manga';
+import StartSvg from '@/shared/assets/icon/common/star.svg?react';
+import { Icon } from '@/shared/deprecate-ui/Icon';
 
 interface MangaRateStatisticProps {
     className?: string;

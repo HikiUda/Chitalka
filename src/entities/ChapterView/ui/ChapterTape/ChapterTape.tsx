@@ -3,7 +3,7 @@ import { ChapterPagesType } from '../../model/types/chapterPage.scheme';
 import { ChapterPageContainer } from '../ChapterPageContainer/ChapterPageContainer';
 import cls from './ChapterTape.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { AppImage } from '@/shared/ui/AppImage';
+import { AppImage } from '@/shared/deprecate-ui/AppImage';
 
 import Image from '@/shared/assets/image/forError/mangaErrorImageFallback.jpg';
 

@@ -2,12 +2,12 @@ import { memo } from 'react';
 import { MangaCardInline } from '../MangaCardInline/MangaCardInline';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { toShortcutNumber } from '@/shared/lib/helpers/toShortcutNumber';
-import EyeSvg from '@/shared/assets/icon/common/eye.svg';
-import BookmarkSvg from '@/shared/assets/icon/common/bookmark.svg';
-import LikeSvg from '@/shared/assets/icon/common/like.svg';
+import EyeSvg from '@/shared/assets/icon/common/eye.svg?react';
+import BookmarkSvg from '@/shared/assets/icon/common/bookmark.svg?react';
+import LikeSvg from '@/shared/assets/icon/common/like.svg?react';
 import { getRoute } from '@/shared/kernel/router/routerConfig';
-import { HStack } from '@/shared/ui/Stack';
-import { IconInfoBirka } from '@/shared/ui/IconInfoBirka';
+import { HStack } from '@/shared/deprecate-ui/Stack';
+import { IconInfoBirka } from '@/shared/deprecate-ui/IconInfoBirka';
 import { MangaListItemStatisticType } from '@/shared/api/deprecated/mangaList';
 
 interface StatisticsMangaCardInlineProps {

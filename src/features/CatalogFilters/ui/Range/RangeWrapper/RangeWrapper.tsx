@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
-import { VStack } from '@/shared/ui/Stack';
-import { Heading } from '@/shared/ui/Heading';
+import { VStack } from '@/shared/deprecate-ui/Stack';
+import { Heading } from '@/shared/deprecate-ui/Heading';
 
 interface RangeWrapperProps {
     className?: string;

@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 import cls from './MainLayout.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
-import { Toast } from '@/shared/ui/Toast';
+import { Toast } from '@/shared/deprecate-ui/Toast';
 
 interface MainLayoutProps {
     className?: string;

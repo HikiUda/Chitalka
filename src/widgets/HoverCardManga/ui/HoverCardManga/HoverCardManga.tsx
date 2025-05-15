@@ -2,7 +2,7 @@ import { FC, lazy, ReactNode } from 'react';
 import { isMobile } from 'react-device-detect';
 import cls from './HoverCardManga.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { HoveredCard } from '@/shared/ui/HoveredCard';
+import { HoveredCard } from '@/shared/deprecate-ui/HoveredCard';
 import { MangaIdType } from '@/shared/kernel/manga';
 
 const HoverCardMangaContent = lazy(() => import('../HoverCardMangaContent/HoverCardMangaContent'));

@@ -3,7 +3,7 @@ import { ChapterPageContainer } from '../ChapterPageContainer/ChapterPageContain
 import { ChapterPagesType } from '../../model/types/chapterPage.scheme';
 import cls from './ChapterByPage.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { AppImage } from '@/shared/ui/AppImage';
+import { AppImage } from '@/shared/deprecate-ui/AppImage';
 import Image from '@/shared/assets/image/forError/mangaErrorImageFallback.jpg';
 
 interface ChapterByPageProps {

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { VStack } from '@/shared/ui/Stack';
-import { TriStateCheckbox } from '@/shared/ui/TriStateCheckbox';
+import { VStack } from '@/shared/deprecate-ui/Stack';
+import { TriStateCheckbox } from '@/shared/deprecate-ui/TriStateCheckbox';
 import Skeleton from 'react-loading-skeleton';
 import cls from './CategoriesList.module.scss';
 import { CategoriesType } from '@/shared/api/deprecated/categoriesApi';

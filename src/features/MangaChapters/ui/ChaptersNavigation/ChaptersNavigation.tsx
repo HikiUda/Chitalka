@@ -1,19 +1,19 @@
 import { FC } from 'react';
-import { classNames } from '@/shared/lib/helpers/classNames';
-import { HStack } from '@/shared/ui/Stack';
-import { Button } from '@/shared/ui/Button';
-import { MangaIdType } from '@/shared/kernel/manga';
-import ArrowSvg from '@/shared/assets/icon/common/sliderArrow.svg';
-import { Icon } from '@/shared/ui/Icon';
-import BurgerSvg from '@/shared/assets/icon/common/numberList.svg';
 import { isMobile } from 'react-device-detect';
 import { useQuery } from '@tanstack/react-query';
-import { getRoute } from '@/shared/kernel/router';
-import { AppLink } from '@/shared/ui/AppLink';
-import { Heading } from '@/shared/ui/Heading';
 import { MangaChaptersModal } from '../MangaChaptersModal/MangaChaptersModal';
 import { ChapterApi } from '../../model/api/chapterApi/chapterApi';
 import cls from './ChaptersNavigation.module.scss';
+import { classNames } from '@/shared/lib/helpers/classNames';
+import { HStack } from '@/shared/deprecate-ui/Stack';
+import { Button } from '@/shared/deprecate-ui/Button';
+import { MangaIdType } from '@/shared/kernel/manga';
+import ArrowSvg from '@/shared/assets/icon/common/sliderArrow.svg?react';
+import { Icon } from '@/shared/deprecate-ui/Icon';
+import BurgerSvg from '@/shared/assets/icon/common/numberList.svg?react';
+import { getRoute } from '@/shared/kernel/router';
+import { AppLink } from '@/shared/deprecate-ui/AppLink';
+import { Heading } from '@/shared/deprecate-ui/Heading';
 import { getUrlChapterId } from '@/entities/ChapterList';
 
 interface ChaptersNavigationProps {

@@ -1,13 +1,13 @@
 import { FC, ReactNode } from 'react';
-import { classNames } from '@/shared/lib/helpers/classNames';
-import { ModalSidebar } from '@/shared/ui/ModalSidebar';
-import { MangaIdType } from '@/shared/kernel/manga';
-import { Button } from '@/shared/ui/Button';
-import { Icon } from '@/shared/ui/Icon';
-import ArrowSvg from '@/shared/assets/icon/common/arrow.svg';
-import { getFlex } from '@/shared/ui/Stack';
 import { MangaChaptersAsync } from '../MangaChapters/MangaChapters.async';
 import cls from './MangaChaptersModal.module.scss';
+import { classNames } from '@/shared/lib/helpers/classNames';
+import { ModalSidebar } from '@/shared/deprecate-ui/ModalSidebar';
+import { MangaIdType } from '@/shared/kernel/manga';
+import { Button } from '@/shared/deprecate-ui/Button';
+import { Icon } from '@/shared/deprecate-ui/Icon';
+import ArrowSvg from '@/shared/assets/icon/common/arrow.svg?react';
+import { getFlex } from '@/shared/deprecate-ui/Stack';
 
 interface MangaChaptersModalProps {
     className?: string;

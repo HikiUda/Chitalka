@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
-import { Button } from '@/shared/ui/Button';
-import { AppLink } from '@/shared/ui/AppLink';
+import { Button } from '@/shared/deprecate-ui/Button';
+import { AppLink } from '@/shared/deprecate-ui/AppLink';
 import { getRoute } from '@/shared/kernel/router';
 import cls from './TabScroll.module.scss';
 

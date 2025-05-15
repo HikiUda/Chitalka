@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { AppAdaptiveImage } from '@/shared/ui/AppAdaptiveImage';
+import { AppAdaptiveImage } from '@/shared/deprecate-ui/AppAdaptiveImage';
 import { PaginationSlider } from './PaginationSlider';
 
 const slides = Array(7)

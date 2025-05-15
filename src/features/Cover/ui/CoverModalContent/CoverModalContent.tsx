@@ -1,9 +1,9 @@
 import { memo, useMemo } from 'react';
-import { AppAdaptiveImage } from '@/shared/ui/AppAdaptiveImage';
+import { AppAdaptiveImage } from '@/shared/deprecate-ui/AppAdaptiveImage';
 import { useQuery } from '@tanstack/react-query';
-import { getFlex } from '@/shared/ui/Stack';
+import { getFlex } from '@/shared/deprecate-ui/Stack';
 import Skeleton from 'react-loading-skeleton';
-import { Loader } from '@/shared/ui/Loader';
+import { Loader } from '@/shared/deprecate-ui/Loader';
 import { MangaCoverApi } from '../../model/api/mangaCoversApi';
 import cls from './CoverModalContent.module.scss';
 import { PaginationSlider } from '@/entities/Slider';

@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { CardBlock } from '@/shared/ui/CardBlock';
-import { HStack } from '@/shared/ui/Stack';
-import { Heading } from '@/shared/ui/Heading';
+import { CardBlock } from '@/shared/deprecate-ui/CardBlock';
+import { HStack } from '@/shared/deprecate-ui/Stack';
+import { Heading } from '@/shared/deprecate-ui/Heading';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import cls from './CatalogContent.module.scss';
 import { CatalogApi } from '@/shared/api/deprecated/mangaList';

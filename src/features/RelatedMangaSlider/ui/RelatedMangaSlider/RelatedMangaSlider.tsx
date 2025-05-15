@@ -1,13 +1,12 @@
 import { FC, useMemo } from 'react';
-import { classNames } from '@/shared/lib/helpers/classNames';
-import { getFlex } from '@/shared/ui/Stack';
-import { Heading } from '@/shared/ui/Heading';
-import { MangaIdType } from '@/shared/kernel/manga';
-import { useQuery } from '@tanstack/react-query';
-import { RelatedMangaApi } from '../../model/api/relatedMangaApi';
 import cls from './RelatedMangaSlider.module.scss';
+import { classNames } from '@/shared/lib/helpers/classNames';
+import { getFlex } from '@/shared/deprecate-ui/Stack';
+import { Heading } from '@/shared/deprecate-ui/Heading';
+import { MangaIdType } from '@/shared/kernel/manga';
 import { Slider } from '@/entities/Slider';
 import { MangaCardInlineSkeleton, StatisticsMangaCardInline } from '@/entities/MangaCard';
+import { publicRqClient } from '@/shared/api/instance';
 
 interface RelatedMangaSliderProps {
     className?: string;
@@ -16,22 +15,25 @@ interface RelatedMangaSliderProps {
 
 export const RelatedMangaSlider: FC<RelatedMangaSliderProps> = (props) => {
     const { className, mangaId } = props;
-    const { data, isLoading } = useQuery(RelatedMangaApi.getQueryOptions(mangaId));
+    //const { data, isLoading } = useQuery(RelatedMangaApi.getQueryOptions(mangaId));
+    const { data, isLoading } = publicRqClient.useQuery('get', '/manga/related/{id}', {
+        params: { path: { id: String(mangaId) } },
+    });
     const slides = useMemo(() => {
-        if (!data && isLoading) {
+        if (!data?.data && isLoading) {
             return Array(6)
                 .fill(0)
                 .map((item, ind) => <MangaCardInlineSkeleton className={cls.card} key={ind} />);
         }
-        if (!data) return [];
-        return data.map((manga) => (
+        if (!data?.data) return [];
+        return data?.data.map((manga) => (
             <div key={manga.id} className={cls.card}>
                 <StatisticsMangaCardInline manga={manga} />
             </div>
         ));
-    }, [data, isLoading]);
+    }, [data?.data, isLoading]);
 
-    if (!data?.length && !isLoading) return null;
+    if (!data?.data?.length && !isLoading) return null;
 
     return (
         <div

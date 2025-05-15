@@ -1,10 +1,10 @@
 import { memo, useCallback, useState } from 'react';
 import cls from './CommentForm.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { HStack } from '@/shared/ui/Stack';
-import { Button } from '@/shared/ui/Button';
-import { getStyleScrollbar } from '@/shared/ui/StyleHooks';
-import { TextArea } from '@/shared/ui/TextArea';
+import { HStack } from '@/shared/deprecate-ui/Stack';
+import { Button } from '@/shared/deprecate-ui/Button';
+import { getStyleScrollbar } from '@/shared/deprecate-ui/StyleHooks';
+import { TextArea } from '@/shared/deprecate-ui/TextArea';
 
 interface CommentFormProps {
     className?: string;

@@ -1,13 +1,13 @@
 import { FC } from 'react';
 import { useCatalogFiltersStore } from '../../model/store/catalogFiltersStore';
 import cls from './SortByOrderMenu.module.scss';
-import { Menu, MenuItem, MenuSection, MenuSeparator } from '@/shared/ui/Menu';
-import { Button } from '@/shared/ui/Button';
-import SortBySvg from '@/shared/assets/icon/common/sortBy.svg';
-import { Icon } from '@/shared/ui/Icon';
+import { Menu, MenuItem, MenuSection, MenuSeparator } from '@/shared/deprecate-ui/Menu';
+import { Button } from '@/shared/deprecate-ui/Button';
+import SortBySvg from '@/shared/assets/icon/common/sortBy.svg?react';
+import { Icon } from '@/shared/deprecate-ui/Icon';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { useUrlSearchParams } from '@/shared/lib/hooks/useUrlSearchParams';
-import { getFlex } from '@/shared/ui/Stack';
+import { getFlex } from '@/shared/deprecate-ui/Stack';
 import { OrderType } from '@/shared/kernel/order';
 import { SortByConst, SortByType } from '@/shared/api/deprecated/mangaList';
 

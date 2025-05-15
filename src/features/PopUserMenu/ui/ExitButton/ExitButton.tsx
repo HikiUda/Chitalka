@@ -1,9 +1,9 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import ExitSvg from '@/shared/assets/icon/common/exit.svg';
-import { Button } from '@/shared/ui/Button';
-import { Icon } from '@/shared/ui/Icon';
-import { getFlex } from '@/shared/ui/Stack';
+import ExitSvg from '@/shared/assets/icon/common/exit.svg?react';
+import { Button } from '@/shared/deprecate-ui/Button';
+import { Icon } from '@/shared/deprecate-ui/Icon';
+import { getFlex } from '@/shared/deprecate-ui/Stack';
 import { useLogoutQuery } from '@/shared/api/deprecated/auth';
 
 interface ExitButtonProps {

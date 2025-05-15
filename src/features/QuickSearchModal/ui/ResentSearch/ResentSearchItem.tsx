@@ -1,12 +1,12 @@
-import { HStack } from '@/shared/ui/Stack';
-import { Icon } from '@/shared/ui/Icon';
-import { Button } from '@/shared/ui/Button';
 import { memo, useCallback } from 'react';
-import HistoryBackSvg from '@/shared/assets/icon/common/historyBack.svg';
-import CrossoutSvg from '@/shared/assets/icon/common/crossout.svg';
-import { classNames } from '@/shared/lib/helpers/classNames';
 import { useDeleteUserLastSearchQuery } from '../../model/api/useDeleteUserLastSearchQuery';
 import cls from './ResentSearch.module.scss';
+import { HStack } from '@/shared/deprecate-ui/Stack';
+import { Icon } from '@/shared/deprecate-ui/Icon';
+import { Button } from '@/shared/deprecate-ui/Button';
+import HistoryBackSvg from '@/shared/assets/icon/common/historyBack.svg?react';
+import CrossoutSvg from '@/shared/assets/icon/common/crossout.svg?react';
+import { classNames } from '@/shared/lib/helpers/classNames';
 
 interface ResentSearchItemProps {
     className?: string;

@@ -1,6 +1,6 @@
 import { memo, useMemo } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { Heading } from '@/shared/ui/Heading';
+import { Heading } from '@/shared/deprecate-ui/Heading';
 import cls from './MangaSearchList.module.scss';
 import { StatisticsMangaCardInline, MangaCardInlineSkeleton } from '@/entities/MangaCard';
 import { MangaListItemStatisticType } from '@/shared/api/deprecated/mangaList';

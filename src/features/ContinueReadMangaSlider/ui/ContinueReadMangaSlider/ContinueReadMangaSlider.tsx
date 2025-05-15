@@ -1,9 +1,9 @@
 import { FC, useMemo } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { CardBlock } from '@/shared/ui/CardBlock';
-import { Heading } from '@/shared/ui/Heading';
-import { HStack } from '@/shared/ui/Stack';
-import { Button } from '@/shared/ui/Button';
+import { CardBlock } from '@/shared/deprecate-ui/CardBlock';
+import { Heading } from '@/shared/deprecate-ui/Heading';
+import { HStack } from '@/shared/deprecate-ui/Stack';
+import { Button } from '@/shared/deprecate-ui/Button';
 import { useQuery } from '@tanstack/react-query';
 import { UserDataApi } from '@/shared/api/deprecated/user';
 import { useDeleteContinueReadManga } from '../../model/api/useDeleteContinueReadManga';

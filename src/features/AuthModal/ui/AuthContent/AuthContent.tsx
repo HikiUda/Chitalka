@@ -1,11 +1,11 @@
 import { FC, useCallback, useState } from 'react';
 import { useKeyBoardEvent } from '@/shared/lib/hooks/useKeyBoardEvent';
-import { Button } from '@/shared/ui/Button';
-import { getFlex, HStack, VStack } from '@/shared/ui/Stack';
-import { Heading } from '@/shared/ui/Heading';
-import { Input } from '@/shared/ui/Input';
+import { Button } from '@/shared/deprecate-ui/Button';
+import { getFlex, HStack, VStack } from '@/shared/deprecate-ui/Stack';
+import { Heading } from '@/shared/deprecate-ui/Heading';
+import { Input } from '@/shared/deprecate-ui/Input';
 import { useRegistrationQuery, useLoginQuery } from '@/shared/api/deprecated/auth';
-import { Loader } from '@/shared/ui/Loader';
+import { Loader } from '@/shared/deprecate-ui/Loader';
 import { LoginFromType, validateLoginForm } from '../../model/loginFromScheme';
 
 interface AuthContentProps {

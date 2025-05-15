@@ -4,7 +4,7 @@ import { RangeWrapper } from '../RangeWrapper/RangeWrapper';
 import { fromNoBiggerTo } from '../../../model/helpers/fromNoBiggerTo';
 import { toNoLessFrom } from '../../../model/helpers/toNoLessFrom';
 import { useUrlSearchParams } from '@/shared/lib/hooks/useUrlSearchParams';
-import { FromToNumberField } from '@/shared/ui/NumberField';
+import { FromToNumberField } from '@/shared/deprecate-ui/NumberField';
 
 interface RateRangeProps {
     className?: string;

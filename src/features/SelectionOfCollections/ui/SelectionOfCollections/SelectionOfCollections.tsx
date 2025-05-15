@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { Heading } from '@/shared/ui/Heading';
+import { Heading } from '@/shared/deprecate-ui/Heading';
 import cls from './SelectionOfCollections.module.scss';
 import { CollectionCard } from '@/entities/CollectionCard';
 

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { ModalSidebar } from '@/shared/ui/ModalSidebar';
-import { Button } from '@/shared/ui/Button';
+import { ModalSidebar } from '@/shared/deprecate-ui/ModalSidebar';
+import { Button } from '@/shared/deprecate-ui/Button';
 import { useReadSettingsStore } from '../../model/store/readSettingsStore';
 import cls from './ReadSettingsModal.module.scss';
 

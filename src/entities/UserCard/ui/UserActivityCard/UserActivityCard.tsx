@@ -1,10 +1,10 @@
 import { memo } from 'react';
+import cls from './UserActivityCard.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
 
-import { HStack } from '@/shared/ui/Stack';
-import { AppAdaptiveImage } from '@/shared/ui/AppAdaptiveImage';
-import { ProgressBar } from '@/shared/ui/ProgressBar';
-import cls from './UserActivityCard.module.scss';
+import { HStack } from '@/shared/deprecate-ui/Stack';
+import { AppAdaptiveImage } from '@/shared/deprecate-ui/AppAdaptiveImage';
+import { ProgressBar } from '@/shared/deprecate-ui/ProgressBar';
 
 interface UserActivityCardProps {
     className?: string;

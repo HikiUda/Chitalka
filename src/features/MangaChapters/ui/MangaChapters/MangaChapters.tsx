@@ -1,17 +1,17 @@
 import { FC, useCallback, useEffect, useState } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
+import { ChapterListApi } from '../../model/api/chapterListApi/chapterListApi';
+import cls from './MangaChapters.module.scss';
 import { MangaIdType } from '@/shared/kernel/manga';
-import EyeOffSvg from '@/shared/assets/icon/common/eyeOff.svg';
-import EyeSvg from '@/shared/assets/icon/common/eye.svg';
-import { Icon } from '@/shared/ui/Icon';
-import { HStack } from '@/shared/ui/Stack';
-import { Input } from '@/shared/ui/Input';
+import EyeOffSvg from '@/shared/assets/icon/common/eyeOff.svg?react';
+import EyeSvg from '@/shared/assets/icon/common/eye.svg?react';
+import { Icon } from '@/shared/deprecate-ui/Icon';
+import { HStack } from '@/shared/deprecate-ui/Stack';
+import { Input } from '@/shared/deprecate-ui/Input';
 import { OrderType } from '@/shared/kernel/order';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 import { useClearInfinityPages } from '@/shared/lib/hooks/useClearInfinityPages';
-import { Divider } from '@/shared/ui/Divider';
-import { ChapterListApi } from '../../model/api/chapterListApi/chapterListApi';
-import cls from './MangaChapters.module.scss';
+import { Divider } from '@/shared/deprecate-ui/Divider';
 import { ChapterList, ChapterListItem } from '@/entities/ChapterList';
 import { SelectOrder } from '@/entities/SelectOrder';
 

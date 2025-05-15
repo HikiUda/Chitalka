@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { getFlex } from '@/shared/ui/Stack';
+import { getFlex } from '@/shared/deprecate-ui/Stack';
 import { useQuery } from '@tanstack/react-query';
-import { TextDisclosure } from '@/shared/ui/TextDisclosure';
+import { TextDisclosure } from '@/shared/deprecate-ui/TextDisclosure';
 import { MangaIdType } from '@/shared/kernel/manga';
 import { isMobile } from 'react-device-detect';
 import cls from './AboutManga.module.scss';

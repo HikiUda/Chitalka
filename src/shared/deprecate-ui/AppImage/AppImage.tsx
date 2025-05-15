@@ -10,10 +10,10 @@ export const AppImage = memo((props: ImageProps) => {
     const { className, loadFallback, errorFallback, src, ...otherProps } = props;
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(false);
-
+    //src?.match(/https?:\/\//i)
     useLayoutEffect(() => {
         const img = new Image();
-        img.src = src?.match(/https?:\/\//i) ? src : 'http://localhost:8000/' + src;
+        img.src = src?.match(/src/i) ? src : 'http://localhost:8000/' + src;
         img.onload = () => {
             setIsLoading(false);
         };
@@ -33,7 +33,7 @@ export const AppImage = memo((props: ImageProps) => {
     return (
         <img
             className={className}
-            src={src?.match(/https?:\/\//i) ? src : 'http://localhost:8000/' + src}
+            src={src?.match(/src/i) ? src : 'http://localhost:8000/' + src}
             {...otherProps}
         />
     );

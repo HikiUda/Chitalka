@@ -1,18 +1,18 @@
 import { memo, useCallback } from 'react';
-import { Menu, MenuItem } from '@/shared/ui/Menu';
-import ArrowSvg from '@/shared/assets/icon/common/sliderArrow.svg';
-import { Button } from '@/shared/ui/Button';
-import { Loader } from '@/shared/ui/Loader';
 import { useQuery } from '@tanstack/react-query';
-import { classNames } from '@/shared/lib/helpers/classNames';
-import { getFlex } from '@/shared/ui/Stack';
-import { Icon } from '@/shared/ui/Icon';
-import { BookmarksType, MangaIdType } from '@/shared/kernel/manga';
 import { MangaUserBookmarkApi } from '../../model/api/mangaUserBookmarkApi';
 import { bookmarks } from '../../model/const/bookmarks';
 import { useSetMangaUserBookmark } from '../../model/api/hooks/useSetMangaUserBookmark';
 import { useDeleteUserMangaBookmark } from '../../model/api/hooks/useDeleteMangaUserBookmark';
 import cls from './AddMangaToBookmarks.module.scss';
+import { Menu, MenuItem } from '@/shared/deprecate-ui/Menu';
+import ArrowSvg from '@/shared/assets/icon/common/sliderArrow.svg?react';
+import { Button } from '@/shared/deprecate-ui/Button';
+import { Loader } from '@/shared/deprecate-ui/Loader';
+import { classNames } from '@/shared/lib/helpers/classNames';
+import { getFlex } from '@/shared/deprecate-ui/Stack';
+import { Icon } from '@/shared/deprecate-ui/Icon';
+import { BookmarksType, MangaIdType } from '@/shared/kernel/manga';
 
 interface AddMangaToBookmarksProps {
     className?: string;

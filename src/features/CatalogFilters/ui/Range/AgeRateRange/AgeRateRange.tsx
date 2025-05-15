@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { FromToNumberField } from '@/shared/ui/NumberField';
+import { FromToNumberField } from '@/shared/deprecate-ui/NumberField';
 import { useUrlSearchParams } from '@/shared/lib/hooks/useUrlSearchParams';
 import { RangeWrapper } from '../RangeWrapper/RangeWrapper';
 import { useCatalogFiltersStore } from '../../../model/store/catalogFiltersStore';

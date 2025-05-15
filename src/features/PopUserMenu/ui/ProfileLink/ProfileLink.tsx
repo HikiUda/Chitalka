@@ -1,11 +1,11 @@
 import { memo } from 'react';
-import { classNames } from '@/shared/lib/helpers/classNames';
-import PersonSvg from '@/shared/assets/icon/common/person.svg';
-import ArrowSvg from '@/shared/assets/icon/common/arrow.svg';
-import { AppLink } from '@/shared/ui/AppLink';
-import { getFlex, HStack, VStack } from '@/shared/ui/Stack';
-import { Icon } from '@/shared/ui/Icon';
 import cls from './ProfileLink.module.scss';
+import { classNames } from '@/shared/lib/helpers/classNames';
+import PersonSvg from '@/shared/assets/icon/common/person.svg?react';
+import ArrowSvg from '@/shared/assets/icon/common/arrow.svg?react';
+import { AppLink } from '@/shared/deprecate-ui/AppLink';
+import { getFlex, HStack, VStack } from '@/shared/deprecate-ui/Stack';
+import { Icon } from '@/shared/deprecate-ui/Icon';
 
 interface ProfileLinkProps {
     className?: string;

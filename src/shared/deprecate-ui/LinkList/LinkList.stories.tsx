@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Svg from '@/shared/assets/forStories/catalog.svg';
 import { LinkList, LinkListItem } from './LinkList';
+import Svg from '@/shared/assets/forStories/catalog.svg?react';
 
 const items: LinkListItem[] = [
     {

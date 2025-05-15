@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 
-import { HStack } from '@/shared/ui/Stack';
+import { HStack } from '@/shared/deprecate-ui/Stack';
 import { isMobile } from 'react-device-detect';
 import { SidebarModal } from '../SidebarModal/SidebarModal';
 import cls from './MangaTitle.module.scss';

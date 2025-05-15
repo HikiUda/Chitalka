@@ -1,8 +1,8 @@
 import { FC, lazy, useMemo } from 'react';
-import { TabItem, Tabs } from '@/shared/ui/Tabs';
-import { VStack } from '@/shared/ui/Stack';
-import { Heading } from '@/shared/ui/Heading';
-import { CardBlock } from '@/shared/ui/CardBlock';
+import { TabItem, Tabs } from '@/shared/deprecate-ui/Tabs';
+import { VStack } from '@/shared/deprecate-ui/Stack';
+import { Heading } from '@/shared/deprecate-ui/Heading';
+import { CardBlock } from '@/shared/deprecate-ui/CardBlock';
 import { useQuery } from '@tanstack/react-query';
 import { UserDataApi } from '@/shared/api/deprecated/user';
 import cls from './LastUpdatedMangaTabs.module.scss';

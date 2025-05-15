@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { CardBlock } from '@/shared/ui/CardBlock';
-import { Heading } from '@/shared/ui/Heading';
+import { CardBlock } from '@/shared/deprecate-ui/CardBlock';
+import { Heading } from '@/shared/deprecate-ui/Heading';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { getStyleLineClamp } from '@/shared/ui/StyleHooks';
+import { getStyleLineClamp } from '@/shared/deprecate-ui/StyleHooks';
 import cls from './NowReadMangaBlock.module.scss';
 import { MangaCardInlineColumn } from '@/entities/MangaList';
 import { CatalogApi } from '@/shared/api/deprecated/mangaList';

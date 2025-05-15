@@ -1,12 +1,12 @@
 import { memo } from 'react';
 import { MangaCardInline } from '../MangaCardInline/MangaCardInline';
 import cls from './ProgressReadMangaCardInline.module.scss';
-import CrossoutSvg from '@/shared/assets/icon/common/crossout.svg';
-import { CardBlock } from '@/shared/ui/CardBlock';
-import { ProgressBar } from '@/shared/ui/ProgressBar';
+import CrossoutSvg from '@/shared/assets/icon/common/crossout.svg?react';
+import { CardBlock } from '@/shared/deprecate-ui/CardBlock';
+import { ProgressBar } from '@/shared/deprecate-ui/ProgressBar';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { Button } from '@/shared/ui/Button';
-import { Icon } from '@/shared/ui/Icon/Icon';
+import { Button } from '@/shared/deprecate-ui/Button';
+import { Icon } from '@/shared/deprecate-ui/Icon/Icon';
 import { getRoute } from '@/shared/kernel/router/routerConfig';
 import { MangaListItemContinueReadType } from '@/shared/api/deprecated/mangaList';
 import { getUrlChapterId } from '@/entities/ChapterList';

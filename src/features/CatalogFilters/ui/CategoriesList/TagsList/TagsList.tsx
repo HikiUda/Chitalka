@@ -1,12 +1,12 @@
 import { FC, useCallback } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { VStack } from '@/shared/ui/Stack';
-import { TriStateCheckboxGroup } from '@/shared/ui/TriStateCheckbox';
-import { Divider } from '@/shared/ui/Divider';
-import { Button } from '@/shared/ui/Button';
+import { VStack } from '@/shared/deprecate-ui/Stack';
+import { TriStateCheckboxGroup } from '@/shared/deprecate-ui/TriStateCheckbox';
+import { Divider } from '@/shared/deprecate-ui/Divider';
+import { Button } from '@/shared/deprecate-ui/Button';
 import { useUrlSearchParams } from '@/shared/lib/hooks/useUrlSearchParams';
 import { useQuery } from '@tanstack/react-query';
-import { Input } from '@/shared/ui/Input';
+import { Input } from '@/shared/deprecate-ui/Input';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 import { NavButtons } from '../NavButtons/NavButtons';
 import { CategoriesList } from '../CategoriesList/CategoriesList';

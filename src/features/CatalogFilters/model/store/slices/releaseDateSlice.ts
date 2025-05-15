@@ -1,5 +1,5 @@
 import { StateCreator } from 'zustand';
-import { DateValue } from '@/shared/ui/DatePicker';
+import { DateValue } from '@/shared/deprecate-ui/DatePicker';
 import { CatalogFiltersStoreType } from '../catalogFiltersStroe.type';
 
 export interface ReleaseDateSlice {

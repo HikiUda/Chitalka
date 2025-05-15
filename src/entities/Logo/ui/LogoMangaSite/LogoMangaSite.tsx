@@ -3,11 +3,11 @@ import { isMobile } from 'react-device-detect';
 import cls from './LogoMangaSite.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { getRoute } from '@/shared/kernel/router/routerConfig';
-import { AppLink } from '@/shared/ui/AppLink';
-import ChitalkaSvg from '@/shared/assets/icon/logo/Chitalka.svg';
-import CSvg from '@/shared/assets/icon/logo/C.svg';
+import { AppLink } from '@/shared/deprecate-ui/AppLink';
+import ChitalkaSvg from '@/shared/assets/icon/logo/Chitalka.svg?react';
+import CSvg from '@/shared/assets/icon/logo/C.svg?react';
 import Gid from '@/shared/assets/animation/Gid/logo/shake.gif';
-import { Icon } from '@/shared/ui/Icon';
+import { Icon } from '@/shared/deprecate-ui/Icon';
 
 interface LogoMangaSiteProps {
     className?: string;

@@ -2,8 +2,8 @@ import { FC } from 'react';
 import { Sidebar } from '../Sidebar/Sidebar';
 import cls from './SidebarModal.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { Modal } from '@/shared/ui/Modal';
-import { Button } from '@/shared/ui/Button';
+import { Modal } from '@/shared/deprecate-ui/Modal';
+import { Button } from '@/shared/deprecate-ui/Button';
 import { MangaType } from '@/shared/api/deprecated/individualManga';
 
 interface SidebarModalProps {

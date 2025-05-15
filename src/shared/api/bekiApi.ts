@@ -107,6 +107,7 @@ export type paths = {
             path?: never;
             cookie?: never;
         };
+        /** Optional auth endpoint */
         get: operations["PublicMangaController_getLastUpdatedMangas"];
         put?: never;
         post?: never;
@@ -139,6 +140,7 @@ export type paths = {
             path?: never;
             cookie?: never;
         };
+        /** Optional auth endpoint */
         get: operations["QuickSearchController_getMangaQuickSearch"];
         put?: never;
         post?: never;
@@ -251,6 +253,7 @@ export type paths = {
             path?: never;
             cookie?: never;
         };
+        /** Optional auth endpoint */
         get: operations["IndividualMangaController_getManga"];
         put?: never;
         post?: never;
@@ -379,6 +382,7 @@ export type paths = {
             path?: never;
             cookie?: never;
         };
+        /** Optional auth endpoint */
         get: operations["PublicChapterController_getChapter"];
         put?: never;
         post?: never;
@@ -395,6 +399,7 @@ export type paths = {
             path?: never;
             cookie?: never;
         };
+        /** Optional auth endpoint */
         get: operations["PublicChapterController_getChapterList"];
         put?: never;
         post?: never;
@@ -508,20 +513,150 @@ export type components = {
             login: string;
             password: string;
         };
-        LoginUserDto: {
+        AuthUserDto: {
+            id: number;
             login: string;
-            password: string;
+            name: string;
+            sub: number;
         };
         AuthTokens: {
             access: string;
             refresh: string;
         };
         ReturnAuthUser: {
-            user: Record<string, never>;
+            user: components["schemas"]["AuthUserDto"];
             tokens: components["schemas"]["AuthTokens"];
+        };
+        LoginUserDto: {
+            login: string;
+            password: string;
+        };
+        ErrorType: {
+            message: string;
+            statusCode: number;
+            error?: string;
+        };
+        UserDataDto: {
+            id: number;
+            name: string;
+            avatar: string | null;
+            jsonSettings: Record<string, never>;
+        };
+        MangaListItemDto: {
+            id: number;
+            urlId: string;
+            title: string;
+            rate: number;
+            /** @enum {string} */
+            type: "Manga" | "Manhwa" | "Manhua" | "OEL" | "Rumanga" | "Comic";
+            cover: string;
+            /** @enum {string|null} */
+            bookmark: "Reading" | "Planned" | "Readed" | "Abandoned" | "Postponed" | null;
+            chapterCount: number;
+        };
+        MangaListItemPagination: {
+            prevPage: number | null;
+            nextPage: number | null;
+            data: components["schemas"]["MangaListItemDto"][];
+        };
+        MangaListItemLastUpdatedDto: {
+            id: number;
+            urlId: string;
+            title: string;
+            /** @enum {string} */
+            type: "Manga" | "Manhwa" | "Manhua" | "OEL" | "Rumanga" | "Comic";
+            cover: string;
+            tome: number;
+            chapter: number;
+            /** Format: date-time */
+            chapterCreatedAt: string;
+            chapterId: number;
+        };
+        MangaListItemLastUpdatedPagination: {
+            prevPage: number | null;
+            nextPage: number | null;
+            data: components["schemas"]["MangaListItemLastUpdatedDto"][];
+        };
+        MangaListItemStatisticDto: {
+            id: number;
+            urlId: string;
+            title: string;
+            /** @enum {string} */
+            type: "Manga" | "Manhwa" | "Manhua" | "OEL" | "Rumanga" | "Comic";
+            cover: string;
+            views: number;
+            likes: number;
+            bookmarks: number;
+        };
+        MangaListItemStatisticResponseArrayData: {
+            data: components["schemas"]["MangaListItemStatisticDto"][];
+        };
+        QuickSearchLastDto: {
+            data: string[];
         };
         DeleteSearchDto: {
             search: string;
+        };
+        MangaListItemContinueReadDto: {
+            id: number;
+            urlId: string;
+            title: string;
+            cover: string;
+            tome: number;
+            chapter: number;
+            chapterCount: number;
+            readedChapters: number;
+            chapterId: number;
+        };
+        MangaListItemContinueReadResponseArrayData: {
+            data: components["schemas"]["MangaListItemContinueReadDto"][];
+        };
+        EditedMangaTitle: {
+            ru: string;
+            en: string | null;
+            origin: string | null;
+        };
+        EditedMangaOtherTitles: {
+            id: number;
+            title: string;
+        };
+        EditedMangaDescription: {
+            ru: string;
+            en: string | null;
+        };
+        EditedMangaGenresAndTags: {
+            id: number;
+            title: string;
+        };
+        EditedMangaCover: {
+            id: number;
+            cover: string;
+            main: boolean;
+        };
+        EditedMangaAuthors: {
+            id: number;
+            name: string;
+        };
+        EditedMangaDto: {
+            id: number;
+            urlId: string;
+            title: components["schemas"]["EditedMangaTitle"];
+            otherTitles: components["schemas"]["EditedMangaOtherTitles"][];
+            description: components["schemas"]["EditedMangaDescription"];
+            /** Format: date-time */
+            releaseDate: string | null;
+            /** @enum {string} */
+            status: "Ongoing" | "Announced" | "Completed" | "Frozen" | "Canceled";
+            /** @enum {string} */
+            type: "Manga" | "Manhwa" | "Manhua" | "OEL" | "Rumanga" | "Comic";
+            genres: components["schemas"]["EditedMangaGenresAndTags"][];
+            tags: components["schemas"]["EditedMangaGenresAndTags"][];
+            covers: components["schemas"]["EditedMangaCover"][];
+            banner: string | null;
+            ageRate: number;
+            authors: components["schemas"]["EditedMangaAuthors"][];
+            artists: components["schemas"]["EditedMangaAuthors"][];
+            publishers: components["schemas"]["EditedMangaAuthors"][];
         };
         MutateMangaDto: {
             urlId?: string;
@@ -574,15 +709,163 @@ export type components = {
                 delete?: number[];
             };
         };
+        EditedMangaCoverResponseArrayData: {
+            data: components["schemas"]["EditedMangaCover"][];
+        };
         DeleleMangaCoversDto: {
             coversId: unknown[][];
+        };
+        MangaTitle: {
+            ru: string;
+            en: string | null;
+            origin: string | null;
+        };
+        MangaGenresAndTag: {
+            id: number;
+            title: string;
+        };
+        UserBaseDto: {
+            id: number;
+            name: string;
+            avatar: string | null;
+        };
+        MangaDto: {
+            id: number;
+            urlId: string;
+            title: components["schemas"]["MangaTitle"];
+            otherTitles: string[];
+            description: string;
+            chaptersCount: number;
+            rate: number;
+            countRate: number;
+            /** Format: date-time */
+            releaseDate: string | null;
+            /** @enum {string} */
+            status: "Ongoing" | "Announced" | "Completed" | "Frozen" | "Canceled";
+            /** @enum {string} */
+            type: "Manga" | "Manhwa" | "Manhua" | "OEL" | "Rumanga" | "Comic";
+            genres: components["schemas"]["MangaGenresAndTag"][];
+            tags: components["schemas"]["MangaGenresAndTag"][];
+            cover: string | null;
+            banner: string | null;
+            owner: components["schemas"]["UserBaseDto"];
+            authors: string[];
+            artists: string[];
+            publishers: string[];
+            /** @enum {string|null} */
+            bookmark: "Reading" | "Planned" | "Readed" | "Abandoned" | "Postponed" | null;
+        };
+        MangaCoverDto: {
+            id: number;
+            cover: string;
+        };
+        MangaCoverArrayData: {
+            data: components["schemas"]["MangaCoverDto"][];
+        };
+        UserMangaBookmarkDto: {
+            mangaId: number;
+            userId: number;
+            /** @enum {string|null} */
+            bookmark: "Reading" | "Planned" | "Readed" | "Abandoned" | "Postponed" | null;
         };
         BookmarkDto: {
             /** @enum {string} */
             bookmark: "Reading" | "Planned" | "Readed" | "Abandoned" | "Postponed";
         };
+        UserMangaRateDto: {
+            rate: number | null;
+            mangaId: number;
+            userId: number;
+        };
         SetUserMangaRateDto: {
             rate: number;
+        };
+        CategoryDto: {
+            id: number;
+            title: string;
+        };
+        CategoriesResponseArrayData: {
+            data: components["schemas"]["CategoryDto"][];
+        };
+        StatisticItemDto: {
+            count: number;
+            percentage: number;
+            title: string;
+        };
+        ApiRateFullStatisticDto: {
+            rate: number;
+            rateCount: number;
+            /** @description Массив из 10 элементов рейтинга от 1 до 10 */
+            rateStatistic: components["schemas"]["StatisticItemDto"][];
+        };
+        ApiBookmarkStatisticDto: {
+            all: number;
+            /** @description Массив из 5 элементов вида закладок. Порядок Reading, Planned, Readed, Abandoned, Postponed */
+            bookmarks: components["schemas"]["StatisticItemDto"][];
+        };
+        ChapterPageDto: {
+            src: string;
+            /** @enum {string} */
+            type: "image" | "rive";
+        };
+        ChapterPagesDto: {
+            pages: components["schemas"]["ChapterPageDto"][];
+            pageCount: number;
+            /** @default 700 */
+            containerMaxWidth: number;
+        };
+        ChapterDto: {
+            id: number;
+            tome: number;
+            chapter: number;
+            title: string | null;
+            mangaTitle: string;
+            likeCount: number;
+            prevChapterId: number | null;
+            nextChapterId: number | null;
+            isUserLiked: boolean;
+            isUserViewed: boolean;
+            pages: components["schemas"]["ChapterPagesDto"];
+        };
+        ChapterListItemDto: {
+            id: number;
+            tome: number;
+            chapter: number;
+            title: string | null;
+            /** Format: date-time */
+            createdAt: string;
+            isUserViewed: boolean;
+        };
+        ChapterListPagination: {
+            prevPage: number | null;
+            nextPage: number | null;
+            data: components["schemas"]["ChapterListItemDto"][];
+        };
+        EditChapterTitle: {
+            ru: string | null;
+            en: string | null;
+        };
+        EditedChpaterDto: {
+            id: number;
+            title: components["schemas"]["EditChapterTitle"];
+            tome: number;
+            chpater: number;
+            private: boolean;
+            mangaId: number;
+        };
+        EditedChapterListItemDto: {
+            id: number;
+            tome: number;
+            chapter: number;
+            title: string | null;
+            /** Format: date-time */
+            createdAt: string;
+            private: boolean;
+        };
+        EditedChapterListPagination: {
+            prevPage: number | null;
+            nextPage: number | null;
+            data: components["schemas"]["EditedChapterListItemDto"][];
         };
         MutateChapterDto: {
             title?: {
@@ -592,12 +875,6 @@ export type components = {
             tome?: number;
             chapter?: number;
             private?: boolean;
-        };
-        ChapterPagesDto: {
-            pageCount: number;
-            /** @default 700 */
-            containerMaxWidth: number;
-            pages: unknown[][];
         };
         LangQueryDto: {
             /**
@@ -636,19 +913,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "user": {
-                     *         "sub": 1,
-                     *         "id": 1,
-                     *         "name": "name",
-                     *         "login": "login"
-                     *       },
-                     *       "tokens": {
-                     *         "access": "access",
-                     *         "refresh": "refresh"
-                     *       }
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["ReturnAuthUser"];
                 };
             };
         };
@@ -671,19 +936,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "user": {
-                     *         "sub": 1,
-                     *         "id": 1,
-                     *         "name": "name",
-                     *         "login": "login"
-                     *       },
-                     *       "tokens": {
-                     *         "access": "access",
-                     *         "refresh": "refresh"
-                     *       }
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["ReturnAuthUser"];
                 };
             };
         };
@@ -697,11 +950,13 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            200: {
+            204: {
                 headers: {
                     [name: string]: unknown;
                 };
-                content?: never;
+                content: {
+                    "application/json": components["schemas"]["ReturnAuthUser"];
+                };
             };
         };
     };
@@ -722,6 +977,15 @@ export interface operations {
                     "application/json": components["schemas"]["ReturnAuthUser"];
                 };
             };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
         };
     };
     ProfileController_getUserData: {
@@ -739,13 +1003,16 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "id": 1,
-                     *       "name": "becki",
-                     *       "avatar": "http://wrondway.com",
-                     *       "jsonSettings": {}
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["UserDataDto"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
                 };
             };
         };
@@ -755,12 +1022,19 @@ export interface operations {
             query?: {
                 sortBy?: "rating" | "updateDate" | "createDate" | "ruAlphabetically" | "enAlphabetically" | "views" | "likes" | "chapterCount";
                 search?: string;
+                /** @description Comma-separated list of categories IDs, e.g. "1,2,3" */
                 genres?: string;
+                /** @description Comma-separated list of categories IDs, e.g. "1,2,3" */
                 tags?: string;
+                /** @description Comma-separated list of categories IDs, e.g. "1,2,3" */
                 notGenres?: string;
+                /** @description Comma-separated list of categories IDs, e.g. "1,2,3" */
                 notTags?: string;
+                /** @description Comma-separated list, e.g. "el1,el2,el3" */
                 status?: string;
+                /** @description Comma-separated list, e.g. "el1,el2,el3" */
                 type?: string;
+                /** @description Comma-separated list, e.g. "el1,el2,el3" */
                 bookmarks?: string;
                 lang?: "ru" | "en";
                 order?: "asc" | "desc";
@@ -776,8 +1050,6 @@ export interface operations {
                 rateTo?: number;
                 releaseDateFrom?: string;
                 releaseDateTo?: string;
-                /** @description Comma-separated list of  IDs, e.g. genres=1,3,4 */
-                "genres-tags-notGenres-notTags"?: unknown;
             };
             header?: never;
             path?: never;
@@ -785,48 +1057,12 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "data": [
-                     *         {
-                     *           "id": 1,
-                     *           "urlId": "same-manga---1234",
-                     *           "title": "Manga Title",
-                     *           "cover": "http://wrong-way.com",
-                     *           "chapterCount": 45,
-                     *           "bookmark": null,
-                     *           "rate": 10,
-                     *           "type": "Manga"
-                     *         },
-                     *         {
-                     *           "id": 1,
-                     *           "urlId": "same-manga---1234",
-                     *           "title": "Manga Title",
-                     *           "cover": "http://wrong-way.com",
-                     *           "chapterCount": 45,
-                     *           "bookmark": null,
-                     *           "rate": 10,
-                     *           "type": "Manga"
-                     *         },
-                     *         {
-                     *           "id": 1,
-                     *           "urlId": "same-manga---1234",
-                     *           "title": "Manga Title",
-                     *           "cover": "http://wrong-way.com",
-                     *           "chapterCount": 45,
-                     *           "bookmark": null,
-                     *           "rate": 10,
-                     *           "type": "Manga"
-                     *         }
-                     *       ],
-                     *       "prevPage": null,
-                     *       "nextPage": null
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["MangaListItemPagination"];
                 };
             };
         };
@@ -834,6 +1070,7 @@ export interface operations {
     PublicMangaController_getLastUpdatedMangas: {
         parameters: {
             query?: {
+                /** @description "my" for authorized users */
                 scope?: "all" | "popular" | "my";
                 lang?: "ru" | "en";
                 page?: number;
@@ -846,51 +1083,21 @@ export interface operations {
         requestBody?: never;
         responses: {
             /** @description scope 'my' for authorized users only */
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "data": [
-                     *         {
-                     *           "id": 1,
-                     *           "urlId": "some-manga---1234",
-                     *           "title": "Manga title",
-                     *           "type": "Manga",
-                     *           "cover": "http://wrong-way.com",
-                     *           "tome": 1,
-                     *           "chapter": 2,
-                     *           "chapterCreatedAt": "2025-05-14T10:04:27.910Z",
-                     *           "chapterId": 0
-                     *         },
-                     *         {
-                     *           "id": 1,
-                     *           "urlId": "some-manga---1234",
-                     *           "title": "Manga title",
-                     *           "type": "Manga",
-                     *           "cover": "http://wrong-way.com",
-                     *           "tome": 1,
-                     *           "chapter": 2,
-                     *           "chapterCreatedAt": "2025-05-14T10:04:27.910Z",
-                     *           "chapterId": 0
-                     *         },
-                     *         {
-                     *           "id": 1,
-                     *           "urlId": "some-manga---1234",
-                     *           "title": "Manga title",
-                     *           "type": "Manga",
-                     *           "cover": "http://wrong-way.com",
-                     *           "tome": 1,
-                     *           "chapter": 2,
-                     *           "chapterCreatedAt": "2025-05-14T10:04:27.910Z",
-                     *           "chapterId": 0
-                     *         }
-                     *       ],
-                     *       "prevPage": null,
-                     *       "nextPage": null
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["MangaListItemLastUpdatedPagination"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
                 };
             };
         };
@@ -909,46 +1116,12 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "data": [
-                     *         {
-                     *           "id": 1,
-                     *           "urlId": "some-manga---1234",
-                     *           "title": "Manga title",
-                     *           "type": "Manga",
-                     *           "cover": "http://wrong-way.com",
-                     *           "views": 100,
-                     *           "likes": 10,
-                     *           "bookmarks": 1
-                     *         },
-                     *         {
-                     *           "id": 1,
-                     *           "urlId": "some-manga---1234",
-                     *           "title": "Manga title",
-                     *           "type": "Manga",
-                     *           "cover": "http://wrong-way.com",
-                     *           "views": 100,
-                     *           "likes": 10,
-                     *           "bookmarks": 1
-                     *         },
-                     *         {
-                     *           "id": 1,
-                     *           "urlId": "some-manga---1234",
-                     *           "title": "Manga title",
-                     *           "type": "Manga",
-                     *           "cover": "http://wrong-way.com",
-                     *           "views": 100,
-                     *           "likes": 10,
-                     *           "bookmarks": 1
-                     *         }
-                     *       ]
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["MangaListItemStatisticResponseArrayData"];
                 };
             };
         };
@@ -965,47 +1138,12 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description Automaticly save user search */
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "data": [
-                     *         {
-                     *           "id": 1,
-                     *           "urlId": "some-manga---1234",
-                     *           "title": "Manga title",
-                     *           "type": "Manga",
-                     *           "cover": "http://wrong-way.com",
-                     *           "views": 100,
-                     *           "likes": 10,
-                     *           "bookmarks": 1
-                     *         },
-                     *         {
-                     *           "id": 1,
-                     *           "urlId": "some-manga---1234",
-                     *           "title": "Manga title",
-                     *           "type": "Manga",
-                     *           "cover": "http://wrong-way.com",
-                     *           "views": 100,
-                     *           "likes": 10,
-                     *           "bookmarks": 1
-                     *         },
-                     *         {
-                     *           "id": 1,
-                     *           "urlId": "some-manga---1234",
-                     *           "title": "Manga title",
-                     *           "type": "Manga",
-                     *           "cover": "http://wrong-way.com",
-                     *           "views": 100,
-                     *           "likes": 10,
-                     *           "bookmarks": 1
-                     *         }
-                     *       ]
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["MangaListItemStatisticResponseArrayData"];
                 };
             };
         };
@@ -1019,18 +1157,21 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "data": [
-                     *         "search",
-                     *         "search2"
-                     *       ]
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["QuickSearchLastDto"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
                 };
             };
         };
@@ -1048,11 +1189,20 @@ export interface operations {
             };
         };
         responses: {
-            200: {
+            204: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
             };
         };
     };
@@ -1067,49 +1217,21 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "data": [
-                     *         {
-                     *           "id": 1,
-                     *           "urlId": "same-manga---1234",
-                     *           "title": "Manga Title",
-                     *           "chapter": 5,
-                     *           "chapterCount": 88,
-                     *           "tome": 1,
-                     *           "readedChapters": 5,
-                     *           "cover": "http://wrong-way.com",
-                     *           "chapterId": 0
-                     *         },
-                     *         {
-                     *           "id": 1,
-                     *           "urlId": "same-manga---1234",
-                     *           "title": "Manga Title",
-                     *           "chapter": 5,
-                     *           "chapterCount": 88,
-                     *           "tome": 1,
-                     *           "readedChapters": 5,
-                     *           "cover": "http://wrong-way.com",
-                     *           "chapterId": 0
-                     *         },
-                     *         {
-                     *           "id": 1,
-                     *           "urlId": "same-manga---1234",
-                     *           "title": "Manga Title",
-                     *           "chapter": 5,
-                     *           "chapterCount": 88,
-                     *           "tome": 1,
-                     *           "readedChapters": 5,
-                     *           "cover": "http://wrong-way.com",
-                     *           "chapterId": 0
-                     *         }
-                     *       ]
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["MangaListItemContinueReadResponseArrayData"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
                 };
             };
         };
@@ -1126,11 +1248,20 @@ export interface operations {
         requestBody?: never;
         responses: {
             /** @description set id to 0 to delete all manga */
-            default: {
+            204: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
             };
         };
     };
@@ -1147,73 +1278,21 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "id": 0,
-                     *       "urlId": "some-url-id---0",
-                     *       "title": {
-                     *         "ru": "undefined",
-                     *         "en": null,
-                     *         "origin": null
-                     *       },
-                     *       "otherTitles": [
-                     *         {
-                     *           "id": 1,
-                     *           "title": "title1"
-                     *         }
-                     *       ],
-                     *       "description": {
-                     *         "ru": "description",
-                     *         "en": null
-                     *       },
-                     *       "releaseDate": null,
-                     *       "status": "Ongoing",
-                     *       "type": "Manga",
-                     *       "genres": [
-                     *         {
-                     *           "id": 1,
-                     *           "title": "Horror"
-                     *         }
-                     *       ],
-                     *       "tags": [
-                     *         {
-                     *           "id": 1,
-                     *           "title": "Magic"
-                     *         }
-                     *       ],
-                     *       "covers": [
-                     *         {
-                     *           "id": 1,
-                     *           "cover": "http://wrong-way.com",
-                     *           "main": true
-                     *         }
-                     *       ],
-                     *       "banner": "http://wrong-way.com",
-                     *       "ageRate": 0,
-                     *       "authors": [
-                     *         {
-                     *           "id": 1,
-                     *           "name": "author"
-                     *         }
-                     *       ],
-                     *       "artists": [
-                     *         {
-                     *           "id": 1,
-                     *           "name": "artist"
-                     *         }
-                     *       ],
-                     *       "publishers": [
-                     *         {
-                     *           "id": 1,
-                     *           "name": "publisher"
-                     *         }
-                     *       ]
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["EditedMangaDto"];
+                };
+            };
+            /** @description Resource not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
                 };
             };
         };
@@ -1239,73 +1318,21 @@ export interface operations {
             };
         };
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "id": 0,
-                     *       "urlId": "some-url-id---0",
-                     *       "title": {
-                     *         "ru": "undefined",
-                     *         "en": null,
-                     *         "origin": null
-                     *       },
-                     *       "otherTitles": [
-                     *         {
-                     *           "id": 1,
-                     *           "title": "title1"
-                     *         }
-                     *       ],
-                     *       "description": {
-                     *         "ru": "description",
-                     *         "en": null
-                     *       },
-                     *       "releaseDate": null,
-                     *       "status": "Ongoing",
-                     *       "type": "Manga",
-                     *       "genres": [
-                     *         {
-                     *           "id": 1,
-                     *           "title": "Horror"
-                     *         }
-                     *       ],
-                     *       "tags": [
-                     *         {
-                     *           "id": 1,
-                     *           "title": "Magic"
-                     *         }
-                     *       ],
-                     *       "covers": [
-                     *         {
-                     *           "id": 1,
-                     *           "cover": "http://wrong-way.com",
-                     *           "main": true
-                     *         }
-                     *       ],
-                     *       "banner": "http://wrong-way.com",
-                     *       "ageRate": 0,
-                     *       "authors": [
-                     *         {
-                     *           "id": 1,
-                     *           "name": "author"
-                     *         }
-                     *       ],
-                     *       "artists": [
-                     *         {
-                     *           "id": 1,
-                     *           "name": "artist"
-                     *         }
-                     *       ],
-                     *       "publishers": [
-                     *         {
-                     *           "id": 1,
-                     *           "name": "publisher"
-                     *         }
-                     *       ]
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["EditedMangaDto"];
+                };
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
                 };
             };
         };
@@ -1323,7 +1350,7 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            200: {
+            204: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -1352,73 +1379,21 @@ export interface operations {
             };
         };
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "id": 0,
-                     *       "urlId": "some-url-id---0",
-                     *       "title": {
-                     *         "ru": "undefined",
-                     *         "en": null,
-                     *         "origin": null
-                     *       },
-                     *       "otherTitles": [
-                     *         {
-                     *           "id": 1,
-                     *           "title": "title1"
-                     *         }
-                     *       ],
-                     *       "description": {
-                     *         "ru": "description",
-                     *         "en": null
-                     *       },
-                     *       "releaseDate": null,
-                     *       "status": "Ongoing",
-                     *       "type": "Manga",
-                     *       "genres": [
-                     *         {
-                     *           "id": 1,
-                     *           "title": "Horror"
-                     *         }
-                     *       ],
-                     *       "tags": [
-                     *         {
-                     *           "id": 1,
-                     *           "title": "Magic"
-                     *         }
-                     *       ],
-                     *       "covers": [
-                     *         {
-                     *           "id": 1,
-                     *           "cover": "http://wrong-way.com",
-                     *           "main": true
-                     *         }
-                     *       ],
-                     *       "banner": "http://wrong-way.com",
-                     *       "ageRate": 0,
-                     *       "authors": [
-                     *         {
-                     *           "id": 1,
-                     *           "name": "author"
-                     *         }
-                     *       ],
-                     *       "artists": [
-                     *         {
-                     *           "id": 1,
-                     *           "name": "artist"
-                     *         }
-                     *       ],
-                     *       "publishers": [
-                     *         {
-                     *           "id": 1,
-                     *           "name": "publisher"
-                     *         }
-                     *       ]
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["EditedMangaDto"];
+                };
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
                 };
             };
         };
@@ -1434,31 +1409,12 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "data": [
-                     *         {
-                     *           "id": 0,
-                     *           "cover": "http://wrong-way.com",
-                     *           "main": false
-                     *         },
-                     *         {
-                     *           "id": 0,
-                     *           "cover": "http://wrong-way.com",
-                     *           "main": false
-                     *         },
-                     *         {
-                     *           "id": 0,
-                     *           "cover": "http://wrong-way.com",
-                     *           "main": false
-                     *         }
-                     *       ]
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["EditedMangaCoverResponseArrayData"];
                 };
             };
         };
@@ -1481,31 +1437,21 @@ export interface operations {
             };
         };
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "data": [
-                     *         {
-                     *           "id": 0,
-                     *           "cover": "http://wrong-way.com",
-                     *           "main": false
-                     *         },
-                     *         {
-                     *           "id": 0,
-                     *           "cover": "http://wrong-way.com",
-                     *           "main": false
-                     *         },
-                     *         {
-                     *           "id": 0,
-                     *           "cover": "http://wrong-way.com",
-                     *           "main": false
-                     *         }
-                     *       ]
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["EditedMangaCoverResponseArrayData"];
+                };
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
                 };
             };
         };
@@ -1523,7 +1469,7 @@ export interface operations {
             };
         };
         responses: {
-            200: {
+            204: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -1545,66 +1491,21 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "id": 1,
-                     *       "urlId": "some-url-id---123",
-                     *       "title": {
-                     *         "ru": "ru-Title",
-                     *         "en": "en-Title",
-                     *         "origin": "original-Title"
-                     *       },
-                     *       "otherTitles": [
-                     *         "Другое название",
-                     *         "otherTitle2",
-                     *         "otherTitle3"
-                     *       ],
-                     *       "description": "some manga description",
-                     *       "chaptersCount": 45,
-                     *       "rate": 9.8,
-                     *       "countRate": 201,
-                     *       "releaseDate": "2025-05-14T10:04:28.231Z",
-                     *       "status": "Ongoing",
-                     *       "type": "Manga",
-                     *       "genres": [
-                     *         {
-                     *           "id": 1,
-                     *           "title": "Horror"
-                     *         },
-                     *         {
-                     *           "id": 2,
-                     *           "title": "Романтика"
-                     *         }
-                     *       ],
-                     *       "tags": [
-                     *         {
-                     *           "id": 1,
-                     *           "title": "Магия"
-                     *         }
-                     *       ],
-                     *       "cover": "http://wrong-way.com",
-                     *       "banner": "http://wrong-way.com",
-                     *       "owner": {
-                     *         "id": 1,
-                     *         "name": "wendsew",
-                     *         "avatar": "http://wrong-way.com"
-                     *       },
-                     *       "authors": [
-                     *         "wendsew"
-                     *       ],
-                     *       "artists": [
-                     *         "wendsew"
-                     *       ],
-                     *       "publishers": [
-                     *         "HikiUda"
-                     *       ],
-                     *       "bookmark": null
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["MangaDto"];
+                };
+            };
+            /** @description Resource not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
                 };
             };
         };
@@ -1621,28 +1522,12 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "data": [
-                     *         {
-                     *           "id": 1,
-                     *           "cover": "http://wrong-way.com"
-                     *         },
-                     *         {
-                     *           "id": 1,
-                     *           "cover": "http://wrong-way.com"
-                     *         },
-                     *         {
-                     *           "id": 1,
-                     *           "cover": "http://wrong-way.com"
-                     *         }
-                     *       ]
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["MangaCoverArrayData"];
                 };
             };
         };
@@ -1659,17 +1544,21 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "mangaId": 2,
-                     *       "userId": 1,
-                     *       "bookmark": "Abandoned"
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["UserMangaBookmarkDto"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
                 };
             };
         };
@@ -1686,11 +1575,20 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            200: {
+            204: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
             };
         };
     };
@@ -1710,17 +1608,21 @@ export interface operations {
             };
         };
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "mangaId": 2,
-                     *       "userId": 1,
-                     *       "bookmark": "Abandoned"
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["UserMangaBookmarkDto"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
                 };
             };
         };
@@ -1741,19 +1643,17 @@ export interface operations {
                 headers: {
                     [name: string]: unknown;
                 };
-                content?: never;
+                content: {
+                    "application/json": components["schemas"]["UserMangaRateDto"];
+                };
             };
-            default: {
+            /** @description Unauthorized */
+            401: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "rate": 9,
-                     *       "mangaId": 2,
-                     *       "userId": 1
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["ErrorType"];
                 };
             };
         };
@@ -1778,19 +1678,17 @@ export interface operations {
                 headers: {
                     [name: string]: unknown;
                 };
-                content?: never;
+                content: {
+                    "application/json": components["schemas"]["UserMangaRateDto"];
+                };
             };
-            default: {
+            /** @description Unauthorized */
+            401: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "rate": 9,
-                     *       "mangaId": 2,
-                     *       "userId": 1
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["ErrorType"];
                 };
             };
         };
@@ -1807,28 +1705,12 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "data": [
-                     *         {
-                     *           "id": 0,
-                     *           "title": "Category"
-                     *         },
-                     *         {
-                     *           "id": 0,
-                     *           "title": "Category"
-                     *         },
-                     *         {
-                     *           "id": 0,
-                     *           "title": "Category"
-                     *         }
-                     *       ]
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["CategoriesResponseArrayData"];
                 };
             };
         };
@@ -1845,28 +1727,12 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "data": [
-                     *         {
-                     *           "id": 0,
-                     *           "title": "Category"
-                     *         },
-                     *         {
-                     *           "id": 0,
-                     *           "title": "Category"
-                     *         },
-                     *         {
-                     *           "id": 0,
-                     *           "title": "Category"
-                     *         }
-                     *       ]
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["CategoriesResponseArrayData"];
                 };
             };
         };
@@ -1883,7 +1749,7 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -1944,7 +1810,7 @@ export interface operations {
                      *         }
                      *       ]
                      *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["ApiRateFullStatisticDto"];
                 };
             };
         };
@@ -1961,42 +1827,42 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
                     /** @example {
-                     *       "all": 100,
+                     *       "all": 0,
                      *       "bookmarks": [
                      *         {
                      *           "title": "Reading",
-                     *           "count": 20,
-                     *           "percentage": 20
+                     *           "count": 0,
+                     *           "percentage": 0
                      *         },
                      *         {
                      *           "title": "Planned",
-                     *           "count": 10,
-                     *           "percentage": 10
+                     *           "count": 0,
+                     *           "percentage": 0
                      *         },
                      *         {
                      *           "title": "Readed",
-                     *           "count": 50,
-                     *           "percentage": 50
+                     *           "count": 0,
+                     *           "percentage": 0
                      *         },
                      *         {
                      *           "title": "Abandoned",
-                     *           "count": 15,
-                     *           "percentage": 15
+                     *           "count": 0,
+                     *           "percentage": 0
                      *         },
                      *         {
                      *           "title": "Postponed",
-                     *           "count": 5,
-                     *           "percentage": 5
+                     *           "count": 0,
+                     *           "percentage": 0
                      *         }
                      *       ]
                      *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["ApiBookmarkStatisticDto"];
                 };
             };
         };
@@ -2014,34 +1880,12 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "id": 2,
-                     *       "tome": 1,
-                     *       "chapter": 2,
-                     *       "title": "chapter title",
-                     *       "mangaTitle": "Manga Title",
-                     *       "likeCount": 100,
-                     *       "pages": {
-                     *         "pageCount": 1,
-                     *         "pages": [
-                     *           {
-                     *             "src": "pass/pass/pass.jpg",
-                     *             "type": "image"
-                     *           }
-                     *         ],
-                     *         "containerMaxWidth": 700
-                     *       },
-                     *       "isUserLiked": false,
-                     *       "isUserViewed": false,
-                     *       "prevChapterId": 1,
-                     *       "nextChapterId": 3
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["ChapterDto"];
                 };
             };
         };
@@ -2063,42 +1907,12 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "data": [
-                     *         {
-                     *           "id": 0,
-                     *           "tome": 1,
-                     *           "chapter": 2,
-                     *           "title": null,
-                     *           "createdAt": "2025-05-14T10:04:28.277Z",
-                     *           "isUserViewed": false
-                     *         },
-                     *         {
-                     *           "id": 0,
-                     *           "tome": 1,
-                     *           "chapter": 2,
-                     *           "title": null,
-                     *           "createdAt": "2025-05-14T10:04:28.277Z",
-                     *           "isUserViewed": false
-                     *         },
-                     *         {
-                     *           "id": 0,
-                     *           "tome": 1,
-                     *           "chapter": 2,
-                     *           "title": null,
-                     *           "createdAt": "2025-05-14T10:04:28.277Z",
-                     *           "isUserViewed": false
-                     *         }
-                     *       ],
-                     *       "prevPage": null,
-                     *       "nextPage": null
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["ChapterListPagination"];
                 };
             };
         };
@@ -2114,11 +1928,20 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            200: {
+            204: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
             };
         };
     };
@@ -2133,11 +1956,20 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            200: {
+            204: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
             };
         };
     };
@@ -2153,23 +1985,21 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "id": 0,
-                     *       "title": {
-                     *         "ru": "Ru title",
-                     *         "en": "En Title"
-                     *       },
-                     *       "tome": 1,
-                     *       "chpater": 2,
-                     *       "private": false,
-                     *       "mangaId": 0
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["EditedChpaterDto"];
+                };
+            };
+            /** @description Resource not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
                 };
             };
         };
@@ -2190,23 +2020,12 @@ export interface operations {
             };
         };
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "id": 0,
-                     *       "title": {
-                     *         "ru": "Ru title",
-                     *         "en": "En Title"
-                     *       },
-                     *       "tome": 1,
-                     *       "chpater": 2,
-                     *       "private": false,
-                     *       "mangaId": 0
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["EditedChpaterDto"];
                 };
             };
         };
@@ -2223,7 +2042,7 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            200: {
+            204: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -2248,42 +2067,12 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "data": [
-                     *         {
-                     *           "id": 0,
-                     *           "tome": 1,
-                     *           "chapter": 2,
-                     *           "title": null,
-                     *           "createdAt": "2025-05-14T10:04:28.297Z",
-                     *           "private": true
-                     *         },
-                     *         {
-                     *           "id": 0,
-                     *           "tome": 1,
-                     *           "chapter": 2,
-                     *           "title": null,
-                     *           "createdAt": "2025-05-14T10:04:28.297Z",
-                     *           "private": true
-                     *         },
-                     *         {
-                     *           "id": 0,
-                     *           "tome": 1,
-                     *           "chapter": 2,
-                     *           "title": null,
-                     *           "createdAt": "2025-05-14T10:04:28.297Z",
-                     *           "private": true
-                     *         }
-                     *       ],
-                     *       "prevPage": null,
-                     *       "nextPage": null
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["EditedChapterListPagination"];
                 };
             };
         };
@@ -2303,23 +2092,12 @@ export interface operations {
             };
         };
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "id": 0,
-                     *       "title": {
-                     *         "ru": "Ru title",
-                     *         "en": "En Title"
-                     *       },
-                     *       "tome": 1,
-                     *       "chpater": 2,
-                     *       "private": false,
-                     *       "mangaId": 0
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["EditedChpaterDto"];
                 };
             };
         };
@@ -2338,30 +2116,12 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "pageCount": 3,
-                     *       "pages": [
-                     *         {
-                     *           "src": "pass/pass/pass.jpg",
-                     *           "type": "image"
-                     *         },
-                     *         {
-                     *           "src": "pass/pass/pass.jpg",
-                     *           "type": "image"
-                     *         },
-                     *         {
-                     *           "src": "pass/pass/pass.jpg",
-                     *           "type": "rive"
-                     *         }
-                     *       ],
-                     *       "containerMaxWidth": 700
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["ChapterPagesDto"];
                 };
             };
         };
@@ -2384,32 +2144,12 @@ export interface operations {
             };
         };
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "mockChapterPages": {
-                     *         "pageCount": 3,
-                     *         "pages": [
-                     *           {
-                     *             "src": "pass/pass/pass.jpg",
-                     *             "type": "image"
-                     *           },
-                     *           {
-                     *             "src": "pass/pass/pass.jpg",
-                     *             "type": "image"
-                     *           },
-                     *           {
-                     *             "src": "pass/pass/pass.jpg",
-                     *             "type": "rive"
-                     *           }
-                     *         ],
-                     *         "containerMaxWidth": 700
-                     *       }
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["ChapterPagesDto"];
                 };
             };
         };
@@ -2437,32 +2177,12 @@ export interface operations {
         };
         responses: {
             /** @description Возвращает данные в ответе только если returnValue=true */
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "mockChapterPages": {
-                     *         "pageCount": 3,
-                     *         "pages": [
-                     *           {
-                     *             "src": "pass/pass/pass.jpg",
-                     *             "type": "image"
-                     *           },
-                     *           {
-                     *             "src": "pass/pass/pass.jpg",
-                     *             "type": "image"
-                     *           },
-                     *           {
-                     *             "src": "pass/pass/pass.jpg",
-                     *             "type": "rive"
-                     *           }
-                     *         ],
-                     *         "containerMaxWidth": 700
-                     *       }
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["ChapterPagesDto"];
                 };
             };
         };
@@ -2485,7 +2205,7 @@ export interface operations {
             };
         };
         responses: {
-            200: {
+            204: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -2509,32 +2229,12 @@ export interface operations {
             };
         };
         responses: {
-            default: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "mockChapterPages": {
-                     *         "pageCount": 3,
-                     *         "pages": [
-                     *           {
-                     *             "src": "pass/pass/pass.jpg",
-                     *             "type": "image"
-                     *           },
-                     *           {
-                     *             "src": "pass/pass/pass.jpg",
-                     *             "type": "image"
-                     *           },
-                     *           {
-                     *             "src": "pass/pass/pass.jpg",
-                     *             "type": "rive"
-                     *           }
-                     *         ],
-                     *         "containerMaxWidth": 700
-                     *       }
-                     *     } */
-                    "application/json": unknown;
+                    "application/json": components["schemas"]["ChapterPagesDto"];
                 };
             };
         };
@@ -2555,7 +2255,7 @@ export interface operations {
             };
         };
         responses: {
-            200: {
+            204: {
                 headers: {
                     [name: string]: unknown;
                 };

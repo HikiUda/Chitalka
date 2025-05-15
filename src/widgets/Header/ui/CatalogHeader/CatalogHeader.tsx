@@ -1,5 +1,5 @@
 import { FC, useCallback } from 'react';
-import { HStack } from '@/shared/ui/Stack';
+import { HStack } from '@/shared/deprecate-ui/Stack';
 import { useQueryClient } from '@tanstack/react-query';
 import { LogoMangaSite } from '@/entities/Logo';
 import { CatalogFiltersModal, SortByOrderMenu } from '@/features/CatalogFilters';

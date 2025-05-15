@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { getFlex, VStack } from '@/shared/ui/Stack';
-import { Heading } from '@/shared/ui/Heading';
-import { getStyleLineClamp } from '@/shared/ui/StyleHooks';
+import { getFlex, VStack } from '@/shared/deprecate-ui/Stack';
+import { Heading } from '@/shared/deprecate-ui/Heading';
+import { getStyleLineClamp } from '@/shared/deprecate-ui/StyleHooks';
 import { isMobile } from 'react-device-detect';
 import cls from './MangaTitle.module.scss';
 import { Rate } from './Rate';

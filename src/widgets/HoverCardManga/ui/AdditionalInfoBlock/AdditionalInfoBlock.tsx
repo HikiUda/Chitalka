@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
-import { Heading } from '@/shared/ui/Heading';
-import { VStack } from '@/shared/ui/Stack';
+import { Heading } from '@/shared/deprecate-ui/Heading';
+import { VStack } from '@/shared/deprecate-ui/Stack';
 
 interface AdditionalInfoBlockProps {
     className?: string;

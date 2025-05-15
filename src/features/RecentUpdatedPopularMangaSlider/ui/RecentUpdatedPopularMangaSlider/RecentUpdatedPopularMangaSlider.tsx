@@ -2,7 +2,7 @@ import { FC, useMemo } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import cls from './RecentUpdatedPopularMangaSlider.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { CardBlock } from '@/shared/ui/CardBlock';
+import { CardBlock } from '@/shared/deprecate-ui/CardBlock';
 import { Slider } from '@/entities/Slider';
 import { LastChapterMangaCard, MangaCardSkeleton } from '@/entities/MangaCard';
 import { LastUpdatedMangaApi } from '@/shared/api/deprecated/mangaList';

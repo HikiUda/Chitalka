@@ -1,8 +1,8 @@
 import { memo, ReactNode } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
 
-import { HStack, VStack } from '@/shared/ui/Stack';
-import { Avatar } from '@/shared/ui/Avatar';
+import { HStack, VStack } from '@/shared/deprecate-ui/Stack';
+import { Avatar } from '@/shared/deprecate-ui/Avatar';
 import cls from './Comment.module.scss';
 
 interface CommentProps {

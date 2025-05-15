@@ -2,11 +2,11 @@ import { FC } from 'react';
 import { BrowserView, isMobile, MobileView } from 'react-device-detect';
 import { QuickSearchModalContent } from '../QuickSearchModalContent';
 import cls from './QuickSearchModal.module.scss';
-import { Modal } from '@/shared/ui/Modal';
-import { Drawer } from '@/shared/ui/Drawer';
-import { Button } from '@/shared/ui/Button';
-import SearchSvg from '@/shared/assets/icon/common/search.svg';
-import { Icon } from '@/shared/ui/Icon/Icon';
+import { Modal } from '@/shared/deprecate-ui/Modal';
+import { Drawer } from '@/shared/deprecate-ui/Drawer';
+import { Button } from '@/shared/deprecate-ui/Button';
+import SearchSvg from '@/shared/assets/icon/common/search.svg?react';
+import { Icon } from '@/shared/deprecate-ui/Icon/Icon';
 import { classNames } from '@/shared/lib/helpers/classNames';
 
 interface QuickSearchModalProps {

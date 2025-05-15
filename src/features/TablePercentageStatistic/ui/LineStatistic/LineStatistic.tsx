@@ -1,6 +1,6 @@
 import { memo, ReactNode } from 'react';
 import cls from './LineStatistic.module.scss';
-import { ProgressBar } from '@/shared/ui/ProgressBar';
+import { ProgressBar } from '@/shared/deprecate-ui/ProgressBar';
 import { classNames } from '@/shared/lib/helpers/classNames';
 
 interface LineStatisticProps {

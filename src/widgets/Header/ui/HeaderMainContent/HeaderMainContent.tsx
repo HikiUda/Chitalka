@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import cls from './HeaderMainContent.module.scss';
-import { HStack } from '@/shared/ui/Stack';
-import { Icon } from '@/shared/ui/Icon';
-import QuestionSvg from '@/shared/assets/icon/common/question.svg';
+import { HStack } from '@/shared/deprecate-ui/Stack';
+import { Icon } from '@/shared/deprecate-ui/Icon';
+import QuestionSvg from '@/shared/assets/icon/common/question.svg?react';
 import { UserDataApi } from '@/shared/api/deprecated/user';
 import { HeaderLayout } from '@/shared/layout/HeaderLayout';
 import { classNames } from '@/shared/lib/helpers/classNames';

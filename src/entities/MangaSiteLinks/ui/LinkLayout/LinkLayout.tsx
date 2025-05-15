@@ -1,8 +1,8 @@
 import { FC, SVGProps } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { AppLink } from '@/shared/ui/AppLink';
-import { Icon } from '@/shared/ui/Icon';
-import { getFlex } from '@/shared/ui/Stack';
+import { AppLink } from '@/shared/deprecate-ui/AppLink';
+import { Icon } from '@/shared/deprecate-ui/Icon';
+import { getFlex } from '@/shared/deprecate-ui/Stack';
 
 export interface LinkLayoutCommonProps {
     iconOnly?: boolean;

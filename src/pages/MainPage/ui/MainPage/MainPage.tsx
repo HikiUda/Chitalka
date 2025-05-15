@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { classNames } from '@/shared/lib/helpers/classNames';
-import { Page } from '@/shared/layout/Page';
 import { OtherInfoOnMain } from '../OtherInfoOnMain/OtherInfoOnMain';
 import cls from './MainPage.module.scss';
+import { classNames } from '@/shared/lib/helpers/classNames';
+import { Page } from '@/shared/layout/Page';
 import { RecentUpdatedPopularMangaSlider } from '@/features/RecentUpdatedPopularMangaSlider';
 import { ContinueReadMangaSlider } from '@/features/ContinueReadMangaSlider';
 import { NowReadMangaBlock } from '@/features/NowReadMangaBlock';

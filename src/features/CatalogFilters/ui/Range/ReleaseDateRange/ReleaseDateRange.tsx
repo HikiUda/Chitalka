@@ -2,8 +2,8 @@ import { FC } from 'react';
 import { useCatalogFiltersStore } from '../../../model/store/catalogFiltersStore';
 import { RangeWrapper } from '../RangeWrapper/RangeWrapper';
 import cls from './ReleaseDateRange.module.scss';
-import { HStack } from '@/shared/ui/Stack';
-import { DatePicker, DateValue } from '@/shared/ui/DatePicker';
+import { HStack } from '@/shared/deprecate-ui/Stack';
+import { DatePicker, DateValue } from '@/shared/deprecate-ui/DatePicker';
 import { useUrlSearchParams } from '@/shared/lib/hooks/useUrlSearchParams';
 
 interface ReleaseDateRangeProps {

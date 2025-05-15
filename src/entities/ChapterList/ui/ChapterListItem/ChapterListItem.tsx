@@ -3,7 +3,7 @@ import { getUrlChapterId } from '../../model/helpers/getUrlCahpterId';
 import cls from './ChapterListItem.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { toShortDate } from '@/shared/lib/helpers/dateFormat';
-import { AppLink } from '@/shared/ui/AppLink';
+import { AppLink } from '@/shared/deprecate-ui/AppLink';
 import { MangaIdType } from '@/shared/kernel/manga';
 import { getRoute } from '@/shared/kernel/router';
 

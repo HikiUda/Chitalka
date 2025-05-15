@@ -9,7 +9,7 @@ import {
 import { getFlex } from '../../Stack';
 import { Icon } from '../../Icon';
 import cls from './NumberField.module.scss';
-import SvgArrow from '@/shared/assets/icon/common/selectArrow.svg';
+import SvgArrow from '@/shared/assets/icon/common/selectArrow.svg?react';
 import { classNames } from '@/shared/lib/helpers/classNames';
 
 type InputBorder = 'none' | 'primaryBorder' | 'secondaryBorder';

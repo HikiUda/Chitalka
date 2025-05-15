@@ -1,10 +1,10 @@
 import { memo } from 'react';
 import { SelectValue } from 'react-aria-components';
-import SelectArrowIcon from '@/shared/assets/icon/common/selectArrow.svg';
 import { Icon } from '../../../Icon';
 import { getFlex } from '../../../Stack';
 import { Button } from '../../../Button';
 import cls from './BigFill.module.scss';
+import SelectArrowIcon from '@/shared/assets/icon/common/selectArrow.svg?react';
 import { classNames } from '@/shared/lib/helpers/classNames';
 
 interface BigFillProps {

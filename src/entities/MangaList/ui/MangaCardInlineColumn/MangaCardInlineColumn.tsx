@@ -1,5 +1,5 @@
 import { ReactNode, useMemo } from 'react';
-import { VStack } from '@/shared/ui/Stack';
+import { VStack } from '@/shared/deprecate-ui/Stack';
 import { MangaCardInlineSkeleton } from '@/entities/MangaCard';
 
 interface MangaCardInlineColumnProps<T> {

@@ -1,11 +1,11 @@
-import { AppAdaptiveImage } from '@/shared/ui/AppAdaptiveImage';
-import ImageSvg from '@/shared/assets/icon/common/image.svg';
-import { Icon } from '@/shared/ui/Icon';
-import { Button } from '@/shared/ui/Button';
-import { Modal } from '@/shared/ui/Modal';
 import Skeleton from 'react-loading-skeleton';
 import { CoverModalContent } from '../CoverModalContent';
 import cls from './Cover.module.scss';
+import { AppAdaptiveImage } from '@/shared/deprecate-ui/AppAdaptiveImage';
+import ImageSvg from '@/shared/assets/icon/common/image.svg?react';
+import { Icon } from '@/shared/deprecate-ui/Icon';
+import { Button } from '@/shared/deprecate-ui/Button';
+import { Modal } from '@/shared/deprecate-ui/Modal';
 
 interface CoverProps {
     className?: string;

@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { Button } from '@/shared/ui/Button';
-import { getFlex } from '@/shared/ui/Stack';
+import { Button } from '@/shared/deprecate-ui/Button';
+import { getFlex } from '@/shared/deprecate-ui/Stack';
 import cls from './StartOrContinueReadButton.module.scss';
 
 interface StartOrContinueReadButtonProps {
