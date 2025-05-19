@@ -7,11 +7,11 @@ export const baseFetchClient = createFetchClient<paths>({
     baseUrl: __API_URL__,
 });
 
-export const fetchClient = createFetchClient<paths>({
+export const authFetchClient = createFetchClient<paths>({
     baseUrl: __API_URL__,
 });
 
-export const rqClient = createClient(fetchClient);
+export const authRqClient = createClient(authFetchClient);
 
 export const publicFetchClient = createFetchClient<paths>({
     baseUrl: __API_URL__,
@@ -19,12 +19,13 @@ export const publicFetchClient = createFetchClient<paths>({
 
 export const publicRqClient = createClient(publicFetchClient);
 
-fetchClient.use({
+authFetchClient.use({
     async onRequest({ request }) {
         const token = await useSession.getState().refreshToken();
-
         if (token) {
             request.headers.set('Authorization', `Bearer ${token}`);
+            console.log('ff');
+            return request;
         } else {
             return new Response(
                 JSON.stringify({

@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import { OtherInfoOnMain } from '../OtherInfoOnMain/OtherInfoOnMain';
+import { LastUpdatedPopularMangaSlider } from '../LastUpdatedPopularMangaSlider/LastUpdatedPopularMangaSlider';
+import { ContinueReadMangaSlider } from '../ContinueReadMangaSlider/ContinueReadMangaSlider';
 import cls from './MainPage.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { Page } from '@/shared/layout/Page';
-import { RecentUpdatedPopularMangaSlider } from '@/features/RecentUpdatedPopularMangaSlider';
-import { ContinueReadMangaSlider } from '@/features/ContinueReadMangaSlider';
 import { NowReadMangaBlock } from '@/features/NowReadMangaBlock';
 
 interface MainPageProps {
@@ -16,8 +16,9 @@ const MainPage: FC<MainPageProps> = (props) => {
 
     return (
         <Page className={classNames(cls.MainPage, {}, [className])}>
-            <RecentUpdatedPopularMangaSlider className={cls.blockMargin} />
-            <ContinueReadMangaSlider className={cls.blockMargin} />
+            <LastUpdatedPopularMangaSlider className="mb-4" />
+            <ContinueReadMangaSlider className="mb-4" />
+            {/* <ContinueReadMangaSlider className={cls.blockMargin} /> */}
             <NowReadMangaBlock className={cls.blockMargin} />
             <OtherInfoOnMain />
         </Page>

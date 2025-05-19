@@ -1,6 +1,6 @@
 import { memo, ReactNode } from 'react';
-import { classNames } from '@/shared/lib/helpers/classNames';
 import cls from './Heading.module.scss';
+import { classNames } from '@/shared/lib/helpers/classNames';
 
 type HeadingTagType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
 type HeaderColor = 'plain' | 'primary' | 'secondary';

@@ -14,7 +14,7 @@
         "components": "@/shared/ui",
         "utils": "@/shared/lib/css",
         "ui": "@/shared/ui/kit",
-        "lib": "@shared/lib",
+        "lib": "@/shared/lib",
         "hooks": "@/shared/lib/hooks"
     },
     "iconLibrary": "lucide"

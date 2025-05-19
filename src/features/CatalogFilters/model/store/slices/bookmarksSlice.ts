@@ -1,6 +1,6 @@
 import { StateCreator } from 'zustand';
-import { BookmarksType } from '@/shared/kernel/manga';
 import { CatalogFiltersStoreType } from '../catalogFiltersStroe.type';
+import { BookmarksType } from '@/shared/kernel/manga';
 
 export interface BookmarksSlice {
     bookmarks: BookmarksType[];

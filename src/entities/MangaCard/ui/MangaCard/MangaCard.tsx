@@ -1,12 +1,12 @@
 import { memo, ReactNode } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
 
-import Skeleton from 'react-loading-skeleton';
-import { AppLink } from '@/shared/deprecate-ui/AppLink';
-import { AppAdaptiveImage } from '@/shared/deprecate-ui/AppAdaptiveImage';
 import { Heading } from '@/shared/deprecate-ui/Heading';
 import { getStyleLineClamp } from '@/shared/deprecate-ui/StyleHooks';
 import cls from './MangaCard.module.scss';
+import { AppLink } from '@/shared/deprecate-ui/AppLink';
+import Skeleton from 'react-loading-skeleton';
+import { AppAdaptiveImage } from '@/shared/deprecate-ui/AppAdaptiveImage';
 
 export type MangaCardAdaptive = 'dynamic' | 'media';
 

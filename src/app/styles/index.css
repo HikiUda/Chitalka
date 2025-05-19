@@ -3,6 +3,7 @@
 /* stylelint-disable lightness-notation */
 /* stylelint-disable scss/at-rule-no-unknown */
 /* stylelint-disable at-rule-empty-line-before */
+
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
@@ -123,6 +124,7 @@
         @apply border-border outline-ring/50;
     }
     body {
+        font-family: Nunito, sans-serif;
         @apply bg-background text-foreground;
     }
 }
