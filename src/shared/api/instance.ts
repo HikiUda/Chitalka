@@ -3,6 +3,8 @@ import createClient from 'openapi-react-query';
 import { components, paths } from './bekiApi';
 import { useSession } from './session';
 
+export type ApiSchemas = components['schemas'];
+
 export const baseFetchClient = createFetchClient<paths>({
     baseUrl: __API_URL__,
 });
@@ -24,7 +26,6 @@ authFetchClient.use({
         const token = await useSession.getState().refreshToken();
         if (token) {
             request.headers.set('Authorization', `Bearer ${token}`);
-            console.log('ff');
             return request;
         } else {
             return new Response(

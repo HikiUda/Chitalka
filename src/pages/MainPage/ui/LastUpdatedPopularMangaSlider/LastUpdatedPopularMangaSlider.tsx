@@ -26,7 +26,7 @@ export const LastUpdatedPopularMangaSlider: FC<LastUpdatedPopularMangaSliderProp
                 opts={{
                     dragFree: true,
                 }}
-                className="w-[95vw] max-w-299 relative group"
+                className="w-[98vw] max-w-299 relative group"
             >
                 <CarouselContent className="pl-2.5">
                     {data.map(({ urlId, title, type, chapter, cover }, index) => (
