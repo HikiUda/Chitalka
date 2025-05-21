@@ -34,13 +34,13 @@ export const useSession = create<SessionStore>()(
                 session,
 
                 login: (token) => {
-                    localStorage.setItem(TOKEN_KEY, token);
+                    sessionStorage.setItem(TOKEN_KEY, token);
                     const session = jwtDecode<Session>(token);
                     set({ token, session });
                 },
 
                 logout: () => {
-                    localStorage.removeItem(TOKEN_KEY);
+                    sessionStorage.removeItem(TOKEN_KEY);
                     set({ token: null, session: null });
                 },
 

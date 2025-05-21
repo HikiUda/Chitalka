@@ -9,6 +9,7 @@ interface MagnaListLayoutProps<T extends object> {
     isLoading?: boolean;
     skeletonsCount?: number;
     skeletonClassName?: string;
+    heading?: ReactNode;
     action?: ReactNode;
 }
 
@@ -20,6 +21,7 @@ export const MangaListLayout = <T extends object>(props: MagnaListLayoutProps<T>
         isLoading,
         skeletonsCount = 3,
         skeletonClassName,
+        heading,
         action,
     } = props;
 
@@ -31,6 +33,7 @@ export const MangaListLayout = <T extends object>(props: MagnaListLayoutProps<T>
 
     return (
         <div className={cn('flex flex-col w-full', className)}>
+            {heading}
             {list.map(renderItem)}
             {isLoading && skeletons.map((sk) => sk)}
             {action}

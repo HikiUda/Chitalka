@@ -22,6 +22,7 @@ const headingVariants = cva('font-[Montserrat,sans-serif]', {
             true: 'italic',
         },
         color: {
+            plain: 'text-foreground',
             primary: 'text-primary',
             secondary: 'text-secondary',
         },
@@ -30,7 +31,7 @@ const headingVariants = cva('font-[Montserrat,sans-serif]', {
         variant: 'h4',
         weigth: 'normal',
         italic: false,
-        color: 'primary',
+        color: 'plain',
     },
 });
 
