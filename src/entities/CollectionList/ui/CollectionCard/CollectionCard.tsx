@@ -16,7 +16,7 @@ export const CollectionCard = (props: CollectionCardProps) => {
         <Link
             to={'/'}
             className={cn(
-                'grid grid-rows-2 justify-center min-w-[250px] min-h-[210px] px-[10px] pt-[10px] rounded-lg bg-card',
+                'grid grid-rows-2 justify-center min-w-[250px] min-h-[210px] px-[10px] pt-[10px] rounded-xl border shadow-sm bg-card',
                 className,
             )}
         >

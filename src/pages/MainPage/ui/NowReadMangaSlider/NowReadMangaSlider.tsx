@@ -17,7 +17,7 @@ export const NowReadMangaSlider: FC<NowReadMangaSliderProps> = (props) => {
 
     return (
         <Card className={className}>
-            <Heading variant="h2" className="ml-3">
+            <Heading variant="h2" color="primary" className="ml-3">
                 Сейчас читают
             </Heading>
             <Carousel opts={{ active: isMobile }} className="w-[98vw] max-w-299 relative">
@@ -29,7 +29,7 @@ export const NowReadMangaSlider: FC<NowReadMangaSliderProps> = (props) => {
                         >
                             <MangaListLayout
                                 heading={
-                                    <Heading variant="h3" className="ml-2 mb-3">
+                                    <Heading variant="h3" color="primary" className="ml-2 mb-3">
                                         {magnaList.heading}
                                     </Heading>
                                 }

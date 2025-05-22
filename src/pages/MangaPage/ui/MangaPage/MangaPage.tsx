@@ -12,8 +12,8 @@ import { Loader } from '@/shared/deprecate-ui/Loader';
 import { Page } from '@/shared/layout/Page';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Banner } from '@/entities/Banner';
-import { Cover } from '@/features/Cover';
 import { MangaApi } from '@/shared/api/deprecated/individualManga';
+import { Cover } from '@/features/individualManga';
 
 interface MangaPageProps {
     className?: string;

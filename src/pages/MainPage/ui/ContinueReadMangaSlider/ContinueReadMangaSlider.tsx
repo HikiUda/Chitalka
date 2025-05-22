@@ -33,7 +33,9 @@ export const ContinueReadMangaSlider: FC<ContinueReadMangaSliderProps> = (props)
     return (
         <Card className={cn(className, 'py-0 gap-0')}>
             <div className="flex justify-between align-middle mt-4 mx-3">
-                <Heading variant="h2">Продолжить читать</Heading>
+                <Heading variant="h2" color="primary">
+                    Продолжить читать
+                </Heading>
                 <Button
                     onClick={() => deleteContinueReadManga(0)}
                     disabled={getIsPending(0)}

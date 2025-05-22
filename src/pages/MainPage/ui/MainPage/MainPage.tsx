@@ -6,9 +6,9 @@ import { LastUpdatedMangaTabs } from '../LastUpdatedMangaTabs/LastUpdatedMangaTa
 import cls from './MainPage.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { Page } from '@/shared/layout/Page';
-import { UserActivityCardList } from '@/features/UserActivityCardList';
 import { CollectionGridLayout, CollectionCard } from '@/entities/CollectionList';
 import { Heading } from '@/shared/ui/kit/heading';
+import { UserCard, UserGridLayout } from '@/entities/UserList';
 
 interface MainPageProps {
     className?: string;
@@ -27,14 +27,22 @@ const MainPage: FC<MainPageProps> = (props) => {
                 <div className="flex flex-col gap-4">
                     <CollectionGridLayout
                         heading={
-                            <Heading variant="h2" className="mb-2">
+                            <Heading variant="h2" color="primary" className="mb-2">
                                 Коллекции других пользователей
                             </Heading>
                         }
                         list={Array(6).fill(0)}
                         renderItem={(item, ind) => <CollectionCard key={ind} />}
                     />
-                    <UserActivityCardList />
+                    <UserGridLayout
+                        heading={
+                            <Heading variant="h2" color="primary" className="mb-2">
+                                Самые активные пользователи
+                            </Heading>
+                        }
+                        list={Array(10).fill(0)}
+                        renderItem={(item, ind) => <UserCard key={ind} />}
+                    />
                 </div>
             </div>
         </Page>

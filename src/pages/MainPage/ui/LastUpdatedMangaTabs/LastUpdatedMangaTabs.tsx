@@ -22,8 +22,8 @@ export const LastUpdatedMangaTabs: FC<LastUpdatedMangaTabsProps> = (props) => {
     const session = useSession((state) => state.session);
 
     return (
-        <div className={cn('px-3 w-full', className)}>
-            <Heading variant="h2" className="mb-2">
+        <div className={cn(' w-full', className)}>
+            <Heading variant="h2" color="primary" className="mb-2">
                 Последнии обновления
             </Heading>
             <Tabs defaultValue={tabs[0].value} className="p-2 bg-card rounded-xl border shadow-sm">

@@ -2,6 +2,7 @@ import * as React from 'react';
 import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
+import { motion } from 'framer-motion';
 import { Button } from './button';
 import { cn } from '@/shared/lib/css';
 
@@ -222,6 +223,88 @@ function CarouselNext({
     );
 }
 
+function useCarouselDots() {
+    const { api } = useCarousel();
+    const [selectedIndex, setSelectedIndex] = React.useState(0);
+    const [scrollSnaps, setScrollSnaps] = React.useState<number[]>([]);
+
+    const onDotClick = React.useCallback(
+        (index: number) => {
+            if (!api) return;
+            api.scrollTo(index);
+        },
+        [api],
+    );
+
+    const onInit = React.useCallback((api: CarouselApi) => {
+        if (!api) return;
+        setScrollSnaps(api.scrollSnapList());
+    }, []);
+
+    const onSelect = React.useCallback((api: CarouselApi) => {
+        if (!api) return;
+        setSelectedIndex(api.selectedScrollSnap());
+    }, []);
+
+    React.useEffect(() => {
+        if (!api) return;
+
+        onInit(api);
+        onSelect(api);
+        api.on('reInit', onInit).on('reInit', onSelect).on('select', onSelect);
+        return () => {
+            api.off('reInit', onInit);
+            api.off('reInit', onSelect);
+            api.off('select', onSelect);
+        };
+    }, [api, onInit, onSelect]);
+
+    return {
+        selectedIndex,
+        scrollSnaps,
+        onDotClick,
+    };
+}
+
+function CarouselDynamicDots({ className, ...props }: React.ComponentProps<'div'>) {
+    const { onDotClick, selectedIndex, scrollSnaps } = useCarouselDots();
+
+    return (
+        <div className={cn('flex items-center gap-1', className)} {...props}>
+            {scrollSnaps.map((_, index) => {
+                const dist = Math.abs(index - selectedIndex);
+                if (dist > 2) return null;
+
+                let scale = 0.9;
+                let opacity = 0.5;
+                let bg = 'bg-muted-foreground';
+
+                if (dist === 0) {
+                    scale = 1.3;
+                    opacity = 1;
+                    bg = 'bg-primary';
+                } else if (dist === 1) {
+                    scale = 1.1;
+                    opacity = 0.75;
+                }
+                //TODO animation like swiper
+                return (
+                    <motion.span
+                        key={index}
+                        role="button"
+                        onClick={() => onDotClick(index)}
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale, opacity }}
+                        exit={{ scale: 0.8, opacity: 0 }}
+                        transition={{ duration: 0.25 }}
+                        className={cn('w-2.5 h-2.5 rounded-full cursor-pointer', bg)}
+                    />
+                );
+            })}
+        </div>
+    );
+}
+
 export {
     type CarouselApi,
     Carousel,
@@ -229,4 +312,5 @@ export {
     CarouselItem,
     CarouselPrevious,
     CarouselNext,
+    CarouselDynamicDots,
 };
