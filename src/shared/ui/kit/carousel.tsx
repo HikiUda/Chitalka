@@ -271,28 +271,20 @@ function CarouselDynamicDots({ className, ...props }: React.ComponentProps<'div'
 
     return (
         <div className={cn('flex items-center gap-1', className)} {...props}>
-            {scrollSnaps.map((_, index) => {
-                const dist = Math.abs(index - selectedIndex);
-                if (dist > 2) return null;
+            {scrollSnaps.map((snap) => {
+                const dist = Math.abs(snap - selectedIndex);
+                if (dist > 1) return null;
 
-                let scale = 0.9;
-                let opacity = 0.5;
-                let bg = 'bg-muted-foreground';
+                const scale = !dist ? 1.4 : 1;
+                const opacity = !dist ? 1 : 0.75;
+                const bg = !dist ? 'bg-primary' : 'bg-muted-foreground';
 
-                if (dist === 0) {
-                    scale = 1.3;
-                    opacity = 1;
-                    bg = 'bg-primary';
-                } else if (dist === 1) {
-                    scale = 1.1;
-                    opacity = 0.75;
-                }
                 //TODO animation like swiper
                 return (
                     <motion.span
-                        key={index}
+                        key={snap}
                         role="button"
-                        onClick={() => onDotClick(index)}
+                        onClick={() => onDotClick(snap)}
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale, opacity }}
                         exit={{ scale: 0.8, opacity: 0 }}

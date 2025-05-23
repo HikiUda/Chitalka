@@ -39,7 +39,6 @@ export const LastUpdatedMangaTabs: FC<LastUpdatedMangaTabsProps> = (props) => {
                 </TabsList>
                 {tabs.map((tab) => {
                     if (tab.authOnly && !session) return null;
-                    console.log(tab);
                     return (
                         <TabsContent key={tab.value} value={tab.value}>
                             <MangaListLayout

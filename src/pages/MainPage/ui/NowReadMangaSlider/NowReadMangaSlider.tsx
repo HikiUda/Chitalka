@@ -5,6 +5,7 @@ import { Heading } from '@/shared/ui/kit/heading';
 import { Carousel, CarouselContent, CarouselItem } from '@/shared/ui/kit/carousel';
 import { Card } from '@/shared/ui/kit/card';
 import { MangaCardInline, MangaListLayout } from '@/entities/ComicList';
+import { getRoute } from '@/shared/kernel/router';
 
 interface NowReadMangaSliderProps {
     className?: string;
@@ -37,6 +38,7 @@ export const NowReadMangaSlider: FC<NowReadMangaSliderProps> = (props) => {
                                 renderItem={(manga) => (
                                     <MangaCardInline
                                         key={manga.id}
+                                        to={getRoute.manga(manga.urlId)}
                                         img={manga.cover}
                                         title={manga.title}
                                         subtitle={manga.type}

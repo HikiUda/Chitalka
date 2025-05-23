@@ -1,10 +1,10 @@
 import { memo } from 'react';
-import { classNames } from '@/shared/lib/helpers/classNames';
-import { getFlex } from '@/shared/deprecate-ui/Stack';
 import { isMobile } from 'react-device-detect';
 import cls from './ButtonBlock.module.scss';
+import { classNames } from '@/shared/lib/helpers/classNames';
+import { getFlex } from '@/shared/deprecate-ui/Stack';
 import { StartOrContinueReadButton } from '@/features/StartOrContinueReadButton';
-import { AddMangaToBookmarks } from '@/features/AddMangaToBookmarks';
+import { AddMangaToBookmarks } from '@/features/individualManga';
 
 interface ButtonBlockProps {
     className?: string;
@@ -22,7 +22,7 @@ export const ButtonBlock = memo((props: ButtonBlockProps) => {
             ])}
         >
             <StartOrContinueReadButton />
-            <AddMangaToBookmarks mangaId={mangaId} />
+            <AddMangaToBookmarks className="w-full" mangaId={mangaId} />
         </div>
     );
 });

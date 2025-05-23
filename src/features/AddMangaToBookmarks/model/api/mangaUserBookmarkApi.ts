@@ -1,6 +1,6 @@
-import { BookmarksType, MangaIdType } from '@/shared/kernel/manga';
 import { queryOptions } from '@tanstack/react-query';
 import { validateMangaUserBookmark } from './validate';
+import { BookmarksType, MangaIdType } from '@/shared/kernel/manga';
 import { $apiMangaById } from '@/shared/api/deprecated/individualManga/base';
 
 class MangaUserBookmark {

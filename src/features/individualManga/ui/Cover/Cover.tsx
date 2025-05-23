@@ -33,7 +33,7 @@ export const Cover: FC<CoverProps> = (props) => {
                 </AppAdaptiveImage>
             </DialogTrigger>
             <DialogPortal>
-                <DialogContent empty>
+                <DialogContent className="max-w-120 w-[96vw] lg:w-auto" empty>
                     <CoversModal mangaId={mangaId} />
                 </DialogContent>
             </DialogPortal>
