@@ -21,7 +21,7 @@ export const NowReadMangaSlider: FC<NowReadMangaSliderProps> = (props) => {
             <Heading variant="h2" color="primary" className="ml-3">
                 Сейчас читают
             </Heading>
-            <Carousel opts={{ active: isMobile }} className="w-[98vw] max-w-299 relative">
+            <Carousel opts={{ active: isMobile }} className="w-full relative">
                 <CarouselContent className="pl-2.5">
                     {nowReadManga.map((magnaList) => (
                         <CarouselItem

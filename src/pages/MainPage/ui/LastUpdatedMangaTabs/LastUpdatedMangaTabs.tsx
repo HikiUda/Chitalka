@@ -19,7 +19,7 @@ export const LastUpdatedMangaTabs: FC<LastUpdatedMangaTabsProps> = (props) => {
     const { className } = props;
 
     const tabs = useLastUpdatedMangaTabs();
-    const session = useSession((state) => state.session);
+    const { isUserAuth } = useSession();
 
     return (
         <div className={cn(' w-full', className)}>
@@ -29,7 +29,7 @@ export const LastUpdatedMangaTabs: FC<LastUpdatedMangaTabsProps> = (props) => {
             <Tabs defaultValue={tabs[0].value} className="p-2 bg-card rounded-xl border shadow-sm">
                 <TabsList>
                     {tabs.map((tab) => {
-                        if (tab.authOnly && !session) return null;
+                        if (tab.authOnly && !isUserAuth) return null;
                         return (
                             <TabsTrigger key={tab.value} value={tab.value}>
                                 {tab.title}
@@ -38,7 +38,7 @@ export const LastUpdatedMangaTabs: FC<LastUpdatedMangaTabsProps> = (props) => {
                     })}
                 </TabsList>
                 {tabs.map((tab) => {
-                    if (tab.authOnly && !session) return null;
+                    if (tab.authOnly && !isUserAuth) return null;
                     return (
                         <TabsContent key={tab.value} value={tab.value}>
                             <MangaListLayout

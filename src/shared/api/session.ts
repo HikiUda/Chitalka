@@ -24,7 +24,7 @@ interface SessionStore {
     refreshToken: () => Promise<string | null>;
 }
 
-export const useSession = create<SessionStore>()(
+export const useSessionStore = create<SessionStore>()(
     devtools(
         (set, get) => {
             const rawToken = sessionStorage.getItem(TOKEN_KEY);
@@ -80,3 +80,12 @@ export const useSession = create<SessionStore>()(
         { name: 'SessionStore' },
     ),
 );
+
+export function useSession() {
+    const session = useSessionStore((state) => state.session);
+    const login = useSessionStore((state) => state.login);
+    const logout = useSessionStore((state) => state.logout);
+    const refreshToken = useSessionStore((state) => state.refreshToken);
+
+    return { session, login, logout, refreshToken, isUserAuth: !!session };
+}

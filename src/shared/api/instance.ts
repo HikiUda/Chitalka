@@ -1,7 +1,7 @@
 import createFetchClient from 'openapi-fetch';
 import createClient from 'openapi-react-query';
 import { components, paths } from './bekiApi';
-import { useSession } from './session';
+import { useSessionStore } from './session';
 
 export type ApiSchemas = components['schemas'];
 
@@ -23,7 +23,7 @@ export const publicRqClient = createClient(publicFetchClient);
 
 authFetchClient.use({
     async onRequest({ request }) {
-        const token = await useSession.getState().refreshToken();
+        const token = await useSessionStore.getState().refreshToken();
         if (token) {
             request.headers.set('Authorization', `Bearer ${token}`);
             return request;
@@ -46,7 +46,7 @@ authFetchClient.use({
 
 publicFetchClient.use({
     async onRequest({ request }) {
-        const token = await useSession.getState().refreshToken();
+        const token = await useSessionStore.getState().refreshToken();
         request.headers.set('Authorization', `Bearer ${token}`);
         return request;
     },

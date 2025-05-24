@@ -45,7 +45,7 @@ export const Rate = memo((props: RateProps) => {
                 <span className={cls.rate}>{rate}</span>
                 <span className={cls.rateNumber}>{toShortcutNumber(countRate || 0)}</span>
             </HStack>
-            <RateModal button={rateBtn} mangaId={mangaId} />
+            <RateModal mangaId={mangaId} />
         </div>
     );
 });

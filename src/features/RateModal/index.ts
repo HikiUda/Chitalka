@@ -1,1 +1,1 @@
-export { RateModal } from './ui/RateModal/RateModal';
+export { RateModal } from './RateModal';

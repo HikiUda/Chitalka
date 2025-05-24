@@ -33,6 +33,8 @@ const buttonVariants = cva(
     },
 );
 
+export const ButtonContext = React.createContext<React.ComponentProps<'button'>>({});
+
 function Button({
     className,
     variant,
@@ -45,11 +47,14 @@ function Button({
     }) {
     const Comp = asChild ? Slot : 'button';
 
+    const context = React.useContext(ButtonContext);
+
     return (
         <Comp
             data-slot="button"
             className={cn(buttonVariants({ variant, size, className }))}
             {...props}
+            {...context}
         />
     );
 }

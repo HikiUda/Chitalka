@@ -18,9 +18,11 @@ export function useSetBookmark(mangaId: MangaIdType) {
 
     const setBookmark = (bookmark: BookmarksType) => {
         startTransition(async () => {
-            //? handle possible error
             setOptimisticBookmark(bookmark);
-            await mutateAsync({ params: { path: { id: String(mangaId) } }, body: { bookmark } });
+            await mutateAsync({
+                params: { path: { id: String(mangaId) } },
+                body: { bookmark },
+            });
         });
     };
 

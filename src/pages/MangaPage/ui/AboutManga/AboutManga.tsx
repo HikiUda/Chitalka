@@ -10,6 +10,8 @@ import { GenresAndTagsList } from '@/entities/GenresAndTagsList';
 import { MangaApi } from '@/shared/api/deprecated/individualManga';
 import { RelatedMangaSlider } from '@/features/RelatedMangaSlider';
 import { MangaBookmarksStatistic, MangaRateStatistic } from '@/features/TablePercentageStatistic';
+import { Heading } from '@/shared/ui/kit/heading';
+import { Button, ButtonContext } from '@/shared/ui/kit/button';
 
 interface AboutMangaProps {
     className?: string;
@@ -31,7 +33,15 @@ const AboutManga: FC<AboutMangaProps> = (props) => {
                 tags={manga.tags}
                 className={cls.genresAndTagsList}
             />
-            <RelatedMangaSlider className={cls.relatedMangaSlider} mangaId={manga.id} />
+            <RelatedMangaSlider
+                className="mb-4 w-[68vw]"
+                mangaId={manga.id}
+                heading={
+                    <Heading className="ml-3 mb-2" variant="h3" color="primary">
+                        Связаное
+                    </Heading>
+                }
+            />
             <div
                 className={classNames(cls.statistic, {}, [
                     getFlex(isMobile ? { direction: 'column' } : { align: 'start' }),

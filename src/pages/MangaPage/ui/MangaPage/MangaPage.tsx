@@ -13,7 +13,7 @@ import { Page } from '@/shared/layout/Page';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Banner } from '@/entities/Banner';
 import { MangaApi } from '@/shared/api/deprecated/individualManga';
-import { Cover } from '@/features/individualManga';
+import { Cover } from '@/features/Cover';
 
 interface MangaPageProps {
     className?: string;

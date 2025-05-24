@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { useGetContinueReadManga } from './useGetContinueReadManga';
+import { useGetContinueReadManga } from '../model/useGetContinueReadManga';
+import { useDeleteContinueReadManga } from '../model/useDeleteContinueReadManga';
 import { ContinueReadMangaCard } from './ContinueReadMangaCard';
-import { useDeleteContinueReadManga } from './useDeleteContinueReadManga';
 import { MangaCardInlineSkeleton } from '@/entities/ComicList';
 import { Card } from '@/shared/ui/kit/card';
 import {
@@ -25,9 +25,9 @@ export const ContinueReadMangaSlider: FC<ContinueReadMangaSliderProps> = (props)
 
     const { data = [], isLoading } = useGetContinueReadManga();
     const { deleteContinueReadManga, getIsPending } = useDeleteContinueReadManga();
-    const session = useSession((state) => state.session);
+    const { isUserAuth } = useSession();
 
-    if (!session) return null;
+    if (!isUserAuth) return null;
     if (!isLoading && !data.length) return null;
 
     return (
@@ -48,7 +48,7 @@ export const ContinueReadMangaSlider: FC<ContinueReadMangaSliderProps> = (props)
                 opts={{
                     dragFree: true,
                 }}
-                className="w-[98vw] max-w-299 relative group/carousel"
+                className="w-full relative group/carousel"
             >
                 <CarouselContent className="pl-4 py-5">
                     {data.map((manga, index) => (

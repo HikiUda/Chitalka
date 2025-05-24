@@ -1,1 +1,1 @@
-export { RelatedMangaSlider } from './ui/RelatedMangaSlider/RelatedMangaSlider';
+export { RelatedMangaSlider } from './RelatedMangaSlider';

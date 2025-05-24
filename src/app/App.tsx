@@ -16,7 +16,7 @@ interface AppProps {
 const AppInit = () => {
     const user = useQuery(UserDataApi.getUserDataQueryOptions());
     const [init, setInit] = useState(false);
-    const refreshToken = useSession((s) => s.refreshToken);
+    const { refreshToken } = useSession();
 
     useLayoutEffect(() => {
         refreshToken().finally(() => setInit(true));

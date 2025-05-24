@@ -2,6 +2,7 @@ import { FC, ReactNode } from 'react';
 import cls from './MainLayout.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames/classNames';
 import { Toast } from '@/shared/deprecate-ui/Toast';
+import { Toaster } from '@/shared/ui/kit/sonner';
 
 interface MainLayoutProps {
     className?: string;
@@ -21,6 +22,7 @@ export const MainLayout: FC<MainLayoutProps> = (props) => {
             {footer}
             {bottomMenu}
             <Toast />
+            <Toaster />
         </div>
     );
 };

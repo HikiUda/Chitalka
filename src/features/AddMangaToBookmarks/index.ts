@@ -1,1 +1,1 @@
-export { AddMangaToBookmarks } from './ui/AddMangaToBookmarks/AddMangaToBookmarks';
+export { AddMangaToBookmarks } from './AddMangaToBookmarks';

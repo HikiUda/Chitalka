@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { LastUpdatedPopularMangaSlider } from '../LastUpdatedPopularMangaSlider/LastUpdatedPopularMangaSlider';
-import { ContinueReadMangaSlider } from '../ContinueReadMangaSlider/ContinueReadMangaSlider';
 import { NowReadMangaSlider } from '../NowReadMangaSlider/NowReadMangaSlider';
 import { LastUpdatedMangaTabs } from '../LastUpdatedMangaTabs/LastUpdatedMangaTabs';
 import cls from './MainPage.module.scss';
@@ -9,6 +8,7 @@ import { Page } from '@/shared/layout/Page';
 import { CollectionGridLayout, CollectionCard } from '@/entities/CollectionList';
 import { Heading } from '@/shared/ui/kit/heading';
 import { UserCard, UserGridLayout } from '@/entities/UserList';
+import { ContinueReadMangaSlider } from '@/features/ContinueReadManga';
 
 interface MainPageProps {
     className?: string;
@@ -19,9 +19,9 @@ const MainPage: FC<MainPageProps> = (props) => {
 
     return (
         <Page className={classNames(cls.MainPage, {}, [className])}>
-            <LastUpdatedPopularMangaSlider className="mb-4" />
-            <ContinueReadMangaSlider className="mb-4" />
-            <NowReadMangaSlider className="mb-4" />
+            <LastUpdatedPopularMangaSlider className="mb-4 w-[99vw] max-w-299" />
+            <ContinueReadMangaSlider className="mb-4 w-[99vw] max-w-299" />
+            <NowReadMangaSlider className="mb-4 w-[99vw] max-w-299" />
             <div className="xl:grid xl:grid-cols-2 xl:items-start gap-5 flex flex-col-reverse items-center">
                 <LastUpdatedMangaTabs />
                 <div className="flex flex-col gap-4">

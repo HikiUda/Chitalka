@@ -3,8 +3,8 @@ import { isMobile } from 'react-device-detect';
 import cls from './ButtonBlock.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { getFlex } from '@/shared/deprecate-ui/Stack';
-import { StartOrContinueReadButton } from '@/features/StartOrContinueReadButton';
-import { AddMangaToBookmarks } from '@/features/individualManga';
+import { ContinueReadMangaButton } from '@/features/ContinueReadManga';
+import { AddMangaToBookmarks } from '@/features/AddMangaToBookmarks';
 
 interface ButtonBlockProps {
     className?: string;
@@ -21,7 +21,7 @@ export const ButtonBlock = memo((props: ButtonBlockProps) => {
                 getFlex({ direction: 'column', max: true }),
             ])}
         >
-            <StartOrContinueReadButton />
+            <ContinueReadMangaButton className="w-full" />
             <AddMangaToBookmarks className="w-full" mangaId={mangaId} />
         </div>
     );
