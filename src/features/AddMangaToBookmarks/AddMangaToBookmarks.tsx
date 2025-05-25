@@ -33,6 +33,7 @@ export const AddMangaToBookmarks: FC<AddMangaToBookmarksProps> = (props) => {
             <DropdownMenuTrigger asChild>
                 <Button
                     disabled={isUserAuth && isLoading}
+                    variant="secondary"
                     className={cn('flex justify-between items-center', className)}
                 >
                     {getOptimisticBookmark(data?.bookmark, isDeletePending) ||

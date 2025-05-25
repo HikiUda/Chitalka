@@ -48,13 +48,13 @@ export const RelatedMangaSlider: FC<RelatedMangaSliderProps> = (props) => {
                                 img={cover}
                             >
                                 <div className="flex gap-1 items-center">
-                                    <Badge variant="secondary">
+                                    <Badge variant="muted">
                                         <EyeIcon /> {toShortcutNumber(views)}
                                     </Badge>
-                                    <Badge variant="secondary">
+                                    <Badge variant="muted">
                                         <HeartIcon /> {toShortcutNumber(likes)}
                                     </Badge>
-                                    <Badge variant="secondary">
+                                    <Badge variant="muted">
                                         <BookmarkIcon /> {toShortcutNumber(bookmarks)}
                                     </Badge>
                                 </div>

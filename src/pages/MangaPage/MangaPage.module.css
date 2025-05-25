@@ -1,0 +1,35 @@
+.gridTemplete {
+    grid-template:
+        'bg bg '
+        'cover title'
+        'cover content '
+        'buttons content '
+        'sidebar content';
+    grid-template-rows: repeat(4, auto) 1fr;
+    grid-template-columns: 260px 1fr;
+}
+
+.banner {
+    grid-area: bg;
+    grid-row: 1 / 3;
+}
+
+.cover {
+    grid-area: cover;
+}
+
+.title {
+    grid-area: title;
+}
+
+.content {
+    grid-area: content;
+}
+
+.buttons {
+    grid-area: buttons;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}

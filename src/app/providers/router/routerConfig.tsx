@@ -16,7 +16,7 @@ export const routerConfig: Record<RoutesConstType, AppRouteProps> = {
         element: <MainPage />,
     },
     [RoutesConst.MANGA]: {
-        path: getRoute.manga(':id'),
+        path: getRoute.manga(':mangaId'),
         element: <MangaPage />,
     },
     [RoutesConst.READ_CHAPTER]: {

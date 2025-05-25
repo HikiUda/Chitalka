@@ -21,7 +21,8 @@ interface MangaPageProps {
 
 const MangaPage: FC<MangaPageProps> = (props) => {
     const { className } = props;
-    const { id: mangaId } = useParams();
+    const { mangaId } = useParams();
+
     const {
         data: manga,
         isLoading,
@@ -47,6 +48,7 @@ const MangaPage: FC<MangaPageProps> = (props) => {
                 {!isMobile && manga.banner && (
                     <Banner banner={manga?.banner} className={cls.banner} />
                 )}
+
                 {isMobile && (
                     <Banner className={cls.mobileBanner} banner={manga.banner || manga.cover} />
                 )}

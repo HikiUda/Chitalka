@@ -1,14 +1,14 @@
 import { FC, ReactNode } from 'react';
-import { isMobile } from 'react-device-detect';
 import { toast } from 'sonner';
 import { StarIcon } from 'lucide-react';
 import { useGetRate } from './useGetRate';
 import { useSetRate } from './useSetRate';
+import RateModalContent from './RateModalContent';
 import { useSession } from '@/shared/api/session';
 import { MangaIdType } from '@/shared/kernel/manga';
 import { cn } from '@/shared/lib/css';
 import { Button, ButtonContext } from '@/shared/ui/kit/button';
-import { Dialog, DialogContent, DialogTrigger } from '@/shared/ui/kit/dialog';
+import { Dialog, DialogTrigger } from '@/shared/ui/kit/dialog';
 
 interface RateModalProps {
     className?: string;
@@ -46,21 +46,16 @@ export const RateModal: FC<RateModalProps> = (props) => {
                     disabled={isUserAuth && isLoading}
                     className={cn(`${currentRate && 'text-md'} h-auto py-1 items-start`, className)}
                 >
-                    {!currentRate ? (
-                        <>
-                            <StarIcon className="stroke-primary-foreground" /> Оценить
-                        </>
-                    ) : (
-                        <>
-                            {currentRate}
-                            <StarIcon className="stroke-primary-foreground fill-primary-foreground" />
-                        </>
-                    )}
+                    {!!currentRate && currentRate}
+                    <StarIcon
+                        className={cn('stroke-primary-foreground', {
+                            ' fill-primary-foreground': currentRate,
+                        })}
+                    />
+                    {!currentRate && 'Оценить'}
                 </Button>
             </RateButtonWrapper>
-            <DialogContent className="max-w-130" verticalPosition={isMobile ? 'bottom' : 'center'}>
-                lol
-            </DialogContent>
+            <RateModalContent mangaId={mangaId} />
         </Dialog>
     );
 };

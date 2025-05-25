@@ -9,9 +9,8 @@ import cls from './AboutManga.module.scss';
 import { GenresAndTagsList } from '@/entities/GenresAndTagsList';
 import { MangaApi } from '@/shared/api/deprecated/individualManga';
 import { RelatedMangaSlider } from '@/features/RelatedMangaSlider';
-import { MangaBookmarksStatistic, MangaRateStatistic } from '@/features/TablePercentageStatistic';
 import { Heading } from '@/shared/ui/kit/heading';
-import { Button, ButtonContext } from '@/shared/ui/kit/button';
+import { MangaBookmarksStatistic, MangaRateStatistic } from '@/features/MangaStatistic';
 
 interface AboutMangaProps {
     className?: string;

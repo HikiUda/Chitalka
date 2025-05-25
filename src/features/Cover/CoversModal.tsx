@@ -9,6 +9,7 @@ import {
 import { MangaIdType } from '@/shared/kernel/manga';
 import { AppAdaptiveImage } from '@/shared/ui/AppAdaptiveImage';
 import { cn } from '@/shared/lib/css';
+import { Loader } from '@/shared/ui/kit/loader';
 
 interface CoversModalProps {
     className?: string;
@@ -19,7 +20,7 @@ const CoversModal: FC<CoversModalProps> = (props) => {
     const { className, mangaId } = props;
     const { data, isLoading } = useGetMangaCovers(mangaId);
 
-    if (isLoading) return <div />;
+    if (isLoading) return <Loader variant="flower" />;
     if (!data?.length) return <div />;
     return (
         <Carousel className={cn('relative', className)}>
