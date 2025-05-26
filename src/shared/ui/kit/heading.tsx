@@ -11,7 +11,7 @@ const headingVariants = cva('font-[Montserrat,sans-serif]', {
             h2: 'text-2xl',
             h3: 'text-xl',
             h4: 'text-base',
-            h5: 'text-sm',
+            h5: 'text-xs',
         },
         weigth: {
             normal: 'font-normal',
@@ -25,6 +25,7 @@ const headingVariants = cva('font-[Montserrat,sans-serif]', {
             plain: 'text-foreground',
             primary: 'text-primary',
             secondary: 'text-secondary',
+            muted: 'text-muted-foreground',
         },
     },
     defaultVariants: {

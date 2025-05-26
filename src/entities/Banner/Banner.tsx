@@ -1,5 +1,5 @@
-import { AppAdaptiveImage } from '@/shared/deprecate-ui/AppAdaptiveImage';
 import { cn } from '@/shared/lib/css';
+import { AppAdaptiveImage } from '@/shared/ui/AppAdaptiveImage';
 
 interface BannerProps {
     className?: string;

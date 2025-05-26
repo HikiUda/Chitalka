@@ -1,27 +1,28 @@
-import { FC } from 'react';
 import { useParams } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
-import { MangaPageContent } from '../MangaPageContent/MangaPageContent';
-import { ButtonBlock } from '../ButtonBlock/ButtonBlock';
-import { Sidebar } from '../Sidebar/Sidebar';
-import cls from './MangaPage.module.css';
-import { useGetManga } from './useGetManga';
+import { useGetManga } from './model/useGetManga';
+import { MangaPageLayout } from './MangaPageLayout';
+import { MangaTitle } from './MangaTitle';
+import { MangaPageContent } from './MangaPageContent';
+import { TitleInfoModal } from './TitleInfoModal';
+import { MangaRate } from './MangaRate';
+import { useMangaInfo } from './model/useMangaInfo';
+import { useMangaTitles } from './model/useMangaTitles';
 import { Page } from '@/shared/layout/Page';
 import { Banner } from '@/entities/Banner';
-import { Cover } from '@/features/Cover';
 import { Loader } from '@/shared/ui/kit/loader';
+import { Cover } from '@/features/Cover';
 import { cn } from '@/shared/lib/css';
-import { MangaTitle } from './MangaTitle';
+import { ContinueReadMangaButton } from '@/features/ContinueReadManga';
+import { AddMangaToBookmarks } from '@/features/AddMangaToBookmarks';
+import { ScopeCopyItems, ScopeLinks } from '@/entities/ScopeItems';
 
-interface MangaPageProps {
-    className?: string;
-}
-
-const MangaPage: FC<MangaPageProps> = (props) => {
-    const { className } = props;
+export const MangaPage = () => {
     const { mangaId } = useParams();
 
     const { data: manga, isLoading } = useGetManga(mangaId || 0);
+    const scopeLinks = useMangaInfo(mangaId || 0);
+    const { otherTitles, titles } = useMangaTitles(mangaId || 0);
     //TODO thinking about 0
     //TODO loading end error state
 
@@ -35,31 +36,52 @@ const MangaPage: FC<MangaPageProps> = (props) => {
     if (!manga) return <Page>Manga not Found</Page>;
 
     return (
-        <Page>
-            <div
-                className={cn(
-                    isMobile
-                        ? 'relative flex flex-col gap-1 mt-10'
-                        : `${cls.gridTemplete} grid gap-4`,
-                    className,
-                )}
-            >
-                {(manga.banner || isMobile) && (
-                    <Banner
-                        banner={manga.banner || manga.cover}
-                        className={cn(
-                            cls.banner,
-                            isMobile ? '-mx-4' : 'absolute top-0 left-0 right-0 h-162',
-                        )}
+        <MangaPageLayout
+            banner={(BannerSlot) =>
+                (manga.banner || isMobile) && (
+                    <BannerSlot asChild>
+                        <Banner banner={manga.banner || manga.cover} />
+                    </BannerSlot>
+                )
+            }
+            cover={(CoverSlot) => (
+                <CoverSlot asChild>
+                    <Cover
+                        mangaId={manga.id}
+                        cover={manga.cover}
+                        className={cn(isMobile && 'w-45')}
                     />
-                )}
-                <Cover mangaId={manga.id} cover={manga.cover} className={cls.cover} />
-                <MangaTitle mangaId={mangaId || 0} className={cls.title} />
-                <ButtonBlock className={cls.btnBlock} mangaId={manga.id} />
-                {!isMobile && <Sidebar manga={manga} className={cls.sidebar} />}
-                <MangaPageContent mangaId={mangaId || 0} className={cls.content} />
-            </div>
-        </Page>
+                </CoverSlot>
+            )}
+            title={(TitleSlot) => (
+                <TitleSlot>
+                    <TitleInfoModal titles={titles} otherTitles={otherTitles}>
+                        <MangaTitle title={manga.title.ru} subtitle={manga.title.en} />
+                    </TitleInfoModal>
+                    <MangaRate rate={manga.rate} countRate={manga.countRate} mangaId={manga.id} />
+                </TitleSlot>
+            )}
+            buttons={(ButtonsSlot) => (
+                <ButtonsSlot>
+                    <ContinueReadMangaButton className="w-full" />
+                    <AddMangaToBookmarks className="w-full" mangaId={mangaId || 0} />
+                </ButtonsSlot>
+            )}
+            sidebar={(SidebarSlot) => (
+                <SidebarSlot>
+                    {scopeLinks.map((scope, ind) => (
+                        <ScopeLinks key={ind} title={scope.title} links={scope.links} />
+                    ))}
+                    {otherTitles.titles.length && (
+                        <ScopeCopyItems title={otherTitles.title} items={otherTitles.titles} />
+                    )}
+                </SidebarSlot>
+            )}
+            content={(ContentSlot) => (
+                <ContentSlot asChild>
+                    <MangaPageContent mangaId={mangaId || 0} />
+                </ContentSlot>
+            )}
+        />
     );
 };
-export default MangaPage;

@@ -5,6 +5,7 @@ import { Dialog, DialogContent, DialogPortal, DialogTrigger } from '@/shared/ui/
 import { Skeleton } from '@/shared/ui/kit/skeleton';
 import { MangaIdType } from '@/shared/kernel/manga';
 import { cn } from '@/shared/lib/css';
+
 const CoversModal = lazy(() => import('./CoversModal'));
 
 interface CoverProps {
