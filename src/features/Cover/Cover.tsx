@@ -1,12 +1,13 @@
 import { ImageIcon } from 'lucide-react';
-import { FC, lazy } from 'react';
+import { FC } from 'react';
 import { AppAdaptiveImage } from '@/shared/ui/AppAdaptiveImage';
 import { Dialog, DialogContent, DialogPortal, DialogTrigger } from '@/shared/ui/kit/dialog';
 import { Skeleton } from '@/shared/ui/kit/skeleton';
 import { MangaIdType } from '@/shared/kernel/manga';
 import { cn } from '@/shared/lib/css';
+import { lazyImport } from '@/shared/lib/helpers/lazyImport';
 
-const CoversModal = lazy(() => import('./CoversModal'));
+const CoversModal = lazyImport(() => import('./CoversModal'), 'CoversModal');
 
 interface CoverProps {
     className?: string;

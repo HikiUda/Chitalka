@@ -1,9 +1,10 @@
 import { InfoIcon } from 'lucide-react';
 import { ReactNode } from 'react';
 import { isMobile } from 'react-device-detect';
-import { OtherTitlesType, TitlesType } from './model/useMangaTitles';
+import { OtherTitlesType, TitlesType } from '../../model/useMangaTitles';
 import { Dialog, DialogContent, DialogTrigger } from '@/shared/ui/kit/dialog';
 import { ScopeCopyItems } from '@/entities/ScopeItems';
+import { Separator } from '@/shared/ui/kit/separator';
 
 type TitleInfoModalProps = {
     titles: TitlesType;
@@ -21,11 +22,14 @@ export const TitleInfoModal = (props: TitleInfoModalProps) => {
                 <DialogTrigger>
                     <InfoIcon />
                 </DialogTrigger>
-                <DialogContent>
+                <DialogContent verticalPosition="bottom">
                     {titles.map((title, ind) => (
-                        <ScopeCopyItems key={ind} title={title.title} items={title.content} />
+                        <>
+                            <ScopeCopyItems key={ind} title={title.title} items={title.content} />
+                            <Separator />
+                        </>
                     ))}
-                    {otherTitles.titles.length && (
+                    {!!otherTitles.titles.length && (
                         <ScopeCopyItems title={otherTitles.title} items={otherTitles.titles} />
                     )}
                 </DialogContent>

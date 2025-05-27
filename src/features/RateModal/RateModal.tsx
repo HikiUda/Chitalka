@@ -1,4 +1,4 @@
-import { FC, lazy, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 import { toast } from 'sonner';
 import { StarIcon } from 'lucide-react';
 import { useGetRate } from './useGetRate';
@@ -8,8 +8,9 @@ import { MangaIdType } from '@/shared/kernel/manga';
 import { cn } from '@/shared/lib/css';
 import { Button, ButtonContext } from '@/shared/ui/kit/button';
 import { Dialog, DialogTrigger } from '@/shared/ui/kit/dialog';
+import { lazyImport } from '@/shared/lib/helpers/lazyImport';
 
-const RateModalContent = lazy(() => import('./RateModalContent'));
+const RateModalContent = lazyImport(() => import('./RateModalContent'), 'RateModalContent');
 
 interface RateModalProps {
     className?: string;

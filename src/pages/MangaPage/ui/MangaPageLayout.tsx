@@ -51,7 +51,7 @@ const ButtonsSlot: SlotComp = ({ children, asChild }) => {
         <DivSlot
             asChild={asChild}
             className={cn(
-                cls.btnBlock,
+                cls.buttons,
                 'flex flex-col w-full justify-center items-center max-w-70 grow z-4 gap-1',
                 isMobile && 'px-1 mb-2',
             )}
@@ -67,7 +67,7 @@ const SidebarSlot: SlotComp = ({ children, asChild }) => {
             asChild={asChild}
             className={cn(
                 cls.sidebar,
-                'flex flex-col justify-start items-start overflow-auto max-h-125 gap-4 p-3 bg-card shadow-sm rounded-md',
+                'flex flex-col justify-start items-start overflow-auto max-h-125 gap-4 p-3 bg-card shadow-sm rounded-lg',
             )}
         >
             {children}
@@ -77,7 +77,10 @@ const SidebarSlot: SlotComp = ({ children, asChild }) => {
 
 const ContentSlot: SlotComp = ({ children, asChild }) => {
     return (
-        <DivSlot asChild={asChild} className={cls.content}>
+        <DivSlot
+            asChild={asChild}
+            className={cn(cls.content, 'bg-card shadow-sm rounded-lg pb-3 w-full z-5 min-h-100')}
+        >
             {children}
         </DivSlot>
     );

@@ -8,29 +8,28 @@ export function useMangaTitles(mangaId: MangaIdType): {
     titles: TitlesType;
     otherTitles: OtherTitlesType;
 } {
-    const { data } = useGetManga(mangaId);
-    if (!data) return { titles: [], otherTitles: { title: '', titles: [] } };
+    const { manga } = useGetManga(mangaId);
 
     const titles: TitlesType = [
         {
             title: 'Название на русском',
-            content: data.title.ru,
+            content: manga.title.ru,
         },
     ];
-    if (data.title.en) {
+    if (manga.title.en) {
         titles.push({
             title: 'Название на английском',
-            content: data.title.en,
+            content: manga.title.en,
         });
     }
-    if (data.title.origin) {
+    if (manga.title.origin) {
         titles.push({
             title: 'Оригенальное название',
-            content: data.title.origin,
+            content: manga.title.origin,
         });
     }
 
-    const otherTitles: OtherTitlesType = { title: 'Другие названия', titles: data.otherTitles };
+    const otherTitles: OtherTitlesType = { title: 'Другие названия', titles: manga.otherTitles };
 
     return { titles, otherTitles };
 }

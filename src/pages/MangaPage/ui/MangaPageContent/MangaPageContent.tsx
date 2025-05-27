@@ -1,12 +1,7 @@
-import { FC, useCallback, useEffect, useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { AboutManga } from '../AboutManga';
-import cls from './MangaPageContent.module.scss';
-import { classNames } from '@/shared/lib/helpers/classNames';
-import { TabItem, Tabs } from '@/shared/deprecate-ui/Tabs';
+import { FC } from 'react';
+import { useMangaPageContent } from '../../model/useMangaPageContent';
 import type { MangaIdType } from '@/shared/kernel/manga';
-import { MangaChapters } from '@/features/MangaChapters';
-import { MangaComments } from '@/widgets/MangaComments';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/ui/kit/tabs';
 
 interface MangaPageContentProps {
     className?: string;
@@ -15,49 +10,37 @@ interface MangaPageContentProps {
 
 export const MangaPageContent: FC<MangaPageContentProps> = (props) => {
     const { className, mangaId } = props;
-    const [searchParams, setSearchParams] = useSearchParams();
+    const { tabs } = useMangaPageContent(mangaId);
+    // const [searchParams, setSearchParams] = useSearchParams();
 
-    const handleSetSection = useCallback(
-        (section: string) => {
-            searchParams.set('section', section);
-            setSearchParams(searchParams);
-        },
-        [searchParams, setSearchParams],
-    );
-    useEffect(() => {
-        if (!searchParams.get('section')) {
-            handleSetSection('info');
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    const tabs: TabItem<string>[] = useMemo(() => {
-        return [
-            {
-                id: 'info',
-                title: 'О тайтле',
-                content: <AboutManga mangaId={mangaId} />,
-            },
-            {
-                id: 'chapters',
-                title: 'Главы',
-                content: <MangaChapters mangaId={mangaId} />,
-            },
-            {
-                id: 'comments',
-                title: 'Комментарии',
-                content: <MangaComments />,
-            },
-        ];
-    }, [mangaId]);
+    // const handleSetSection = useCallback(
+    //     (section: string) => {
+    //         searchParams.set('section', section);
+    //         setSearchParams(searchParams);
+    //     },
+    //     [searchParams, setSearchParams],
+    // );
+    // useEffect(() => {
+    //     if (!searchParams.get('section')) {
+    //         handleSetSection('info');
+    //     }
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, []);
 
     return (
-        <div className={classNames(cls.MangaPageContent, {}, [className])}>
-            <Tabs
-                onSelectionChange={(id) => handleSetSection(id as string)}
-                defaultSelectedKey={searchParams.get('section') || 'info'}
-                tabs={tabs}
-            />
-        </div>
+        <Tabs className={className} defaultValue="info">
+            <TabsList className="w-full justify-start">
+                {tabs.map((tab) => (
+                    <TabsTrigger key={tab.value} value={tab.value}>
+                        {tab.title}
+                    </TabsTrigger>
+                ))}
+            </TabsList>
+            {tabs.map((tab) => (
+                <TabsContent key={tab.value} value={tab.value}>
+                    {tab.content}
+                </TabsContent>
+            ))}
+        </Tabs>
     );
 };

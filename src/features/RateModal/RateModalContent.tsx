@@ -14,7 +14,7 @@ interface RateModalContentProps {
     mangaId: MangaIdType;
 }
 
-const RateModalContent: FC<RateModalContentProps> = (props) => {
+export const RateModalContent: FC<RateModalContentProps> = (props) => {
     const { className, mangaId } = props;
     const [selectedStar, setSelectedStar] = useState(0);
 
@@ -76,4 +76,3 @@ const RateModalContent: FC<RateModalContentProps> = (props) => {
         </DialogContent>
     );
 };
-export default RateModalContent;

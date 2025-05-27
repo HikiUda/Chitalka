@@ -4,10 +4,9 @@ import { ScopeLinksProps } from '@/entities/ScopeItems';
 import { getRoute } from '@/shared/kernel/router';
 
 export function useMangaInfo(mangaId: MangaIdType): ScopeLinksProps[] {
-    const { data } = useGetManga(mangaId);
-    if (!data) return [];
+    const { manga } = useGetManga(mangaId);
 
-    const { type, status, authors, artists, publishers } = data;
+    const { type, status, authors, artists, publishers } = manga;
     const info: ScopeLinksProps[] = [
         {
             title: 'Type',

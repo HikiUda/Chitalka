@@ -1,20 +1,18 @@
 import { StarIcon } from 'lucide-react';
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import { isMobile } from 'react-device-detect';
 import { toShortcutNumber } from '@/shared/lib/helpers/toShortcutNumber';
-import { RateModal } from '@/features/RateModal';
-import { MangaIdType } from '@/shared/kernel/manga';
 import { cn } from '@/shared/lib/css';
 
 interface MangaRateProps {
     className?: string;
     rate: number;
     countRate: number;
-    mangaId: MangaIdType;
+    rateButton?: ReactNode;
 }
 
 export const MangaRate: FC<MangaRateProps> = (props) => {
-    const { className, rate, countRate, mangaId } = props;
+    const { className, rate, countRate, rateButton } = props;
     return (
         <div
             className={cn(
@@ -28,7 +26,7 @@ export const MangaRate: FC<MangaRateProps> = (props) => {
                 <span className="text-xl leading-5.5">{rate}</span>
                 <span className="opacity-80">{toShortcutNumber(countRate)}</span>
             </div>
-            <RateModal mangaId={mangaId} />
+            {rateButton}
         </div>
     );
 };

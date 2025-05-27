@@ -16,7 +16,7 @@ interface CoversModalProps {
     mangaId: MangaIdType;
 }
 
-const CoversModal: FC<CoversModalProps> = (props) => {
+export const CoversModal: FC<CoversModalProps> = (props) => {
     const { className, mangaId } = props;
     const { data, isLoading } = useGetMangaCovers(mangaId);
 
@@ -35,4 +35,3 @@ const CoversModal: FC<CoversModalProps> = (props) => {
         </Carousel>
     );
 };
-export default CoversModal;
