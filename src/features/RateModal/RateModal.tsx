@@ -7,10 +7,10 @@ import { useSession } from '@/shared/api/session';
 import { MangaIdType } from '@/shared/kernel/manga';
 import { cn } from '@/shared/lib/css';
 import { Button, ButtonContext } from '@/shared/ui/kit/button';
-import { Dialog, DialogTrigger } from '@/shared/ui/kit/dialog';
-import { lazyImport } from '@/shared/lib/helpers/lazyImport';
+import { Dialog, DialogBody, DialogTrigger } from '@/shared/ui/kit/dialog';
+import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 
-const RateModalContent = lazyImport(() => import('./RateModalContent'), 'RateModalContent');
+const RateModalContent = lazyNamed(() => import('./RateModalContent'), 'RateModalContent');
 
 interface RateModalProps {
     className?: string;
@@ -57,7 +57,9 @@ export const RateModal: FC<RateModalProps> = (props) => {
                     {!currentRate && 'Оценить'}
                 </Button>
             </RateButtonWrapper>
-            <RateModalContent mangaId={mangaId} />
+            <DialogBody asChild>
+                <RateModalContent mangaId={mangaId} />
+            </DialogBody>
         </Dialog>
     );
 };

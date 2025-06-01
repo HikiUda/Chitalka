@@ -1,13 +1,13 @@
 import { cn } from '@/shared/lib/css';
 import { Heading } from '@/shared/ui/kit/heading';
 
-interface MangaTitleProps {
+interface BookTitleLayoutProps {
     className?: string;
     title: string;
     subtitle?: string | null;
 }
 
-export const MangaTitle = (props: MangaTitleProps) => {
+export const BookTitleLayout = (props: BookTitleLayoutProps) => {
     const { className, title, subtitle } = props;
 
     return (

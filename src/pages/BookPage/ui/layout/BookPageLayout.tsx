@@ -61,41 +61,16 @@ const ButtonsSlot: SlotComp = ({ children, asChild }) => {
     );
 };
 
-const SidebarSlot: SlotComp = ({ children, asChild }) => {
-    return (
-        <DivSlot
-            asChild={asChild}
-            className={cn(
-                cls.sidebar,
-                'flex flex-col justify-start items-start overflow-auto max-h-125 gap-4 p-3 bg-card shadow-sm rounded-lg',
-            )}
-        >
-            {children}
-        </DivSlot>
-    );
-};
-
-const ContentSlot: SlotComp = ({ children, asChild }) => {
-    return (
-        <DivSlot
-            asChild={asChild}
-            className={cn(cls.content, 'bg-card shadow-sm rounded-lg pb-3 w-full z-5 min-h-100')}
-        >
-            {children}
-        </DivSlot>
-    );
-};
-
 type MangaPageLayoutProps = {
     banner: (Slot: SlotComp) => ReactNode;
     cover: (Slot: SlotComp) => ReactNode;
     title: (Slot: SlotComp) => ReactNode;
     buttons: (Slot: SlotComp) => ReactNode;
-    sidebar: (Slot: SlotComp) => ReactNode;
-    content: (Slot: SlotComp) => ReactNode;
+    sidebar: ReactNode;
+    content: ReactNode;
 };
 
-export const MangaPageLayout = (props: MangaPageLayoutProps) => {
+export const BookPageLayout = (props: MangaPageLayoutProps) => {
     const { banner, cover, title, buttons, sidebar, content } = props;
 
     return (
@@ -111,8 +86,24 @@ export const MangaPageLayout = (props: MangaPageLayoutProps) => {
                 {cover(CoverSlot)}
                 {title(TitleSlot)}
                 {buttons(ButtonsSlot)}
-                {!isMobile && sidebar(SidebarSlot)}
-                {content(ContentSlot)}
+                {!isMobile && (
+                    <div
+                        className={cn(
+                            cls.sidebar,
+                            'flex flex-col justify-start items-start overflow-auto max-h-125 gap-4 p-3 bg-card shadow-sm rounded-lg',
+                        )}
+                    >
+                        {sidebar}
+                    </div>
+                )}
+                <div
+                    className={cn(
+                        cls.content,
+                        'bg-card shadow-sm rounded-lg pb-3 w-full z-5 min-h-100',
+                    )}
+                >
+                    {content}
+                </div>
             </div>
         </Page>
     );

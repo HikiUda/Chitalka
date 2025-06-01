@@ -1,3 +1,4 @@
+import { parseISO } from 'date-fns';
 import { publicRqClient } from '@/shared/api/instance';
 import { MangaIdType } from '@/shared/kernel/manga';
 
@@ -9,5 +10,7 @@ export function useGetManga(mangaId: MangaIdType) {
             },
         },
     });
-    return { manga: data, isLoading };
+
+    const releaseDate = (data.releaseDate && parseISO(data.releaseDate)) || null;
+    return { manga: { ...data, releaseDate }, isLoading };
 }

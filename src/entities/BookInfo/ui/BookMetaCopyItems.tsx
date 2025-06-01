@@ -1,12 +1,12 @@
 import { toast } from 'sonner';
-import { ScopeItems } from './ScopeItems';
+import { BookMetaItem } from './BookMetaItem';
 
-export type ScopeCopyItemsProps = {
-    title?: string;
+export type BookMetaCopyItemsProps = {
+    title: string;
     items: string | string[];
 };
 
-export const ScopeCopyItems = (props: ScopeCopyItemsProps) => {
+export const BookMetaCopyItems = (props: BookMetaCopyItemsProps) => {
     const { title, items } = props;
 
     const handleCopy = async (text: string) => {
@@ -19,7 +19,7 @@ export const ScopeCopyItems = (props: ScopeCopyItemsProps) => {
     };
 
     return (
-        <ScopeItems
+        <BookMetaItem
             title={title}
             items={items}
             renderItems={(item) => (

@@ -10,7 +10,7 @@ import { MangaIdType } from '@/shared/kernel/manga';
 import { TextDisclosure } from '@/shared/deprecate-ui/TextDisclosure';
 import { getFlex, HStack } from '@/shared/deprecate-ui/Stack';
 import { MangaApi } from '@/shared/api/deprecated/individualManga';
-import { GenresAndTagsList } from '@/entities/GenresAndTagsList';
+import { CategoryCollapsedList, useCategoriesList } from '@/entities/BookInfo';
 import { AddMangaToBookmarks } from '@/features/AddMangaToBookmarks';
 
 interface HoverCardMangaContentProps {
@@ -22,6 +22,8 @@ const HoverCardMangaContent: FC<HoverCardMangaContentProps> = (props) => {
     const { className, mangaId } = props;
 
     const { data, isLoading } = useQuery(MangaApi.getMangaQueryOptions(mangaId));
+
+    const { categories } = useCategoriesList(data?.genres || [], data?.tags || []);
 
     //TODO  error
     if (isLoading)
@@ -82,7 +84,7 @@ const HoverCardMangaContent: FC<HoverCardMangaContentProps> = (props) => {
                 <AdditionalInfoBlock title="Глав" content={data.chaptersCount} />
             </HStack>
             <TextDisclosure className={cls.padding} text={data.description} />
-            <GenresAndTagsList className={cls.padding} mini genres={data.genres} tags={data.tags} />
+            <CategoryCollapsedList categories={categories} />
             <div className={cls.padding}>
                 <AddMangaToBookmarks mangaId={mangaId} />
             </div>

@@ -1,14 +1,13 @@
 import { InfoIcon } from 'lucide-react';
 import { ReactNode } from 'react';
 import { isMobile } from 'react-device-detect';
-import { OtherTitlesType, TitlesType } from '../../model/useMangaTitles';
-import { Dialog, DialogContent, DialogTrigger } from '@/shared/ui/kit/dialog';
-import { ScopeCopyItems } from '@/entities/ScopeItems';
+import { Dialog, DialogBody, DialogTrigger } from '@/shared/ui/kit/dialog';
 import { Separator } from '@/shared/ui/kit/separator';
+import { BookMetaCopyItems } from '@/entities/BookInfo';
 
 type TitleInfoModalProps = {
-    titles: TitlesType;
-    otherTitles: OtherTitlesType;
+    titles: { name: string; title: string }[];
+    otherTitles: { name: string; titles: string[] };
     children: ReactNode;
 };
 
@@ -22,17 +21,17 @@ export const TitleInfoModal = (props: TitleInfoModalProps) => {
                 <DialogTrigger>
                     <InfoIcon />
                 </DialogTrigger>
-                <DialogContent verticalPosition="bottom">
+                <DialogBody verticalPosition="bottom">
                     {titles.map((title, ind) => (
                         <>
-                            <ScopeCopyItems key={ind} title={title.title} items={title.content} />
+                            <BookMetaCopyItems key={ind} title={title.name} items={title.title} />
                             <Separator />
                         </>
                     ))}
                     {!!otherTitles.titles.length && (
-                        <ScopeCopyItems title={otherTitles.title} items={otherTitles.titles} />
+                        <BookMetaCopyItems title={otherTitles.name} items={otherTitles.titles} />
                     )}
-                </DialogContent>
+                </DialogBody>
             </Dialog>
             {children}
         </div>

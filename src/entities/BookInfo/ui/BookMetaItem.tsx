@@ -3,14 +3,14 @@ import { ReactNode } from 'react';
 import { cn } from '@/shared/lib/css';
 import { Heading } from '@/shared/ui/kit/heading';
 
-interface ScopeItemsProps<T> {
+interface BookMetaItemProps<T> {
     className?: string;
-    title?: string;
+    title: string;
     items: T | T[];
     renderItems: (item: T) => ReactNode;
 }
 
-export const ScopeItems = <T extends unknown>(props: ScopeItemsProps<T>) => {
+export const BookMetaItem = <T extends unknown>(props: BookMetaItemProps<T>) => {
     const { className, title, items, renderItems } = props;
 
     return (

@@ -5,12 +5,12 @@ import { getRoute, RoutesConst } from '@/shared/kernel/router';
 import { MainPage } from '@/pages/MainPage';
 import { CatalogPage } from '@/pages/CatalogPage';
 import { ReadChapterPage } from '@/pages/ReadChapterPage';
-import { lazyImport } from '@/shared/lib/helpers/lazyImport';
+import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 import { Page } from '@/shared/layout/Page';
 import { Loader } from '@/shared/ui/kit/loader';
 
 //TODO loading page add error page
-const MangaPage = lazyImport(() => import('@/pages/MangaPage'), 'MangaPage');
+const MangaPage = lazyNamed(() => import('@/pages/BookPage'), 'MangaPage');
 
 export type AppRouteProps = RouteProps & {
     authOnly?: boolean;

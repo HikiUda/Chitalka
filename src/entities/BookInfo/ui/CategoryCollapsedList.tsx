@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { CategoryOutput } from './useCategoriesList';
+import { CategoryOutput } from '../model/useCategoriesList';
 import { Button } from '@/shared/ui/kit/button';
 import { cn } from '@/shared/lib/css';
 

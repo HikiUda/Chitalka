@@ -4,14 +4,14 @@ import { isMobile } from 'react-device-detect';
 import { toShortcutNumber } from '@/shared/lib/helpers/toShortcutNumber';
 import { cn } from '@/shared/lib/css';
 
-interface MangaRateProps {
+interface BookRateLayoutProps {
     className?: string;
     rate: number;
     countRate: number;
     rateButton?: ReactNode;
 }
 
-export const MangaRate: FC<MangaRateProps> = (props) => {
+export const BookRateLayout: FC<BookRateLayoutProps> = (props) => {
     const { className, rate, countRate, rateButton } = props;
     return (
         <div

@@ -1,13 +1,13 @@
 import { ImageIcon } from 'lucide-react';
 import { FC } from 'react';
 import { AppAdaptiveImage } from '@/shared/ui/AppAdaptiveImage';
-import { Dialog, DialogContent, DialogPortal, DialogTrigger } from '@/shared/ui/kit/dialog';
+import { Dialog, DialogBody, DialogPortal, DialogTrigger } from '@/shared/ui/kit/dialog';
 import { Skeleton } from '@/shared/ui/kit/skeleton';
 import { MangaIdType } from '@/shared/kernel/manga';
 import { cn } from '@/shared/lib/css';
-import { lazyImport } from '@/shared/lib/helpers/lazyImport';
+import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 
-const CoversModal = lazyImport(() => import('./CoversModal'), 'CoversModal');
+const CoversModal = lazyNamed(() => import('./CoversModal'), 'CoversModal');
 
 interface CoverProps {
     className?: string;
@@ -35,9 +35,9 @@ export const Cover: FC<CoverProps> = (props) => {
                 </AppAdaptiveImage>
             </DialogTrigger>
             <DialogPortal>
-                <DialogContent className="max-w-120 w-[96vw] lg:w-auto" empty>
+                <DialogBody className="max-w-120 w-[96vw] lg:w-auto" empty>
                     <CoversModal mangaId={mangaId} />
-                </DialogContent>
+                </DialogBody>
             </DialogPortal>
         </Dialog>
     );

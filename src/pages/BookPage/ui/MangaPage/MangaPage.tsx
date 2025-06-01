@@ -1,32 +1,39 @@
 import { useParams } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
-import { useGetManga } from '../model/useGetManga';
-import { useMangaInfo } from '../model/useMangaInfo';
-import { useMangaTitles } from '../model/useMangaTitles';
-import { MangaPageLayout } from './MangaPageLayout';
-import { MangaTitle } from './MangaTitle/MangaTitle';
-import { MangaPageContent } from './MangaPageContent/MangaPageContent';
-import { TitleInfoModal } from './MangaTitle/TitleInfoModal';
-import { MangaRate } from './MangaTitle/MangaRate';
-import { MangaPageSidebar } from './MangaPageSidebar';
+import { useGetManga } from '../../model/useGetManga';
+import { BookPageLayout } from '../layout/BookPageLayout';
+import { BookTitleLayout } from '../layout/BookTitleLayout';
+import { TitleInfoModal } from '../layout/TitleInfoModal';
+import { BookRateLayout } from '../layout/BookRateLayout';
+import { useMangaPageContent } from '../../model/useMangaPageContent';
+import { BookContentLayout } from '../layout/BookContentLayout';
 import { Banner } from '@/entities/Banner';
 import { Cover } from '@/features/Cover';
 import { cn } from '@/shared/lib/css';
 import { ContinueReadMangaButton } from '@/features/ContinueReadManga';
 import { AddMangaToBookmarks } from '@/features/AddMangaToBookmarks';
 import { RateModal } from '@/features/RateModal';
+import { useBookBasicInfo, useBookTitles } from '@/entities/BookInfo';
+import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
+
+const BookSidebarLayout = lazyNamed(
+    () => import('../layout/BookSidebarLayout'),
+    'BookSidebarLayout',
+);
 
 export const MangaPage = () => {
     const { mangaId } = useParams();
 
     const { manga } = useGetManga(mangaId || 0);
-    const mangaInfo = useMangaInfo(mangaId || 0);
-    const { otherTitles, titles } = useMangaTitles(mangaId || 0);
+    const mangaContent = useMangaPageContent(mangaId || 0);
+    const mangaTitles = useBookTitles(manga);
+    const { basicInfo } = useBookBasicInfo(manga);
+
     //TODO thinking about 0
     //TODO loading end error state
 
     return (
-        <MangaPageLayout
+        <BookPageLayout
             banner={(BannerSlot) =>
                 (manga.banner || isMobile) && (
                     <BannerSlot asChild>
@@ -45,10 +52,13 @@ export const MangaPage = () => {
             )}
             title={(TitleSlot) => (
                 <TitleSlot>
-                    <TitleInfoModal titles={titles} otherTitles={otherTitles}>
-                        <MangaTitle title={manga.title.ru} subtitle={manga.title.en} />
+                    <TitleInfoModal
+                        titles={mangaTitles.titles}
+                        otherTitles={mangaTitles.otherTitles}
+                    >
+                        <BookTitleLayout title={mangaTitles.main} subtitle={mangaTitles.subtitle} />
                     </TitleInfoModal>
-                    <MangaRate
+                    <BookRateLayout
                         rate={manga.rate}
                         countRate={manga.countRate}
                         rateButton={<RateModal mangaId={manga.id} />}
@@ -61,16 +71,10 @@ export const MangaPage = () => {
                     <AddMangaToBookmarks className="w-full" mangaId={manga.id} />
                 </ButtonsSlot>
             )}
-            sidebar={(SidebarSlot) => (
-                <SidebarSlot asChild>
-                    <MangaPageSidebar info={mangaInfo} otherTitles={otherTitles} />
-                </SidebarSlot>
-            )}
-            content={(ContentSlot) => (
-                <ContentSlot>
-                    <MangaPageContent mangaId={manga.id} />
-                </ContentSlot>
-            )}
+            sidebar={
+                <BookSidebarLayout basicInfo={basicInfo} otherTitles={mangaTitles.otherTitles} />
+            }
+            content={<BookContentLayout {...mangaContent} />}
         />
     );
 };

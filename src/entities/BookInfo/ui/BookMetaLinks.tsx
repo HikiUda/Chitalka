@@ -1,20 +1,22 @@
 import { Link } from 'react-router-dom';
-import { ScopeItems } from './ScopeItems';
+import { BookMetaItem } from './BookMetaItem';
 import { Button } from '@/shared/ui/kit/button';
 
 type LinksProps = {
     content: string;
     link: string;
 };
-export type ScopeLinksProps = {
-    title?: string;
+export type BookMetaLinksProps = {
+    className?: string;
+    title: string;
     links: LinksProps | LinksProps[];
 };
 
-export const ScopeLinks = (props: ScopeLinksProps) => {
-    const { title, links } = props;
+export const BookMetaLinks = (props: BookMetaLinksProps) => {
+    const { title, links, className } = props;
     return (
-        <ScopeItems
+        <BookMetaItem
+            className={className}
             title={title}
             items={links}
             renderItems={(link) => (
