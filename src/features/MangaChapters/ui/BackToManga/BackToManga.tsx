@@ -22,7 +22,7 @@ export const BackToManga: FC<BackToMangaProps> = (props) => {
     const { data } = useQuery(ChapterApi.getQueryOptions(chapterId));
     return (
         <AppLink
-            to={`${getRoute.manga(mangaId)}?section=chapters`}
+            to={`${getRoute.MANGA(mangaId)}?section=chapters`}
             backgroundOnHover
             noOpacityHover
             className={classNames(cls.BackToManga, {}, [className, getFlex({ justify: 'start' })])}

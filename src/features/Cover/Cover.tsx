@@ -14,7 +14,7 @@ interface CoverProps {
     mangaId: MangaIdType;
     cover: string | null;
 }
-
+//TODO Suspense
 export const Cover: FC<CoverProps> = (props) => {
     const { className, mangaId, cover } = props;
 

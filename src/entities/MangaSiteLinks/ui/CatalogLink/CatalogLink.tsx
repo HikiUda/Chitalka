@@ -7,7 +7,7 @@ export const CatalogLink = memo((props: LinkLayoutCommonProps) => {
     const { iconOnly, iconSize = 20 } = props;
     return (
         <LinkLayout
-            to={getRoute.catalog()}
+            to={getRoute.MANGA_CATALOG()}
             text="Каталог"
             Svg={CatalogSvg}
             iconOnly={iconOnly}

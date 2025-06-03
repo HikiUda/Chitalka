@@ -24,6 +24,7 @@ export const BookMetaCopyItems = (props: BookMetaCopyItemsProps) => {
             items={items}
             renderItems={(item) => (
                 <span
+                    key={item}
                     onClick={() => handleCopy(item)}
                     className="hover:underline underline-offset-4 hover:opacity-90  cursor-pointer"
                 >

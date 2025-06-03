@@ -14,7 +14,7 @@ export const BookMetaItem = <T extends unknown>(props: BookMetaItemProps<T>) => 
     const { className, title, items, renderItems } = props;
 
     return (
-        <div className={cn('flex flex-col gap-1', className)}>
+        <div className={cn('flex flex-col gap-1 items-start', className)}>
             <Heading variant="h5" color="muted">
                 {title}
             </Heading>

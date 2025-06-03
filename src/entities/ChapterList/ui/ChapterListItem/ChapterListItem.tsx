@@ -30,7 +30,7 @@ export const ChapterListItem: FC<ChapterListItemProps> = (props) => {
         <AppLink
             backgroundOnHover
             noOpacityHover
-            to={getRoute.readChapter(
+            to={getRoute.MANGA_READ(
                 mangaId,
                 getUrlChapterId(chapter.tome, chapter.chapter, chapter.id),
             )}

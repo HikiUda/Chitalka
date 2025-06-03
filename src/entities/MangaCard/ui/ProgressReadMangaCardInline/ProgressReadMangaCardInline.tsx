@@ -35,7 +35,7 @@ export const ProgressReadMangaCardInline = memo((props: ProgressReadMangaCardInl
                 to={
                     isDisabled
                         ? ''
-                        : getRoute.readChapter(
+                        : getRoute.MANGA_READ(
                               manga.urlId,
                               getUrlChapterId(manga.tome, manga.chapter, manga.chapterId),
                           )

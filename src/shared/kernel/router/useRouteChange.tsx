@@ -1,16 +1,15 @@
 import { matchPath, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { RouteByPath } from './routerConfig';
-import { RoutesConst, RoutesConstType } from './routesConst';
+import { Routes, RoutesValues } from './routerConfig';
 
 export function useRouteChange() {
     const location = useLocation();
-    const [appRoute, setAppRoute] = useState<RoutesConstType>(RoutesConst.MAIN);
+    const [appRoute, setAppRoute] = useState<RoutesValues>(Routes.MAIN);
 
     useEffect(() => {
-        Object.entries(RouteByPath).forEach(([pattern, route]) => {
+        Object.values(Routes).forEach((pattern) => {
             if (matchPath(pattern, location.pathname)) {
-                setAppRoute(route);
+                setAppRoute(pattern);
             }
         });
     }, [location.pathname]);

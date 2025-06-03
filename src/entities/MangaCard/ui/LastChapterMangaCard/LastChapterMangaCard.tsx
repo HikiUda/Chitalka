@@ -19,7 +19,7 @@ export const LastChapterMangaCard = memo((props: LastChapterMangaCardProps) => {
             subtitle={manga.type}
             label3={'Глава ' + manga.chapter}
             img={manga.cover}
-            to={getRoute.readChapter(
+            to={getRoute.MANGA_READ(
                 manga.urlId,
                 getUrlChapterId(manga.tome, manga.chapter, manga.chapterId),
             )}

@@ -1,7 +1,6 @@
 import { FC, useLayoutEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { AppRouter } from './providers/router/AppRouter';
-import { MainProvider } from './providers/mainProvider';
+import { Outlet } from 'react-router-dom';
 import { MainLayout } from '@/shared/layout/MainLayout/MainLayout';
 import { UserDataApi } from '@/shared/api/deprecated/user';
 import { Header } from '@/widgets/Header';
@@ -13,7 +12,7 @@ interface AppProps {
     className?: string;
 }
 
-const AppInit = () => {
+export const App: FC<AppProps> = () => {
     const user = useQuery(UserDataApi.getUserDataQueryOptions());
     const [init, setInit] = useState(false);
     const { refreshToken } = useSession();
@@ -25,14 +24,6 @@ const AppInit = () => {
 
     if (!init) return <Loader />;
 
-    return <MainLayout header={<Header />} main={<AppRouter />} bottomMenu={<BottomMenu />} />;
-};
-
-export const App: FC<AppProps> = () => {
-    return (
-        <MainProvider>
-            <AppInit />
-        </MainProvider>
-    );
+    return <MainLayout header={<Header />} main={<Outlet />} bottomMenu={<BottomMenu />} />;
 };
 export default App;

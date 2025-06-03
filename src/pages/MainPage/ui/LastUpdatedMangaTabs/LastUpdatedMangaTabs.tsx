@@ -47,7 +47,7 @@ export const LastUpdatedMangaTabs: FC<LastUpdatedMangaTabsProps> = (props) => {
                                     <MangaCardInline
                                         className={`${ind < tab.data.length - 1 && 'border-b-1 border-b-primary'}  mb-2`}
                                         key={ind}
-                                        to={getRoute.manga(manga.urlId)}
+                                        to={getRoute.MANGA(manga.urlId)}
                                         img={manga.cover}
                                         title={manga.title}
                                     >

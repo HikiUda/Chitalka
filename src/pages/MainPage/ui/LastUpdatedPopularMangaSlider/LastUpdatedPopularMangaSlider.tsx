@@ -33,7 +33,7 @@ export const LastUpdatedPopularMangaSlider: FC<LastUpdatedPopularMangaSliderProp
                         <CarouselItem key={index} className="basis-auto">
                             <MangaCard
                                 //TODO link to chapter
-                                to={getRoute.manga(urlId)}
+                                to={getRoute.MANGA(urlId)}
                                 title={title}
                                 subtitle={type}
                                 img={cover}

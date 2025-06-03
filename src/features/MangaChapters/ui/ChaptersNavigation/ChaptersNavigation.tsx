@@ -31,7 +31,7 @@ export const ChaptersNavigation: FC<ChaptersNavigationProps> = (props) => {
         <HStack gap="4" className={classNames(cls.ChaptersNavigation, {}, [className])}>
             <AppLink
                 disable={!data?.prevChapterId}
-                to={getRoute.readChapter(
+                to={getRoute.MANGA_READ(
                     mangaId,
                     getUrlChapterId(data?.tome || 0, data?.chapter || 0, data?.prevChapterId || 0),
                 )}
@@ -61,7 +61,7 @@ export const ChaptersNavigation: FC<ChaptersNavigationProps> = (props) => {
             />
             <AppLink
                 disable={!data?.nextChapterId}
-                to={getRoute.readChapter(
+                to={getRoute.MANGA_READ(
                     mangaId,
                     getUrlChapterId(data?.tome || 0, data?.chapter || 0, data?.nextChapterId || 0),
                 )}

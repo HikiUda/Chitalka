@@ -42,7 +42,7 @@ export const RelatedMangaSlider: FC<RelatedMangaSliderProps> = (props) => {
                             className="basis-75 ml-2 px-1 py-1 bg-card flex rounded-xl border shadow-sm"
                         >
                             <MangaCardInline
-                                to={getRoute.manga(urlId)}
+                                to={getRoute.MANGA(urlId)}
                                 title={title}
                                 subtitle={type}
                                 img={cover}

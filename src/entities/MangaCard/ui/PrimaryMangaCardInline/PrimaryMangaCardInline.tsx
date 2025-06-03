@@ -18,7 +18,7 @@ export const PrimaryMangaCardInline = memo((props: PrimaryMangaCardInlineProps) 
             title={manga.title}
             subtitle={manga.type}
             img={manga.cover}
-            to={getRoute.manga(manga.urlId)}
+            to={getRoute.MANGA(manga.urlId)}
         />
     );
 });

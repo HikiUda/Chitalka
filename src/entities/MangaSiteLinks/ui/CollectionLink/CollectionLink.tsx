@@ -8,7 +8,7 @@ export const CollectionLink = memo((props: LinkLayoutCommonProps) => {
 
     return (
         <LinkLayout
-            to={getRoute.collections()}
+            to={getRoute.COLLECTIONS()}
             text="Коллекции"
             Svg={CollectionSvg}
             iconOnly={iconOnly}

@@ -17,7 +17,7 @@ export const LastUpdatedMangaCardInline = memo((props: LastUpdatedMangaCardInlin
         <MangaCardInline
             className={className}
             title={manga.title}
-            to={getRoute.readChapter(
+            to={getRoute.MANGA_READ(
                 manga.urlId,
                 getUrlChapterId(manga.tome, manga.chapter, manga.chapterId),
             )}

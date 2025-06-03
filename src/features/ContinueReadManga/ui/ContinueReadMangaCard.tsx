@@ -29,7 +29,7 @@ export const ContinueReadMangaCard: FC<ContinueReadMangaCardProps> = (props) => 
         >
             <MangaCardInline
                 //TODO link to chapter
-                to={getRoute.manga(urlId)}
+                to={getRoute.MANGA(urlId)}
                 title={title}
                 img={cover}
             >

@@ -1,11 +1,11 @@
 import { ReactNode } from 'react';
 import { BottomMenuMainContent } from '../ui/BottomMenuMainContent/BottomMenuMainContent';
 import { ReadChapterBottomMenu } from '../ui/ReadChapterBottomMenu/ReadChapterBottomMenu';
-import { RoutesConst, RoutesConstType } from '@/shared/kernel/router';
+import { Routes, RoutesValues } from '@/shared/kernel/router';
 
-export const mapBottomMenuContent: OptionalRecord<RoutesConstType, ReactNode> & {
+export const mapBottomMenuContent: OptionalRecord<RoutesValues, ReactNode> & {
     default: ReactNode;
 } = {
     default: <BottomMenuMainContent />,
-    [RoutesConst.READ_CHAPTER]: <ReadChapterBottomMenu />,
+    [Routes.MANGA_READ]: <ReadChapterBottomMenu />,
 };

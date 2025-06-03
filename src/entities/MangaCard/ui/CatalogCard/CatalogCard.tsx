@@ -14,7 +14,7 @@ export const CatalogCard = memo((props: CatalogCardProps) => {
     return (
         <MangaCard
             className={className}
-            to={getRoute.manga(manga.urlId)}
+            to={getRoute.MANGA(manga.urlId)}
             title={manga.title}
             subtitle={manga.type}
             label1={manga.rate}

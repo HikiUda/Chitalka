@@ -38,7 +38,7 @@ export const NowReadMangaSlider: FC<NowReadMangaSliderProps> = (props) => {
                                 renderItem={(manga) => (
                                     <MangaCardInline
                                         key={manga.id}
-                                        to={getRoute.manga(manga.urlId)}
+                                        to={getRoute.MANGA(manga.urlId)}
                                         img={manga.cover}
                                         title={manga.title}
                                         subtitle={manga.type}

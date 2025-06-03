@@ -19,7 +19,7 @@ export const LogoMangaSite = memo((props: LogoMangaSiteProps) => {
     return (
         <AppLink
             theme="primary"
-            to={getRoute.main()}
+            to={getRoute.MAIN()}
             className={classNames(cls.LogoMangaSite, {}, [className])}
         >
             <Icon

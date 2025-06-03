@@ -21,7 +21,7 @@ export const StatisticsMangaCardInline = memo((props: StatisticsMangaCardInlineP
     return (
         <MangaCardInline
             className={classNames('', {}, [className])}
-            to={getRoute.manga(manga.urlId)}
+            to={getRoute.MANGA(manga.urlId)}
             img={manga.cover}
             title={manga.title}
             subtitle={manga.type}

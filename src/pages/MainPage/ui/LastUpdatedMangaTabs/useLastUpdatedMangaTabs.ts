@@ -20,7 +20,7 @@ export function useLastUpdatedMangaTabs(): {
         {
             value: 'all',
             title: 'Все',
-            catalogLink: `${getRoute.catalog()}?sortBy=updateDate`,
+            catalogLink: `${getRoute.MANGA_CATALOG()}?sortBy=updateDate`,
             data: allManga.data || [],
             fetchNextPage: () => allManga.fetchNextPage(),
             hasNextPage: allManga.hasNextPage && (allManga.data?.length || 0) < 50,
@@ -29,7 +29,7 @@ export function useLastUpdatedMangaTabs(): {
         {
             value: 'my',
             title: 'Мои',
-            catalogLink: `${getRoute.catalog()}?sortBy=updateDate&bookmarks=Reading,Readed`,
+            catalogLink: `${getRoute.MANGA_CATALOG()}?sortBy=updateDate&bookmarks=Reading,Readed`,
             data: myManga.data || [],
             fetchNextPage: () => myManga.fetchNextPage(),
             hasNextPage: myManga.hasNextPage && (myManga.data?.length || 0) < 50,

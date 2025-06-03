@@ -12,7 +12,7 @@ export type BasicInfo = {
 };
 
 export function useBookBasicInfo(data: BookBasicInfoInput) {
-    const catalog = getRoute.catalog();
+    const catalog = getRoute.MANGA_CATALOG();
 
     const type: BasicInfo = {
         title: 'Тип',

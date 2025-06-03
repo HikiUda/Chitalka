@@ -15,6 +15,7 @@ import { AddMangaToBookmarks } from '@/features/AddMangaToBookmarks';
 import { RateModal } from '@/features/RateModal';
 import { useBookBasicInfo, useBookTitles } from '@/entities/BookInfo';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
+import { PathParams, Routes } from '@/shared/kernel/router';
 
 const BookSidebarLayout = lazyNamed(
     () => import('../layout/BookSidebarLayout'),
@@ -22,14 +23,14 @@ const BookSidebarLayout = lazyNamed(
 );
 
 export const MangaPage = () => {
-    const { mangaId } = useParams();
+    const { mangaId } = useParams<PathParams[typeof Routes.MANGA]>();
+    if (!mangaId) throw new Error('mangaId is required');
 
-    const { manga } = useGetManga(mangaId || 0);
-    const mangaContent = useMangaPageContent(mangaId || 0);
+    const { manga } = useGetManga(mangaId);
+    const mangaContent = useMangaPageContent(mangaId);
     const mangaTitles = useBookTitles(manga);
     const { basicInfo } = useBookBasicInfo(manga);
 
-    //TODO thinking about 0
     //TODO loading end error state
 
     return (

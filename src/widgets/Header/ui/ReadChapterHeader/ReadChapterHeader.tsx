@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import { useMatch } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { isMobile } from 'react-device-detect';
 import cls from './ReadChapterHeader.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { getRoute } from '@/shared/kernel/router';
+import { PathParams, Routes } from '@/shared/kernel/router';
 import { HStack } from '@/shared/deprecate-ui/Stack';
 import { UserDataApi } from '@/shared/api/deprecated/user';
 import { HeaderLayout } from '@/shared/layout/HeaderLayout';
@@ -22,9 +22,8 @@ export const ReadChapterHeader: FC<ReadChapterHeaderProps> = (props) => {
 
     const { data } = useQuery(UserDataApi.getUserDataQueryOptions());
     const { hidden } = useHideLayout();
-    const match = useMatch(getRoute.readChapter(':mangaId', ':chapterId'));
-    if (!match?.params.mangaId || !match?.params.chapterId) return null;
-    const { mangaId, chapterId } = match.params;
+    const { mangaId, chapterId } = useParams<PathParams[typeof Routes.MANGA_READ]>();
+    if (!mangaId || !chapterId) throw new Error('mangaId and chapterId is required');
 
     return (
         <HeaderLayout hidden={hidden} className={classNames(cls.Header, {}, [className])}>

@@ -17,13 +17,13 @@ export function useCategoriesList(genresInput: CategoryInput[], tagsInput: Categ
     const genres: CategoryOutput[] = useMemo(() => {
         return genresInput.map((genre) => ({
             ...genre,
-            link: `${getRoute.catalog()}?genres=${genre.id}`,
+            link: `${getRoute.MANGA_CATALOG()}?genres=${genre.id}`,
         }));
     }, [genresInput]);
     const tags: CategoryOutput[] = useMemo(() => {
         return tagsInput.map((tag) => ({
             ...tag,
-            link: `${getRoute.catalog()}?tags=${tag.id}`,
+            link: `${getRoute.MANGA_CATALOG()}?tags=${tag.id}`,
             specialSimbol: '#',
         }));
     }, [tagsInput]);
