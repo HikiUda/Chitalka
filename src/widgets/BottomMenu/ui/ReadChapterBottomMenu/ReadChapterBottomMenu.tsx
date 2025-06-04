@@ -20,7 +20,7 @@ export const ReadChapterBottomMenu: FC<ReadChapterBottomMenuProps> = (props) => 
 
     const { hidden } = useHideLayout();
     const { mangaId, chapterId } = useParams<PathParams[typeof Routes.MANGA_READ]>();
-    if (!mangaId || !chapterId) throw new Error('mangaId and chapterId is required');
+    if (!mangaId || !chapterId) return null;
 
     return (
         <BottomMenuLayout hidden={hidden} className={classNames(cls.BottomMenu, {}, [className])}>

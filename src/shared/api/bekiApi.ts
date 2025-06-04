@@ -375,7 +375,7 @@ export type paths = {
         patch?: never;
         trace?: never;
     };
-    "/manga/chapter/{id}": {
+    "/manga/chapter/{chapterId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -1874,7 +1874,8 @@ export interface operations {
             };
             header?: never;
             path: {
-                id: number;
+                /** @description urlId or just id */
+                chapterId: string;
             };
             cookie?: never;
         };
@@ -1901,7 +1902,8 @@ export interface operations {
             };
             header?: never;
             path: {
-                mangaId: number;
+                /** @description urlId or just id */
+                mangaId: string;
             };
             cookie?: never;
         };

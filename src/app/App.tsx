@@ -1,4 +1,4 @@
-import { FC, useLayoutEffect, useState } from 'react';
+import { FC, Suspense, useLayoutEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Outlet } from 'react-router-dom';
 import { MainLayout } from '@/shared/layout/MainLayout/MainLayout';
@@ -6,7 +6,7 @@ import { UserDataApi } from '@/shared/api/deprecated/user';
 import { Header } from '@/widgets/Header';
 import { BottomMenu } from '@/widgets/BottomMenu';
 import { useSession } from '@/shared/api/session';
-import { Loader } from '@/shared/deprecate-ui/Loader';
+import { Loader } from '@/shared/ui/kit/loader';
 
 interface AppProps {
     className?: string;
@@ -24,6 +24,16 @@ export const App: FC<AppProps> = () => {
 
     if (!init) return <Loader />;
 
-    return <MainLayout header={<Header />} main={<Outlet />} bottomMenu={<BottomMenu />} />;
+    return (
+        <MainLayout
+            header={<Header />}
+            main={
+                <Suspense fallback={<Loader variant="flower" />}>
+                    <Outlet />
+                </Suspense>
+            }
+            bottomMenu={<BottomMenu />}
+        />
+    );
 };
 export default App;

@@ -90,7 +90,6 @@ const MangaChapters: FC<MangaChaptersProps> = (props) => {
                 )}
                 isLoading={isFetching || isFetchingNextPage}
                 skeletonsCount={30}
-                fetchNextPage={fetchNextPage}
             />
         </div>
     );

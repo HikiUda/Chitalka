@@ -23,7 +23,7 @@ export const ReadChapterHeader: FC<ReadChapterHeaderProps> = (props) => {
     const { data } = useQuery(UserDataApi.getUserDataQueryOptions());
     const { hidden } = useHideLayout();
     const { mangaId, chapterId } = useParams<PathParams[typeof Routes.MANGA_READ]>();
-    if (!mangaId || !chapterId) throw new Error('mangaId and chapterId is required');
+    if (!mangaId || !chapterId) return null;
 
     return (
         <HeaderLayout hidden={hidden} className={classNames(cls.Header, {}, [className])}>

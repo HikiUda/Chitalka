@@ -1,8 +1,6 @@
 import { FC } from 'react';
-import { classNames } from '@/shared/lib/helpers/classNames';
-import { HStack } from '@/shared/deprecate-ui/Stack';
-import Skeleton from 'react-loading-skeleton';
-import cls from './ChapterListItemSkeleton.module.scss';
+import { cn } from '@/shared/lib/css';
+import { Skeleton } from '@/shared/ui/kit/skeleton';
 
 interface ChapterListItemSkeletonProps {
     className?: string;
@@ -12,12 +10,12 @@ export const ChapterListItemSkeleton: FC<ChapterListItemSkeletonProps> = (props)
     const { className } = props;
 
     return (
-        <HStack max className={classNames(cls.ChapterListItemSkeleton, {}, [className])}>
-            <HStack justify="start" max flexGrow>
-                <Skeleton borderRadius="50%" width={20} height={20} />
-                <Skeleton width={180} />
-            </HStack>
-            <Skeleton width={50} />
-        </HStack>
+        <div className={cn('flex items-center justify-center gap-2 w-full px-4 py-2.5', className)}>
+            <div className="flex items-center w-full grow-1 gap-1">
+                <Skeleton className="rounded-[50%] w-5 h-5 " />
+                <Skeleton className="w-full h-4" />
+            </div>
+            <Skeleton className="w-20 h-4" />
+        </div>
     );
 };

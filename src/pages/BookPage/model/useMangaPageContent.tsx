@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
-import { MangaChapters } from '../ui/MangaPage/MangaChapters';
 import { MangaComments } from '../ui/MangaPage/MangaComments';
 import { type TabsType, useBookPageContent } from './useBookPageContent';
 import { MangaIdType } from '@/shared/kernel/manga';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
+import { MangaChapters } from '@/features/BookChapters';
 
 const AboutManga = lazyNamed(() => import('../ui/MangaPage/AboutManga'), 'AboutManga');
 
@@ -28,7 +28,7 @@ export function useMangaPageContent(mangaId: MangaIdType): {
             {
                 value: 'chapters',
                 title: 'Главы',
-                content: <MangaChapters />,
+                content: <MangaChapters mangaId={mangaId} />,
             },
             {
                 value: 'comments',

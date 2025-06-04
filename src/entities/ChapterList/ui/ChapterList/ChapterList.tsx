@@ -1,25 +1,17 @@
 import { ReactNode, useMemo } from 'react';
-import { classNames } from '@/shared/lib/helpers/classNames';
-import { useTrottle } from '@/shared/lib/hooks/useTrottle';
-import { useIntersection } from '@/shared/lib/hooks/useIntersection';
 import { ChapterListItemSkeleton } from '../ChapterListItemSkeleton/ChapterListItemSkeleton';
-import cls from './ChapterList.module.scss';
 
 interface ChapterListProps<T> {
     className?: string;
     chapters: T[];
     renderChapter: (chapter: T) => ReactNode;
-    fetchNextPage?: () => void;
+    action?: ReactNode;
     isLoading?: boolean;
     skeletonsCount?: number;
 }
 
 export const ChapterList = <T extends object>(props: ChapterListProps<T>) => {
-    const { className, chapters, renderChapter, isLoading, skeletonsCount, fetchNextPage } = props;
-    const trottleIntersect = useTrottle(() => fetchNextPage?.(), 1000);
-    const intersect = useIntersection(() => {
-        trottleIntersect();
-    });
+    const { className, chapters, renderChapter, isLoading, skeletonsCount = 10, action } = props;
 
     const skeletons = useMemo(() => {
         return Array(skeletonsCount)
@@ -28,10 +20,10 @@ export const ChapterList = <T extends object>(props: ChapterListProps<T>) => {
     }, [skeletonsCount]);
 
     return (
-        <div className={classNames(cls.ChapterList, {}, [className])}>
+        <div className={className}>
             {chapters.map(renderChapter)}
             {isLoading && skeletons.map((sk) => sk)}
-            <div ref={intersect} style={{ height: 1 }} />
+            {action}
         </div>
     );
 };

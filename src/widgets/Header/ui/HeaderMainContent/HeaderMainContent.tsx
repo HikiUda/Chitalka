@@ -9,7 +9,7 @@ import { HeaderLayout } from '@/shared/layout/HeaderLayout';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { LogoMangaSite } from '@/entities/Logo';
 import { CatalogLink, CollectionLink } from '@/entities/MangaSiteLinks';
-import { QuickSearchModal } from '@/features/QuickSearchModal';
+import { QuickSearch } from '@/features/QuickSearch';
 import { PopUserMenu } from '@/features/PopUserMenu';
 import { AuthModal } from '@/features/AuthModal';
 
@@ -29,7 +29,7 @@ export const HeaderMainContent: FC<HeaderMainContentProps> = (props) => {
                 <HStack>
                     <CatalogLink />
                     <CollectionLink />
-                    <QuickSearchModal />
+                    <QuickSearch />
                 </HStack>
                 <HStack gap="16">
                     <Icon Svg={QuestionSvg} width={30} height={30} />
