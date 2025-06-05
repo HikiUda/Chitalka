@@ -28,7 +28,7 @@ export const QuickSearchContent = () => {
     return (
         <div className="overflow-auto">
             <div className="flex justify-center items-center w-full mb-1">
-                <SearchIcon />
+                <SearchIcon size={18} />
                 <Input
                     variant="clear"
                     value={search}

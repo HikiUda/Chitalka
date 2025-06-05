@@ -12,7 +12,7 @@ type Session = {
     iat: number;
 };
 
-const TOKEN_KEY = 'accessToken';
+const TOKEN_KEY = 'access';
 
 let refreshTokenPromise: Promise<string | null> | null = null;
 
@@ -27,20 +27,20 @@ interface SessionStore {
 export const useSessionStore = create<SessionStore>()(
     devtools(
         (set, get) => {
-            const rawToken = sessionStorage.getItem(TOKEN_KEY);
+            const rawToken = localStorage.getItem(TOKEN_KEY);
             const session = rawToken ? jwtDecode<Session>(rawToken) : null;
             return {
                 token: rawToken,
                 session,
 
                 login: (token) => {
-                    sessionStorage.setItem(TOKEN_KEY, token);
+                    localStorage.setItem(TOKEN_KEY, token);
                     const session = jwtDecode<Session>(token);
                     set({ token, session });
                 },
 
                 logout: () => {
-                    sessionStorage.removeItem(TOKEN_KEY);
+                    localStorage.removeItem(TOKEN_KEY);
                     set({ token: null, session: null });
                 },
 

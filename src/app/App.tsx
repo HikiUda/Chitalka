@@ -1,8 +1,6 @@
 import { FC, Suspense, useLayoutEffect, useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
 import { Outlet } from 'react-router-dom';
 import { MainLayout } from '@/shared/layout/MainLayout/MainLayout';
-import { UserDataApi } from '@/shared/api/deprecated/user';
 import { Header } from '@/widgets/Header';
 import { BottomMenu } from '@/widgets/BottomMenu';
 import { useSession } from '@/shared/api/session';
@@ -13,7 +11,6 @@ interface AppProps {
 }
 
 export const App: FC<AppProps> = () => {
-    const user = useQuery(UserDataApi.getUserDataQueryOptions());
     const [init, setInit] = useState(false);
     const { refreshToken } = useSession();
 

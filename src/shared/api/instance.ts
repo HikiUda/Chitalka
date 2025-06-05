@@ -7,16 +7,19 @@ export type ApiSchemas = components['schemas'];
 
 export const baseFetchClient = createFetchClient<paths>({
     baseUrl: __API_URL__,
+    credentials: 'include',
 });
 
 export const authFetchClient = createFetchClient<paths>({
     baseUrl: __API_URL__,
+    credentials: 'include',
 });
 
 export const authRqClient = createClient(authFetchClient);
 
 export const publicFetchClient = createFetchClient<paths>({
     baseUrl: __API_URL__,
+    credentials: 'include',
 });
 
 export const publicRqClient = createClient(publicFetchClient);

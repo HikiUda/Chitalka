@@ -1,1 +1,1 @@
-export { PopUserMenu } from './ui/PopUserMenu/PopUserMenu';
+export { PopUserMenu } from './ui/PopUserMenu';
