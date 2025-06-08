@@ -1,10 +1,9 @@
 import { FC } from 'react';
+import { CircleHelpIcon } from 'lucide-react';
 import cls from './BottomMenuMainContent.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { HStack } from '@/shared/deprecate-ui/Stack';
-import { Icon } from '@/shared/deprecate-ui/Icon';
-import QuestionSvg from '@/shared/assets/icon/common/question.svg?react';
-import { BottomMenuLayout } from '@/shared/layout/BottomMenuLayout';
+import { BottomMenuLayout } from '@/shared/ui/layout/BottomMenuLayout';
 import { LogoMangaSite } from '@/entities/Logo';
 import { CatalogLink, CollectionLink } from '@/entities/MangaSiteLinks';
 import { PopUserMenu } from '@/features/PopUserMenu';
@@ -22,7 +21,7 @@ export const BottomMenuMainContent: FC<BottomMenuMainContentProps> = (props) => 
                 <CatalogLink iconOnly iconSize={30} />
                 <CollectionLink iconOnly iconSize={30} />
                 <LogoMangaSite />
-                <Icon Svg={QuestionSvg} width={30} height={30} />
+                <CircleHelpIcon size={30} className="stroke-primary" />
                 <PopUserMenu />
             </HStack>
         </BottomMenuLayout>

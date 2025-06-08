@@ -1,5 +1,5 @@
 import { z } from 'zod';
-
+//TODO MangaStatus to BookStatus
 export const MangaStatus = {
     Ongoing: 'Ongoing',
     Announced: 'Announced',

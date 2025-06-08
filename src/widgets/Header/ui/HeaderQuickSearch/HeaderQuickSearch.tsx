@@ -2,7 +2,7 @@ import { FC } from 'react';
 import cls from './HeaderQuickSearch.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { HStack } from '@/shared/deprecate-ui/Stack';
-import { HeaderLayout } from '@/shared/layout/HeaderLayout';
+import { HeaderLayout } from '@/shared/ui/layout/HeaderLayout';
 import { QuickSearch } from '@/features/QuickSearch';
 
 interface HeaderQuickSearchProps {

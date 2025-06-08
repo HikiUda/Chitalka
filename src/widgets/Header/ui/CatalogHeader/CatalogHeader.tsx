@@ -2,7 +2,7 @@ import { FC, useCallback } from 'react';
 import { HStack } from '@/shared/deprecate-ui/Stack';
 import { useQueryClient } from '@tanstack/react-query';
 import { LogoMangaSite } from '@/entities/Logo';
-import { CatalogFiltersModal, SortByOrderMenu } from '@/features/CatalogFilters';
+import { CatalogFiltersModal, SortByOrderMenu } from '@/features/CatalogFilters-deprecated';
 import { CatalogApi } from '@/shared/api/deprecated/mangaList';
 
 interface CatalogHeaderProps {

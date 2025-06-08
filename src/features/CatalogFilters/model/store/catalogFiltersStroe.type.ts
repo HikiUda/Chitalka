@@ -12,8 +12,6 @@ import { GenresSlice } from './slices/genresSlice';
 import { TagsSlice } from './slices/tagsSlice';
 import { GlobalSlice } from './slices/globalSlice';
 
-export type TriSwitchState = 'include' | 'exclude' | 'none';
-
 export type CatalogFiltersStoreType = SearchSlice &
     SortByOrderSlice &
     ChapterCountSlice &

@@ -1,13 +1,12 @@
 import { StateCreator } from 'zustand';
-import { OrderType } from '@/shared/kernel/order';
 import { CatalogFiltersStoreType } from '../catalogFiltersStroe.type';
-import { SortByType } from '@/shared/api/deprecated/mangaList';
+import { SortByType } from '../../helpers/sortBy';
 
 export interface SortByOrderSlice {
     sortBy: SortByType;
-    order: OrderType;
+    order: 'asc' | 'desc';
     setSortBy: (sortBy: SortByType) => void;
-    setOrder: (order: OrderType) => void;
+    setOrder: (order: 'asc' | 'desc') => void;
 }
 
 export const sortByOrderSliceInitialState: Pick<SortByOrderSlice, 'sortBy' | 'order'> = {

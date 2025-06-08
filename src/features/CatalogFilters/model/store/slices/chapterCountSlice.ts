@@ -1,7 +1,5 @@
 import { StateCreator } from 'zustand';
 import { CatalogFiltersStoreType } from '../catalogFiltersStroe.type';
-import { fromNoBiggerTo } from '../../helpers/fromNoBiggerTo';
-import { toNoLessFrom } from '../../helpers/toNoLessFrom';
 
 export interface ChapterCountSlice {
     chapterCountFrom: number;
@@ -26,16 +24,16 @@ export const createChapterCountSlice: StateCreator<
     ...chapterCountSliceInitialState,
     setChapterCountFrom: (chapterCountFrom) =>
         set(
-            (state) => ({
-                chapterCountFrom: fromNoBiggerTo(chapterCountFrom, state.chapterCountTo),
+            () => ({
+                chapterCountFrom,
             }),
             false,
             'CatalogFiltersStore/setChapterCountFrom',
         ),
     setChapterCountTo: (chapterCountTo) =>
         set(
-            (state) => ({
-                chapterCountTo: toNoLessFrom(state.chapterCountFrom, chapterCountTo),
+            () => ({
+                chapterCountTo,
             }),
             false,
             'CatalogFiltersStore/setChapterCountTo',

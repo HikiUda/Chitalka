@@ -1,7 +1,5 @@
 import { StateCreator } from 'zustand';
 import { CatalogFiltersStoreType } from '../catalogFiltersStroe.type';
-import { fromNoBiggerTo } from '../../helpers/fromNoBiggerTo';
-import { toNoLessFrom } from '../../helpers/toNoLessFrom';
 
 export interface RateCountSlice {
     rateCountFrom: number;
@@ -24,16 +22,16 @@ export const createRateCountSlice: StateCreator<
     ...rateCountSliceInitialState,
     setRateCountFrom: (rateCountFrom) =>
         set(
-            (state) => ({
-                rateCountFrom: fromNoBiggerTo(rateCountFrom, state.rateCountTo),
+            () => ({
+                rateCountFrom,
             }),
             false,
             'CatalogFiltersStore/setRateCountFrom',
         ),
     setRateCountTo: (rateCountTo) =>
         set(
-            (state) => ({
-                rateCountTo: toNoLessFrom(state.rateCountFrom, rateCountTo),
+            () => ({
+                rateCountTo,
             }),
             false,
             'CatalogFiltersStore/setRateCountTo',

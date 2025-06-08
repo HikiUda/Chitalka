@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { CircleHelpIcon } from 'lucide-react';
 import cls from './HeaderMainContent.module.scss';
 import { HStack } from '@/shared/deprecate-ui/Stack';
-import { HeaderLayout } from '@/shared/layout/HeaderLayout';
+import { HeaderLayout } from '@/shared/ui/layout/HeaderLayout';
 import { classNames } from '@/shared/lib/helpers/classNames';
 import { LogoMangaSite } from '@/entities/Logo';
 import { CatalogLink, CollectionLink } from '@/entities/MangaSiteLinks';

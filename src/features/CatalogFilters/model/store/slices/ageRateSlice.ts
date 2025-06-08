@@ -1,7 +1,5 @@
 import { StateCreator } from 'zustand';
 import { CatalogFiltersStoreType } from '../catalogFiltersStroe.type';
-import { fromNoBiggerTo } from '../../helpers/fromNoBiggerTo';
-import { toNoLessFrom } from '../../helpers/toNoLessFrom';
 
 export interface AgeRateSlice {
     ageRateFrom: number;
@@ -24,16 +22,16 @@ export const createAgeRateSlice: StateCreator<
     ...ageRateSliceInitialState,
     setAgeRateFrom: (ageRateFrom) =>
         set(
-            (state) => ({
-                ageRateFrom: fromNoBiggerTo(ageRateFrom, state.ageRateTo),
+            () => ({
+                ageRateFrom,
             }),
             false,
             'CatalogFiltersStore/setAgeRateFrom',
         ),
     setAgeRateTo: (ageRateTo) =>
         set(
-            (state) => ({
-                ageRateTo: toNoLessFrom(state.ageRateFrom, ageRateTo),
+            () => ({
+                ageRateTo,
             }),
             false,
             'CatalogFiltersStore/setAgeRateTo',

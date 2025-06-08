@@ -4,6 +4,7 @@ import { components, paths } from './bekiApi';
 import { useSessionStore } from './session';
 
 export type ApiSchemas = components['schemas'];
+export type ApiPaths = paths;
 
 export const baseFetchClient = createFetchClient<paths>({
     baseUrl: __API_URL__,

@@ -1,13 +1,17 @@
 import { FC, useCallback, useEffect, useState } from 'react';
-import { classNames } from '@/shared/lib/helpers/classNames';
-import { Page } from '@/shared/layout/Page';
 import { isMobile } from 'react-device-detect';
 import { useQueryClient } from '@tanstack/react-query';
-import { useKeyBoardEvent } from '@/shared/lib/hooks/useKeyBoardEvent';
 import { CatalogContent } from '../CatalogContent/CatalogContent';
 import cls from './CatalogPage.module.scss';
-import { CatalogFilters, useSetCatalogFiltersFromSearchParams } from '@/features/CatalogFilters';
+import { useKeyBoardEvent } from '@/shared/lib/hooks/useKeyBoardEvent';
+import { Page } from '@/shared/ui/layout/Page';
+import { classNames } from '@/shared/lib/helpers/classNames';
+import {
+    // CatalogFilters,
+    useSetCatalogFiltersFromSearchParams,
+} from '@/features/CatalogFilters-deprecated';
 import { CatalogApi } from '@/shared/api/deprecated/mangaList';
+import { CatalogFilters } from '@/features/CatalogFilters';
 
 interface CatalogPageProps {
     className?: string;
@@ -49,7 +53,8 @@ const CatalogPage: FC<CatalogPageProps> = (props) => {
                 <CatalogContent className={cls.catalog} />
                 {!isMobile && (
                     <div className={cls.filters}>
-                        <CatalogFilters onApply={onApplyFilters} />
+                        {/* <CatalogFilters onApply={onApplyFilters} /> */}
+                        <CatalogFilters />
                     </div>
                 )}
             </div>

@@ -1,11 +1,12 @@
 import { ImageIcon } from 'lucide-react';
-import { FC } from 'react';
+import { FC, Suspense } from 'react';
 import { AppAdaptiveImage } from '@/shared/ui/AppAdaptiveImage';
 import { Dialog, DialogBody, DialogPortal, DialogTrigger } from '@/shared/ui/kit/dialog';
 import { Skeleton } from '@/shared/ui/kit/skeleton';
 import { MangaIdType } from '@/shared/kernel/manga';
 import { cn } from '@/shared/lib/css';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
+import { Loader } from '@/shared/ui/kit/loader';
 
 const CoversModal = lazyNamed(() => import('./CoversModal'), 'CoversModal');
 
@@ -36,7 +37,9 @@ export const Cover: FC<CoverProps> = (props) => {
             </DialogTrigger>
             <DialogPortal>
                 <DialogBody className="max-w-120 w-[96vw] lg:w-auto" empty>
-                    <CoversModal mangaId={mangaId} />
+                    <Suspense fallback={<Loader variant="flower" className="mx-auto" />}>
+                        <CoversModal mangaId={mangaId} />
+                    </Suspense>
                 </DialogBody>
             </DialogPortal>
         </Dialog>

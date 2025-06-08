@@ -4,7 +4,7 @@ import { NowReadMangaSlider } from '../NowReadMangaSlider/NowReadMangaSlider';
 import { LastUpdatedMangaTabs } from '../LastUpdatedMangaTabs/LastUpdatedMangaTabs';
 import cls from './MainPage.module.scss';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { Page } from '@/shared/layout/Page';
+import { Page } from '@/shared/ui/layout/Page';
 import { CollectionGridLayout, CollectionCard } from '@/entities/CollectionList';
 import { Heading } from '@/shared/ui/kit/heading';
 import { UserCard, UserGridLayout } from '@/entities/UserList';

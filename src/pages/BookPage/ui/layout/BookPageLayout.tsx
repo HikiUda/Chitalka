@@ -2,7 +2,7 @@
 import { isMobile } from 'react-device-detect';
 import { ComponentType, ReactNode } from 'react';
 import cls from './layout.module.css';
-import { Page } from '@/shared/layout/Page';
+import { Page } from '@/shared/ui/layout/Page';
 import { cn } from '@/shared/lib/css';
 import { DivSlot } from '@/shared/ui/kit/divslot';
 

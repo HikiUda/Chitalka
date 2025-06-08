@@ -7,13 +7,10 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import cls from './CatalogContent.module.scss';
 import { CatalogApi } from '@/shared/api/deprecated/mangaList';
 import { CatalogCard } from '@/entities/MangaCard';
-import {
-    CatalogSearchInput,
-    SortByOrderMenu,
-    useGetCatalogFilters,
-} from '@/features/CatalogFilters';
+import { useGetCatalogFilters } from '@/features/CatalogFilters-deprecated';
 import { HoverCardManga } from '@/widgets/HoverCardManga';
 import { InfinityMangaList } from '@/entities/MangaList';
+import { CatalogSearchInput, SortByOrderMenu } from '@/features/CatalogFilters';
 
 interface CatalogContentProps {
     className?: string;
@@ -21,9 +18,8 @@ interface CatalogContentProps {
 
 export const CatalogContent: FC<CatalogContentProps> = (props) => {
     const { className } = props;
-    const { getFilters } = useGetCatalogFilters();
     const { data, fetchNextPage, isLoading, isFetchingNextPage, refetch } = useInfiniteQuery(
-        CatalogApi.getMangaInfinityQueryOptions(getFilters),
+        CatalogApi.getMangaInfinityQueryOptions(() => ({}) as never),
     );
 
     return (
@@ -32,7 +28,7 @@ export const CatalogContent: FC<CatalogContentProps> = (props) => {
                 <Heading color="primary" HeadingTag="h2">
                     Каталог
                 </Heading>
-                <SortByOrderMenu onApply={refetch} />
+                <SortByOrderMenu />
             </HStack>
             <CatalogSearchInput className={cls.input} />
             <InfinityMangaList

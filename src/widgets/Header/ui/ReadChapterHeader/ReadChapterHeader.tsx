@@ -7,11 +7,11 @@ import { classNames } from '@/shared/lib/helpers/classNames';
 import { PathParams, Routes } from '@/shared/kernel/router';
 import { HStack } from '@/shared/deprecate-ui/Stack';
 import { UserDataApi } from '@/shared/api/deprecated/user';
-import { HeaderLayout } from '@/shared/layout/HeaderLayout';
+import { HeaderLayout } from '@/shared/ui/layout/HeaderLayout';
 import { BackToManga, ChaptersNavigation, ReadSettingsModal } from '@/features/MangaChapters';
 import { PopUserMenu } from '@/features/PopUserMenu';
 import { AuthModal } from '@/features/AuthModal';
-import { useHideLayout } from '@/shared/layout/useHideLayout';
+import { useHideLayout } from '@/shared/ui/layout/useHideLayout';
 
 interface ReadChapterHeaderProps {
     className?: string;

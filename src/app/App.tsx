@@ -1,6 +1,6 @@
 import { FC, Suspense, useLayoutEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { MainLayout } from '@/shared/layout/MainLayout/MainLayout';
+import { MainLayout } from '@/shared/ui/layout/MainLayout/MainLayout';
 import { Header } from '@/widgets/Header';
 import { BottomMenu } from '@/widgets/BottomMenu';
 import { useSession } from '@/shared/api/session';
