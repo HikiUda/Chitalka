@@ -1,4 +1,5 @@
 import { MoveRightIcon } from 'lucide-react';
+import { memo } from 'react';
 import { cn } from '@/shared/lib/css';
 import { Heading } from '@/shared/ui/kit/heading';
 
@@ -8,7 +9,7 @@ interface ToOtherFiltersProps {
     title: string;
 }
 
-export const ToOtherFilters = (props: ToOtherFiltersProps) => {
+export const ToOtherFilters = memo((props: ToOtherFiltersProps) => {
     const { className, onClick, title } = props;
     return (
         <div
@@ -23,4 +24,5 @@ export const ToOtherFilters = (props: ToOtherFiltersProps) => {
             <MoveRightIcon className="stroke-primary" />
         </div>
     );
-};
+});
+ToOtherFilters.displayName = 'ToOtherFilters';

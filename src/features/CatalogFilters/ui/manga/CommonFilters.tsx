@@ -43,7 +43,7 @@ export const CommonFilters = (props: CommonFiltersProps) => {
         <CatalogFilterCardLayout
             className={className}
             header={
-                <div className="px-2 pt-2">
+                <div className="px-2 py-2">
                     <ToOtherFilters onClick={toGenres} title="Жанры" />
                     <ToOtherFilters onClick={toTags} title="Теги" />
                 </div>

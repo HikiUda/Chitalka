@@ -3,6 +3,7 @@ import { useMangaCatalogFiltersStore } from '../../model/manga/mangaCatalogFilte
 import { useTags } from '../../model/slices/tags/useTags';
 import { CategoryHeader } from '../layout/CategoryHeader';
 import { CatalogFilterCardLayout } from '../layout/CatalogFilterCardLayout';
+import { useApplyMangaFilters } from '../../model/manga/useApplyMangaFilters';
 import { Input } from '@/shared/ui/kit/input';
 import { Button } from '@/shared/ui/kit/button';
 import { Separator } from '@/shared/ui/kit/separator';
@@ -15,6 +16,7 @@ interface TagsFiltersProps {
 export const TagsFilters = (props: TagsFiltersProps) => {
     const { className, onBack } = props;
 
+    const { applyFilters } = useApplyMangaFilters();
     const store = useMangaCatalogFiltersStore.use;
 
     const { checkboxes, tags, notTags, setTags, setNotTags, resetTags, search, setSearch } =
@@ -46,7 +48,11 @@ export const TagsFilters = (props: TagsFiltersProps) => {
                     onChangeExclude={setNotTags}
                 />
             }
-            footer={<Button className="mx-4 mb-4">Применить</Button>}
+            footer={
+                <Button onClick={applyFilters} className="mx-4 mb-4">
+                    Применить
+                </Button>
+            }
         />
     );
 };

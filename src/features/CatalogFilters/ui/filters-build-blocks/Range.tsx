@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { memo, useCallback } from 'react';
 import { Heading } from '@/shared/ui/kit/heading';
 import { Input } from '@/shared/ui/kit/input';
 
@@ -12,7 +12,7 @@ interface RangeProps {
     max?: number;
 }
 
-export const Range = (props: RangeProps) => {
+export const Range = memo((props: RangeProps) => {
     const { className, label, from, to, setFrom, setTo, max } = props;
 
     const handleSetFrom = useCallback(
@@ -55,4 +55,5 @@ export const Range = (props: RangeProps) => {
             </div>
         </div>
     );
-};
+});
+Range.displayName = 'Range';

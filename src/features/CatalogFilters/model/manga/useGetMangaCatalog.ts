@@ -26,12 +26,7 @@ export const MangaCatalogQueryOptions = (filters: MangaCatalogFiltersType) =>
     });
 
 export function useGetMangaCatalog() {
-    const appliedFilters = useMangaCatalogFiltersStore.use.appliedFilters();
-    const { data, isFetching, isFetchingNextPage, refetch, fetchNextPage } = useInfiniteQuery(
-        MangaCatalogQueryOptions(appliedFilters),
-    );
-
-    const clear = useClearInfinityPages(MangaCatalogQueryOptions(appliedFilters).queryKey);
+    const clear = useClearInfinityPages(MangaCatalogQueryOptions({}).queryKey);
 
     useEffect(() => {
         return () => {
@@ -39,6 +34,11 @@ export function useGetMangaCatalog() {
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    const appliedFilters = useMangaCatalogFiltersStore.use.appliedFilters();
+    const { data, isFetching, isFetchingNextPage, refetch, fetchNextPage } = useInfiniteQuery(
+        MangaCatalogQueryOptions(appliedFilters),
+    );
 
     const handleRefetch = () => {
         clear();

@@ -22,7 +22,7 @@ export const CatalogPageLayout = (props: CatalogPageProps) => {
                 <Card className="px-3">
                     <div className="flex gap-2 items-center justify-between">
                         {title}
-                        {sortByOrder}
+                        {!isMobile && sortByOrder}
                     </div>
                     {input}
                     {list}

@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { HStack } from '@/shared/deprecate-ui/Stack';
 import { LogoMangaSite } from '@/entities/Logo';
+import { MangaCatalogFiltersSheet, MangaCatalogSortByOrder } from '@/features/CatalogFilters';
 
 interface CatalogHeaderProps {
     className?: string;
@@ -13,8 +14,8 @@ export const CatalogHeader: FC<CatalogHeaderProps> = (props) => {
         <HStack className={className} justify="between">
             <LogoMangaSite />
             <HStack>
-                {/* <SortByOrderMenu onApply={onApplyFilters} />
-                <CatalogFiltersModal onApply={onApplyFilters} /> */}
+                <MangaCatalogFiltersSheet />
+                <MangaCatalogSortByOrder />
             </HStack>
         </HStack>
     );

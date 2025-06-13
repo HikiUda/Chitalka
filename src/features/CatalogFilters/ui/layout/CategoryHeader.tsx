@@ -1,4 +1,5 @@
 import { MoveLeftIcon } from 'lucide-react';
+import { memo } from 'react';
 import { Button } from '@/shared/ui/kit/button';
 import { Heading } from '@/shared/ui/kit/heading';
 import { cn } from '@/shared/lib/css';
@@ -10,7 +11,7 @@ interface CategoryHeaderProps {
     onBack: () => void;
 }
 
-export const CategoryHeader = (props: CategoryHeaderProps) => {
+export const CategoryHeader = memo((props: CategoryHeaderProps) => {
     const { className, title, onBack, onReset } = props;
     return (
         <div className={cn('flex items-center justify-between gap-2 mb-2', className)}>
@@ -35,4 +36,5 @@ export const CategoryHeader = (props: CategoryHeaderProps) => {
             </Button>
         </div>
     );
-};
+});
+CategoryHeader.displayName = 'CategoryHeader';

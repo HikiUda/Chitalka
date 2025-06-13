@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { CatalogPageLayout } from './CatalogPageLayout';
 import { Heading } from '@/shared/ui/kit/heading';
 import {
@@ -5,6 +6,7 @@ import {
     MangaCatalogSortByOrder,
     MangaCatalogSearchInput,
     useGetMangaCatalog,
+    useInitMangaFilters,
 } from '@/features/CatalogFilters';
 import { MangaCard, MangaGridLayout } from '@/entities/ComicList';
 import { getRoute } from '@/shared/kernel/router';
@@ -12,6 +14,12 @@ import { useIntersection } from '@/shared/lib/hooks/useIntersection';
 import { useTrottle } from '@/shared/lib/hooks/useTrottle';
 
 const MangaCatalogPage = () => {
+    const { initMangaFilters } = useInitMangaFilters();
+    useEffect(() => {
+        initMangaFilters();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     const { data = [], isFetching, fetchNextPage } = useGetMangaCatalog();
 
     const trottleFetchNext = useTrottle(() => fetchNextPage(), 1000);

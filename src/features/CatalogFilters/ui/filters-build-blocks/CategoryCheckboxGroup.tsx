@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { CategoryCheckbox, TriSwitchState } from './CategoryCheckbox';
 
 export type CategoryCheckboxType<T extends string | number> = {
@@ -14,9 +15,7 @@ interface CategoryCheckboxGroupProps<T extends string | number> {
     checkboxes: CategoryCheckboxType<T>[];
 }
 
-export const CategoryCheckboxGroup = <T extends string | number>(
-    props: CategoryCheckboxGroupProps<T>,
-) => {
+const CategoryCheckboxGroup = <T extends string | number>(props: CategoryCheckboxGroupProps<T>) => {
     const { className, include, exclude, onChangeInclude, onChangeExclude, checkboxes } = props;
 
     const onCheck = (value: T, nextState: TriSwitchState) => {
@@ -55,3 +54,6 @@ export const CategoryCheckboxGroup = <T extends string | number>(
         </div>
     );
 };
+
+const CategoryCheckboxGroupMemo = memo(CategoryCheckboxGroup) as typeof CategoryCheckboxGroup;
+export { CategoryCheckboxGroupMemo as CategoryCheckboxGroup };

@@ -40,13 +40,18 @@ const buttonVariants = cva(
     },
 );
 
-export const ButtonContext = React.createContext<React.ComponentProps<'button'>>({});
+type ButtonSlots = {
+    slots?: Record<string, Omit<React.ComponentProps<'button'>, 'slot'> & {}>;
+};
+
+export const ButtonContext = React.createContext<React.ComponentProps<'button'> & ButtonSlots>({});
 
 function Button({
     className,
     variant,
     size,
     iconSize,
+    slot = '',
     asChild = false,
     ...props
 }: React.ComponentProps<'button'> &
@@ -56,6 +61,7 @@ function Button({
     const Comp = asChild ? Slot : 'button';
 
     const context = React.useContext(ButtonContext);
+    const slotData = context?.slots?.[slot] || {};
 
     return (
         <Comp
@@ -63,6 +69,7 @@ function Button({
             className={cn(buttonVariants({ variant, size, iconSize }), className)}
             {...props}
             {...context}
+            {...slotData}
         />
     );
 }

@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Heading } from '@/shared/ui/kit/heading';
 import { Input } from '@/shared/ui/kit/input';
 
@@ -10,7 +11,7 @@ interface DateRangeProps {
     setTo: (to: string) => void;
 }
 
-export const DateRange = (props: DateRangeProps) => {
+export const DateRange = memo((props: DateRangeProps) => {
     const { className, label, from, to, setFrom, setTo } = props;
 
     return (
@@ -33,4 +34,5 @@ export const DateRange = (props: DateRangeProps) => {
             </div>
         </div>
     );
-};
+});
+DateRange.displayName = 'DateRange';

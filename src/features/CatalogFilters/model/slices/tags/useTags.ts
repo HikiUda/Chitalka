@@ -4,13 +4,10 @@ import { CategoryCheckboxType } from '../../../ui/filters-build-blocks/CategoryC
 import { TagsSlice } from './tagsSlice';
 import { useGetTags } from './useGetTags';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
-import { useUrlSearchParams } from '@/shared/lib/hooks/useUrlSearchParams';
 
 export function useTags(slice: CatalogFilterSliceSelector<TagsSlice>) {
     const [search, setSearch] = useState('');
     const { data, refetch } = useGetTags(search);
-
-    const { setSearchParam } = useUrlSearchParams();
 
     const tags = slice.tags();
     const notTags = slice.notTags();
@@ -28,22 +25,6 @@ export function useTags(slice: CatalogFilterSliceSelector<TagsSlice>) {
         [goSearch, setSearch],
     );
 
-    const handleSetTags = useCallback(
-        (arr: number[]) => {
-            setTags(arr);
-            setSearchParam('tags', arr.join(','));
-        },
-        [setTags, setSearchParam],
-    );
-
-    const handleSetNotTags = useCallback(
-        (arr: number[]) => {
-            setNotTags(arr);
-            setSearchParam('notTags', arr.join(','));
-        },
-        [setNotTags, setSearchParam],
-    );
-
     const checkboxes: CategoryCheckboxType<number>[] = useMemo(() => {
         return data.map((tag) => ({ label: tag.title, value: tag.id }));
     }, [data]);
@@ -52,8 +33,8 @@ export function useTags(slice: CatalogFilterSliceSelector<TagsSlice>) {
         checkboxes,
         tags,
         notTags,
-        setTags: handleSetTags,
-        setNotTags: handleSetNotTags,
+        setTags,
+        setNotTags,
         resetTags,
         search,
         setSearch: handleSetSearch,

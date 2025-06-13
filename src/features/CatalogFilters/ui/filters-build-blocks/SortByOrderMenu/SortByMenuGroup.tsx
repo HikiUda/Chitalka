@@ -6,13 +6,15 @@ interface SortByMenuGroupProps {
     className?: string;
     sortBy: SortByType;
     setSortBy: (sortBy: SortByType) => void;
+    onApply: () => void;
 }
 
 export const SortByMenuGroup = (props: SortByMenuGroupProps) => {
-    const { className, sortBy, setSortBy } = props;
+    const { className, sortBy, setSortBy, onApply } = props;
 
     const handleSetSortBy = (val: string) => {
         setSortBy(val as SortByType);
+        onApply();
     };
 
     return (

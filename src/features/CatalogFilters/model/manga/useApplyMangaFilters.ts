@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { SearchSchema } from '../slices/search/searchSchema';
 import { OrderSchema } from '../slices/order/orderSchema';
 import { SortBySchema } from '../slices/sortBy/sortBySchema';
@@ -32,14 +33,19 @@ export const MangaCatalogFiltersSchema = SearchSchema.and(OrderSchema)
 export type MangaCatalogFiltersType = z.infer<typeof MangaCatalogFiltersSchema>;
 
 export function useApplyMangaFilters() {
+    const [searchParams, setSearchParams] = useSearchParams();
     const getFilters = useMangaCatalogFiltersStore.use.getFilters();
     const setAppliedFilters = useMangaCatalogFiltersStore.use.setAppliedFilters();
 
     const applyFilters = useCallback(() => {
-        setAppliedFilters(
-            validateFromTo(clearEmptyField(MangaCatalogFiltersSchema.parse(getFilters()))),
+        const filters = validateFromTo(
+            clearEmptyField(MangaCatalogFiltersSchema.parse(getFilters())),
         );
-    }, [getFilters, setAppliedFilters]);
+        setAppliedFilters(filters);
+        setSearchParams(
+            Object.fromEntries(Object.entries(filters).map(([key, value]) => [key, String(value)])),
+        );
+    }, [getFilters, setAppliedFilters, setSearchParams]);
 
     return { applyFilters };
 }

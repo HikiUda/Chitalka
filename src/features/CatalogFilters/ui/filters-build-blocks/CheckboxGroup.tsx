@@ -1,5 +1,5 @@
 import { Label } from '@radix-ui/react-label';
-import { useCallback } from 'react';
+import { memo, useCallback } from 'react';
 import { Checkbox } from '@/shared/ui/kit/checkbox';
 import { Heading } from '@/shared/ui/kit/heading';
 
@@ -16,7 +16,7 @@ interface CheckboxGroupProps<T extends string | number> {
     checkboxes: CheckboxType<T>[];
 }
 
-export const CheckboxGroup = <T extends string | number>(props: CheckboxGroupProps<T>) => {
+const CheckboxGroup = <T extends string | number>(props: CheckboxGroupProps<T>) => {
     const { className, values, onValuesChange, label, checkboxes } = props;
 
     const onCheck = useCallback(
@@ -47,3 +47,5 @@ export const CheckboxGroup = <T extends string | number>(props: CheckboxGroupPro
         </div>
     );
 };
+const CheckboxGroupMemo = memo(CheckboxGroup) as typeof CheckboxGroup;
+export { CheckboxGroupMemo as CheckboxGroup };

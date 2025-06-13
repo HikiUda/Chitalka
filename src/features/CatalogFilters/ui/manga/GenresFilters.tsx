@@ -3,6 +3,7 @@ import { useMangaCatalogFiltersStore } from '../../model/manga/mangaCatalogFilte
 import { useGenres } from '../../model/slices/genres/useGenres';
 import { CategoryHeader } from '../layout/CategoryHeader';
 import { CatalogFilterCardLayout } from '../layout/CatalogFilterCardLayout';
+import { useApplyMangaFilters } from '../../model/manga/useApplyMangaFilters';
 import { Input } from '@/shared/ui/kit/input';
 import { Button } from '@/shared/ui/kit/button';
 import { Separator } from '@/shared/ui/kit/separator';
@@ -15,6 +16,7 @@ interface GenresFiltersProps {
 export const GenresFilters = (props: GenresFiltersProps) => {
     const { className, onBack } = props;
 
+    const { applyFilters } = useApplyMangaFilters();
     const store = useMangaCatalogFiltersStore.use;
 
     const {
@@ -54,7 +56,11 @@ export const GenresFilters = (props: GenresFiltersProps) => {
                     onChangeExclude={setNotGenres}
                 />
             }
-            footer={<Button className="mx-4 mb-4">Применить</Button>}
+            footer={
+                <Button onClick={applyFilters} className="mx-4 mb-4">
+                    Применить
+                </Button>
+            }
         />
     );
 };
