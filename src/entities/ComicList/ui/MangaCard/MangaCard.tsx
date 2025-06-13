@@ -45,7 +45,7 @@ export const MangaCard = (props: MangaCardProps) => {
                 img={img}
             >
                 {label1 && (
-                    <span className="absolute top-2 -left-1 min-w-[30px] max-w-[40px] text-ellipsis text-center bg-accent text-sm px-1 py-0.5 rounded-xs overflow-hidden whitespace-nowrap">
+                    <span className="absolute top-2 -left-1 min-w-[30px] max-w-[40px] text-ellipsis text-center bg-primary text-sm px-1 py-0.5 rounded-xs overflow-hidden whitespace-nowrap">
                         {label1}
                     </span>
                 )}
