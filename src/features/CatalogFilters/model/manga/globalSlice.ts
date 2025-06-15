@@ -13,7 +13,7 @@ import { statusSliceInitialState } from '../slices/status/statusSlice';
 import { tagsSliceInitialState } from '../slices/tags/tagsSlice';
 import { CatalogFilterInitialState, CatalogFilterSlice, GlobalSlice } from '../types';
 import { MangaCatalogFiltersStoreType } from './mangaCatalogFiltersStore';
-import { MangaCatalogFiltersType } from './useApplyMangaFilters';
+import { MangaCatalogFiltersType } from './useApplyMangaCatalogFilters';
 
 type InitialStateType = CatalogFilterInitialState<MangaCatalogFiltersStoreType>;
 
@@ -43,7 +43,7 @@ export const createGlobalSlice: CatalogFilterSlice<
     resetAll: () => set(() => initialState, false, `${storeName}/resetAll`),
     getFilters: () => get(),
     setInitialState: (init: InitialStateType) =>
-        set(() => init, false, `${storeName}/setInitialState`),
+        set(() => ({ ...initialState, ...init }), false, `${storeName}/setInitialState`),
     appliedFilters: {},
     setAppliedFilters: (appliedFilters) =>
         set(() => ({ appliedFilters }), false, `${storeName}/setAppliedFilters`),

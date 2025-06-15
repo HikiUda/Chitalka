@@ -1,17 +1,16 @@
-import { memo } from 'react';
-import { cn } from '@/shared/lib/css';
 import { Button } from '@/shared/ui/kit/button';
+import { cn } from '@/shared/lib/css';
 
 interface CommonFooterProps {
     className?: string;
     onApply: () => void;
     onReset: () => void;
 }
-
-export const CommonFooter = memo((props: CommonFooterProps) => {
-    const { className, onApply, onReset } = props;
+// ? memo have no effect because Slot in CatalogFilterCardLayout
+export const CommonFooter = (props: CommonFooterProps) => {
+    const { onApply, onReset, className } = props;
     return (
-        <div className={cn('flex gap-2 items-center justify-around ', className)}>
+        <div className={cn('flex gap-2 items-center justify-around', className)}>
             <Button slot="close" onClick={onApply} className="basis-[45%]">
                 Применить
             </Button>
@@ -20,6 +19,4 @@ export const CommonFooter = memo((props: CommonFooterProps) => {
             </Button>
         </div>
     );
-});
-
-CommonFooter.displayName = 'CommonFooter';
+};

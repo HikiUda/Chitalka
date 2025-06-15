@@ -1,9 +1,28 @@
-import { FunnelIcon, MoveLeftIcon } from 'lucide-react';
-import { MangaCatalogFilters } from './MangaCatalogFilters';
-import { Button, ButtonContext } from '@/shared/ui/kit/button';
-import { Sheet, SheetBody, SheetClose, SheetTrigger } from '@/shared/ui/kit/sheet';
-import { Heading } from '@/shared/ui/kit/heading';
 import { useState } from 'react';
+import { useMangaCatalogFiltersStore } from '../../model/manga/mangaCatalogFiltersStore';
+import { useApplyMangaCatalogFilters } from '../../model/manga/useApplyMangaCatalogFilters';
+import { useAgeRate } from '../../model/slices/ageRate/useAgeRate';
+import { useBookmarks } from '../../model/slices/bookmarks/useBookmarks';
+import { useChapterCount } from '../../model/slices/chapterCount/useChapterCount';
+import { useGenres } from '../../model/slices/genres/useGenres';
+import { useMangaType } from '../../model/slices/mangaType/useMangaType';
+import { useRate } from '../../model/slices/rate/useRate';
+import { useRateCount } from '../../model/slices/rateCount/useRateCount';
+import { useReleaseDate } from '../../model/slices/releaseDate/useReleaseDate';
+import { useStatus } from '../../model/slices/status/useStatus';
+import { useTags } from '../../model/slices/tags/useTags';
+import { CategoryCheckboxGroup } from '../filters-build-blocks/CategoryCheckboxGroup';
+import { DateRange } from '../filters-build-blocks/DateRange';
+import { CatalogFilterCardLayout } from '../layout/CatalogFilterCardLayout';
+import { CatalogFiltersLayout } from '../layout/CatalogFiltersLayout';
+import { CategoryHeader } from '../layout/CategoryHeader';
+import { CommonFooter } from '../layout/CommonFooter';
+import { CommonHeader } from '../layout/CommonHeader';
+import { CheckboxGroup } from '../filters-build-blocks/CheckboxGroup';
+import { Range } from '../filters-build-blocks/Range';
+import { CatalogFiltersSheetLayout } from '../layout/CatalogFiltersSheetLayout';
+import { Button } from '@/shared/ui/kit/button';
+import { Input } from '@/shared/ui/kit/input';
 
 interface MangaCatalogFiltersSheetProps {
     className?: string;
@@ -12,24 +31,86 @@ interface MangaCatalogFiltersSheetProps {
 export const MangaCatalogFiltersSheet = (props: MangaCatalogFiltersSheetProps) => {
     const { className } = props;
     const [open, setOpen] = useState(false);
+
+    const { applyFilters } = useApplyMangaCatalogFilters(() => setOpen(false));
+    const store = useMangaCatalogFiltersStore.use;
+    const resetAll = store.resetAll();
+
+    const ageRate = useAgeRate(store);
+    const chapterCount = useChapterCount(store);
+    const rate = useRate(store);
+    const rateCount = useRateCount(store);
+    const releaseDate = useReleaseDate(store);
+    const status = useStatus(store);
+    const type = useMangaType(store);
+    const bookmarks = useBookmarks(store);
+    const { genres, resetGenres, searchGenres } = useGenres(store);
+    const { tags, resetTags, searchTags } = useTags(store);
+
     return (
-        <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger asChild>
-                <Button className={className} variant="outline" size="sm">
-                    <FunnelIcon /> Фильтры
-                </Button>
-            </SheetTrigger>
-            <SheetBody>
-                <SheetClose className="flex items-center gap-1 px-4 pt-4 -mb-4">
-                    <MoveLeftIcon className="stroke-primary" />
-                    <Heading color="primary" asChild>
-                        <span>Фильтры</span>
-                    </Heading>
-                </SheetClose>
-                <ButtonContext.Provider value={{ slots: { close: {} } }}>
-                    <MangaCatalogFilters />
-                </ButtonContext.Provider>
-            </SheetBody>
-        </Sheet>
+        <CatalogFiltersSheetLayout open={open} onOpenChange={setOpen}>
+            <CatalogFiltersLayout
+                className={className}
+                common={(toGenres, toTags) => (
+                    <CatalogFilterCardLayout
+                        header={<CommonHeader toGenres={toGenres} toTags={toTags} />}
+                        body={
+                            <>
+                                <Range {...ageRate} label="Возростной рейтинг" />
+                                <Range {...chapterCount} label="Количество глав" />
+                                <Range {...rate} max={10} label="Рейтинг" />
+                                <Range {...rateCount} label="Количество оценнок" />
+                                <DateRange {...releaseDate} label="Дата релиза" />
+                                <CheckboxGroup {...status} label="Статус" />
+                                <CheckboxGroup {...type} label="Тип" />
+                                <CheckboxGroup {...bookmarks} label="В моих закладках" />
+                            </>
+                        }
+                        footer={<CommonFooter onApply={applyFilters} onReset={resetAll} />}
+                    />
+                )}
+                genres={(onBack) => (
+                    <CatalogFilterCardLayout
+                        header={
+                            <CategoryHeader
+                                onBack={onBack}
+                                onReset={resetGenres}
+                                title="Жанры"
+                                input={
+                                    <Input
+                                        {...searchGenres}
+                                        variant="clear"
+                                        placeholder="Поиск Жанров"
+                                    />
+                                }
+                            />
+                        }
+                        body={<CategoryCheckboxGroup {...genres} />}
+                        footer={<Button onClick={applyFilters}>Применить</Button>}
+                    />
+                )}
+                tags={(onBack) => (
+                    <CatalogFilterCardLayout
+                        className={className}
+                        header={
+                            <CategoryHeader
+                                onBack={onBack}
+                                onReset={resetTags}
+                                title="Теги"
+                                input={
+                                    <Input
+                                        {...searchTags}
+                                        variant="clear"
+                                        placeholder="Поиск Тегов"
+                                    />
+                                }
+                            />
+                        }
+                        body={<CategoryCheckboxGroup {...tags} />}
+                        footer={<Button onClick={applyFilters}>Применить</Button>}
+                    />
+                )}
+            />
+        </CatalogFiltersSheetLayout>
     );
 };

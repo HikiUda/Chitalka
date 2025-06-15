@@ -1,4 +1,4 @@
-import { ReactNode, Suspense, useState } from 'react';
+import { ReactNode, Suspense, useCallback, useState } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import cls from './catalog-filters.module.css';
 import { cn } from '@/shared/lib/css';
@@ -17,21 +17,27 @@ export const CatalogFiltersLayout = (props: CatalogFiltersProps) => {
     const [tagsOpen, setTagsOpen] = useState(false);
     const [genresOpen, setGenresOpen] = useState(false);
 
+    const toGenres = useCallback(() => {
+        setGenresOpen(true);
+    }, []);
+    const toTags = useCallback(() => {
+        setTagsOpen(true);
+    }, []);
+    const fromGenres = useCallback(() => {
+        setGenresOpen(false);
+    }, []);
+    const fromTags = useCallback(() => {
+        setTagsOpen(false);
+    }, []);
+
     return (
         <div className={cn('relative bg-card  rounded-lg h-full overflow-hidden', className)}>
             <Suspense fallback={<Loader variant="flower" className="mx-auto" />}>
                 {!tagsOpen && !genresOpen && (
-                    <Slot className={cls.fadeOut}>
-                        {common(
-                            () => setGenresOpen(true),
-                            () => setTagsOpen(true),
-                        )}
-                    </Slot>
+                    <Slot className={cls.fadeOut}>{common(toGenres, toTags)}</Slot>
                 )}
-                {genresOpen && (
-                    <Slot className={cls.fadeIn}>{genres(() => setGenresOpen(false))}</Slot>
-                )}
-                {tagsOpen && <Slot className={cls.fadeIn}>{tags(() => setTagsOpen(false))}</Slot>}
+                {genresOpen && <Slot className={cls.fadeIn}>{genres(fromGenres)}</Slot>}
+                {tagsOpen && <Slot className={cls.fadeIn}>{tags(fromTags)}</Slot>}
             </Suspense>
         </div>
     );

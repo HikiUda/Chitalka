@@ -30,13 +30,17 @@ export function useTags(slice: CatalogFilterSliceSelector<TagsSlice>) {
     }, [data]);
 
     return {
-        checkboxes,
-        tags,
-        notTags,
-        setTags,
-        setNotTags,
+        tags: {
+            checkboxes,
+            include: tags,
+            exclude: notTags,
+            onChangeInclude: setTags,
+            onChangeExclude: setNotTags,
+        },
         resetTags,
-        search,
-        setSearch: handleSetSearch,
+        searchTags: {
+            value: search,
+            onChangeValue: handleSetSearch,
+        },
     };
 }

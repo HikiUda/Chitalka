@@ -30,13 +30,17 @@ export function useGenres(slice: CatalogFilterSliceSelector<GenresSlice>) {
     }, [data]);
 
     return {
-        checkboxes,
-        genres,
-        notGenres,
-        setGenres,
-        setNotGenres,
+        genres: {
+            checkboxes,
+            include: genres,
+            exclude: notGenres,
+            onChangeInclude: setGenres,
+            onChangeExclude: setNotGenres,
+        },
         resetGenres,
-        search,
-        setSearch: handleSetSearch,
+        searchGenres: {
+            value: search,
+            onChangeValue: handleSetSearch,
+        },
     };
 }

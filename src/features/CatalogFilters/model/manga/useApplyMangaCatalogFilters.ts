@@ -1,6 +1,5 @@
 import { z } from 'zod';
 import { useCallback } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import { SearchSchema } from '../slices/search/searchSchema';
 import { OrderSchema } from '../slices/order/orderSchema';
 import { SortBySchema } from '../slices/sortBy/sortBySchema';
@@ -16,8 +15,9 @@ import { mangaTypeSchema } from '../slices/mangaType/mangaTypeSchema';
 import { bookmarksSchema } from '../slices/bookmarks/bookmarksSchema';
 import { clearEmptyField, validateFromTo } from '../helpers/helpers';
 import { useMangaCatalogFiltersStore } from './mangaCatalogFiltersStore';
+import { useUrlSearchParams } from '@/shared/lib/hooks/useUrlSearchParams';
 
-export const MangaCatalogFiltersSchema = SearchSchema.and(OrderSchema)
+const MangaCatalogFiltersSchema = SearchSchema.and(OrderSchema)
     .and(SortBySchema)
     .and(ageRateSchema)
     .and(chapterCountSchema)
@@ -32,8 +32,8 @@ export const MangaCatalogFiltersSchema = SearchSchema.and(OrderSchema)
 
 export type MangaCatalogFiltersType = z.infer<typeof MangaCatalogFiltersSchema>;
 
-export function useApplyMangaFilters() {
-    const [searchParams, setSearchParams] = useSearchParams();
+export function useApplyMangaCatalogFilters(callback?: () => void, init: boolean = true) {
+    const { setSearchParams } = useUrlSearchParams();
     const getFilters = useMangaCatalogFiltersStore.use.getFilters();
     const setAppliedFilters = useMangaCatalogFiltersStore.use.setAppliedFilters();
 
@@ -42,10 +42,16 @@ export function useApplyMangaFilters() {
             clearEmptyField(MangaCatalogFiltersSchema.parse(getFilters())),
         );
         setAppliedFilters(filters);
-        setSearchParams(
-            Object.fromEntries(Object.entries(filters).map(([key, value]) => [key, String(value)])),
-        );
-    }, [getFilters, setAppliedFilters, setSearchParams]);
+        if (init) {
+            setSearchParams(
+                Object.fromEntries(
+                    Object.entries(filters).map(([key, value]) => [key, String(value)]),
+                ),
+            );
+        }
+
+        callback?.();
+    }, [callback, getFilters, init, setAppliedFilters, setSearchParams]);
 
     return { applyFilters };
 }

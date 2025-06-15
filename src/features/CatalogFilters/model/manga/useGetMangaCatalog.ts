@@ -1,11 +1,11 @@
 import { infiniteQueryOptions, useInfiniteQuery } from '@tanstack/react-query';
 import { useEffect } from 'react';
-import { MangaCatalogFiltersType } from './useApplyMangaFilters';
-import { useMangaCatalogFiltersStore } from './mangaCatalogFiltersStore';
+import { MangaCatalogFiltersType } from './useApplyMangaCatalogFilters';
+import { useInitMangaCatalogFilters } from './useInitMangaCatalogFilters';
 import { publicFetchClient } from '@/shared/api/instance';
 import { useClearInfinityPages } from '@/shared/lib/hooks/useClearInfinityPages';
 
-export const MangaCatalogQueryOptions = (filters: MangaCatalogFiltersType) =>
+const MangaCatalogQueryOptions = (filters: MangaCatalogFiltersType) =>
     infiniteQueryOptions({
         // eslint-disable-next-line @tanstack/query/exhaustive-deps
         queryKey: ['manga', 'catalog'],
@@ -26,7 +26,17 @@ export const MangaCatalogQueryOptions = (filters: MangaCatalogFiltersType) =>
     });
 
 export function useGetMangaCatalog() {
+    const { appliedFilters } = useInitMangaCatalogFilters();
+    const { data, isFetching, isFetchingNextPage, refetch, fetchNextPage } = useInfiniteQuery(
+        MangaCatalogQueryOptions(appliedFilters),
+    );
+
     const clear = useClearInfinityPages(MangaCatalogQueryOptions({}).queryKey);
+
+    const handleRefetch = () => {
+        clear();
+        refetch();
+    };
 
     useEffect(() => {
         return () => {
@@ -34,16 +44,6 @@ export function useGetMangaCatalog() {
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-    const appliedFilters = useMangaCatalogFiltersStore.use.appliedFilters();
-    const { data, isFetching, isFetchingNextPage, refetch, fetchNextPage } = useInfiniteQuery(
-        MangaCatalogQueryOptions(appliedFilters),
-    );
-
-    const handleRefetch = () => {
-        clear();
-        refetch();
-    };
 
     useEffect(() => {
         handleRefetch();

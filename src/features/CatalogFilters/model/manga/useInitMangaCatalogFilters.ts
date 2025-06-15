@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { ageRateSchemaUrl } from '../slices/ageRate/ageRateSchema';
 import { bookmarksSchemaUrl } from '../slices/bookmarks/bookmarksSchema';
 import { chapterCountSchemaUrl } from '../slices/chapterCount/chapterCountSchema';
@@ -13,10 +13,10 @@ import { SortBySchemaUrl } from '../slices/sortBy/sortBySchema';
 import { statusSchemaUrl } from '../slices/status/statusSchema';
 import { tagsSchemaUrl } from '../slices/tags/tagsSchema';
 import { useMangaCatalogFiltersStore } from './mangaCatalogFiltersStore';
-import { useApplyMangaFilters } from './useApplyMangaFilters';
+import { useApplyMangaCatalogFilters } from './useApplyMangaCatalogFilters';
 import { useUrlSearchParams } from '@/shared/lib/hooks/useUrlSearchParams';
 
-export const MangaCatalogFiltersSchemaUrl = SearchSchemaUrl.and(OrderSchemaUrl)
+const MangaCatalogFiltersSchemaUrl = SearchSchemaUrl.and(OrderSchemaUrl)
     .and(SortBySchemaUrl)
     .and(ageRateSchemaUrl)
     .and(chapterCountSchemaUrl)
@@ -29,20 +29,24 @@ export const MangaCatalogFiltersSchemaUrl = SearchSchemaUrl.and(OrderSchemaUrl)
     .and(mangaTypeSchemaUrl)
     .and(bookmarksSchemaUrl);
 
-export function useInitMangaFilters() {
+export function useInitMangaCatalogFilters() {
+    const [init, setInit] = useState(false);
     const { getAllSearchParams } = useUrlSearchParams();
-    const resetAll = useMangaCatalogFiltersStore.use.resetAll();
     const setInitialState = useMangaCatalogFiltersStore.use.setInitialState();
-    const { applyFilters } = useApplyMangaFilters();
+    const appliedFilters = useMangaCatalogFiltersStore.use.appliedFilters();
+    const { applyFilters } = useApplyMangaCatalogFilters(() => 0, false);
 
-    const initMangaFilters = useCallback(() => {
+    const initFilters = useCallback(() => {
+        if (init) return;
+        setInit(true);
         const params = getAllSearchParams();
         if (Object.keys(params).length === 0) return;
         const data = MangaCatalogFiltersSchemaUrl.parse(params);
-        resetAll();
         setInitialState(data);
         applyFilters();
-    }, [applyFilters, getAllSearchParams, resetAll, setInitialState]);
+    }, [applyFilters, getAllSearchParams, init, setInitialState]);
 
-    return { initMangaFilters };
+    initFilters();
+
+    return { appliedFilters };
 }

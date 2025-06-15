@@ -22,6 +22,7 @@ export function useUrlSearchParams() {
 
     return {
         setSearchParam,
+        setSearchParams,
         getSearchParam,
         getAllSearchParams,
         deleteSearchParam,
