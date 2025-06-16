@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 
+import { Slot } from '@radix-ui/react-slot';
 import { cn } from '@/shared/lib/css';
 
 function Popover({ ...props }: React.ComponentProps<typeof PopoverPrimitive.Root>) {
@@ -35,12 +36,12 @@ function PopoverContent({
 
 function PopoverBody({
     asChild,
-    children,
     ...props
 }: React.ComponentProps<typeof PopoverPrimitive.Content> & { asChild?: boolean }) {
+    const Comp = asChild ? Slot : PopoverContent;
     return (
         <PopoverPrimitive.Portal>
-            {asChild ? children : <PopoverContent {...props}>{children}</PopoverContent>}
+            <Comp {...props} />
         </PopoverPrimitive.Portal>
     );
 }

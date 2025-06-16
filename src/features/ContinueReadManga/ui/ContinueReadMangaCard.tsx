@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { isMobile } from 'react-device-detect';
 import { TrashIcon, XIcon } from 'lucide-react';
-import { MangaCardInline } from '@/entities/ComicList';
+import { BookCardInline } from '@/entities/BookList';
 import { getRoute } from '@/shared/kernel/router';
 import { Progress } from '@/shared/ui/kit/progress';
 import { ApiSchemas } from '@/shared/api/instance';
@@ -27,7 +27,7 @@ export const ContinueReadMangaCard: FC<ContinueReadMangaCardProps> = (props) => 
                 className,
             )}
         >
-            <MangaCardInline
+            <BookCardInline
                 //TODO link to chapter
                 to={getRoute.MANGA(urlId)}
                 title={title}
@@ -44,7 +44,7 @@ export const ContinueReadMangaCard: FC<ContinueReadMangaCardProps> = (props) => 
                     </div>
                     <Progress value={(readedChapters / chapterCount) * 100} />
                 </div>
-            </MangaCardInline>
+            </BookCardInline>
             <Button
                 onClick={onDelete}
                 variant="destructive"

@@ -9,6 +9,7 @@ import { useIntersection } from '@/shared/lib/hooks/useIntersection';
 import { Input } from '@/shared/ui/kit/input';
 import { Separator } from '@/shared/ui/kit/separator';
 import { ToggleOrder } from '@/entities/ToggleOrder';
+import { useTrottle } from '@/shared/lib/hooks/useTrottle';
 
 interface MangaChaptersProps {
     className?: string;
@@ -27,8 +28,9 @@ export const MangaChapters: FC<MangaChaptersProps> = (props) => {
         isFetching,
     } = useMangaChapters(mangaId, search, order);
 
+    const trottleFetchNextPage = useTrottle(() => fetchNextPage(), 1000);
     const intersect = useIntersection(() => {
-        if (!isFetching) fetchNextPage();
+        if (!isFetching) trottleFetchNextPage();
     });
 
     const handleRefetch = useDebounce(refetch, 500);

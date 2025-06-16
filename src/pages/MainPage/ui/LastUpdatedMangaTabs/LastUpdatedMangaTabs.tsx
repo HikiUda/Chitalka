@@ -4,7 +4,7 @@ import { formatDistanceToNow } from 'date-fns';
 import { ru } from 'date-fns/locale';
 import { useLastUpdatedMangaTabs } from './useLastUpdatedMangaTabs';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/ui/kit/tabs';
-import { MangaCardInline, MangaListLayout } from '@/entities/ComicList';
+import { BookCardInline, BookListLayout } from '@/entities/BookList';
 import { Button } from '@/shared/ui/kit/button';
 import { Heading } from '@/shared/ui/kit/heading';
 import { useSession } from '@/shared/api/session';
@@ -41,10 +41,10 @@ export const LastUpdatedMangaTabs: FC<LastUpdatedMangaTabsProps> = (props) => {
                     if (tab.authOnly && !isUserAuth) return null;
                     return (
                         <TabsContent key={tab.value} value={tab.value}>
-                            <MangaListLayout
+                            <BookListLayout
                                 list={tab.data}
                                 renderItem={(manga, ind) => (
-                                    <MangaCardInline
+                                    <BookCardInline
                                         className={`${ind < tab.data.length - 1 && 'border-b-1 border-b-primary'}  mb-2`}
                                         key={ind}
                                         to={getRoute.MANGA(manga.urlId)}
@@ -60,7 +60,7 @@ export const LastUpdatedMangaTabs: FC<LastUpdatedMangaTabsProps> = (props) => {
                                                 addSuffix: true,
                                             })}
                                         </span>
-                                    </MangaCardInline>
+                                    </BookCardInline>
                                 )}
                                 isLoading={tab.isFetching}
                                 skeletonsCount={10}

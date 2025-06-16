@@ -1,2 +1,2 @@
-export { CatalogLink } from './ui/CatalogLink/CatalogLink';
-export { CollectionLink } from './ui/CollectionLink/CollectionLink';
+export { CatalogLink } from './CatalogLink';
+export { CollectionLink } from './CollectionLink';

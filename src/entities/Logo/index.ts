@@ -1,1 +1,1 @@
-export { LogoMangaSite } from './ui/LogoMangaSite/LogoMangaSite';
+export { LogoMangaSite } from './LogoMangaSite';

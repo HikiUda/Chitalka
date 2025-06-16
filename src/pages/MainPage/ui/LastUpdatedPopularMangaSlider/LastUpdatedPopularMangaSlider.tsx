@@ -8,7 +8,7 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from '@/shared/ui/kit/carousel';
-import { MangaCard, MangaCardSkeleton } from '@/entities/ComicList';
+import { BookCard, BookCardSkeleton } from '@/entities/BookList';
 import { getRoute } from '@/shared/kernel/router';
 
 interface LastUpdatedPopularMangaSliderProps {
@@ -31,7 +31,7 @@ export const LastUpdatedPopularMangaSlider: FC<LastUpdatedPopularMangaSliderProp
                 <CarouselContent className="pl-2.5">
                     {data.map(({ urlId, title, type, chapter, cover }, index) => (
                         <CarouselItem key={index} className="basis-auto">
-                            <MangaCard
+                            <BookCard
                                 //TODO link to chapter
                                 to={getRoute.MANGA(urlId)}
                                 title={title}
@@ -46,7 +46,7 @@ export const LastUpdatedPopularMangaSlider: FC<LastUpdatedPopularMangaSliderProp
                             .fill(0)
                             .map((_, ind) => (
                                 <CarouselItem key={ind} className="basis-auto">
-                                    <MangaCardSkeleton />
+                                    <BookCardSkeleton />
                                 </CarouselItem>
                             ))}
                 </CarouselContent>

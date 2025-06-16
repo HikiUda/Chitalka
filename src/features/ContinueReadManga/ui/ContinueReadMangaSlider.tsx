@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { useGetContinueReadManga } from '../model/useGetContinueReadManga';
 import { useDeleteContinueReadManga } from '../model/useDeleteContinueReadManga';
 import { ContinueReadMangaCard } from './ContinueReadMangaCard';
-import { MangaCardInlineSkeleton } from '@/entities/ComicList';
+import { BookCardInlineSkeleton } from '@/entities/BookList';
 import { Card } from '@/shared/ui/kit/card';
 import {
     Carousel,
@@ -68,7 +68,7 @@ export const ContinueReadMangaSlider: FC<ContinueReadMangaSliderProps> = (props)
                                     key={ind}
                                     className="basis-80 ml-2 px-1 py-1 bg-card  rounded-xl border shadow-sm"
                                 >
-                                    <MangaCardInlineSkeleton />
+                                    <BookCardInlineSkeleton />
                                 </CarouselItem>
                             ))}
                 </CarouselContent>

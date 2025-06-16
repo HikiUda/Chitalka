@@ -1,6 +1,6 @@
 import { ReactNode, useMemo } from 'react';
 import { cn } from '@/shared/lib/css';
-import { MangaCardInlineSkeleton } from '@/entities/ComicList';
+import { BookCardInlineSkeleton } from '@/entities/BookList';
 
 interface QuickSearchListProps<T extends object> {
     className?: string;
@@ -15,7 +15,7 @@ export const QuickSearchList = <T extends object>(props: QuickSearchListProps<T>
     const skeletons = useMemo(() => {
         return Array(6)
             .fill(0)
-            .map((_, ind) => <MangaCardInlineSkeleton key={ind} />);
+            .map((_, ind) => <BookCardInlineSkeleton key={ind} />);
     }, []);
 
     return (

@@ -4,7 +4,7 @@ import { useNowReadManga } from './useNowReadManga';
 import { Heading } from '@/shared/ui/kit/heading';
 import { Carousel, CarouselContent, CarouselItem } from '@/shared/ui/kit/carousel';
 import { Card } from '@/shared/ui/kit/card';
-import { MangaCardInline, MangaListLayout } from '@/entities/ComicList';
+import { BookCardInline, BookListLayout } from '@/entities/BookList';
 import { getRoute } from '@/shared/kernel/router';
 
 interface NowReadMangaSliderProps {
@@ -28,7 +28,7 @@ export const NowReadMangaSlider: FC<NowReadMangaSliderProps> = (props) => {
                             key={magnaList.heading}
                             className="basis-[90%] sm:basis-[70%] md:basis-[40%] lg:basis-1/3"
                         >
-                            <MangaListLayout
+                            <BookListLayout
                                 heading={
                                     <Heading variant="h3" color="primary" className="ml-2 mb-3">
                                         {magnaList.heading}
@@ -36,7 +36,7 @@ export const NowReadMangaSlider: FC<NowReadMangaSliderProps> = (props) => {
                                 }
                                 list={magnaList.data || []}
                                 renderItem={(manga) => (
-                                    <MangaCardInline
+                                    <BookCardInline
                                         key={manga.id}
                                         to={getRoute.MANGA(manga.urlId)}
                                         img={manga.cover}

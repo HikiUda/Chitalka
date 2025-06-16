@@ -18,8 +18,8 @@ export const BottomMenuMainContent: FC<BottomMenuMainContentProps> = (props) => 
     return (
         <BottomMenuLayout className={classNames(cls.BottomMenu, {}, [className])}>
             <HStack justify="between">
-                <CatalogLink iconOnly iconSize={30} />
-                <CollectionLink iconOnly iconSize={30} />
+                {/* <CatalogLink iconOnly iconSize={30} />
+                <CollectionLink iconOnly iconSize={30} /> */}
                 <LogoMangaSite />
                 <CircleHelpIcon size={30} className="stroke-primary" />
                 <PopUserMenu />

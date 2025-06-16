@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as SheetPrimitive from '@radix-ui/react-dialog';
 import { XIcon } from 'lucide-react';
 
+import { Slot } from '@radix-ui/react-slot';
 import { cn } from '@/shared/lib/css';
 
 function Sheet({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) {
@@ -71,16 +72,16 @@ function SheetContent({
 }
 function SheetBody({
     asChild,
-    children,
     ...props
 }: React.ComponentProps<typeof SheetPrimitive.Content> & {
     side?: 'top' | 'right' | 'bottom' | 'left';
     asChild?: boolean;
 }) {
+    const Comp = asChild ? Slot : SheetContent;
     return (
         <SheetPortal>
             <SheetOverlay />
-            {asChild ? children : <SheetContent {...props}>{children}</SheetContent>}
+            <Comp {...props} />
         </SheetPortal>
     );
 }

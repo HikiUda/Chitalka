@@ -1,6 +1,6 @@
 import { Decorator } from '@storybook/react';
 import { ReactNode } from 'react';
-import { MainLayout } from '@/shared/ui/layout/MainLayout/MainLayout';
+import { MainLayout } from '@/shared/ui/layout/deprecated/MainLayout/MainLayout';
 
 export function PageDecorator(
     header?: ReactNode,

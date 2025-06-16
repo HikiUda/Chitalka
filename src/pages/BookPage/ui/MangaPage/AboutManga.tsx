@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { isMobile } from 'react-device-detect';
-import { useGetManga } from '../../model/useGetManga';
 import { AboutBookLayout } from '../layout/AboutBookLayout';
 import { MangaIdType } from '@/shared/kernel/manga';
 import { MangaBookmarksStatistic, MangaRateStatistic } from '@/features/MangaStatistic';
@@ -12,6 +11,7 @@ import {
     CategoryCollapsedList,
     useBookBasicInfo,
     useCategoriesList,
+    useGetManga,
 } from '@/entities/BookInfo';
 import { Heading } from '@/shared/ui/kit/heading';
 

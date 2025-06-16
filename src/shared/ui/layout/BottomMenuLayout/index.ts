@@ -1,1 +1,0 @@
-export { BottomMenuLayout } from './BottomMenuLayout';

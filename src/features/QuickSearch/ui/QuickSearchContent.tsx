@@ -5,7 +5,7 @@ import { LastSearchList } from './LastSearchList';
 import { QuickSearchList } from './QuickSearchList';
 import { Separator } from '@/shared/ui/kit/separator';
 import { Input } from '@/shared/ui/kit/input';
-import { MangaCardInline } from '@/entities/ComicList';
+import { BookCardInline } from '@/entities/BookList';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 import { Badge } from '@/shared/ui/kit/badge';
 import { toShortcutNumber } from '@/shared/lib/helpers/toShortcutNumber';
@@ -41,7 +41,7 @@ export const QuickSearchContent = () => {
             <QuickSearchList
                 list={data}
                 renderItem={({ id, urlId, title, type, cover, views, likes, bookmarks }) => (
-                    <MangaCardInline
+                    <BookCardInline
                         key={id}
                         to={getRoute.MANGA(urlId)}
                         title={title}
@@ -59,7 +59,7 @@ export const QuickSearchContent = () => {
                                 <BookmarkIcon /> {toShortcutNumber(bookmarks)}
                             </Badge>
                         </div>
-                    </MangaCardInline>
+                    </BookCardInline>
                 )}
                 isLoading={isFetching}
             />

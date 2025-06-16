@@ -3,6 +3,7 @@ import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { XIcon } from 'lucide-react';
 
 import { cva, VariantProps } from 'class-variance-authority';
+import { Slot } from '@radix-ui/react-slot';
 import { cn } from '@/shared/lib/css';
 
 function Dialog({ ...props }: React.ComponentProps<typeof DialogPrimitive.Root>) {
@@ -96,14 +97,14 @@ function DialogContent({
 
 function DialogBody({
     asChild,
-    children,
     ...props
 }: React.ComponentProps<typeof DialogPrimitive.Content> &
     VariantProps<typeof dialogContentVariants> & { asChild?: boolean; closeButton?: boolean }) {
+    const Comp = asChild ? Slot : DialogContent;
     return (
         <DialogPortal data-slot="dialog-portal">
             <DialogOverlay />
-            {asChild ? children : <DialogContent {...props}>{children}</DialogContent>}
+            <Comp {...props} />
         </DialogPortal>
     );
 }

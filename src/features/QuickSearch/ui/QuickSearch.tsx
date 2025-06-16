@@ -1,10 +1,7 @@
-import { FC, Suspense, useEffect, useState } from 'react';
+import { ReactNode, Suspense, useEffect, useState } from 'react';
 import { isMobile } from 'react-device-detect';
-import { SearchIcon } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
-import { Button } from '@/shared/ui/kit/button';
-import { cn } from '@/shared/lib/css';
 import { Dialog, DialogBody, DialogTrigger } from '@/shared/ui/kit/dialog';
 import { Drawer, DrawerBody, DrawerTrigger } from '@/shared/ui/kit/drawer';
 import { Loader } from '@/shared/ui/kit/loader';
@@ -12,11 +9,11 @@ import { Loader } from '@/shared/ui/kit/loader';
 const QuickSearchContent = lazyNamed(() => import('./QuickSearchContent'), 'QuickSearchContent');
 
 interface QuickSearchProps {
-    className?: string;
+    trigger: ReactNode;
 }
 
-export const QuickSearch: FC<QuickSearchProps> = (props) => {
-    const { className } = props;
+export const QuickSearch = (props: QuickSearchProps) => {
+    const { trigger } = props;
 
     const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
@@ -24,22 +21,6 @@ export const QuickSearch: FC<QuickSearchProps> = (props) => {
     useEffect(() => {
         setIsOpen(false);
     }, [location.pathname]);
-
-    const trigger = (
-        <Button
-            data-testid="QuickSearch-Button"
-            variant="clear"
-            size="sm"
-            className={cn(
-                isMobile
-                    ? 'w-full bg-white justify-start'
-                    : 'font-semibold hover:bg-primary/50 transition-colors duration-300',
-                className,
-            )}
-        >
-            <SearchIcon size={20} /> {isMobile ? 'Быстрый поиск' : 'Поиск'}
-        </Button>
-    );
 
     if (isMobile)
         return (

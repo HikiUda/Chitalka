@@ -9,7 +9,7 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from '@/shared/ui/kit/carousel';
-import { MangaCardInline, MangaCardInlineSkeleton } from '@/entities/ComicList';
+import { BookCardInline, BookCardInlineSkeleton } from '@/entities/BookList';
 import { getRoute } from '@/shared/kernel/router';
 import { Badge } from '@/shared/ui/kit/badge';
 import { toShortcutNumber } from '@/shared/lib/helpers/toShortcutNumber';
@@ -41,7 +41,7 @@ export const RelatedMangaSlider: FC<RelatedMangaSliderProps> = (props) => {
                             key={index}
                             className="basis-75 ml-2 px-1 py-1 bg-card flex rounded-xl border shadow-sm"
                         >
-                            <MangaCardInline
+                            <BookCardInline
                                 to={getRoute.MANGA(urlId)}
                                 title={title}
                                 subtitle={type}
@@ -58,7 +58,7 @@ export const RelatedMangaSlider: FC<RelatedMangaSliderProps> = (props) => {
                                         <BookmarkIcon /> {toShortcutNumber(bookmarks)}
                                     </Badge>
                                 </div>
-                            </MangaCardInline>
+                            </BookCardInline>
                         </CarouselItem>
                     ))}
                     {isLoading &&
@@ -69,7 +69,7 @@ export const RelatedMangaSlider: FC<RelatedMangaSliderProps> = (props) => {
                                     key={ind}
                                     className="basis-75 ml-2 px-1 py-1 bg-card flex rounded-xl border shadow-sm"
                                 >
-                                    <MangaCardInlineSkeleton />
+                                    <BookCardInlineSkeleton />
                                 </CarouselItem>
                             ))}
                 </CarouselContent>

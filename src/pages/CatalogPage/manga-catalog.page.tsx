@@ -6,10 +6,11 @@ import {
     MangaCatalogSearchInput,
     useGetMangaCatalog,
 } from '@/features/CatalogFilters';
-import { MangaCard, MangaGridLayout } from '@/entities/ComicList';
+import { BookCard, BookGridLayout } from '@/entities/BookList';
 import { getRoute } from '@/shared/kernel/router';
 import { useIntersection } from '@/shared/lib/hooks/useIntersection';
 import { useTrottle } from '@/shared/lib/hooks/useTrottle';
+import { MangaHoverCard } from '@/widgets/HoverCardManga';
 
 const MangaCatalogPage = () => {
     const { data = [], isFetching, fetchNextPage } = useGetMangaCatalog();
@@ -29,18 +30,23 @@ const MangaCatalogPage = () => {
             sortByOrder={<MangaCatalogSortByOrder />}
             input={<MangaCatalogSearchInput />}
             list={
-                <MangaGridLayout
+                <BookGridLayout
                     list={data}
                     renderItem={({ id, urlId, title, type, rate, bookmark, cover }) => (
-                        <MangaCard
+                        <MangaHoverCard
                             key={id}
-                            adaptive="dynamic"
-                            title={title}
-                            subtitle={type}
-                            img={cover}
-                            label1={rate}
-                            label2={bookmark}
-                            to={getRoute.MANGA(urlId)}
+                            mangaId={urlId}
+                            trigger={
+                                <BookCard
+                                    adaptive="dynamic"
+                                    title={title}
+                                    subtitle={type}
+                                    img={cover}
+                                    label1={rate}
+                                    label2={bookmark}
+                                    to={getRoute.MANGA(urlId)}
+                                />
+                            }
                         />
                     )}
                     isLoading={isFetching}

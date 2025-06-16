@@ -1,1 +1,1 @@
-export { HoverCardManga } from './ui/HoverCardManga/HoverCardManga';
+export { MangaHoverCard } from './MangaHoverCard';

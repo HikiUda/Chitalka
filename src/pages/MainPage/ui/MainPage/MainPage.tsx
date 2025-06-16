@@ -1,24 +1,15 @@
-import { FC } from 'react';
 import { LastUpdatedPopularMangaSlider } from '../LastUpdatedPopularMangaSlider/LastUpdatedPopularMangaSlider';
 import { NowReadMangaSlider } from '../NowReadMangaSlider/NowReadMangaSlider';
 import { LastUpdatedMangaTabs } from '../LastUpdatedMangaTabs/LastUpdatedMangaTabs';
-import cls from './MainPage.module.scss';
-import { classNames } from '@/shared/lib/helpers/classNames';
 import { Page } from '@/shared/ui/layout/Page';
 import { CollectionGridLayout, CollectionCard } from '@/entities/CollectionList';
 import { Heading } from '@/shared/ui/kit/heading';
 import { UserCard, UserGridLayout } from '@/entities/UserList';
 import { ContinueReadMangaSlider } from '@/features/ContinueReadManga';
 
-interface MainPageProps {
-    className?: string;
-}
-
-export const MainPage: FC<MainPageProps> = (props) => {
-    const { className } = props;
-
+export const MainPage = () => {
     return (
-        <Page className={classNames(cls.MainPage, {}, [className])}>
+        <Page>
             <LastUpdatedPopularMangaSlider className="mb-4 w-[99vw] max-w-299" />
             <ContinueReadMangaSlider className="mb-4 w-[99vw] max-w-299" />
             <NowReadMangaSlider className="mb-4 w-[99vw] max-w-299" />

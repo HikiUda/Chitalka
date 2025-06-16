@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
-import { useGetManga } from '../../model/useGetManga';
 import { BookPageLayout } from '../layout/BookPageLayout';
 import { BookTitleLayout } from '../layout/BookTitleLayout';
 import { TitleInfoModal } from '../layout/TitleInfoModal';
@@ -13,7 +12,7 @@ import { cn } from '@/shared/lib/css';
 import { ContinueReadMangaButton } from '@/features/ContinueReadManga';
 import { AddMangaToBookmarks } from '@/features/AddMangaToBookmarks';
 import { RateModal } from '@/features/RateModal';
-import { useBookBasicInfo, useBookTitles } from '@/entities/BookInfo';
+import { useBookBasicInfo, useBookTitles, useGetManga } from '@/entities/BookInfo';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 import { PathParams, Routes } from '@/shared/kernel/router';
 

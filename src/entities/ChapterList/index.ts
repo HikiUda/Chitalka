@@ -1,3 +1,3 @@
-export { ChapterList } from './ui//ChapterList/ChapterList';
-export { ChapterListItem } from './ui//ChapterListItem/ChapterListItem';
+export { ChapterList } from './ChapterList';
+export { ChapterListItem } from './ChapterListItem';
 export { getUrlChapterId } from './model/helpers/getUrlCahpterId';

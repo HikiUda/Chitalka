@@ -1,16 +1,12 @@
-import { FC, Suspense, useLayoutEffect, useState } from 'react';
+import { Suspense, useLayoutEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { MainLayout } from '@/shared/ui/layout/MainLayout/MainLayout';
+import { MainLayout } from '@/shared/ui/layout/MainLayout';
 import { Header } from '@/widgets/Header';
 import { BottomMenu } from '@/widgets/BottomMenu';
 import { useSession } from '@/shared/api/session';
 import { Loader } from '@/shared/ui/kit/loader';
 
-interface AppProps {
-    className?: string;
-}
-
-export const App: FC<AppProps> = () => {
+export const App = () => {
     const [init, setInit] = useState(false);
     const { refreshToken } = useSession();
 
