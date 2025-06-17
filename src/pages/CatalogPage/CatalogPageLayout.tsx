@@ -28,7 +28,7 @@ export const CatalogPageLayout = (props: CatalogPageProps) => {
                     {list}
                 </Card>
                 {!isMobile && (
-                    <div className="sticky w-[330px] max-h-[calc(100vh-88px)] top-17">
+                    <div className="sticky w-[330px] max-h-[calc(100vh-88px)] top-17 shadow-sm rounded-xl border">
                         {filters}
                     </div>
                 )}

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { HeaderMain } from './ui/HeaderMain';
 import { HeaderQuickSearch } from './ui/HeaderQuickSearch';
-import { CatalogHeader } from './ui/CatalogHeader';
+import { MangaCatalogHeader } from './ui/MangaCatalogHeader';
 import { ReadChapterHeader } from './ui/ReadChapterHeader/ReadChapterHeader';
 import { Routes, RoutesValues } from '@/shared/kernel/router';
 
@@ -12,7 +12,7 @@ export const mapHeaderContent: OptionalRecord<
     { desktop?: ReactNode; mobile?: ReactNode }
 > & { default: Required<Platforms> } = {
     default: { desktop: <HeaderMain />, mobile: <HeaderQuickSearch /> },
-    [Routes.MANGA_CATALOG]: { mobile: <CatalogHeader /> },
+    [Routes.MANGA_CATALOG]: { mobile: <MangaCatalogHeader /> },
     [Routes.MANGA_READ]: {
         desktop: <ReadChapterHeader />,
         mobile: <ReadChapterHeader />,

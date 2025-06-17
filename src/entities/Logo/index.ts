@@ -1,1 +1,0 @@
-export { LogoMangaSite } from './LogoMangaSite';

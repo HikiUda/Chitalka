@@ -23,7 +23,7 @@ export const AuthModal: FC<AuthModalProps> = (props) => {
     return (
         <Dialog>
             <DialogTrigger asChild className={className}>
-                <Button variant="clear" className="text-md">
+                <Button variant="ghost" className="text-md hover:bg-primary/50">
                     Войти
                 </Button>
             </DialogTrigger>

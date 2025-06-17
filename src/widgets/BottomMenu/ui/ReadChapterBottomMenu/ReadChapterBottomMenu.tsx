@@ -7,8 +7,9 @@ import { HStack } from '@/shared/deprecate-ui/Stack';
 import { PathParams, Routes } from '@/shared/kernel/router';
 import { BottomMenuLayout } from '@/shared/ui/layout/BottomMenuLayout';
 import { ChaptersNavigation } from '@/features/MangaChapters';
-import { LogoMangaSite } from '@/entities/Logo';
 import { useHideLayout } from '@/shared/ui/layout/useHideLayout';
+import { LogoShort } from '@/shared/ui/Logo';
+import { MangaChaptersNavigation } from '@/features/BookChapters';
 
 interface ReadChapterBottomMenuProps {
     className?: string;
@@ -22,10 +23,10 @@ export const ReadChapterBottomMenu: FC<ReadChapterBottomMenuProps> = (props) => 
     if (!mangaId || !chapterId) return null;
 
     return (
-        <BottomMenuLayout hidden={hidden} className={classNames(cls.BottomMenu, {}, [className])}>
+        <BottomMenuLayout hidden={hidden}>
             <HStack justify="between">
-                <LogoMangaSite />
-                <ChaptersNavigation mangaId={mangaId} chapterId={chapterId} />
+                <LogoShort />
+                <MangaChaptersNavigation mangaId={mangaId} chapterId={chapterId} />
                 <CircleHelpIcon size={30} className="stroke-primary" />
             </HStack>
         </BottomMenuLayout>

@@ -15,6 +15,7 @@ export const BottomMenuLayout = (props: BottomMenuLayoutProps) => {
         <nav
             className={cn(
                 'sticky bottom-0 h-15 w-full px-2.5 py-1 z-50 transition-all',
+                'bg-accent border-b before:absolute before:inset-0 before:bg-primary/20 before:-z-1',
                 hidden && '-bottom-15',
                 className,
             )}

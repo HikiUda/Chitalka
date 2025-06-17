@@ -1,5 +1,5 @@
 import { isMobile } from 'react-device-detect';
-import { mapBottomMenuContent } from '../../model/mapBottomMenuContent';
+import { mapBottomMenuContent } from './mapBottomMenuContent';
 import { useRouteChange } from '@/shared/kernel/router';
 
 export const BottomMenu = () => {

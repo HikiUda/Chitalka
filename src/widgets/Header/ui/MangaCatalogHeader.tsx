@@ -1,12 +1,12 @@
-import { LogoMangaSite } from '@/entities/Logo';
 import { MangaCatalogFiltersSheet, MangaCatalogSortByOrder } from '@/features/CatalogFilters';
 import { HeaderLayout } from '@/shared/ui/layout/HeaderLayout';
+import { LogoShort } from '@/shared/ui/Logo';
 
-export const CatalogHeader = () => {
+export const MangaCatalogHeader = () => {
     return (
-        <HeaderLayout className="bg-secondary">
+        <HeaderLayout>
             <div className="flex items-center justify-between">
-                <LogoMangaSite />
+                <LogoShort />
                 <div className="flex items-center gap-2">
                     <MangaCatalogFiltersSheet />
                     <MangaCatalogSortByOrder />

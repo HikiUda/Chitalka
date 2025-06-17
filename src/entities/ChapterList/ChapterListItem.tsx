@@ -21,10 +21,11 @@ interface ChapterListItemProps {
     mangaId: MangaIdType;
     before?: ReactNode;
     after?: ReactNode;
+    onClick?: () => void;
 }
 
 export const ChapterListItem: FC<ChapterListItemProps> = (props) => {
-    const { className, chapter, before, after, mangaId } = props;
+    const { className, chapter, before, after, mangaId, onClick } = props;
 
     return (
         <Link
@@ -36,6 +37,7 @@ export const ChapterListItem: FC<ChapterListItemProps> = (props) => {
                 'grid grid-cols-[auto_1fr_auto_auto] overflow-hidden px-4 py-2.5 items-center gap-2 hover:bg-accent',
                 className,
             )}
+            onClick={onClick}
         >
             {before || <div />}
             <div className="whitespace-nowrap overflow-hidden text-ellipsis">

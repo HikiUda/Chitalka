@@ -8,10 +8,11 @@ import { PathParams, Routes } from '@/shared/kernel/router';
 import { HStack } from '@/shared/deprecate-ui/Stack';
 import { UserDataApi } from '@/shared/api/deprecated/user';
 import { HeaderLayout } from '@/shared/ui/layout/HeaderLayout';
-import { BackToManga, ChaptersNavigation, ReadSettingsModal } from '@/features/MangaChapters';
+import { BackToManga, ReadSettingsModal } from '@/features/MangaChapters';
 import { PopUserMenu } from '@/features/PopUserMenu';
 import { AuthModal } from '@/features/AuthModal';
 import { useHideLayout } from '@/shared/ui/layout/useHideLayout';
+import { MangaChaptersNavigation } from '@/features/BookChapters';
 
 interface ReadChapterHeaderProps {
     className?: string;
@@ -26,14 +27,14 @@ export const ReadChapterHeader: FC<ReadChapterHeaderProps> = (props) => {
     if (!mangaId || !chapterId) return null;
 
     return (
-        <HeaderLayout hidden={hidden} className={classNames(cls.Header, {}, [className])}>
+        <HeaderLayout hidden={hidden}>
             <div
                 className={classNames(cls.ReadChapterHeader, { [cls.mobileGrid]: isMobile }, [
                     className,
                 ])}
             >
                 <BackToManga mangaId={mangaId} chapterId={chapterId} />
-                {!isMobile && <ChaptersNavigation mangaId={mangaId} chapterId={chapterId} />}
+                {!isMobile && <MangaChaptersNavigation mangaId={mangaId} chapterId={chapterId} />}
                 <HStack justify="end">
                     <ReadSettingsModal />
                     {data ? <PopUserMenu /> : <AuthModal />}

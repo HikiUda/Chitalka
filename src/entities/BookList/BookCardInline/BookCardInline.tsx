@@ -28,7 +28,7 @@ export const BookCardInline = (props: BookCardInlineProps) => {
             <AppAdaptiveImage className="h-full basis-[65px] shrink-0" img={img} />
             <div className="flex flex-col gap-1 grow justify-around overflow-hidden">
                 <Heading
-                    className="line-clamp-2 hyphens-auto break-words max-w-[400px] transition-colors hover:text-accent"
+                    className="line-clamp-2 hyphens-auto break-words max-w-[400px] transition-colors hover:text-secondary"
                     variant="h4"
                     weigth="semibold"
                 >

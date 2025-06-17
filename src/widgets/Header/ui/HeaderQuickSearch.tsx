@@ -5,7 +5,7 @@ import { Button } from '@/shared/ui/kit/button';
 
 export const HeaderQuickSearch = () => {
     return (
-        <HeaderLayout className="bg-secondary">
+        <HeaderLayout>
             <QuickSearch
                 trigger={
                     <Button variant="clear" className="w-full bg-white justify-start mt-2">

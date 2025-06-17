@@ -31,7 +31,7 @@ export const CatalogFiltersLayout = (props: CatalogFiltersProps) => {
     }, []);
 
     return (
-        <div className={cn('relative bg-card  rounded-lg h-full overflow-hidden', className)}>
+        <div className={cn('relative bg-card h-full overflow-hidden', className)}>
             <Suspense fallback={<Loader variant="flower" className="mx-auto" />}>
                 {!tagsOpen && !genresOpen && (
                     <Slot className={cls.fadeOut}>{common(toGenres, toTags)}</Slot>
