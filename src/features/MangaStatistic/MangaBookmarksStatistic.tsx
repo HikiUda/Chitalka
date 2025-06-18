@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useGetMangaBookmarkStatistic } from './useGetMangaBookmarkStatistic';
 
-import { Bookmarks, MangaIdType } from '@/shared/kernel/manga';
+import { Bookmarks, MangaIdType } from '@/shared/kernel/book';
 import { Progress } from '@/shared/ui/kit/progress';
 import { Heading } from '@/shared/ui/kit/heading';
 import { Skeleton } from '@/shared/ui/kit/skeleton';

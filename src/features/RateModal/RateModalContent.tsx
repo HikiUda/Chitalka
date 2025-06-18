@@ -3,7 +3,7 @@ import { isMobile } from 'react-device-detect';
 import { StarIcon } from 'lucide-react';
 import { useSetRate } from './useSetRate';
 import { useGetRate } from './useGetRate';
-import { MangaIdType } from '@/shared/kernel/manga';
+import { MangaIdType } from '@/shared/kernel/book';
 import { DialogClose, DialogContent } from '@/shared/ui/kit/dialog';
 import { cn } from '@/shared/lib/css';
 import { Heading } from '@/shared/ui/kit/heading';

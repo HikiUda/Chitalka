@@ -33,7 +33,7 @@ export const TriggerButton = ({ tome, chapter, ...props }: TriggerButtonProps) =
             {...props}
             variant="clear"
             size="clear"
-            className="flex flex-col items-start py-1 px-3 gap-0  hover:bg-accent transition-colors h-full rounded-none"
+            className="flex flex-col items-start py-1 px-3 gap-0 hover:bg-accent transition-colors h-full rounded-none"
         >
             <Heading italic variant="h5" asChild>
                 <span>Оглавление</span>
@@ -51,7 +51,7 @@ export const ChaptersNavigationLayout = (props: ChaptersNavigationLayoutProps) =
     return (
         <div className={cn('flex items-center justify-center', className)}>
             <Link
-                aria-disable={!toPrevChapter}
+                aria-disabled={!toPrevChapter}
                 to={toPrevChapter || ''}
                 className="aria-disabled:pointer-events-none aria-disabled:opacity-70 h-full flex items-center hover:bg-accent transition-colors px-2"
             >
@@ -59,7 +59,7 @@ export const ChaptersNavigationLayout = (props: ChaptersNavigationLayoutProps) =
             </Link>
             {trigger}
             <Link
-                aria-disable={!toNextChapter}
+                aria-disabled={!toNextChapter}
                 to={toNextChapter || ''}
                 className="aria-disabled:pointer-events-none aria-disabled:opacity-70 h-full flex items-center  hover:bg-accent transition-colors px-2"
             >

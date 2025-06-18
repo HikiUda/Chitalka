@@ -1,7 +1,7 @@
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import { useGetMangaChapters } from '../../model/useGetMangaChapters';
 import { BookChaptersLayout } from '../layout/BookChaptersLayout';
-import { MangaIdType } from '@/shared/kernel/manga';
+import { MangaIdType } from '@/shared/kernel/book';
 import { ChapterList, ChapterListItem } from '@/entities/ChapterList';
 import { useIntersection } from '@/shared/lib/hooks/useIntersection';
 
@@ -9,15 +9,21 @@ import { Input } from '@/shared/ui/kit/input';
 import { ToggleOrder } from '@/entities/ToggleOrder';
 import { useTrottle } from '@/shared/lib/hooks/useTrottle';
 
-interface MangaChaptersProps {
+type MangaChaptersProps = {
     className?: string;
     mangaId: MangaIdType;
-}
+};
 
 export const MangaChapters = (props: MangaChaptersProps) => {
     const { className, mangaId } = props;
 
-    const { data = [], fetchNextPage, isFetching, order, search } = useGetMangaChapters(mangaId);
+    const {
+        chapters = [],
+        fetchNextPage,
+        isFetching,
+        order,
+        search,
+    } = useGetMangaChapters(mangaId);
 
     const trottleFetchNextPage = useTrottle(() => fetchNextPage(), 1000);
     const intersect = useIntersection(() => {
@@ -31,7 +37,7 @@ export const MangaChapters = (props: MangaChaptersProps) => {
             search={<Input className="max-w-80" placeholder="Найти главу" {...search} />}
             list={
                 <ChapterList
-                    chapters={data}
+                    chapters={chapters}
                     renderChapter={(chapter) => (
                         <ChapterListItem
                             key={chapter.id}

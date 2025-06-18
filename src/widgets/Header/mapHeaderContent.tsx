@@ -1,9 +1,11 @@
 import { ReactNode } from 'react';
-import { HeaderMain } from './ui/HeaderMain';
-import { HeaderQuickSearch } from './ui/HeaderQuickSearch';
-import { MangaCatalogHeader } from './ui/MangaCatalogHeader';
-import { ReadChapterHeader } from './ui/ReadChapterHeader/ReadChapterHeader';
 import { Routes, RoutesValues } from '@/shared/kernel/router';
+import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
+
+const HeaderMain = lazyNamed(() => import('./ui/HeaderMain'), 'HeaderMain');
+const HeaderQuickSearch = lazyNamed(() => import('./ui/HeaderQuickSearch'), 'HeaderQuickSearch');
+const MangaCatalogHeader = lazyNamed(() => import('./ui/MangaCatalogHeader'), 'MangaCatalogHeader');
+const ReadMangaHeader = lazyNamed(() => import('./ui/ReadMangaHeader'), 'ReadMangaHeader');
 
 type Platforms = { desktop?: ReactNode; mobile?: ReactNode };
 
@@ -14,7 +16,7 @@ export const mapHeaderContent: OptionalRecord<
     default: { desktop: <HeaderMain />, mobile: <HeaderQuickSearch /> },
     [Routes.MANGA_CATALOG]: { mobile: <MangaCatalogHeader /> },
     [Routes.MANGA_READ]: {
-        desktop: <ReadChapterHeader />,
-        mobile: <ReadChapterHeader />,
+        desktop: <ReadMangaHeader />,
+        mobile: <ReadMangaHeader />,
     },
 };

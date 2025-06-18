@@ -1,7 +1,7 @@
 import { useQueryClient } from '@tanstack/react-query';
 import { startTransition, useOptimistic } from 'react';
 import { authRqClient } from '@/shared/api/instance';
-import { MangaIdType } from '@/shared/kernel/manga';
+import { MangaIdType } from '@/shared/kernel/book';
 
 export function useSetRate(mangaId: MangaIdType) {
     const queryClient = useQueryClient();

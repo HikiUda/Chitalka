@@ -1,0 +1,1 @@
+import{f as n}from"./index-BBOIb04p.js";function i(s){return s}function u(s){const a=n();return()=>{const e=a.getQueryData(s);e!=null&&e.pages&&(e!=null&&e.pageParams)&&a.setQueryData(s,{pages:e.pages.slice(0,1),pageParams:[1]})}}export{i,u};

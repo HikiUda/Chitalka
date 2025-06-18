@@ -1,5 +1,5 @@
 import { CatalogFilterInitialState, CatalogFilterSlice } from '../../types';
-import { BookmarksType } from '@/shared/kernel/manga';
+import { BookmarksType } from '@/shared/kernel/book';
 
 export type BookmarksSlice = {
     bookmarks: BookmarksType[];

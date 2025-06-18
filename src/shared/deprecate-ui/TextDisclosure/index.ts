@@ -1,1 +1,0 @@
-export { TextDisclosure } from './TextDisclosure';

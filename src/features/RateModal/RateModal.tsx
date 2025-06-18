@@ -4,7 +4,7 @@ import { StarIcon } from 'lucide-react';
 import { useGetRate } from './useGetRate';
 import { useSetRate } from './useSetRate';
 import { useSession } from '@/shared/api/session';
-import { MangaIdType } from '@/shared/kernel/manga';
+import { MangaIdType } from '@/shared/kernel/book';
 import { cn } from '@/shared/lib/css';
 import { Button, ButtonContext } from '@/shared/ui/kit/button';
 import { Dialog, DialogBody, DialogTrigger } from '@/shared/ui/kit/dialog';

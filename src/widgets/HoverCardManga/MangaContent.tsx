@@ -1,4 +1,4 @@
-import { MangaIdType } from '@/shared/kernel/manga';
+import { MangaIdType } from '@/shared/kernel/book';
 import {
     BookBasicInfo,
     CategoryCollapsedList,

@@ -1,5 +1,4 @@
-import { SortBy } from '../../../model/slices/sortBy/sortBy';
-import { SortByType } from '@/shared/api/deprecated/mangaList';
+import { SortBy, SortByType } from '../../../model/slices/sortBy/sortBy';
 import { DropdownMenuRadioGroup, DropdownMenuRadioItem } from '@/shared/ui/kit/dropdown-menu';
 
 interface SortByMenuGroupProps {

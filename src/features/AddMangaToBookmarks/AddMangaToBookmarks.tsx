@@ -4,7 +4,7 @@ import { DropdownMenuLabel } from '@radix-ui/react-dropdown-menu';
 import { useGetBookmark } from './useGetBookmark';
 import { useSetBookmark } from './useSetBookmark';
 import { useDeleteBookmark } from './useDeleteBookmark';
-import { Bookmarks, MangaIdType } from '@/shared/kernel/manga';
+import { Bookmarks, MangaIdType } from '@/shared/kernel/book';
 import { Button } from '@/shared/ui/kit/button';
 import {
     DropdownMenu,

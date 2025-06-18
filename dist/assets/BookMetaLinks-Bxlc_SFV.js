@@ -1,0 +1,1 @@
+import{j as t,L as n}from"./index-BBOIb04p.js";import{B as a}from"./AddMangaToBookmarks-Bij2xwiY.js";import{B as m}from"./button-CBBu9zPz.js";const x=e=>{const{title:o,links:r,className:i}=e;return t.jsx(a,{className:i,title:o,items:r,renderItems:s=>t.jsx(m,{variant:"link",size:"clear",asChild:!0,children:t.jsx(n,{to:s.link,children:s.content})})})};export{x as B};

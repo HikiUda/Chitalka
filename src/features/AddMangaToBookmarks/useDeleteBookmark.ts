@@ -1,6 +1,6 @@
 import { useQueryClient } from '@tanstack/react-query';
 import { authRqClient } from '@/shared/api/instance';
-import { MangaIdType } from '@/shared/kernel/manga';
+import { MangaIdType } from '@/shared/kernel/book';
 
 export function useDeleteBookmark(mangaId: MangaIdType) {
     const queryClient = useQueryClient();

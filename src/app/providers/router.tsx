@@ -1,7 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from '../App';
 import { Routes } from '@/shared/kernel/router';
-import { ReadChapterPage } from '@/pages/ReadChapterPage';
 
 //TODO loading page add error page
 
@@ -23,7 +22,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: Routes.MANGA_READ,
-                lazy: async () => ({ Component: ReadChapterPage }),
+                lazy: () => import('@/pages/ReadBookPage/read-manga.page'),
             },
             {
                 path: Routes.COLLECTIONS,

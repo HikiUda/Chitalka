@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { isMobile } from 'react-device-detect';
 import { AboutBookLayout } from '../layout/AboutBookLayout';
-import { MangaIdType } from '@/shared/kernel/manga';
+import { MangaIdType } from '@/shared/kernel/book';
 import { MangaBookmarksStatistic, MangaRateStatistic } from '@/features/MangaStatistic';
 import { TextDisclosure } from '@/shared/ui/kit/text-disclosure';
 import { RelatedMangaSlider } from '@/features/RelatedMangaSlider';

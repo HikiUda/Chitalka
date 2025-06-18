@@ -2,7 +2,7 @@ import { infiniteQueryOptions, useInfiniteQuery } from '@tanstack/react-query';
 import { useCallback, useEffect, useState } from 'react';
 import { handleBookChapters } from './handleBookChapters';
 import { publicFetchClient } from '@/shared/api/instance';
-import { MangaIdType } from '@/shared/kernel/manga';
+import { MangaIdType } from '@/shared/kernel/book';
 import { useClearInfinityPages } from '@/shared/lib/hooks/useClearInfinityPages';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 
@@ -71,7 +71,7 @@ export function useGetMangaChapters(mangaId: MangaIdType) {
     );
 
     return {
-        data: data?.pages.flatMap((page) => page?.data || []),
+        chapters: data?.pages.flatMap((page) => page?.data || []),
         fetchNextPage,
         isFetching: isFetchingNextPage || isFetching,
         order: {

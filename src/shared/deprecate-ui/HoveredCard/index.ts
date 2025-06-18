@@ -1,1 +1,0 @@
-export { HoveredCard } from './HoveredCard';

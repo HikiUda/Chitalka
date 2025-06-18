@@ -15,18 +15,12 @@ export const App = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    if (!init) return <Loader />;
+    if (!init) return <Loader variant="flower" />;
 
     return (
-        <MainLayout
-            header={<Header />}
-            main={
-                <Suspense fallback={<Loader variant="flower" />}>
-                    <Outlet />
-                </Suspense>
-            }
-            bottomMenu={<BottomMenu />}
-        />
+        <Suspense fallback={<Loader variant="flower" />}>
+            <MainLayout header={<Header />} main={<Outlet />} bottomMenu={<BottomMenu />} />
+        </Suspense>
     );
 };
 export default App;

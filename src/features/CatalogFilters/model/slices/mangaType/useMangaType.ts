@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { CatalogFilterSliceSelector } from '../../types';
 import { CheckboxType } from '../../../ui/filters-build-blocks/CheckboxGroup';
 import { MangaTypeSlice } from './mangaTypeSlice';
-import { MangaType, MangaTypeType } from '@/shared/kernel/manga';
+import { MangaType, MangaTypeType } from '@/shared/kernel/book';
 
 export function useMangaType(slice: CatalogFilterSliceSelector<MangaTypeSlice>) {
     const type = slice.type();

@@ -1,10 +1,10 @@
 import { z } from 'zod';
 import { StringArrayField, StringArrayFieldUrl } from '../../filtersSchemas';
-import { MangaStatusEnum } from '@/shared/kernel/manga';
+import { BookStatusEnum } from '@/shared/kernel/book';
 
 export const statusSchema = z.object({
     status: StringArrayField,
 });
 export const statusSchemaUrl = z.object({
-    status: StringArrayFieldUrl(MangaStatusEnum),
+    status: StringArrayFieldUrl(BookStatusEnum),
 });

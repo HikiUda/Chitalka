@@ -1,5 +1,5 @@
 import { publicRqClient } from '@/shared/api/instance';
-import { MangaIdType } from '@/shared/kernel/manga';
+import { MangaIdType } from '@/shared/kernel/book';
 
 export function useGetMangaChapter(chapterId: MangaIdType) {
     const { data, isLoading } = publicRqClient.useSuspenseQuery(

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { MangaComments } from '../ui/MangaPage/MangaComments';
 import { type TabsType, useBookPageContent } from './useBookPageContent';
-import { MangaIdType } from '@/shared/kernel/manga';
+import { MangaIdType } from '@/shared/kernel/book';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 import { MangaChapters } from '@/features/BookChapters';
 

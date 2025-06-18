@@ -1,1 +1,0 @@
-export { IconInfoBirka } from './IconInfoBirka';

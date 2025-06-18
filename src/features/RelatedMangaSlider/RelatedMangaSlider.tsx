@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 import { BookmarkIcon, EyeIcon, HeartIcon } from 'lucide-react';
 import { useGetRelatedManga } from './useGetRelatedManga';
-import { MangaIdType } from '@/shared/kernel/manga';
+import { MangaIdType } from '@/shared/kernel/book';
 import {
     Carousel,
     CarouselContent,

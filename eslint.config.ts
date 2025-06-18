@@ -11,8 +11,9 @@ import pluginReactHooks from 'eslint-plugin-react-hooks';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import unusedImports from 'eslint-plugin-unused-imports';
 //@ts-ignore
-import FsdPlugin from 'eslint-plugin-fsd-layer-import';
+// import FsdPlugin from 'eslint-plugin-fsd-layer-import';
 import pluginQuery from '@tanstack/eslint-plugin-query';
+import { eslintBoundariesConfig } from './eslint.boundaries.js';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -29,7 +30,6 @@ export default [
             react: pluginReact,
             'react-hooks': pluginReactHooks,
             'unused-imports': unusedImports,
-            'fsd-layer-import': FsdPlugin,
         },
     },
     {
@@ -40,7 +40,6 @@ export default [
                 ...pluginJest.environments.globals.globals,
                 ...globals.node,
                 ...globals.es2025,
-                __IS_DEV__: true,
             },
             parserOptions: {
                 ecmaFeatures: {
@@ -56,6 +55,7 @@ export default [
     ...pluginQuery.configs['flat/recommended'],
     eslintConfigPrettier,
     pluginReact.configs.flat['jsx-runtime'],
+    eslintBoundariesConfig,
     { ignores: ['**/globals.d.ts'] },
     {
         rules: {
@@ -72,22 +72,6 @@ export default [
             'import/order': 'error',
             'import/named': 'off',
             'unused-imports/no-unused-imports': 'error',
-            'fsd-layer-import/path-checker': ['error', { alias: '@' }],
-            'fsd-layer-import/public-api-import': [
-                'error',
-                {
-                    alias: '@',
-                    testFilesPatterns: ['**/*.test.ts', '**/*.test.tsx', '**/*.stories.tsx'],
-                },
-            ],
-            'fsd-layer-import/layer-import': [
-                'error',
-                {
-                    alias: '@',
-                    ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
-                },
-            ],
         },
     },
 ];
-

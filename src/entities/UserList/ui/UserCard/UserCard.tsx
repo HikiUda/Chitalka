@@ -1,5 +1,4 @@
 import { memo } from 'react';
-
 import { AppAdaptiveImage } from '@/shared/ui/AppAdaptiveImage';
 import { cn } from '@/shared/lib/css';
 import { Card } from '@/shared/ui/kit/card';

@@ -1,7 +1,7 @@
 import { useQueryClient } from '@tanstack/react-query';
 import { startTransition, useOptimistic } from 'react';
 import { authRqClient } from '@/shared/api/instance';
-import { BookmarksType, MangaIdType } from '@/shared/kernel/manga';
+import { BookmarksType, MangaIdType } from '@/shared/kernel/book';
 
 export function useSetBookmark(mangaId: MangaIdType) {
     const queryClient = useQueryClient();

@@ -1,0 +1,1 @@
+const i={ru:{thousand:"тыс",million:"м"},en:{thousand:"k",million:"m"}};function r(l,e={locale:"ru"}){return l<1e3?String(l):l<1e6?String(l).slice(0,-3)+i[e.locale].thousand:l<1e8?String(l/1e6).slice(0,4)+i[e.locale].million:String(l).slice(0,-6)+i[e.locale].million}export{r as t};

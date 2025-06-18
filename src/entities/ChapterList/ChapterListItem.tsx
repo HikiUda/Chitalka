@@ -2,7 +2,7 @@ import { FC, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { ru } from 'date-fns/locale';
 import { format } from 'date-fns';
-import { MangaIdType } from '@/shared/kernel/manga';
+import { MangaIdType } from '@/shared/kernel/book';
 import { getRoute } from '@/shared/kernel/router';
 import { cn } from '@/shared/lib/css';
 import { getUrlChapterId } from '@/shared/lib/helpers/getUrlCahpterId';
