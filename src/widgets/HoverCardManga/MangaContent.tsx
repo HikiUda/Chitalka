@@ -1,40 +1,38 @@
-import { MangaIdType } from '@/shared/kernel/book';
+import { BookIdType } from '@/shared/kernel/book';
 import {
     BookBasicInfo,
     CategoryCollapsedList,
-    useBookBasicInfo,
-    useBookTitles,
-    useCategoriesList,
     useGetManga,
+    useMangaBasicInfo,
+    useMangaCategories,
 } from '@/entities/BookInfo';
 import { Heading } from '@/shared/ui/kit/heading';
 import { TextDisclosure } from '@/shared/ui/kit/text-disclosure';
-import { AddMangaToBookmarks } from '@/features/AddMangaToBookmarks';
+import { MangaBookmarkSelector } from '@/features/AddBookToBookmarks';
 
 interface MangaContentProps {
-    mangaId: MangaIdType;
+    mangaId: BookIdType;
 }
 
 export const MangaContent = (props: MangaContentProps) => {
     const { mangaId } = props;
 
     const { manga } = useGetManga(mangaId);
-    const { categories } = useCategoriesList(manga.genres, manga.tags);
-    const mangaTitles = useBookTitles(manga);
-    const { basicInfo } = useBookBasicInfo(manga);
+    const { categories } = useMangaCategories(manga);
+    const { basicInfo } = useMangaBasicInfo(manga);
 
     return (
         <>
             <Heading className="px-4" variant="h3" weigth="semibold">
-                {mangaTitles.main}
+                {manga.title.main}
             </Heading>
             <Heading className="px-4" variant="h4" italic>
-                {mangaTitles.subtitle}
+                {manga.title.en || manga.title.origin}
             </Heading>
             <BookBasicInfo className="w-full" basicInfo={basicInfo} />
             <TextDisclosure className="px-4" text={manga.description} />
             <CategoryCollapsedList className="mx-4" categories={categories} />
-            <AddMangaToBookmarks className="mx-4" mangaId={mangaId} />
+            <MangaBookmarkSelector className="mx-4" mangaId={mangaId} />
         </>
     );
 };

@@ -7,7 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/ui/kit/tabs';
 import { BookCardInline, BookListLayout } from '@/entities/BookList';
 import { Button } from '@/shared/ui/kit/button';
 import { Heading } from '@/shared/ui/kit/heading';
-import { useSession } from '@/shared/api/session';
+import { useSession } from '@/shared/kernel/session';
 import { getRoute } from '@/shared/kernel/router';
 import { cn } from '@/shared/lib/css';
 

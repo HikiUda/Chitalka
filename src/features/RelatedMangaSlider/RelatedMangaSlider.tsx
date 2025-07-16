@@ -1,7 +1,6 @@
 import { FC, ReactNode } from 'react';
-import { BookmarkIcon, EyeIcon, HeartIcon } from 'lucide-react';
 import { useGetRelatedManga } from './useGetRelatedManga';
-import { MangaIdType } from '@/shared/kernel/book';
+import { BookIdType } from '@/shared/kernel/book';
 import {
     Carousel,
     CarouselContent,
@@ -12,11 +11,10 @@ import {
 import { BookCardInline, BookCardInlineSkeleton } from '@/entities/BookList';
 import { getRoute } from '@/shared/kernel/router';
 import { Badge } from '@/shared/ui/kit/badge';
-import { toShortcutNumber } from '@/shared/lib/helpers/toShortcutNumber';
 
 interface RelatedMangaSliderProps {
     className?: string;
-    mangaId: MangaIdType;
+    mangaId: BookIdType;
     heading?: ReactNode;
 }
 
@@ -36,7 +34,7 @@ export const RelatedMangaSlider: FC<RelatedMangaSliderProps> = (props) => {
                 className="w-full relative group"
             >
                 <CarouselContent className="pl-2.5">
-                    {data.map(({ urlId, cover, title, type, likes, views, bookmarks }, index) => (
+                    {data.map(({ urlId, cover, title, type, status, relationship }, index) => (
                         <CarouselItem
                             key={index}
                             className="basis-75 ml-2 px-1 py-1 bg-card flex rounded-xl border shadow-sm"
@@ -48,15 +46,8 @@ export const RelatedMangaSlider: FC<RelatedMangaSliderProps> = (props) => {
                                 img={cover}
                             >
                                 <div className="flex gap-1 items-center">
-                                    <Badge variant="muted">
-                                        <EyeIcon /> {toShortcutNumber(views)}
-                                    </Badge>
-                                    <Badge variant="muted">
-                                        <HeartIcon /> {toShortcutNumber(likes)}
-                                    </Badge>
-                                    <Badge variant="muted">
-                                        <BookmarkIcon /> {toShortcutNumber(bookmarks)}
-                                    </Badge>
+                                    <Badge variant="muted">{relationship}</Badge>
+                                    <Badge variant="muted">{status}</Badge>
                                 </div>
                             </BookCardInline>
                         </CarouselItem>

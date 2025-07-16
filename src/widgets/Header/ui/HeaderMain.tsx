@@ -4,7 +4,7 @@ import { HeaderLayout } from '@/shared/ui/layout/HeaderLayout';
 import { QuickSearch } from '@/features/QuickSearch';
 import { PopUserMenu } from '@/features/PopUserMenu';
 import { AuthModal } from '@/features/AuthModal';
-import { useSession } from '@/shared/api/session';
+import { useSession } from '@/shared/kernel/session';
 import { getRoute } from '@/shared/kernel/router';
 import { Button } from '@/shared/ui/kit/button';
 import { Logo } from '@/shared/ui/Logo';

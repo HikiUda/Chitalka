@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { isMobile } from 'react-device-detect';
 import { AboutBookLayout } from '../layout/AboutBookLayout';
-import { MangaIdType } from '@/shared/kernel/book';
+import { BookIdType } from '@/shared/kernel/book';
 import { MangaBookmarksStatistic, MangaRateStatistic } from '@/features/MangaStatistic';
 import { TextDisclosure } from '@/shared/ui/kit/text-disclosure';
 import { RelatedMangaSlider } from '@/features/RelatedMangaSlider';
@@ -9,22 +9,22 @@ import { cn } from '@/shared/lib/css';
 import {
     BookBasicInfo,
     CategoryCollapsedList,
-    useBookBasicInfo,
-    useCategoriesList,
+    useMangaBasicInfo,
     useGetManga,
+    useMangaCategories,
 } from '@/entities/BookInfo';
 import { Heading } from '@/shared/ui/kit/heading';
 
 interface AboutMangaProps {
     className?: string;
-    mangaId: MangaIdType;
+    mangaId: BookIdType;
 }
 
 export const AboutManga: FC<AboutMangaProps> = (props) => {
     const { className, mangaId } = props;
     const { manga } = useGetManga(mangaId);
-    const { categories } = useCategoriesList(manga.genres, manga.tags);
-    const { basicInfo } = useBookBasicInfo(manga);
+    const { categories } = useMangaCategories(manga);
+    const { basicInfo } = useMangaBasicInfo(manga);
 
     return (
         <AboutBookLayout

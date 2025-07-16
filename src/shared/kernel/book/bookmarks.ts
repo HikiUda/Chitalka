@@ -10,4 +10,4 @@ export const Bookmarks = {
 
 export const BookmarksEnum = z.nativeEnum(Bookmarks);
 
-export type BookmarksType = ValueOf<typeof Bookmarks>;
+export type Bookmarks = ValueOf<typeof Bookmarks>;

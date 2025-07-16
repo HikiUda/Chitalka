@@ -5,17 +5,17 @@ import { authRqClient } from '@/shared/api/instance';
 export function useDeleteContinueReadManga() {
     const queryClient = useQueryClient();
     const [deleted, setDeleted] = useState<number[]>([]);
-    const { mutate } = authRqClient.useMutation('patch', '/manga/continue-read/{id}', {
+    const { mutate } = authRqClient.useMutation('delete', '/continue-read/manga/{mangaId}', {
         onMutate: ({ params }) => {
-            setDeleted((prev) => [...prev, params.path.id]);
+            setDeleted((prev) => [...prev, Number(params.path.mangaId)]);
         },
         onSettled: (_, __, { params }) =>
             queryClient
-                .invalidateQueries(authRqClient.queryOptions('get', '/manga/continue-read'))
-                .then(() => setDeleted((prev) => prev.filter((id) => id !== params.path.id))),
+                .invalidateQueries(authRqClient.queryOptions('get', '/continue-read/manga'))
+                .then(() => setDeleted((prev) => prev.filter((id) => id !== params.path.mangaId))),
     });
     return {
-        deleteContinueReadManga: (id: number) => mutate({ params: { path: { id } } }),
+        deleteContinueReadManga: (mangaId: number) => mutate({ params: { path: { mangaId } } }),
         getIsPending: (id: number) => deleted.includes(0) || deleted.includes(id),
     };
 }

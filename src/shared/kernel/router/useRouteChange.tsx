@@ -1,10 +1,10 @@
 import { matchPath, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Routes, RoutesValues } from './routerConfig';
+import { Routes } from './routerConfig';
 
 export function useRouteChange() {
     const location = useLocation();
-    const [appRoute, setAppRoute] = useState<RoutesValues>(Routes.MAIN);
+    const [appRoute, setAppRoute] = useState<Routes>(Routes.MAIN);
 
     useEffect(() => {
         Object.values(Routes).forEach((pattern) => {

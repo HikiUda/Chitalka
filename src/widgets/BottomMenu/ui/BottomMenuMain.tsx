@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { BottomMenuLayout } from '@/shared/ui/layout/BottomMenuLayout';
 import { PopUserMenu } from '@/features/PopUserMenu';
 import { getRoute } from '@/shared/kernel/router';
-import { useSession } from '@/shared/api/session';
+import { useSession } from '@/shared/kernel/session';
 import { AuthModal } from '@/features/AuthModal';
 import { LogoShort } from '@/shared/ui/Logo';
 

@@ -1,33 +1,33 @@
 import { useQueryClient } from '@tanstack/react-query';
 import { startTransition, useOptimistic } from 'react';
 import { authRqClient } from '@/shared/api/instance';
-import { BookmarksType, MangaIdType } from '@/shared/kernel/book';
+import { Bookmarks, BookIdType } from '@/shared/kernel/book';
 
-export function useSetBookmark(mangaId: MangaIdType) {
+export function useMangaSetBookmark(mangaId: BookIdType) {
     const queryClient = useQueryClient();
-    const [optimisticBookmark, setOptimisticBookmark] = useOptimistic<BookmarksType | null>(null);
-    const { mutateAsync } = authRqClient.useMutation('patch', '/manga/byId/{id}/bookmark', {
+    const [optimisticBookmark, setOptimisticBookmark] = useOptimistic<Bookmarks | null>(null);
+    const { mutateAsync } = authRqClient.useMutation('patch', '/manga/{mangaId}/bookmark', {
         onSettled: async () => {
             await queryClient.invalidateQueries(
-                authRqClient.queryOptions('get', '/manga/byId/{id}/bookmark', {
-                    params: { path: { id: String(mangaId) } },
+                authRqClient.queryOptions('get', '/manga/{mangaId}/bookmark', {
+                    params: { path: { mangaId } },
                 }),
             );
         },
     });
 
-    const setBookmark = (bookmark: BookmarksType) => {
+    const setBookmark = (bookmark: Bookmarks, chapterId: number | null = null) => {
         startTransition(async () => {
             setOptimisticBookmark(bookmark);
             await mutateAsync({
-                params: { path: { id: String(mangaId) } },
-                body: { bookmark },
+                params: { path: { mangaId } },
+                body: { bookmark, chapterId },
             });
         });
     };
 
     const getOptimisticBookmark = (
-        bookmark: BookmarksType | null | undefined,
+        bookmark: Bookmarks | null | undefined,
         isDeleting?: boolean,
     ) => {
         if (isDeleting) return null;

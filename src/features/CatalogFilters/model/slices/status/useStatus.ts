@@ -2,13 +2,13 @@ import { useMemo } from 'react';
 import { CheckboxType } from '../../../ui/filters-build-blocks/CheckboxGroup';
 import { CatalogFilterSliceSelector } from '../../types';
 import { StatusSlice } from './statusSlice';
-import { BookStatus, BookStatusType } from '@/shared/kernel/book';
+import { BookStatus } from '@/shared/kernel/book';
 
 export function useStatus(slice: CatalogFilterSliceSelector<StatusSlice>) {
     const status = slice.status();
     const setStatus = slice.setStatus();
 
-    const checkboxes: CheckboxType<BookStatusType>[] = useMemo(() => {
+    const checkboxes: CheckboxType<BookStatus>[] = useMemo(() => {
         return Object.values(BookStatus).map((status) => ({
             value: status,
             label: status,

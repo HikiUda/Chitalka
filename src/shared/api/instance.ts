@@ -1,29 +1,22 @@
 import createFetchClient from 'openapi-fetch';
 import createClient from 'openapi-react-query';
 import { CONFIG } from '../kernel/config';
+import { useSessionStore } from '../kernel/session';
 import { components, paths } from './bekiApi';
-import { useSessionStore } from './session';
 
 export type ApiSchemas = components['schemas'];
 export type ApiPaths = paths;
-
-export const baseFetchClient = createFetchClient<paths>({
-    baseUrl: CONFIG.API_BASE_URL,
-    credentials: 'include',
-});
 
 export const authFetchClient = createFetchClient<paths>({
     baseUrl: CONFIG.API_BASE_URL,
     credentials: 'include',
 });
-
 export const authRqClient = createClient(authFetchClient);
 
 export const publicFetchClient = createFetchClient<paths>({
     baseUrl: CONFIG.API_BASE_URL,
     credentials: 'include',
 });
-
 export const publicRqClient = createClient(publicFetchClient);
 
 authFetchClient.use({
@@ -37,7 +30,7 @@ authFetchClient.use({
                 JSON.stringify({
                     statusCode: 401,
                     message: 'You are not authorized to access this resource',
-                } as components['schemas']['ErrorType']),
+                } as ApiSchemas['ErrorType']),
                 {
                     status: 401,
                     headers: {
@@ -52,7 +45,7 @@ authFetchClient.use({
 publicFetchClient.use({
     async onRequest({ request }) {
         const token = await useSessionStore.getState().refreshToken();
-        request.headers.set('Authorization', `Bearer ${token}`);
+        if (token) request.headers.set('Authorization', `Bearer ${token}`);
         return request;
     },
 });

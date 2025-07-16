@@ -5,7 +5,7 @@ import { ApiSchemas } from '@/shared/api/instance';
 
 export function useNowReadManga(): {
     heading: string;
-    data: ApiSchemas['MangaListItemDto'][] | undefined;
+    data: ApiSchemas['CatalogManga'][] | undefined;
     isLoading: boolean;
 }[] {
     const newManga = useGetNewManga();

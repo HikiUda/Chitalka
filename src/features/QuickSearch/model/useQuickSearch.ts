@@ -7,7 +7,7 @@ export function useQuickSearch(search?: string) {
         queryKey: ['get', '/manga/quick-search'],
         queryFn: async () =>
             await publicFetchClient
-                .GET('/manga/quick-search', { params: { query: { search } } })
+                .GET('/quick-search/manga', { params: { query: { search } } })
                 .then((res) => res.data),
     });
     const { data, isFetching, refetch } = useQuery(QuickSearchQuery);

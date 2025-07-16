@@ -3,8 +3,8 @@ import { toast } from 'sonner';
 import { StarIcon } from 'lucide-react';
 import { useGetRate } from './useGetRate';
 import { useSetRate } from './useSetRate';
-import { useSession } from '@/shared/api/session';
-import { MangaIdType } from '@/shared/kernel/book';
+import { useSession } from '@/shared/kernel/session';
+import { BookIdType } from '@/shared/kernel/book';
 import { cn } from '@/shared/lib/css';
 import { Button, ButtonContext } from '@/shared/ui/kit/button';
 import { Dialog, DialogBody, DialogTrigger } from '@/shared/ui/kit/dialog';
@@ -14,7 +14,7 @@ const RateModalContent = lazyNamed(() => import('./RateModalContent'), 'RateModa
 
 interface RateModalProps {
     className?: string;
-    mangaId: MangaIdType;
+    mangaId: BookIdType;
 }
 
 const RateButtonWrapper = ({ children }: { children: ReactNode }) => {

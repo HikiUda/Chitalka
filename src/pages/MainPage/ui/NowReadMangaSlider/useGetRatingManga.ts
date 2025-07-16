@@ -1,7 +1,7 @@
 import { publicRqClient } from '@/shared/api/instance';
 
 export function useGetRatingManga() {
-    const { data, isLoading } = publicRqClient.useQuery('get', '/manga', {
+    const { data, isLoading } = publicRqClient.useQuery('get', '/catalog/manga', {
         params: {
             query: {
                 sortBy: 'rating',

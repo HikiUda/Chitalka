@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { BookMetaItem } from './BookMetaItem';
 import { Button } from '@/shared/ui/kit/button';
 
-type LinksProps = {
+export type LinksProps = {
     content: string;
     link: string;
 };

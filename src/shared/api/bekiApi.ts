@@ -84,105 +84,7 @@ export type paths = {
         patch?: never;
         trace?: never;
     };
-    "/manga": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["PublicMangaController_getMangaList"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/manga/last-updated": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Optional auth endpoint */
-        get: operations["PublicMangaController_getLastUpdatedMangas"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/manga/related/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["PublicMangaController_getRelatedManga"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/manga/quick-search": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Optional auth endpoint */
-        get: operations["QuickSearchController_getMangaQuickSearch"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/manga/quick-search/last": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["QuickSearchController_getUserLastSearchQueries"];
-        put?: never;
-        post?: never;
-        delete: operations["QuickSearchController_deleteUserLastSearchQuery"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/manga/continue-read": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["ContinueReadMangaController_getContinueReadManga"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/manga/continue-read/{id}": {
+    "/user/json-settings": {
         parameters: {
             query?: never;
             header?: never;
@@ -195,58 +97,106 @@ export type paths = {
         delete?: never;
         options?: never;
         head?: never;
-        patch: operations["ContinueReadMangaController_dontShowContinueReadManga"];
+        patch: operations["ProfileController_updateJsonSettings"];
         trace?: never;
     };
-    "/manga/edit/{id}": {
+    "/manga/{mangaId}": {
         parameters: {
             query?: never;
             header?: never;
             path?: never;
             cookie?: never;
         };
-        get: operations["EditMangaController_getEditedManga"];
-        put: operations["EditMangaController_updateManga"];
-        post?: never;
-        delete: operations["EditMangaController_deleteManga"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/manga/edit": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
+        get: operations["MangaController_getBook"];
         put?: never;
-        post: operations["EditMangaController_createManga"];
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/manga/edit/{id}/covers": {
+    "/manga/{mangaId}/covers": {
         parameters: {
             query?: never;
             header?: never;
             path?: never;
             cookie?: never;
         };
-        get: operations["EditMangaCoverController_getMangaCovers"];
+        get: operations["MangaController_getBookCovers"];
         put?: never;
-        post: operations["EditMangaCoverController_addMangaCovers"];
-        delete: operations["EditMangaCoverController_deleteMangaCovers"];
+        post?: never;
+        delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/manga/byId/{id}": {
+    "/ranobe/{ranobeId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["RanobeController_getBook"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/ranobe/{ranobeId}/covers": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["RanobeController_getBookCovers"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/manga/{mangaId}/bookmark": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["MangaBookmarksController_getBookmark"];
+        put?: never;
+        post?: never;
+        delete: operations["MangaBookmarksController_deleteBookmark"];
+        options?: never;
+        head?: never;
+        patch: operations["MangaBookmarksController_setBookmark"];
+        trace?: never;
+    };
+    "/ranobe/{ranobeId}/bookmark": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["RanobeBookmarksController_getBookmark"];
+        put?: never;
+        post?: never;
+        delete: operations["RanobeBookmarksController_deleteBookmark"];
+        options?: never;
+        head?: never;
+        patch: operations["RanobeBookmarksController_setBookmark"];
+        trace?: never;
+    };
+    "/catalog/manga": {
         parameters: {
             query?: never;
             header?: never;
@@ -254,7 +204,7 @@ export type paths = {
             cookie?: never;
         };
         /** Optional auth endpoint */
-        get: operations["IndividualMangaController_getManga"];
+        get: operations["CatalogController_getCatalogManga"];
         put?: never;
         post?: never;
         delete?: never;
@@ -263,119 +213,7 @@ export type paths = {
         patch?: never;
         trace?: never;
     };
-    "/manga/byId/{id}/covers": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["IndividualMangaController_getMangaCovers"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/manga/byId/{id}/bookmark": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["BookmarkController_getUserMangaBookmark"];
-        put?: never;
-        post?: never;
-        delete: operations["BookmarkController_deleteUserMangaBookmark"];
-        options?: never;
-        head?: never;
-        patch: operations["BookmarkController_setUserMangaBookmark"];
-        trace?: never;
-    };
-    "/manga/byId/{id}/rate": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["RateController_getUserMangaRate"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch: operations["RateController_setUserMangaRate"];
-        trace?: never;
-    };
-    "/manga/genres": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["MangaGenresController_getGenres"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/manga/tags": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["MangaTagsController_getTags"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/manga/statistic/{id}/rate": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["MangaStatisticController_getRateStatistic"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/manga/statistic/{id}/bookmark": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["MangaStatisticController_getBookmarkStatistic"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/manga/chapter/{chapterId}": {
+    "/catalog/ranobe": {
         parameters: {
             query?: never;
             header?: never;
@@ -383,7 +221,39 @@ export type paths = {
             cookie?: never;
         };
         /** Optional auth endpoint */
-        get: operations["PublicChapterController_getChapter"];
+        get: operations["CatalogController_getCatalogRanobe"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/book/genres": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["CategoriesController_getGenres"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/book/tags": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["CategoriesController_getTags"];
         put?: never;
         post?: never;
         delete?: never;
@@ -400,7 +270,7 @@ export type paths = {
             cookie?: never;
         };
         /** Optional auth endpoint */
-        get: operations["PublicChapterController_getChapterList"];
+        get: operations["MangaChaptersController_getChapterList"];
         put?: never;
         post?: never;
         delete?: never;
@@ -409,7 +279,107 @@ export type paths = {
         patch?: never;
         trace?: never;
     };
-    "/manga/chapter/{id}/like": {
+    "/manga/{mangaId}/chapters/{chapterId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Optional auth endpoint */
+        get: operations["MangaChaptersController_getChapter"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/manga/{mangaId}/chapters/{chapterId}/pages": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["MangaChaptersController_getPages"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/ranobe/{ranobeId}/chapters": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Optional auth endpoint */
+        get: operations["RanobeChaptersController_getChapterList"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/ranobe/{ranobeId}/chapters/{chapterId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Optional auth endpoint */
+        get: operations["RanobeChaptersController_getChapter"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/continue-read/manga": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["ContinueReadMangaController_getContinueReadBookList"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/continue-read/manga/{mangaId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Optional auth endpoint */
+        get: operations["ContinueReadMangaController_getContinueReadBook"];
+        put?: never;
+        post?: never;
+        delete: operations["ContinueReadMangaController_dontShowContinueReadBook"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/continue-read/manga/{mangaId}/{chapterId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -422,10 +392,43 @@ export type paths = {
         delete?: never;
         options?: never;
         head?: never;
-        patch: operations["ChapterActionController_setUserLikeChapter"];
+        patch: operations["ContinueReadMangaController_setContinueReadBook"];
         trace?: never;
     };
-    "/manga/chapter/{id}/view": {
+    "/continue-read/ranobe": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["ContinueReadRanobeController_getContinueReadBookList"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/continue-read/ranobe/{ranobeId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Optional auth endpoint */
+        get: operations["ContinueReadRanobeController_getContinueReadBook"];
+        put?: never;
+        post?: never;
+        delete: operations["ContinueReadRanobeController_dontShowContinueReadBook"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/continue-read/ranobe/{ranobeId}/{chapterId}": {
         parameters: {
             query?: never;
             header?: never;
@@ -438,58 +441,26 @@ export type paths = {
         delete?: never;
         options?: never;
         head?: never;
-        patch: operations["ChapterActionController_setUserViewChapter"];
+        patch: operations["ContinueReadRanobeController_setContinueReadBook"];
         trace?: never;
     };
-    "/manga/edit/{mangaId}/chapter/{chapterId}": {
+    "/manga/{mangaId}/edit": {
         parameters: {
             query?: never;
             header?: never;
             path?: never;
             cookie?: never;
         };
-        get: operations["EditChapterController_getEditedChapter"];
-        put: operations["EditChapterController_updateChapter"];
+        get: operations["EditMangaController_getEditedBook"];
+        put: operations["EditMangaController_updateBook"];
         post?: never;
-        delete: operations["EditChapterController_deleteChapter"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/manga/edit/{mangaId}/chapter": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["EditChapterController_getEditedChapterList"];
-        put?: never;
-        post: operations["EditChapterController_createChapter"];
         delete?: never;
         options?: never;
         head?: never;
         patch?: never;
         trace?: never;
     };
-    "/manga/edit/{mangaId}/chapter/{chapterId}/pages": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: operations["EditChapterPagesController_getChapterPages"];
-        put: operations["EditChapterPagesController_setChapterPages"];
-        post: operations["EditChapterPagesController_addPage"];
-        delete: operations["EditChapterPagesController_deletePage"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/manga/edit/{mangaId}/chapter/{chapterId}/pages/lang": {
+    "/manga": {
         parameters: {
             query?: never;
             header?: never;
@@ -498,11 +469,561 @@ export type paths = {
         };
         get?: never;
         put?: never;
-        post: operations["EditChapterPagesController_addLangChapterPages"];
-        delete: operations["EditChapterPagesController_deleteLangChapterPages"];
+        post: operations["EditMangaController_createBook"];
+        delete?: never;
         options?: never;
         head?: never;
         patch?: never;
+        trace?: never;
+    };
+    "/ranobe/{ranobeId}/edit": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["EditRanobeController_getEditedBook"];
+        put: operations["EditRanobeController_updateBook"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/ranobe": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["EditRanobeController_createBook"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/manga/{mangaId}/edit/chapters": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["EditMangaChaptersController_getEditedChapterList"];
+        put?: never;
+        post: operations["EditMangaChaptersController_createChapter"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/manga/{mangaId}/edit/chapters/{chapterId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["EditMangaChaptersController_getEditedChapter"];
+        put: operations["EditMangaChaptersController_updateChapter"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/manga/{mangaId}/edit/chapters/{chapterId}/publish": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch: operations["EditMangaChaptersController_toggleChapterPublish"];
+        trace?: never;
+    };
+    "/ranobe/{ranobeId}/edit/chapters": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["EditRanobeChaptersController_getEditedChapterList"];
+        put?: never;
+        post: operations["EditRanobeChaptersController_createChapter"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/ranobe/{ranobeId}/edit/chapters/{chapterId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["EditRanobeChaptersController_getEditedChapter"];
+        put: operations["EditRanobeChaptersController_updateChapter"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/ranobe/{ranobeId}/edit/chapters/{chapterId}/publish": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch: operations["EditRanobeChaptersController_toggleChapterPublish"];
+        trace?: never;
+    };
+    "/manga/{mangaId}/edit/covers": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["EditMangaCoversController_getEditedCovers"];
+        put?: never;
+        post: operations["EditMangaCoversController_addCovers"];
+        delete: operations["EditMangaCoversController_deleteCovers"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/manga/{mangaId}/edit/covers/{coverId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch: operations["EditMangaCoversController_setMainCover"];
+        trace?: never;
+    };
+    "/ranobe/{ranobeId}/edit/covers": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["EditRanobeCoversController_getEditedCovers"];
+        put?: never;
+        post: operations["EditRanobeCoversController_addCovers"];
+        delete: operations["EditRanobeCoversController_deleteCovers"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/ranobe/{ranobeId}/edit/covers/{coverId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch: operations["EditRanobeCoversController_setMainCover"];
+        trace?: never;
+    };
+    "/manga/{mangaId}/edit/chapters/{chapterId}/pages": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["EditMangaChaptersPagesController_getPages"];
+        put: operations["EditMangaChaptersPagesController_updatePages"];
+        post: operations["EditMangaChaptersPagesController_addPage"];
+        delete: operations["EditMangaChaptersPagesController_deletePage"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/people/{personId}/edit": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["EditPeopleController_getEditedPerson"];
+        put: operations["EditPeopleController_updatePerson"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/people": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["PeopleController_getPeopleList"];
+        put?: never;
+        post: operations["EditPeopleController_createPerson"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/last-updated/manga": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Optional auth endpoint */
+        get: operations["LastUpdatedController_getLastUpdatedManga"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/last-updated/ranobe": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Optional auth endpoint */
+        get: operations["LastUpdatedController_getLastUpdatedRanobe"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/people/{name}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["PeopleController_getPerson"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/quick-search/manga": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Optional auth endpoint */
+        get: operations["QuickSearchMangaController_getBooks"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/quick-search/manga/last": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["QuickSearchMangaController_getUserLastQueries"];
+        put?: never;
+        post?: never;
+        delete: operations["QuickSearchMangaController_deleteUserLastQuery"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/quick-search/ranobe": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Optional auth endpoint */
+        get: operations["QuickSearchRanobeController_getBooks"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/quick-search/ranobe/last": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["QuickSearchRanobeController_getUserLastQueries"];
+        put?: never;
+        post?: never;
+        delete: operations["QuickSearchRanobeController_deleteUserLastQuery"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/manga/{mangaId}/rate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["MangaRateController_getRate"];
+        put?: never;
+        post?: never;
+        delete: operations["MangaRateController_deleteRate"];
+        options?: never;
+        head?: never;
+        patch: operations["MangaRateController_setRate"];
+        trace?: never;
+    };
+    "/ranobe/{ranobeId}/rate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["RanobeRateController_getRate"];
+        put?: never;
+        post?: never;
+        delete: operations["RanobeRateController_deleteRate"];
+        options?: never;
+        head?: never;
+        patch: operations["RanobeRateController_setRate"];
+        trace?: never;
+    };
+    "/related-books/manga/{mangaId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["RelatedMangaController_getRelatedBooks"];
+        put?: never;
+        post: operations["RelatedMangaController_addBookRelated"];
+        delete: operations["RelatedMangaController_deleteBookRelated"];
+        options?: never;
+        head?: never;
+        patch: operations["RelatedMangaController_updateBookRelated"];
+        trace?: never;
+    };
+    "/related-books/ranobe/{ranobeId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["RelatedRanobeController_getRelatedBooks"];
+        put?: never;
+        post: operations["RelatedRanobeController_addBookRelated"];
+        delete: operations["RelatedRanobeController_deleteBookRelated"];
+        options?: never;
+        head?: never;
+        patch: operations["RelatedRanobeController_updateBookRelated"];
+        trace?: never;
+    };
+    "/manga/{mangaId}/statistic/rate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["MangaStatisticController_getRateStatistic"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/manga/{mangaId}/statistic/bookmark": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["MangaStatisticController_getBookmarkStatistic"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/ranobe/{ranobeId}/statistic/rate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["RanobeStatisticController_getRateStatistic"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/ranobe/{ranobeId}/statistic/bookmark": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["RanobeStatisticController_getBookmarkStatistic"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/manga/{mangaId}/chapters/{chapterId}/view": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch: operations["UserMangaChapterActionsController_addUserViewChapter"];
+        trace?: never;
+    };
+    "/manga/{mangaId}/chapters/{chapterId}/like": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Optional auth endpoint */
+        get: operations["UserMangaChapterActionsController_getUserLikeChapter"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch: operations["UserMangaChapterActionsController_setUserLikeChapter"];
+        trace?: never;
+    };
+    "/ranobe/{ranobeId}/chapters/{chapterId}/view": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch: operations["UserRanobeChapterActionsController_addUserViewChapter"];
+        trace?: never;
+    };
+    "/ranobe/{ranobeId}/chapters/{chapterId}/like": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Optional auth endpoint */
+        get: operations["UserRanobeChapterActionsController_getUserLikeChapter"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch: operations["UserRanobeChapterActionsController_setUserLikeChapter"];
         trace?: never;
     };
 };
@@ -513,378 +1034,655 @@ export type components = {
             login: string;
             password: string;
         };
-        AuthUserDto: {
-            id: number;
-            login: string;
-            name: string;
-            sub: number;
-        };
-        AuthTokens: {
+        ResponseAccessToken: {
             access: string;
-            refresh: string;
-        };
-        ReturnAuthUser: {
-            user: components["schemas"]["AuthUserDto"];
-            tokens: components["schemas"]["AuthTokens"];
-        };
-        LoginUserDto: {
-            login: string;
-            password: string;
         };
         ErrorType: {
             message: string;
             statusCode: number;
             error?: string;
         };
+        LoginUserDto: {
+            login: string;
+            password: string;
+        };
         UserDataDto: {
             id: number;
             name: string;
             avatar: string | null;
-            jsonSettings: Record<string, never>;
+            jsonSettings: {
+                [key: string]: unknown;
+            };
         };
-        MangaListItemDto: {
+        BookTitle: {
+            main: string;
+            en: string | null;
+            origin: string | null;
+        };
+        BookCategory: {
+            id: number;
+            title: string;
+        };
+        BookOwner: {
+            id: number;
+            name: string;
+            avatar: string | null;
+        };
+        BookPerson: {
+            id: number;
+            name: string;
+            avatar: string | null;
+            role: ("Author" | "Artist" | "Publisher")[];
+        };
+        Manga: {
+            id: number;
+            urlId: string;
+            title: components["schemas"]["BookTitle"];
+            otherTitles: string[];
+            description: string;
+            rate: number;
+            rateCount: number;
+            /** Format: date-time */
+            releaseDate: string | null;
+            /** @enum {number} */
+            ageRating: never;
+            /** @enum {string} */
+            status: "Ongoing" | "Announced" | "Completed" | "Frozen" | "Canceled";
+            genres: components["schemas"]["BookCategory"][];
+            tags: components["schemas"]["BookCategory"][];
+            cover: string | null;
+            banner: string | null;
+            owner: components["schemas"]["BookOwner"];
+            people: components["schemas"]["BookPerson"][];
+            /** @enum {string} */
+            lang: "ru" | "en";
+            /** @enum {string} */
+            type: "Manga" | "Manhwa" | "Manhua" | "OEL" | "Rumanga" | "Comic";
+        };
+        BookCover: {
+            id: number;
+            cover: string;
+        };
+        BookCoverList: {
+            data: components["schemas"]["BookCover"][];
+        };
+        Ranobe: {
+            id: number;
+            urlId: string;
+            title: components["schemas"]["BookTitle"];
+            otherTitles: string[];
+            description: string;
+            rate: number;
+            rateCount: number;
+            /** Format: date-time */
+            releaseDate: string | null;
+            /** @enum {number} */
+            ageRating: never;
+            /** @enum {string} */
+            status: "Ongoing" | "Announced" | "Completed" | "Frozen" | "Canceled";
+            genres: components["schemas"]["BookCategory"][];
+            tags: components["schemas"]["BookCategory"][];
+            cover: string | null;
+            banner: string | null;
+            owner: components["schemas"]["BookOwner"];
+            people: components["schemas"]["BookPerson"][];
+            /** @enum {string} */
+            lang: "ru" | "en";
+            /** @enum {string} */
+            type: "Japan" | "Korea" | "China" | "Foreign" | "Russia" | "Fanfic";
+        };
+        UserBookBookmark: {
+            userId: number;
+            bookId: number;
+            chapterId: number | null;
+            /** @enum {string|null} */
+            bookmark: "Reading" | "Planned" | "Readed" | "Abandoned" | "Postponed" | null;
+        };
+        AddMangaBookmarkDto: {
+            /** @enum {string} */
+            bookmark: "Reading" | "Planned" | "Readed" | "Abandoned" | "Postponed";
+            /** @default null */
+            chapterId: number | null;
+        };
+        AddRanobeBookmarkDto: {
+            /** @enum {string} */
+            bookmark: "Reading" | "Planned" | "Readed" | "Abandoned" | "Postponed";
+            /** @default null */
+            chapterId: number | null;
+        };
+        CatalogManga: {
             id: number;
             urlId: string;
             title: string;
             rate: number;
-            /** @enum {string} */
-            type: "Manga" | "Manhwa" | "Manhua" | "OEL" | "Rumanga" | "Comic";
             cover: string;
             /** @enum {string|null} */
             bookmark: "Reading" | "Planned" | "Readed" | "Abandoned" | "Postponed" | null;
             chapterCount: number;
+            /** @enum {string} */
+            type: "Manga" | "Manhwa" | "Manhua" | "OEL" | "Rumanga" | "Comic";
         };
-        MangaListItemPagination: {
+        CatalogMangaList: {
             prevPage: number | null;
             nextPage: number | null;
-            data: components["schemas"]["MangaListItemDto"][];
+            data: components["schemas"]["CatalogManga"][];
         };
-        MangaListItemLastUpdatedDto: {
+        CatalogRanobe: {
             id: number;
             urlId: string;
             title: string;
+            rate: number;
+            cover: string;
+            /** @enum {string|null} */
+            bookmark: "Reading" | "Planned" | "Readed" | "Abandoned" | "Postponed" | null;
+            chapterCount: number;
+            /** @enum {string} */
+            type: "Japan" | "Korea" | "China" | "Foreign" | "Russia" | "Fanfic";
+        };
+        CatalogRanobeList: {
+            prevPage: number | null;
+            nextPage: number | null;
+            data: components["schemas"]["CatalogRanobe"][];
+        };
+        CategoryDto: {
+            id: number;
+            title: string;
+        };
+        CategoryDtoList: {
+            data: components["schemas"]["CategoryDto"][];
+        };
+        BookChapterListItem: {
+            id: number;
+            tome: number;
+            chapter: number;
+            title: string | null;
+            /** Format: date-time */
+            createdAt: string;
+            isUserViewed: boolean;
+        };
+        BookChapterList: {
+            prevPage: number | null;
+            nextPage: number | null;
+            data: components["schemas"]["BookChapterListItem"][];
+        };
+        NeighbourBookChapter: {
+            id: number;
+            tome: number;
+            chapter: number;
+        };
+        BookChapter: {
+            id: number;
+            tome: number;
+            chapter: number;
+            title: string | null;
+            bookTitle: string;
+            prevChapter: components["schemas"]["NeighbourBookChapter"] | null;
+            nextChapter: components["schemas"]["NeighbourBookChapter"] | null;
+            isUserLiked: boolean;
+            isUserViewed: boolean;
+        };
+        PublicMangaChapterPages: {
+            /** @enum {string} */
+            view: "pages" | "tape";
+            pageCount: number;
+            pages: string[];
+        };
+        ContinueReadBookListItem: {
+            id: number;
+            urlId: string;
+            title: string;
+            cover: string;
+            tome: number;
+            chapter: number;
+            chapterId: number;
+        };
+        ContinueReadBookList: {
+            data: components["schemas"]["ContinueReadBookListItem"][];
+        };
+        ContinueReadBook: {
+            tome: number;
+            chapter: number;
+            chapterId: number | null;
+            chapterCount: number;
+            readedChapterCount: number;
+            bookId: number;
+        };
+        EditedBookTitle: {
+            main: string;
+            en: string | null;
+            origin: string | null;
+        };
+        EditedBookCategory: {
+            id: number;
+            title: string;
+        };
+        EditedManga: {
+            id: number;
+            urlId: string;
+            title: components["schemas"]["EditedBookTitle"];
+            otherTitles: string[];
+            description: string;
+            /** Format: date-time */
+            releaseDate: string | null;
+            /** @enum {string} */
+            status: "Ongoing" | "Announced" | "Completed" | "Frozen" | "Canceled";
+            genres: components["schemas"]["EditedBookCategory"][];
+            tags: components["schemas"]["EditedBookCategory"][];
+            banner: string | null;
+            /** @enum {number} */
+            ageRating: never;
+            authors: string[];
+            artists: string[];
+            publishers: string[];
+            /** @enum {string} */
+            lang: "ru" | "en";
             /** @enum {string} */
             type: "Manga" | "Manhwa" | "Manhua" | "OEL" | "Rumanga" | "Comic";
+        };
+        MutateMangaDto: {
+            urlId?: string;
+            title?: {
+                main?: string;
+                en?: string;
+                origin?: string;
+            };
+            otherTitles?: unknown[][];
+            description?: string;
+            /** @enum {string} */
+            type?: "Manga" | "Manhwa" | "Manhua" | "OEL" | "Rumanga" | "Comic";
+            /** @enum {string} */
+            status?: "Ongoing" | "Announced" | "Completed" | "Frozen" | "Canceled";
+            /** Format: date-time */
+            releaseDate?: string;
+            genres?: unknown[][];
+            tags?: unknown[][];
+            /** @description Only Becki field process */
+            banner?: string;
+            /** @enum {number} */
+            ageRating?: 0 | 6 | 12 | 16 | 18;
+            authors?: unknown[][];
+            artists?: unknown[][];
+            publishers?: unknown[][];
+            /** @enum {string} */
+            lang?: "ru" | "en";
+        };
+        EditedRanobe: {
+            id: number;
+            urlId: string;
+            title: components["schemas"]["EditedBookTitle"];
+            otherTitles: string[];
+            description: string;
+            /** Format: date-time */
+            releaseDate: string | null;
+            /** @enum {string} */
+            status: "Ongoing" | "Announced" | "Completed" | "Frozen" | "Canceled";
+            genres: components["schemas"]["EditedBookCategory"][];
+            tags: components["schemas"]["EditedBookCategory"][];
+            banner: string | null;
+            /** @enum {number} */
+            ageRating: never;
+            authors: string[];
+            artists: string[];
+            publishers: string[];
+            /** @enum {string} */
+            lang: "ru" | "en";
+            /** @enum {string} */
+            type: "Japan" | "Korea" | "China" | "Foreign" | "Russia" | "Fanfic";
+        };
+        MutateRanobeDto: {
+            urlId?: string;
+            title?: {
+                main?: string;
+                en?: string;
+                origin?: string;
+            };
+            otherTitles?: unknown[][];
+            description?: string;
+            /** @enum {string} */
+            type?: "Japan" | "Korea" | "China" | "Foreign" | "Russia" | "Fanfic";
+            /** @enum {string} */
+            status?: "Ongoing" | "Announced" | "Completed" | "Frozen" | "Canceled";
+            /** Format: date-time */
+            releaseDate?: string;
+            genres?: unknown[][];
+            tags?: unknown[][];
+            /** @description Only Becki field process */
+            banner?: string;
+            /** @enum {number} */
+            ageRating?: 0 | 6 | 12 | 16 | 18;
+            authors?: unknown[][];
+            artists?: unknown[][];
+            publishers?: unknown[][];
+            /** @enum {string} */
+            lang?: "ru" | "en";
+        };
+        EditedBookChapterListItem: {
+            id: number;
+            tome: number;
+            chapter: number;
+            title: string | null;
+            /** Format: date-time */
+            createdAt: string;
+            publish: boolean;
+        };
+        EditedBookChapterList: {
+            prevPage: number | null;
+            nextPage: number | null;
+            data: components["schemas"]["EditedBookChapterListItem"][];
+        };
+        EditedBookChapter: {
+            id: number;
+            title: string | null;
+            tome: number;
+            chpater: number;
+            publish: boolean;
+            bookId: number;
+        };
+        MutateBookChapterDto: {
+            title?: string | null;
+            tome?: number;
+            chapter?: number;
+        };
+        EditedBookCover: {
+            id: number;
+            cover: string;
+            main: boolean;
+        };
+        EditedBookCoverList: {
+            data: components["schemas"]["EditedBookCover"][];
+        };
+        DeleteBookCoversDto: {
+            coversId: unknown[][];
+        };
+        MangaChapterPagesDto: {
+            /** @enum {string} */
+            view: "pages" | "tape";
+            pageCount: number;
+            /** @description Массив страниц или массив массивов страниц */
+            pages: string[] | string[][];
+        };
+        AddPageResponse: {
+            page: string;
+        };
+        DeleteMangaChapterPage: {
+            page: string;
+        };
+        EditedPersonDescription: {
+            ru: string;
+            en: string | null;
+        };
+        EditedPerson: {
+            id: number;
+            name: string;
+            otherNames: string[];
+            avatar: string | null;
+            description: components["schemas"]["EditedPersonDescription"];
+            role: ("Author" | "Artist" | "Publisher")[];
+        };
+        CreatePersonDto: {
+            name: string;
+            otherNames?: unknown[][];
+            /** @enum {string} */
+            role: "Author" | "Artist" | "Publisher";
+            /** @default {
+             *       "ru": ""
+             *     } */
+            decription: {
+                ru?: string;
+                en?: string;
+            };
+        };
+        UpdatePersonDto: {
+            name?: string;
+            otherNames?: unknown[][];
+            role?: ("Author" | "Artist" | "Publisher")[];
+            description?: {
+                ru?: string;
+                en?: string;
+            };
+        };
+        LastUpdatedManga: {
+            id: number;
+            urlId: string;
+            title: string;
             cover: string;
             tome: number;
             chapter: number;
             /** Format: date-time */
             chapterCreatedAt: string;
             chapterId: number;
+            /** @enum {string} */
+            type: "Manga" | "Manhwa" | "Manhua" | "OEL" | "Rumanga" | "Comic";
         };
-        MangaListItemLastUpdatedPagination: {
+        LastUpdatedMangaList: {
             prevPage: number | null;
             nextPage: number | null;
-            data: components["schemas"]["MangaListItemLastUpdatedDto"][];
+            data: components["schemas"]["LastUpdatedManga"][];
         };
-        MangaListItemStatisticDto: {
-            id: number;
-            urlId: string;
-            title: string;
-            /** @enum {string} */
-            type: "Manga" | "Manhwa" | "Manhua" | "OEL" | "Rumanga" | "Comic";
-            cover: string;
-            views: number;
-            likes: number;
-            bookmarks: number;
-        };
-        MangaListItemStatisticResponseArrayData: {
-            data: components["schemas"]["MangaListItemStatisticDto"][];
-        };
-        QuickSearchLastDto: {
-            data: string[];
-        };
-        DeleteSearchDto: {
-            search: string;
-        };
-        MangaListItemContinueReadDto: {
-            id: number;
-            urlId: string;
-            title: string;
-            cover: string;
-            tome: number;
-            chapter: number;
-            chapterCount: number;
-            readedChapters: number;
-            chapterId: number;
-        };
-        MangaListItemContinueReadResponseArrayData: {
-            data: components["schemas"]["MangaListItemContinueReadDto"][];
-        };
-        EditedMangaTitle: {
-            ru: string;
-            en: string | null;
-            origin: string | null;
-        };
-        EditedMangaOtherTitles: {
-            id: number;
-            title: string;
-        };
-        EditedMangaDescription: {
-            ru: string;
-            en: string | null;
-        };
-        EditedMangaGenresAndTags: {
-            id: number;
-            title: string;
-        };
-        EditedMangaCover: {
-            id: number;
-            cover: string;
-            main: boolean;
-        };
-        EditedMangaAuthors: {
-            id: number;
-            name: string;
-        };
-        EditedMangaDto: {
-            id: number;
-            urlId: string;
-            title: components["schemas"]["EditedMangaTitle"];
-            otherTitles: components["schemas"]["EditedMangaOtherTitles"][];
-            description: components["schemas"]["EditedMangaDescription"];
-            /** Format: date-time */
-            releaseDate: string | null;
-            /** @enum {string} */
-            status: "Ongoing" | "Announced" | "Completed" | "Frozen" | "Canceled";
-            /** @enum {string} */
-            type: "Manga" | "Manhwa" | "Manhua" | "OEL" | "Rumanga" | "Comic";
-            genres: components["schemas"]["EditedMangaGenresAndTags"][];
-            tags: components["schemas"]["EditedMangaGenresAndTags"][];
-            covers: components["schemas"]["EditedMangaCover"][];
-            banner: string | null;
-            ageRate: number;
-            authors: components["schemas"]["EditedMangaAuthors"][];
-            artists: components["schemas"]["EditedMangaAuthors"][];
-            publishers: components["schemas"]["EditedMangaAuthors"][];
-        };
-        MutateMangaDto: {
-            urlId?: string;
-            title?: {
-                ru?: string;
-                en?: string;
-                origin?: string;
-            };
-            otherTitles?: {
-                createTitles?: string[];
-                updateTitles?: {
-                    id: number;
-                    title: string;
-                }[];
-                deleteTitles?: number[];
-            };
-            description?: {
-                ru?: string;
-                en?: string;
-            };
-            /** @enum {string} */
-            status?: "Ongoing" | "Announced" | "Completed" | "Frozen" | "Canceled";
-            /** @enum {string} */
-            type?: "Manga" | "Manhwa" | "Manhua" | "OEL" | "Rumanga" | "Comic";
-            /** Format: date-time */
-            releaseDate?: string;
-            genres?: {
-                add?: number[];
-                delete?: number[];
-                set?: number[];
-            };
-            tags?: {
-                add?: number[];
-                delete?: number[];
-                set?: number[];
-            };
-            coverId?: number;
-            banner?: string;
-            ageRate: number;
-            authors?: {
-                add?: string[];
-                delete?: number[];
-            };
-            artists?: {
-                add?: string[];
-                delete?: number[];
-            };
-            publishers?: {
-                add?: string[];
-                delete?: number[];
-            };
-        };
-        EditedMangaCoverResponseArrayData: {
-            data: components["schemas"]["EditedMangaCover"][];
-        };
-        DeleleMangaCoversDto: {
-            coversId: unknown[][];
-        };
-        MangaTitle: {
-            ru: string;
-            en: string | null;
-            origin: string | null;
-        };
-        MangaGenresAndTag: {
-            id: number;
-            title: string;
-        };
-        UserBaseDto: {
+        PeopleListItem: {
             id: number;
             name: string;
             avatar: string | null;
         };
-        MangaDto: {
+        PeopleList: {
+            prevPage: number | null;
+            nextPage: number | null;
+            data: components["schemas"]["PeopleListItem"][];
+        };
+        Person: {
+            id: number;
+            name: string;
+            avatar: string | null;
+            otherNames: string[];
+            description: string;
+        };
+        QuickSearchManga: {
             id: number;
             urlId: string;
-            title: components["schemas"]["MangaTitle"];
-            otherTitles: string[];
-            description: string;
-            chaptersCount: number;
+            title: string;
+            cover: string;
+            views: number;
+            likes: number;
+            bookmarks: number;
+            /** @enum {string} */
+            type: "Manga" | "Manhwa" | "Manhua" | "OEL" | "Rumanga" | "Comic";
+        };
+        QuickSearchMangaList: {
+            data: components["schemas"]["QuickSearchManga"][];
+        };
+        QuickSearchLastList: {
+            data: string[];
+        };
+        DeleteQuickSearchLastDto: {
+            search: string;
+        };
+        QuickSearchRanobe: {
+            id: number;
+            urlId: string;
+            title: string;
+            cover: string;
+            views: number;
+            likes: number;
+            bookmarks: number;
+            /** @enum {string} */
+            type: "Japan" | "Korea" | "China" | "Foreign" | "Russia" | "Fanfic";
+        };
+        QuickSearchRanobeList: {
+            data: components["schemas"]["QuickSearchRanobe"][];
+        };
+        UserBookRate: {
+            userId: number;
+            bookId: number;
+            rate: number | null;
+        };
+        SetUserBookRateDto: {
             rate: number;
-            countRate: number;
-            /** Format: date-time */
-            releaseDate: string | null;
+        };
+        RelatedBookDto: {
+            id: number;
+            urlId: string;
+            title: string;
+            /** @enum {string} */
+            type: "Manga" | "Manhwa" | "Manhua" | "OEL" | "Rumanga" | "Comic" | "Japan" | "Korea" | "China" | "Foreign" | "Russia" | "Fanfic";
+            cover: string;
             /** @enum {string} */
             status: "Ongoing" | "Announced" | "Completed" | "Frozen" | "Canceled";
             /** @enum {string} */
-            type: "Manga" | "Manhwa" | "Manhua" | "OEL" | "Rumanga" | "Comic";
-            genres: components["schemas"]["MangaGenresAndTag"][];
-            tags: components["schemas"]["MangaGenresAndTag"][];
-            cover: string | null;
-            banner: string | null;
-            owner: components["schemas"]["UserBaseDto"];
-            authors: string[];
-            artists: string[];
-            publishers: string[];
-            /** @enum {string|null} */
-            bookmark: "Reading" | "Planned" | "Readed" | "Abandoned" | "Postponed" | null;
+            relationship: "Continuation" | "Prequel" | "Adaptation" | "Source" | "Spinoff" | "Other";
+            relatedId: string;
         };
-        MangaCoverDto: {
-            id: number;
-            cover: string;
+        RelatedBookDtoList: {
+            data: components["schemas"]["RelatedBookDto"][];
         };
-        MangaCoverArrayData: {
-            data: components["schemas"]["MangaCoverDto"][];
-        };
-        UserMangaBookmarkDto: {
-            mangaId: number;
-            userId: number;
-            /** @enum {string|null} */
-            bookmark: "Reading" | "Planned" | "Readed" | "Abandoned" | "Postponed" | null;
-        };
-        BookmarkDto: {
-            /** @enum {string} */
-            bookmark: "Reading" | "Planned" | "Readed" | "Abandoned" | "Postponed";
-        };
-        UserMangaRateDto: {
-            rate: number | null;
-            mangaId: number;
-            userId: number;
-        };
-        SetUserMangaRateDto: {
-            rate: number;
-        };
-        CategoryDto: {
-            id: number;
-            title: string;
-        };
-        CategoriesResponseArrayData: {
-            data: components["schemas"]["CategoryDto"][];
-        };
-        StatisticItemDto: {
-            count: number;
-            percentage: number;
-            title: string;
-        };
-        ApiRateFullStatisticDto: {
-            rate: number;
-            rateCount: number;
-            /** @description Массив из 10 элементов рейтинга от 1 до 10 */
-            rateStatistic: components["schemas"]["StatisticItemDto"][];
-        };
-        ApiBookmarkStatisticDto: {
-            all: number;
-            /** @description Массив из 5 элементов вида закладок. Порядок Reading, Planned, Readed, Abandoned, Postponed */
-            bookmarks: components["schemas"]["StatisticItemDto"][];
-        };
-        ChapterPageDto: {
-            src: string;
-            /** @enum {string} */
-            type: "image" | "rive";
-        };
-        ChapterPagesDto: {
-            pages: components["schemas"]["ChapterPageDto"][];
-            pageCount: number;
-            /** @default 700 */
-            containerMaxWidth: number;
-        };
-        ChapterDto: {
-            id: number;
-            tome: number;
-            chapter: number;
-            title: string | null;
-            mangaTitle: string;
-            likeCount: number;
-            prevChapterId: number | null;
-            nextChapterId: number | null;
-            isUserLiked: boolean;
-            isUserViewed: boolean;
-            pages: components["schemas"]["ChapterPagesDto"];
-        };
-        ChapterListItemDto: {
-            id: number;
-            tome: number;
-            chapter: number;
-            title: string | null;
-            /** Format: date-time */
-            createdAt: string;
-            isUserViewed: boolean;
-        };
-        ChapterListPagination: {
-            prevPage: number | null;
-            nextPage: number | null;
-            data: components["schemas"]["ChapterListItemDto"][];
-        };
-        EditChapterTitle: {
-            ru: string | null;
-            en: string | null;
-        };
-        EditedChpaterDto: {
-            id: number;
-            title: components["schemas"]["EditChapterTitle"];
-            tome: number;
-            chpater: number;
-            private: boolean;
-            mangaId: number;
-        };
-        EditedChapterListItemDto: {
-            id: number;
-            tome: number;
-            chapter: number;
-            title: string | null;
-            /** Format: date-time */
-            createdAt: string;
-            private: boolean;
-        };
-        EditedChapterListPagination: {
-            prevPage: number | null;
-            nextPage: number | null;
-            data: components["schemas"]["EditedChapterListItemDto"][];
-        };
-        MutateChapterDto: {
-            title?: {
-                ru?: string;
-                en?: string;
+        AddRelatedBooksDto: {
+            data: {
+                [key: string]: "Continuation" | "Prequel" | "Adaptation" | "Source" | "Spinoff" | "Other";
             };
-            tome?: number;
-            chapter?: number;
-            private?: boolean;
         };
-        LangQueryDto: {
-            /**
-             * @default ru
-             * @enum {string}
-             */
-            lang: "ru" | "en";
+        UpdateRelatedBookDto: {
+            relatedId: string;
+            /** @enum {string} */
+            relationship: "Continuation" | "Prequel" | "Adaptation" | "Source" | "Spinoff" | "Other";
         };
-        DeleteChapterPageDto: {
-            pageSrc: string;
+        DeleteRelatedBookDto: {
+            relatedId: string;
+        };
+        RateStatistic: {
+            /** @default {
+             *       "count": 0,
+             *       "percentage": 0
+             *     } */
+            1: {
+                count?: number;
+                percentage?: number;
+            };
+            /** @default {
+             *       "count": 0,
+             *       "percentage": 0
+             *     } */
+            2: {
+                count?: number;
+                percentage?: number;
+            };
+            /** @default {
+             *       "count": 0,
+             *       "percentage": 0
+             *     } */
+            3: {
+                count?: number;
+                percentage?: number;
+            };
+            /** @default {
+             *       "count": 0,
+             *       "percentage": 0
+             *     } */
+            4: {
+                count?: number;
+                percentage?: number;
+            };
+            /** @default {
+             *       "count": 0,
+             *       "percentage": 0
+             *     } */
+            5: {
+                count?: number;
+                percentage?: number;
+            };
+            /** @default {
+             *       "count": 0,
+             *       "percentage": 0
+             *     } */
+            6: {
+                count?: number;
+                percentage?: number;
+            };
+            /** @default {
+             *       "count": 0,
+             *       "percentage": 0
+             *     } */
+            7: {
+                count?: number;
+                percentage?: number;
+            };
+            /** @default {
+             *       "count": 0,
+             *       "percentage": 0
+             *     } */
+            8: {
+                count?: number;
+                percentage?: number;
+            };
+            /** @default {
+             *       "count": 0,
+             *       "percentage": 0
+             *     } */
+            9: {
+                count?: number;
+                percentage?: number;
+            };
+            /** @default {
+             *       "count": 0,
+             *       "percentage": 0
+             *     } */
+            10: {
+                count?: number;
+                percentage?: number;
+            };
+        };
+        RateSummaryStatistic: {
+            rate: number;
+            count: number;
+            statistic: components["schemas"]["RateStatistic"];
+        };
+        BookmarkStatistic: {
+            /** @default {
+             *       "count": 0,
+             *       "percentage": 0
+             *     } */
+            Reading: {
+                count?: number;
+                percentage?: number;
+            };
+            /** @default {
+             *       "count": 0,
+             *       "percentage": 0
+             *     } */
+            Planned: {
+                count?: number;
+                percentage?: number;
+            };
+            /** @default {
+             *       "count": 0,
+             *       "percentage": 0
+             *     } */
+            Readed: {
+                count?: number;
+                percentage?: number;
+            };
+            /** @default {
+             *       "count": 0,
+             *       "percentage": 0
+             *     } */
+            Abandoned: {
+                count?: number;
+                percentage?: number;
+            };
+            /** @default {
+             *       "count": 0,
+             *       "percentage": 0
+             *     } */
+            Postponed: {
+                count?: number;
+                percentage?: number;
+            };
+        };
+        BookmarkSummaryStatistic: {
+            count: number;
+            statistic: components["schemas"]["BookmarkStatistic"];
+        };
+        UserLikeBookChapterDto: {
+            isLiked: boolean;
+            likeCount: number;
         };
     };
     responses: never;
@@ -913,7 +1711,16 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["ReturnAuthUser"];
+                    "application/json": components["schemas"]["ResponseAccessToken"];
+                };
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
                 };
             };
         };
@@ -936,7 +1743,16 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["ReturnAuthUser"];
+                    "application/json": components["schemas"]["ResponseAccessToken"];
+                };
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
                 };
             };
         };
@@ -954,8 +1770,15 @@ export interface operations {
                 headers: {
                     [name: string]: unknown;
                 };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
                 content: {
-                    "application/json": components["schemas"]["ReturnAuthUser"];
+                    "application/json": components["schemas"]["ErrorType"];
                 };
             };
         };
@@ -974,7 +1797,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["ReturnAuthUser"];
+                    "application/json": components["schemas"]["ResponseAccessToken"];
                 };
             };
             /** @description Unauthorized */
@@ -1006,6 +1829,15 @@ export interface operations {
                     "application/json": components["schemas"]["UserDataDto"];
                 };
             };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
             /** @description Unauthorized */
             401: {
                 headers: {
@@ -1017,31 +1849,357 @@ export interface operations {
             };
         };
     };
-    PublicMangaController_getMangaList: {
+    ProfileController_updateJsonSettings: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    [key: string]: unknown;
+                };
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    MangaController_getBook: {
         parameters: {
             query?: {
-                sortBy?: "rating" | "updateDate" | "createDate" | "ruAlphabetically" | "enAlphabetically" | "views" | "likes" | "chapterCount";
-                search?: string;
-                /** @description Comma-separated list of categories IDs, e.g. "1,2,3" */
-                genres?: string;
-                /** @description Comma-separated list of categories IDs, e.g. "1,2,3" */
-                tags?: string;
-                /** @description Comma-separated list of categories IDs, e.g. "1,2,3" */
-                notGenres?: string;
-                /** @description Comma-separated list of categories IDs, e.g. "1,2,3" */
-                notTags?: string;
-                /** @description Comma-separated list, e.g. "el1,el2,el3" */
-                status?: string;
-                /** @description Comma-separated list, e.g. "el1,el2,el3" */
-                type?: string;
-                /** @description Comma-separated list, e.g. "el1,el2,el3" */
-                bookmarks?: string;
                 lang?: "ru" | "en";
+            };
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Manga"];
+                };
+            };
+            /** @description Resource not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    MangaController_getBookCovers: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BookCoverList"];
+                };
+            };
+        };
+    };
+    RanobeController_getBook: {
+        parameters: {
+            query?: {
+                lang?: "ru" | "en";
+            };
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Ranobe"];
+                };
+            };
+            /** @description Resource not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    RanobeController_getBookCovers: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BookCoverList"];
+                };
+            };
+        };
+    };
+    MangaBookmarksController_getBookmark: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserBookBookmark"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    MangaBookmarksController_deleteBookmark: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    MangaBookmarksController_setBookmark: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AddMangaBookmarkDto"];
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    RanobeBookmarksController_getBookmark: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserBookBookmark"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    RanobeBookmarksController_deleteBookmark: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    RanobeBookmarksController_setBookmark: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AddRanobeBookmarkDto"];
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    CatalogController_getCatalogManga: {
+        parameters: {
+            query?: {
+                /** @description Manga,Manhwa,Manhua,OEL,Rumanga,Comic */
+                type?: string;
+                search?: string;
+                sortBy?: "rating" | "updateDate" | "createDate" | "alphabetically" | "enAlphabetically" | "views" | "likes" | "chapterCount";
                 order?: "asc" | "desc";
-                page?: number;
-                limit?: number;
-                ageRateFrom?: number;
-                ageRateTo?: number;
+                genres?: string;
+                tags?: string;
+                notGenres?: string;
+                notTags?: string;
+                ageRating?: string;
+                /** @description Ongoing,Announced,Completed,Frozen,Canceled */
+                status?: string;
+                /** @description Reading,Planned,Readed,Abandoned,Postponed */
+                bookmarks?: string;
+                person?: string;
+                bookLang?: "ru" | "en";
                 chapterCountFrom?: number;
                 chapterCountTo?: number;
                 rateCountFrom?: number;
@@ -1050,6 +2208,8 @@ export interface operations {
                 rateTo?: number;
                 releaseDateFrom?: string;
                 releaseDateTo?: string;
+                page?: number;
+                limit?: number;
             };
             header?: never;
             path?: never;
@@ -1062,17 +2222,1385 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["MangaListItemPagination"];
+                    "application/json": components["schemas"]["CatalogMangaList"];
                 };
             };
         };
     };
-    PublicMangaController_getLastUpdatedMangas: {
+    CatalogController_getCatalogRanobe: {
+        parameters: {
+            query?: {
+                /** @description Japan,Korea,China,Foreign,Russia,Fanfic */
+                type?: string;
+                search?: string;
+                sortBy?: "rating" | "updateDate" | "createDate" | "alphabetically" | "enAlphabetically" | "views" | "likes" | "chapterCount";
+                order?: "asc" | "desc";
+                genres?: string;
+                tags?: string;
+                notGenres?: string;
+                notTags?: string;
+                ageRating?: string;
+                /** @description Ongoing,Announced,Completed,Frozen,Canceled */
+                status?: string;
+                /** @description Reading,Planned,Readed,Abandoned,Postponed */
+                bookmarks?: string;
+                person?: string;
+                bookLang?: "ru" | "en";
+                chapterCountFrom?: number;
+                chapterCountTo?: number;
+                rateCountFrom?: number;
+                rateCountTo?: number;
+                rateFrom?: number;
+                rateTo?: number;
+                releaseDateFrom?: string;
+                releaseDateTo?: string;
+                page?: number;
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CatalogRanobeList"];
+                };
+            };
+        };
+    };
+    CategoriesController_getGenres: {
+        parameters: {
+            query?: {
+                search?: string;
+                lang?: "ru" | "en";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CategoryDtoList"];
+                };
+            };
+        };
+    };
+    CategoriesController_getTags: {
+        parameters: {
+            query?: {
+                search?: string;
+                lang?: "ru" | "en";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CategoryDtoList"];
+                };
+            };
+        };
+    };
+    MangaChaptersController_getChapterList: {
+        parameters: {
+            query?: {
+                search?: string;
+                order?: "asc" | "desc";
+                page?: number;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BookChapterList"];
+                };
+            };
+        };
+    };
+    MangaChaptersController_getChapter: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+                /** @description urlId or just number id */
+                chapterId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BookChapter"];
+                };
+            };
+        };
+    };
+    MangaChaptersController_getPages: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+                /** @description urlId or just number id */
+                chapterId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PublicMangaChapterPages"];
+                };
+            };
+            /** @description Resource not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    RanobeChaptersController_getChapterList: {
+        parameters: {
+            query?: {
+                search?: string;
+                order?: "asc" | "desc";
+                page?: number;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BookChapterList"];
+                };
+            };
+        };
+    };
+    RanobeChaptersController_getChapter: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+                /** @description urlId or just number id */
+                chapterId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BookChapter"];
+                };
+            };
+        };
+    };
+    ContinueReadMangaController_getContinueReadBookList: {
+        parameters: {
+            query?: {
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ContinueReadBookList"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    ContinueReadMangaController_getContinueReadBook: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ContinueReadBook"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    ContinueReadMangaController_dontShowContinueReadBook: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    ContinueReadMangaController_setContinueReadBook: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description number Id or null */
+                chapterId: string;
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    ContinueReadRanobeController_getContinueReadBookList: {
+        parameters: {
+            query?: {
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ContinueReadBookList"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    ContinueReadRanobeController_getContinueReadBook: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ContinueReadBook"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    ContinueReadRanobeController_dontShowContinueReadBook: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    ContinueReadRanobeController_setContinueReadBook: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description number Id or null */
+                chapterId: string;
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    EditMangaController_getEditedBook: {
+        parameters: {
+            query?: {
+                lang?: "ru" | "en";
+            };
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditedManga"];
+                };
+            };
+            /** @description Resource not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    EditMangaController_updateBook: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": {
+                    /**
+                     * Format: binary
+                     * @description 1 баннер (формат — файл)
+                     */
+                    banner?: string;
+                    /** @description In JSON.stringfy format */
+                    body: components["schemas"]["MutateMangaDto"];
+                };
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    EditMangaController_createBook: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": {
+                    /**
+                     * Format: binary
+                     * @description 1 обложка (формат — файл)
+                     */
+                    covers?: string;
+                    /**
+                     * Format: binary
+                     * @description 1 баннер (формат — файл)
+                     */
+                    banner?: string;
+                    /** @description In JSON.stringfy format */
+                    body: components["schemas"]["MutateMangaDto"];
+                };
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    EditRanobeController_getEditedBook: {
+        parameters: {
+            query?: {
+                lang?: "ru" | "en";
+            };
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditedRanobe"];
+                };
+            };
+            /** @description Resource not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    EditRanobeController_updateBook: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": {
+                    /**
+                     * Format: binary
+                     * @description 1 баннер (формат — файл)
+                     */
+                    banner?: string;
+                    /** @description In JSON.stringfy format */
+                    body: components["schemas"]["MutateRanobeDto"];
+                };
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    EditRanobeController_createBook: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": {
+                    /**
+                     * Format: binary
+                     * @description 1 обложка (формат — файл)
+                     */
+                    covers?: string;
+                    /**
+                     * Format: binary
+                     * @description 1 баннер (формат — файл)
+                     */
+                    banner?: string;
+                    /** @description In JSON.stringfy format */
+                    body: components["schemas"]["MutateRanobeDto"];
+                };
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    EditMangaChaptersController_getEditedChapterList: {
+        parameters: {
+            query?: {
+                search?: string;
+                order?: "asc" | "desc";
+                page?: number;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditedBookChapterList"];
+                };
+            };
+        };
+    };
+    EditMangaChaptersController_createChapter: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["MutateBookChapterDto"];
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    EditMangaChaptersController_getEditedChapter: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+                /** @description urlId or just number id */
+                chapterId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditedBookChapter"];
+                };
+            };
+            /** @description Resource not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    EditMangaChaptersController_updateChapter: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+                /** @description urlId or just number id */
+                chapterId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["MutateBookChapterDto"];
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    EditMangaChaptersController_toggleChapterPublish: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+                /** @description urlId or just number id */
+                chapterId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    EditRanobeChaptersController_getEditedChapterList: {
+        parameters: {
+            query?: {
+                search?: string;
+                order?: "asc" | "desc";
+                page?: number;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditedBookChapterList"];
+                };
+            };
+        };
+    };
+    EditRanobeChaptersController_createChapter: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["MutateBookChapterDto"];
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    EditRanobeChaptersController_getEditedChapter: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+                /** @description urlId or just number id */
+                chapterId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditedBookChapter"];
+                };
+            };
+            /** @description Resource not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    EditRanobeChaptersController_updateChapter: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+                /** @description urlId or just number id */
+                chapterId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["MutateBookChapterDto"];
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    EditRanobeChaptersController_toggleChapterPublish: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+                /** @description urlId or just number id */
+                chapterId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    EditMangaCoversController_getEditedCovers: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditedBookCoverList"];
+                };
+            };
+        };
+    };
+    EditMangaCoversController_addCovers: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": {
+                    /** @description До 5 изображений обложек (формат — файл) */
+                    covers?: string[];
+                };
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    EditMangaCoversController_deleteCovers: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DeleteBookCoversDto"];
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    EditMangaCoversController_setMainCover: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                coverId: number;
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    EditRanobeCoversController_getEditedCovers: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditedBookCoverList"];
+                };
+            };
+        };
+    };
+    EditRanobeCoversController_addCovers: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": {
+                    /** @description До 5 изображений обложек (формат — файл) */
+                    covers?: string[];
+                };
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    EditRanobeCoversController_deleteCovers: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DeleteBookCoversDto"];
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    EditRanobeCoversController_setMainCover: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                coverId: number;
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    EditMangaChaptersPagesController_getPages: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+                /** @description urlId or just number id */
+                chapterId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MangaChapterPagesDto"];
+                };
+            };
+            /** @description Resource not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    EditMangaChaptersPagesController_updatePages: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+                /** @description urlId or just number id */
+                chapterId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["MangaChapterPagesDto"];
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    EditMangaChaptersPagesController_addPage: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+                /** @description urlId or just number id */
+                chapterId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": {
+                    /**
+                     * Format: binary
+                     * @description 1 страница (формат — файл)
+                     */
+                    page: string;
+                };
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AddPageResponse"];
+                };
+            };
+        };
+    };
+    EditMangaChaptersPagesController_deletePage: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+                /** @description urlId or just number id */
+                chapterId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DeleteMangaChapterPage"];
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    EditPeopleController_getEditedPerson: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                personId: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EditedPerson"];
+                };
+            };
+            /** @description Resource not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    EditPeopleController_updatePerson: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                personId: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": {
+                    /**
+                     * Format: binary
+                     * @description 1 аватар (формат — файл)
+                     */
+                    avatar?: string;
+                    /** @description In JSON.stringfy format */
+                    body: components["schemas"]["UpdatePersonDto"];
+                };
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    PeopleController_getPeopleList: {
+        parameters: {
+            query?: {
+                search?: string;
+                role?: "Author" | "Artist" | "Publisher";
+                page?: number;
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PeopleList"];
+                };
+            };
+        };
+    };
+    EditPeopleController_createPerson: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": {
+                    /**
+                     * Format: binary
+                     * @description 1 аватар (формат — файл)
+                     */
+                    avatar?: string;
+                    /** @description In JSON.stringfy format */
+                    body: components["schemas"]["CreatePersonDto"];
+                };
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    LastUpdatedController_getLastUpdatedManga: {
         parameters: {
             query?: {
                 /** @description "my" for authorized users */
                 scope?: "all" | "popular" | "my";
-                lang?: "ru" | "en";
+                bookLang?: "ru" | "en";
                 page?: number;
                 limit?: number;
             };
@@ -1088,7 +3616,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["MangaListItemLastUpdatedPagination"];
+                    "application/json": components["schemas"]["LastUpdatedMangaList"];
                 };
             };
             /** @description Unauthorized */
@@ -1102,15 +3630,50 @@ export interface operations {
             };
         };
     };
-    PublicMangaController_getRelatedManga: {
+    LastUpdatedController_getLastUpdatedRanobe: {
+        parameters: {
+            query?: {
+                /** @description "my" for authorized users */
+                scope?: "all" | "popular" | "my";
+                bookLang?: "ru" | "en";
+                page?: number;
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description scope 'my' for authorized users only */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["LastUpdatedMangaList"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    PeopleController_getPerson: {
         parameters: {
             query?: {
                 lang?: "ru" | "en";
             };
             header?: never;
             path: {
-                /** @description urlId or just id */
-                id: string;
+                /** @description Имя человека */
+                name: string;
             };
             cookie?: never;
         };
@@ -1121,169 +3684,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["MangaListItemStatisticResponseArrayData"];
-                };
-            };
-        };
-    };
-    QuickSearchController_getMangaQuickSearch: {
-        parameters: {
-            query?: {
-                lang?: "ru" | "en";
-                search?: string;
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["MangaListItemStatisticResponseArrayData"];
-                };
-            };
-        };
-    };
-    QuickSearchController_getUserLastSearchQueries: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["QuickSearchLastDto"];
-                };
-            };
-            /** @description Unauthorized */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ErrorType"];
-                };
-            };
-        };
-    };
-    QuickSearchController_deleteUserLastSearchQuery: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["DeleteSearchDto"];
-            };
-        };
-        responses: {
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Unauthorized */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ErrorType"];
-                };
-            };
-        };
-    };
-    ContinueReadMangaController_getContinueReadManga: {
-        parameters: {
-            query?: {
-                lang?: "ru" | "en";
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["MangaListItemContinueReadResponseArrayData"];
-                };
-            };
-            /** @description Unauthorized */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ErrorType"];
-                };
-            };
-        };
-    };
-    ContinueReadMangaController_dontShowContinueReadManga: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description set id to 0 to delete all manga */
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Unauthorized */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ErrorType"];
-                };
-            };
-        };
-    };
-    EditMangaController_getEditedManga: {
-        parameters: {
-            query?: {
-                lang?: "ru" | "en";
-            };
-            header?: never;
-            path: {
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["EditedMangaDto"];
+                    "application/json": components["schemas"]["Person"];
                 };
             };
             /** @description Resource not found */
@@ -1297,407 +3698,12 @@ export interface operations {
             };
         };
     };
-    EditMangaController_updateManga: {
-        parameters: {
-            query?: {
-                lang?: "ru" | "en";
-            };
-            header?: never;
-            path: {
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "multipart/form-data": {
-                    /** @description 1 баннер (формат — файл) */
-                    banner?: string[];
-                    body?: components["schemas"]["MutateMangaDto"];
-                };
-            };
-        };
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["EditedMangaDto"];
-                };
-            };
-            /** @description Bad Request */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ErrorType"];
-                };
-            };
-        };
-    };
-    EditMangaController_deleteManga: {
-        parameters: {
-            query?: {
-                lang?: "ru" | "en";
-            };
-            header?: never;
-            path: {
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
-    };
-    EditMangaController_createManga: {
-        parameters: {
-            query?: {
-                lang?: "ru" | "en";
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "multipart/form-data": {
-                    /** @description 1 обложка (формат — файл) */
-                    covers?: string[];
-                    /** @description 1 баннер (формат — файл) */
-                    banner?: string[];
-                    body?: components["schemas"]["MutateMangaDto"];
-                };
-            };
-        };
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["EditedMangaDto"];
-                };
-            };
-            /** @description Bad Request */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ErrorType"];
-                };
-            };
-        };
-    };
-    EditMangaCoverController_getMangaCovers: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["EditedMangaCoverResponseArrayData"];
-                };
-            };
-        };
-    };
-    EditMangaCoverController_addMangaCovers: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "multipart/form-data": {
-                    /** @description До 5 изображений обложек (формат — файл) */
-                    covers?: string[];
-                };
-            };
-        };
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["EditedMangaCoverResponseArrayData"];
-                };
-            };
-            /** @description Bad Request */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ErrorType"];
-                };
-            };
-        };
-    };
-    EditMangaCoverController_deleteMangaCovers: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["DeleleMangaCoversDto"];
-            };
-        };
-        responses: {
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
-    };
-    IndividualMangaController_getManga: {
-        parameters: {
-            query?: {
-                lang?: "ru" | "en";
-            };
-            header?: never;
-            path: {
-                /** @description urlId or just id */
-                id: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["MangaDto"];
-                };
-            };
-            /** @description Resource not found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ErrorType"];
-                };
-            };
-        };
-    };
-    IndividualMangaController_getMangaCovers: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description urlId or just id */
-                id: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["MangaCoverArrayData"];
-                };
-            };
-        };
-    };
-    BookmarkController_getUserMangaBookmark: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description urlId or just id */
-                id: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["UserMangaBookmarkDto"];
-                };
-            };
-            /** @description Unauthorized */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ErrorType"];
-                };
-            };
-        };
-    };
-    BookmarkController_deleteUserMangaBookmark: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description urlId or just id */
-                id: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Unauthorized */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ErrorType"];
-                };
-            };
-        };
-    };
-    BookmarkController_setUserMangaBookmark: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description urlId or just id */
-                id: string;
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["BookmarkDto"];
-            };
-        };
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["UserMangaBookmarkDto"];
-                };
-            };
-            /** @description Unauthorized */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ErrorType"];
-                };
-            };
-        };
-    };
-    RateController_getUserMangaRate: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description urlId or just id */
-                id: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["UserMangaRateDto"];
-                };
-            };
-            /** @description Unauthorized */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ErrorType"];
-                };
-            };
-        };
-    };
-    RateController_setUserMangaRate: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description urlId or just id */
-                id: string;
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["SetUserMangaRateDto"];
-            };
-        };
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["UserMangaRateDto"];
-                };
-            };
-            /** @description Unauthorized */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ErrorType"];
-                };
-            };
-        };
-    };
-    MangaGenresController_getGenres: {
+    QuickSearchMangaController_getBooks: {
         parameters: {
             query?: {
                 search?: string;
-                lang?: "ru" | "en";
+                limit?: number;
+                bookLang?: "ru" | "en";
             };
             header?: never;
             path?: never;
@@ -1710,16 +3716,75 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["CategoriesResponseArrayData"];
+                    "application/json": components["schemas"]["QuickSearchMangaList"];
                 };
             };
         };
     };
-    MangaTagsController_getTags: {
+    QuickSearchMangaController_getUserLastQueries: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuickSearchLastList"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    QuickSearchMangaController_deleteUserLastQuery: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DeleteQuickSearchLastDto"];
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    QuickSearchRanobeController_getBooks: {
         parameters: {
             query?: {
                 search?: string;
-                lang?: "ru" | "en";
+                limit?: number;
+                bookLang?: "ru" | "en";
             };
             header?: never;
             path?: never;
@@ -1732,8 +3797,440 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["CategoriesResponseArrayData"];
+                    "application/json": components["schemas"]["QuickSearchRanobeList"];
                 };
+            };
+        };
+    };
+    QuickSearchRanobeController_getUserLastQueries: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["QuickSearchLastList"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    QuickSearchRanobeController_deleteUserLastQuery: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DeleteQuickSearchLastDto"];
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    MangaRateController_getRate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserBookRate"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    MangaRateController_deleteRate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    MangaRateController_setRate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SetUserBookRateDto"];
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    RanobeRateController_getRate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserBookRate"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    RanobeRateController_deleteRate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    RanobeRateController_setRate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["SetUserBookRateDto"];
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    RelatedMangaController_getRelatedBooks: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RelatedBookDtoList"];
+                };
+            };
+        };
+    };
+    RelatedMangaController_addBookRelated: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AddRelatedBooksDto"];
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    RelatedMangaController_deleteBookRelated: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DeleteRelatedBookDto"];
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    RelatedMangaController_updateBookRelated: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateRelatedBookDto"];
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    RelatedRanobeController_getRelatedBooks: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RelatedBookDtoList"];
+                };
+            };
+        };
+    };
+    RelatedRanobeController_addBookRelated: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AddRelatedBooksDto"];
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    RelatedRanobeController_deleteBookRelated: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DeleteRelatedBookDto"];
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    RelatedRanobeController_updateBookRelated: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateRelatedBookDto"];
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };
@@ -1742,8 +4239,8 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                /** @description urlId or just id */
-                id: string;
+                /** @description urlId or just number id */
+                mangaId: string | number;
             };
             cookie?: never;
         };
@@ -1754,63 +4251,16 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "rate": 0,
-                     *       "rateCount": 0,
-                     *       "rateStatistic": [
-                     *         {
-                     *           "title": "1",
-                     *           "count": 0,
-                     *           "percentage": 0
-                     *         },
-                     *         {
-                     *           "title": "2",
-                     *           "count": 0,
-                     *           "percentage": 0
-                     *         },
-                     *         {
-                     *           "title": "3",
-                     *           "count": 0,
-                     *           "percentage": 0
-                     *         },
-                     *         {
-                     *           "title": "4",
-                     *           "count": 0,
-                     *           "percentage": 0
-                     *         },
-                     *         {
-                     *           "title": "5",
-                     *           "count": 0,
-                     *           "percentage": 0
-                     *         },
-                     *         {
-                     *           "title": "6",
-                     *           "count": 0,
-                     *           "percentage": 0
-                     *         },
-                     *         {
-                     *           "title": "7",
-                     *           "count": 0,
-                     *           "percentage": 0
-                     *         },
-                     *         {
-                     *           "title": "8",
-                     *           "count": 0,
-                     *           "percentage": 0
-                     *         },
-                     *         {
-                     *           "title": "9",
-                     *           "count": 0,
-                     *           "percentage": 0
-                     *         },
-                     *         {
-                     *           "title": "10",
-                     *           "count": 0,
-                     *           "percentage": 0
-                     *         }
-                     *       ]
-                     *     } */
-                    "application/json": components["schemas"]["ApiRateFullStatisticDto"];
+                    "application/json": components["schemas"]["RateSummaryStatistic"];
+                };
+            };
+            /** @description Resource not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
                 };
             };
         };
@@ -1820,8 +4270,8 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                /** @description urlId or just id */
-                id: string;
+                /** @description urlId or just number id */
+                mangaId: string | number;
             };
             cookie?: never;
         };
@@ -1832,167 +4282,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
-                     *       "all": 0,
-                     *       "bookmarks": [
-                     *         {
-                     *           "title": "Reading",
-                     *           "count": 0,
-                     *           "percentage": 0
-                     *         },
-                     *         {
-                     *           "title": "Planned",
-                     *           "count": 0,
-                     *           "percentage": 0
-                     *         },
-                     *         {
-                     *           "title": "Readed",
-                     *           "count": 0,
-                     *           "percentage": 0
-                     *         },
-                     *         {
-                     *           "title": "Abandoned",
-                     *           "count": 0,
-                     *           "percentage": 0
-                     *         },
-                     *         {
-                     *           "title": "Postponed",
-                     *           "count": 0,
-                     *           "percentage": 0
-                     *         }
-                     *       ]
-                     *     } */
-                    "application/json": components["schemas"]["ApiBookmarkStatisticDto"];
-                };
-            };
-        };
-    };
-    PublicChapterController_getChapter: {
-        parameters: {
-            query?: {
-                lang?: "ru" | "en";
-            };
-            header?: never;
-            path: {
-                /** @description urlId or just id */
-                chapterId: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ChapterDto"];
-                };
-            };
-        };
-    };
-    PublicChapterController_getChapterList: {
-        parameters: {
-            query?: {
-                search?: string;
-                lang?: "ru" | "en";
-                page?: number;
-                limit?: number;
-                order?: "asc" | "desc";
-            };
-            header?: never;
-            path: {
-                /** @description urlId or just id */
-                mangaId: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ChapterListPagination"];
-                };
-            };
-        };
-    };
-    ChapterActionController_setUserLikeChapter: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Unauthorized */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ErrorType"];
-                };
-            };
-        };
-    };
-    ChapterActionController_setUserViewChapter: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Unauthorized */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ErrorType"];
-                };
-            };
-        };
-    };
-    EditChapterController_getEditedChapter: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                mangaId: string;
-                chapterId: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["EditedChpaterDto"];
+                    "application/json": components["schemas"]["BookmarkSummaryStatistic"];
                 };
             };
             /** @description Resource not found */
@@ -2006,39 +4296,77 @@ export interface operations {
             };
         };
     };
-    EditChapterController_updateChapter: {
+    RanobeStatisticController_getRateStatistic: {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                mangaId: string;
-                chapterId: string;
+                /** @description urlId or just number id */
+                ranobeId: string | number;
             };
             cookie?: never;
         };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["MutateChapterDto"];
-            };
-        };
+        requestBody?: never;
         responses: {
             200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["EditedChpaterDto"];
+                    "application/json": components["schemas"]["RateSummaryStatistic"];
+                };
+            };
+            /** @description Resource not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
                 };
             };
         };
     };
-    EditChapterController_deleteChapter: {
+    RanobeStatisticController_getBookmarkStatistic: {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                mangaId: string;
-                chapterId: string;
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["BookmarkSummaryStatistic"];
+                };
+            };
+            /** @description Resource not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    UserMangaChapterActionsController_addUserViewChapter: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+                /** @description urlId or just number id */
+                chapterId: string | number;
             };
             cookie?: never;
         };
@@ -2050,20 +4378,35 @@ export interface operations {
                 };
                 content?: never;
             };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
         };
     };
-    EditChapterController_getEditedChapterList: {
+    UserMangaChapterActionsController_getUserLikeChapter: {
         parameters: {
-            query?: {
-                search?: string;
-                lang?: "ru" | "en";
-                page?: number;
-                limit?: number;
-                order?: "asc" | "desc";
-            };
+            query?: never;
             header?: never;
             path: {
-                mangaId: number;
+                /** @description urlId or just number id */
+                mangaId: string | number;
+                /** @description urlId or just number id */
+                chapterId: string | number;
             };
             cookie?: never;
         };
@@ -2074,45 +4417,91 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["EditedChapterListPagination"];
+                    "application/json": components["schemas"]["UserLikeBookChapterDto"];
                 };
             };
         };
     };
-    EditChapterController_createChapter: {
+    UserMangaChapterActionsController_setUserLikeChapter: {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                mangaId: number;
+                /** @description urlId or just number id */
+                mangaId: string | number;
+                /** @description urlId or just number id */
+                chapterId: string | number;
             };
             cookie?: never;
         };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["MutateChapterDto"];
-            };
-        };
+        requestBody?: never;
         responses: {
-            200: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["EditedChpaterDto"];
+                    "application/json": components["schemas"]["ErrorType"];
                 };
             };
         };
     };
-    EditChapterPagesController_getChapterPages: {
+    UserRanobeChapterActionsController_addUserViewChapter: {
         parameters: {
-            query?: {
-                lang?: "ru" | "en";
-            };
+            query?: never;
             header?: never;
             path: {
-                mangaId: string;
-                chapterId: string;
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+                /** @description urlId or just number id */
+                chapterId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorType"];
+                };
+            };
+        };
+    };
+    UserRanobeChapterActionsController_getUserLikeChapter: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+                /** @description urlId or just number id */
+                chapterId: string | number;
             };
             cookie?: never;
         };
@@ -2123,89 +4512,24 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["ChapterPagesDto"];
+                    "application/json": components["schemas"]["UserLikeBookChapterDto"];
                 };
             };
         };
     };
-    EditChapterPagesController_setChapterPages: {
+    UserRanobeChapterActionsController_setUserLikeChapter: {
         parameters: {
-            query?: {
-                lang?: "ru" | "en";
-            };
+            query?: never;
             header?: never;
             path: {
-                mangaId: string;
-                chapterId: string;
+                /** @description urlId or just number id */
+                ranobeId: string | number;
+                /** @description urlId or just number id */
+                chapterId: string | number;
             };
             cookie?: never;
         };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["ChapterPagesDto"];
-            };
-        };
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ChapterPagesDto"];
-                };
-            };
-        };
-    };
-    EditChapterPagesController_addPage: {
-        parameters: {
-            query?: {
-                returnValue?: boolean;
-                lang?: "ru" | "en";
-            };
-            header?: never;
-            path: {
-                mangaId: string;
-                chapterId: string;
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "multipart/form-data": {
-                    /** @description Одна страница за раз (формат — файл) */
-                    page?: string[];
-                };
-            };
-        };
-        responses: {
-            /** @description Возвращает данные в ответе только если returnValue=true */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ChapterPagesDto"];
-                };
-            };
-        };
-    };
-    EditChapterPagesController_deletePage: {
-        parameters: {
-            query?: {
-                lang?: "ru" | "en";
-            };
-            header?: never;
-            path: {
-                mangaId: string;
-                chapterId: string;
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["DeleteChapterPageDto"];
-            };
-        };
+        requestBody?: never;
         responses: {
             204: {
                 headers: {
@@ -2213,55 +4537,14 @@ export interface operations {
                 };
                 content?: never;
             };
-        };
-    };
-    EditChapterPagesController_addLangChapterPages: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                mangaId: string;
-                chapterId: string;
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["LangQueryDto"];
-            };
-        };
-        responses: {
-            200: {
+            /** @description Unauthorized */
+            401: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["ChapterPagesDto"];
+                    "application/json": components["schemas"]["ErrorType"];
                 };
-            };
-        };
-    };
-    EditChapterPagesController_deleteLangChapterPages: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                mangaId: string;
-                chapterId: string;
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["LangQueryDto"];
-            };
-        };
-        responses: {
-            204: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
             };
         };
     };

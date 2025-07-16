@@ -10,9 +10,9 @@ import { Banner } from '@/entities/Banner';
 import { Cover } from '@/features/Cover';
 import { cn } from '@/shared/lib/css';
 import { ContinueReadMangaButton } from '@/features/ContinueReadManga';
-import { AddMangaToBookmarks } from '@/features/AddMangaToBookmarks';
+import { MangaBookmarkSelector } from '@/features/AddBookToBookmarks';
 import { RateModal } from '@/features/RateModal';
-import { useBookBasicInfo, useBookTitles, useGetManga } from '@/entities/BookInfo';
+import { useMangaBasicInfo, useBookTitles, useGetManga } from '@/entities/BookInfo';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 import { PathParams, Routes } from '@/shared/kernel/router';
 
@@ -28,7 +28,7 @@ export const MangaPage = () => {
     const { manga } = useGetManga(mangaId);
     const mangaContent = useMangaPageContent(mangaId);
     const mangaTitles = useBookTitles(manga);
-    const { basicInfo } = useBookBasicInfo(manga);
+    const { basicInfo } = useMangaBasicInfo(manga);
 
     //TODO loading end error state
 
@@ -60,7 +60,7 @@ export const MangaPage = () => {
                     </TitleInfoModal>
                     <BookRateLayout
                         rate={manga.rate}
-                        countRate={manga.countRate}
+                        countRate={manga.rateCount}
                         rateButton={<RateModal mangaId={manga.id} />}
                     />
                 </TitleSlot>
@@ -68,7 +68,7 @@ export const MangaPage = () => {
             buttons={(ButtonsSlot) => (
                 <ButtonsSlot>
                     <ContinueReadMangaButton className="w-full" />
-                    <AddMangaToBookmarks className="w-full" mangaId={manga.id} />
+                    <MangaBookmarkSelector className="w-full" mangaId={manga.id} />
                 </ButtonsSlot>
             )}
             sidebar={

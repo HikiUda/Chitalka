@@ -1,5 +1,5 @@
 import { useQueryClient } from '@tanstack/react-query';
-import { useSession } from '@/shared/api/session';
+import { useSession } from '@/shared/kernel/session';
 import { authRqClient } from '@/shared/api/instance';
 
 export const useLogout = () => {

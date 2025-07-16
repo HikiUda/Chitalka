@@ -1,12 +1,10 @@
 import { publicRqClient } from '@/shared/api/instance';
-import { MangaIdType } from '@/shared/kernel/book';
+import { BookIdType } from '@/shared/kernel/book';
 
-export function useGetRelatedManga(mangaId: MangaIdType) {
-    const { data, isLoading } = publicRqClient.useQuery('get', '/manga/related/{id}', {
+export function useGetRelatedManga(mangaId: BookIdType) {
+    const { data, isLoading } = publicRqClient.useQuery('get', '/related-books/manga/{mangaId}', {
         params: {
-            path: {
-                id: String(mangaId),
-            },
+            path: { mangaId },
         },
     });
 

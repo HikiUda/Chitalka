@@ -8,4 +8,4 @@ export const BookStatus = {
     Canceled: 'Canceled',
 } as const;
 export const BookStatusEnum = z.nativeEnum(BookStatus);
-export type BookStatusType = ValueOf<typeof BookStatus>;
+export type BookStatus = ValueOf<typeof BookStatus>;

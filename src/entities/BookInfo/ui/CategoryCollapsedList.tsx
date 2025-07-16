@@ -1,16 +1,21 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { CategoryOutput } from '../model/useCategoriesList';
 import { Button } from '@/shared/ui/kit/button';
 import { cn } from '@/shared/lib/css';
 
-interface GenresAndTagsListProps {
+export type CategoryCollapsedListItem = {
+    title: string | number;
+    link: string;
+    specialSimbol?: string;
+};
+
+type CategoryCollapsedListProps = {
     className?: string;
     visibleCount?: number;
-    categories: CategoryOutput[];
-}
+    categories: CategoryCollapsedListItem[];
+};
 
-export const CategoryCollapsedList: FC<GenresAndTagsListProps> = (props) => {
+export const CategoryCollapsedList = (props: CategoryCollapsedListProps) => {
     const { className, visibleCount = 3, categories } = props;
     const [close, setClose] = useState(true);
 
@@ -21,7 +26,7 @@ export const CategoryCollapsedList: FC<GenresAndTagsListProps> = (props) => {
             {categories.map((category, ind) => {
                 if (close && ind >= visibleCount) return null;
                 return (
-                    <Button size="sm" key={ind} asChild>
+                    <Button variant="secondary" size="sm" key={ind} asChild>
                         <Link to={category.link}>
                             {category.specialSimbol}
                             {category.title}

@@ -6,14 +6,14 @@ import {
     CarouselDynamicDots,
     CarouselItem,
 } from '@/shared/ui/kit/carousel';
-import { MangaIdType } from '@/shared/kernel/book';
+import { BookIdType } from '@/shared/kernel/book';
 import { AppAdaptiveImage } from '@/shared/ui/AppAdaptiveImage';
 import { cn } from '@/shared/lib/css';
 import { Loader } from '@/shared/ui/kit/loader';
 
 interface CoversModalProps {
     className?: string;
-    mangaId: MangaIdType;
+    mangaId: BookIdType;
 }
 
 export const CoversModal: FC<CoversModalProps> = (props) => {

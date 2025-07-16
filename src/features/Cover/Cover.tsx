@@ -3,7 +3,7 @@ import { FC, Suspense } from 'react';
 import { AppAdaptiveImage } from '@/shared/ui/AppAdaptiveImage';
 import { Dialog, DialogBody, DialogPortal, DialogTrigger } from '@/shared/ui/kit/dialog';
 import { Skeleton } from '@/shared/ui/kit/skeleton';
-import { MangaIdType } from '@/shared/kernel/book';
+import { BookIdType } from '@/shared/kernel/book';
 import { cn } from '@/shared/lib/css';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 import { Loader } from '@/shared/ui/kit/loader';
@@ -12,7 +12,7 @@ const CoversModal = lazyNamed(() => import('./CoversModal'), 'CoversModal');
 
 interface CoverProps {
     className?: string;
-    mangaId: MangaIdType;
+    mangaId: BookIdType;
     cover: string | null;
 }
 //TODO Suspense

@@ -1,13 +1,11 @@
-import { ImgHTMLAttributes, memo, ReactElement, useLayoutEffect, useState } from 'react';
+import { ImgHTMLAttributes, ReactElement, useLayoutEffect, useState } from 'react';
+import { CONFIG } from '@/shared/kernel/config';
 
 interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
     className?: string;
     loadFallback?: ReactElement;
     errorFallback?: ReactElement;
 }
-
-//TODO throw env
-const BASE_S3_URL = 'http://localhost:8000/';
 
 function getFinalSrc(src?: string): string | undefined {
     if (!src) return undefined;
@@ -19,10 +17,10 @@ function getFinalSrc(src?: string): string | undefined {
     if (src.startsWith('/') || src.startsWith('data:')) return src;
 
     // 3. Относительные пути от бэка (например: 'images/covers/123.jpg')
-    return `${BASE_S3_URL}/${src}`;
+    return `${CONFIG.BASE_S3_URL}/${src}`;
 }
 
-export const AppImage = memo((props: ImageProps) => {
+export const AppImage = (props: ImageProps) => {
     const { className, loadFallback, errorFallback, src, ...otherProps } = props;
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -56,4 +54,4 @@ export const AppImage = memo((props: ImageProps) => {
     }
 
     return <img className={className} src={finalSrc} {...otherProps} />;
-});
+};

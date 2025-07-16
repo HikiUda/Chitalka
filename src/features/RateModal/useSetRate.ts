@@ -1,16 +1,16 @@
 import { useQueryClient } from '@tanstack/react-query';
 import { startTransition, useOptimistic } from 'react';
 import { authRqClient } from '@/shared/api/instance';
-import { MangaIdType } from '@/shared/kernel/book';
+import { BookIdType } from '@/shared/kernel/book';
 
-export function useSetRate(mangaId: MangaIdType) {
+export function useSetRate(mangaId: BookIdType) {
     const queryClient = useQueryClient();
     const [optimisticRate, setOptimisticRate] = useOptimistic<number | null>(null);
-    const { mutateAsync } = authRqClient.useMutation('patch', '/manga/byId/{id}/rate', {
+    const { mutateAsync } = authRqClient.useMutation('patch', '/manga/{mangaId}/rate', {
         onSettled: async () => {
             await queryClient.invalidateQueries(
-                authRqClient.queryOptions('get', '/manga/byId/{id}/rate', {
-                    params: { path: { id: String(mangaId) } },
+                authRqClient.queryOptions('get', '/manga/{mangaId}/rate', {
+                    params: { path: { mangaId } },
                 }),
             );
         },
@@ -20,7 +20,7 @@ export function useSetRate(mangaId: MangaIdType) {
         startTransition(async () => {
             setOptimisticRate(rate);
             await mutateAsync({
-                params: { path: { id: String(mangaId) } },
+                params: { path: { mangaId } },
                 body: { rate },
             });
         });

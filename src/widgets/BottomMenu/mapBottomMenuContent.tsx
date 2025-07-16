@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Routes, RoutesValues } from '@/shared/kernel/router';
+import { Routes } from '@/shared/kernel/router';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 
 const BottomMenuMain = lazyNamed(() => import('./ui/BottomMenuMain'), 'BottomMenuMain');
@@ -8,7 +8,7 @@ const ReadMangaBottomMenu = lazyNamed(
     'ReadMangaBottomMenu',
 );
 
-export const mapBottomMenuContent: OptionalRecord<RoutesValues, ReactNode> & {
+export const mapBottomMenuContent: OptionalRecord<Routes, ReactNode> & {
     default: ReactNode;
 } = {
     default: <BottomMenuMain />,

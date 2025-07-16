@@ -1,9 +1,15 @@
 import { FC } from 'react';
-import { BasicInfo, BookMetaCopyItems, BookMetaLinks } from '@/entities/BookInfo';
+import { BasicInfoItem, BookMetaCopyItems, BookMetaLinks } from '@/entities/BookInfo';
+
+type Person = {
+    id: number;
+    name: string;
+    avatar: string | null;
+};
 
 interface BookSidebarLayoutProps {
     className?: string;
-    basicInfo: BasicInfo[];
+    basicInfo: BasicInfoItem[];
     otherTitles: { name: string; titles: string[] };
 }
 

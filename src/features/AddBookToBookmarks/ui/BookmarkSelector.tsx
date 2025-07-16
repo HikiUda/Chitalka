@@ -1,10 +1,6 @@
-import { FC } from 'react';
 import { ChevronDownIcon } from 'lucide-react';
 import { DropdownMenuLabel } from '@radix-ui/react-dropdown-menu';
-import { useGetBookmark } from './useGetBookmark';
-import { useSetBookmark } from './useSetBookmark';
-import { useDeleteBookmark } from './useDeleteBookmark';
-import { Bookmarks, MangaIdType } from '@/shared/kernel/book';
+import { Bookmarks } from '@/shared/kernel/book';
 import { Button } from '@/shared/ui/kit/button';
 import {
     DropdownMenu,
@@ -13,19 +9,19 @@ import {
     DropdownMenuTrigger,
 } from '@/shared/ui/kit/dropdown-menu';
 import { cn } from '@/shared/lib/css';
-import { useSession } from '@/shared/api/session';
+import { useSession } from '@/shared/kernel/session';
 
-interface AddMangaToBookmarksProps {
+interface BookmarkSelectorProps {
     className?: string;
-    mangaId: MangaIdType;
+    bookmark: Bookmarks | null | undefined;
+    setBookmark: (bookmark: Bookmarks) => void;
+    deleteBookmark: () => void;
+    isLoading: boolean;
 }
 
-export const AddMangaToBookmarks: FC<AddMangaToBookmarksProps> = (props) => {
-    const { className, mangaId } = props;
+export const BookmarkSelector = (props: BookmarkSelectorProps) => {
+    const { className, bookmark, isLoading, setBookmark, deleteBookmark } = props;
 
-    const { data, isLoading } = useGetBookmark(mangaId);
-    const { setBookmark, getOptimisticBookmark } = useSetBookmark(mangaId);
-    const { deleteBookmark, isDeletePending } = useDeleteBookmark(mangaId);
     const { isUserAuth } = useSession();
     //TODO link to login and register page
     return (
@@ -36,8 +32,7 @@ export const AddMangaToBookmarks: FC<AddMangaToBookmarksProps> = (props) => {
                     variant="secondary"
                     className={cn('flex justify-between items-center', className)}
                 >
-                    {getOptimisticBookmark(data?.bookmark, isDeletePending) ||
-                        '+ Добавить в закладки'}
+                    {bookmark || '+ Добавить в закладки'}
                     <ChevronDownIcon />
                 </Button>
             </DropdownMenuTrigger>
@@ -53,7 +48,7 @@ export const AddMangaToBookmarks: FC<AddMangaToBookmarksProps> = (props) => {
                             {bookmark}
                         </DropdownMenuItem>
                     ))}
-                {data?.bookmark && (
+                {bookmark && (
                     <DropdownMenuItem variant="destructive" onClick={deleteBookmark}>
                         Удалить из закладок
                     </DropdownMenuItem>

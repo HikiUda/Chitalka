@@ -7,7 +7,7 @@ export function useLastUpdatedMangaTabs(): {
     value: string;
     title: string;
     catalogLink: string;
-    data: ApiSchemas['MangaListItemLastUpdatedDto'][];
+    data: ApiSchemas['LastUpdatedManga'][];
     isFetching: boolean;
     hasNextPage: boolean;
     fetchNextPage: () => void;

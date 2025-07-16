@@ -1,7 +1,7 @@
 import { publicRqClient } from '@/shared/api/instance';
 
 export function useGetLastUpdatedPopularManga() {
-    const { data, isLoading } = publicRqClient.useQuery('get', '/manga/last-updated', {
+    const { data, isLoading } = publicRqClient.useQuery('get', '/last-updated/manga', {
         params: {
             query: {
                 scope: 'popular',

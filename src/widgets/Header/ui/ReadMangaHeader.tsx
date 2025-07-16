@@ -8,7 +8,7 @@ import { AuthModal } from '@/features/AuthModal';
 import { useHideLayout } from '@/shared/ui/layout/useHideLayout';
 import { BackToManga, MangaChaptersNavigation } from '@/features/BookChapters';
 import { Button } from '@/shared/ui/kit/button';
-import { useSession } from '@/shared/api/session';
+import { useSession } from '@/shared/kernel/session';
 import { cn } from '@/shared/lib/css';
 
 export const ReadMangaHeader = () => {

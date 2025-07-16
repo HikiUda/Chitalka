@@ -1,12 +1,12 @@
 import { parseISO } from 'date-fns';
 import { publicRqClient } from '@/shared/api/instance';
-import { MangaIdType } from '@/shared/kernel/book';
+import { BookIdType } from '@/shared/kernel/book';
 
-export function useGetManga(mangaId: MangaIdType) {
-    const { data } = publicRqClient.useSuspenseQuery('get', '/manga/byId/{id}', {
+export function useGetManga(mangaId: BookIdType) {
+    const { data } = publicRqClient.useSuspenseQuery('get', '/manga/{mangaId}', {
         params: {
             path: {
-                id: String(mangaId),
+                mangaId: String(mangaId),
             },
         },
     });

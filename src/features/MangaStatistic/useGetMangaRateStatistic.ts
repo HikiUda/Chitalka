@@ -1,11 +1,11 @@
 import { publicRqClient } from '@/shared/api/instance';
-import { MangaIdType } from '@/shared/kernel/book';
+import { BookIdType } from '@/shared/kernel/book';
 
-export function useGetMangaRateStatistic(mangaId: MangaIdType) {
-    const { data, isLoading } = publicRqClient.useQuery('get', '/manga/statistic/{id}/rate', {
+export function useGetMangaRateStatistic(mangaId: BookIdType) {
+    const { data, isLoading } = publicRqClient.useQuery('get', '/manga/{mangaId}/statistic/rate', {
         params: {
             path: {
-                id: String(mangaId),
+                mangaId: String(mangaId),
             },
         },
     });

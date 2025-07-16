@@ -1,6 +1,6 @@
 import { useQueryClient } from '@tanstack/react-query';
 import { publicRqClient } from '@/shared/api/instance';
-import { useSession } from '@/shared/api/session';
+import { useSession } from '@/shared/kernel/session';
 
 type LoginDto = {
     login: string;
@@ -13,7 +13,7 @@ export const useLogin = () => {
 
     const { mutate, isPending } = publicRqClient.useMutation('post', '/auth/login', {
         onSuccess: (res) => {
-            session.login(res.tokens.access);
+            session.login(res.access);
             queryClient.invalidateQueries();
         },
     });

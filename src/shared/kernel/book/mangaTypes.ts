@@ -10,4 +10,4 @@ export const MangaType = {
 } as const;
 
 export const MangaTypeEnum = z.nativeEnum(MangaType);
-export type MangaTypeType = ValueOf<typeof MangaType>;
+export type MangaType = ValueOf<typeof MangaType>;

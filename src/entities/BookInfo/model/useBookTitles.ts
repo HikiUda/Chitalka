@@ -1,12 +1,12 @@
 const TitlesName = {
-    ru: 'Название на русском',
+    main: 'Основное название',
     en: 'Название на английском',
     origin: 'Оригенальное название',
 } as const;
 
 type BookTitlesInput = {
     title: {
-        ru: string;
+        main: string;
         en: string | null;
         origin: string | null;
     };
@@ -15,25 +15,17 @@ type BookTitlesInput = {
 
 export function useBookTitles(data: BookTitlesInput) {
     const { title } = data;
-    const lang = 'ru';
 
-    const main = title[lang] || title.ru;
-    const subtitle =
-        title.origin ||
-        Object.values(title).find((value) => {
-            if (value === null) return false;
-            if (value === main) return false;
-            return true;
-        }) ||
-        null;
+    const main = title.main;
+    const subtitle = title.en || title.origin;
 
     const titles = (Object.keys(TitlesName) as (keyof typeof TitlesName)[])
-        .map((lang) => {
-            if (!title[lang]) return null;
+        .map((type) => {
+            if (!title[type]) return null;
             return {
-                name: TitlesName[lang],
-                title: title[lang],
-                lang,
+                name: TitlesName[type],
+                title: title[type],
+                type,
             };
         })
         .filter((item) => item !== null);

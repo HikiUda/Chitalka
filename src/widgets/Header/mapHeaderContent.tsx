@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Routes, RoutesValues } from '@/shared/kernel/router';
+import { Routes } from '@/shared/kernel/router';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 
 const HeaderMain = lazyNamed(() => import('./ui/HeaderMain'), 'HeaderMain');
@@ -10,7 +10,7 @@ const ReadMangaHeader = lazyNamed(() => import('./ui/ReadMangaHeader'), 'ReadMan
 type Platforms = { desktop?: ReactNode; mobile?: ReactNode };
 
 export const mapHeaderContent: OptionalRecord<
-    RoutesValues,
+    Routes,
     { desktop?: ReactNode; mobile?: ReactNode }
 > & { default: Required<Platforms> } = {
     default: { desktop: <HeaderMain />, mobile: <HeaderQuickSearch /> },

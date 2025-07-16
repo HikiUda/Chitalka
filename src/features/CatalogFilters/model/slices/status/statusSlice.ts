@@ -1,10 +1,10 @@
 import { CatalogFilterInitialState, CatalogFilterSlice } from '../../types';
-import { BookStatusType } from '@/shared/kernel/book';
+import { BookStatus } from '@/shared/kernel/book';
 
-//TODO rename BookStatusType
+//TODO rename BookStatus
 export type StatusSlice = {
-    status: BookStatusType[];
-    setStatus: (status: BookStatusType[]) => void;
+    status: BookStatus[];
+    setStatus: (status: BookStatus[]) => void;
 };
 
 export const statusSliceInitialState: CatalogFilterInitialState<StatusSlice> = {

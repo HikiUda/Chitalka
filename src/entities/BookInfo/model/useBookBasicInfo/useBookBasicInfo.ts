@@ -1,28 +1,27 @@
-import { getRoute } from '@/shared/kernel/router';
+import { LinksProps } from '../../ui/BookMetaLinks';
+import { BookStatus } from '@/shared/kernel/book';
 
-type BookBasicInfoInput = {
+export type BookBasicInfoInput = {
     type: string;
-    status: string;
+    status: BookStatus;
     releaseDate: Date | null;
 };
 
-export type BasicInfo = {
+export type BasicInfoItem = {
     title: string;
-    value: { content: string; link: string };
+    value: LinksProps;
 };
 
-export function useBookBasicInfo(data: BookBasicInfoInput) {
-    const catalog = getRoute.MANGA_CATALOG();
-
-    const type: BasicInfo = {
+export function useBookBasicInfo(data: BookBasicInfoInput, catalog: string) {
+    const type: BasicInfoItem = {
         title: 'Тип',
         value: { content: data.type, link: `${catalog}?type=${data.type}` },
     };
-    const status: BasicInfo = {
+    const status: BasicInfoItem = {
         title: 'Статус',
         value: { content: data.status, link: `${catalog}?status=${data.status}` },
     };
-    const releaseDate: BasicInfo | null = data.releaseDate && {
+    const releaseDate: BasicInfoItem | null = data.releaseDate && {
         title: 'Выпуск',
         value: {
             content: String(data.releaseDate.getFullYear()),

@@ -8,7 +8,7 @@ export function useGetLastUpdatedMy() {
         queryKey: ['get', '/manga/last-updated', 'my', 10],
         queryFn: async ({ pageParam }) =>
             await authFetchClient
-                .GET('/manga/last-updated', {
+                .GET('/last-updated/manga', {
                     params: {
                         query: {
                             scope: 'my',

@@ -7,7 +7,7 @@ export function useGetGenres(search?: string) {
         queryKey: ['genres'],
         queryFn: async () =>
             await publicFetchClient
-                .GET('/manga/genres', { params: { query: { search } } })
+                .GET('/book/genres', { params: { query: { search } } })
                 .then((res) => res.data?.data || []),
     });
     return { data, refetch };

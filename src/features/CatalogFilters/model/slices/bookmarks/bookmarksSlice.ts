@@ -1,9 +1,9 @@
 import { CatalogFilterInitialState, CatalogFilterSlice } from '../../types';
-import { BookmarksType } from '@/shared/kernel/book';
+import { Bookmarks } from '@/shared/kernel/book';
 
 export type BookmarksSlice = {
-    bookmarks: BookmarksType[];
-    setBookmarks: (bookmarks: BookmarksType[]) => void;
+    bookmarks: Bookmarks[];
+    setBookmarks: (bookmarks: Bookmarks[]) => void;
 };
 
 export const bookmarksSliceInitialState: CatalogFilterInitialState<BookmarksSlice> = {

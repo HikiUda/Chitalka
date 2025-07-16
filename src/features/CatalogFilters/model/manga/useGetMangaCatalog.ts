@@ -8,13 +8,13 @@ import { useClearInfinityPages } from '@/shared/lib/hooks/useClearInfinityPages'
 const MangaCatalogQueryOptions = (filters: MangaCatalogFiltersType) =>
     infiniteQueryOptions({
         // eslint-disable-next-line @tanstack/query/exhaustive-deps
-        queryKey: ['manga', 'catalog'],
+        queryKey: ['catalog', 'manga'],
         queryFn: async ({ pageParam }) =>
             await publicFetchClient
-                .GET('/manga', {
+                .GET('/catalog/manga', {
                     params: {
                         query: {
-                            ...filters,
+                            // TODO ...filters,
                             limit: 30,
                             page: pageParam,
                         },

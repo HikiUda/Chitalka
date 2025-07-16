@@ -14,7 +14,7 @@ import {
 import { Button } from '@/shared/ui/kit/button';
 import { cn } from '@/shared/lib/css';
 import { Heading } from '@/shared/ui/kit/heading';
-import { useSession } from '@/shared/api/session';
+import { useSession } from '@/shared/kernel/session';
 
 interface ContinueReadMangaSliderProps {
     className?: string;

@@ -3,7 +3,6 @@ import { isMobile } from 'react-device-detect';
 import { TrashIcon, XIcon } from 'lucide-react';
 import { BookCardInline } from '@/entities/BookList';
 import { getRoute } from '@/shared/kernel/router';
-import { Progress } from '@/shared/ui/kit/progress';
 import { ApiSchemas } from '@/shared/api/instance';
 import { CarouselItem } from '@/shared/ui/kit/carousel';
 import { Button } from '@/shared/ui/kit/button';
@@ -11,14 +10,14 @@ import { cn } from '@/shared/lib/css';
 
 interface ContinueReadMangaCardProps {
     className?: string;
-    manga: ApiSchemas['MangaListItemContinueReadDto'];
+    manga: ApiSchemas['ContinueReadBookListItem'];
     onDelete: () => void;
     disabled: boolean;
 }
 
 export const ContinueReadMangaCard: FC<ContinueReadMangaCardProps> = (props) => {
     const { className, manga, disabled, onDelete } = props;
-    const { urlId, title, chapterCount, readedChapters, cover, tome, chapter } = manga;
+    const { urlId, title, cover, tome, chapter } = manga;
     return (
         <CarouselItem
             aria-disabled={disabled}
@@ -38,11 +37,11 @@ export const ContinueReadMangaCard: FC<ContinueReadMangaCardProps> = (props) => 
                         <span>
                             {tome} том {chapter} глава
                         </span>
-                        <span>
+                        {/* <span>
                             {readedChapters} из {chapterCount}
-                        </span>
+                        </span> */}
                     </div>
-                    <Progress value={(readedChapters / chapterCount) * 100} />
+                    {/* <Progress value={(readedChapters / chapterCount) * 100} /> */}
                 </div>
             </BookCardInline>
             <Button

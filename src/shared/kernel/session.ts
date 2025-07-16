@@ -1,7 +1,14 @@
 import { create } from 'zustand';
 import { jwtDecode } from 'jwt-decode';
 import { devtools } from 'zustand/middleware';
-import { baseFetchClient } from './instance';
+import createFetchClient from 'openapi-fetch';
+import { ApiPaths } from '../api/instance';
+import { CONFIG } from './config';
+
+const baseFetchClient = createFetchClient<ApiPaths>({
+    baseUrl: CONFIG.API_BASE_URL,
+    credentials: 'include',
+});
 
 type Session = {
     id: number;
@@ -55,7 +62,7 @@ export const useSessionStore = create<SessionStore>()(
                         if (!refreshTokenPromise) {
                             refreshTokenPromise = baseFetchClient
                                 .GET('/auth/refresh')
-                                .then((r) => r.data?.tokens.access ?? null)
+                                .then((r) => r.data?.access ?? null)
                                 .then((newToken) => {
                                     if (newToken) {
                                         login(newToken);

@@ -1,9 +1,9 @@
 import { CatalogFilterInitialState, CatalogFilterSlice } from '../../types';
-import { MangaTypeType } from '@/shared/kernel/book';
+import { MangaType } from '@/shared/kernel/book';
 
 export type MangaTypeSlice = {
-    type: MangaTypeType[];
-    setType: (type: MangaTypeType[]) => void;
+    type: MangaType[];
+    setType: (type: MangaType[]) => void;
 };
 
 export const mangaTypeSliceInitialState: CatalogFilterInitialState<MangaTypeSlice> = {

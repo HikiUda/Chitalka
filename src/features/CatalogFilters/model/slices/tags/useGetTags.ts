@@ -7,7 +7,7 @@ export function useGetTags(search?: string) {
         queryKey: ['tags'],
         queryFn: async () =>
             await publicFetchClient
-                .GET('/manga/tags', { params: { query: { search } } })
+                .GET('/book/tags', { params: { query: { search } } })
                 .then((res) => res.data?.data || []),
     });
     return { data, refetch };

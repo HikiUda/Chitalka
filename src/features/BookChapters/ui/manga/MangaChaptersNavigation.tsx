@@ -5,9 +5,9 @@ import { TriggerButton, ChaptersNavigationLayout } from '../layout/ChaptersNavig
 import { BookChaptersSheetLayout } from '../layout/BookChaptersSheetLayout';
 import { useGetMangaChapters } from '../../model/useGetMangaChapters';
 import { BookChaptersLayout } from '../layout/BookChaptersLayout';
-import { MangaIdType } from '@/shared/kernel/book';
+import { BookIdType } from '@/shared/kernel/book';
 import { getRoute } from '@/shared/kernel/router';
-import { getUrlChapterId } from '@/shared/lib/helpers/getUrlCahpterId';
+import { getUrlChapterId } from '@/shared/kernel/book/getUrlCahpterId';
 import { useTrottle } from '@/shared/lib/hooks/useTrottle';
 import { useIntersection } from '@/shared/lib/hooks/useIntersection';
 import { ToggleOrder } from '@/entities/ToggleOrder';
@@ -16,14 +16,14 @@ import { Input } from '@/shared/ui/kit/input';
 
 type MangaChaptersNavigationProps = {
     className?: string;
-    mangaId: MangaIdType;
-    chapterId: MangaIdType;
+    mangaId: BookIdType;
+    chapterId: BookIdType;
 };
 //TODO lazy import sheet body
 export const MangaChaptersNavigation = (props: MangaChaptersNavigationProps) => {
     const { className, mangaId, chapterId } = props;
     const [open, setOpen] = useState(false);
-    const { data } = useGetMangaChapter(chapterId);
+    const { data } = useGetMangaChapter(mangaId, chapterId);
     const {
         chapters = [],
         fetchNextPage,
@@ -39,15 +39,21 @@ export const MangaChaptersNavigation = (props: MangaChaptersNavigationProps) => 
 
     const toPrevChapter = useMemo(() => {
         //TODO replace 0 on tome, chapter
-        const { prevChapterId } = data;
-        if (!prevChapterId) return null;
-        return getRoute.MANGA_READ(mangaId, getUrlChapterId(0, 0, prevChapterId));
+        const { prevChapter } = data;
+        if (!prevChapter) return null;
+        return getRoute.MANGA_READ(
+            mangaId,
+            getUrlChapterId(prevChapter.tome, prevChapter.chapter, prevChapter.id),
+        );
     }, [data, mangaId]);
 
     const toNextChapter = useMemo(() => {
-        const { nextChapterId } = data;
-        if (!nextChapterId) return null;
-        return getRoute.MANGA_READ(mangaId, getUrlChapterId(0, 0, nextChapterId));
+        const { nextChapter } = data;
+        if (!nextChapter) return null;
+        return getRoute.MANGA_READ(
+            mangaId,
+            getUrlChapterId(nextChapter.tome, nextChapter.chapter, nextChapter.id),
+        );
     }, [data, mangaId]);
 
     return (
