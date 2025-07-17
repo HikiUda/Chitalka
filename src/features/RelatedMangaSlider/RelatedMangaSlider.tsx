@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { useGetRelatedManga } from './useGetRelatedManga';
-import { BookIdType } from '@/shared/kernel/book';
+import { BookIdType } from '@/shared/kernel/book/book';
 import {
     Carousel,
     CarouselContent,

@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -15,9 +14,9 @@ import { Input } from '@/shared/ui/kit/input';
 import { Button } from '@/shared/ui/kit/button';
 import { cn } from '@/shared/lib/css';
 
-interface RegistrationFormProps {
+type RegistrationFormProps = {
     className?: string;
-}
+};
 
 const registrationSchema = z
     .object({
@@ -34,12 +33,12 @@ const registrationSchema = z
         message: 'Пароли не совпадают',
     });
 
-export const RegistrationForm: FC<RegistrationFormProps> = (props) => {
+export const RegistrationForm = (props: RegistrationFormProps) => {
     const { className } = props;
 
     const form = useForm({ resolver: zodResolver(registrationSchema) });
-    const { login, isPending } = useRegistration();
-    const onSubmit = form.handleSubmit(login);
+    const { registration, isPending, error } = useRegistration();
+    const onSubmit = form.handleSubmit(registration);
 
     return (
         <Form {...form}>
@@ -83,6 +82,7 @@ export const RegistrationForm: FC<RegistrationFormProps> = (props) => {
                         </FormItem>
                     )}
                 />
+                {error && <span className="text-destructive text-sm">{error.message}</span>}
                 <Button disabled={isPending} type="submit">
                     Зарегестрироваться
                 </Button>

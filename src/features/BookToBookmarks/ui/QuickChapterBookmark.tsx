@@ -3,14 +3,14 @@ import { Bookmarks } from '@/shared/kernel/book';
 import { cn } from '@/shared/lib/css';
 import { Button } from '@/shared/ui/kit/button';
 
-type QuickBookmarkProps = {
+type QuickChapterBookmarkProps = {
     className?: string;
     bookmarkChapterId: number | null;
     chapterId: number | null;
     setBookmark: (bookmark: Bookmarks, chapterId: number | null) => void;
 };
 
-export const QuickBookmark = (props: QuickBookmarkProps) => {
+export const QuickChapterBookmark = (props: QuickChapterBookmarkProps) => {
     const { className, bookmarkChapterId, setBookmark, chapterId } = props;
 
     const handleSetBookmark = () => {

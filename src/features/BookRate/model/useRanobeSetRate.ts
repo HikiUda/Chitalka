@@ -1,16 +1,16 @@
 import { useQueryClient } from '@tanstack/react-query';
 import { startTransition, useOptimistic } from 'react';
 import { authRqClient } from '@/shared/api/instance';
-import { BookIdType } from '@/shared/kernel/book';
+import { BookIdType } from '@/shared/kernel/book/book';
 
-export function useSetRate(mangaId: BookIdType) {
+export function useRanobeSetRate(ranobeId: BookIdType) {
     const queryClient = useQueryClient();
     const [optimisticRate, setOptimisticRate] = useOptimistic<number | null>(null);
-    const { mutateAsync } = authRqClient.useMutation('patch', '/manga/{mangaId}/rate', {
+    const { mutateAsync } = authRqClient.useMutation('patch', '/ranobe/{ranobeId}/rate', {
         onSettled: async () => {
             await queryClient.invalidateQueries(
-                authRqClient.queryOptions('get', '/manga/{mangaId}/rate', {
-                    params: { path: { mangaId } },
+                authRqClient.queryOptions('get', '/ranobe/{ranobeId}/rate', {
+                    params: { path: { ranobeId } },
                 }),
             );
         },
@@ -20,13 +20,14 @@ export function useSetRate(mangaId: BookIdType) {
         startTransition(async () => {
             setOptimisticRate(rate);
             await mutateAsync({
-                params: { path: { mangaId } },
+                params: { path: { ranobeId } },
                 body: { rate },
             });
         });
     };
 
-    const getOptimisticRate = (rate: number | null | undefined) => {
+    const getOptimisticRate = (rate: number | null | undefined, isDeleting?: boolean) => {
+        if (isDeleting) return null;
         return optimisticRate || rate;
     };
 

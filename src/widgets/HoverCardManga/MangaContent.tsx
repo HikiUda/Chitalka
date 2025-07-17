@@ -1,4 +1,4 @@
-import { BookIdType } from '@/shared/kernel/book';
+import { BookIdType } from '@/shared/kernel/book/book';
 import {
     BookBasicInfo,
     CategoryCollapsedList,
@@ -8,7 +8,7 @@ import {
 } from '@/entities/BookInfo';
 import { Heading } from '@/shared/ui/kit/heading';
 import { TextDisclosure } from '@/shared/ui/kit/text-disclosure';
-import { MangaBookmarkSelector } from '@/features/AddBookToBookmarks';
+import { MangaBookmarkSelector } from '@/features/BookToBookmarks';
 
 interface MangaContentProps {
     mangaId: BookIdType;

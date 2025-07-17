@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -15,9 +14,9 @@ import { Input } from '@/shared/ui/kit/input';
 import { Button } from '@/shared/ui/kit/button';
 import { cn } from '@/shared/lib/css';
 
-interface LoginFromProps {
+type LoginFromProps = {
     className?: string;
-}
+};
 
 const loginSchema = z.object({
     login: z
@@ -28,11 +27,11 @@ const loginSchema = z.object({
         .min(8, { message: 'Пароль должен быть не менее 8 символов' }),
 });
 
-export const LoginFrom: FC<LoginFromProps> = (props) => {
+export const LoginFrom = (props: LoginFromProps) => {
     const { className } = props;
 
     const form = useForm({ resolver: zodResolver(loginSchema) });
-    const { login, isPending } = useLogin();
+    const { login, isPending, error } = useLogin();
     const onSubmit = form.handleSubmit(login);
 
     return (
@@ -64,6 +63,7 @@ export const LoginFrom: FC<LoginFromProps> = (props) => {
                         </FormItem>
                     )}
                 />
+                {error && <span className="text-destructive text-sm">{error.message}</span>}
                 <Button disabled={isPending} type="submit">
                     Войти
                 </Button>

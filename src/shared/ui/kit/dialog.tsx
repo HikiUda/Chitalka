@@ -82,6 +82,7 @@ function DialogContent({
                 dialogContentVariants({ empty, horizonPosition, verticalPosition }),
                 className,
             )}
+            aria-describedby={undefined}
             {...props}
         >
             {children}

@@ -2,7 +2,7 @@ import { FC, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { ru } from 'date-fns/locale';
 import { format } from 'date-fns';
-import { BookIdType } from '@/shared/kernel/book';
+import { BookIdType } from '@/shared/kernel/book/book';
 import { getRoute } from '@/shared/kernel/router';
 import { cn } from '@/shared/lib/css';
 import { getUrlChapterId } from '@/shared/kernel/book/getUrlCahpterId';

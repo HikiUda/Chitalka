@@ -2,7 +2,7 @@ import { useRanobeGetBookmark } from '../model/useRanobeGetBookmark';
 import { useRanobeSetBookmark } from '../model/useRanobeSetBookmark';
 import { useRanobeDeleteBookmark } from '../model/useRanobeDeleteBookmark';
 import { BookmarkSelector } from './BookmarkSelector';
-import { BookIdType } from '@/shared/kernel/book';
+import { BookIdType } from '@/shared/kernel/book/book';
 
 type RanobeBookmarkSelectorProps = {
     className?: string;

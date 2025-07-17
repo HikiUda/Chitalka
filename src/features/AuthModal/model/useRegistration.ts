@@ -11,7 +11,7 @@ export const useRegistration = () => {
     const queryClient = useQueryClient();
     const session = useSession();
 
-    const { mutate, isPending } = publicRqClient.useMutation('post', '/auth/registration', {
+    const { mutate, isPending, error } = publicRqClient.useMutation('post', '/auth/registration', {
         onSuccess: (res) => {
             session.login(res.access);
             queryClient.invalidateQueries();
@@ -19,7 +19,8 @@ export const useRegistration = () => {
     });
 
     return {
-        login: (data: RegistrationDto) => mutate({ body: { ...data } }),
+        registration: (data: RegistrationDto) => mutate({ body: { ...data } }),
         isPending,
+        error,
     };
 };

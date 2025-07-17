@@ -5,7 +5,7 @@ import { TriggerButton, ChaptersNavigationLayout } from '../layout/ChaptersNavig
 import { BookChaptersSheetLayout } from '../layout/BookChaptersSheetLayout';
 import { useGetMangaChapters } from '../../model/useGetMangaChapters';
 import { BookChaptersLayout } from '../layout/BookChaptersLayout';
-import { BookIdType } from '@/shared/kernel/book';
+import { BookIdType } from '@/shared/kernel/book/book';
 import { getRoute } from '@/shared/kernel/router';
 import { getUrlChapterId } from '@/shared/kernel/book/getUrlCahpterId';
 import { useTrottle } from '@/shared/lib/hooks/useTrottle';

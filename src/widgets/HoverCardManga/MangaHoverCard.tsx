@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { BookHoverCard } from './BookHoverCard';
-import { BookIdType } from '@/shared/kernel/book';
+import { BookIdType } from '@/shared/kernel/book/book';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 
 const MangaContent = lazyNamed(() => import('./MangaContent'), 'MangaContent');

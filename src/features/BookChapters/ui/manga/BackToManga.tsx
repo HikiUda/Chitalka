@@ -1,6 +1,6 @@
 import { BackToBook } from '../layout/BackToBook';
 import { useGetMangaChapter } from '../../model/useGetMangaChapter';
-import { BookIdType } from '@/shared/kernel/book';
+import { BookIdType } from '@/shared/kernel/book/book';
 import { getRoute } from '@/shared/kernel/router';
 
 type BackToMangaProps = {

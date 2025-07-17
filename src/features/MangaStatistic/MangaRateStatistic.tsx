@@ -1,7 +1,7 @@
 import { FC, useMemo } from 'react';
 import { StarIcon } from 'lucide-react';
 import { useGetMangaRateStatistic } from './useGetMangaRateStatistic';
-import { BookIdType } from '@/shared/kernel/book';
+import { BookIdType } from '@/shared/kernel/book/book';
 import { Progress } from '@/shared/ui/kit/progress';
 import { Heading } from '@/shared/ui/kit/heading';
 import { Skeleton } from '@/shared/ui/kit/skeleton';

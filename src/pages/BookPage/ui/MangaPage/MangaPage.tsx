@@ -7,11 +7,11 @@ import { BookRateLayout } from '../layout/BookRateLayout';
 import { useMangaPageContent } from '../../model/useMangaPageContent';
 import { BookContentLayout } from '../layout/BookContentLayout';
 import { Banner } from '@/entities/Banner';
-import { Cover } from '@/features/Cover';
+import { MangaCover } from '@/features/BookCover';
 import { cn } from '@/shared/lib/css';
 import { ContinueReadMangaButton } from '@/features/ContinueReadManga';
-import { MangaBookmarkSelector } from '@/features/AddBookToBookmarks';
-import { RateModal } from '@/features/RateModal';
+import { MangaBookmarkSelector } from '@/features/BookToBookmarks';
+import { MangaRateModalTrigger } from '@/features/BookRate';
 import { useMangaBasicInfo, useBookTitles, useGetManga } from '@/entities/BookInfo';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 import { PathParams, Routes } from '@/shared/kernel/router';
@@ -43,7 +43,7 @@ export const MangaPage = () => {
             }
             cover={(CoverSlot) => (
                 <CoverSlot asChild>
-                    <Cover
+                    <MangaCover
                         mangaId={manga.id}
                         cover={manga.cover}
                         className={cn(isMobile && 'w-45')}
@@ -61,7 +61,7 @@ export const MangaPage = () => {
                     <BookRateLayout
                         rate={manga.rate}
                         countRate={manga.rateCount}
-                        rateButton={<RateModal mangaId={manga.id} />}
+                        rateButton={<MangaRateModalTrigger mangaId={manga.id} />}
                     />
                 </TitleSlot>
             )}

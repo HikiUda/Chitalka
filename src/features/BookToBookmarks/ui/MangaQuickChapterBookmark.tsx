@@ -1,22 +1,22 @@
 import { useMangaGetBookmark } from '../model/useMangaGetBookmark';
 import { useMangaSetBookmark } from '../model/useMangaSetBookmark';
-import { QuickBookmark } from './QuickBookmark';
-import { BookIdType } from '@/shared/kernel/book';
+import { QuickChapterBookmark } from './QuickChapterBookmark';
+import { BookIdType } from '@/shared/kernel/book/book';
 
-type MangaQuickBookmarkProps = {
+type MangaQuickChapterBookmarkProps = {
     className?: string;
     mangaId: BookIdType;
     chapterId: number | null;
 };
 
-export const MangaQuickBookmark = (props: MangaQuickBookmarkProps) => {
+export const MangaQuickChapterBookmark = (props: MangaQuickChapterBookmarkProps) => {
     const { className, mangaId, chapterId } = props;
 
     const { data } = useMangaGetBookmark(mangaId);
     const { setBookmark } = useMangaSetBookmark(mangaId);
 
     return (
-        <QuickBookmark
+        <QuickChapterBookmark
             className={className}
             bookmarkChapterId={data?.chapterId || null}
             chapterId={chapterId}

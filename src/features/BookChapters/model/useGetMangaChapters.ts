@@ -2,7 +2,7 @@ import { infiniteQueryOptions, useInfiniteQuery } from '@tanstack/react-query';
 import { useCallback, useEffect, useState } from 'react';
 import { handleBookChapters } from './handleBookChapters';
 import { publicFetchClient } from '@/shared/api/instance';
-import { BookIdType } from '@/shared/kernel/book';
+import { BookIdType } from '@/shared/kernel/book/book';
 import { useClearInfinityPages } from '@/shared/lib/hooks/useClearInfinityPages';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 

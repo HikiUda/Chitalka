@@ -11,12 +11,12 @@ export const useLogin = () => {
     const queryClient = useQueryClient();
     const session = useSession();
 
-    const { mutate, isPending } = publicRqClient.useMutation('post', '/auth/login', {
+    const { mutate, isPending, error } = publicRqClient.useMutation('post', '/auth/login', {
         onSuccess: (res) => {
             session.login(res.access);
             queryClient.invalidateQueries();
         },
     });
 
-    return { login: (data: LoginDto) => mutate({ body: { ...data } }), isPending };
+    return { login: (data: LoginDto) => mutate({ body: { ...data } }), isPending, error };
 };

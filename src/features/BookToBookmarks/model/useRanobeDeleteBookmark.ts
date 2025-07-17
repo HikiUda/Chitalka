@@ -1,6 +1,6 @@
 import { useQueryClient } from '@tanstack/react-query';
 import { authRqClient } from '@/shared/api/instance';
-import { BookIdType } from '@/shared/kernel/book';
+import { BookIdType } from '@/shared/kernel/book/book';
 
 export function useRanobeDeleteBookmark(ranobeId: BookIdType) {
     const queryClient = useQueryClient();

@@ -1,13 +1,13 @@
 import { useQueryClient } from '@tanstack/react-query';
 import { authRqClient } from '@/shared/api/instance';
-import { BookIdType } from '@/shared/kernel/book';
+import { BookIdType } from '@/shared/kernel/book/book';
 
-export function useMangaDeleteBookmark(mangaId: BookIdType) {
+export function useMangaDeleteRate(mangaId: BookIdType) {
     const queryClient = useQueryClient();
-    const { mutate, isPending } = authRqClient.useMutation('delete', '/manga/{mangaId}/bookmark', {
+    const { mutate, isPending } = authRqClient.useMutation('delete', '/manga/{mangaId}/rate', {
         onSettled: async () => {
             await queryClient.invalidateQueries(
-                authRqClient.queryOptions('get', '/manga/{mangaId}/bookmark', {
+                authRqClient.queryOptions('get', '/manga/{mangaId}/rate', {
                     params: { path: { mangaId } },
                 }),
             );
@@ -15,7 +15,7 @@ export function useMangaDeleteBookmark(mangaId: BookIdType) {
     });
 
     return {
-        deleteBookmark: () => mutate({ params: { path: { mangaId } } }),
+        deleteRate: () => mutate({ params: { path: { mangaId } } }),
         isDeletePending: isPending,
     };
 }

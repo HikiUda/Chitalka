@@ -1,31 +1,29 @@
-import { FC } from 'react';
-import { useGetMangaCovers } from './useGetMangaCovers';
 import {
     Carousel,
     CarouselContent,
     CarouselDynamicDots,
     CarouselItem,
 } from '@/shared/ui/kit/carousel';
-import { BookIdType } from '@/shared/kernel/book';
 import { AppAdaptiveImage } from '@/shared/ui/AppAdaptiveImage';
 import { cn } from '@/shared/lib/css';
-import { Loader } from '@/shared/ui/kit/loader';
 
-interface CoversModalProps {
+type Cover = {
+    id: number;
+    cover: string;
+};
+
+type CoversModalProps = {
     className?: string;
-    mangaId: BookIdType;
-}
+    covers: Cover[];
+};
 
-export const CoversModal: FC<CoversModalProps> = (props) => {
-    const { className, mangaId } = props;
-    const { data, isLoading } = useGetMangaCovers(mangaId);
+export const CoversModal = (props: CoversModalProps) => {
+    const { className, covers } = props;
 
-    if (isLoading) return <Loader variant="flower" />;
-    if (!data?.length) return <div />;
     return (
         <Carousel className={cn('relative', className)}>
             <CarouselContent className="max-w-120">
-                {data.map((cover) => (
+                {covers.map((cover) => (
                     <CarouselItem className="max-w-120 min-w-60" key={cover.id}>
                         <AppAdaptiveImage img={cover.cover} className="w-full pb-[134%]" />
                     </CarouselItem>

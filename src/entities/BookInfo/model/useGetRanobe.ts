@@ -1,6 +1,6 @@
 import { parseISO } from 'date-fns';
 import { publicRqClient } from '@/shared/api/instance';
-import { BookIdType } from '@/shared/kernel/book';
+import { BookIdType } from '@/shared/kernel/book/book';
 
 export function useGetRanobe(ranobeId: BookIdType) {
     const { data } = publicRqClient.useSuspenseQuery('get', '/ranobe/{ranobeId}', {

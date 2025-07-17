@@ -2,7 +2,7 @@ import { useMangaGetBookmark } from '../model/useMangaGetBookmark';
 import { useMangaSetBookmark } from '../model/useMangaSetBookmark';
 import { useMangaDeleteBookmark } from '../model/useMangaDeleteBookmark';
 import { BookmarkSelector } from './BookmarkSelector';
-import { BookIdType } from '@/shared/kernel/book';
+import { BookIdType } from '@/shared/kernel/book/book';
 
 type MangaBookmarkSelectorProps = {
     className?: string;

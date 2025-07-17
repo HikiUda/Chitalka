@@ -1,22 +1,22 @@
 import { useRanobeGetBookmark } from '../model/useRanobeGetBookmark';
 import { useRanobeSetBookmark } from '../model/useRanobeSetBookmark';
-import { QuickBookmark } from './QuickBookmark';
-import { BookIdType } from '@/shared/kernel/book';
+import { QuickChapterBookmark } from './QuickChapterBookmark';
+import { BookIdType } from '@/shared/kernel/book/book';
 
-type RanobeQuickBookmarkProps = {
+type RanobeQuickChapterBookmarkProps = {
     className?: string;
     ranobe: BookIdType;
     chapterId: number | null;
 };
 
-export const RanobeQuickBookmark = (props: RanobeQuickBookmarkProps) => {
+export const RanobeQuickChapterBookmark = (props: RanobeQuickChapterBookmarkProps) => {
     const { className, ranobe, chapterId } = props;
 
     const { data } = useRanobeGetBookmark(ranobe);
     const { setBookmark } = useRanobeSetBookmark(ranobe);
 
     return (
-        <QuickBookmark
+        <QuickChapterBookmark
             className={className}
             bookmarkChapterId={data?.chapterId || null}
             chapterId={chapterId}

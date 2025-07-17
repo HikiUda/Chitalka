@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { Suspense, useState } from 'react';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 import { Button } from '@/shared/ui/kit/button';
 import {
@@ -9,15 +9,16 @@ import {
     DialogTrigger,
 } from '@/shared/ui/kit/dialog';
 import { Heading } from '@/shared/ui/kit/heading';
+import { Loader } from '@/shared/ui/kit/loader';
 
 const LoginForm = lazyNamed(() => import('./LoginFrom'), 'LoginFrom');
 const RegistrationForm = lazyNamed(() => import('./RegistrationForm'), 'RegistrationForm');
 
-interface AuthModalProps {
+type AuthModalProps = {
     className?: string;
-}
+};
 
-export const AuthModal: FC<AuthModalProps> = (props) => {
+export const AuthModal = (props: AuthModalProps) => {
     const { className } = props;
     const [isLogin, setIsLogin] = useState(true);
     return (
@@ -33,10 +34,12 @@ export const AuthModal: FC<AuthModalProps> = (props) => {
                         <Heading variant="h2">{isLogin ? 'Вход' : 'Регестрация'}</Heading>
                     </DialogTitle>
                 </DialogHeader>
-                {isLogin ? <LoginForm /> : <RegistrationForm />}
-                <Button onClick={() => setIsLogin((prev) => !prev)} variant="ghost">
-                    {isLogin ? 'Нет аккаунта?' : 'Есть аккаунт?'}
-                </Button>
+                <Suspense fallback={<Loader className="mx-auto mt-2" variant="flower" />}>
+                    {isLogin ? <LoginForm /> : <RegistrationForm />}
+                    <Button onClick={() => setIsLogin((prev) => !prev)} variant="ghost">
+                        {isLogin ? 'Нет аккаунта?' : 'Есть аккаунт?'}
+                    </Button>
+                </Suspense>
             </DialogBody>
         </Dialog>
     );
