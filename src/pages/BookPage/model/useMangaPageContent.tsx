@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { MangaComments } from '../ui/MangaPage/MangaComments';
 import { type TabsType, useBookPageContent } from './useBookPageContent';
-import { BookIdType } from '@/shared/kernel/book/book';
+import { BookId } from '@/shared/kernel/book/book';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 import { MangaChapters } from '@/features/BookChapters';
 
@@ -11,7 +11,7 @@ const TabValuesConst = ['info', 'chapters', 'comments'] as const;
 
 type TabValues = (typeof TabValuesConst)[number];
 
-export function useMangaPageContent(mangaId: BookIdType): {
+export function useMangaPageContent(mangaId: BookId): {
     tabs: TabsType<TabValues>;
     tabValue: TabValues;
     onTabChange: (section: string) => void;

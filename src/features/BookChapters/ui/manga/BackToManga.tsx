@@ -1,12 +1,12 @@
 import { BackToBook } from '../layout/BackToBook';
 import { useGetMangaChapter } from '../../model/useGetMangaChapter';
-import { BookIdType } from '@/shared/kernel/book/book';
+import { BookId } from '@/shared/kernel/book/book';
 import { getRoute } from '@/shared/kernel/router';
 
 type BackToMangaProps = {
     className?: string;
-    mangaId: BookIdType;
-    chapterId: BookIdType;
+    mangaId: BookId;
+    chapterId: BookId;
 };
 
 export const BackToManga = (props: BackToMangaProps) => {

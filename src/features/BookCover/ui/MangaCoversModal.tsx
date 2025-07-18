@@ -1,11 +1,11 @@
 import { useMangaGetCovers } from '../model/useMangaGetCovers';
-import { BookIdType } from '@/shared/kernel/book/book';
+import { BookId } from '@/shared/kernel/book/book';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 
 const CoversModal = lazyNamed(() => import('./CoversModal'), 'CoversModal');
 
 type MangaCoversModalProps = {
-    mangaId: BookIdType;
+    mangaId: BookId;
 };
 
 export const MangaCoversModal = (props: MangaCoversModalProps) => {

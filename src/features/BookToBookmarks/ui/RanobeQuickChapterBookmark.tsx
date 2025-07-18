@@ -1,11 +1,11 @@
 import { useRanobeGetBookmark } from '../model/useRanobeGetBookmark';
 import { useRanobeSetBookmark } from '../model/useRanobeSetBookmark';
 import { QuickChapterBookmark } from './QuickChapterBookmark';
-import { BookIdType } from '@/shared/kernel/book/book';
+import { BookId } from '@/shared/kernel/book/book';
 
 type RanobeQuickChapterBookmarkProps = {
     className?: string;
-    ranobe: BookIdType;
+    ranobe: BookId;
     chapterId: number | null;
 };
 

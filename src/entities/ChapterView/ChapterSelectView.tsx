@@ -1,6 +1,6 @@
 import { FC, useMemo } from 'react';
 import { classNames } from '@/shared/lib/helpers/classNames';
-import { BookIdType } from '@/shared/kernel/book/book';
+import { BookId } from '@/shared/kernel/book/book';
 import { useQuery } from '@tanstack/react-query';
 import { useUrlSearchParams } from '@/shared/lib/hooks/useUrlSearchParams';
 import { ChapterApi } from '../../model/api/chapterApi/chapterApi';
@@ -11,8 +11,8 @@ import { ChapterByPage, ChapterTape } from '@/entities/ChapterView';
 
 interface ChapterSelectViewProps {
     className?: string;
-    mangaId: BookIdType;
-    chapterId: BookIdType;
+    mangaId: BookId;
+    chapterId: BookId;
 }
 
 export const ChapterSelectView: FC<ChapterSelectViewProps> = (props) => {

@@ -5,7 +5,7 @@ import { Page } from '@/shared/ui/layout/Page';
 import { CollectionGridLayout, CollectionCard } from '@/entities/CollectionList';
 import { Heading } from '@/shared/ui/kit/heading';
 import { UserCard, UserGridLayout } from '@/entities/UserList';
-import { ContinueReadMangaSlider } from '@/features/ContinueReadManga';
+import { ContinueReadMangaSlider } from '@/features/BookContinueRead';
 
 export const MainPage = () => {
     return (

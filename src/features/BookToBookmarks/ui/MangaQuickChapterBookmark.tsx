@@ -1,11 +1,11 @@
 import { useMangaGetBookmark } from '../model/useMangaGetBookmark';
 import { useMangaSetBookmark } from '../model/useMangaSetBookmark';
 import { QuickChapterBookmark } from './QuickChapterBookmark';
-import { BookIdType } from '@/shared/kernel/book/book';
+import { BookId } from '@/shared/kernel/book/book';
 
 type MangaQuickChapterBookmarkProps = {
     className?: string;
-    mangaId: BookIdType;
+    mangaId: BookId;
     chapterId: number | null;
 };
 

@@ -1,7 +1,7 @@
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import { useGetMangaChapters } from '../../model/useGetMangaChapters';
 import { BookChaptersLayout } from '../layout/BookChaptersLayout';
-import { BookIdType } from '@/shared/kernel/book/book';
+import { BookId } from '@/shared/kernel/book/book';
 import { ChapterList, ChapterListItem } from '@/entities/ChapterList';
 import { useIntersection } from '@/shared/lib/hooks/useIntersection';
 
@@ -11,7 +11,7 @@ import { useTrottle } from '@/shared/lib/hooks/useTrottle';
 
 type MangaChaptersProps = {
     className?: string;
-    mangaId: BookIdType;
+    mangaId: BookId;
 };
 
 export const MangaChapters = (props: MangaChaptersProps) => {

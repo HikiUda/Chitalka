@@ -1,9 +1,9 @@
 import { useQueryClient } from '@tanstack/react-query';
 import { startTransition, useOptimistic } from 'react';
 import { authRqClient } from '@/shared/api/instance';
-import { BookIdType } from '@/shared/kernel/book/book';
+import { BookId } from '@/shared/kernel/book/book';
 
-export function useMangaSetRate(mangaId: BookIdType) {
+export function useMangaSetRate(mangaId: BookId) {
     const queryClient = useQueryClient();
     const [optimisticRate, setOptimisticRate] = useOptimistic<number | null>(null);
     const { mutateAsync } = authRqClient.useMutation('patch', '/manga/{mangaId}/rate', {

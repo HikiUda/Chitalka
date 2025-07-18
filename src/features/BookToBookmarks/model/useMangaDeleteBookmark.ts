@@ -1,8 +1,8 @@
 import { useQueryClient } from '@tanstack/react-query';
 import { authRqClient } from '@/shared/api/instance';
-import { BookIdType } from '@/shared/kernel/book/book';
+import { BookId } from '@/shared/kernel/book/book';
 
-export function useMangaDeleteBookmark(mangaId: BookIdType) {
+export function useMangaDeleteBookmark(mangaId: BookId) {
     const queryClient = useQueryClient();
     const { mutate, isPending } = authRqClient.useMutation('delete', '/manga/{mangaId}/bookmark', {
         onSettled: async () => {

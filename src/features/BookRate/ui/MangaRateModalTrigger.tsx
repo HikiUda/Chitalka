@@ -5,7 +5,7 @@ import { useMangaGetRate } from '../model/useMangaGetRate';
 import { useMangaSetRate } from '../model/useMangaSetRate';
 import { useMangaDeleteRate } from '../model/useMangaDeleteRate';
 import { RateModalTriggerButton } from './RateModalTriggerButton';
-import { BookIdType } from '@/shared/kernel/book/book';
+import { BookId } from '@/shared/kernel/book/book';
 import { Dialog, DialogBody } from '@/shared/ui/kit/dialog';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 import { Loader } from '@/shared/ui/kit/loader';
@@ -14,7 +14,7 @@ const RateModal = lazyNamed(() => import('./RateModal'), 'RateModal');
 
 type MangaRateModalTriggerProps = {
     className?: string;
-    mangaId: BookIdType;
+    mangaId: BookId;
 };
 
 export const MangaRateModalTrigger = (props: MangaRateModalTriggerProps) => {
@@ -34,7 +34,7 @@ export const MangaRateModalTrigger = (props: MangaRateModalTriggerProps) => {
                 isLoading={isLoading}
             />
             <DialogBody verticalPosition={isMobile ? 'bottom' : 'center'}>
-                <DialogTitle hidden>Оценка Манги</DialogTitle>
+                <DialogTitle hidden />
                 <Suspense fallback={<Loader className="mx-auto" variant="flower" />}>
                     <RateModal rate={currentRate} setRate={setRate} deleteRate={deleteRate} />
                 </Suspense>

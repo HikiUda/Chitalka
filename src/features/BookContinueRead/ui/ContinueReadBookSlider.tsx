@@ -1,7 +1,4 @@
-import { FC } from 'react';
-import { useGetContinueReadManga } from '../model/useGetContinueReadManga';
-import { useDeleteContinueReadManga } from '../model/useDeleteContinueReadManga';
-import { ContinueReadMangaCard } from './ContinueReadMangaCard';
+import { ReactNode } from 'react';
 import { BookCardInlineSkeleton } from '@/entities/BookList';
 import { Card } from '@/shared/ui/kit/card';
 import {
@@ -14,21 +11,17 @@ import {
 import { Button } from '@/shared/ui/kit/button';
 import { cn } from '@/shared/lib/css';
 import { Heading } from '@/shared/ui/kit/heading';
-import { useSession } from '@/shared/kernel/session';
 
-interface ContinueReadMangaSliderProps {
+type ContinueReadBookSliderProps = {
     className?: string;
-}
+    cards: ReactNode;
+    isLoading: boolean;
+    deleteAll: () => void;
+    isDeleteAllPending: boolean;
+};
 
-export const ContinueReadMangaSlider: FC<ContinueReadMangaSliderProps> = (props) => {
-    const { className } = props;
-
-    const { data = [], isLoading } = useGetContinueReadManga();
-    const { deleteContinueReadManga, getIsPending } = useDeleteContinueReadManga();
-    const { isUserAuth } = useSession();
-
-    if (!isUserAuth) return null;
-    if (!isLoading && !data.length) return null;
+export const ContinueReadBookSlider = (props: ContinueReadBookSliderProps) => {
+    const { className, cards, isLoading, deleteAll, isDeleteAllPending } = props;
 
     return (
         <Card className={cn(className, 'py-0 gap-0')}>
@@ -36,11 +29,7 @@ export const ContinueReadMangaSlider: FC<ContinueReadMangaSliderProps> = (props)
                 <Heading variant="h2" color="primary">
                     Продолжить читать
                 </Heading>
-                <Button
-                    onClick={() => deleteContinueReadManga(0)}
-                    disabled={getIsPending(0)}
-                    variant="clear"
-                >
+                <Button onClick={deleteAll} disabled={isDeleteAllPending} variant="clear">
                     очистить
                 </Button>
             </div>
@@ -51,17 +40,9 @@ export const ContinueReadMangaSlider: FC<ContinueReadMangaSliderProps> = (props)
                 className="w-full relative group/carousel"
             >
                 <CarouselContent className="pl-4 py-5">
-                    {data.map((manga, index) => (
-                        <ContinueReadMangaCard
-                            manga={manga}
-                            key={index}
-                            className="basis-80"
-                            onDelete={() => deleteContinueReadManga(manga.id)}
-                            disabled={getIsPending(manga.id)}
-                        />
-                    ))}
+                    {cards}
                     {isLoading &&
-                        Array(10)
+                        Array(6)
                             .fill(0)
                             .map((_, ind) => (
                                 <CarouselItem

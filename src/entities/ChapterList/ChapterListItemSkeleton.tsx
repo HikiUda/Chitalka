@@ -1,12 +1,11 @@
-import { FC } from 'react';
 import { cn } from '@/shared/lib/css';
 import { Skeleton } from '@/shared/ui/kit/skeleton';
 
-interface ChapterListItemSkeletonProps {
+type ChapterListItemSkeletonProps = {
     className?: string;
-}
+};
 
-export const ChapterListItemSkeleton: FC<ChapterListItemSkeletonProps> = (props) => {
+export const ChapterListItemSkeleton = (props: ChapterListItemSkeletonProps) => {
     const { className } = props;
 
     return (

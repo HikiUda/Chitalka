@@ -2,10 +2,10 @@ import { useNavigate } from 'react-router-dom';
 import { useCallback, useMemo } from 'react';
 import { ChapterType } from '../api/chapterApi/chapterScheme';
 import { getRoute } from '@/shared/kernel/router';
-import { BookIdType } from '@/shared/kernel/book/book';
+import { BookId } from '@/shared/kernel/book/book';
 import { getUrlChapterId } from '@/entities/ChapterList';
 
-export function useChapterNavigate(mangaId: BookIdType, data?: ChapterType) {
+export function useChapterNavigate(mangaId: BookId, data?: ChapterType) {
     const navigate = useNavigate();
     const prevChapter = useMemo(() => {
         if (!data || !data.prevChapterId) return null;

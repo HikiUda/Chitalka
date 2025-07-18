@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { AppImage } from '../AppImage';
 import Chitalka from '../icon/Chitalka.svg?react';
-import { getRoute } from '@/shared/kernel/router/routerConfig';
 import Gid from '@/shared/assets/animation/Gid/logo/shake.gif';
 import { cn } from '@/shared/lib/css';
+import { getRoute } from '@/shared/kernel/router';
 
 interface LogoProps {
     className?: string;

@@ -1,11 +1,10 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { ru } from 'date-fns/locale';
 import { format } from 'date-fns';
-import { BookIdType } from '@/shared/kernel/book/book';
+import { BookId } from '@/shared/kernel/book/book';
 import { getRoute } from '@/shared/kernel/router';
 import { cn } from '@/shared/lib/css';
-import { getUrlChapterId } from '@/shared/kernel/book/getUrlCahpterId';
 
 type ChapterListItem = {
     id: number;
@@ -15,24 +14,21 @@ type ChapterListItem = {
     createdAt: Date;
 };
 
-interface ChapterListItemProps {
+type ChapterListItemProps = {
     className?: string;
     chapter: ChapterListItem;
-    mangaId: BookIdType;
+    mangaId: BookId;
     before?: ReactNode;
     after?: ReactNode;
     onClick?: () => void;
-}
+};
 
-export const ChapterListItem: FC<ChapterListItemProps> = (props) => {
+export const ChapterListItem = (props: ChapterListItemProps) => {
     const { className, chapter, before, after, mangaId, onClick } = props;
 
     return (
         <Link
-            to={getRoute.MANGA_READ(
-                mangaId,
-                getUrlChapterId(chapter.tome, chapter.chapter, chapter.id),
-            )}
+            to={getRoute.MANGA_READ(mangaId, { ...chapter, chapterId: chapter.id })}
             className={cn(
                 'grid grid-cols-[auto_1fr_auto_auto] overflow-hidden px-4 py-2.5 items-center gap-2 hover:bg-accent',
                 className,

@@ -1,11 +1,11 @@
 import { useRanobeGetCovers } from '../model/useRanobeGetCovers';
-import { BookIdType } from '@/shared/kernel/book/book';
+import { BookId } from '@/shared/kernel/book/book';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 
 const CoversModal = lazyNamed(() => import('./CoversModal'), 'CoversModal');
 
 type RanobeCoversModalProps = {
-    ranobeId: BookIdType;
+    ranobeId: BookId;
 };
 
 export const RanobeCoversModal = (props: RanobeCoversModalProps) => {

@@ -1,1 +1,1 @@
-export type BookIdType = number | string;
+export type BookId = number | string;

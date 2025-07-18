@@ -1,4 +1,4 @@
-import { BookIdType } from '@/shared/kernel/book/book';
+import { BookId } from '@/shared/kernel/book/book';
 import {
     BookBasicInfo,
     CategoryCollapsedList,
@@ -11,7 +11,7 @@ import { TextDisclosure } from '@/shared/ui/kit/text-disclosure';
 import { MangaBookmarkSelector } from '@/features/BookToBookmarks';
 
 interface MangaContentProps {
-    mangaId: BookIdType;
+    mangaId: BookId;
 }
 
 export const MangaContent = (props: MangaContentProps) => {

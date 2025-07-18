@@ -5,7 +5,7 @@ import { useRanobeGetRate } from '../model/useRanobeGetRate';
 import { useRanobeSetRate } from '../model/useRanobeSetRate';
 import { useRanobeDeleteRate } from '../model/useRanobeDeleteRate';
 import { RateModalTriggerButton } from './RateModalTriggerButton';
-import { BookIdType } from '@/shared/kernel/book/book';
+import { BookId } from '@/shared/kernel/book/book';
 import { Dialog, DialogBody } from '@/shared/ui/kit/dialog';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 import { Loader } from '@/shared/ui/kit/loader';
@@ -14,7 +14,7 @@ const RateModal = lazyNamed(() => import('./RateModal'), 'RateModal');
 
 type RanobeRateModalTriggerProps = {
     className?: string;
-    ranobeId: BookIdType;
+    ranobeId: BookId;
 };
 
 export const RanobeRateModalTrigger = (props: RanobeRateModalTriggerProps) => {
@@ -34,7 +34,7 @@ export const RanobeRateModalTrigger = (props: RanobeRateModalTriggerProps) => {
                 isLoading={isLoading}
             />
             <DialogBody verticalPosition={isMobile ? 'bottom' : 'center'}>
-                <DialogTitle hidden>Оценка Ранобе</DialogTitle>
+                <DialogTitle hidden />
                 <Suspense fallback={<Loader className="mx-auto" variant="flower" />}>
                     <RateModal rate={currentRate} setRate={setRate} deleteRate={deleteRate} />
                 </Suspense>

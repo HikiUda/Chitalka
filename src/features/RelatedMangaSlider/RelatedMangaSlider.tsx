@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { useGetRelatedManga } from './useGetRelatedManga';
-import { BookIdType } from '@/shared/kernel/book/book';
+import { BookId } from '@/shared/kernel/book/book';
 import {
     Carousel,
     CarouselContent,
@@ -14,7 +14,7 @@ import { Badge } from '@/shared/ui/kit/badge';
 
 interface RelatedMangaSliderProps {
     className?: string;
-    mangaId: BookIdType;
+    mangaId: BookId;
     heading?: ReactNode;
 }
 

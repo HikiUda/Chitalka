@@ -1,7 +1,7 @@
 import { authRqClient } from '@/shared/api/instance';
-import { BookIdType } from '@/shared/kernel/book/book';
+import { BookId } from '@/shared/kernel/book/book';
 
-export function useRanobeGetBookmark(ranobeId: BookIdType) {
+export function useRanobeGetBookmark(ranobeId: BookId) {
     const { data, isLoading } = authRqClient.useQuery('get', '/ranobe/{ranobeId}/bookmark', {
         params: {
             path: {

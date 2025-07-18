@@ -1547,87 +1547,21 @@ export type components = {
         DeleteRelatedBookDto: {
             relatedId: string;
         };
+        PercentItem: {
+            count: number;
+            percentage: number;
+        };
         RateStatistic: {
-            /** @default {
-             *       "count": 0,
-             *       "percentage": 0
-             *     } */
-            1: {
-                count?: number;
-                percentage?: number;
-            };
-            /** @default {
-             *       "count": 0,
-             *       "percentage": 0
-             *     } */
-            2: {
-                count?: number;
-                percentage?: number;
-            };
-            /** @default {
-             *       "count": 0,
-             *       "percentage": 0
-             *     } */
-            3: {
-                count?: number;
-                percentage?: number;
-            };
-            /** @default {
-             *       "count": 0,
-             *       "percentage": 0
-             *     } */
-            4: {
-                count?: number;
-                percentage?: number;
-            };
-            /** @default {
-             *       "count": 0,
-             *       "percentage": 0
-             *     } */
-            5: {
-                count?: number;
-                percentage?: number;
-            };
-            /** @default {
-             *       "count": 0,
-             *       "percentage": 0
-             *     } */
-            6: {
-                count?: number;
-                percentage?: number;
-            };
-            /** @default {
-             *       "count": 0,
-             *       "percentage": 0
-             *     } */
-            7: {
-                count?: number;
-                percentage?: number;
-            };
-            /** @default {
-             *       "count": 0,
-             *       "percentage": 0
-             *     } */
-            8: {
-                count?: number;
-                percentage?: number;
-            };
-            /** @default {
-             *       "count": 0,
-             *       "percentage": 0
-             *     } */
-            9: {
-                count?: number;
-                percentage?: number;
-            };
-            /** @default {
-             *       "count": 0,
-             *       "percentage": 0
-             *     } */
-            10: {
-                count?: number;
-                percentage?: number;
-            };
+            1: components["schemas"]["PercentItem"];
+            2: components["schemas"]["PercentItem"];
+            3: components["schemas"]["PercentItem"];
+            4: components["schemas"]["PercentItem"];
+            5: components["schemas"]["PercentItem"];
+            6: components["schemas"]["PercentItem"];
+            7: components["schemas"]["PercentItem"];
+            8: components["schemas"]["PercentItem"];
+            9: components["schemas"]["PercentItem"];
+            10: components["schemas"]["PercentItem"];
         };
         RateSummaryStatistic: {
             rate: number;
@@ -1635,46 +1569,11 @@ export type components = {
             statistic: components["schemas"]["RateStatistic"];
         };
         BookmarkStatistic: {
-            /** @default {
-             *       "count": 0,
-             *       "percentage": 0
-             *     } */
-            Reading: {
-                count?: number;
-                percentage?: number;
-            };
-            /** @default {
-             *       "count": 0,
-             *       "percentage": 0
-             *     } */
-            Planned: {
-                count?: number;
-                percentage?: number;
-            };
-            /** @default {
-             *       "count": 0,
-             *       "percentage": 0
-             *     } */
-            Readed: {
-                count?: number;
-                percentage?: number;
-            };
-            /** @default {
-             *       "count": 0,
-             *       "percentage": 0
-             *     } */
-            Abandoned: {
-                count?: number;
-                percentage?: number;
-            };
-            /** @default {
-             *       "count": 0,
-             *       "percentage": 0
-             *     } */
-            Postponed: {
-                count?: number;
-                percentage?: number;
-            };
+            Reading: components["schemas"]["PercentItem"];
+            Planned: components["schemas"]["PercentItem"];
+            Readed: components["schemas"]["PercentItem"];
+            Abandoned: components["schemas"]["PercentItem"];
+            Postponed: components["schemas"]["PercentItem"];
         };
         BookmarkSummaryStatistic: {
             count: number;

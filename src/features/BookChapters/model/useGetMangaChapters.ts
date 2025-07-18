@@ -2,13 +2,13 @@ import { infiniteQueryOptions, useInfiniteQuery } from '@tanstack/react-query';
 import { useCallback, useEffect, useState } from 'react';
 import { handleBookChapters } from './handleBookChapters';
 import { publicFetchClient } from '@/shared/api/instance';
-import { BookIdType } from '@/shared/kernel/book/book';
+import { BookId } from '@/shared/kernel/book/book';
 import { useClearInfinityPages } from '@/shared/lib/hooks/useClearInfinityPages';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 
 type Order = 'asc' | 'desc';
 
-const queryOptions = (mangaId: BookIdType, search?: string, order?: Order) =>
+const queryOptions = (mangaId: BookId, search?: string, order?: Order) =>
     infiniteQueryOptions({
         // eslint-disable-next-line @tanstack/query/exhaustive-deps
         queryKey: ['get', '/manga/{mangaId}/chapters', mangaId, 30],
@@ -32,7 +32,7 @@ const queryOptions = (mangaId: BookIdType, search?: string, order?: Order) =>
         getNextPageParam: (lastPage) => lastPage?.nextPage,
     });
 
-export function useGetMangaChapters(mangaId: BookIdType) {
+export function useGetMangaChapters(mangaId: BookId) {
     const [order, setOrder] = useState<Order>('desc');
     const [search, setSearch] = useState('');
 

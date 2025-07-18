@@ -1,13 +1,13 @@
 import { ReactNode } from 'react';
 import { BookHoverCard } from './BookHoverCard';
-import { BookIdType } from '@/shared/kernel/book/book';
+import { BookId } from '@/shared/kernel/book/book';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 
 const MangaContent = lazyNamed(() => import('./MangaContent'), 'MangaContent');
 interface MangaHoverCardProps {
     className?: string;
     trigger?: ReactNode;
-    mangaId: BookIdType;
+    mangaId: BookId;
 }
 
 export const MangaHoverCard = (props: MangaHoverCardProps) => {

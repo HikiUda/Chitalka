@@ -1,8 +1,8 @@
 import { useQueryClient } from '@tanstack/react-query';
 import { authRqClient } from '@/shared/api/instance';
-import { BookIdType } from '@/shared/kernel/book/book';
+import { BookId } from '@/shared/kernel/book/book';
 
-export function useRanobeDeleteRate(ranobeId: BookIdType) {
+export function useRanobeDeleteRate(ranobeId: BookId) {
     const queryClient = useQueryClient();
     const { mutate, isPending } = authRqClient.useMutation('delete', '/ranobe/{ranobeId}/rate', {
         onSettled: async () => {

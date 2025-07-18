@@ -1,7 +1,7 @@
 import { authRqClient } from '@/shared/api/instance';
-import { BookIdType } from '@/shared/kernel/book/book';
+import { BookId } from '@/shared/kernel/book/book';
 
-export function useMangaGetBookmark(mangaId: BookIdType) {
+export function useMangaGetBookmark(mangaId: BookId) {
     const { data, isLoading } = authRqClient.useQuery('get', '/manga/{mangaId}/bookmark', {
         params: {
             path: {

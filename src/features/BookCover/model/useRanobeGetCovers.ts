@@ -1,7 +1,7 @@
 import { publicRqClient } from '@/shared/api/instance';
-import { BookIdType } from '@/shared/kernel/book/book';
+import { BookId } from '@/shared/kernel/book/book';
 
-export function useRanobeGetCovers(ranobeId: BookIdType) {
+export function useRanobeGetCovers(ranobeId: BookId) {
     const { data, isLoading } = publicRqClient.useSuspenseQuery(
         'get',
         '/ranobe/{ranobeId}/covers',

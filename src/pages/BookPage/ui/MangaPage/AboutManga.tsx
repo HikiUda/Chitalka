@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { isMobile } from 'react-device-detect';
 import { AboutBookLayout } from '../layout/AboutBookLayout';
-import { BookIdType } from '@/shared/kernel/book/book';
-import { MangaBookmarksStatistic, MangaRateStatistic } from '@/features/MangaStatistic';
+import { BookId } from '@/shared/kernel/book/book';
+import { MangaBookmarkStatistic, MangaRateStatistic } from '@/features/BookStatistic';
 import { TextDisclosure } from '@/shared/ui/kit/text-disclosure';
 import { RelatedMangaSlider } from '@/features/RelatedMangaSlider';
 import { cn } from '@/shared/lib/css';
@@ -17,7 +17,7 @@ import { Heading } from '@/shared/ui/kit/heading';
 
 interface AboutMangaProps {
     className?: string;
-    mangaId: BookIdType;
+    mangaId: BookId;
 }
 
 export const AboutManga: FC<AboutMangaProps> = (props) => {
@@ -30,7 +30,7 @@ export const AboutManga: FC<AboutMangaProps> = (props) => {
         <AboutBookLayout
             className={className}
             rateStatistic={<MangaRateStatistic mangaId={mangaId} />}
-            bookmarkStatistic={<MangaBookmarksStatistic mangaId={mangaId} />}
+            bookmarkStatistic={<MangaBookmarkStatistic mangaId={mangaId} />}
         >
             {isMobile && <BookBasicInfo basicInfo={basicInfo} />}
             <TextDisclosure text={manga.description} className="px-5" />
