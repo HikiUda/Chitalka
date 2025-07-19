@@ -1,13 +1,12 @@
 import { LogOutIcon } from 'lucide-react';
-import { FC } from 'react';
 import { useLogout } from '../model/useLogout';
 import { Button } from '@/shared/ui/kit/button';
 
-interface LogoutButtonProps {
+type LogoutButtonProps = {
     className?: string;
-}
+};
 
-export const LogoutButton: FC<LogoutButtonProps> = (props) => {
+export const LogoutButton = (props: LogoutButtonProps) => {
     const { className } = props;
     const { logout } = useLogout();
     return (

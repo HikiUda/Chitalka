@@ -5,7 +5,7 @@ import {
     MangaCatalogSortByOrder,
     MangaCatalogSearchInput,
     useGetMangaCatalog,
-} from '@/features/CatalogFilters';
+} from '@/features/BookCatalog';
 import { BookCard, BookGridLayout } from '@/entities/BookList';
 import { getRoute } from '@/shared/kernel/router';
 import { useIntersection } from '@/shared/lib/hooks/useIntersection';

@@ -1,4 +1,4 @@
-import { MangaCatalogFiltersSheet, MangaCatalogSortByOrder } from '@/features/CatalogFilters';
+import { MangaCatalogFiltersSheet, MangaCatalogSortByOrder } from '@/features/BookCatalog';
 import { HeaderLayout } from '@/shared/ui/layout/HeaderLayout';
 import { LogoShort } from '@/shared/ui/Logo';
 

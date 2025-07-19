@@ -11,11 +11,18 @@ type ChapterId =
           chapterId: number;
       };
 
-function getUrlChapterId(chapterIdProps: ChapterId) {
-    if (typeof chapterIdProps === 'number') return String(chapterIdProps);
+type UserId = number | { name: string; userId: number };
 
-    const { tome, chapter, chapterId } = chapterIdProps;
+function getUrlChapterId(props: ChapterId) {
+    if (typeof props === 'number') return String(props);
+
+    const { tome, chapter, chapterId } = props;
     return `${tome}-tome--${chapter}-chapter---${chapterId}`.replaceAll('.', ',');
+}
+
+function getUrlUserId(props: UserId) {
+    if (typeof props === 'number') return String(props);
+    return `${props.name}---${props.userId}`;
 }
 
 export const getRoute = {
@@ -47,4 +54,6 @@ export const getRoute = {
     // * People
 
     COLLECTIONS: () => Routes.COLLECTIONS,
+    PROFILE: (userId: UserId) => href(Routes.PROFILE, { userId: getUrlUserId(userId) }),
+    NOTFOUND: () => Routes.NOTFOUND,
 } as const satisfies Record<keyof typeof Routes, (...args: any[]) => string>;

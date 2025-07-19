@@ -2,18 +2,18 @@ import { Link } from 'react-router-dom';
 import { ArrowRightIcon, UserIcon } from 'lucide-react';
 import { cn } from '@/shared/lib/css';
 
-interface ProfileLinkProps {
+type ProfileLinkProps = {
     className?: string;
     username?: string;
-}
+    profileLink?: string;
+};
 
 export const ProfileLink = (props: ProfileLinkProps) => {
-    const { className, username } = props;
+    const { className, username, profileLink } = props;
 
     return (
         <Link
-            //TODO link
-            to={'/'}
+            to={profileLink ?? ''}
             className={cn(
                 'flex gap-4 w-full items-center py-1 px-2.5 bg-primary text-primary-foreground hover:bg-primary/80 transition-colors rounded-lg',
                 className,

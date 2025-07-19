@@ -1,28 +1,24 @@
-import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { useUserData } from '../model/useUserData';
 import { userMenuLinks } from '../model/userMenuLinks';
 import { ProfileLink } from './ProfileLink';
 import { LogoutButton } from './LogoutButton';
 import { Separator } from '@/shared/ui/kit/separator';
 import { cn } from '@/shared/lib/css';
 import { useAppTheme } from '@/shared/kernel/theme';
-import { PopoverContent } from '@/shared/ui/kit/popover';
 
-interface PopUserMenuContentProps {
+type PopUserMenuContentProps = {
     className?: string;
-}
+    username?: string;
+    profileLink?: string;
+};
 
-export const PopUserMenuContent: FC<PopUserMenuContentProps> = (props) => {
-    const { className } = props;
-
-    const { data } = useUserData();
+export const PopUserMenuContent = (props: PopUserMenuContentProps) => {
+    const { className, username, profileLink } = props;
     const { toggleTheme } = useAppTheme();
+
     return (
-        <PopoverContent
-            className={cn('flex flex-col items-center justify-center gap-2', className)}
-        >
-            <ProfileLink username={data?.name} />
+        <div className={cn('flex flex-col items-center justify-center gap-2', className)}>
+            <ProfileLink username={username} profileLink={profileLink} />
             <Separator />
             <div className="flex flex-col self-start gap-1 w-full">
                 {userMenuLinks.map(({ icon, text, to }) => (
@@ -40,6 +36,6 @@ export const PopUserMenuContent: FC<PopUserMenuContentProps> = (props) => {
                 theme
             </button>
             <LogoutButton className="w-full" />
-        </PopoverContent>
+        </div>
     );
 };

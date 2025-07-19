@@ -20,7 +20,9 @@ export const Routes = {
 
     COLLECTIONS: '/collections',
     // COLLECTION: 'collection',
-    // PROFILE: 'profile'
+    PROFILE: 'profile/:userId',
+
+    NOTFOUND: '*',
 } as const;
 export type Routes = ValueOf<typeof Routes>;
 
@@ -50,6 +52,10 @@ export type PathParams = {
         name: string;
     };
     // * People
+
+    [Routes.PROFILE]: {
+        userId: string;
+    };
 };
 
 declare module 'react-router-dom' {
