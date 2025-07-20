@@ -6,5 +6,5 @@ export const ageRatingSchema = z.object({
     ageRating: NumberArrayField,
 });
 export const ageRatingSchemaUrl = z.object({
-    ageRating: NumberArrayFieldUrl.pipe(AgeRatingEnum.array()),
+    ageRating: NumberArrayFieldUrl.pipe(AgeRatingEnum.array().catch([])),
 });

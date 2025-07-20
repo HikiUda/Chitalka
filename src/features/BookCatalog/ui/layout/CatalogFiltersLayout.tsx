@@ -1,5 +1,6 @@
 import { ReactNode, Suspense, useCallback, useState } from 'react';
 import { Slot } from '@radix-ui/react-slot';
+import { ErrorBoundary } from 'react-error-boundary';
 import cls from './catalog-filters.module.css';
 import { cn } from '@/shared/lib/css';
 import { Loader } from '@/shared/ui/kit/loader';
@@ -32,13 +33,15 @@ export const CatalogFiltersLayout = (props: CatalogFiltersProps) => {
 
     return (
         <div className={cn('relative bg-card h-full overflow-hidden', className)}>
-            <Suspense fallback={<Loader variant="flower" className="mx-auto" />}>
-                {!tagsOpen && !genresOpen && (
-                    <Slot className={cls.fadeOut}>{common(toGenres, toTags)}</Slot>
-                )}
-                {genresOpen && <Slot className={cls.fadeIn}>{genres(fromGenres)}</Slot>}
-                {tagsOpen && <Slot className={cls.fadeIn}>{tags(fromTags)}</Slot>}
-            </Suspense>
+            <ErrorBoundary fallback={<div>Что то пошло не так.</div>}>
+                <Suspense fallback={<Loader variant="flower" className="mx-auto" />}>
+                    {!tagsOpen && !genresOpen && (
+                        <Slot className={cls.fadeOut}>{common(toGenres, toTags)}</Slot>
+                    )}
+                    {genresOpen && <Slot className={cls.fadeIn}>{genres(fromGenres)}</Slot>}
+                    {tagsOpen && <Slot className={cls.fadeIn}>{tags(fromTags)}</Slot>}
+                </Suspense>
+            </ErrorBoundary>
         </div>
     );
 };

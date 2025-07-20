@@ -1,10 +1,10 @@
 import { CatalogFilterInitialState, CatalogFilterSlice } from '../../types';
 
-export type OrderType = 'asc' | 'desc';
+export type Order = 'asc' | 'desc';
 
 export type OrderSlice = {
-    order: OrderType;
-    setOrder: (order: OrderType) => void;
+    order: Order;
+    setOrder: (order: Order) => void;
 };
 
 export const orderSliceInitialState: CatalogFilterInitialState<OrderSlice> = {

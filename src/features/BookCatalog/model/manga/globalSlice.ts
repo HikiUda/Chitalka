@@ -1,4 +1,5 @@
 import { ageRatingSliceInitialState } from '../slices/ageRating/ageRatingSlice';
+import { bookLangSliceInitialState } from '../slices/bookLang/bookLangSlice';
 import { bookmarksSliceInitialState } from '../slices/bookmarks/bookmarksSlice';
 import { chapterCountSliceInitialState } from '../slices/chapterCount/chapterCountSlice';
 import { genresSliceInitialState } from '../slices/genres/genresSlice';
@@ -13,13 +14,14 @@ import { statusSliceInitialState } from '../slices/status/statusSlice';
 import { tagsSliceInitialState } from '../slices/tags/tagsSlice';
 
 import { CatalogFilterInitialState, CatalogFilterSlice, GlobalSlice } from '../types';
-import { MangaCatalogFiltersStoreType } from './mangaCatalogFiltersStore';
-import { MangaCatalogFiltersType } from './useApplyMangaCatalogFilters';
+import { MangaCatalogFiltersStoreType } from './useMangaCatalogFiltersStore';
+import { MangaCatalogFilters } from './useMangaCatalogApplyFilters';
 
 type InitialStateType = CatalogFilterInitialState<MangaCatalogFiltersStoreType>;
 
 const initialState: InitialStateType = {
     ...ageRatingSliceInitialState,
+    ...bookLangSliceInitialState,
     ...bookmarksSliceInitialState,
     ...chapterCountSliceInitialState,
     ...genresSliceInitialState,
@@ -35,18 +37,14 @@ const initialState: InitialStateType = {
     appliedFilters: {},
 };
 
-export type MangaGlobalSlice = GlobalSlice<MangaCatalogFiltersType>;
+export type MangaGlobalSlice = GlobalSlice<MangaCatalogFilters>;
 
 export const createGlobalSlice: CatalogFilterSlice<
     MangaGlobalSlice,
     MangaCatalogFiltersStoreType
 > = (storeName) => (set, get) => ({
-    resetAll: () =>
-        set(
-            (init: Partial<InitialStateType> = {}) => ({ ...initialState, ...init }),
-            false,
-            `${storeName}/resetAll`,
-        ),
+    resetAll: (init: Partial<InitialStateType> = {}) =>
+        set(() => ({ ...initialState, ...init }), false, `${storeName}/resetAll`),
     getFilters: () => get(),
     appliedFilters: {},
     setAppliedFilters: (appliedFilters) =>

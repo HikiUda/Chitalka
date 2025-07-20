@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { Slot } from '@radix-ui/react-slot';
 import { cn } from '@/shared/lib/css';
 
 type CatalogFilterCardLayoutProps = {
@@ -14,8 +13,8 @@ export const CatalogFilterCardLayout = (props: CatalogFilterCardLayoutProps) => 
     return (
         <div className={cn('flex flex-col h-full ', className)}>
             {header}
-            <div className="overflow-auto px-4 grow flex flex-col gap-4">{body}</div>
-            <Slot className="mx-4 mb-4">{footer}</Slot>
+            <div className="overflow-auto px-4 grow flex flex-col gap-4 pb-5">{body}</div>
+            <div className="m-4">{footer}</div>
         </div>
     );
 };

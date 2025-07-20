@@ -1,9 +1,9 @@
 import { CatalogFilterInitialState, CatalogFilterSlice } from '../../types';
-import { SortByType } from './sortBy';
+import { SortBy } from './sortBy';
 
 export type SortBySlice = {
-    sortBy: SortByType;
-    setSortBy: (sortBy: SortByType) => void;
+    sortBy: SortBy;
+    setSortBy: (sortBy: SortBy) => void;
 };
 
 export const sortBySliceInitialState: CatalogFilterInitialState<SortBySlice> = {

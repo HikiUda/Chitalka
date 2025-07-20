@@ -1,6 +1,6 @@
 import { ApiPaths } from '@/shared/api/instance';
 
-export type SortByType = NonNullable<
+export type SortBy = NonNullable<
     NonNullable<ApiPaths['/catalog/manga']['get']['parameters']['query']>['sortBy']
 >;
 
@@ -13,4 +13,4 @@ export const SortBy = {
     views: 'views',
     likes: 'likes',
     chapterCount: 'chapterCount',
-} as const satisfies Record<SortByType, string>;
+} as const satisfies Record<SortBy, string>;

@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
 import { AgeRatingSlice, createAgeRatingSlice } from '../slices/ageRating/ageRatingSlice';
+import { BookLangSlice, createBookLangSlice } from '../slices/bookLang/bookLangSlice';
 import { BookmarksSlice, createBookmarksSlice } from '../slices/bookmarks/bookmarksSlice';
 import {
     ChapterCountSlice,
@@ -22,6 +23,7 @@ import { MangaGlobalSlice, createGlobalSlice } from './globalSlice';
 import { createZustandStoreSelectors } from '@/shared/lib/helpers/createZustandStoreSelectors';
 
 export type MangaCatalogFiltersStoreType = AgeRatingSlice &
+    BookLangSlice &
     BookmarksSlice &
     ChapterCountSlice &
     GenresSlice &
@@ -38,10 +40,11 @@ export type MangaCatalogFiltersStoreType = AgeRatingSlice &
 
 const StoreName = 'MangaCatalogFilters';
 
-export const useMangaCatalogFiltersStoreBase = create<MangaCatalogFiltersStoreType>()(
+const useMangaCatalogFiltersStoreBase = create<MangaCatalogFiltersStoreType>()(
     devtools(
         (...a) => ({
             ...createAgeRatingSlice(StoreName)(...a),
+            ...createBookLangSlice(StoreName)(...a),
             ...createBookmarksSlice(StoreName)(...a),
             ...createChapterCountSlice(StoreName)(...a),
             ...createGenresSlice(StoreName)(...a),

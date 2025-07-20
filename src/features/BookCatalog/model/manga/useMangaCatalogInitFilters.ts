@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 
 import { ageRatingSchemaUrl } from '../slices/ageRating/ageRatingSchema';
+import { bookLangSchemaUrl } from '../slices/bookLang/bookLangSchema';
 import { bookmarksSchemaUrl } from '../slices/bookmarks/bookmarksSchema';
 import { chapterCountSchemaUrl } from '../slices/chapterCount/chapterCountSchema';
 import { genresSchemaUrl } from '../slices/genres/genresSchema';
@@ -14,11 +15,12 @@ import { sortBySchemaUrl } from '../slices/sortBy/sortBySchema';
 import { statusSchemaUrl } from '../slices/status/statusSchema';
 import { tagsSchemaUrl } from '../slices/tags/tagsSchema';
 
-import { useMangaCatalogFiltersStore } from './mangaCatalogFiltersStore';
-import { useApplyMangaCatalogFilters } from './useApplyMangaCatalogFilters';
+import { useMangaCatalogFiltersStore } from './useMangaCatalogFiltersStore';
+import { useMangaCatalogApplyFilters } from './useMangaCatalogApplyFilters';
 import { useUrlSearchParams } from '@/shared/lib/hooks/useUrlSearchParams';
 
 const MangaCatalogFiltersSchemaUrl = ageRatingSchemaUrl
+    .and(bookLangSchemaUrl)
     .and(bookmarksSchemaUrl)
     .and(chapterCountSchemaUrl)
     .and(genresSchemaUrl)
@@ -32,24 +34,24 @@ const MangaCatalogFiltersSchemaUrl = ageRatingSchemaUrl
     .and(statusSchemaUrl)
     .and(tagsSchemaUrl);
 
-export function useInitMangaCatalogFilters() {
-    const [init, setInit] = useState(false);
-    const { getAllSearchParams } = useUrlSearchParams();
+export function useMangaCatalogInitFilters() {
+    const [isInit, setIsInit] = useState(false);
+    const { getAllSearchParams, setAnySearchParams } = useUrlSearchParams();
     const resetAll = useMangaCatalogFiltersStore.use.resetAll();
+    const { applyFiltersCore } = useMangaCatalogApplyFilters();
     const appliedFilters = useMangaCatalogFiltersStore.use.appliedFilters();
-    const { applyFilters } = useApplyMangaCatalogFilters(() => 0, false);
 
     const initFilters = useCallback(() => {
-        if (init) return;
-        setInit(true);
         const params = getAllSearchParams();
-        if (Object.keys(params).length === 0) return;
-        const data = MangaCatalogFiltersSchemaUrl.parse(params);
-        resetAll(data);
-        applyFilters();
-    }, [applyFilters, getAllSearchParams, init, resetAll]);
+        if (Object.keys(params).length === 0) {
+            setAnySearchParams(appliedFilters);
+        } else {
+            const data = MangaCatalogFiltersSchemaUrl.parse(params);
+            resetAll(data);
+            applyFiltersCore();
+        }
+        setIsInit(true);
+    }, [getAllSearchParams, resetAll, applyFiltersCore, setAnySearchParams, appliedFilters]);
 
-    initFilters();
-
-    return { appliedFilters };
+    return { initFilters, isInit };
 }

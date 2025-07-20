@@ -1,6 +1,6 @@
 import { ChevronDownIcon } from 'lucide-react';
 import { DropdownMenuLabel } from '@radix-ui/react-dropdown-menu';
-import { Bookmarks } from '@/shared/kernel/book';
+import { Bookmarks } from '@/shared/kernel/book/bookmarks';
 import { Button } from '@/shared/ui/kit/button';
 import {
     DropdownMenu,

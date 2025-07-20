@@ -20,9 +20,16 @@ export function useUrlSearchParams() {
         searchParams.delete(param);
     };
 
+    const setAnySearchParams = (params: Record<string, unknown>) => {
+        setSearchParams(
+            Object.fromEntries(Object.entries(params).map(([key, value]) => [key, String(value)])),
+        );
+    };
+
     return {
         setSearchParam,
         setSearchParams,
+        setAnySearchParams,
         getSearchParam,
         getAllSearchParams,
         deleteSearchParam,

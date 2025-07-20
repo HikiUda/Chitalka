@@ -1,5 +1,5 @@
-import { useMangaCatalogFiltersStore } from '../../model/manga/mangaCatalogFiltersStore';
-import { useApplyMangaCatalogFilters } from '../../model/manga/useApplyMangaCatalogFilters';
+import { useMangaCatalogFiltersStore } from '../../model/manga/useMangaCatalogFiltersStore';
+import { useMangaCatalogApplyFilters } from '../../model/manga/useMangaCatalogApplyFilters';
 import { useOrder } from '../../model/slices/order/useOrder';
 import { useSortBy } from '../../model/slices/sortBy/useSortBy';
 import { OrderMenuGroup } from '../filters-build-blocks/SortByOrderMenu/OrderMenuGroup';
@@ -13,7 +13,7 @@ type MangaCatalogSortByOrderProps = {
 export const MangaCatalogSortByOrder = (props: MangaCatalogSortByOrderProps) => {
     const { className } = props;
 
-    const { applyFilters } = useApplyMangaCatalogFilters();
+    const { applyFilters } = useMangaCatalogApplyFilters();
     const store = useMangaCatalogFiltersStore.use;
     const order = useOrder(store);
     const sortBy = useSortBy(store);

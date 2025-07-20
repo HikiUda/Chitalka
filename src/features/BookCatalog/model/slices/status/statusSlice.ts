@@ -1,5 +1,5 @@
 import { CatalogFilterInitialState, CatalogFilterSlice } from '../../types';
-import { BookStatus } from '@/shared/kernel/book';
+import { BookStatus } from '@/shared/kernel/book/bookStatus';
 
 //TODO rename BookStatus
 export type StatusSlice = {

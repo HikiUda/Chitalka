@@ -39,6 +39,7 @@ const CheckboxGroup = <T extends string | number>(props: CheckboxGroupProps<T>) 
                         <Checkbox
                             checked={values.includes(checkbox.value)}
                             onCheckedChange={(check) => onCheck(check, checkbox.value)}
+                            className="cursor-pointer"
                         />
                         <Label>{checkbox.label}</Label>
                     </div>

@@ -18,6 +18,7 @@ type CategoryCheckboxGroupProps<T extends string | number> = {
 const CategoryCheckboxGroup = <T extends string | number>(props: CategoryCheckboxGroupProps<T>) => {
     const { className, include, exclude, onChangeInclude, onChangeExclude, checkboxes } = props;
 
+    // ? May memo if include and exclude throw
     const onCheck = (value: T, nextState: TriSwitchState) => {
         switch (nextState) {
             case 'include':

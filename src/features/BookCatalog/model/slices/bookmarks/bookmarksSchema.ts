@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { StringArrayField, StringArrayFieldUrl } from '../../filtersSchemas';
-import { BookmarksEnum } from '@/shared/kernel/book';
+import { BookmarksEnum } from '@/shared/kernel/book/bookmarks';
 
 export const bookmarksSchema = z.object({
     bookmarks: StringArrayField,

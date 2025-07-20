@@ -13,10 +13,10 @@ export const mapHeaderContent: OptionalRecord<
     Routes,
     { desktop?: ReactNode; mobile?: ReactNode }
 > & { default: Required<Platforms> } = {
-    default: { desktop: <HeaderMain />, mobile: <HeaderQuickSearch /> },
     [Routes.MANGA_CATALOG]: { mobile: <MangaCatalogHeader /> },
     [Routes.MANGA_READ]: {
         desktop: <ReadMangaHeader />,
         mobile: <ReadMangaHeader />,
     },
+    default: { desktop: <HeaderMain />, mobile: <HeaderQuickSearch /> },
 };

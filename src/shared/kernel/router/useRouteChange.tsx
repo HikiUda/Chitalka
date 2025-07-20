@@ -8,6 +8,7 @@ export function useRouteChange() {
 
     useEffect(() => {
         Object.values(Routes).forEach((pattern) => {
+            if (pattern === '*') return;
             if (matchPath(pattern, location.pathname)) {
                 setAppRoute(pattern);
             }

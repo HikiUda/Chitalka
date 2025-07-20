@@ -1,5 +1,5 @@
 import { CatalogFilterInitialState, CatalogFilterSlice } from '../../types';
-import { MangaType } from '@/shared/kernel/book';
+import { MangaType } from '@/shared/kernel/book/mangaTypes';
 
 export type MangaTypeSlice = {
     type: MangaType[];
