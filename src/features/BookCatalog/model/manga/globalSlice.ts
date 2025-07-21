@@ -13,7 +13,7 @@ import { sortBySliceInitialState } from '../slices/sortBy/sortBySlice';
 import { statusSliceInitialState } from '../slices/status/statusSlice';
 import { tagsSliceInitialState } from '../slices/tags/tagsSlice';
 
-import { CatalogFilterInitialState, CatalogFilterSlice, GlobalSlice } from '../types';
+import { CatalogFilterInitialState, CatalogFilterSlice, GlobalSlice } from '../helpers/types';
 import { MangaCatalogFiltersStoreType } from './useMangaCatalogFiltersStore';
 import { MangaCatalogFilters } from './useMangaCatalogApplyFilters';
 

@@ -1,4 +1,4 @@
-import { CatalogFilterInitialState, CatalogFilterSlice } from '../../types';
+import { CatalogFilterInitialState, CatalogFilterSlice } from '../../helpers/types';
 
 export type RateSlice = {
     rateFrom: number;

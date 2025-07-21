@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { StringArrayField, StringArrayFieldUrl } from '../../filtersSchemas';
+import { StringArrayField, StringArrayFieldUrl } from '../../helpers/filtersSchemas';
 import { BookStatusEnum } from '@/shared/kernel/book/bookStatus';
 
 export const statusSchema = z.object({

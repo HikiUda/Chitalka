@@ -9,6 +9,11 @@ type ChapterId =
           tome: number;
           chapter: number;
           chapterId: number;
+      }
+    | {
+          tome: number;
+          chapter: number;
+          id: number;
       };
 
 type UserId = number | { name: string; userId: number };
@@ -16,7 +21,8 @@ type UserId = number | { name: string; userId: number };
 function getUrlChapterId(props: ChapterId) {
     if (typeof props === 'number') return String(props);
 
-    const { tome, chapter, chapterId } = props;
+    const { tome, chapter } = props;
+    const chapterId = 'chapterId' in props ? props.chapterId : props.id;
     return `${tome}-tome--${chapter}-chapter---${chapterId}`.replaceAll('.', ',');
 }
 

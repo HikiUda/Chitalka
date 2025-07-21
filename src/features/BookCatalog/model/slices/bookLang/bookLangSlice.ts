@@ -1,13 +1,13 @@
-import { CatalogFilterInitialState, CatalogFilterSlice } from '../../types';
+import { CatalogFilterInitialState, CatalogFilterSlice } from '../../helpers/types';
 import { BookLang } from '@/shared/kernel/book/bookLang';
 
 export type BookLangSlice = {
-    bookLang: BookLang | undefined;
-    setBookLang: (bookLang: BookLang | undefined) => void;
+    bookLang: BookLang | 'all';
+    setBookLang: (bookLang: BookLang | 'all') => void;
 };
 
 export const bookLangSliceInitialState: CatalogFilterInitialState<BookLangSlice> = {
-    bookLang: undefined,
+    bookLang: 'all',
 };
 
 export const createBookLangSlice: CatalogFilterSlice<BookLangSlice> = (storeName) => (set) => ({

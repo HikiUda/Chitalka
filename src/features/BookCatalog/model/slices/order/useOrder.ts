@@ -1,4 +1,4 @@
-import { CatalogFilterSliceSelector } from '../../types';
+import { CatalogFilterSliceSelector } from '../../helpers/types';
 import { OrderSlice } from './orderSlice';
 
 export function useOrder(slice: CatalogFilterSliceSelector<OrderSlice>) {

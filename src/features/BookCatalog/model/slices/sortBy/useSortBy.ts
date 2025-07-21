@@ -1,4 +1,4 @@
-import { CatalogFilterSliceSelector } from '../../types';
+import { CatalogFilterSliceSelector } from '../../helpers/types';
 import { SortBySlice } from './sortBySlice';
 
 export function useSortBy(slice: CatalogFilterSliceSelector<SortBySlice>) {

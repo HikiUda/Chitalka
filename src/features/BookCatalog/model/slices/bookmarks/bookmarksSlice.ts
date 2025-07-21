@@ -1,4 +1,4 @@
-import { CatalogFilterInitialState, CatalogFilterSlice } from '../../types';
+import { CatalogFilterInitialState, CatalogFilterSlice } from '../../helpers/types';
 import { Bookmarks } from '@/shared/kernel/book/bookmarks';
 
 export type BookmarksSlice = {

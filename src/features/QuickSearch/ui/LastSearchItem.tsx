@@ -3,13 +3,13 @@ import { useCallback } from 'react';
 import { Button } from '@/shared/ui/kit/button';
 import { cn } from '@/shared/lib/css';
 
-interface LastSearchItemProps {
+type LastSearchItemProps = {
     className?: string;
     children: string;
     onSelectSearch: () => void;
     onDelete: () => void;
     disabled?: boolean;
-}
+};
 
 export const LastSearchItem = (props: LastSearchItemProps) => {
     const { className, children, onSelectSearch, onDelete, disabled } = props;
@@ -21,6 +21,7 @@ export const LastSearchItem = (props: LastSearchItemProps) => {
         },
         [onDelete],
     );
+
     return (
         <div
             onClick={onSelectSearch}

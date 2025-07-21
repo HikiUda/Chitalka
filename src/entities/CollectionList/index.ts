@@ -1,2 +1,2 @@
-export { CollectionCard } from './ui/CollectionCard/CollectionCard';
-export { CollectionGridLayout } from './ui/CollectionGridLayout/CollectionGridLayout';
+export { CollectionCard } from './CollectionCard';
+export { CollectionGridLayout } from './CollectionGridLayout';

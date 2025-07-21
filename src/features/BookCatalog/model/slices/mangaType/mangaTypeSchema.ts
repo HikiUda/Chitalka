@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { StringArrayField, StringArrayFieldUrl } from '../../filtersSchemas';
+import { StringArrayField, StringArrayFieldUrl } from '../../helpers/filtersSchemas';
 import { MangaTypeEnum } from '@/shared/kernel/book/mangaTypes';
 
 export const mangaTypeSchema = z.object({

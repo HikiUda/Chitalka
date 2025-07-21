@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { NumberArrayField, NumberArrayFieldUrl } from '../../filtersSchemas';
+import { NumberArrayField, NumberArrayFieldUrl } from '../../helpers/filtersSchemas';
 import { AgeRatingEnum } from '@/shared/kernel/book/ageRating';
 
 export const ageRatingSchema = z.object({

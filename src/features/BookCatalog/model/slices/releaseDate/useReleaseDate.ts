@@ -1,4 +1,4 @@
-import { CatalogFilterSliceSelector } from '../../types';
+import { CatalogFilterSliceSelector } from '../../helpers/types';
 import { ReleaseDateSlice } from './releaseDateSlice';
 
 export function useReleaseDate(slice: CatalogFilterSliceSelector<ReleaseDateSlice>) {

@@ -1,5 +1,5 @@
-import { useLastQuickSearch } from '../model/useLastQuickSearch';
-import { useDeleteLastQuickSearch } from '../model/useDeleteLastQuickSearch';
+import { useMangaQuickSearchGetLast } from '../model/useMangaQuickSearchGetLast';
+import { useMangaQuickSearchDeleteLast } from '../model/useMangaQuickSearchDeleteLast';
 import { LastSearchItem } from './LastSearchItem';
 
 interface LastSearchListProps {
@@ -9,8 +9,8 @@ interface LastSearchListProps {
 
 export const LastSearchList = (props: LastSearchListProps) => {
     const { className, onSelectSearch } = props;
-    const { data = [], isLoading } = useLastQuickSearch();
-    const { deleteLastSearch, getIsPending } = useDeleteLastQuickSearch();
+    const { data = [], isLoading } = useMangaQuickSearchGetLast();
+    const { quickSearchDeleteLast, getIsPending } = useMangaQuickSearchDeleteLast();
 
     if (!data.length) return null;
 
@@ -19,7 +19,7 @@ export const LastSearchList = (props: LastSearchListProps) => {
             {data.map((item) => (
                 <LastSearchItem
                     onSelectSearch={() => onSelectSearch(item)}
-                    onDelete={() => deleteLastSearch(item)}
+                    onDelete={() => quickSearchDeleteLast(item)}
                     disabled={getIsPending(item)}
                     key={item}
                 >

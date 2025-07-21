@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { CatalogFilterSliceSelector } from '../../types';
+import { CatalogFilterSliceSelector } from '../../helpers/types';
 import { CheckboxType } from '../../../ui/filters-build-blocks/CheckboxGroup';
 import { RanobeTypeSlice } from './ranobeTypeSlice';
 import { RanobeType } from '@/shared/kernel/book/ranobeType';

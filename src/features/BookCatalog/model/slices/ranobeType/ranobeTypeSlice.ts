@@ -1,4 +1,4 @@
-import { CatalogFilterInitialState, CatalogFilterSlice } from '../../types';
+import { CatalogFilterInitialState, CatalogFilterSlice } from '../../helpers/types';
 import { RanobeType } from '@/shared/kernel/book/ranobeType';
 
 export type RanobeTypeSlice = {

@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { CatalogFilterSliceSelector } from '../../types';
+import { CatalogFilterSliceSelector } from '../../helpers/types';
 import { CheckboxType } from '../../../ui/filters-build-blocks/CheckboxGroup';
 import { MangaTypeSlice } from './mangaTypeSlice';
 import { MangaType } from '@/shared/kernel/book/mangaTypes';

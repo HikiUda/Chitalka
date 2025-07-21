@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { NumberArrayField, NumberArrayFieldUrl } from '../../filtersSchemas';
+import { NumberArrayField, NumberArrayFieldUrl } from '../../helpers/filtersSchemas';
 
 export const genresSchema = z.object({
     genres: NumberArrayField,

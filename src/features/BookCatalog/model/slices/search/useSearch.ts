@@ -1,4 +1,4 @@
-import { CatalogFilterSliceSelector } from '../../types';
+import { CatalogFilterSliceSelector } from '../../helpers/types';
 import { SearchSlice } from './searchSlice';
 
 export function useSearch(slice: CatalogFilterSliceSelector<SearchSlice>) {

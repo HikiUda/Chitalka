@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { StringArrayField, StringArrayFieldUrl } from '../../filtersSchemas';
+import { StringArrayField, StringArrayFieldUrl } from '../../helpers/filtersSchemas';
 import { BookmarksEnum } from '@/shared/kernel/book/bookmarks';
 
 export const bookmarksSchema = z.object({

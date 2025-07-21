@@ -1,4 +1,4 @@
-import { CatalogFilterInitialState, CatalogFilterSlice } from '../../types';
+import { CatalogFilterInitialState, CatalogFilterSlice } from '../../helpers/types';
 import { BookStatus } from '@/shared/kernel/book/bookStatus';
 
 //TODO rename BookStatus

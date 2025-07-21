@@ -1,10 +1,8 @@
-import { EyeIcon, EyeOffIcon } from 'lucide-react';
-import { useGetMangaChapters } from '../../model/useGetMangaChapters';
-import { BookChaptersLayout } from '../layout/BookChaptersLayout';
+import { useMangaGetChapterList } from '../../model/manga/useMangaGetChapterList';
+import { BookChaptersLayout, ChapterEyeIcon } from '../layout/BookChaptersLayout';
 import { BookId } from '@/shared/kernel/book/book';
 import { ChapterList, ChapterListItem } from '@/entities/ChapterList';
 import { useIntersection } from '@/shared/lib/hooks/useIntersection';
-
 import { Input } from '@/shared/ui/kit/input';
 import { ToggleOrder } from '@/entities/ToggleOrder';
 import { useTrottle } from '@/shared/lib/hooks/useTrottle';
@@ -12,10 +10,11 @@ import { useTrottle } from '@/shared/lib/hooks/useTrottle';
 type MangaChaptersProps = {
     className?: string;
     mangaId: BookId;
+    onChapterClick?: () => void;
 };
 
 export const MangaChapters = (props: MangaChaptersProps) => {
-    const { className, mangaId } = props;
+    const { className, mangaId, onChapterClick } = props;
 
     const {
         chapters = [],
@@ -23,7 +22,7 @@ export const MangaChapters = (props: MangaChaptersProps) => {
         isFetching,
         order,
         search,
-    } = useGetMangaChapters(mangaId);
+    } = useMangaGetChapterList(mangaId);
 
     const trottleFetchNextPage = useTrottle(() => fetchNextPage(), 1000);
     const intersect = useIntersection(() => {
@@ -41,15 +40,10 @@ export const MangaChapters = (props: MangaChaptersProps) => {
                     renderChapter={(chapter) => (
                         <ChapterListItem
                             key={chapter.id}
-                            before={
-                                chapter.isUserViewed ? (
-                                    <EyeIcon size={15} />
-                                ) : (
-                                    <EyeOffIcon size={15} />
-                                )
-                            }
+                            before={<ChapterEyeIcon isUserViewed={chapter.isUserViewed} />}
                             mangaId={mangaId}
                             chapter={chapter}
+                            onClick={onChapterClick}
                         />
                     )}
                     isLoading={isFetching}

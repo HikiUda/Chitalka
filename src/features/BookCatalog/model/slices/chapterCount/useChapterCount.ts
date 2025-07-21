@@ -1,4 +1,4 @@
-import { CatalogFilterSliceSelector } from '../../types';
+import { CatalogFilterSliceSelector } from '../../helpers/types';
 import { ChapterCountSlice } from './chapterCountSlice';
 
 export function useChapterCount(slice: CatalogFilterSliceSelector<ChapterCountSlice>) {

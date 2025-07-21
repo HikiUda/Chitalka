@@ -1,7 +1,13 @@
 import { ReactNode } from 'react';
 import { Slot } from '@radix-ui/react-slot';
+import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import { Separator } from '@/shared/ui/kit/separator';
 import { cn } from '@/shared/lib/css';
+
+export const ChapterEyeIcon = ({ isUserViewed }: { isUserViewed: boolean }) => {
+    const Icon = isUserViewed ? EyeIcon : EyeOffIcon;
+    return <Icon size={15} />;
+};
 
 type BookChaptersLayoutProps = {
     className?: string;

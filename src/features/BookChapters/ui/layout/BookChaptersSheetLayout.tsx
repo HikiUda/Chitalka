@@ -1,21 +1,24 @@
-import { MoveLeftIcon } from 'lucide-react';
+import { ListOrderedIcon, MoveLeftIcon } from 'lucide-react';
 import { ReactNode } from 'react';
 import { Heading } from '@/shared/ui/kit/heading';
 import { Sheet, SheetBody, SheetClose, SheetTitle, SheetTrigger } from '@/shared/ui/kit/sheet';
+import { cn } from '@/shared/lib/css';
 
 type BookChaptersSheetLayoutProps = {
-    trigger: ReactNode;
+    className?: string;
     children: ReactNode;
     open: boolean;
     onOpenChange: (open: boolean) => void;
 };
 
 export const BookChaptersSheetLayout = (props: BookChaptersSheetLayoutProps) => {
-    const { trigger, children, open, onOpenChange } = props;
+    const { children, open, onOpenChange, className } = props;
 
     return (
         <Sheet open={open} onOpenChange={onOpenChange}>
-            <SheetTrigger asChild>{trigger}</SheetTrigger>
+            <SheetTrigger className={cn('cursor-pointer', className)}>
+                <ListOrderedIcon size={30} />
+            </SheetTrigger>
             <SheetBody>
                 <SheetClose className="flex items-center gap-1 px-2.5 pt-3 cursor-pointer">
                     <MoveLeftIcon className="stroke-primary" />

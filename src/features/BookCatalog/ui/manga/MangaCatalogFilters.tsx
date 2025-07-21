@@ -63,7 +63,7 @@ export const MangaCatalogFilters = (props: MangaCatalogFiltersProps) => {
                             <Range {...rateCount} label="Количество оценнок" />
                             <DateRange {...releaseDate} label="Дата релиза" />
                             <CheckboxGroup {...ageRating} label="Возростной рейтинг" />
-                            <SelectField {...bookLang} placeholder="Язык" />
+                            <SelectField {...bookLang} label="Язык" />
                             <CheckboxGroup {...status} label="Статус" />
                             <CheckboxGroup {...type} label="Тип" />
                             <CheckboxGroup {...bookmarks} label="В моих закладках" />

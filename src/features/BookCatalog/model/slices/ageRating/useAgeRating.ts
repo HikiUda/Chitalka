@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { CheckboxType } from '../../../ui/filters-build-blocks/CheckboxGroup';
-import { CatalogFilterSliceSelector } from '../../types';
+import { CatalogFilterSliceSelector } from '../../helpers/types';
 import { AgeRatingSlice } from './ageRatingSlice';
 import { AgeRating } from '@/shared/kernel/book/ageRating';
 

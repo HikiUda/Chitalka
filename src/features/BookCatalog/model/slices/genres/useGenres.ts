@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from 'react';
-import { CatalogFilterSliceSelector } from '../../types';
+import { CatalogFilterSliceSelector } from '../../helpers/types';
 import { CategoryCheckboxType } from '../../../ui/filters-build-blocks/CategoryCheckboxGroup';
 import { GenresSlice } from './genresSlice';
 import { useGetGenres } from './useGetGenres';

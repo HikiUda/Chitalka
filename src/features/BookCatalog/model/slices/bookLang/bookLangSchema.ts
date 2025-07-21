@@ -5,5 +5,5 @@ export const bookLangSchema = z.object({
     bookLang: BookLangEnum.optional().catch(undefined),
 });
 export const bookLangSchemaUrl = z.object({
-    bookLang: BookLangEnum.optional().catch(undefined),
+    bookLang: BookLangEnum.or(z.literal('all')).optional().catch(undefined),
 });

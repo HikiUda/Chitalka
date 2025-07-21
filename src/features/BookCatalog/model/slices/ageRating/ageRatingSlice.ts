@@ -1,4 +1,4 @@
-import { CatalogFilterInitialState, CatalogFilterSlice } from '../../types';
+import { CatalogFilterInitialState, CatalogFilterSlice } from '../../helpers/types';
 import { AgeRating } from '@/shared/kernel/book/ageRating';
 
 export type AgeRatingSlice = {

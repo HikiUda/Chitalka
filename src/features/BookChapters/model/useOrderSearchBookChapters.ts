@@ -1,11 +1,18 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 
-type Order = 'asc' | 'desc';
+export type Order = 'asc' | 'desc';
 
-export function useOrderSearchBookChapters(refetch: () => void) {
-    const [order, setOrder] = useState<Order>('desc');
-    const [search, setSearch] = useState('');
+type UseOrderSearchBookChaptersProps = {
+    refetch: () => void;
+    search: string;
+    order: Order;
+    setSearch: (search: string) => void;
+    setOrder: (order: Order) => void;
+};
+
+export function useOrderSearchBookChapters(props: UseOrderSearchBookChaptersProps) {
+    const { refetch, setSearch, setOrder, order, search } = props;
     const handleRefetch = useDebounce(refetch, 500);
 
     const handleSetSearch = useCallback(
@@ -13,15 +20,15 @@ export function useOrderSearchBookChapters(refetch: () => void) {
             setSearch(value);
             handleRefetch();
         },
-        [handleRefetch],
+        [handleRefetch, setSearch],
     );
 
     const handleSetOrder = useCallback(
         (value: Order) => {
             setOrder(value);
-            refetch();
+            handleRefetch();
         },
-        [refetch],
+        [handleRefetch, setOrder],
     );
 
     return {

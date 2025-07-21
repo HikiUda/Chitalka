@@ -6,7 +6,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/shared/ui/kit/select';
-import { cn } from '@/shared/lib/css';
+import { Heading } from '@/shared/ui/kit/heading';
 
 export type SelectFieldItem<T extends string> = {
     value: T;
@@ -16,26 +16,29 @@ export type SelectFieldItem<T extends string> = {
 type SelectFieldProps<T extends string> = {
     className?: string;
     items: SelectFieldItem<T>[];
-    placeholder?: string | number;
+    label?: string | number;
     value: T | undefined;
     onValueChange: (value: T) => void;
 };
 
 const SelectField = <T extends string>(props: SelectFieldProps<T>) => {
-    const { className, items, placeholder, value, onValueChange } = props;
+    const { className, items, label, value, onValueChange } = props;
     return (
-        <Select value={value} onValueChange={onValueChange}>
-            <SelectTrigger className={cn('w-[180px]', className)}>
-                <SelectValue placeholder={placeholder} />
-            </SelectTrigger>
-            <SelectContent>
-                {items.map((item) => (
-                    <SelectItem key={item.value} value={item.value}>
-                        {item.label}
-                    </SelectItem>
-                ))}
-            </SelectContent>
-        </Select>
+        <div className={className}>
+            <Heading color="primary">{label}</Heading>
+            <Select value={value} onValueChange={onValueChange}>
+                <SelectTrigger className="w-[180px] cursor-pointer">
+                    <SelectValue placeholder={label} />
+                </SelectTrigger>
+                <SelectContent>
+                    {items.map((item) => (
+                        <SelectItem className="cursor-pointer" key={item.value} value={item.value}>
+                            {item.label}
+                        </SelectItem>
+                    ))}
+                </SelectContent>
+            </Select>
+        </div>
     );
 };
 const SelectFieldMemo = memo(SelectField) as typeof SelectField;

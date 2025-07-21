@@ -5,6 +5,8 @@ import { Skeleton } from '@/shared/ui/kit/skeleton';
 import { AppAdaptiveImage } from '@/shared/ui/AppAdaptiveImage';
 import { cn } from '@/shared/lib/css';
 
+const isNullUndefined = (val: unknown) => val === undefined || val === null;
+
 export const bookCardVariants = cva('block', {
     variants: {
         adaptive: {
@@ -44,17 +46,17 @@ export const BookCard = (props: BookCardProps) => {
                 className="w-full pb-[141%]"
                 img={img}
             >
-                {label1 && (
+                {!isNullUndefined(label1) && (
                     <span className="absolute top-2 -left-1 min-w-[30px] max-w-[40px] text-ellipsis text-center bg-primary text-sm px-1 py-0.5 rounded-xs overflow-hidden whitespace-nowrap">
                         {label1}
                     </span>
                 )}
-                {label2 && (
+                {!isNullUndefined(label2) && (
                     <span className="absolute top-2 right-1 max-w-[60px] text-ellipsis overflow-hidden text-center bg-secondary text-sm px-1 py-0.5 rounded-xs whitespace-nowrap">
                         {label2}
                     </span>
                 )}
-                {label3 && (
+                {!isNullUndefined(label3) && (
                     <span className="absolute bottom-2.5 left-1 max-w-[70px] text-ellipsis text-white bg-[rgba(0,0,0,0.6)] text-sm text-center px-1 py-0.5 rounded-xs overflow-hidden whitespace-nowrap">
                         {label3}
                     </span>

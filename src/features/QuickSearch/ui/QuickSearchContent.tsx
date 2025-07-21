@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import { BookmarkIcon, EyeIcon, HeartIcon, SearchIcon } from 'lucide-react';
-import { useQuickSearch } from '../model/useQuickSearch';
+import { useMangaQuickSearch } from '../model/useMangaQuickSearch';
 import { LastSearchList } from './LastSearchList';
 import { QuickSearchList } from './QuickSearchList';
 import { Separator } from '@/shared/ui/kit/separator';
@@ -13,7 +13,7 @@ import { getRoute } from '@/shared/kernel/router';
 
 export const QuickSearchContent = () => {
     const [search, setSearch] = useState('');
-    const { data = [], refetch, isFetching } = useQuickSearch(search);
+    const { data = [], refetch, isFetching } = useMangaQuickSearch(search);
 
     const goSearch = useDebounce(refetch, 200);
 

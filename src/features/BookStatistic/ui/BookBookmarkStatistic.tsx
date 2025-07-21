@@ -1,4 +1,4 @@
-import { Bookmarks } from '@/shared/kernel/book';
+import { Bookmarks } from '@/shared/kernel/book/bookmarks';
 import { Progress } from '@/shared/ui/kit/progress';
 import { Heading } from '@/shared/ui/kit/heading';
 import { Skeleton } from '@/shared/ui/kit/skeleton';

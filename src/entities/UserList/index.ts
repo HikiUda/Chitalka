@@ -1,2 +1,2 @@
-export { UserCard } from './ui/UserCard/UserCard';
-export { UserGridLayout } from './ui/UserGridLayout/UserGridLayout';
+export { UserCard } from './UserCard';
+export { UserGridLayout } from './UserGridLayout';

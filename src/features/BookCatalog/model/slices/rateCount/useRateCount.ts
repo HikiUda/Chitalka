@@ -1,4 +1,4 @@
-import { CatalogFilterSliceSelector } from '../../types';
+import { CatalogFilterSliceSelector } from '../../helpers/types';
 import { RateCountSlice } from './rateCountSlice';
 
 export function useRateCount(slice: CatalogFilterSliceSelector<RateCountSlice>) {

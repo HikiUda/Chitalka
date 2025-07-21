@@ -1,6 +1,6 @@
 import { authRqClient } from '@/shared/api/instance';
 
-export function useLastQuickSearch() {
+export function useMangaQuickSearchGetLast() {
     const { data, isLoading } = authRqClient.useQuery('get', '/quick-search/manga/last');
     return {
         data: data?.data,

@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { NumberField, NumberFieldUrl } from '../../filtersSchemas';
+import { NumberField, NumberFieldUrl } from '../../helpers/filtersSchemas';
 
 export const rateCountSchema = z.object({
     rateCountFrom: NumberField,

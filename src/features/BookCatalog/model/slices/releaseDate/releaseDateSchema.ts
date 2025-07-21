@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { DateField, DateFieldUrl } from '../../filtersSchemas';
+import { DateField, DateFieldUrl } from '../../helpers/filtersSchemas';
 
 export const releaseDateSchema = z.object({
     releaseDateFrom: DateField,

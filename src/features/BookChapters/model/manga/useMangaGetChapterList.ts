@@ -1,13 +1,12 @@
 import { infiniteQueryOptions, useInfiniteQuery } from '@tanstack/react-query';
-import { useCallback, useEffect, useState } from 'react';
-import { handleBookChapters } from './handleBookChapters';
+import { useEffect, useState } from 'react';
+import { handleBookChapters } from '../handleBookChapters';
+import { Order, useOrderSearchBookChapters } from '../useOrderSearchBookChapters';
 import { publicFetchClient } from '@/shared/api/instance';
 import { BookId } from '@/shared/kernel/book/book';
 import { useClearInfinityPages } from '@/shared/lib/hooks/useClearInfinityPages';
-import { useDebounce } from '@/shared/lib/hooks/useDebounce';
 
-type Order = 'asc' | 'desc';
-
+// * QueryOptions
 const queryOptions = (mangaId: BookId, search?: string, order?: Order) =>
     infiniteQueryOptions({
         // eslint-disable-next-line @tanstack/query/exhaustive-deps
@@ -16,9 +15,7 @@ const queryOptions = (mangaId: BookId, search?: string, order?: Order) =>
             await publicFetchClient
                 .GET('/manga/{mangaId}/chapters', {
                     params: {
-                        path: {
-                            mangaId: String(mangaId),
-                        },
+                        path: { mangaId },
                         query: {
                             search,
                             order,
@@ -31,8 +28,9 @@ const queryOptions = (mangaId: BookId, search?: string, order?: Order) =>
         initialPageParam: 1,
         getNextPageParam: (lastPage) => lastPage?.nextPage,
     });
+// * QueryOptions
 
-export function useGetMangaChapters(mangaId: BookId) {
+export function useMangaGetChapterList(mangaId: BookId) {
     const [order, setOrder] = useState<Order>('desc');
     const [search, setSearch] = useState('');
 
@@ -41,46 +39,28 @@ export function useGetMangaChapters(mangaId: BookId) {
     );
 
     const clear = useClearInfinityPages(queryOptions(mangaId).queryKey);
-
     useEffect(() => {
-        return () => {
-            clear();
-        };
+        return () => clear();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const handleRefetch = useDebounce(() => {
+    const handleRefetch = () => {
         clear();
         refetch();
-    }, 500);
+    };
 
-    const handleSetSearch = useCallback(
-        (value: string) => {
-            setSearch(value);
-            handleRefetch();
-        },
-        [handleRefetch],
-    );
-
-    const handleSetOrder = useCallback(
-        (value: Order) => {
-            setOrder(value);
-            handleRefetch();
-        },
-        [handleRefetch],
-    );
+    const orderSearch = useOrderSearchBookChapters({
+        refetch: handleRefetch,
+        order,
+        search,
+        setOrder,
+        setSearch,
+    });
 
     return {
         chapters: data?.pages.flatMap((page) => page?.data || []),
         fetchNextPage,
         isFetching: isFetchingNextPage || isFetching,
-        order: {
-            value: order,
-            onChange: handleSetOrder,
-        },
-        search: {
-            value: search,
-            onChangeValue: handleSetSearch,
-        },
+        ...orderSearch,
     };
 }
