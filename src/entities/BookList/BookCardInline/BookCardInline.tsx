@@ -9,12 +9,11 @@ interface BookCardInlineProps {
     to?: string;
     img?: string;
     title?: string;
-    subtitle?: string;
     children?: ReactNode;
 }
 
 export const BookCardInline = (props: BookCardInlineProps) => {
-    const { className, to = '', img, title, subtitle, children } = props;
+    const { className, to = '', img, title, children } = props;
 
     return (
         <Link
@@ -28,17 +27,11 @@ export const BookCardInline = (props: BookCardInlineProps) => {
             <AppAdaptiveImage className="h-full basis-[65px] shrink-0" img={img} />
             <div className="flex flex-col gap-1 grow justify-around overflow-hidden">
                 <Heading
-                    className="line-clamp-2 hyphens-auto break-words max-w-[400px] transition-colors hover:text-secondary"
+                    className="line-clamp-2 hyphens-auto break-words max-w-[400px] transition-colors hover:text-accent"
                     variant="h4"
-                    weigth="semibold"
+                    bold
                 >
                     {title}
-                </Heading>
-                <Heading
-                    variant="h5"
-                    className="max-w-[300px] text-sm opacity-80 text-ellipsis whitespace-nowrap"
-                >
-                    {subtitle}
                 </Heading>
                 {children}
             </div>

@@ -6,6 +6,7 @@ import { Carousel, CarouselContent, CarouselItem } from '@/shared/ui/kit/carouse
 import { Card } from '@/shared/ui/kit/card';
 import { BookCardInline, BookListLayout } from '@/entities/BookList';
 import { getRoute } from '@/shared/kernel/router';
+import { Badge } from '@/shared/ui/kit/badge';
 
 interface NowReadMangaSliderProps {
     className?: string;
@@ -41,8 +42,9 @@ export const NowReadMangaSlider: FC<NowReadMangaSliderProps> = (props) => {
                                         to={getRoute.MANGA(manga.urlId)}
                                         img={manga.cover}
                                         title={manga.title}
-                                        subtitle={manga.type}
-                                    />
+                                    >
+                                        <Badge variant="secondary">{manga.type}</Badge>
+                                    </BookCardInline>
                                 )}
                                 isLoading={magnaList.isLoading}
                                 skeletonsCount={3}

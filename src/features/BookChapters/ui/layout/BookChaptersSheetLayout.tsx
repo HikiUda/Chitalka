@@ -1,8 +1,9 @@
 import { ListOrderedIcon, MoveLeftIcon } from 'lucide-react';
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 import { Heading } from '@/shared/ui/kit/heading';
 import { Sheet, SheetBody, SheetClose, SheetTitle, SheetTrigger } from '@/shared/ui/kit/sheet';
 import { cn } from '@/shared/lib/css';
+import { Loader } from '@/shared/ui/kit/loader';
 
 type BookChaptersSheetLayoutProps = {
     className?: string;
@@ -26,7 +27,9 @@ export const BookChaptersSheetLayout = (props: BookChaptersSheetLayoutProps) => 
                         <SheetTitle>Главы</SheetTitle>
                     </Heading>
                 </SheetClose>
-                {children}
+                <Suspense fallback={<Loader variant="flower" className="mx-auto mt-4" />}>
+                    {children}
+                </Suspense>
             </SheetBody>
         </Sheet>
     );

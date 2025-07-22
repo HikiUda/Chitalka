@@ -31,8 +31,8 @@ export const ContinueReadBookCard = (props: ContinueReadBookCardProps) => {
         >
             <BookCardInline to={chapterLink} title={title} img={cover}>
                 <div className="flex flex-col gap-1">
-                    <span>Продолжить с</span>
-                    <span className="font-semibold">
+                    <span className="text-sm opacity-80">Продолжить с</span>
+                    <span className="text-base">
                         {tome} том {chapter} глава
                     </span>
                 </div>

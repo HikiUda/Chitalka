@@ -29,7 +29,12 @@ export const ContinueReadBookSlider = (props: ContinueReadBookSliderProps) => {
                 <Heading variant="h2" color="primary">
                     Продолжить читать
                 </Heading>
-                <Button onClick={deleteAll} disabled={isDeleteAllPending} variant="clear">
+                <Button
+                    className="hover:text-primary/50"
+                    onClick={deleteAll}
+                    disabled={isDeleteAllPending}
+                    variant="clear"
+                >
                     очистить
                 </Button>
             </div>

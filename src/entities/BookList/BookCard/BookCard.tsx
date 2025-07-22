@@ -62,14 +62,10 @@ export const BookCard = (props: BookCardProps) => {
                     </span>
                 )}
             </AppAdaptiveImage>
-
-            <Heading
-                className="hyphens-auto line-clamp-2 hover:text-secondary transition-colors"
-                weigth="semibold"
-            >
+            <Heading className="hyphens-auto line-clamp-2 hover:text-accent transition-colors" bold>
                 {title}
             </Heading>
-            <Heading variant="h5" className="line-clamp-1 overflow-hidden opacity-80">
+            <Heading variant="h5" className="line-clamp-1 overflow-hidden opacity-80 mt-1">
                 {subtitle}
             </Heading>
         </Link>

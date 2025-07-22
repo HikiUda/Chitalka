@@ -10,9 +10,9 @@ import { Heading } from '@/shared/ui/kit/heading';
 import { TextDisclosure } from '@/shared/ui/kit/text-disclosure';
 import { MangaBookmarkSelector } from '@/features/BookToBookmarks';
 
-interface MangaContentProps {
+type MangaContentProps = {
     mangaId: BookId;
-}
+};
 
 export const MangaContent = (props: MangaContentProps) => {
     const { mangaId } = props;

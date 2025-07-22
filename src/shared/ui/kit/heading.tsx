@@ -3,19 +3,23 @@ import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '@/shared/lib/css';
-
-const headingVariants = cva('font-[Montserrat,sans-serif]', {
+const headingVariants = cva('font-serif', {
     variants: {
         variant: {
             h1: 'text-3xl',
             h2: 'text-2xl',
             h3: 'text-xl',
-            h4: 'text-base',
-            h5: 'text-xs',
+            h4: 'text-base/5',
+            h5: 'text-sm',
         },
+        /** @deprecated use bold instead */
         weigth: {
             normal: 'font-normal',
             semibold: 'font-semibold',
+        },
+        bold: {
+            false: null,
+            true: 'font-semibold',
         },
         italic: {
             false: null,
@@ -31,6 +35,7 @@ const headingVariants = cva('font-[Montserrat,sans-serif]', {
     defaultVariants: {
         variant: 'h4',
         weigth: 'normal',
+        bold: false,
         italic: false,
         color: 'plain',
     },
@@ -41,6 +46,7 @@ function Heading({
     variant,
     italic,
     weigth,
+    bold,
     color,
     asChild = false,
     ...props
@@ -53,7 +59,7 @@ function Heading({
     return (
         <Comp
             data-slot={Comp}
-            className={cn(headingVariants({ variant, weigth, italic, color, className }))}
+            className={cn(headingVariants({ variant, weigth, italic, color, bold, className }))}
             {...props}
         />
     );

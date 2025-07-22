@@ -19,7 +19,7 @@ export const HeaderMain = () => {
                 <div className="flex items-center justify-center gap-2">
                     <Button variant="clear" size="sm" asChild>
                         <Link
-                            className="font-semibold hover:bg-primary/50 transition-colors duration-300"
+                            className=" hover:bg-primary/50 transition-colors duration-300"
                             to={getRoute.MANGA_CATALOG()}
                         >
                             <LibraryBigIcon size={20} /> Каталог
@@ -27,7 +27,7 @@ export const HeaderMain = () => {
                     </Button>
                     <Button variant="clear" size="sm" asChild>
                         <Link
-                            className="font-semibold hover:bg-primary/50 transition-colors duration-300"
+                            className="hover:bg-primary/50 transition-colors duration-300"
                             to={getRoute.COLLECTIONS()}
                         >
                             <FoldersIcon size={20} /> Коллекции
@@ -38,7 +38,7 @@ export const HeaderMain = () => {
                             <Button
                                 variant="clear"
                                 size="sm"
-                                className="font-semibold hover:bg-primary/50 transition-colors duration-300"
+                                className="hover:bg-primary/50 transition-colors duration-300"
                             >
                                 <SearchIcon size={20} /> Поиск
                             </Button>

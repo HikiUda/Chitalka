@@ -10,7 +10,7 @@ import { BookCard, BookGridLayout } from '@/entities/BookList';
 import { getRoute } from '@/shared/kernel/router';
 import { useIntersection } from '@/shared/lib/hooks/useIntersection';
 import { useTrottle } from '@/shared/lib/hooks/useTrottle';
-import { MangaHoverCard } from '@/widgets/HoverCardManga';
+import { MangaHoverCard } from '@/widgets/BookHoverCard';
 
 const MangaCatalogPage = () => {
     const { data = [], isFetching, fetchNextPage } = useGetMangaCatalog();

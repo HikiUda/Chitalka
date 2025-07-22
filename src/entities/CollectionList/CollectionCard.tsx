@@ -25,16 +25,16 @@ export const CollectionCard = (props: CollectionCardProps) => {
                     Tittle of collection
                 </Heading>
                 <div className="flex justify-center items-center flex-wrap gap-1">
-                    <Badge>
+                    <Badge variant="secondary">
                         <EyeIcon /> 1289
                     </Badge>
-                    <Badge>
+                    <Badge variant="secondary">
                         <HeartIcon /> 444
                     </Badge>
-                    <Badge>
+                    <Badge variant="secondary">
                         <BookIcon /> 56
                     </Badge>
-                    <Badge>
+                    <Badge variant="secondary">
                         <BookmarkIcon /> 33
                     </Badge>
                 </div>

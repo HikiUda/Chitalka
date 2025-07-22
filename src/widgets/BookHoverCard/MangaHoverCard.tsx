@@ -4,11 +4,12 @@ import { BookId } from '@/shared/kernel/book/book';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 
 const MangaContent = lazyNamed(() => import('./MangaContent'), 'MangaContent');
-interface MangaHoverCardProps {
+
+type MangaHoverCardProps = {
     className?: string;
     trigger?: ReactNode;
     mangaId: BookId;
-}
+};
 
 export const MangaHoverCard = (props: MangaHoverCardProps) => {
     const { className, trigger, mangaId } = props;

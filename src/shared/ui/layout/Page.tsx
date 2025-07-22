@@ -12,7 +12,7 @@ export const Page = (props: PageProps) => {
     const { className, children } = props;
 
     return (
-        <main id="main" className={cn(className, !isMobile && 'pt-5 px-2.5')}>
+        <main id="main" className={cn(className, !isMobile ? 'pt-5 px-2.5' : 'px-1.5')}>
             <Container>{children}</Container>
         </main>
     );

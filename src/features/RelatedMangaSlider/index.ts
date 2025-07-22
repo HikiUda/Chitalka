@@ -1,1 +1,0 @@
-export { RelatedMangaSlider } from './RelatedMangaSlider';

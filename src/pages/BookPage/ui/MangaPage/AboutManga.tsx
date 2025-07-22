@@ -4,7 +4,7 @@ import { AboutBookLayout } from '../layout/AboutBookLayout';
 import { BookId } from '@/shared/kernel/book/book';
 import { MangaBookmarkStatistic, MangaRateStatistic } from '@/features/BookStatistic';
 import { TextDisclosure } from '@/shared/ui/kit/text-disclosure';
-import { RelatedMangaSlider } from '@/features/RelatedMangaSlider';
+import { MangaRelatedSlider } from '@/features/BookRelated';
 import { cn } from '@/shared/lib/css';
 import {
     BookBasicInfo,
@@ -13,7 +13,6 @@ import {
     useGetManga,
     useMangaCategories,
 } from '@/entities/BookInfo';
-import { Heading } from '@/shared/ui/kit/heading';
 
 interface AboutMangaProps {
     className?: string;
@@ -34,18 +33,13 @@ export const AboutManga: FC<AboutMangaProps> = (props) => {
         >
             {isMobile && <BookBasicInfo basicInfo={basicInfo} />}
             <TextDisclosure text={manga.description} className="px-5" />
-            <RelatedMangaSlider
+            <CategoryCollapsedList categories={categories} className="px-5" />
+            <MangaRelatedSlider
                 mangaId={mangaId}
                 className={cn(
                     isMobile ? 'w-[100vw] max-w-300' : 'w-[calc(100vw-306px)]  max-w-[925px]',
                 )}
-                heading={
-                    <Heading className="ml-3 mb-2" variant="h3" color="primary">
-                        Связаное
-                    </Heading>
-                }
             />
-            <CategoryCollapsedList categories={categories} className="px-5" />
         </AboutBookLayout>
     );
 };

@@ -3,11 +3,11 @@ import { isMobile } from 'react-device-detect';
 import { BookLoadingContent } from './BookLoadingContent';
 import { HoverCard, HoverCardBody, HoverCardTrigger } from '@/shared/ui/kit/hover-card';
 
-interface BookHoverCardProps {
+type BookHoverCardProps = {
     className?: string;
     trigger: ReactNode;
     content: ReactNode;
-}
+};
 
 export const BookHoverCard = (props: BookHoverCardProps) => {
     const { className, trigger, content } = props;
