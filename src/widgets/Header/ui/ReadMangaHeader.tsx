@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom';
-import { isMobile } from 'react-device-detect';
 import { SettingsIcon } from 'lucide-react';
 import { PathParams, Routes } from '@/shared/kernel/router';
 import { HeaderLayout } from '@/shared/ui/layout/HeaderLayout';
@@ -10,9 +9,11 @@ import { BackToManga, MangaChaptersNavigation } from '@/features/BookChapters';
 import { Button } from '@/shared/ui/kit/button';
 import { useSession } from '@/shared/kernel/session';
 import { cn } from '@/shared/lib/css';
+import { useWindowSize } from '@/shared/kernel/useWindowSize';
 
 export const ReadMangaHeader = () => {
     const { isUserAuth } = useSession();
+    const isWidthLg = useWindowSize.use.isWidthLg();
     const { hidden } = useHideLayout();
     const { mangaId, chapterId } = useParams<PathParams[typeof Routes.MANGA_READ]>();
     if (!mangaId || !chapterId) return null;
@@ -22,11 +23,11 @@ export const ReadMangaHeader = () => {
             <div
                 className={cn(
                     'grid gap-2 h-full',
-                    !isMobile ? 'grid-cols-3' : 'grid-cols-[1fr_auto]',
+                    isWidthLg ? 'grid-cols-3' : 'grid-cols-[1fr_auto]',
                 )}
             >
                 <BackToManga mangaId={mangaId} chapterId={chapterId} />
-                {!isMobile && <MangaChaptersNavigation mangaId={mangaId} chapterId={chapterId} />}
+                {isWidthLg && <MangaChaptersNavigation mangaId={mangaId} chapterId={chapterId} />}
                 <div className="flex items-center justify-end gap-2">
                     <Button>
                         <SettingsIcon />

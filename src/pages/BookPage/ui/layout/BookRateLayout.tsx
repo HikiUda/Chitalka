@@ -1,8 +1,8 @@
 import { StarIcon } from 'lucide-react';
 import { FC, ReactNode } from 'react';
-import { isMobile } from 'react-device-detect';
 import { toShortcutNumber } from '@/shared/lib/helpers/toShortcutNumber';
 import { cn } from '@/shared/lib/css';
+import { useWindowSize } from '@/shared/kernel/useWindowSize';
 
 interface BookRateLayoutProps {
     className?: string;
@@ -13,11 +13,12 @@ interface BookRateLayoutProps {
 
 export const BookRateLayout: FC<BookRateLayoutProps> = (props) => {
     const { className, rate, countRate, rateButton } = props;
+    const isWidthLg = useWindowSize.use.isWidthLg();
     return (
         <div
             className={cn(
                 'flex justify-center gap-1 items-end flex-col',
-                isMobile && 'bg-card py-1 px-1.5 rounded-sm items-center flex-row',
+                !isWidthLg && 'bg-card py-1 px-1.5 rounded-sm items-center flex-row',
                 className,
             )}
         >

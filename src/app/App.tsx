@@ -1,5 +1,6 @@
 import { Suspense, useLayoutEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import { Toaster } from 'sonner';
 import { MainLayout } from '@/shared/ui/layout/MainLayout';
 import { Header } from '@/widgets/Header';
 import { BottomMenu } from '@/widgets/BottomMenu';
@@ -19,7 +20,12 @@ export const App = () => {
 
     return (
         <Suspense fallback={<Loader variant="flower" />}>
-            <MainLayout header={<Header />} main={<Outlet />} bottomMenu={<BottomMenu />} />
+            <MainLayout
+                header={<Header />}
+                main={<Outlet />}
+                bottomMenu={<BottomMenu />}
+                toaster={<Toaster />}
+            />
         </Suspense>
     );
 };

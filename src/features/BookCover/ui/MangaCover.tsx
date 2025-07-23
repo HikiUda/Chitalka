@@ -4,7 +4,7 @@ import { Cover } from './Cover';
 import { MangaCoversModal } from './MangaCoversModal';
 import {
     Dialog,
-    DialogBody,
+    DialogContent,
     DialogPortal,
     DialogTitle,
     DialogTrigger,
@@ -30,7 +30,7 @@ export const MangaCover = (props: MangaCoverProps) => {
                 <Cover cover={cover} />
             </DialogTrigger>
             <DialogPortal>
-                <DialogBody className="max-w-120 w-[96vw] " empty>
+                <DialogContent className="max-w-120 w-[96vw] " empty>
                     <DialogTitle hidden />
                     <ErrorBoundary
                         fallback={
@@ -45,7 +45,7 @@ export const MangaCover = (props: MangaCoverProps) => {
                             <MangaCoversModal mangaId={mangaId} />
                         </Suspense>
                     </ErrorBoundary>
-                </DialogBody>
+                </DialogContent>
             </DialogPortal>
         </Dialog>
     );

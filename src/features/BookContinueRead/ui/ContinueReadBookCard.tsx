@@ -1,9 +1,9 @@
-import { isMobile } from 'react-device-detect';
 import { TrashIcon, XIcon } from 'lucide-react';
 import { BookCardInline } from '@/entities/BookList';
 import { CarouselItem } from '@/shared/ui/kit/carousel';
 import { Button } from '@/shared/ui/kit/button';
 import { cn } from '@/shared/lib/css';
+import { useWindowSize } from '@/shared/kernel/useWindowSize';
 
 type ContinueReadBookCardProps = {
     className?: string;
@@ -21,6 +21,7 @@ type ContinueReadBookCardProps = {
 export const ContinueReadBookCard = (props: ContinueReadBookCardProps) => {
     const { className, book, disabled, onDelete, chapterLink } = props;
     const { title, cover, tome, chapter } = book;
+    const isWidthLg = useWindowSize.use.isWidthLg();
     return (
         <CarouselItem
             aria-disabled={disabled}
@@ -41,12 +42,12 @@ export const ContinueReadBookCard = (props: ContinueReadBookCardProps) => {
                 onClick={onDelete}
                 variant="destructive"
                 className={
-                    isMobile
+                    !isWidthLg
                         ? 'h-full'
                         : 'p-5 absolute top-0 right-0 opacity-0 rounded-full z-10 hover:scale-110  group-hover/book:opacity-100 group-hover/book:-top-3 group-hover/book:-right-3 group-hover/book:rotate-90 transition-all duration-500'
                 }
             >
-                {isMobile ? <TrashIcon /> : <XIcon />}
+                {!isWidthLg ? <TrashIcon /> : <XIcon />}
             </Button>
         </CarouselItem>
     );

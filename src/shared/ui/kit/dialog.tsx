@@ -3,7 +3,6 @@ import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { XIcon } from 'lucide-react';
 
 import { cva, VariantProps } from 'class-variance-authority';
-import { Slot } from '@radix-ui/react-slot';
 import { cn } from '@/shared/lib/css';
 
 function Dialog({ ...props }: React.ComponentProps<typeof DialogPrimitive.Root>) {
@@ -44,7 +43,7 @@ export const dialogContentVariants = cva(
         variants: {
             empty: {
                 true: '',
-                false: 'bg-background grid w-full max-w-[calc(100%-2rem)] gap-4 rounded-lg border p-6 shadow-lg  sm:max-w-lg',
+                false: 'bg-background grid w-full max-w-[calc(100%-2rem)] gap-4 rounded-lg border p-6 shadow-lg sm:max-w-lg',
             },
             horizonPosition: {
                 left: 'left-[2%]',
@@ -74,38 +73,27 @@ function DialogContent({
     closeButton = true,
     ...props
 }: React.ComponentProps<typeof DialogPrimitive.Content> &
-    VariantProps<typeof dialogContentVariants> & { closeButton?: boolean }) {
-    return (
-        <DialogPrimitive.Content
-            data-slot="dialog-content"
-            className={cn(
-                dialogContentVariants({ empty, horizonPosition, verticalPosition }),
-                className,
-            )}
-            aria-describedby={undefined}
-            {...props}
-        >
-            {children}
-            {closeButton && !empty && (
-                <DialogPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 cursor-pointer">
-                    <XIcon />
-                    <span className="sr-only">Close</span>
-                </DialogPrimitive.Close>
-            )}
-        </DialogPrimitive.Content>
-    );
-}
-
-function DialogBody({
-    asChild,
-    ...props
-}: React.ComponentProps<typeof DialogPrimitive.Content> &
     VariantProps<typeof dialogContentVariants> & { asChild?: boolean; closeButton?: boolean }) {
-    const Comp = asChild ? Slot : DialogContent;
     return (
         <DialogPortal data-slot="dialog-portal">
             <DialogOverlay />
-            <Comp {...props} />
+            <DialogPrimitive.Content
+                data-slot="dialog-content"
+                className={cn(
+                    dialogContentVariants({ empty, horizonPosition, verticalPosition }),
+                    className,
+                )}
+                aria-describedby={undefined}
+                {...props}
+            >
+                {children}
+                {closeButton && !empty && (
+                    <DialogPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 cursor-pointer">
+                        <XIcon />
+                        <span className="sr-only">Close</span>
+                    </DialogPrimitive.Close>
+                )}
+            </DialogPrimitive.Content>
         </DialogPortal>
     );
 }
@@ -156,7 +144,6 @@ function DialogDescription({
 export {
     Dialog,
     DialogClose,
-    DialogBody,
     DialogContent,
     DialogDescription,
     DialogFooter,

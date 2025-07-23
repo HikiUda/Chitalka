@@ -5,7 +5,7 @@ import { PopUserMenu } from '@/features/PopUserMenu';
 import { getRoute } from '@/shared/kernel/router';
 import { useSession } from '@/shared/kernel/session';
 import { AuthModal } from '@/features/AuthModal';
-import { LogoShort } from '@/shared/ui/Logo';
+import { LogoShort } from '@/entities/Logo';
 
 export const BottomMenuMain = () => {
     const { isUserAuth } = useSession();

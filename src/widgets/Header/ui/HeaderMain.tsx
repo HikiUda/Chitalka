@@ -7,7 +7,7 @@ import { AuthModal } from '@/features/AuthModal';
 import { useSession } from '@/shared/kernel/session';
 import { getRoute } from '@/shared/kernel/router';
 import { Button } from '@/shared/ui/kit/button';
-import { Logo } from '@/shared/ui/Logo';
+import { Logo } from '@/entities/Logo';
 
 export const HeaderMain = () => {
     const { isUserAuth } = useSession();

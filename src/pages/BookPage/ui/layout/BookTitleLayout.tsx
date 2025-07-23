@@ -12,13 +12,13 @@ export const BookTitleLayout = (props: BookTitleLayoutProps) => {
 
     return (
         <div className={cn('flex flex-col justify-center items-start w-full gap-1', className)}>
-            <Heading className="line-clamp-2 hyphens-auto break-all" weigth="semibold" variant="h2">
+            <Heading className="line-clamp-2 hyphens-auto break-all" bold variant="h2">
                 {title}
             </Heading>
             {subtitle && (
                 <Heading
-                    className="line-clamp-1 hyphens-auto break-all"
-                    weigth="semibold"
+                    className="line-clamp-1 pr-1 hyphens-auto break-all"
+                    bold
                     variant="h3"
                     italic
                 >

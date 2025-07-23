@@ -1,11 +1,12 @@
-import { isMobile } from 'react-device-detect';
 import { mapBottomMenuContent } from './mapBottomMenuContent';
 import { useRouteChange } from '@/shared/kernel/router';
+import { useWindowSize } from '@/shared/kernel/useWindowSize';
 
 export const BottomMenu = () => {
+    const isWidthLg = useWindowSize.use.isWidthLg();
     const currentRoute = useRouteChange();
 
-    if (!isMobile) {
+    if (isWidthLg) {
         return null;
     }
 

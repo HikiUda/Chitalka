@@ -1,10 +1,10 @@
 import { useMemo, useState } from 'react';
-import { isMobile } from 'react-device-detect';
 import { StarIcon } from 'lucide-react';
 import { DialogClose } from '@/shared/ui/kit/dialog';
 import { cn } from '@/shared/lib/css';
 import { Heading } from '@/shared/ui/kit/heading';
 import { Button } from '@/shared/ui/kit/button';
+import { useWindowSize } from '@/shared/kernel/useWindowSize';
 
 type RateModalContentProps = {
     className?: string;
@@ -15,6 +15,7 @@ type RateModalContentProps = {
 
 export const RateModal = (props: RateModalContentProps) => {
     const { className, rate, setRate, deleteRate } = props;
+    const isWidthLg = useWindowSize.use.isWidthLg();
     const [selectedStar, setSelectedStar] = useState(0);
     const ratingValues = useMemo(() => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] as const, []);
 
@@ -47,7 +48,7 @@ export const RateModal = (props: RateModalContentProps) => {
                                     ? 'stroke-primary fill-primary'
                                     : 'stroke-primary/10 fill-muted shadow-sm',
                             )}
-                            size={isMobile ? 28 : 36}
+                            size={!isWidthLg ? 28 : 36}
                         />
                     </Button>
                 ))}

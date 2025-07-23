@@ -1,4 +1,3 @@
-import { isMobile } from 'react-device-detect';
 import { LastUpdatedPopularMangaSlider } from '../LastUpdatedPopularMangaSlider/LastUpdatedPopularMangaSlider';
 import { NowReadMangaSlider } from '../NowReadMangaSlider/NowReadMangaSlider';
 import { LastUpdatedMangaTabs } from '../LastUpdatedMangaTabs/LastUpdatedMangaTabs';
@@ -8,15 +7,17 @@ import { Heading } from '@/shared/ui/kit/heading';
 import { UserCard, UserGridLayout } from '@/entities/UserList';
 import { ContinueReadMangaSlider } from '@/features/BookContinueRead';
 import { cn } from '@/shared/lib/css';
+import { useWindowSize } from '@/shared/kernel/useWindowSize';
 
 export const MainPage = () => {
+    const isWidthLg = useWindowSize.use.isWidthLg();
     return (
         <Page>
             <LastUpdatedPopularMangaSlider
-                className={cn('mb-4', isMobile && 'w-[96vw] max-w-299')}
+                className={cn('mb-4', !isWidthLg && 'w-[98vw] max-w-299')}
             />
-            <ContinueReadMangaSlider className={cn('mb-4', isMobile && 'w-[96vw] max-w-299')} />
-            <NowReadMangaSlider className={cn('mb-4', isMobile && 'w-[96vw] max-w-299')} />
+            <ContinueReadMangaSlider className={cn('mb-4', !isWidthLg && 'w-[98vw] max-w-299')} />
+            <NowReadMangaSlider className={cn('mb-4', !isWidthLg && 'w-[98vw] max-w-299')} />
             <div className="xl:grid xl:grid-cols-2 xl:items-start gap-5 flex flex-col-reverse items-center">
                 <LastUpdatedMangaTabs />
                 <div className="flex flex-col gap-4 w-full">

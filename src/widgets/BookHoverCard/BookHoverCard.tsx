@@ -1,7 +1,7 @@
 import { ReactNode, Suspense } from 'react';
-import { isMobile } from 'react-device-detect';
 import { BookLoadingContent } from './BookLoadingContent';
-import { HoverCard, HoverCardBody, HoverCardTrigger } from '@/shared/ui/kit/hover-card';
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/shared/ui/kit/hover-card';
+import { useWindowSize } from '@/shared/kernel/useWindowSize';
 
 type BookHoverCardProps = {
     className?: string;
@@ -11,20 +11,21 @@ type BookHoverCardProps = {
 
 export const BookHoverCard = (props: BookHoverCardProps) => {
     const { className, trigger, content } = props;
+    const isWidthLg = useWindowSize.use.isWidthLg();
 
-    if (isMobile) return trigger;
+    if (!isWidthLg) return trigger;
 
     return (
         <HoverCard openDelay={1000} closeDelay={700}>
             <HoverCardTrigger className={className} asChild>
                 <div>{trigger}</div>
             </HoverCardTrigger>
-            <HoverCardBody
+            <HoverCardContent
                 side="right"
                 className="w-125 flex flex-col items-start gap-2 px-0 max-h-150 overflow-auto"
             >
                 <Suspense fallback={<BookLoadingContent />}>{content}</Suspense>
-            </HoverCardBody>
+            </HoverCardContent>
         </HoverCard>
     );
 };

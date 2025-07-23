@@ -3,6 +3,14 @@ import { Progress } from '@/shared/ui/kit/progress';
 import { Heading } from '@/shared/ui/kit/heading';
 import { Skeleton } from '@/shared/ui/kit/skeleton';
 
+function getChart(ind: number) {
+    if (ind === 0) return 'chart-1';
+    if (ind === 1) return 'chart-2';
+    if (ind === 2) return 'chart-3';
+    if (ind === 3) return 'chart-4';
+    return 'chart-5';
+}
+
 type BookBookmarksStatisticProps = {
     className?: string;
     isLoading: boolean;
@@ -20,11 +28,14 @@ export const BookBookmarkStatistic = (props: BookBookmarksStatisticProps) => {
             </Heading>
             <div className="table">
                 {!isLoading &&
-                    Object.values(Bookmarks).map((bookmark) => (
+                    Object.values(Bookmarks).map((bookmark, ind) => (
                         <div className="table-row" key={bookmark}>
                             <div className="table-cell px-2 py-1.5">{bookmark}</div>
                             <div className="table-cell px-2 py-1.5 w-full">
-                                <Progress value={getBookmarkPercentage(bookmark)} />
+                                <Progress
+                                    variant={getChart(ind)}
+                                    value={getBookmarkPercentage(bookmark)}
+                                />
                             </div>
                             <div className="table-cell px-2 py-1.5">
                                 {getBookmarkPercentage(bookmark)}%

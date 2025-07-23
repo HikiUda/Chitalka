@@ -1,14 +1,14 @@
 import { Suspense } from 'react';
-import { isMobile } from 'react-device-detect';
 import { DialogTitle } from '@radix-ui/react-dialog';
 import { useMangaGetRate } from '../model/useMangaGetRate';
 import { useMangaSetRate } from '../model/useMangaSetRate';
 import { useMangaDeleteRate } from '../model/useMangaDeleteRate';
 import { RateModalTriggerButton } from './RateModalTriggerButton';
 import { BookId } from '@/shared/kernel/book/book';
-import { Dialog, DialogBody } from '@/shared/ui/kit/dialog';
+import { Dialog, DialogContent } from '@/shared/ui/kit/dialog';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 import { Loader } from '@/shared/ui/kit/loader';
+import { useWindowSize } from '@/shared/kernel/useWindowSize';
 
 const RateModal = lazyNamed(() => import('./RateModal'), 'RateModal');
 
@@ -19,7 +19,7 @@ type MangaRateModalTriggerProps = {
 
 export const MangaRateModalTrigger = (props: MangaRateModalTriggerProps) => {
     const { className, mangaId } = props;
-
+    const isWidthLg = useWindowSize.use.isWidthLg();
     const { data, isLoading } = useMangaGetRate(mangaId);
     const { getOptimisticRate, setRate } = useMangaSetRate(mangaId);
     const { deleteRate, isDeletePending } = useMangaDeleteRate(mangaId);
@@ -33,12 +33,12 @@ export const MangaRateModalTrigger = (props: MangaRateModalTriggerProps) => {
                 rate={currentRate}
                 isLoading={isLoading}
             />
-            <DialogBody verticalPosition={isMobile ? 'bottom' : 'center'}>
+            <DialogContent verticalPosition={!isWidthLg ? 'bottom' : 'center'}>
                 <DialogTitle hidden />
                 <Suspense fallback={<Loader className="mx-auto" variant="flower" />}>
                     <RateModal rate={currentRate} setRate={setRate} deleteRate={deleteRate} />
                 </Suspense>
-            </DialogBody>
+            </DialogContent>
         </Dialog>
     );
 };

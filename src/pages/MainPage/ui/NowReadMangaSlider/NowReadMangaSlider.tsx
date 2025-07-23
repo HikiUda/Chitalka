@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { isMobile } from 'react-device-detect';
 import { useNowReadManga } from './useNowReadManga';
 import { Heading } from '@/shared/ui/kit/heading';
 import { Carousel, CarouselContent, CarouselItem } from '@/shared/ui/kit/carousel';
@@ -7,6 +6,7 @@ import { Card } from '@/shared/ui/kit/card';
 import { BookCardInline, BookListLayout } from '@/entities/BookList';
 import { getRoute } from '@/shared/kernel/router';
 import { Badge } from '@/shared/ui/kit/badge';
+import { useWindowSize } from '@/shared/kernel/useWindowSize';
 
 interface NowReadMangaSliderProps {
     className?: string;
@@ -14,6 +14,7 @@ interface NowReadMangaSliderProps {
 
 export const NowReadMangaSlider: FC<NowReadMangaSliderProps> = (props) => {
     const { className } = props;
+    const isWidthLg = useWindowSize.use.isWidthLg();
 
     const nowReadManga = useNowReadManga();
 
@@ -22,7 +23,7 @@ export const NowReadMangaSlider: FC<NowReadMangaSliderProps> = (props) => {
             <Heading variant="h2" color="primary" className="ml-3">
                 Сейчас читают
             </Heading>
-            <Carousel opts={{ active: isMobile }} className="w-full relative">
+            <Carousel opts={{ active: !isWidthLg }} className="w-full relative">
                 <CarouselContent className="pl-2.5">
                     {nowReadManga.map((magnaList) => (
                         <CarouselItem

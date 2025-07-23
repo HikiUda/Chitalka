@@ -1,7 +1,7 @@
 import { ListOrderedIcon, MoveLeftIcon } from 'lucide-react';
 import { ReactNode, Suspense } from 'react';
 import { Heading } from '@/shared/ui/kit/heading';
-import { Sheet, SheetBody, SheetClose, SheetTitle, SheetTrigger } from '@/shared/ui/kit/sheet';
+import { Sheet, SheetContent, SheetClose, SheetTitle, SheetTrigger } from '@/shared/ui/kit/sheet';
 import { cn } from '@/shared/lib/css';
 import { Loader } from '@/shared/ui/kit/loader';
 
@@ -20,7 +20,7 @@ export const BookChaptersSheetLayout = (props: BookChaptersSheetLayoutProps) => 
             <SheetTrigger className={cn('cursor-pointer', className)}>
                 <ListOrderedIcon size={30} />
             </SheetTrigger>
-            <SheetBody>
+            <SheetContent>
                 <SheetClose className="flex items-center gap-1 px-2.5 pt-3 cursor-pointer">
                     <MoveLeftIcon className="stroke-primary" />
                     <Heading color="primary" asChild>
@@ -30,7 +30,7 @@ export const BookChaptersSheetLayout = (props: BookChaptersSheetLayoutProps) => 
                 <Suspense fallback={<Loader variant="flower" className="mx-auto mt-4" />}>
                     {children}
                 </Suspense>
-            </SheetBody>
+            </SheetContent>
         </Sheet>
     );
 };

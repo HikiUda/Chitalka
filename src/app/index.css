@@ -3,6 +3,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
+@plugin 'tailwind-scrollbar' {
+    nocompatible: true;
+    preferredstrategy: 'pseudoelements';
+}
 
 @custom-variant dark (&:is(.dark *));
 
@@ -170,5 +174,11 @@
     }
     body {
         @apply bg-background text-foreground font-sans;
+    }
+    body[data-scroll-locked='1'] {
+        margin-right: 0 !important;
+    }
+    html {
+        overflow-y: scroll; /* всегда отображаем скроллбар */
     }
 }

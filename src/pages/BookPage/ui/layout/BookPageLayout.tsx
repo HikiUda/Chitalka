@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import { isMobile } from 'react-device-detect';
 import { ComponentType, ReactNode } from 'react';
 import cls from './layout.module.css';
 import { Page } from '@/shared/ui/layout/Page';
 import { cn } from '@/shared/lib/css';
 import { DivSlot } from '@/shared/ui/kit/divslot';
+import { useWindowSize } from '@/shared/kernel/useWindowSize';
 
 type SlotComp = ComponentType<{
     asChild?: boolean;
@@ -12,10 +12,11 @@ type SlotComp = ComponentType<{
 }>;
 
 const BannerSlot: SlotComp = ({ children, asChild }) => {
+    const isWidthLg = useWindowSize.use.isWidthLg();
     return (
         <DivSlot
             asChild={asChild}
-            className={cn(cls.banner, isMobile ? 'absolute top-0 left-0 right-0 h-162' : '-mx-4')}
+            className={cn(cls.banner, !isWidthLg ? 'absolute top-0 left-0 right-0 h-162' : '-mx-4')}
         >
             {children}
         </DivSlot>
@@ -23,22 +24,24 @@ const BannerSlot: SlotComp = ({ children, asChild }) => {
 };
 
 const CoverSlot: SlotComp = ({ children, asChild }) => {
+    const isWidthLg = useWindowSize.use.isWidthLg();
     //w-45
     return (
-        <DivSlot asChild={asChild} className={cn(cls.cover, `z-2`, isMobile && 'mb-2')}>
+        <DivSlot asChild={asChild} className={cn(cls.cover, `z-2`, !isWidthLg && 'mb-2')}>
             {children}
         </DivSlot>
     );
 };
 
 const TitleSlot: SlotComp = ({ children, asChild }) => {
+    const isWidthLg = useWindowSize.use.isWidthLg();
     return (
         <DivSlot
             asChild={asChild}
             className={cn(
                 cls.title,
                 'flex z-2 mb-2',
-                isMobile ? 'flex-col-reverse items-center gap-6' : 'gap-20 w-full items-end',
+                !isWidthLg ? 'flex-col-reverse items-center gap-6' : 'gap-20 w-full items-end',
             )}
         >
             {children}
@@ -47,13 +50,14 @@ const TitleSlot: SlotComp = ({ children, asChild }) => {
 };
 
 const ButtonsSlot: SlotComp = ({ children, asChild }) => {
+    const isWidthLg = useWindowSize.use.isWidthLg();
     return (
         <DivSlot
             asChild={asChild}
             className={cn(
                 cls.buttons,
                 'flex flex-col w-full justify-center items-center max-w-70 grow z-4 gap-1',
-                isMobile && 'px-1 mb-2',
+                !isWidthLg && 'px-1 mb-2',
             )}
         >
             {children}
@@ -72,12 +76,13 @@ type MangaPageLayoutProps = {
 
 export const BookPageLayout = (props: MangaPageLayoutProps) => {
     const { banner, cover, title, buttons, sidebar, content } = props;
+    const isWidthLg = useWindowSize.use.isWidthLg();
 
     return (
         <Page>
             <div
                 className={cn(
-                    isMobile
+                    !isWidthLg
                         ? 'relative flex flex-col gap-1 pt-10 items-center'
                         : `${cls.gridTemplete} grid gap-4`,
                 )}
@@ -86,7 +91,7 @@ export const BookPageLayout = (props: MangaPageLayoutProps) => {
                 {cover(CoverSlot)}
                 {title(TitleSlot)}
                 {buttons(ButtonsSlot)}
-                {!isMobile && (
+                {isWidthLg && (
                     <div
                         className={cn(
                             cls.sidebar,

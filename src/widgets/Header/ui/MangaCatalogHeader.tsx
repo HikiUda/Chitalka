@@ -1,6 +1,6 @@
 import { MangaCatalogFiltersSheet, MangaCatalogSortByOrder } from '@/features/BookCatalog';
 import { HeaderLayout } from '@/shared/ui/layout/HeaderLayout';
-import { LogoShort } from '@/shared/ui/Logo';
+import { LogoShort } from '@/entities/Logo';
 
 export const MangaCatalogHeader = () => {
     return (

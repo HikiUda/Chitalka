@@ -3,7 +3,7 @@ import { CircleHelpIcon } from 'lucide-react';
 import { PathParams, Routes } from '@/shared/kernel/router';
 import { BottomMenuLayout } from '@/shared/ui/layout/BottomMenuLayout';
 import { useHideLayout } from '@/shared/ui/layout/useHideLayout';
-import { LogoShort } from '@/shared/ui/Logo';
+import { LogoShort } from '@/entities/Logo';
 import { MangaChaptersNavigation } from '@/features/BookChapters';
 
 export const ReadMangaBottomMenu = () => {

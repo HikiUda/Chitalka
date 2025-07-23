@@ -1,20 +1,20 @@
 import { Link } from 'react-router-dom';
-import ChitalkaShort from '../icon/ChitalkaShort.svg?react';
-import { AppImage } from '../AppImage';
+import { AppImage } from '../../shared/ui/AppImage';
+import Chitalka from '@/shared/ui/icon/Chitalka.svg?react';
 import Gid from '@/shared/assets/animation/Gid/logo/shake.gif';
 import { cn } from '@/shared/lib/css';
 import { getRoute } from '@/shared/kernel/router';
 
-interface LogoShortProps {
+type LogoProps = {
     className?: string;
-}
+};
 
-export const LogoShort = (props: LogoShortProps) => {
+export const Logo = (props: LogoProps) => {
     const { className } = props;
 
     return (
         <Link to={getRoute.MAIN()} className={cn('relative', className)}>
-            <ChitalkaShort className="fill-primary" width={40} height={45} />
+            <Chitalka className="fill-primary" width={150} height={45} />
             <AppImage
                 className="absolute top-0 left-0"
                 src={Gid}

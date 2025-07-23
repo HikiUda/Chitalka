@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom';
-import { isMobile } from 'react-device-detect';
 import { BookPageLayout } from '../layout/BookPageLayout';
 import { BookTitleLayout } from '../layout/BookTitleLayout';
 import { TitleInfoModal } from '../layout/TitleInfoModal';
@@ -15,6 +14,7 @@ import { MangaRateModalTrigger } from '@/features/BookRate';
 import { useMangaBasicInfo, useBookTitles, useGetManga } from '@/entities/BookInfo';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 import { PathParams, Routes } from '@/shared/kernel/router';
+import { useWindowSize } from '@/shared/kernel/useWindowSize';
 
 const BookSidebarLayout = lazyNamed(
     () => import('../layout/BookSidebarLayout'),
@@ -23,6 +23,7 @@ const BookSidebarLayout = lazyNamed(
 
 export const MangaPage = () => {
     const { mangaId } = useParams<PathParams[typeof Routes.MANGA]>();
+    const isWidthLg = useWindowSize.use.isWidthLg();
     if (!mangaId) throw new Error('mangaId is required');
 
     const { manga } = useGetManga(mangaId);
@@ -35,7 +36,7 @@ export const MangaPage = () => {
     return (
         <BookPageLayout
             banner={(BannerSlot) =>
-                (manga.banner || isMobile) && (
+                (manga.banner || !isWidthLg) && (
                     <BannerSlot asChild>
                         <Banner banner={manga.banner || manga.cover} />
                     </BannerSlot>
@@ -46,7 +47,7 @@ export const MangaPage = () => {
                     <MangaCover
                         mangaId={manga.id}
                         cover={manga.cover}
-                        className={cn(isMobile && 'w-45')}
+                        className={cn(!isWidthLg && 'w-45')}
                     />
                 </CoverSlot>
             )}

@@ -40,7 +40,7 @@ export const TextDisclosure: FC<TextDisclosureProps> = (props) => {
                     onClick={() => setClose((prev) => !prev)}
                     variant="clear"
                     size="clear"
-                    className="text-secondary mt-2"
+                    className="text-primary/80 mt-2"
                 >
                     {close ? 'Подробнее...' : 'Скрыть'}
                 </Button>

@@ -1,10 +1,10 @@
 import { ReactNode, Suspense, useEffect, useState } from 'react';
-import { isMobile } from 'react-device-detect';
 import { useLocation } from 'react-router-dom';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
-import { Dialog, DialogBody, DialogTrigger } from '@/shared/ui/kit/dialog';
-import { Drawer, DrawerBody, DrawerTrigger } from '@/shared/ui/kit/drawer';
+import { Dialog, DialogContent, DialogTrigger } from '@/shared/ui/kit/dialog';
+import { Drawer, DrawerContent, DrawerTrigger } from '@/shared/ui/kit/drawer';
 import { Loader } from '@/shared/ui/kit/loader';
+import { useWindowSize } from '@/shared/kernel/useWindowSize';
 
 const QuickSearchContent = lazyNamed(() => import('./QuickSearchContent'), 'QuickSearchContent');
 
@@ -14,6 +14,7 @@ interface QuickSearchProps {
 
 export const QuickSearch = (props: QuickSearchProps) => {
     const { trigger } = props;
+    const isWidthLg = useWindowSize.use.isWidthLg();
 
     const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
@@ -22,22 +23,22 @@ export const QuickSearch = (props: QuickSearchProps) => {
         setIsOpen(false);
     }, [location.pathname]);
 
-    if (isMobile)
+    if (!isWidthLg)
         return (
             <Drawer open={isOpen} onOpenChange={(open) => setIsOpen(open)}>
                 <DrawerTrigger asChild>{trigger}</DrawerTrigger>
-                <DrawerBody className="gap-2 px-3 pb-5">
+                <DrawerContent className="gap-2 px-3 pb-5">
                     <Suspense fallback={<Loader className="mx-auto" variant="flower" />}>
                         <QuickSearchContent />
                     </Suspense>
-                </DrawerBody>
+                </DrawerContent>
             </Drawer>
         );
 
     return (
         <Dialog open={isOpen} onOpenChange={(open) => setIsOpen(open)}>
             <DialogTrigger asChild>{trigger}</DialogTrigger>
-            <DialogBody
+            <DialogContent
                 className="gap-2 py-3 px-4 sm:max-w-160"
                 closeButton={false}
                 verticalPosition="top"
@@ -45,7 +46,7 @@ export const QuickSearch = (props: QuickSearchProps) => {
                 <Suspense fallback={<Loader className="mx-auto" variant="flower" />}>
                     <QuickSearchContent />
                 </Suspense>
-            </DialogBody>
+            </DialogContent>
         </Dialog>
     );
 };

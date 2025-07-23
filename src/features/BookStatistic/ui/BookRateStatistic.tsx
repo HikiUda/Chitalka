@@ -4,6 +4,14 @@ import { Progress } from '@/shared/ui/kit/progress';
 import { Heading } from '@/shared/ui/kit/heading';
 import { Skeleton } from '@/shared/ui/kit/skeleton';
 
+function getChart(ind: number) {
+    if (ind > 8) return 'chart-1';
+    if (ind > 6) return 'chart-2';
+    if (ind > 4) return 'chart-3';
+    if (ind > 2) return 'chart-4';
+    return 'chart-5';
+}
+
 type BookRateStatisticProps = {
     className?: string;
     rate: number;
@@ -29,7 +37,10 @@ export const BookRateStatistic = (props: BookRateStatisticProps) => {
                                 <StarIcon className="stroke-primary fill-primary p-1" />
                             </div>
                             <div className="table-cell px-2 py-1.5 w-full">
-                                <Progress value={getRatePercentage(rateValue)} />
+                                <Progress
+                                    variant={getChart(rate)}
+                                    value={getRatePercentage(rateValue)}
+                                />
                             </div>
                             <div className="table-cell px-2 py-1.5">
                                 {getRatePercentage(rateValue)}%

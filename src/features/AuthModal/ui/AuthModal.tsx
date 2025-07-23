@@ -3,7 +3,7 @@ import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 import { Button } from '@/shared/ui/kit/button';
 import {
     Dialog,
-    DialogBody,
+    DialogContent,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
@@ -28,7 +28,7 @@ export const AuthModal = (props: AuthModalProps) => {
                     Войти
                 </Button>
             </DialogTrigger>
-            <DialogBody>
+            <DialogContent>
                 <DialogHeader>
                     <DialogTitle asChild>
                         <Heading variant="h2">{isLogin ? 'Вход' : 'Регестрация'}</Heading>
@@ -40,7 +40,7 @@ export const AuthModal = (props: AuthModalProps) => {
                         {isLogin ? 'Нет аккаунта?' : 'Есть аккаунт?'}
                     </Button>
                 </Suspense>
-            </DialogBody>
+            </DialogContent>
         </Dialog>
     );
 };
