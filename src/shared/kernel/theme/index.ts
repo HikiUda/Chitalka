@@ -1,5 +1,3 @@
-import AppThemeProvider from './AppThemeProvider';
-export { AppThemeProvider };
+export { AppThemeProvider } from './appThemeProvider';
 export { useAppTheme } from './useAppTheme';
-export { useAppDisign } from './useAppDisign';
-export { AppTheme, AppDisign } from './appThemeConst';
+export { type AppTheme, AppThemeColor, AppThemeMode } from './appThemeConfig';

@@ -14,7 +14,8 @@ type PopUserMenuContentProps = {
 
 export const PopUserMenuContent = (props: PopUserMenuContentProps) => {
     const { className, username, profileLink } = props;
-    const { toggleTheme } = useAppTheme();
+
+    const { toggleThemeMode, toggleThemeColor, themeMode, themeColor } = useAppTheme();
 
     return (
         <div className={cn('flex flex-col items-center justify-center gap-2', className)}>
@@ -32,8 +33,11 @@ export const PopUserMenuContent = (props: PopUserMenuContentProps) => {
                 ))}
             </div>
             <Separator />
-            <button className="self-start" type="button" onClick={toggleTheme}>
-                theme
+            <button className="self-start" type="button" onClick={() => toggleThemeMode()}>
+                {themeMode}
+            </button>
+            <button className="self-start" type="button" onClick={() => toggleThemeColor()}>
+                {themeColor}
             </button>
             <LogoutButton className="w-full" />
         </div>

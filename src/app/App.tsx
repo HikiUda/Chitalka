@@ -17,7 +17,6 @@ export const App = () => {
     }, []);
 
     if (!init) return <Loader variant="flower" />;
-
     return (
         <Suspense fallback={<Loader variant="flower" />}>
             <MainLayout

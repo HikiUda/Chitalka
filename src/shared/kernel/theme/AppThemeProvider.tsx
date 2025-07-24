@@ -1,30 +1,35 @@
-import { FC, ReactNode, useMemo, useState } from 'react';
-import { AppDisign, AppTheme, type AppThemeType, AppDisignType } from './appThemeConst';
-import { AppThemeContext } from './AppThemeContext';
+import { ReactNode, useEffect, useMemo, useState } from 'react';
+import { AppTheme, AppThemeColor } from './appThemeConfig';
+import { AppThemeContext } from './appThemeContext';
+import { resolveAppThemeMode } from './resolveAppThemeMode';
+import { appThemeLocalStorage } from './appThemeLocalStorage';
 
-interface AppThemeProviderProps {
-    initialTheme?: AppThemeType;
-    initialDisign?: AppDisignType;
+type AppThemeProviderProps = {
     children: ReactNode;
-}
+};
 
-const AppThemeProvider: FC<AppThemeProviderProps> = (props) => {
-    const { initialTheme, initialDisign, children } = props;
-    const [theme, setTheme] = useState<AppThemeType>(initialTheme || AppTheme.LIGHT);
-    const [disign, setDisign] = useState<AppDisignType>(initialDisign || AppDisign.RED);
-    document.body.className = `${disign} ${theme}`;
+export const AppThemeProvider = (props: AppThemeProviderProps) => {
+    const { children } = props;
+    const [theme, setTheme] = useState<AppTheme>({
+        color: AppThemeColor.Red,
+        ...appThemeLocalStorage.get(),
+    });
+
+    useEffect(() => {
+        const resolvedMode = resolveAppThemeMode(theme.mode);
+        document.body.className = `${resolvedMode}`;
+        document.body.dataset.theme = `${theme.color}-${resolvedMode}`;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const defaultProps = useMemo(
         () => ({
             theme,
             setTheme,
-            disign,
-            setDisign,
         }),
-        [theme, disign],
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        [theme.mode, theme.color],
     );
 
     return <AppThemeContext.Provider value={defaultProps}>{children}</AppThemeContext.Provider>;
 };
-
-export default AppThemeProvider;
