@@ -3,12 +3,14 @@ export const Routes = {
 
     // * Manga
     MANGA: '/manga/:mangaId',
+    MANGA_SECTION: '/manga',
     MANGA_CATALOG: '/catalog/manga',
     MANGA_READ: '/manga/:mangaId/read/:chapterId',
     // * Manga
 
     // * Ranobe
     RANOBE: '/ranobe/:ranobeId',
+    RANOBE_SECTION: '/ranobe',
     RANOBE_CATALOG: '/catalog/ranobe',
     RANOBE_READ: '/ranobe/:ranobeId/read/:chapterId',
     // * Ranobe

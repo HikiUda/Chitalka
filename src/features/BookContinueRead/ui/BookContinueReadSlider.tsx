@@ -12,7 +12,7 @@ import { Button } from '@/shared/ui/kit/button';
 import { cn } from '@/shared/lib/css';
 import { Heading } from '@/shared/ui/kit/heading';
 
-type ContinueReadBookSliderProps = {
+type BookContinueReadSliderProps = {
     className?: string;
     cards: ReactNode;
     isLoading: boolean;
@@ -20,7 +20,7 @@ type ContinueReadBookSliderProps = {
     isDeleteAllPending: boolean;
 };
 
-export const ContinueReadBookSlider = (props: ContinueReadBookSliderProps) => {
+export const BookContinueReadSlider = (props: BookContinueReadSliderProps) => {
     const { className, cards, isLoading, deleteAll, isDeleteAllPending } = props;
 
     return (

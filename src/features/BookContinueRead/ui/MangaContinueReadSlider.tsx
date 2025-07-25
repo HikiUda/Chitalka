@@ -1,16 +1,16 @@
 import { useMangaGetContinueReadList } from '../model/useMangaGetContinueReadList';
 import { useMangaDeleteContinueRead } from '../model/useMangaDeleteContinueRead';
-import { ContinueReadBookCard } from './ContinueReadBookCard';
+import { BookContinueReadCard } from './BookContinueReadCard';
 
-import { ContinueReadBookSlider } from './ContinueReadBookSlider';
+import { BookContinueReadSlider } from './BookContinueReadSlider';
 import { useSession } from '@/shared/kernel/session';
 import { getRoute } from '@/shared/kernel/router';
 
-type ContinueReadMangaSliderProps = {
+type MangaContinueReadSliderProps = {
     className?: string;
 };
 
-export const ContinueReadMangaSlider = (props: ContinueReadMangaSliderProps) => {
+export const MangaContinueReadSlider = (props: MangaContinueReadSliderProps) => {
     const { className } = props;
 
     const { data = [], isLoading } = useMangaGetContinueReadList();
@@ -21,10 +21,10 @@ export const ContinueReadMangaSlider = (props: ContinueReadMangaSliderProps) => 
     if (!isLoading && !data.length) return null;
 
     return (
-        <ContinueReadBookSlider
+        <BookContinueReadSlider
             className={className}
             cards={data.map((manga, index) => (
-                <ContinueReadBookCard
+                <BookContinueReadCard
                     book={manga}
                     chapterLink={getRoute.MANGA_READ(manga.urlId, manga)}
                     key={index}

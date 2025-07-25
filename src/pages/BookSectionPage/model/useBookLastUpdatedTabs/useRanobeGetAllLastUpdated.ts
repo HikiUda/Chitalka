@@ -1,17 +1,17 @@
 import { infiniteQueryOptions, useInfiniteQuery } from '@tanstack/react-query';
 import { useEffect } from 'react';
-import { authFetchClient } from '@/shared/api/instance';
+import { publicFetchClient } from '@/shared/api/instance';
 import { useClearInfinityPages } from '@/shared/lib/hooks/useClearInfinityPages';
 
-export function useGetLastUpdatedMy() {
+export function useRanobeGetAllLastUpdated() {
     const queryOptions = infiniteQueryOptions({
-        queryKey: ['get', '/manga/last-updated', 'my', 10],
+        queryKey: ['get', '/ranobe/last-updated', 'all', 10],
         queryFn: async ({ pageParam }) =>
-            await authFetchClient
-                .GET('/last-updated/manga', {
+            await publicFetchClient
+                .GET('/last-updated/ranobe', {
                     params: {
                         query: {
-                            scope: 'my',
+                            scope: 'all',
                             limit: 10,
                             page: pageParam,
                         },
@@ -20,6 +20,7 @@ export function useGetLastUpdatedMy() {
                 .then((data) => data.data),
         initialPageParam: 1,
         getNextPageParam: (lastPage) => lastPage?.nextPage,
+        maxPages: 5,
     });
 
     const { data, fetchNextPage, isFetching, isFetchingNextPage, hasNextPage } =
@@ -35,10 +36,9 @@ export function useGetLastUpdatedMy() {
     }, []);
 
     return {
-        data: data?.pages.flatMap((page) => page?.data || []),
+        data: data?.pages.flatMap((page) => page?.data || []) || [],
         fetchNextPage,
-        isFetching,
-        isFetchingNextPage,
+        isFetching: isFetchingNextPage || isFetching,
         hasNextPage,
     };
 }

@@ -1,6 +1,6 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Link } from 'react-router-dom';
 import App from '../App';
-import { Routes } from '@/shared/kernel/router';
+import { getRoute, Routes } from '@/shared/kernel/router';
 
 //TODO loading page add error page
 
@@ -10,7 +10,17 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: Routes.MAIN,
-                lazy: () => import('@/pages/MainPage/main.page'),
+                Component: () => (
+                    <div>
+                        <Link to={getRoute.MANGA_SECTION()}>manga</Link>
+                        <Link to={getRoute.RANOBE_SECTION()}>ranobe</Link>
+                    </div>
+                ),
+            },
+            // * Manga Pages
+            {
+                path: Routes.MANGA_SECTION,
+                lazy: () => import('@/pages/BookSectionPage/manga-section.page'),
             },
             {
                 path: Routes.MANGA,
@@ -24,6 +34,14 @@ export const router = createBrowserRouter([
                 path: Routes.MANGA_READ,
                 lazy: () => import('@/pages/ReadBookPage/read-manga.page'),
             },
+            // * Manga Pages
+
+            // * Ranobe Pages
+            {
+                path: Routes.RANOBE_SECTION,
+                lazy: () => import('@/pages/BookSectionPage/ranobe-section.page'),
+            },
+            // * Ranobe Pages
             {
                 path: Routes.COLLECTIONS,
                 Component: () => <div />,

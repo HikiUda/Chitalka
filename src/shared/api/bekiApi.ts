@@ -1459,6 +1459,24 @@ export type components = {
             nextPage: number | null;
             data: components["schemas"]["LastUpdatedManga"][];
         };
+        LastUpdatedRanobe: {
+            id: number;
+            urlId: string;
+            title: string;
+            cover: string;
+            tome: number;
+            chapter: number;
+            /** Format: date-time */
+            chapterCreatedAt: string;
+            chapterId: number;
+            /** @enum {string} */
+            type: "Japan" | "Korea" | "China" | "Foreign" | "Russia" | "Fanfic";
+        };
+        LastUpdatedRanobeList: {
+            prevPage: number | null;
+            nextPage: number | null;
+            data: components["schemas"]["LastUpdatedRanobe"][];
+        };
         PeopleListItem: {
             id: number;
             name: string;
@@ -3550,7 +3568,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["LastUpdatedMangaList"];
+                    "application/json": components["schemas"]["LastUpdatedRanobeList"];
                 };
             };
             /** @description Unauthorized */

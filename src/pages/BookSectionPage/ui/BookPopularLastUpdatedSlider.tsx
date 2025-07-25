@@ -1,5 +1,3 @@
-import { FC } from 'react';
-import { useGetLastUpdatedPopularManga } from './useGetLastUpdatedPopularManga';
 import { Card } from '@/shared/ui/kit/card';
 import {
     Carousel,
@@ -11,14 +9,23 @@ import {
 import { BookCard, BookCardSkeleton } from '@/entities/BookList';
 import { getRoute } from '@/shared/kernel/router';
 
-interface LastUpdatedPopularMangaSliderProps {
+type BookPopularLastUpdatedSliderProps = {
     className?: string;
-}
+    list: {
+        id: number;
+        urlId: string;
+        title: string;
+        cover: string;
+        tome: number;
+        chapter: number;
+        type: string;
+    }[];
+    bookLink: typeof getRoute.MANGA | typeof getRoute.RANOBE;
+    isLoading: boolean;
+};
 
-export const LastUpdatedPopularMangaSlider: FC<LastUpdatedPopularMangaSliderProps> = (props) => {
-    const { className } = props;
-
-    const { data = [], isLoading } = useGetLastUpdatedPopularManga();
+export const BookPopularLastUpdatedSlider = (props: BookPopularLastUpdatedSliderProps) => {
+    const { className, list, bookLink, isLoading } = props;
 
     return (
         <Card className={className}>
@@ -29,15 +36,14 @@ export const LastUpdatedPopularMangaSlider: FC<LastUpdatedPopularMangaSliderProp
                 className="w-full relative group"
             >
                 <CarouselContent className="pl-2.5">
-                    {data.map(({ urlId, title, type, chapter, cover }, index) => (
+                    {list.map((book, index) => (
                         <CarouselItem key={index} className="basis-auto">
                             <BookCard
-                                //TODO link to chapter
-                                to={getRoute.MANGA(urlId)}
-                                title={title}
-                                subtitle={type}
-                                img={cover}
-                                label3={`Глава ${chapter}`}
+                                to={bookLink(book.urlId)}
+                                title={book.title}
+                                subtitle={book.type}
+                                img={book.cover}
+                                label3={`Глава ${book.chapter}`}
                             />
                         </CarouselItem>
                     ))}

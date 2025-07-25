@@ -36,6 +36,7 @@ export const getRoute = {
 
     // * Manga
     MANGA: (mangaId: BookId) => href(Routes.MANGA, { mangaId: String(mangaId) }),
+    MANGA_SECTION: () => Routes.MANGA_SECTION,
     MANGA_CATALOG: () => Routes.MANGA_CATALOG,
     MANGA_READ: (mangaId: BookId, chapterId: ChapterId) =>
         href(Routes.MANGA_READ, {
@@ -46,6 +47,7 @@ export const getRoute = {
 
     // * Ranobe
     RANOBE: (ranobeId: BookId) => href(Routes.RANOBE, { ranobeId: String(ranobeId) }),
+    RANOBE_SECTION: () => Routes.RANOBE_SECTION,
     RANOBE_CATALOG: () => Routes.RANOBE_CATALOG,
     RANOBE_READ: (ranobeId: BookId, chapterId: ChapterId) =>
         href(Routes.RANOBE_READ, {

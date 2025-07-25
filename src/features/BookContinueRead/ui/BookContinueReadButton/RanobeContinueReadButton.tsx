@@ -1,15 +1,15 @@
 import { useRanobeGetContinueRead } from '../../model/useRanobeGetContinueRead';
-import { ContinueReadBookButton } from './ContinueReadBookButton';
+import { BookContinueReadButton } from './BookContinueReadButton';
 import { BookId } from '@/shared/kernel/book/book';
 
-type ContinueReadRanobeButtonProps = {
+type RanobeContinueReadButtonProps = {
     className?: string;
     ranobeId: BookId;
 };
 
-export const ContinueReadRanobeButton = (props: ContinueReadRanobeButtonProps) => {
+export const RanobeContinueReadButton = (props: RanobeContinueReadButtonProps) => {
     const { className, ranobeId } = props;
     const data = useRanobeGetContinueRead(ranobeId);
 
-    return <ContinueReadBookButton className={className} {...data} />;
+    return <BookContinueReadButton className={className} {...data} />;
 };

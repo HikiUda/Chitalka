@@ -1,16 +1,16 @@
 import { useRanobeGetContinueReadList } from '../model/useRanobeGetContinueReadList';
 import { useRanobeDeleteContinueRead } from '../model/useRanobeDeleteContinueRead';
-import { ContinueReadBookCard } from './ContinueReadBookCard';
+import { BookContinueReadCard } from './BookContinueReadCard';
 
-import { ContinueReadBookSlider } from './ContinueReadBookSlider';
+import { BookContinueReadSlider } from './BookContinueReadSlider';
 import { useSession } from '@/shared/kernel/session';
 import { getRoute } from '@/shared/kernel/router';
 
-type ContinueReadRanobeSliderProps = {
+type RanobeContinueReadSliderProps = {
     className?: string;
 };
 
-export const ContinueReadRanobeSlider = (props: ContinueReadRanobeSliderProps) => {
+export const RanobeContinueReadSlider = (props: RanobeContinueReadSliderProps) => {
     const { className } = props;
 
     const { data = [], isLoading } = useRanobeGetContinueReadList();
@@ -21,10 +21,10 @@ export const ContinueReadRanobeSlider = (props: ContinueReadRanobeSliderProps) =
     if (!isLoading && !data.length) return null;
 
     return (
-        <ContinueReadBookSlider
+        <BookContinueReadSlider
             className={className}
             cards={data.map((ranobe, index) => (
-                <ContinueReadBookCard
+                <BookContinueReadCard
                     book={ranobe}
                     chapterLink={getRoute.RANOBE_READ(ranobe.urlId, ranobe)}
                     key={index}

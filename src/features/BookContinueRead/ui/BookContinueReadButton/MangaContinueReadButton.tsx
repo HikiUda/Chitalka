@@ -1,15 +1,15 @@
 import { useMangaGetContinueRead } from '../../model/useMangaGetContinueRead';
-import { ContinueReadBookButton } from './ContinueReadBookButton';
+import { BookContinueReadButton } from './BookContinueReadButton';
 import { BookId } from '@/shared/kernel/book/book';
 
-type ContinueReadMangaButtonProps = {
+type MangaContinueReadButtonProps = {
     className?: string;
     mangaId: BookId;
 };
 
-export const ContinueReadMangaButton = (props: ContinueReadMangaButtonProps) => {
+export const MangaContinueReadButton = (props: MangaContinueReadButtonProps) => {
     const { className, mangaId } = props;
     const data = useMangaGetContinueRead(mangaId);
 
-    return <ContinueReadBookButton className={className} {...data} />;
+    return <BookContinueReadButton className={className} {...data} />;
 };

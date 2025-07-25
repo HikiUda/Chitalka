@@ -1,8 +1,7 @@
-import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { formatDistanceToNow } from 'date-fns';
 import { ru } from 'date-fns/locale';
-import { useLastUpdatedMangaTabs } from './useLastUpdatedMangaTabs';
+import { BookLastUpdatedTabOutput } from '../model/useBookLastUpdatedTabs/useBookLastUpdatedTabs';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/ui/kit/tabs';
 import { BookCardInline, BookListLayout } from '@/entities/BookList';
 import { Button } from '@/shared/ui/kit/button';
@@ -11,14 +10,14 @@ import { useSession } from '@/shared/kernel/session';
 import { getRoute } from '@/shared/kernel/router';
 import { cn } from '@/shared/lib/css';
 
-interface LastUpdatedMangaTabsProps {
+type BookLastUpdatedTabsProps = {
     className?: string;
-}
+    tabs: BookLastUpdatedTabOutput[];
+    bookLink: typeof getRoute.MANGA_READ | typeof getRoute.RANOBE_READ;
+};
 
-export const LastUpdatedMangaTabs: FC<LastUpdatedMangaTabsProps> = (props) => {
-    const { className } = props;
-
-    const tabs = useLastUpdatedMangaTabs();
+export const BookLastUpdatedTabs = (props: BookLastUpdatedTabsProps) => {
+    const { className, tabs, bookLink } = props;
     const { isUserAuth } = useSession();
 
     return (
@@ -47,7 +46,7 @@ export const LastUpdatedMangaTabs: FC<LastUpdatedMangaTabsProps> = (props) => {
                                     <BookCardInline
                                         className={`${ind < tab.data.length - 1 && 'border-b-1 border-b-primary'}  mb-2`}
                                         key={ind}
-                                        to={getRoute.MANGA(manga.urlId)}
+                                        to={bookLink(manga.urlId, manga)}
                                         img={manga.cover}
                                         title={manga.title}
                                     >

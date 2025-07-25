@@ -5,7 +5,7 @@ import { Button } from '@/shared/ui/kit/button';
 import { cn } from '@/shared/lib/css';
 import { useWindowSize } from '@/shared/kernel/useWindowSize';
 
-type ContinueReadBookCardProps = {
+type BookContinueReadCardProps = {
     className?: string;
     book: {
         title: string;
@@ -18,7 +18,7 @@ type ContinueReadBookCardProps = {
     disabled: boolean;
 };
 
-export const ContinueReadBookCard = (props: ContinueReadBookCardProps) => {
+export const BookContinueReadCard = (props: BookContinueReadCardProps) => {
     const { className, book, disabled, onDelete, chapterLink } = props;
     const { title, cover, tome, chapter } = book;
     const isWidthLg = useWindowSize.use.isWidthLg();

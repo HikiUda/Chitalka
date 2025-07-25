@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { publicFetchClient } from '@/shared/api/instance';
 import { useClearInfinityPages } from '@/shared/lib/hooks/useClearInfinityPages';
 
-export function useGetLastUpdatedAll() {
+export function useMangaGetAllLastUpdated() {
     const queryOptions = infiniteQueryOptions({
         queryKey: ['get', '/manga/last-updated', 'all', 10],
         queryFn: async ({ pageParam }) =>
@@ -20,6 +20,7 @@ export function useGetLastUpdatedAll() {
                 .then((data) => data.data),
         initialPageParam: 1,
         getNextPageParam: (lastPage) => lastPage?.nextPage,
+        maxPages: 5,
     });
 
     const { data, fetchNextPage, isFetching, isFetchingNextPage, hasNextPage } =
@@ -35,10 +36,9 @@ export function useGetLastUpdatedAll() {
     }, []);
 
     return {
-        data: data?.pages.flatMap((page) => page?.data || []),
+        data: data?.pages.flatMap((page) => page?.data || []) || [],
         fetchNextPage,
-        isFetching,
-        isFetchingNextPage,
+        isFetching: isFetchingNextPage || isFetching,
         hasNextPage,
     };
 }

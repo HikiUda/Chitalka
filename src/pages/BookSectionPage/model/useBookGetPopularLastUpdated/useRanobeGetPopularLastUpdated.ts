@@ -1,7 +1,7 @@
 import { publicRqClient } from '@/shared/api/instance';
 
-export function useGetLastUpdatedPopularManga() {
-    const { data, isLoading } = publicRqClient.useQuery('get', '/last-updated/manga', {
+export function useRanobeGetPopularLastUpdated() {
+    const { data, isLoading } = publicRqClient.useQuery('get', '/last-updated/ranobe', {
         params: {
             query: {
                 scope: 'popular',
@@ -10,5 +10,5 @@ export function useGetLastUpdatedPopularManga() {
         },
     });
 
-    return { data: data?.data, isLoading };
+    return { data: data?.data || [], isLoading };
 }

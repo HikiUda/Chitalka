@@ -2,14 +2,14 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/shared/lib/css';
 import { Button } from '@/shared/ui/kit/button';
 
-type ContinueReadBookButtonProps = {
+type BookContinueReadButtonProps = {
     className?: string;
     chapterLink: string | null;
     chapterCount: number;
     readedChapterCount: number;
 };
 
-export const ContinueReadBookButton = (props: ContinueReadBookButtonProps) => {
+export const BookContinueReadButton = (props: BookContinueReadButtonProps) => {
     const { className, chapterLink, chapterCount, readedChapterCount } = props;
 
     return (

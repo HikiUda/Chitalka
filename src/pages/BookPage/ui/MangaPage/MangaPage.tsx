@@ -8,7 +8,7 @@ import { BookContentLayout } from '../layout/BookContentLayout';
 import { Banner } from '@/entities/Banner';
 import { MangaCover } from '@/features/BookCover';
 import { cn } from '@/shared/lib/css';
-import { ContinueReadMangaButton } from '@/features/BookContinueRead';
+import { MangaContinueReadButton } from '@/features/BookContinueRead';
 import { MangaBookmarkSelector } from '@/features/BookToBookmarks';
 import { MangaRateModalTrigger } from '@/features/BookRate';
 import { useMangaBasicInfo, useBookTitles, useGetManga } from '@/entities/BookInfo';
@@ -68,7 +68,7 @@ export const MangaPage = () => {
             )}
             buttons={(ButtonsSlot) => (
                 <ButtonsSlot>
-                    <ContinueReadMangaButton mangaId={manga.id} className="w-full" />
+                    <MangaContinueReadButton mangaId={manga.id} className="w-full" />
                     <MangaBookmarkSelector className="w-full" mangaId={manga.id} />
                 </ButtonsSlot>
             )}
