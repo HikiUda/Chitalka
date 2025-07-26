@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useRanobeGetContinueReadList } from '../model/useRanobeGetContinueReadList';
 import { useRanobeDeleteContinueRead } from '../model/useRanobeDeleteContinueRead';
 import { BookContinueReadCard } from './BookContinueReadCard';
@@ -10,7 +11,7 @@ type RanobeContinueReadSliderProps = {
     className?: string;
 };
 
-export const RanobeContinueReadSlider = (props: RanobeContinueReadSliderProps) => {
+export const RanobeContinueReadSlider = memo((props: RanobeContinueReadSliderProps) => {
     const { className } = props;
 
     const { data = [], isLoading } = useRanobeGetContinueReadList();
@@ -38,4 +39,5 @@ export const RanobeContinueReadSlider = (props: RanobeContinueReadSliderProps) =
             isDeleteAllPending={getIsPending(0)}
         />
     );
-};
+});
+RanobeContinueReadSlider.displayName = 'RanobeContinueReadSlider';

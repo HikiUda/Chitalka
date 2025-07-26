@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useMangaGetContinueReadList } from '../model/useMangaGetContinueReadList';
 import { useMangaDeleteContinueRead } from '../model/useMangaDeleteContinueRead';
 import { BookContinueReadCard } from './BookContinueReadCard';
@@ -10,7 +11,7 @@ type MangaContinueReadSliderProps = {
     className?: string;
 };
 
-export const MangaContinueReadSlider = (props: MangaContinueReadSliderProps) => {
+export const MangaContinueReadSlider = memo((props: MangaContinueReadSliderProps) => {
     const { className } = props;
 
     const { data = [], isLoading } = useMangaGetContinueReadList();
@@ -38,4 +39,5 @@ export const MangaContinueReadSlider = (props: MangaContinueReadSliderProps) => 
             isDeleteAllPending={getIsPending(0)}
         />
     );
-};
+});
+MangaContinueReadSlider.displayName = 'MangaContinueReadSlider';

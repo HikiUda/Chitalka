@@ -19,9 +19,15 @@ export const BookSectionPage = (props: BookSectionPageProps) => {
     const sliderControll = cn('mb-4', !isWidthLg && 'w-[98vw] max-w-299');
     return (
         <Page>
-            <DivSlot className={sliderControll}>{mainSlider}</DivSlot>
-            <DivSlot className={sliderControll}>{continueRead}</DivSlot>
-            <DivSlot className={sliderControll}>{nowRead}</DivSlot>
+            <DivSlot className={sliderControll} asChild>
+                {mainSlider}
+            </DivSlot>
+            <DivSlot className={sliderControll} asChild>
+                {continueRead}
+            </DivSlot>
+            <DivSlot className={sliderControll} asChild>
+                {nowRead}
+            </DivSlot>
             <div className="xl:grid xl:grid-cols-2 xl:items-start gap-5 flex flex-col-reverse items-center">
                 {lastUpdatedTabs}
                 <div className="flex flex-col gap-4 w-full">

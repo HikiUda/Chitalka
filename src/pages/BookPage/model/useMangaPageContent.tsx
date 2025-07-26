@@ -3,20 +3,19 @@ import { MangaComments } from '../ui/MangaPage/MangaComments';
 import { type TabsType, useBookPageContent } from './useBookPageContent';
 import { BookId } from '@/shared/kernel/book/book';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
-import { MangaChapters } from '@/features/BookChapters';
 
 const AboutManga = lazyNamed(() => import('../ui/MangaPage/AboutManga'), 'AboutManga');
+const MangaChapters = lazyNamed(() => import('@/features/BookChapters'), 'MangaChapters');
 
-const TabValuesConst = ['info', 'chapters', 'comments'] as const;
-
-type TabValues = (typeof TabValuesConst)[number];
+const TabValues = ['info', 'chapters', 'comments'] as const;
+type TabValues = (typeof TabValues)[number];
 
 export function useMangaPageContent(mangaId: BookId): {
     tabs: TabsType<TabValues>;
     tabValue: TabValues;
     onTabChange: (section: string) => void;
 } {
-    const { tabValue, onTabChange } = useBookPageContent(TabValuesConst, 'info');
+    const { tabValue, onTabChange } = useBookPageContent(TabValues, 'info');
 
     const tabs: TabsType<TabValues> = useMemo(() => {
         return [

@@ -1,11 +1,11 @@
 import { cn } from '@/shared/lib/css';
 import { Heading } from '@/shared/ui/kit/heading';
 
-interface BookTitleLayoutProps {
+type BookTitleLayoutProps = {
     className?: string;
     title: string;
     subtitle?: string | null;
-}
+};
 
 export const BookTitleLayout = (props: BookTitleLayoutProps) => {
     const { className, title, subtitle } = props;

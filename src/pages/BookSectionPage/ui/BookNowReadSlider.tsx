@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { BookNowRead } from '../model/useBookNowRead/useBookNowRead';
 import { Heading } from '@/shared/ui/kit/heading';
 import { Carousel, CarouselContent, CarouselItem } from '@/shared/ui/kit/carousel';
@@ -5,16 +6,16 @@ import { Card } from '@/shared/ui/kit/card';
 import { BookCardInline, BookListLayout } from '@/entities/BookList';
 import { Badge } from '@/shared/ui/kit/badge';
 import { useWindowSize } from '@/shared/kernel/useWindowSize';
-import { getRoute } from '@/shared/kernel/router';
 
 type NowReadMangaSliderProps = {
     className?: string;
-    bookNowRead: BookNowRead[];
-    bookLink: typeof getRoute.MANGA | typeof getRoute.RANOBE;
+    column_1: BookNowRead;
+    column_2: BookNowRead;
+    column_3: BookNowRead;
 };
 
-export const BookNowReadSlider = (props: NowReadMangaSliderProps) => {
-    const { className, bookNowRead, bookLink } = props;
+export const BookNowReadSlider = memo((props: NowReadMangaSliderProps) => {
+    const { className, column_1, column_2, column_3 } = props;
     const isWidthLg = useWindowSize.use.isWidthLg();
 
     return (
@@ -24,7 +25,7 @@ export const BookNowReadSlider = (props: NowReadMangaSliderProps) => {
             </Heading>
             <Carousel opts={{ active: !isWidthLg }} className="w-full relative">
                 <CarouselContent className="pl-2.5">
-                    {bookNowRead.map((bookList) => (
+                    {[column_1, column_2, column_3].map((bookList) => (
                         <CarouselItem
                             key={bookList.heading}
                             className="basis-[90%] sm:basis-[70%] md:basis-[40%] lg:basis-1/3"
@@ -39,7 +40,7 @@ export const BookNowReadSlider = (props: NowReadMangaSliderProps) => {
                                 renderItem={(book) => (
                                     <BookCardInline
                                         key={book.id}
-                                        to={bookLink(book.urlId)}
+                                        to={bookList.bookLink(book.urlId)}
                                         img={book.cover}
                                         title={book.title}
                                     >
@@ -55,4 +56,5 @@ export const BookNowReadSlider = (props: NowReadMangaSliderProps) => {
             </Carousel>
         </Card>
     );
-};
+});
+BookNowReadSlider.displayName = 'BookNowReadSlider';

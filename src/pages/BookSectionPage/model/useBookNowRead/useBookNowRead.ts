@@ -11,4 +11,5 @@ export type BookNowRead = {
         type: string;
     }[];
     isLoading: boolean;
+    bookLink: (urlId: string) => string;
 };

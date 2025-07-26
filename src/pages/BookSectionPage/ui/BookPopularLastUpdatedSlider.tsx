@@ -1,3 +1,5 @@
+import { memo } from 'react';
+import { BookPopularLastUpdated } from '../model/useBookGetPopularLastUpdated/useBookPopularLastUpdated';
 import { Card } from '@/shared/ui/kit/card';
 import {
     Carousel,
@@ -7,25 +9,14 @@ import {
     CarouselPrevious,
 } from '@/shared/ui/kit/carousel';
 import { BookCard, BookCardSkeleton } from '@/entities/BookList';
-import { getRoute } from '@/shared/kernel/router';
 
 type BookPopularLastUpdatedSliderProps = {
     className?: string;
-    list: {
-        id: number;
-        urlId: string;
-        title: string;
-        cover: string;
-        tome: number;
-        chapter: number;
-        type: string;
-    }[];
-    bookLink: typeof getRoute.MANGA | typeof getRoute.RANOBE;
-    isLoading: boolean;
+    data: BookPopularLastUpdated;
 };
 
-export const BookPopularLastUpdatedSlider = (props: BookPopularLastUpdatedSliderProps) => {
-    const { className, list, bookLink, isLoading } = props;
+export const BookPopularLastUpdatedSlider = memo((props: BookPopularLastUpdatedSliderProps) => {
+    const { className, data } = props;
 
     return (
         <Card className={className}>
@@ -36,10 +27,10 @@ export const BookPopularLastUpdatedSlider = (props: BookPopularLastUpdatedSlider
                 className="w-full relative group"
             >
                 <CarouselContent className="pl-2.5">
-                    {list.map((book, index) => (
+                    {data.books.map((book, index) => (
                         <CarouselItem key={index} className="basis-auto">
                             <BookCard
-                                to={bookLink(book.urlId)}
+                                to={data.bookLink(book.urlId)}
                                 title={book.title}
                                 subtitle={book.type}
                                 img={book.cover}
@@ -47,7 +38,7 @@ export const BookPopularLastUpdatedSlider = (props: BookPopularLastUpdatedSlider
                             />
                         </CarouselItem>
                     ))}
-                    {isLoading &&
+                    {data.isLoading &&
                         Array(10)
                             .fill(0)
                             .map((_, ind) => (
@@ -61,4 +52,5 @@ export const BookPopularLastUpdatedSlider = (props: BookPopularLastUpdatedSlider
             </Carousel>
         </Card>
     );
-};
+});
+BookPopularLastUpdatedSlider.displayName = 'BookPopularLastUpdatedSlider';

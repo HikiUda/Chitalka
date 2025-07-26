@@ -1,4 +1,3 @@
-import { useBookLastUpdatedTabs } from './model/useBookLastUpdatedTabs/useBookLastUpdatedTabs';
 import { BookPopularLastUpdatedSlider } from './ui/BookPopularLastUpdatedSlider';
 import { BookSectionPage } from './ui/BookSectionPage';
 import { BookNowReadSlider } from './ui/BookNowReadSlider';
@@ -6,35 +5,40 @@ import { BookLastUpdatedTabs } from './ui/BookLastUpdatedTabs';
 import { useRanobeGetPopularLastUpdated } from './model/useBookGetPopularLastUpdated/useRanobeGetPopularLastUpdated';
 import { useRanobeGetAllLastUpdated } from './model/useBookLastUpdatedTabs/useRanobeGetAllLastUpdated';
 import { useRanobeGetMyLastUpdated } from './model/useBookLastUpdatedTabs/useRanobeGetMyLastUpdated';
-import { useRanobeNowRead } from './model/useBookNowRead/useRanobeNowRead';
-import { getRoute } from '@/shared/kernel/router';
+import { useRanobeNowReadRating } from './model/useBookNowRead/useRanobeNowReadRating';
+import { useRanobeNowReadNew } from './model/useBookNowRead/useRanobeNowReadNew';
+import { useRanobeNowReadMoreViewed } from './model/useBookNowRead/useRanobeNowReadMoreViewed';
 import { RanobeContinueReadSlider } from '@/features/BookContinueRead';
 import { CollectionCard, CollectionGridLayout } from '@/entities/CollectionList';
 import { Heading } from '@/shared/ui/kit/heading';
 import { UserCard, UserGridLayout } from '@/entities/UserList';
 
 const MangaSectionPage = () => {
-    const mainSlider = useRanobeGetPopularLastUpdated();
-    const nowRead = useRanobeNowRead();
+    const popularLastUpdated = useRanobeGetPopularLastUpdated();
 
-    const allBook = useRanobeGetAllLastUpdated();
-    const myBook = useRanobeGetMyLastUpdated();
-    const lastUpdatdTabs = useBookLastUpdatedTabs({ allBook, myBook, book: 'manga' });
+    // * NowRead
+    const nowReadNew = useRanobeNowReadNew();
+    const nowReadRating = useRanobeNowReadRating();
+    const nowReadMoreViewed = useRanobeNowReadMoreViewed();
+    // * NowRead
+
+    // * LastUpdatedTabs
+    const allLastUpdated = useRanobeGetAllLastUpdated();
+    const myLastUpdated = useRanobeGetMyLastUpdated();
+    // * LastUpdatedTabs
 
     return (
         <BookSectionPage
-            mainSlider={
-                <BookPopularLastUpdatedSlider
-                    list={mainSlider.data}
-                    bookLink={getRoute.RANOBE}
-                    isLoading={mainSlider.isLoading}
+            mainSlider={<BookPopularLastUpdatedSlider data={popularLastUpdated} />}
+            continueRead={<RanobeContinueReadSlider />}
+            nowRead={
+                <BookNowReadSlider
+                    column_1={nowReadNew}
+                    column_2={nowReadRating}
+                    column_3={nowReadMoreViewed}
                 />
             }
-            continueRead={<RanobeContinueReadSlider />}
-            nowRead={<BookNowReadSlider bookNowRead={nowRead} bookLink={getRoute.RANOBE} />}
-            lastUpdatedTabs={
-                <BookLastUpdatedTabs tabs={lastUpdatdTabs} bookLink={getRoute.RANOBE_READ} />
-            }
+            lastUpdatedTabs={<BookLastUpdatedTabs all={allLastUpdated} my={myLastUpdated} />}
             collections={
                 <CollectionGridLayout
                     heading={

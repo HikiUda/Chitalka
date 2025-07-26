@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { BasicInfoItem, BookMetaCopyItems, BookMetaLinks } from '@/entities/BookInfo';
 
 type Person = {
@@ -7,13 +6,13 @@ type Person = {
     avatar: string | null;
 };
 
-interface BookSidebarLayoutProps {
+type BookSidebarLayoutProps = {
     className?: string;
     basicInfo: BasicInfoItem[];
     otherTitles: { name: string; titles: string[] };
-}
+};
 
-export const BookSidebarLayout: FC<BookSidebarLayoutProps> = (props) => {
+export const BookSidebarLayout = (props: BookSidebarLayoutProps) => {
     const { className, otherTitles, basicInfo } = props;
     return (
         <div className={className}>

@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { LinksProps } from '../ui/BookMetaLinks';
 import { PeopleRole } from '@/shared/kernel/book/people';
 import { getRoute } from '@/shared/kernel/router';
@@ -19,18 +20,20 @@ function getPeopleByRole(people: Person[], role: PeopleRole): LinksProps[] {
 }
 
 export function useBookPeopleGroup(people: Person[]) {
-    const authors: PeopleGroup = {
-        title: 'Авторы',
-        people: getPeopleByRole(people, 'Author'),
-    };
-    const artists: PeopleGroup = {
-        title: 'Художники',
-        people: getPeopleByRole(people, 'Artist'),
-    };
-    const publishers: PeopleGroup = {
-        title: 'Издатели',
-        people: getPeopleByRole(people, 'Publisher'),
-    };
+    return useMemo(() => {
+        const authors: PeopleGroup = {
+            title: 'Авторы',
+            people: getPeopleByRole(people, 'Author'),
+        };
+        const artists: PeopleGroup = {
+            title: 'Художники',
+            people: getPeopleByRole(people, 'Artist'),
+        };
+        const publishers: PeopleGroup = {
+            title: 'Издатели',
+            people: getPeopleByRole(people, 'Publisher'),
+        };
 
-    return { authors, artists, publishers };
+        return { authors, artists, publishers };
+    }, [people]);
 }

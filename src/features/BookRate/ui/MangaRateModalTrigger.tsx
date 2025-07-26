@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { memo, Suspense } from 'react';
 import { DialogTitle } from '@radix-ui/react-dialog';
 import { useMangaGetRate } from '../model/useMangaGetRate';
 import { useMangaSetRate } from '../model/useMangaSetRate';
@@ -17,7 +17,7 @@ type MangaRateModalTriggerProps = {
     mangaId: BookId;
 };
 
-export const MangaRateModalTrigger = (props: MangaRateModalTriggerProps) => {
+export const MangaRateModalTrigger = memo((props: MangaRateModalTriggerProps) => {
     const { className, mangaId } = props;
     const isWidthLg = useWindowSize.use.isWidthLg();
     const { data, isLoading } = useMangaGetRate(mangaId);
@@ -41,4 +41,5 @@ export const MangaRateModalTrigger = (props: MangaRateModalTriggerProps) => {
             </DialogContent>
         </Dialog>
     );
-};
+});
+MangaRateModalTrigger.displayName = 'MangaRateModalTrigger';

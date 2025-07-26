@@ -1,15 +1,16 @@
-import { FC } from 'react';
+import { Suspense } from 'react';
 import { type TabsType } from '../../model/useBookPageContent';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/ui/kit/tabs';
+import { Loader } from '@/shared/ui/kit/loader';
 
-interface MangaPageContentProps {
+type MangaPageContentProps = {
     className?: string;
     tabs: TabsType<string>;
     tabValue: string;
     onTabChange: (tab: string) => void;
-}
+};
 
-export const BookContentLayout: FC<MangaPageContentProps> = (props) => {
+export const BookContentLayout = (props: MangaPageContentProps) => {
     const { className, tabs, tabValue, onTabChange } = props;
 
     return (
@@ -23,7 +24,9 @@ export const BookContentLayout: FC<MangaPageContentProps> = (props) => {
             </TabsList>
             {tabs.map((tab) => (
                 <TabsContent key={tab.value} value={tab.value}>
-                    {tab.content}
+                    <Suspense fallback={<Loader variant="flower" className="mx-auto" />}>
+                        {tab.content}
+                    </Suspense>
                 </TabsContent>
             ))}
         </Tabs>

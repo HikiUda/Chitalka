@@ -1,3 +1,5 @@
+import { useMemo } from 'react';
+
 const TitlesName = {
     main: 'Основное название',
     en: 'Название на английском',
@@ -16,29 +18,26 @@ type BookTitlesInput = {
 export function useBookTitles(data: BookTitlesInput) {
     const { title } = data;
 
-    const main = title.main;
-    const subtitle = title.en || title.origin;
+    return useMemo(() => {
+        const titles = (Object.keys(TitlesName) as (keyof typeof TitlesName)[])
+            .map((type) => {
+                if (!title[type]) return null;
+                return {
+                    name: TitlesName[type],
+                    title: title[type],
+                    type,
+                };
+            })
+            .filter((item) => item !== null);
 
-    const titles = (Object.keys(TitlesName) as (keyof typeof TitlesName)[])
-        .map((type) => {
-            if (!title[type]) return null;
-            return {
-                name: TitlesName[type],
-                title: title[type],
-                type,
-            };
-        })
-        .filter((item) => item !== null);
-
-    const otherTitles = {
-        name: 'Другие названия',
-        titles: data.otherTitles,
-    };
-
-    return {
-        main,
-        subtitle,
-        titles,
-        otherTitles,
-    };
+        return {
+            main: title.main,
+            subtitle: title.origin || title.en,
+            titles,
+            otherTitles: {
+                name: 'Другие названия',
+                titles: data.otherTitles,
+            },
+        };
+    }, [data.otherTitles, title]);
 }

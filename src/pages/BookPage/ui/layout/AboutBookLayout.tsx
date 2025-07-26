@@ -1,16 +1,16 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { cn } from '@/shared/lib/css';
 import { DivSlot } from '@/shared/ui/kit/divslot';
 import { useWindowSize } from '@/shared/kernel/useWindowSize';
 
-interface AboutBookLayoutProps {
+type AboutBookLayoutProps = {
     className?: string;
     rateStatistic: ReactNode;
     bookmarkStatistic: ReactNode;
     children: ReactNode;
-}
+};
 
-export const AboutBookLayout: FC<AboutBookLayoutProps> = (props) => {
+export const AboutBookLayout = (props: AboutBookLayoutProps) => {
     const { className, rateStatistic, bookmarkStatistic, children } = props;
     const isWidthLg = useWindowSize.use.isWidthLg();
     return (

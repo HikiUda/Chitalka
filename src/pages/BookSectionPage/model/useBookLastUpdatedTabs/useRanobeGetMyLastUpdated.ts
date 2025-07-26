@@ -1,9 +1,11 @@
 import { infiniteQueryOptions, useInfiniteQuery } from '@tanstack/react-query';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
+import { BookLastUpdatedTab } from './useBookLastUpdatedTabs';
 import { authFetchClient } from '@/shared/api/instance';
 import { useClearInfinityPages } from '@/shared/lib/hooks/useClearInfinityPages';
+import { getRoute } from '@/shared/kernel/router';
 
-export function useRanobeGetMyLastUpdated() {
+export function useRanobeGetMyLastUpdated(): BookLastUpdatedTab {
     const queryOptions = infiniteQueryOptions({
         queryKey: ['get', '/ranobe/last-updated', 'my', 10],
         queryFn: async ({ pageParam }) =>
@@ -35,10 +37,16 @@ export function useRanobeGetMyLastUpdated() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    return {
-        data: data?.pages.flatMap((page) => page?.data || []) || [],
-        fetchNextPage,
-        isFetching: isFetchingNextPage || isFetching,
-        hasNextPage,
-    };
+    return useMemo(() => {
+        return {
+            value: 'my',
+            title: 'Мои',
+            catalogLink: `${getRoute.RANOBE_CATALOG()}?sortBy=updateDate&bookmarks=Reading,Readed`,
+            data: data?.pages.flatMap((page) => page?.data || []) || [],
+            fetchNextPage,
+            isFetching: isFetchingNextPage || isFetching,
+            hasNextPage,
+            bookLink: getRoute.RANOBE_READ,
+        };
+    }, [data?.pages, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage]);
 }

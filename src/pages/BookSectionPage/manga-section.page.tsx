@@ -1,40 +1,44 @@
 import { useMangaGetPopularLastUpdated } from './model/useBookGetPopularLastUpdated/useMangaGetPopularLastUpdated';
-import { useBookLastUpdatedTabs } from './model/useBookLastUpdatedTabs/useBookLastUpdatedTabs';
 import { useMangaGetAllLastUpdated } from './model/useBookLastUpdatedTabs/useMangaGetAllLastUpdated';
 import { useMangaGetMyLastUpdated } from './model/useBookLastUpdatedTabs/useMangaGetMyLastUpdated';
-import { useMangaNowRead } from './model/useBookNowRead/useMangaNowRead';
 import { BookPopularLastUpdatedSlider } from './ui/BookPopularLastUpdatedSlider';
 import { BookSectionPage } from './ui/BookSectionPage';
 import { BookNowReadSlider } from './ui/BookNowReadSlider';
 import { BookLastUpdatedTabs } from './ui/BookLastUpdatedTabs';
-import { getRoute } from '@/shared/kernel/router';
+import { useMangaNowReadNew } from './model/useBookNowRead/useMangaNowReadNew';
+import { useMangaNowReadMoreViewed } from './model/useBookNowRead/useMangaNowReadMoreViewed';
+import { useMangaNowReadRating } from './model/useBookNowRead/useMangaNowReadRating';
 import { MangaContinueReadSlider } from '@/features/BookContinueRead';
 import { CollectionCard, CollectionGridLayout } from '@/entities/CollectionList';
 import { Heading } from '@/shared/ui/kit/heading';
 import { UserCard, UserGridLayout } from '@/entities/UserList';
 
 const MangaSectionPage = () => {
-    const mainSlider = useMangaGetPopularLastUpdated();
-    const nowRead = useMangaNowRead();
+    const popularLastUpdated = useMangaGetPopularLastUpdated();
 
-    const allBook = useMangaGetAllLastUpdated();
-    const myBook = useMangaGetMyLastUpdated();
-    const lastUpdatdTabs = useBookLastUpdatedTabs({ allBook, myBook, book: 'manga' });
+    // * NowRead
+    const nowReadNew = useMangaNowReadNew();
+    const nowReadRating = useMangaNowReadRating();
+    const nowReadMoreViewed = useMangaNowReadMoreViewed();
+    // * NowRead
+
+    // * LastUpdatedTabs
+    const allLastUpdated = useMangaGetAllLastUpdated();
+    const myLastUpdated = useMangaGetMyLastUpdated();
+    // * LastUpdatedTabs
 
     return (
         <BookSectionPage
-            mainSlider={
-                <BookPopularLastUpdatedSlider
-                    list={mainSlider.data}
-                    bookLink={getRoute.MANGA}
-                    isLoading={mainSlider.isLoading}
+            mainSlider={<BookPopularLastUpdatedSlider data={popularLastUpdated} />}
+            continueRead={<MangaContinueReadSlider />}
+            nowRead={
+                <BookNowReadSlider
+                    column_1={nowReadNew}
+                    column_2={nowReadRating}
+                    column_3={nowReadMoreViewed}
                 />
             }
-            continueRead={<MangaContinueReadSlider />}
-            nowRead={<BookNowReadSlider bookNowRead={nowRead} bookLink={getRoute.MANGA} />}
-            lastUpdatedTabs={
-                <BookLastUpdatedTabs tabs={lastUpdatdTabs} bookLink={getRoute.MANGA_READ} />
-            }
+            lastUpdatedTabs={<BookLastUpdatedTabs all={allLastUpdated} my={myLastUpdated} />}
             collections={
                 <CollectionGridLayout
                     heading={

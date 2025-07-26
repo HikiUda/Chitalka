@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { useMemo } from 'react';
 import { BookNowRead } from './useBookNowRead';
 import { publicRqClient } from '@/shared/api/instance';
 
@@ -37,21 +38,32 @@ export function useMangaNowRead(): BookNowRead[] {
     const ratingManga = useQuery(ratingMangaQueryOptions);
     const moreViewedManga = useQuery(moreViewedMangaQueryOptions);
 
-    return [
-        {
-            heading: 'Новинки',
-            data: newManga.data?.data || [],
-            isLoading: newManga.isLoading,
-        },
-        {
-            heading: 'Рейтинговые',
-            data: ratingManga.data?.data || [],
-            isLoading: ratingManga.isLoading,
-        },
-        {
-            heading: 'Просматриваемые',
-            data: moreViewedManga.data?.data || [],
-            isLoading: moreViewedManga.isLoading,
-        },
-    ];
+    const nowRead = useMemo(() => {
+        return [
+            {
+                heading: 'Новинки',
+                data: newManga.data?.data || [],
+                isLoading: newManga.isLoading,
+            },
+            {
+                heading: 'Рейтинговые',
+                data: ratingManga.data?.data || [],
+                isLoading: ratingManga.isLoading,
+            },
+            {
+                heading: 'Просматриваемые',
+                data: moreViewedManga.data?.data || [],
+                isLoading: moreViewedManga.isLoading,
+            },
+        ];
+    }, [
+        newManga.data?.data,
+        newManga.isLoading,
+        ratingManga.data?.data,
+        ratingManga.isLoading,
+        moreViewedManga.data?.data,
+        moreViewedManga.isLoading,
+    ]);
+
+    return nowRead;
 }

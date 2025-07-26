@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { AboutBookLayout } from '../layout/AboutBookLayout';
 import { BookId } from '@/shared/kernel/book/book';
 import { MangaBookmarkStatistic, MangaRateStatistic } from '@/features/BookStatistic';
@@ -14,12 +13,12 @@ import {
 } from '@/entities/BookInfo';
 import { useWindowSize } from '@/shared/kernel/useWindowSize';
 
-interface AboutMangaProps {
+type AboutMangaProps = {
     className?: string;
     mangaId: BookId;
-}
+};
 
-export const AboutManga: FC<AboutMangaProps> = (props) => {
+export const AboutManga = (props: AboutMangaProps) => {
     const { className, mangaId } = props;
     const isWidthLg = useWindowSize.use.isWidthLg();
     const { manga } = useGetManga(mangaId);
