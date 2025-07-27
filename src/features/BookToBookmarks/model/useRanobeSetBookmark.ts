@@ -1,7 +1,8 @@
 import { useQueryClient } from '@tanstack/react-query';
 import { startTransition, useOptimistic } from 'react';
 import { authRqClient } from '@/shared/api/instance';
-import { Bookmarks, BookId } from '@/shared/kernel/book';
+import { Bookmarks } from '@/shared/kernel/book/bookmarks';
+import { BookId } from '@/shared/kernel/book/book';
 
 export function useRanobeSetBookmark(ranobeId: BookId) {
     const queryClient = useQueryClient();

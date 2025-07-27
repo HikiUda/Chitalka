@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
+import { Slot } from '@radix-ui/react-slot';
 import { cn } from '@/shared/lib/css';
-import { DivSlot } from '@/shared/ui/kit/divslot';
 import { useWindowSize } from '@/shared/kernel/useWindowSize';
 
 type AboutBookLayoutProps = {
@@ -24,18 +24,16 @@ export const AboutBookLayout = (props: AboutBookLayoutProps) => {
                         : 'items-start justify-center max-[991px]:flex-wrap',
                 )}
             >
-                <DivSlot
-                    asChild
+                <Slot
                     className={cn(!isWidthLg ? 'w-full' : 'basis-[50%] max-[991px]:basis-[100%]')}
                 >
                     {rateStatistic}
-                </DivSlot>
-                <DivSlot
-                    asChild
+                </Slot>
+                <Slot
                     className={cn(!isWidthLg ? 'w-full' : 'basis-[50%] max-[991px]:basis-[100%]')}
                 >
                     {bookmarkStatistic}
-                </DivSlot>
+                </Slot>
             </div>
         </div>
     );

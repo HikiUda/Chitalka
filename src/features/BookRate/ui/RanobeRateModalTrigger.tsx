@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { memo, Suspense } from 'react';
 import { DialogTitle } from '@radix-ui/react-dialog';
 import { useRanobeGetRate } from '../model/useRanobeGetRate';
 import { useRanobeSetRate } from '../model/useRanobeSetRate';
@@ -17,7 +17,7 @@ type RanobeRateModalTriggerProps = {
     ranobeId: BookId;
 };
 
-export const RanobeRateModalTrigger = (props: RanobeRateModalTriggerProps) => {
+export const RanobeRateModalTrigger = memo((props: RanobeRateModalTriggerProps) => {
     const { className, ranobeId } = props;
     const isWidthLg = useWindowSize.use.isWidthLg();
     const { data, isLoading } = useRanobeGetRate(ranobeId);
@@ -41,4 +41,5 @@ export const RanobeRateModalTrigger = (props: RanobeRateModalTriggerProps) => {
             </DialogContent>
         </Dialog>
     );
-};
+});
+RanobeRateModalTrigger.displayName = 'RanobeRateModalTrigger';

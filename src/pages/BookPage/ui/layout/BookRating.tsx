@@ -1,17 +1,17 @@
 import { StarIcon } from 'lucide-react';
-import { memo, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { toShortcutNumber } from '@/shared/lib/helpers/toShortcutNumber';
 import { cn } from '@/shared/lib/css';
 import { useWindowSize } from '@/shared/kernel/useWindowSize';
 
-type BookRateLayoutProps = {
+type BookRatingProps = {
     className?: string;
     rate: number;
     countRate: number;
     rateButton?: ReactNode;
 };
 
-export const BookRateLayout = memo((props: BookRateLayoutProps) => {
+export const BookRating = (props: BookRatingProps) => {
     const { className, rate, countRate, rateButton } = props;
     const isWidthLg = useWindowSize.use.isWidthLg();
     return (
@@ -30,5 +30,4 @@ export const BookRateLayout = memo((props: BookRateLayoutProps) => {
             {rateButton}
         </div>
     );
-});
-BookRateLayout.displayName = 'BookRateLayout';
+};

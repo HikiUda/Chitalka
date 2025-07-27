@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
+import { Slot } from '@radix-ui/react-slot';
 import { Page } from '@/shared/ui/layout/Page';
 import { cn } from '@/shared/lib/css';
 import { useWindowSize } from '@/shared/kernel/useWindowSize';
-import { DivSlot } from '@/shared/ui/kit/divslot';
 
 type BookSectionPageProps = {
     mainSlider: ReactNode;
@@ -19,15 +19,9 @@ export const BookSectionPage = (props: BookSectionPageProps) => {
     const sliderControll = cn('mb-4', !isWidthLg && 'w-[98vw] max-w-299');
     return (
         <Page>
-            <DivSlot className={sliderControll} asChild>
-                {mainSlider}
-            </DivSlot>
-            <DivSlot className={sliderControll} asChild>
-                {continueRead}
-            </DivSlot>
-            <DivSlot className={sliderControll} asChild>
-                {nowRead}
-            </DivSlot>
+            <Slot className={sliderControll}>{mainSlider}</Slot>
+            <Slot className={sliderControll}>{continueRead}</Slot>
+            <Slot className={sliderControll}>{nowRead}</Slot>
             <div className="xl:grid xl:grid-cols-2 xl:items-start gap-5 flex flex-col-reverse items-center">
                 {lastUpdatedTabs}
                 <div className="flex flex-col gap-4 w-full">

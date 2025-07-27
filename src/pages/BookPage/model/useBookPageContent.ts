@@ -1,28 +1,25 @@
 import { ReactNode, useCallback, useLayoutEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useUrlSearchParams } from '@/shared/lib/hooks/useUrlSearchParams';
 
-export type TabsType<TabValues> = {
+const TabValues = ['info', 'chapters', 'comments'] as const;
+export type TabValues = (typeof TabValues)[number];
+
+const isTabValue = (value: unknown): value is TabValues => {
+    return TabValues.includes(value as TabValues);
+};
+
+export type TabsType = {
     value: TabValues;
     title: string;
     content: ReactNode;
 }[];
 
-export function useBookPageContent<TabValues extends readonly string[]>(
-    TabValuesConst: TabValues,
-    defaultValue: TabValues[number],
-) {
-    const [searchParams, setSearchParams] = useSearchParams();
-    const [tabValue, setTabValue] = useState<TabValues[number]>(defaultValue);
-
-    const isTabValue = useCallback(
-        (value: unknown): value is TabValues[number] => {
-            return TabValuesConst.includes(value as TabValues[number]);
-        },
-        [TabValuesConst],
-    );
+export function useBookPageContent(defaultValue: TabValues) {
+    const { setSearchParam, getSearchParam } = useUrlSearchParams();
+    const [tabValue, setTabValue] = useState<TabValues>(defaultValue);
 
     useLayoutEffect(() => {
-        const section = searchParams.get('section');
+        const section = getSearchParam('section');
         if (isTabValue(section)) setTabValue(section);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -31,11 +28,10 @@ export function useBookPageContent<TabValues extends readonly string[]>(
         (section: string) => {
             if (isTabValue(section)) {
                 setTabValue(section);
-                searchParams.set('section', section);
-                setSearchParams(searchParams);
+                setSearchParam('section', section);
             }
         },
-        [isTabValue, searchParams, setSearchParams],
+        [setSearchParam],
     );
 
     return { tabValue, onTabChange };

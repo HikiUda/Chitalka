@@ -19,8 +19,8 @@ export const BookMetaLinks = (props: BookMetaLinksProps) => {
             className={className}
             title={title}
             items={links}
-            renderItems={(link) => (
-                <Button variant="link" size="clear" asChild>
+            renderItems={(link, ind) => (
+                <Button key={ind} variant="link" size="clear" asChild>
                     <Link to={link.link}>{link.content}</Link>
                 </Button>
             )}

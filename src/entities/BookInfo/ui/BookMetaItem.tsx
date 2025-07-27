@@ -7,7 +7,7 @@ interface BookMetaItemProps<T> {
     className?: string;
     title: string;
     items: T | T[];
-    renderItems: (item: T) => ReactNode;
+    renderItems: (item: T, ind?: number) => ReactNode;
 }
 
 export const BookMetaItem = <T extends unknown>(props: BookMetaItemProps<T>) => {

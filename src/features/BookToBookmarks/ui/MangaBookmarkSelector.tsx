@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useMangaGetBookmark } from '../model/useMangaGetBookmark';
 import { useMangaSetBookmark } from '../model/useMangaSetBookmark';
 import { useMangaDeleteBookmark } from '../model/useMangaDeleteBookmark';
@@ -9,7 +10,7 @@ type MangaBookmarkSelectorProps = {
     mangaId: BookId;
 };
 
-export const MangaBookmarkSelector = (props: MangaBookmarkSelectorProps) => {
+export const MangaBookmarkSelector = memo((props: MangaBookmarkSelectorProps) => {
     const { className, mangaId } = props;
 
     const { data, isLoading } = useMangaGetBookmark(mangaId);
@@ -27,4 +28,5 @@ export const MangaBookmarkSelector = (props: MangaBookmarkSelectorProps) => {
             deleteBookmark={deleteBookmark}
         />
     );
-};
+});
+MangaBookmarkSelector.displayName = 'MangaBookmarkSelector';

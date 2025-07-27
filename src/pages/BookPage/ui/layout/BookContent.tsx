@@ -1,17 +1,17 @@
-import { Suspense } from 'react';
-import { type TabsType } from '../../model/useBookPageContent';
+import { memo, Suspense } from 'react';
+import { TabValues, useBookPageContent, type TabsType } from '../../model/useBookPageContent';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/ui/kit/tabs';
 import { Loader } from '@/shared/ui/kit/loader';
 
-type MangaPageContentProps = {
+type BookContentProps = {
     className?: string;
-    tabs: TabsType<string>;
-    tabValue: string;
-    onTabChange: (tab: string) => void;
+    tabs: TabsType;
+    defaultTabValue: TabValues;
 };
 
-export const BookContentLayout = (props: MangaPageContentProps) => {
-    const { className, tabs, tabValue, onTabChange } = props;
+export const BookContent = memo((props: BookContentProps) => {
+    const { className, tabs, defaultTabValue } = props;
+    const { tabValue, onTabChange } = useBookPageContent(defaultTabValue);
 
     return (
         <Tabs className={className} value={tabValue} onValueChange={onTabChange}>
@@ -31,4 +31,5 @@ export const BookContentLayout = (props: MangaPageContentProps) => {
             ))}
         </Tabs>
     );
-};
+});
+BookContent.displayName = 'BookContent';

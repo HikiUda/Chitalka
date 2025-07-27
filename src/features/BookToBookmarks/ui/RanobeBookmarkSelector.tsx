@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useRanobeGetBookmark } from '../model/useRanobeGetBookmark';
 import { useRanobeSetBookmark } from '../model/useRanobeSetBookmark';
 import { useRanobeDeleteBookmark } from '../model/useRanobeDeleteBookmark';
@@ -9,7 +10,7 @@ type RanobeBookmarkSelectorProps = {
     ranobeId: BookId;
 };
 
-export const RanobeBookmarkSelector = (props: RanobeBookmarkSelectorProps) => {
+export const RanobeBookmarkSelector = memo((props: RanobeBookmarkSelectorProps) => {
     const { className, ranobeId } = props;
 
     const { data, isLoading } = useRanobeGetBookmark(ranobeId);
@@ -27,4 +28,5 @@ export const RanobeBookmarkSelector = (props: RanobeBookmarkSelectorProps) => {
             deleteBookmark={deleteBookmark}
         />
     );
-};
+});
+RanobeBookmarkSelector.displayName = 'RanobeBookmarkSelector';
