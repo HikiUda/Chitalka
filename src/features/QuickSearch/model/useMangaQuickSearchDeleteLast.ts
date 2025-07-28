@@ -22,6 +22,6 @@ export function useMangaQuickSearchDeleteLast() {
 
     return {
         quickSearchDeleteLast,
-        getIsPending: (search: string) => optimisticDeleted.includes(search),
+        getIsLastDeletePending: (search: string) => optimisticDeleted.includes(search),
     };
 }

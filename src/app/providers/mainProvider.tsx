@@ -1,14 +1,11 @@
 import { ReactNode } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { QueryClientProvider } from './queryClientProvider';
-import ErrorBoundary from './ErrorBoundary';
-import { AppThemeProvider } from '@/shared/kernel/theme';
 
 export const MainProvider = ({ children }: { children: ReactNode }) => {
     return (
         <QueryClientProvider>
-            <ErrorBoundary>
-                <AppThemeProvider>{children}</AppThemeProvider>
-            </ErrorBoundary>
+            <ErrorBoundary fallback={<div>This is global error</div>}>{children}</ErrorBoundary>
         </QueryClientProvider>
     );
 };

@@ -1,7 +1,7 @@
 import { CircleHelpIcon, FoldersIcon, LibraryBigIcon, SearchIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { HeaderLayout } from '@/shared/ui/layout/HeaderLayout';
-import { QuickSearch } from '@/features/QuickSearch';
+import { RanobeQuickSearch } from '@/features/QuickSearch';
 import { PopUserMenu } from '@/features/PopUserMenu';
 import { AuthModal } from '@/features/AuthModal';
 import { useSession } from '@/shared/kernel/session';
@@ -33,7 +33,7 @@ export const HeaderMain = () => {
                             <FoldersIcon size={20} /> Коллекции
                         </Link>
                     </Button>
-                    <QuickSearch
+                    <RanobeQuickSearch
                         trigger={
                             <Button
                                 variant="clear"

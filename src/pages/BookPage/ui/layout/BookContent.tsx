@@ -1,35 +1,31 @@
-import { memo, Suspense } from 'react';
-import { TabValues, useBookPageContent, type TabsType } from '../../model/useBookPageContent';
+import { ReactNode, Suspense } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+import { TabValues, useBookContent } from '../../model/useBookContent';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/ui/kit/tabs';
 import { Loader } from '@/shared/ui/kit/loader';
 
 type BookContentProps = {
     className?: string;
-    tabs: TabsType;
-    defaultTabValue: TabValues;
-};
+} & Record<TabValues, ReactNode>;
 
-export const BookContent = memo((props: BookContentProps) => {
-    const { className, tabs, defaultTabValue } = props;
-    const { tabValue, onTabChange } = useBookPageContent(defaultTabValue);
+export const BookContent = (props: BookContentProps) => {
+    const { className, info, chapters, comments } = props;
+    const { tabValue, onTabChange } = useBookContent();
 
     return (
         <Tabs className={className} value={tabValue} onValueChange={onTabChange}>
             <TabsList className="w-full justify-start">
-                {tabs.map((tab) => (
-                    <TabsTrigger key={tab.value} value={tab.value}>
-                        {tab.title}
-                    </TabsTrigger>
-                ))}
+                <TabsTrigger value={TabValues[0]}>О тайтле</TabsTrigger>
+                <TabsTrigger value={TabValues[1]}>Главы</TabsTrigger>
+                <TabsTrigger value={TabValues[2]}>Комментарии</TabsTrigger>
             </TabsList>
-            {tabs.map((tab) => (
-                <TabsContent key={tab.value} value={tab.value}>
-                    <Suspense fallback={<Loader variant="flower" className="mx-auto" />}>
-                        {tab.content}
-                    </Suspense>
-                </TabsContent>
-            ))}
+            <ErrorBoundary fallback={<div>Что то пошло не так, лол.</div>}>
+                <Suspense fallback={<Loader variant="flower" className="mx-auto" />}>
+                    <TabsContent value={TabValues[0]}>{info}</TabsContent>
+                    <TabsContent value={TabValues[1]}>{chapters}</TabsContent>
+                    <TabsContent value={TabValues[2]}>{comments}</TabsContent>
+                </Suspense>
+            </ErrorBoundary>
         </Tabs>
     );
-});
-BookContent.displayName = 'BookContent';
+};

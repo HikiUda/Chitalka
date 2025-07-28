@@ -5,6 +5,7 @@
     "keywords": [],
     "author": "wendsew",
     "license": "ISC",
+    "sideEffects": false,
     "type": "module",
     "scripts": {
         "start": "vite",

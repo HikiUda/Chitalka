@@ -2,8 +2,6 @@ import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { ru } from 'date-fns/locale';
 import { format } from 'date-fns';
-import { BookId } from '@/shared/kernel/book/book';
-import { getRoute } from '@/shared/kernel/router';
 import { cn } from '@/shared/lib/css';
 
 type ChapterListItem = {
@@ -17,18 +15,18 @@ type ChapterListItem = {
 type ChapterListItemProps = {
     className?: string;
     chapter: ChapterListItem;
-    mangaId: BookId;
+    bookLink: string;
     before?: ReactNode;
     after?: ReactNode;
     onClick?: () => void;
 };
 
 export const ChapterListItem = (props: ChapterListItemProps) => {
-    const { className, chapter, before, after, mangaId, onClick } = props;
+    const { className, chapter, before, after, bookLink, onClick } = props;
 
     return (
         <Link
-            to={getRoute.MANGA_READ(mangaId, { ...chapter, chapterId: chapter.id })}
+            to={bookLink}
             className={cn(
                 'grid grid-cols-[auto_1fr_auto_auto] overflow-hidden px-4 py-2.5 items-center gap-2 hover:bg-accent',
                 className,

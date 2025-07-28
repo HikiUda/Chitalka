@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { memo, Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Cover } from './Cover';
 import { MangaCoversModal } from './MangaCoversModal';
@@ -20,8 +20,7 @@ type MangaCoverProps = {
     cover: string | null;
 };
 
-// TODO ErrorBoundary
-export const MangaCover = (props: MangaCoverProps) => {
+export const MangaCover = memo((props: MangaCoverProps) => {
     const { className, mangaId, cover } = props;
 
     return (
@@ -49,4 +48,5 @@ export const MangaCover = (props: MangaCoverProps) => {
             </DialogPortal>
         </Dialog>
     );
-};
+});
+MangaCover.displayName = 'MangaCover';

@@ -1,1 +1,0 @@
-import{j as s,c as n,l as o}from"./index-BBOIb04p.js";import{C as t}from"./Container-RGPOtVEF.js";const c=a=>{const{className:i,children:r}=a;return s.jsx("main",{id:"main",className:n(i,!o.isMobile&&"pt-5 px-2.5"),children:s.jsx(t,{children:r})})};export{c as P};

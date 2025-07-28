@@ -6,6 +6,7 @@ import { Header } from '@/widgets/Header';
 import { BottomMenu } from '@/widgets/BottomMenu';
 import { useSession } from '@/shared/kernel/session';
 import { Loader } from '@/shared/ui/kit/loader';
+import { AppThemeProvider } from '@/shared/kernel/theme';
 
 export const App = () => {
     const [init, setInit] = useState(false);
@@ -18,14 +19,16 @@ export const App = () => {
 
     if (!init) return <Loader variant="flower" />;
     return (
-        <Suspense fallback={<Loader variant="flower" />}>
-            <MainLayout
-                header={<Header />}
-                main={<Outlet />}
-                bottomMenu={<BottomMenu />}
-                toaster={<Toaster />}
-            />
-        </Suspense>
+        <AppThemeProvider>
+            <Suspense fallback={<Loader variant="flower" />}>
+                <MainLayout
+                    header={<Header />}
+                    main={<Outlet />}
+                    bottomMenu={<BottomMenu />}
+                    toaster={<Toaster />}
+                />
+            </Suspense>
+        </AppThemeProvider>
     );
 };
 export default App;

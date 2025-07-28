@@ -41,10 +41,23 @@ export const router = createBrowserRouter([
                 path: Routes.RANOBE_SECTION,
                 lazy: () => import('@/pages/BookSectionPage/ranobe-section.page'),
             },
+            {
+                path: Routes.RANOBE,
+                lazy: () => import('@/pages/BookPage/ranobe.page'),
+            },
+            {
+                path: Routes.RANOBE_CATALOG,
+                lazy: () => import('@/pages/CatalogPage/ranobe-catalog.page'),
+            },
             // * Ranobe Pages
+
             {
                 path: Routes.COLLECTIONS,
                 Component: () => <div />,
+            },
+            {
+                path: Routes.NOTFOUND,
+                Component: () => <div>NotFound</div>,
             },
         ],
     },

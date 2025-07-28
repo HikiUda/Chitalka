@@ -1,1 +1,0 @@
-import{m as n,j as a}from"./index-BBOIb04p.js";import{P as o}from"./Page-BJCJSSRi.js";import"./Container-RGPOtVEF.js";const t=()=>{const{mangaId:r,chapterId:e}=n();if(!r||!e)throw new Error("ReadMangaPage required mangaId and chapterId");return a.jsx(o,{children:a.jsx("div",{children:"soon"})})},i=t;export{i as Component};

@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { memo, Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Cover } from './Cover';
 import { RanobeCoversModal } from './RanobeCoversModal';
@@ -20,8 +20,7 @@ type RanobeCoverProps = {
     cover: string | null;
 };
 
-// TODO ErrorBoundary
-export const RanobeCover = (props: RanobeCoverProps) => {
+export const RanobeCover = memo((props: RanobeCoverProps) => {
     const { className, ranobeId, cover } = props;
 
     return (
@@ -49,4 +48,5 @@ export const RanobeCover = (props: RanobeCoverProps) => {
             </DialogPortal>
         </Dialog>
     );
-};
+});
+RanobeCover.displayName = 'RanobeCover';

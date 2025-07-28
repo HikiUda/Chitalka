@@ -1,6 +1,6 @@
 import { memo } from 'react';
-import { useMangaGetChapterList } from '../../model/manga/useMangaGetChapterList';
 import { BookChaptersLayout, ChapterEyeIcon } from '../layout/BookChaptersLayout';
+import { useRanobeGetChapterList } from '../../model/ranobe/useRanobeGetChapterList';
 import { BookId } from '@/shared/kernel/book/book';
 import { ChapterList, ChapterListItem } from '@/entities/ChapterList';
 import { useIntersection } from '@/shared/lib/hooks/useIntersection';
@@ -9,14 +9,14 @@ import { ToggleOrder } from '@/entities/ToggleOrder';
 import { useTrottle } from '@/shared/lib/hooks/useTrottle';
 import { getRoute } from '@/shared/kernel/router';
 
-type MangaChaptersProps = {
+type RanobeChaptersProps = {
     className?: string;
-    mangaId: BookId;
+    ranobeId: BookId;
     onChapterClick?: () => void;
 };
 
-export const MangaChapters = memo((props: MangaChaptersProps) => {
-    const { className, mangaId, onChapterClick } = props;
+export const RanobeChapters = memo((props: RanobeChaptersProps) => {
+    const { className, ranobeId, onChapterClick } = props;
 
     const {
         chapters = [],
@@ -24,7 +24,7 @@ export const MangaChapters = memo((props: MangaChaptersProps) => {
         isFetching,
         order,
         search,
-    } = useMangaGetChapterList(mangaId);
+    } = useRanobeGetChapterList(ranobeId);
 
     const trottleFetchNextPage = useTrottle(() => fetchNextPage(), 1000);
     const intersect = useIntersection(() => {
@@ -43,7 +43,7 @@ export const MangaChapters = memo((props: MangaChaptersProps) => {
                         <ChapterListItem
                             key={chapter.id}
                             before={<ChapterEyeIcon isUserViewed={chapter.isUserViewed} />}
-                            bookLink={getRoute.MANGA_READ(mangaId, chapter)}
+                            bookLink={getRoute.RANOBE_READ(ranobeId, chapter)}
                             chapter={chapter}
                             onClick={onChapterClick}
                         />
@@ -56,4 +56,4 @@ export const MangaChapters = memo((props: MangaChaptersProps) => {
         />
     );
 });
-MangaChapters.displayName = 'MangaChapters';
+RanobeChapters.displayName = 'RanobeChapters';
