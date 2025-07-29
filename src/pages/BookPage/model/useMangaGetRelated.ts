@@ -7,6 +7,6 @@ export function useMangaGetRelated(mangaId: BookId) {
     });
 
     return {
-        data: data.data,
+        mangaRelatedBooks: data.data,
     };
 }

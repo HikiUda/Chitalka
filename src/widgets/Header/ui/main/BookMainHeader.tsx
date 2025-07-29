@@ -1,15 +1,21 @@
-import { CircleHelpIcon, FoldersIcon, LibraryBigIcon, SearchIcon } from 'lucide-react';
+import { CircleHelpIcon, LibraryBigIcon, SearchIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { ReactNode } from 'react';
 import { HeaderLayout } from '@/shared/ui/layout/HeaderLayout';
-import { RanobeQuickSearch } from '@/features/QuickSearch';
 import { PopUserMenu } from '@/features/PopUserMenu';
 import { AuthModal } from '@/features/AuthModal';
 import { useSession } from '@/shared/kernel/session';
-import { getRoute } from '@/shared/kernel/router';
 import { Button } from '@/shared/ui/kit/button';
 import { Logo } from '@/entities/Logo';
+import { GlobalNavigation } from '@/features/GlobalNavigation';
 
-export const HeaderMain = () => {
+type BookMainHeaderProps = {
+    quickSearch: (trigger: ReactNode) => ReactNode;
+    catalogLink: string;
+};
+
+export const BookMainHeader = (props: BookMainHeaderProps) => {
+    const { quickSearch, catalogLink } = props;
     const { isUserAuth } = useSession();
 
     return (
@@ -19,31 +25,22 @@ export const HeaderMain = () => {
                 <div className="flex items-center justify-center gap-2">
                     <Button variant="clear" size="sm" asChild>
                         <Link
-                            className=" hover:bg-primary/50 transition-colors duration-300"
-                            to={getRoute.MANGA_CATALOG()}
+                            className="hover:bg-primary/50 transition-colors duration-300"
+                            to={catalogLink}
                         >
                             <LibraryBigIcon size={20} /> Каталог
                         </Link>
                     </Button>
-                    <Button variant="clear" size="sm" asChild>
-                        <Link
+                    <GlobalNavigation />
+                    {quickSearch(
+                        <Button
+                            variant="clear"
+                            size="sm"
                             className="hover:bg-primary/50 transition-colors duration-300"
-                            to={getRoute.COLLECTIONS()}
                         >
-                            <FoldersIcon size={20} /> Коллекции
-                        </Link>
-                    </Button>
-                    <RanobeQuickSearch
-                        trigger={
-                            <Button
-                                variant="clear"
-                                size="sm"
-                                className="hover:bg-primary/50 transition-colors duration-300"
-                            >
-                                <SearchIcon size={20} /> Поиск
-                            </Button>
-                        }
-                    />
+                            <SearchIcon size={20} /> Поиск
+                        </Button>,
+                    )}
                 </div>
                 <div className="flex items-center justify-center gap-4">
                     <CircleHelpIcon size={25} />

@@ -11,12 +11,13 @@ export const router = createBrowserRouter([
             {
                 path: Routes.MAIN,
                 Component: () => (
-                    <div>
+                    <div className="flex gap-5">
                         <Link to={getRoute.MANGA_SECTION()}>manga</Link>
                         <Link to={getRoute.RANOBE_SECTION()}>ranobe</Link>
                     </div>
                 ),
             },
+
             // * Manga Pages
             {
                 path: Routes.MANGA_SECTION,

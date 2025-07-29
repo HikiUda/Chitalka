@@ -6,7 +6,7 @@ import { useHideLayout } from '@/shared/ui/layout/useHideLayout';
 import { LogoShort } from '@/entities/Logo';
 import { MangaChaptersNavigation } from '@/features/BookChapters';
 
-export const ReadMangaBottomMenu = () => {
+const ReadMangaBottomMenu = () => {
     const { hidden } = useHideLayout();
     const { mangaId, chapterId } = useParams<PathParams[typeof Routes.MANGA_READ]>();
     if (!mangaId || !chapterId) return null;
@@ -21,3 +21,4 @@ export const ReadMangaBottomMenu = () => {
         </BottomMenuLayout>
     );
 };
+export const BottomMenu = ReadMangaBottomMenu;

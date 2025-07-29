@@ -11,7 +11,7 @@ import { useSession } from '@/shared/kernel/session';
 import { cn } from '@/shared/lib/css';
 import { useWindowSize } from '@/shared/kernel/useWindowSize';
 
-export const ReadMangaHeader = () => {
+const ReadMangaHeader = () => {
     const { isUserAuth } = useSession();
     const isWidthLg = useWindowSize.use.isWidthLg();
     const { hidden } = useHideLayout();
@@ -38,3 +38,4 @@ export const ReadMangaHeader = () => {
         </HeaderLayout>
     );
 };
+export const Header = ReadMangaHeader;

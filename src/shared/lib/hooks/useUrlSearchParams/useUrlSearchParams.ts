@@ -1,4 +1,4 @@
-import { useSearchParams } from 'react-router-dom';
+import { NavigateOptions, useSearchParams } from 'react-router-dom';
 
 // export function getQueryParams(params: OptionalRecord<string, string>) {
 //     const searchParams = new URLSearchParams(window.location.search);
@@ -17,9 +17,9 @@ import { useSearchParams } from 'react-router-dom';
 export function useUrlSearchParams() {
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const setSearchParam = (param: string, value: string) => {
+    const setSearchParam = (param: string, value: string, options?: NavigateOptions) => {
         searchParams.set(param, value);
-        setSearchParams(searchParams, { replace: true });
+        setSearchParams(searchParams, options);
     };
 
     const getSearchParam = (param: string) => {
@@ -34,9 +34,10 @@ export function useUrlSearchParams() {
         searchParams.delete(param);
     };
 
-    const setAnySearchParams = (params: Record<string, unknown>) => {
+    const setAnySearchParams = (params: Record<string, unknown>, options?: NavigateOptions) => {
         setSearchParams(
             Object.fromEntries(Object.entries(params).map(([key, value]) => [key, String(value)])),
+            options,
         );
     };
 

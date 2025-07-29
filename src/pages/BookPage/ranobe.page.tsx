@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom';
-import { BookPage } from './ui/layout/BookPage';
-import { BookTitle } from './ui/layout/BookTitle';
-import { BookRating } from './ui/layout/BookRating';
-import { BookContent } from './ui/layout/BookContent';
+import { BookPage } from './ui/page-layout/BookPage';
+import { BookTitle } from './ui/page-layout/BookTitle';
+import { BookRating } from './ui/page-layout/BookRating';
+import { BookContent } from './ui/page-layout/BookContent';
 import { RanobeCover } from '@/features/BookCover';
 import { RanobeContinueReadButton } from '@/features/BookContinueRead';
-import { RanobeBookmarkSelector } from '@/features/BookToBookmarks';
+import { RanobeBookmarkSelector } from '@/features/BookBookmarks';
 import { RanobeRateModalTrigger } from '@/features/BookRate';
 import { useRanobeBasicInfo, useBookTitles, useGetRanobe } from '@/entities/BookInfo';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
@@ -14,8 +14,8 @@ import { PathParams, Routes } from '@/shared/kernel/router';
 const AboutRanobe = lazyNamed(() => import('./ui/AboutRanobe'), 'AboutRanobe');
 const RanobeChapters = lazyNamed(() => import('@/features/BookChapters'), 'RanobeChapters');
 
-const BookSidebar = lazyNamed(() => import('./ui/layout/BookSidebar'), 'BookSidebar');
-const TitleInfo = lazyNamed(() => import('./ui/layout/TitleInfo'), 'TitleInfo');
+const BookSidebar = lazyNamed(() => import('./ui/page-layout/BookSidebar'), 'BookSidebar');
+const TitleInfo = lazyNamed(() => import('./ui/page-layout/TitleInfo'), 'TitleInfo');
 
 export const RanobePage = () => {
     const { ranobeId } = useParams<PathParams[typeof Routes.RANOBE]>();

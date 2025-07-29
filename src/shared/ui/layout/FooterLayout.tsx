@@ -2,10 +2,10 @@ import { ReactNode } from 'react';
 import { Container } from './Container';
 import { cn } from '@/shared/lib/css';
 
-interface FooterLayoutProps {
+type FooterLayoutProps = {
     className?: string;
     children?: ReactNode;
-}
+};
 
 export const FooterLayout = (props: FooterLayoutProps) => {
     const { className, children } = props;

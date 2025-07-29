@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom';
-import { BookPage } from './ui/layout/BookPage';
-import { BookTitle } from './ui/layout/BookTitle';
-import { BookRating } from './ui/layout/BookRating';
-import { BookContent } from './ui/layout/BookContent';
+import { BookPage } from './ui/page-layout/BookPage';
+import { BookTitle } from './ui/page-layout/BookTitle';
+import { BookRating } from './ui/page-layout/BookRating';
+import { BookContent } from './ui/page-layout/BookContent';
 import { MangaCover } from '@/features/BookCover';
 import { MangaContinueReadButton } from '@/features/BookContinueRead';
-import { MangaBookmarkSelector } from '@/features/BookToBookmarks';
+import { MangaBookmarkSelector } from '@/features/BookBookmarks';
 import { MangaRateModalTrigger } from '@/features/BookRate';
 import { useMangaBasicInfo, useBookTitles, useGetManga } from '@/entities/BookInfo';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
@@ -14,8 +14,8 @@ import { PathParams, Routes } from '@/shared/kernel/router';
 const AboutManga = lazyNamed(() => import('./ui/AboutManga'), 'AboutManga');
 const MangaChapters = lazyNamed(() => import('@/features/BookChapters'), 'MangaChapters');
 
-const BookSidebar = lazyNamed(() => import('./ui/layout/BookSidebar'), 'BookSidebar');
-const TitleInfo = lazyNamed(() => import('./ui/layout/TitleInfo'), 'TitleInfo');
+const BookSidebar = lazyNamed(() => import('./ui/page-layout/BookSidebar'), 'BookSidebar');
+const TitleInfo = lazyNamed(() => import('./ui/page-layout/TitleInfo'), 'TitleInfo');
 
 export const MangaPage = () => {
     const { mangaId } = useParams<PathParams[typeof Routes.MANGA]>();

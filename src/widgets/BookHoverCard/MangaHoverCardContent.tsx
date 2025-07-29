@@ -8,13 +8,13 @@ import {
 } from '@/entities/BookInfo';
 import { Heading } from '@/shared/ui/kit/heading';
 import { TextDisclosure } from '@/shared/ui/kit/text-disclosure';
-import { MangaBookmarkSelector } from '@/features/BookToBookmarks';
+import { MangaBookmarkSelector } from '@/features/BookBookmarks';
 
-type MangaContentProps = {
+type MangaHoverCardContentProps = {
     mangaId: BookId;
 };
 
-export const MangaContent = (props: MangaContentProps) => {
+export const MangaHoverCardContent = (props: MangaHoverCardContentProps) => {
     const { mangaId } = props;
 
     const { manga } = useGetManga(mangaId);
@@ -23,7 +23,7 @@ export const MangaContent = (props: MangaContentProps) => {
 
     return (
         <>
-            <Heading className="px-4" variant="h3" weigth="semibold">
+            <Heading className="px-4" variant="h3" bold>
                 {manga.title.main}
             </Heading>
             <Heading className="px-4" variant="h4" italic>

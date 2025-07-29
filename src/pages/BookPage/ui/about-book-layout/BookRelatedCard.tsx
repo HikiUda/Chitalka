@@ -5,17 +5,19 @@ import { cn } from '@/shared/lib/css';
 import { getRoute } from '@/shared/kernel/router';
 import { Heading } from '@/shared/ui/kit/heading';
 
+export type BookRelated = {
+    urlId: string;
+    title: string;
+    type: string;
+    cover: string;
+    status: string;
+    relationship: string;
+    relatedId: string;
+};
+
 type BookRelatedCardProps = {
     className?: string;
-    book: {
-        urlId: string;
-        title: string;
-        type: string;
-        cover: string;
-        status: string;
-        relationship: string;
-        relatedId: string;
-    };
+    book: BookRelated;
 };
 
 export const BookRelatedCard = (props: BookRelatedCardProps) => {

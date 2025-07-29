@@ -1,9 +1,10 @@
 import { memo } from 'react';
-import { AboutBook } from './layout/AboutBook';
+import { useMangaGetRelated } from '../model/useMangaGetRelated';
+import { AboutBook } from './about-book-layout/AboutBook';
+import { BookRelatedSlider } from './about-book-layout/BookRelatedSlider';
 import { BookId } from '@/shared/kernel/book/book';
 import { MangaBookmarkStatistic, MangaRateStatistic } from '@/features/BookStatistic';
 import { TextDisclosure } from '@/shared/ui/kit/text-disclosure';
-import { MangaRelatedSlider } from '@/features/BookRelated';
 import {
     CategoryCollapsedList,
     useMangaBasicInfo,
@@ -20,6 +21,7 @@ type AboutMangaProps = {
 export const AboutManga = memo((props: AboutMangaProps) => {
     const { className, mangaId } = props;
     const { manga } = useGetManga(mangaId);
+    const { mangaRelatedBooks } = useMangaGetRelated(mangaId);
     const { categories } = useMangaCategories(manga);
     const { basicInfo } = useMangaBasicInfo(manga);
 
@@ -29,7 +31,7 @@ export const AboutManga = memo((props: AboutMangaProps) => {
             basicInfo={<BookBasicInfo basicInfo={basicInfo} />}
             description={<TextDisclosure text={manga.description} />}
             categories={<CategoryCollapsedList categories={categories} />}
-            relatedBooks={<MangaRelatedSlider mangaId={mangaId} />}
+            relatedBooks={<BookRelatedSlider books={mangaRelatedBooks} />}
             rateStatistic={<MangaRateStatistic mangaId={mangaId} />}
             bookmarkStatistic={<MangaBookmarkStatistic mangaId={mangaId} />}
         />

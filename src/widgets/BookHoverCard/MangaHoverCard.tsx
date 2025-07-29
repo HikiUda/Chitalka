@@ -3,7 +3,10 @@ import { BookHoverCard } from './BookHoverCard';
 import { BookId } from '@/shared/kernel/book/book';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 
-const MangaContent = lazyNamed(() => import('./MangaContent'), 'MangaContent');
+const MangaHoverCardContent = lazyNamed(
+    () => import('./MangaHoverCardContent'),
+    'MangaHoverCardContent',
+);
 
 type MangaHoverCardProps = {
     className?: string;
@@ -18,7 +21,7 @@ export const MangaHoverCard = (props: MangaHoverCardProps) => {
         <BookHoverCard
             className={className}
             trigger={trigger}
-            content={<MangaContent mangaId={mangaId} />}
+            content={<MangaHoverCardContent mangaId={mangaId} />}
         />
     );
 };

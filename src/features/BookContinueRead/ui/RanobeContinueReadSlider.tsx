@@ -1,25 +1,24 @@
-import { memo } from 'react';
+import { memo, ReactNode } from 'react';
 import { useRanobeGetContinueReadList } from '../model/useRanobeGetContinueReadList';
 import { useRanobeDeleteContinueRead } from '../model/useRanobeDeleteContinueRead';
 import { BookContinueReadCard } from './BookContinueReadCard';
 
 import { BookContinueReadSlider } from './BookContinueReadSlider';
-import { useSession } from '@/shared/kernel/session';
 import { getRoute } from '@/shared/kernel/router';
 
 type RanobeContinueReadSliderProps = {
     className?: string;
+    /** @description If user have no continue read books */
+    fallback: ReactNode;
 };
 
 export const RanobeContinueReadSlider = memo((props: RanobeContinueReadSliderProps) => {
-    const { className } = props;
+    const { className, fallback } = props;
 
     const { data = [], isLoading } = useRanobeGetContinueReadList();
     const { deleteContinueReadRanobe, getIsPending } = useRanobeDeleteContinueRead();
-    const { isUserAuth } = useSession();
 
-    if (!isUserAuth) return null;
-    if (!isLoading && !data.length) return null;
+    if (!isLoading && !data.length) return fallback;
 
     return (
         <BookContinueReadSlider

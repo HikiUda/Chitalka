@@ -1,9 +1,10 @@
 import { memo } from 'react';
-import { AboutBook } from './layout/AboutBook';
+import { useRanobeGetRelated } from '../model/useRanobeGetRelated';
+import { AboutBook } from './about-book-layout/AboutBook';
+import { BookRelatedSlider } from './about-book-layout/BookRelatedSlider';
 import { BookId } from '@/shared/kernel/book/book';
 import { RanobeBookmarkStatistic, RanobeRateStatistic } from '@/features/BookStatistic';
 import { TextDisclosure } from '@/shared/ui/kit/text-disclosure';
-import { RanobeRelatedSlider } from '@/features/BookRelated';
 import {
     CategoryCollapsedList,
     useGetRanobe,
@@ -22,6 +23,7 @@ type AboutRanobeProps = {
 export const AboutRanobe = memo((props: AboutRanobeProps) => {
     const { className, ranobeId } = props;
     const { ranobe } = useGetRanobe(ranobeId);
+    const { ranobeRelatedBooks } = useRanobeGetRelated(ranobeId);
     const { categories } = useRanobeCategories(ranobe);
     const { basicInfo } = useRanobeBasicInfo(ranobe);
 
@@ -31,7 +33,7 @@ export const AboutRanobe = memo((props: AboutRanobeProps) => {
             basicInfo={<BookBasicInfo basicInfo={basicInfo} />}
             description={<TextDisclosure text={ranobe.description} />}
             categories={<CategoryCollapsedList categories={categories} />}
-            relatedBooks={<RanobeRelatedSlider ranobeId={ranobeId} />}
+            relatedBooks={<BookRelatedSlider books={ranobeRelatedBooks} />}
             rateStatistic={<RanobeRateStatistic ranobeId={ranobeId} />}
             bookmarkStatistic={<RanobeBookmarkStatistic ranobeId={ranobeId} />}
         />

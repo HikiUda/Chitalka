@@ -44,7 +44,7 @@ export function useMangaCatalogInitFilters() {
     const initFilters = useCallback(() => {
         const params = getAllSearchParams();
         if (Object.keys(params).length === 0) {
-            setAnySearchParams(appliedFilters);
+            setAnySearchParams(appliedFilters, { replace: true });
         } else {
             const data = MangaCatalogFiltersSchemaUrl.parse(params);
             resetAll(data);

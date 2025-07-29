@@ -8,6 +8,11 @@
     preferredstrategy: 'pseudoelements';
 }
 
+@custom-variant scroll-locked {
+    &:where([data-scroll-locked='1'] &) {
+        @slot;
+    }
+}
 @custom-variant dark (&:is(.dark *));
 @import './css/blue-theme.css';
 @import './css/brown-theme.css';

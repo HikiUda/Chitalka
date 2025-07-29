@@ -1,29 +1,36 @@
-import { ReactNode } from 'react';
+import { BookRelated, BookRelatedCard } from './BookRelatedCard';
 import {
     Carousel,
     CarouselContent,
     CarouselNext,
     CarouselPrevious,
 } from '@/shared/ui/kit/carousel';
+import { Heading } from '@/shared/ui/kit/heading';
 
 type BookRelatedSliderProps = {
     className?: string;
-    heading?: ReactNode;
-    cards: ReactNode;
+    books: BookRelated[];
 };
 
 export const BookRelatedSlider = (props: BookRelatedSliderProps) => {
-    const { className, cards, heading } = props;
+    const { className, books } = props;
+    if (!books.length) return null;
     return (
         <div className={className}>
-            {heading}
+            <Heading className="ml-3 mb-2" variant="h3" color="primary">
+                Связаное
+            </Heading>
             <Carousel
                 opts={{
                     dragFree: true,
                 }}
                 className="w-full relative group"
             >
-                <CarouselContent className="pl-2.5">{cards}</CarouselContent>
+                <CarouselContent className="pl-2.5">
+                    {books.map((book) => (
+                        <BookRelatedCard key={book.relatedId} book={book} />
+                    ))}
+                </CarouselContent>
                 <CarouselPrevious className="absolute top-1/2 group-hover:-left-4 left-0 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 disabled:opacity-0" />
                 <CarouselNext className="absolute top-1/2 group-hover:-right-4 right-0 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 disabled:opacity-0" />
             </Carousel>

@@ -8,13 +8,13 @@ import {
 } from '@/entities/BookInfo';
 import { Heading } from '@/shared/ui/kit/heading';
 import { TextDisclosure } from '@/shared/ui/kit/text-disclosure';
-import { RanobeBookmarkSelector } from '@/features/BookToBookmarks';
+import { RanobeBookmarkSelector } from '@/features/BookBookmarks';
 
-type RanobeContentProps = {
+type RanobeHoverCardContentProps = {
     ranobeId: BookId;
 };
 
-export const RanobeContent = (props: RanobeContentProps) => {
+export const RanobeHoverCardContent = (props: RanobeHoverCardContentProps) => {
     const { ranobeId } = props;
 
     const { ranobe } = useGetRanobe(ranobeId);
@@ -23,7 +23,7 @@ export const RanobeContent = (props: RanobeContentProps) => {
 
     return (
         <>
-            <Heading className="px-4" variant="h3" weigth="semibold">
+            <Heading className="px-4" variant="h3" bold>
                 {ranobe.title.main}
             </Heading>
             <Heading className="px-4" variant="h4" italic>

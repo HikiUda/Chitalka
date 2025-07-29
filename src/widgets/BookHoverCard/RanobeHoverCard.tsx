@@ -3,7 +3,10 @@ import { BookHoverCard } from './BookHoverCard';
 import { BookId } from '@/shared/kernel/book/book';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 
-const RanobeContent = lazyNamed(() => import('./RanobeContent'), 'RanobeContent');
+const RanobeHoverCardContent = lazyNamed(
+    () => import('./RanobeHoverCardContent'),
+    'RanobeHoverCardContent',
+);
 
 type RanobeHoverCardProps = {
     className?: string;
@@ -18,7 +21,7 @@ export const RanobeHoverCard = (props: RanobeHoverCardProps) => {
         <BookHoverCard
             className={className}
             trigger={trigger}
-            content={<RanobeContent ranobeId={ranobeId} />}
+            content={<RanobeHoverCardContent ranobeId={ranobeId} />}
         />
     );
 };

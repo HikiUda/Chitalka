@@ -7,6 +7,6 @@ export function useRanobeGetRelated(ranobeId: BookId) {
     });
 
     return {
-        data: data.data,
+        ranobeRelatedBooks: data.data,
     };
 }

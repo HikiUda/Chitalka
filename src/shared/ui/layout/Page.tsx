@@ -3,10 +3,10 @@ import { Container } from './Container';
 import { cn } from '@/shared/lib/css';
 import { useWindowSize } from '@/shared/kernel/useWindowSize';
 
-interface PageProps {
+type PageProps = {
     className?: string;
     children?: ReactNode;
-}
+};
 
 export const Page = (props: PageProps) => {
     const { className, children } = props;

@@ -1,12 +1,12 @@
 import { ReactNode } from 'react';
 
-interface MainLayoutProps {
+type MainLayoutProps = {
     header: ReactNode;
     main: ReactNode;
     footer?: ReactNode;
     bottomMenu?: ReactNode;
     toaster?: ReactNode;
-}
+};
 
 export const MainLayout = (props: MainLayoutProps) => {
     const { header, footer, main, bottomMenu, toaster } = props;

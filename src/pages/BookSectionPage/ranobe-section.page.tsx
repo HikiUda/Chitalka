@@ -8,10 +8,15 @@ import { useRanobeGetMyLastUpdated } from './model/useBookLastUpdatedTabs/useRan
 import { useRanobeNowReadRating } from './model/useBookNowRead/useRanobeNowReadRating';
 import { useRanobeNowReadNew } from './model/useBookNowRead/useRanobeNowReadNew';
 import { useRanobeNowReadMoreViewed } from './model/useBookNowRead/useRanobeNowReadMoreViewed';
-import { RanobeContinueReadSlider } from '@/features/BookContinueRead';
 import { CollectionCard, CollectionGridLayout } from '@/entities/CollectionList';
 import { Heading } from '@/shared/ui/kit/heading';
 import { UserCard, UserGridLayout } from '@/entities/UserList';
+import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
+
+const RanobeContinueReadSlider = lazyNamed(
+    () => import('@/features/BookContinueRead'),
+    'RanobeContinueReadSlider',
+);
 
 const MangaSectionPage = () => {
     const popularLastUpdated = useRanobeGetPopularLastUpdated();
@@ -30,7 +35,7 @@ const MangaSectionPage = () => {
     return (
         <BookSectionPage
             mainSlider={<BookPopularLastUpdatedSlider data={popularLastUpdated} />}
-            continueRead={<RanobeContinueReadSlider />}
+            continueRead={<RanobeContinueReadSlider fallback={null} />}
             nowRead={
                 <BookNowReadSlider
                     column_1={nowReadNew}

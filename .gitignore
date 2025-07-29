@@ -6,4 +6,5 @@ node_modules
 .fttemplates
 **/build-storybook.log
 *.locale
-dist
+/dist
+dist/index.html

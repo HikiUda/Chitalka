@@ -8,10 +8,15 @@ import { BookLastUpdatedTabs } from './ui/BookLastUpdatedTabs';
 import { useMangaNowReadNew } from './model/useBookNowRead/useMangaNowReadNew';
 import { useMangaNowReadMoreViewed } from './model/useBookNowRead/useMangaNowReadMoreViewed';
 import { useMangaNowReadRating } from './model/useBookNowRead/useMangaNowReadRating';
-import { MangaContinueReadSlider } from '@/features/BookContinueRead';
 import { CollectionCard, CollectionGridLayout } from '@/entities/CollectionList';
 import { Heading } from '@/shared/ui/kit/heading';
 import { UserCard, UserGridLayout } from '@/entities/UserList';
+import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
+
+const MangaContinueReadSlider = lazyNamed(
+    () => import('@/features/BookContinueRead'),
+    'MangaContinueReadSlider',
+);
 
 const MangaSectionPage = () => {
     const popularLastUpdated = useMangaGetPopularLastUpdated();
@@ -30,7 +35,7 @@ const MangaSectionPage = () => {
     return (
         <BookSectionPage
             mainSlider={<BookPopularLastUpdatedSlider data={popularLastUpdated} />}
-            continueRead={<MangaContinueReadSlider />}
+            continueRead={<MangaContinueReadSlider fallback={null} />}
             nowRead={
                 <BookNowReadSlider
                     column_1={nowReadNew}

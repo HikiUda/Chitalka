@@ -1,25 +1,24 @@
-import { memo } from 'react';
+import { memo, ReactNode } from 'react';
 import { useMangaGetContinueReadList } from '../model/useMangaGetContinueReadList';
 import { useMangaDeleteContinueRead } from '../model/useMangaDeleteContinueRead';
 import { BookContinueReadCard } from './BookContinueReadCard';
 
 import { BookContinueReadSlider } from './BookContinueReadSlider';
-import { useSession } from '@/shared/kernel/session';
 import { getRoute } from '@/shared/kernel/router';
 
 type MangaContinueReadSliderProps = {
     className?: string;
+    /** @description If user have no continue read books */
+    fallback: ReactNode;
 };
 
 export const MangaContinueReadSlider = memo((props: MangaContinueReadSliderProps) => {
-    const { className } = props;
+    const { className, fallback } = props;
 
     const { data = [], isLoading } = useMangaGetContinueReadList();
     const { deleteContinueReadManga, getIsPending } = useMangaDeleteContinueRead();
-    const { isUserAuth } = useSession();
 
-    if (!isUserAuth) return null;
-    if (!isLoading && !data.length) return null;
+    if (!isLoading && !data.length) return fallback;
 
     return (
         <BookContinueReadSlider
