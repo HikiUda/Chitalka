@@ -6,6 +6,7 @@ import { Card } from '@/shared/ui/kit/card';
 import { BookCardInline, BookListLayout } from '@/entities/BookList';
 import { Badge } from '@/shared/ui/kit/badge';
 import { useWindowSize } from '@/shared/kernel/useWindowSize';
+import { createI18nModule } from '@/shared/kernel/i18n';
 
 type NowReadMangaSliderProps = {
     className?: string;
@@ -14,14 +15,34 @@ type NowReadMangaSliderProps = {
     column_3: BookNowRead;
 };
 
+const { useI18n } = createI18nModule({
+    header: {
+        ru: 'Сейчас читают',
+        en: 'Now Read',
+    },
+    moreViewed: {
+        ru: 'Просматриваемые',
+        en: 'More viewed',
+    },
+    rating: {
+        ru: 'Рейтинговые',
+        en: 'Rating',
+    },
+    new: {
+        ru: 'Новинки',
+        en: 'New',
+    },
+});
+
 export const BookNowReadSlider = memo((props: NowReadMangaSliderProps) => {
+    const t = useI18n();
     const { className, column_1, column_2, column_3 } = props;
     const isWidthLg = useWindowSize.use.isWidthLg();
 
     return (
         <Card className={className}>
             <Heading variant="h2" color="primary" className="ml-3">
-                Сейчас читают
+                {t('header')}
             </Heading>
             <Carousel opts={{ active: !isWidthLg }} className="w-full relative">
                 <CarouselContent className="pl-2.5">
@@ -44,7 +65,9 @@ export const BookNowReadSlider = memo((props: NowReadMangaSliderProps) => {
                                         img={book.cover}
                                         title={book.title}
                                     >
-                                        <Badge variant="secondary">{book.type}</Badge>
+                                        <Badge variant="secondary">
+                                            {t(`bookType.${book.type}`)}
+                                        </Badge>
                                     </BookCardInline>
                                 )}
                                 isLoading={bookList.isLoading}

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRightIcon, UserIcon } from 'lucide-react';
 import { cn } from '@/shared/lib/css';
+import { createI18nModule } from '@/shared/kernel/i18n';
 
 type ProfileLinkProps = {
     className?: string;
@@ -8,8 +9,13 @@ type ProfileLinkProps = {
     profileLink?: string;
 };
 
+const { useI18n } = createI18nModule({
+    myProfile: { ru: 'Мой Профиль', en: 'My Profile' },
+});
+
 export const ProfileLink = (props: ProfileLinkProps) => {
     const { className, username, profileLink } = props;
+    const t = useI18n();
 
     return (
         <Link
@@ -22,7 +28,7 @@ export const ProfileLink = (props: ProfileLinkProps) => {
             <UserIcon />
             <div className="flex flex-col  justify-center gap-1">
                 <div className="flex items-center justify-center gap-2 text-xs">
-                    Мой Профиль <ArrowRightIcon size={12} />
+                    {t('myProfile')} <ArrowRightIcon size={12} />
                 </div>
                 <div>{username || '######'}</div>
             </div>

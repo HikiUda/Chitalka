@@ -3,6 +3,7 @@ import { RateValues } from '../model/rateValues';
 import { Progress } from '@/shared/ui/kit/progress';
 import { Heading } from '@/shared/ui/kit/heading';
 import { Skeleton } from '@/shared/ui/kit/skeleton';
+import { createI18nModule } from '@/shared/kernel/i18n';
 
 function getChart(ind: number) {
     if (ind > 8) return 'chart-1';
@@ -20,13 +21,21 @@ type BookRateStatisticProps = {
     getRatePercentage: (rate: RateValues) => number;
 };
 
+const { useI18n } = createI18nModule({
+    overallRating: {
+        ru: (...args) => `Общая оценка ${args[0]} от ${args[1]} пользователей`,
+        en: (...args) => `Overall rating ${args[0]} from ${args[1]} users`,
+    },
+});
+
 export const BookRateStatistic = (props: BookRateStatisticProps) => {
     const { className, rate, isLoading, getRateCount, getRatePercentage } = props;
+    const t = useI18n();
 
     return (
         <div className={className}>
             <Heading variant="h3" color="primary" className="mb-1">
-                Общая оценка {rate} от {getRateCount()} пользователей
+                {t('overallRating', [rate, getRateCount()])}
             </Heading>
             <div className="table">
                 {!isLoading &&

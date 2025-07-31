@@ -1,4 +1,5 @@
 import { BookRelated, BookRelatedCard } from './BookRelatedCard';
+import { createI18nModule } from '@/shared/kernel/i18n';
 import {
     Carousel,
     CarouselContent,
@@ -12,13 +13,18 @@ type BookRelatedSliderProps = {
     books: BookRelated[];
 };
 
+const { useI18n } = createI18nModule({
+    related: { ru: 'Связаное', en: 'Related' },
+});
+
 export const BookRelatedSlider = (props: BookRelatedSliderProps) => {
     const { className, books } = props;
+    const t = useI18n();
     if (!books.length) return null;
     return (
         <div className={className}>
             <Heading className="ml-3 mb-2" variant="h3" color="primary">
-                Связаное
+                {t('related')}
             </Heading>
             <Carousel
                 opts={{

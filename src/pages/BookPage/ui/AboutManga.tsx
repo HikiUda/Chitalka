@@ -11,6 +11,7 @@ import {
     useGetManga,
     useMangaCategories,
     BookBasicInfo,
+    BookPeopleList,
 } from '@/entities/BookInfo';
 
 type AboutMangaProps = {
@@ -31,6 +32,7 @@ export const AboutManga = memo((props: AboutMangaProps) => {
             basicInfo={<BookBasicInfo basicInfo={basicInfo} />}
             description={<TextDisclosure text={manga.description} />}
             categories={<CategoryCollapsedList categories={categories} />}
+            people={<BookPeopleList people={manga.people} />}
             relatedBooks={<BookRelatedSlider books={mangaRelatedBooks} />}
             rateStatistic={<MangaRateStatistic mangaId={mangaId} />}
             bookmarkStatistic={<MangaBookmarkStatistic mangaId={mangaId} />}

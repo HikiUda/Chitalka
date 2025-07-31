@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { ArrowDownNarrowWideIcon, ArrowDownWideNarrowIcon } from 'lucide-react';
 import { SortBy } from '../../../model/slices/sortBy/sortBy';
 import { Order } from '../../../model/slices/order/orderSlice';
+import { useI18n } from './SortByMenuGroup';
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -20,6 +21,7 @@ type SortByOrderMenuProps = {
 
 export const SortByOrderMenu = (props: SortByOrderMenuProps) => {
     const { className, sortBy, order, orderValue, sortByValue } = props;
+    const t = useI18n();
 
     const OrderArrow = orderValue === 'desc' ? ArrowDownWideNarrowIcon : ArrowDownNarrowWideIcon;
 
@@ -28,7 +30,7 @@ export const SortByOrderMenu = (props: SortByOrderMenuProps) => {
             <DropdownMenuTrigger asChild>
                 <Button variant="outline" size="sm" className={className}>
                     {<OrderArrow />}
-                    {sortByValue}
+                    {t(sortByValue)}
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>

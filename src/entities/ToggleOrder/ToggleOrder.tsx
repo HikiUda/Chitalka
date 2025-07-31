@@ -1,19 +1,26 @@
 import { MoveVerticalIcon } from 'lucide-react';
-import { FC, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { cn } from '@/shared/lib/css';
 import { Button } from '@/shared/ui/kit/button';
+import { createI18nModule } from '@/shared/kernel/i18n';
 
 type OrderType = 'asc' | 'desc';
 
-interface ToggleOrderProps {
+type ToggleOrderProps = {
     className?: string;
     value?: OrderType;
     onChange?: (value: OrderType) => void;
-}
+};
 
-export const ToggleOrder: FC<ToggleOrderProps> = (props) => {
+const { useI18n } = createI18nModule({
+    asc: { ru: 'По возрастанию', en: 'Ascending' },
+    desc: { ru: 'По убыванию', en: 'Descending' },
+});
+
+export const ToggleOrder = (props: ToggleOrderProps) => {
     const { onChange, value, className } = props;
     const [order, setOrder] = useState<OrderType>('desc');
+    const t = useI18n();
 
     const onHandleChange = useCallback(() => {
         const next = (value || order) === 'asc' ? 'desc' : 'asc';
@@ -32,7 +39,7 @@ export const ToggleOrder: FC<ToggleOrderProps> = (props) => {
             onClick={onHandleChange}
         >
             <MoveVerticalIcon />
-            {value || order}
+            {t(value || order)}
         </Button>
     );
 };

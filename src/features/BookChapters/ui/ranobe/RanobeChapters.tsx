@@ -8,6 +8,7 @@ import { Input } from '@/shared/ui/kit/input';
 import { ToggleOrder } from '@/entities/ToggleOrder';
 import { useTrottle } from '@/shared/lib/hooks/useTrottle';
 import { getRoute } from '@/shared/kernel/router';
+import { createI18nModule } from '@/shared/kernel/i18n';
 
 type RanobeChaptersProps = {
     className?: string;
@@ -15,8 +16,13 @@ type RanobeChaptersProps = {
     onChapterClick?: () => void;
 };
 
+const { useI18n } = createI18nModule({
+    findChapter: { ru: 'Найти главу', en: 'Find chapter' },
+});
+
 export const RanobeChapters = memo((props: RanobeChaptersProps) => {
     const { className, ranobeId, onChapterClick } = props;
+    const t = useI18n();
 
     const {
         chapters = [],
@@ -35,7 +41,7 @@ export const RanobeChapters = memo((props: RanobeChaptersProps) => {
         <BookChaptersLayout
             className={className}
             order={<ToggleOrder {...order} />}
-            search={<Input className="max-w-80" placeholder="Найти главу" {...search} />}
+            search={<Input className="max-w-80" placeholder={t('findChapter')} {...search} />}
             list={
                 <ChapterList
                     chapters={chapters}

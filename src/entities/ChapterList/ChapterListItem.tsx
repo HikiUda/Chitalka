@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { ru } from 'date-fns/locale';
 import { format } from 'date-fns';
 import { cn } from '@/shared/lib/css';
+import { createI18nModule } from '@/shared/kernel/i18n';
 
 type ChapterListItem = {
     id: number;
@@ -21,8 +21,16 @@ type ChapterListItemProps = {
     onClick?: () => void;
 };
 
+const { useI18n } = createI18nModule({
+    tomeChapter: {
+        ru: (...args) => `${args[0]} том ${args[1]} глава`,
+        en: (...args) => `${args[0]} tome ${args[1]} chapter`,
+    },
+});
+
 export const ChapterListItem = (props: ChapterListItemProps) => {
     const { className, chapter, before, after, bookLink, onClick } = props;
+    const t = useI18n();
 
     return (
         <Link
@@ -35,9 +43,9 @@ export const ChapterListItem = (props: ChapterListItemProps) => {
         >
             {before || <div />}
             <div className="whitespace-nowrap overflow-hidden text-ellipsis">
-                {`${chapter.tome} том ${chapter.chapter} глава${chapter.title ? ` - ${chapter.title}` : ''}`}
+                {`${t('tomeChapter', [chapter.tome, chapter.chapter])}${chapter.title ? ` - ${chapter.title}` : ''}`}
             </div>
-            <div>{format(chapter.createdAt, 'dd.mm.yyyy', { locale: ru })}</div>
+            <div>{format(chapter.createdAt, 'dd.mm.yyyy')}</div>
             {after}
         </Link>
     );

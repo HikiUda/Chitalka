@@ -8,14 +8,21 @@ import { useSession } from '@/shared/kernel/session';
 import { Button } from '@/shared/ui/kit/button';
 import { Logo } from '@/entities/Logo';
 import { GlobalNavigation } from '@/features/GlobalNavigation';
+import { createI18nModule } from '@/shared/kernel/i18n';
 
 type BookMainHeaderProps = {
     quickSearch: (trigger: ReactNode) => ReactNode;
     catalogLink: string;
 };
 
+const { useI18n } = createI18nModule({
+    search: { ru: 'Поиск', en: 'Search' },
+    catalog: { ru: 'Каталог', en: 'Catalog' },
+});
+
 export const BookMainHeader = (props: BookMainHeaderProps) => {
     const { quickSearch, catalogLink } = props;
+    const t = useI18n();
     const { isUserAuth } = useSession();
 
     return (
@@ -28,7 +35,7 @@ export const BookMainHeader = (props: BookMainHeaderProps) => {
                             className="hover:bg-primary/50 transition-colors duration-300"
                             to={catalogLink}
                         >
-                            <LibraryBigIcon size={20} /> Каталог
+                            <LibraryBigIcon size={20} /> {t('catalog')}
                         </Link>
                     </Button>
                     <GlobalNavigation />
@@ -38,7 +45,7 @@ export const BookMainHeader = (props: BookMainHeaderProps) => {
                             size="sm"
                             className="hover:bg-primary/50 transition-colors duration-300"
                         >
-                            <SearchIcon size={20} /> Поиск
+                            <SearchIcon size={20} /> {t('search')}
                         </Button>,
                     )}
                 </div>

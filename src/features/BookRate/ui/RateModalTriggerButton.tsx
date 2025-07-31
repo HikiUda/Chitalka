@@ -5,6 +5,18 @@ import { StarIcon } from 'lucide-react';
 import { Button, ButtonContext } from '@/shared/ui/kit/button';
 import { useSession } from '@/shared/kernel/session';
 import { cn } from '@/shared/lib/css';
+import { createI18nModule } from '@/shared/kernel/i18n';
+
+const { useI18n } = createI18nModule({
+    notAuth: {
+        ru: 'Сначала необходимо войти или зарегистрироваться',
+        en: 'You need to log in or sign up first',
+    },
+    rate: {
+        ru: 'Оценить',
+        en: 'Rate',
+    },
+});
 
 const RateButtonWrapper = ({
     children,
@@ -13,12 +25,13 @@ const RateButtonWrapper = ({
     children: ReactNode;
     isUserAuth: boolean;
 }) => {
+    const t = useI18n();
     if (isUserAuth) return <DialogTrigger asChild>{children}</DialogTrigger>;
     //TODO auth button in toast
     return (
         <ButtonContext.Provider
             value={{
-                onClick: () => toast.error('Сначала необходимо войти или зарегестрироваться'),
+                onClick: () => toast.error(t('notAuth')),
             }}
         >
             {children}
@@ -34,6 +47,7 @@ type RateModalTriggerButtonProps = {
 
 export const RateModalTriggerButton = (props: RateModalTriggerButtonProps) => {
     const { className, isLoading, rate } = props;
+    const t = useI18n();
     const { isUserAuth } = useSession();
     return (
         <RateButtonWrapper isUserAuth={isUserAuth}>
@@ -47,7 +61,7 @@ export const RateModalTriggerButton = (props: RateModalTriggerButtonProps) => {
                         'fill-primary-foreground pb-[0.5px]': rate,
                     })}
                 />
-                {!rate && 'Оценить'}
+                {!rate && t('rate')}
             </Button>
         </RateButtonWrapper>
     );

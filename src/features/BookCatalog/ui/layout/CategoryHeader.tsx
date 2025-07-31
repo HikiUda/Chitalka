@@ -5,6 +5,7 @@ import { Button } from '@/shared/ui/kit/button';
 import { Heading } from '@/shared/ui/kit/heading';
 import { cn } from '@/shared/lib/css';
 import { Separator } from '@/shared/ui/kit/separator';
+import { createI18nModule } from '@/shared/kernel/i18n';
 
 type CategoryHeaderProps = {
     className?: string;
@@ -14,8 +15,13 @@ type CategoryHeaderProps = {
     input: ReactNode;
 };
 
+const { useI18n } = createI18nModule({
+    reset: { ru: 'Сбросить', en: 'Reset' },
+});
+
 export const CategoryHeader = memo((props: CategoryHeaderProps) => {
     const { className, title, onBack, onReset, input } = props;
+    const t = useI18n();
     return (
         <div className="px-4 pt-4">
             <div className={cn('flex items-center justify-between gap-2 mb-2', className)}>
@@ -36,7 +42,7 @@ export const CategoryHeader = memo((props: CategoryHeaderProps) => {
                     size="clear"
                     className="hover:opacity-80 transition-opacity"
                 >
-                    Сбросить
+                    {t('reset')}
                 </Button>
             </div>
             <Separator />

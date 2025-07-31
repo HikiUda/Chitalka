@@ -2,8 +2,10 @@ import { parseISO } from 'date-fns';
 import { useMemo } from 'react';
 import { publicRqClient } from '@/shared/api/instance';
 import { BookId } from '@/shared/kernel/book/book';
+import { useAppLang } from '@/shared/kernel/i18n';
 
 export function useGetRanobe(ranobeId: BookId) {
+    const { lang } = useAppLang();
     const { data } = publicRqClient.useSuspenseQuery(
         'get',
         '/ranobe/{ranobeId}',
@@ -11,6 +13,9 @@ export function useGetRanobe(ranobeId: BookId) {
             params: {
                 path: {
                     ranobeId,
+                },
+                query: {
+                    lang,
                 },
             },
         },

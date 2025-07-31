@@ -7,6 +7,7 @@ import { BottomMenu } from '@/widgets/BottomMenu';
 import { useSession } from '@/shared/kernel/session';
 import { Loader } from '@/shared/ui/kit/loader';
 import { AppThemeProvider } from '@/shared/kernel/theme';
+import { AppLangProvider } from '@/shared/kernel/i18n';
 
 export const App = () => {
     const [init, setInit] = useState(false);
@@ -20,14 +21,16 @@ export const App = () => {
     if (!init) return <Loader variant="flower" />;
     return (
         <AppThemeProvider>
-            <Suspense fallback={<Loader variant="flower" />}>
-                <MainLayout
-                    header={<Header />}
-                    main={<Outlet />}
-                    bottomMenu={<BottomMenu />}
-                    toaster={<Toaster />}
-                />
-            </Suspense>
+            <AppLangProvider>
+                <Suspense fallback={<Loader variant="flower" />}>
+                    <MainLayout
+                        header={<Header />}
+                        main={<Outlet />}
+                        bottomMenu={<BottomMenu />}
+                        toaster={<Toaster />}
+                    />
+                </Suspense>
+            </AppLangProvider>
         </AppThemeProvider>
     );
 };

@@ -2,6 +2,7 @@ import { MoveRightIcon } from 'lucide-react';
 import { memo } from 'react';
 import { cn } from '@/shared/lib/css';
 import { Heading } from '@/shared/ui/kit/heading';
+import { createI18nModule } from '@/shared/kernel/i18n';
 
 type CommonHeaderProps = {
     className?: string;
@@ -9,8 +10,14 @@ type CommonHeaderProps = {
     toTags: () => void;
 };
 
+const { useI18n } = createI18nModule({
+    genres: { ru: 'Жанры', en: 'Genres' },
+    tags: { ru: 'Теги', en: 'Tags' },
+});
+
 export const CommonHeader = memo((props: CommonHeaderProps) => {
     const { className, toGenres, toTags } = props;
+    const t = useI18n();
     return (
         <div className={cn('px-2 py-2', className)}>
             <div
@@ -21,7 +28,7 @@ export const CommonHeader = memo((props: CommonHeaderProps) => {
                     className,
                 )}
             >
-                <Heading color="primary">Жанры</Heading>
+                <Heading color="primary">{t('genres')}</Heading>
                 <MoveRightIcon className="stroke-primary" />
             </div>
             <div
@@ -32,7 +39,7 @@ export const CommonHeader = memo((props: CommonHeaderProps) => {
                     className,
                 )}
             >
-                <Heading color="primary">Теги</Heading>
+                <Heading color="primary">{t('tags')}</Heading>
                 <MoveRightIcon className="stroke-primary" />
             </div>
         </div>

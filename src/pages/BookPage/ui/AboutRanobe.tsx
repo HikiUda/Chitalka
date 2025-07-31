@@ -10,6 +10,7 @@ import {
     useGetRanobe,
     useRanobeCategories,
     useRanobeBasicInfo,
+    BookPeopleList,
 } from '@/entities/BookInfo';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 
@@ -33,6 +34,7 @@ export const AboutRanobe = memo((props: AboutRanobeProps) => {
             basicInfo={<BookBasicInfo basicInfo={basicInfo} />}
             description={<TextDisclosure text={ranobe.description} />}
             categories={<CategoryCollapsedList categories={categories} />}
+            people={<BookPeopleList people={ranobe.people} />}
             relatedBooks={<BookRelatedSlider books={ranobeRelatedBooks} />}
             rateStatistic={<RanobeRateStatistic ranobeId={ranobeId} />}
             bookmarkStatistic={<RanobeBookmarkStatistic ranobeId={ranobeId} />}

@@ -9,14 +9,23 @@ import {
     CarouselPrevious,
 } from '@/shared/ui/kit/carousel';
 import { BookCard, BookCardSkeleton } from '@/entities/BookList';
+import { createI18nModule } from '@/shared/kernel/i18n';
 
 type BookPopularLastUpdatedSliderProps = {
     className?: string;
     data: BookPopularLastUpdated;
 };
 
+const { useI18n } = createI18nModule({
+    chapter: {
+        ru: (...args) => `Глава ${args[0]}`,
+        en: (...args) => `Ch ${args[0]}`,
+    },
+});
+
 export const BookPopularLastUpdatedSlider = memo((props: BookPopularLastUpdatedSliderProps) => {
     const { className, data } = props;
+    const t = useI18n();
 
     return (
         <Card className={className}>
@@ -32,9 +41,9 @@ export const BookPopularLastUpdatedSlider = memo((props: BookPopularLastUpdatedS
                             <BookCard
                                 to={data.bookLink(book.urlId)}
                                 title={book.title}
-                                subtitle={book.type}
+                                subtitle={t(`bookType.${book.type}`)}
                                 img={book.cover}
-                                label3={`Глава ${book.chapter}`}
+                                label3={t('chapter', [book.chapter])}
                             />
                         </CarouselItem>
                     ))}

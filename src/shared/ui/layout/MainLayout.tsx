@@ -12,7 +12,7 @@ export const MainLayout = (props: MainLayoutProps) => {
     const { header, footer, main, bottomMenu, toaster } = props;
 
     return (
-        <div className="relative min-h-[100vh] grid grid-rows-[auto_1fr_auto_auto] bg-background">
+        <div className="relative min-h-[100vh] grid grid-rows-[auto_1fr_auto_auto] bg-background scroll-locked:p-15">
             {header}
             {main}
             {footer}

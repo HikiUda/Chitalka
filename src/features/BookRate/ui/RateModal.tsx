@@ -5,6 +5,7 @@ import { cn } from '@/shared/lib/css';
 import { Heading } from '@/shared/ui/kit/heading';
 import { Button } from '@/shared/ui/kit/button';
 import { useWindowSize } from '@/shared/kernel/useWindowSize';
+import { createI18nModule } from '@/shared/kernel/i18n';
 
 type RateModalContentProps = {
     className?: string;
@@ -13,8 +14,17 @@ type RateModalContentProps = {
     deleteRate: () => void;
 };
 
+const { useI18n } = createI18nModule({
+    titleRating: { ru: 'Оценка тайтла', en: 'Book rating' },
+    notAvailableYet: { ru: 'Её пока нет', en: "It's not available yet" },
+    edit: { ru: 'Изменить', en: 'Edit' },
+    set: { ru: 'Поставить', en: 'Set' },
+    delete: { ru: 'Удалить', en: 'Delete' },
+});
+
 export const RateModal = (props: RateModalContentProps) => {
     const { className, rate, setRate, deleteRate } = props;
+    const t = useI18n();
     const isWidthLg = useWindowSize.use.isWidthLg();
     const [selectedStar, setSelectedStar] = useState(0);
     const ratingValues = useMemo(() => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] as const, []);
@@ -31,8 +41,8 @@ export const RateModal = (props: RateModalContentProps) => {
 
     return (
         <div className={cn('max-w-130 gap-4 flex flex-col justify-center items-center', className)}>
-            <Heading variant="h3">Оценка тайтла</Heading>
-            <Heading variant="h2">{selectedStar || rate || 'Её пока нет'}</Heading>
+            <Heading variant="h3">{t('titleRating')}</Heading>
+            <Heading variant="h2">{selectedStar || rate || t('notAvailableYet')}</Heading>
             <div className="flex justify-center items-center gap-3 md:gap-2">
                 {ratingValues.map((val, ind) => (
                     <Button
@@ -56,13 +66,13 @@ export const RateModal = (props: RateModalContentProps) => {
             <div className="flex gap-3 ">
                 <DialogClose asChild>
                     <Button disabled={rate === selectedStar} onClick={handleSetRate}>
-                        {rate ? 'Изменить' : 'Поставить'}
+                        {rate ? t('edit') : t('set')}
                     </Button>
                 </DialogClose>
                 {rate && (
                     <DialogClose asChild>
                         <Button onClick={handleDeleteRate} variant="destructive">
-                            Удалить
+                            {t('delete')}
                         </Button>
                     </DialogClose>
                 )}

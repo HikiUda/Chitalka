@@ -4,9 +4,13 @@ import { getRoute } from '@/shared/kernel/router';
 import { useIntersection } from '@/shared/lib/hooks/useIntersection';
 import { useTrottle } from '@/shared/lib/hooks/useTrottle';
 import { RanobeHoverCard } from '@/widgets/BookHoverCard';
+import { createI18nModule } from '@/shared/kernel/i18n';
+
+const { useI18n } = createI18nModule({});
 
 export const RanobeCatalogList = () => {
     const { data = [], isFetching, fetchNextPage } = useGetRanobeCatalog();
+    const t = useI18n();
 
     const trottleFetchNext = useTrottle(() => fetchNextPage(), 1000);
     const intersect = useIntersection(() => {
@@ -24,10 +28,10 @@ export const RanobeCatalogList = () => {
                         <BookCard
                             adaptive="dynamic"
                             title={title}
-                            subtitle={type}
+                            subtitle={t(`ranobeType.${type}`)}
                             img={cover}
                             label1={rate}
-                            label2={bookmark}
+                            label2={bookmark && t(`bookmarks.${bookmark}`)}
                             to={getRoute.RANOBE(urlId)}
                         />
                     }

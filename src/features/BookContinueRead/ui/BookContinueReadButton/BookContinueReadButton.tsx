@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { cn } from '@/shared/lib/css';
 import { Button } from '@/shared/ui/kit/button';
+import { createI18nModule } from '@/shared/kernel/i18n';
 
 type BookContinueReadButtonProps = {
     className?: string;
@@ -9,8 +10,14 @@ type BookContinueReadButtonProps = {
     readedChapterCount: number;
 };
 
+const { useI18n } = createI18nModule({
+    continue: { ru: 'Продолжить', en: 'Continue' },
+    startReading: { ru: 'Начать читать', en: 'Start reading' },
+});
+
 export const BookContinueReadButton = (props: BookContinueReadButtonProps) => {
     const { className, chapterLink, chapterCount, readedChapterCount } = props;
+    const t = useI18n();
 
     return (
         <Button
@@ -23,7 +30,7 @@ export const BookContinueReadButton = (props: BookContinueReadButtonProps) => {
             )}
         >
             <Link aria-disabled={!chapterLink} to={chapterLink || ''}>
-                <span>{readedChapterCount ? 'Продолжить' : 'Начать читать'}</span>
+                <span>{readedChapterCount ? t('continue') : t('startReading')}</span>
                 <span>
                     {readedChapterCount}/{chapterCount}
                 </span>

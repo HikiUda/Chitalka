@@ -11,6 +11,7 @@ import {
 import { Button } from '@/shared/ui/kit/button';
 import { cn } from '@/shared/lib/css';
 import { Heading } from '@/shared/ui/kit/heading';
+import { createI18nModule } from '@/shared/kernel/i18n';
 
 type BookContinueReadSliderProps = {
     className?: string;
@@ -20,14 +21,20 @@ type BookContinueReadSliderProps = {
     isDeleteAllPending: boolean;
 };
 
+const { useI18n } = createI18nModule({
+    continueRead: { ru: 'Продолжить читать', en: 'Continue reading' },
+    clear: { ru: 'очистить', en: 'clear' },
+});
+
 export const BookContinueReadSlider = (props: BookContinueReadSliderProps) => {
     const { className, cards, isLoading, deleteAll, isDeleteAllPending } = props;
+    const t = useI18n();
 
     return (
         <Card className={cn(className, 'py-0 gap-0')}>
             <div className="flex justify-between align-middle mt-4 mx-3">
                 <Heading variant="h2" color="primary">
-                    Продолжить читать
+                    {t('continueRead')}
                 </Heading>
                 <Button
                     className="hover:text-primary/50"
@@ -35,7 +42,7 @@ export const BookContinueReadSlider = (props: BookContinueReadSliderProps) => {
                     disabled={isDeleteAllPending}
                     variant="clear"
                 >
-                    очистить
+                    {t('clear')}
                 </Button>
             </div>
             <Carousel

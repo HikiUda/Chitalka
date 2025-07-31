@@ -1,6 +1,7 @@
 import { memo, useCallback } from 'react';
 import { Heading } from '@/shared/ui/kit/heading';
 import { Input } from '@/shared/ui/kit/input';
+import { createI18nModule } from '@/shared/kernel/i18n';
 
 type RangeProps = {
     className?: string;
@@ -12,8 +13,14 @@ type RangeProps = {
     max?: number;
 };
 
+const { useI18n } = createI18nModule({
+    from: { ru: 'От', en: 'From' },
+    to: { ru: 'До', en: 'To' },
+});
+
 export const Range = memo((props: RangeProps) => {
     const { className, label, from, to, setFrom, setTo, max } = props;
+    const t = useI18n();
 
     const handleSetFrom = useCallback(
         (val: string) => {
@@ -37,7 +44,7 @@ export const Range = memo((props: RangeProps) => {
                     className="p-0 px-1"
                     value={String(from).replace('NaN', '')}
                     onChangeValue={handleSetFrom}
-                    placeholder="From"
+                    placeholder={t('from')}
                     type="number"
                     min={0}
                     max={max}
@@ -47,7 +54,7 @@ export const Range = memo((props: RangeProps) => {
                     className="p-0 px-1"
                     value={String(to).replace('NaN', '')}
                     onChangeValue={handleSetTo}
-                    placeholder="To"
+                    placeholder={t('to')}
                     type="number"
                     min={0}
                     max={max}

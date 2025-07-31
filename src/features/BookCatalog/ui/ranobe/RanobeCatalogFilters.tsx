@@ -23,6 +23,7 @@ import { CheckboxGroup } from '../filters-build-blocks/CheckboxGroup';
 import { CategoryHeader } from '../layout/CategoryHeader';
 import { CategoryCheckboxGroup } from '../filters-build-blocks/CategoryCheckboxGroup';
 import { SelectField } from '../filters-build-blocks/SelectField';
+import { useI18n } from '../../model/filters.i18n';
 import { Button } from '@/shared/ui/kit/button';
 import { Input } from '@/shared/ui/kit/input';
 
@@ -33,6 +34,7 @@ type RanobeCatalogFiltersProps = {
 
 export const RanobeCatalogFilters = (props: RanobeCatalogFiltersProps) => {
     const { className, onApply } = props;
+    const t = useI18n();
 
     const store = useRanobeCatalogFiltersStore.use;
     const { applyFilters } = useRanobeCatalogApplyFilters(onApply);
@@ -58,15 +60,15 @@ export const RanobeCatalogFilters = (props: RanobeCatalogFiltersProps) => {
                     header={<CommonHeader toGenres={toGenres} toTags={toTags} />}
                     body={
                         <>
-                            <Range {...chapterCount} label="Количество глав" />
-                            <Range {...rate} max={10} label="Рейтинг" />
-                            <Range {...rateCount} label="Количество оценнок" />
-                            <DateRange {...releaseDate} label="Дата релиза" />
-                            <CheckboxGroup {...ageRating} label="Возростной рейтинг" />
-                            <SelectField {...bookLang} label="Язык" />
-                            <CheckboxGroup {...status} label="Статус" />
-                            <CheckboxGroup {...type} label="Тип" />
-                            <CheckboxGroup {...bookmarks} label="В моих закладках" />
+                            <Range {...chapterCount} label={t('chaptersCount')} />
+                            <Range {...rate} max={10} label={t('rate')} />
+                            <Range {...rateCount} label={t('rateCount')} />
+                            <DateRange {...releaseDate} label={t('releaseDate')} />
+                            <CheckboxGroup {...ageRating} label={t('ageRating')} />
+                            <SelectField {...bookLang} label={t('language')} />
+                            <CheckboxGroup {...status} label={t('status')} />
+                            <CheckboxGroup {...type} label={t('type')} />
+                            <CheckboxGroup {...bookmarks} label={t('inBookmarks')} />
                         </>
                     }
                     footer={<CommonFooter onApply={applyFilters} onReset={resetAll} />}
@@ -78,12 +80,12 @@ export const RanobeCatalogFilters = (props: RanobeCatalogFiltersProps) => {
                         <CategoryHeader
                             onBack={onBack}
                             onReset={resetGenres}
-                            title="Жанры"
+                            title={t('genres')}
                             input={
                                 <Input
                                     {...searchGenres}
                                     variant="clear"
-                                    placeholder="Поиск Жанров"
+                                    placeholder={t('searchGenres')}
                                 />
                             }
                         />
@@ -91,7 +93,7 @@ export const RanobeCatalogFilters = (props: RanobeCatalogFiltersProps) => {
                     body={<CategoryCheckboxGroup {...genres} />}
                     footer={
                         <Button className="w-full" onClick={applyFilters}>
-                            Применить
+                            {t('apply')}
                         </Button>
                     }
                 />
@@ -103,16 +105,20 @@ export const RanobeCatalogFilters = (props: RanobeCatalogFiltersProps) => {
                         <CategoryHeader
                             onBack={onBack}
                             onReset={resetTags}
-                            title="Теги"
+                            title={t('tags')}
                             input={
-                                <Input {...searchTags} variant="clear" placeholder="Поиск Тегов" />
+                                <Input
+                                    {...searchTags}
+                                    variant="clear"
+                                    placeholder={t('searchTags')}
+                                />
                             }
                         />
                     }
                     body={<CategoryCheckboxGroup {...tags} />}
                     footer={
                         <Button className="w-full" onClick={applyFilters}>
-                            Применить
+                            {t('apply')}
                         </Button>
                     }
                 />

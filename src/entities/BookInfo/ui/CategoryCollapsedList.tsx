@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/shared/ui/kit/button';
 import { cn } from '@/shared/lib/css';
+import { createI18nModule } from '@/shared/kernel/i18n';
 
 export type CategoryCollapsedListItem = {
     title: string | number;
@@ -15,9 +16,15 @@ type CategoryCollapsedListProps = {
     categories: CategoryCollapsedListItem[];
 };
 
+const { useI18n } = createI18nModule({
+    more: { ru: '+еще', en: '+more' },
+    collapse: { ru: '...свернуть', en: '...collapse' },
+});
+
 export const CategoryCollapsedList = (props: CategoryCollapsedListProps) => {
     const { className, visibleCount = 3, categories } = props;
     const [close, setClose] = useState(true);
+    const t = useI18n();
 
     if (!categories.length) return null;
 
@@ -37,11 +44,11 @@ export const CategoryCollapsedList = (props: CategoryCollapsedListProps) => {
             {categories.length > visibleCount &&
                 (close ? (
                     <Button size="sm" onClick={() => setClose(false)}>
-                        +еще {categories.length - visibleCount}
+                        {t('more')} {categories.length - visibleCount}
                     </Button>
                 ) : (
                     <Button size="sm" onClick={() => setClose(true)}>
-                        ...свернуть
+                        {t('collapse')}
                     </Button>
                 ))}
         </div>

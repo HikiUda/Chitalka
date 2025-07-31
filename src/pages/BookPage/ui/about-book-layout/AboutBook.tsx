@@ -8,6 +8,7 @@ type AboutBookProps = {
     basicInfo: ReactNode;
     description: ReactNode;
     categories: ReactNode;
+    people: ReactNode;
     relatedBooks: ReactNode;
     rateStatistic: ReactNode;
     bookmarkStatistic: ReactNode;
@@ -19,6 +20,7 @@ export const AboutBook = (props: AboutBookProps) => {
         basicInfo,
         description,
         categories,
+        people,
         relatedBooks,
         rateStatistic,
         bookmarkStatistic,
@@ -29,6 +31,7 @@ export const AboutBook = (props: AboutBookProps) => {
             {!isWidthLg && basicInfo}
             <Slot className="px-5">{description}</Slot>
             <Slot className="px-5">{categories}</Slot>
+            <Slot className="px-5">{!isWidthLg && people}</Slot>
             <Slot className={cn(!isWidthLg ? 'w-[98vw]' : 'w-[calc(100vw-306px)]  max-w-[925px]')}>
                 {relatedBooks}
             </Slot>

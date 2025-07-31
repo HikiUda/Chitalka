@@ -1,9 +1,10 @@
 import { useMemo } from 'react';
-import { BookNowRead } from './useBookNowRead';
+import { BookNowRead, useI18n } from './useBookNowRead';
 import { publicRqClient } from '@/shared/api/instance';
 import { getRoute } from '@/shared/kernel/router';
 
 export function useRanobeNowReadRating(): BookNowRead {
+    const t = useI18n();
     const { data, isLoading } = publicRqClient.useQuery('get', '/catalog/ranobe', {
         params: {
             query: {
@@ -15,10 +16,10 @@ export function useRanobeNowReadRating(): BookNowRead {
     });
     return useMemo(() => {
         return {
-            heading: 'Рейтинговые',
+            heading: t('rating'),
             data: data?.data || [],
             isLoading,
             bookLink: getRoute.RANOBE,
         };
-    }, [data?.data, isLoading]);
+    }, [data?.data, isLoading, t]);
 }

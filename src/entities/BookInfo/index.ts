@@ -5,6 +5,7 @@ export { CategoryCollapsedList } from './ui/CategoryCollapsedList';
 // * useBookCategories
 
 export { useBookPeopleGroup, type PeopleGroup } from './model/useBookPeopleGroup';
+export { BookPeopleList } from './ui/BookPeopleList';
 export { useBookTitles } from './model/useBookTitles';
 export { BookMetaLinks } from './ui/BookMetaLinks';
 export { BookMetaCopyItems } from './ui/BookMetaCopyItems';

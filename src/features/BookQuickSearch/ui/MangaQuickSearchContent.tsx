@@ -3,6 +3,7 @@ import { BookmarkIcon, EyeIcon, HeartIcon, SearchIcon } from 'lucide-react';
 import { useMangaQuickSearch } from '../model/useMangaQuickSearch';
 import { useMangaQuickSearchGetLast } from '../model/useMangaQuickSearchGetLast';
 import { useMangaQuickSearchDeleteLast } from '../model/useMangaQuickSearchDeleteLast';
+import { useI18n } from '../model/i18n';
 import { LastSearchList } from './layout/LastSearchList';
 import { QuickSearchList } from './layout/QuickSearchList';
 import { LastSearchItem } from './layout/LastSearchItem';
@@ -16,6 +17,7 @@ import { getRoute } from '@/shared/kernel/router';
 
 export const MangaQuickSearchContent = () => {
     const [search, setSearch] = useState('');
+    const t = useI18n();
 
     const { data = [], refetch, isFetching } = useMangaQuickSearch(search);
     const last = useMangaQuickSearchGetLast();
@@ -39,7 +41,7 @@ export const MangaQuickSearchContent = () => {
                     variant="clear"
                     value={search}
                     onChangeValue={handleSetSearch}
-                    placeholder="Быстрый поиск"
+                    placeholder={t('quickSearch')}
                 />
             </div>
             <Separator />
@@ -61,7 +63,7 @@ export const MangaQuickSearchContent = () => {
                 list={data}
                 renderItem={({ id, urlId, title, type, cover, views, likes, bookmarks }) => (
                     <BookCardInline key={id} to={getRoute.MANGA(urlId)} title={title} img={cover}>
-                        <span className="text-sm opacity-70">{type}</span>
+                        <span className="text-sm opacity-70">{t(`mangaType.${type}`)}</span>
                         <div className="flex gap-1 items-center">
                             <Badge variant="muted">
                                 <EyeIcon /> {toShortcutNumber(views)}

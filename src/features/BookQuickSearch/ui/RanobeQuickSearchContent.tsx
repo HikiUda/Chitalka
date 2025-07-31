@@ -3,6 +3,7 @@ import { BookmarkIcon, EyeIcon, HeartIcon, SearchIcon } from 'lucide-react';
 import { useRanobeQuickSearch } from '../model/useRanobeQuickSearch';
 import { useRanobeQuickSearchGetLast } from '../model/useRanobeQuickSearchGetLast';
 import { useRanobeQuickSearchDeleteLast } from '../model/useRanobeQuickSearchDeleteLast';
+import { useI18n } from '../model/i18n';
 import { LastSearchList } from './layout/LastSearchList';
 import { QuickSearchList } from './layout/QuickSearchList';
 import { LastSearchItem } from './layout/LastSearchItem';
@@ -16,6 +17,7 @@ import { getRoute } from '@/shared/kernel/router';
 
 export const RanobeQuickSearchContent = () => {
     const [search, setSearch] = useState('');
+    const t = useI18n();
 
     const { data = [], refetch, isFetching } = useRanobeQuickSearch(search);
     const last = useRanobeQuickSearchGetLast();
@@ -39,7 +41,7 @@ export const RanobeQuickSearchContent = () => {
                     variant="clear"
                     value={search}
                     onChangeValue={handleSetSearch}
-                    placeholder="Быстрый поиск"
+                    placeholder={t('quickSearch')}
                 />
             </div>
             <Separator />
@@ -61,7 +63,7 @@ export const RanobeQuickSearchContent = () => {
                 list={data}
                 renderItem={({ id, urlId, title, type, cover, views, likes, bookmarks }) => (
                     <BookCardInline key={id} to={getRoute.RANOBE(urlId)} title={title} img={cover}>
-                        <span className="text-sm opacity-70">{type}</span>
+                        <span className="text-sm opacity-70">{t(`ranobeType.${type}`)}</span>
                         <div className="flex gap-1 items-center">
                             <Badge variant="muted">
                                 <EyeIcon /> {toShortcutNumber(views)}

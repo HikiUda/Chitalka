@@ -1,5 +1,5 @@
 import { BookmarkIcon } from 'lucide-react';
-import { Bookmarks } from '@/shared/kernel/book';
+import { Bookmarks } from '@/shared/kernel/book/bookmarks';
 import { cn } from '@/shared/lib/css';
 import { Button } from '@/shared/ui/kit/button';
 

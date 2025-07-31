@@ -4,14 +4,19 @@ import { Badge } from '@/shared/ui/kit/badge';
 import { cn } from '@/shared/lib/css';
 import { getRoute } from '@/shared/kernel/router';
 import { Heading } from '@/shared/ui/kit/heading';
+import { BookRelationship } from '@/shared/kernel/book/relationship';
+import { BookStatus } from '@/shared/kernel/book/bookStatus';
+import { MangaType } from '@/shared/kernel/book/mangaTypes';
+import { RanobeType } from '@/shared/kernel/book/ranobeType';
+import { createI18nModule } from '@/shared/kernel/i18n';
 
 export type BookRelated = {
     urlId: string;
     title: string;
-    type: string;
+    type: MangaType | RanobeType;
     cover: string;
-    status: string;
-    relationship: string;
+    status: BookStatus;
+    relationship: BookRelationship;
     relatedId: string;
 };
 
@@ -20,10 +25,17 @@ type BookRelatedCardProps = {
     book: BookRelated;
 };
 
+const { useI18n } = createI18nModule({
+    related: { ru: 'Связаное', en: 'Related' },
+});
+
 export const BookRelatedCard = (props: BookRelatedCardProps) => {
     const { className, book } = props;
+    const t = useI18n();
 
-    const subtitle = book.relatedId.includes('ranobe') ? `Ranobe * ${book.type}` : book.type;
+    const subtitle = book.relatedId.includes('ranobe')
+        ? `Ranobe * ${t(`bookType.${book.type}`)}`
+        : t(`bookType.${book.type}`);
     const bookLink = book.relatedId.includes('ranobe')
         ? getRoute.RANOBE(book.urlId)
         : getRoute.MANGA(book.urlId);
@@ -43,8 +55,8 @@ export const BookRelatedCard = (props: BookRelatedCardProps) => {
                     {subtitle}
                 </Heading>
                 <div className="flex gap-1 items-center">
-                    <Badge variant="secondary">{book.relationship}</Badge>
-                    <Badge variant="secondary">{book.status}</Badge>
+                    <Badge variant="secondary">{t(`bookRelationship.${book.relationship}`)}</Badge>
+                    <Badge variant="secondary">{t(`bookStatus.${book.status}`)}</Badge>
                 </div>
             </BookCardInline>
         </CarouselItem>

@@ -4,6 +4,7 @@ import { CarouselItem } from '@/shared/ui/kit/carousel';
 import { Button } from '@/shared/ui/kit/button';
 import { cn } from '@/shared/lib/css';
 import { useWindowSize } from '@/shared/kernel/useWindowSize';
+import { createI18nModule } from '@/shared/kernel/i18n';
 
 type BookContinueReadCardProps = {
     className?: string;
@@ -18,10 +19,24 @@ type BookContinueReadCardProps = {
     disabled: boolean;
 };
 
+const { useI18n } = createI18nModule({
+    continueFrom: {
+        ru: 'Продолжить с',
+        en: 'Continue from',
+    },
+    tomeChapter: {
+        ru: (...args) => `${args[0]} том ${args[1]} глава`,
+        en: (...args) => `tome ${args[0]} chapter ${args[1]}`,
+    },
+});
+
 export const BookContinueReadCard = (props: BookContinueReadCardProps) => {
     const { className, book, disabled, onDelete, chapterLink } = props;
     const { title, cover, tome, chapter } = book;
+
+    const t = useI18n();
     const isWidthLg = useWindowSize.use.isWidthLg();
+
     return (
         <CarouselItem
             aria-disabled={disabled}
@@ -32,10 +47,8 @@ export const BookContinueReadCard = (props: BookContinueReadCardProps) => {
         >
             <BookCardInline to={chapterLink} title={title} img={cover}>
                 <div className="flex flex-col gap-1">
-                    <span className="text-sm opacity-80">Продолжить с</span>
-                    <span className="text-base">
-                        {tome} том {chapter} глава
-                    </span>
+                    <span className="text-sm opacity-80">{t('continueFrom')}</span>
+                    <span className="text-base">{t('tomeChapter', [tome, chapter])}</span>
                 </div>
             </BookCardInline>
             <Button
