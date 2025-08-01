@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useLogin } from '../model/useLogin';
+import { useI18n } from '../model/i18n';
 import {
     Form,
     FormControl,
@@ -19,16 +21,15 @@ type LoginFromProps = {
 };
 
 const loginSchema = z.object({
-    login: z
-        .string({ message: 'Логин обязателен' })
-        .min(1, { message: 'Логин должен быть не менее 1 символа' }),
+    login: z.string({ message: 'error.loginRequired' }).min(1, { message: 'error.loginTooShort' }),
     password: z
-        .string({ message: 'Пароль обязателен' })
-        .min(8, { message: 'Пароль должен быть не менее 8 символов' }),
+        .string({ message: 'error.passwordRequired' })
+        .min(8, { message: 'error.passwordTooShort' }),
 });
 
 export const LoginFrom = (props: LoginFromProps) => {
     const { className } = props;
+    const t = useI18n();
 
     const form = useForm({ resolver: zodResolver(loginSchema) });
     const { login, isPending, error } = useLogin();
@@ -42,11 +43,11 @@ export const LoginFrom = (props: LoginFromProps) => {
                     name="login"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Логин</FormLabel>
+                            <FormLabel>{t('login')}</FormLabel>
                             <FormControl>
-                                <Input placeholder="noname" {...field} />
+                                <Input placeholder="Username" {...field} />
                             </FormControl>
-                            <FormMessage />
+                            <FormMessage renderError={(error) => t(error as any)} />
                         </FormItem>
                     )}
                 />
@@ -55,17 +56,19 @@ export const LoginFrom = (props: LoginFromProps) => {
                     name="password"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Пароль</FormLabel>
+                            <FormLabel>{t('password')}</FormLabel>
                             <FormControl>
                                 <Input type="password" placeholder="********" {...field} />
                             </FormControl>
-                            <FormMessage />
+                            <FormMessage renderError={(error) => t(error as any)} />
                         </FormItem>
                     )}
                 />
-                {error && <span className="text-destructive text-sm">{error.message}</span>}
+                {error && (
+                    <span className="text-destructive text-sm">{t(error.message as any)}</span>
+                )}
                 <Button disabled={isPending} type="submit">
-                    Войти
+                    {t('signIn')}
                 </Button>
             </form>
         </Form>

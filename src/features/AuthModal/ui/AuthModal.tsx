@@ -1,4 +1,5 @@
 import { Suspense, useState } from 'react';
+import { useI18n } from '../model/i18n';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 import { Button } from '@/shared/ui/kit/button';
 import {
@@ -21,23 +22,24 @@ type AuthModalProps = {
 export const AuthModal = (props: AuthModalProps) => {
     const { className } = props;
     const [isLogin, setIsLogin] = useState(true);
+    const t = useI18n();
     return (
         <Dialog>
             <DialogTrigger asChild className={className}>
                 <Button variant="ghost" className="text-md hover:bg-primary/50">
-                    Войти
+                    {t('login')}
                 </Button>
             </DialogTrigger>
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle asChild>
-                        <Heading variant="h2">{isLogin ? 'Вход' : 'Регестрация'}</Heading>
+                        <Heading variant="h2">{isLogin ? t('signIn') : t('signUpHeader')}</Heading>
                     </DialogTitle>
                 </DialogHeader>
                 <Suspense fallback={<Loader className="mx-auto mt-2" variant="flower" />}>
                     {isLogin ? <LoginForm /> : <RegistrationForm />}
                     <Button onClick={() => setIsLogin((prev) => !prev)} variant="ghost">
-                        {isLogin ? 'Нет аккаунта?' : 'Есть аккаунт?'}
+                        {isLogin ? t('noAccount') : t('hasAccount')}
                     </Button>
                 </Suspense>
             </DialogContent>

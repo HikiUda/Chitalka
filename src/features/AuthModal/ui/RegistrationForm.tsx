@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRegistration } from '../model/useRegistration';
+import { useI18n } from '../model/i18n';
 import {
     Form,
     FormControl,
@@ -21,20 +23,21 @@ type RegistrationFormProps = {
 const registrationSchema = z
     .object({
         login: z
-            .string({ message: 'Логин обязателен' })
-            .min(1, { message: 'Логин должен быть не менее 1 символа' }),
+            .string({ message: 'error.loginRequired' })
+            .min(1, { message: 'error.loginTooShort' }),
         password: z
-            .string({ message: 'Пароль обязателен' })
-            .min(8, { message: 'Пароль должен быть не менее 8 символов' }),
+            .string({ message: 'error.passwordRequired' })
+            .min(8, { message: 'error.passwordTooShort' }),
         confirmPassword: z.string().optional(),
     })
     .refine(({ password, confirmPassword }) => password === confirmPassword, {
         path: ['confirmPassword'],
-        message: 'Пароли не совпадают',
+        message: 'error.passwordsDontMatch',
     });
 
 export const RegistrationForm = (props: RegistrationFormProps) => {
     const { className } = props;
+    const t = useI18n();
 
     const form = useForm({ resolver: zodResolver(registrationSchema) });
     const { registration, isPending, error } = useRegistration();
@@ -48,11 +51,11 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                     name="login"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Логин</FormLabel>
+                            <FormLabel>{t('login')}</FormLabel>
                             <FormControl>
                                 <Input placeholder="noname" {...field} />
                             </FormControl>
-                            <FormMessage />
+                            <FormMessage renderError={(error) => t(error as any)} />
                         </FormItem>
                     )}
                 />
@@ -61,11 +64,11 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                     name="password"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Пароль</FormLabel>
+                            <FormLabel>{t('password')}</FormLabel>
                             <FormControl>
                                 <Input type="password" placeholder="********" {...field} />
                             </FormControl>
-                            <FormMessage />
+                            <FormMessage renderError={(error) => t(error as any)} />
                         </FormItem>
                     )}
                 />
@@ -74,17 +77,19 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                     name="confirmPassword"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Подтвердите пароль</FormLabel>
+                            <FormLabel>{t('confirmPassword')}</FormLabel>
                             <FormControl>
                                 <Input type="password" placeholder="********" {...field} />
                             </FormControl>
-                            <FormMessage />
+                            <FormMessage renderError={(error) => t(error as any)} />
                         </FormItem>
                     )}
                 />
-                {error && <span className="text-destructive text-sm">{error.message}</span>}
+                {error && (
+                    <span className="text-destructive text-sm">{t(error.message as any)}</span>
+                )}
                 <Button disabled={isPending} type="submit">
-                    Зарегестрироваться
+                    {t('signUp')}
                 </Button>
             </form>
         </Form>
