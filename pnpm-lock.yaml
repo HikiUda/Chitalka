@@ -249,6 +249,9 @@ importers:
       jiti:
         specifier: 2.4.2
         version: 2.4.2
+      jose:
+        specifier: ^6.0.12
+        version: 6.0.12
       lint-staged:
         specifier: 12.3.2
         version: 12.3.2
@@ -4208,6 +4211,9 @@ packages:
   jiti@2.4.2:
     resolution: {integrity: sha512-rg9zJN+G4n2nfJl5MW3BMygZX56zKPNVEYYqq7adpmMh4Jn2QNEwhvQlFy6jPVdcod7txZtKHWnyZiA3a0zP7A==}
     hasBin: true
+
+  jose@6.0.12:
+    resolution: {integrity: sha512-T8xypXs8CpmiIi78k0E+Lk7T2zlK4zDyg+o1CZ4AkOHgDg98ogdP2BeZ61lTFKFyoEwJ9RgAgN+SdM3iPgNonQ==}
 
   js-levenshtein@1.1.6:
     resolution: {integrity: sha512-X2BB11YZtrRqY4EnQcLX5Rh373zbK4alC1FW7D7MBhL2gtcC17cTnr6DmfHZeS0s2rTHjUTMMHfG7gO8SSdw+g==}
@@ -10370,6 +10376,8 @@ snapshots:
       - ts-node
 
   jiti@2.4.2: {}
+
+  jose@6.0.12: {}
 
   js-levenshtein@1.1.6: {}
 

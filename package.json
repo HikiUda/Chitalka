@@ -109,6 +109,7 @@
         "jest-fixed-jsdom": "0.0.9",
         "jest-html-reporters": "3.1.7",
         "jiti": "2.4.2",
+        "jose": "^6.0.12",
         "lint-staged": "12.3.2",
         "msw": "2.7.3",
         "msw-storybook-addon": "2.0.4",

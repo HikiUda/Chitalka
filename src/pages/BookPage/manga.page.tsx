@@ -10,6 +10,7 @@ import { MangaRateModalTrigger } from '@/features/BookRate';
 import { useMangaBasicInfo, useBookTitles, useGetManga } from '@/entities/BookInfo';
 import { lazyNamed } from '@/shared/lib/helpers/lazyNamed';
 import { PathParams, Routes } from '@/shared/kernel/router';
+import { MangaComments } from '@/features/Comments';
 
 const AboutManga = lazyNamed(() => import('./ui/AboutManga'), 'AboutManga');
 const MangaChapters = lazyNamed(() => import('@/features/BookChapters'), 'MangaChapters');
@@ -63,9 +64,9 @@ export const MangaPage = () => {
             }
             content={
                 <BookContent
-                    info={<AboutManga mangaId={mangaId} />}
-                    chapters={<MangaChapters mangaId={mangaId} />}
-                    comments={<div>comments</div>}
+                    info={<AboutManga mangaId={manga.id} />}
+                    chapters={<MangaChapters mangaId={manga.id} />}
+                    comments={<MangaComments className="px-5 pt-2" mangaId={manga.id} />}
                 />
             }
         />

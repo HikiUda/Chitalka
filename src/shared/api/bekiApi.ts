@@ -164,6 +164,54 @@ export type paths = {
         patch?: never;
         trace?: never;
     };
+    "/manga/{mangaId}/comments": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["MangaCommentsController_getRootComments"];
+        put?: never;
+        post: operations["MangaCommentsController_addComment"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/manga/{mangaId}/comments/{commentId}/replies": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["MangaCommentsController_getRepliesComments"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/manga/{mangaId}/comments/{commentId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete: operations["MangaCommentsController_deleteComment"];
+        options?: never;
+        head?: never;
+        patch: operations["MangaCommentsController_updateComment"];
+        trace?: never;
+    };
     "/manga/{mangaId}/bookmark": {
         parameters: {
             query?: never;
@@ -1131,6 +1179,33 @@ export type components = {
             /** @enum {string} */
             type: "Japan" | "Korea" | "China" | "Foreign" | "Russia" | "Fanfic";
         };
+        Comment: {
+            id: number;
+            content: string;
+            /** Format: date-time */
+            createdAt: string;
+            parentId: number | null;
+            hasChildrens: boolean;
+            userId: number | null;
+        };
+        CommentUser: {
+            id: number;
+            name: string;
+            avatar: string | null;
+        };
+        CommentList: {
+            prevPage: number | null;
+            nextPage: number | null;
+            data: components["schemas"]["Comment"][];
+            users: components["schemas"]["CommentUser"][];
+        };
+        AddCommentDto: {
+            content: string;
+            parentId: number | null;
+        };
+        UpdateCommentDto: {
+            content: string;
+        };
         UserBookBookmark: {
             userId: number;
             bookId: number;
@@ -1909,6 +1984,128 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["BookCoverList"];
                 };
+            };
+        };
+    };
+    MangaCommentsController_getRootComments: {
+        parameters: {
+            query?: {
+                commentId?: number;
+                page?: number;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CommentList"];
+                };
+            };
+        };
+    };
+    MangaCommentsController_addComment: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AddCommentDto"];
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    MangaCommentsController_getRepliesComments: {
+        parameters: {
+            query?: {
+                depthLimit?: number;
+                depthStep?: number;
+            };
+            header?: never;
+            path: {
+                commentId: number;
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CommentList"];
+                };
+            };
+        };
+    };
+    MangaCommentsController_deleteComment: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                commentId: number;
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    MangaCommentsController_updateComment: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                commentId: number;
+                /** @description urlId or just number id */
+                mangaId: string | number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateCommentDto"];
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };
