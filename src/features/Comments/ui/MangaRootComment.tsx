@@ -1,6 +1,8 @@
 import { useMangaRepliesComments } from '../model/useMangaRepliesComments';
 import { useExpandedComments } from '../model/useExpandedComments';
+import { useMangaReplyComment } from '../model/useMangaReplayComment';
 import { SinglComment } from './SinglComment';
+import { CommentForm } from './CommentForm';
 import { cn } from '@/shared/lib/css';
 import { ApiSchemas } from '@/shared/api/instance';
 import { BookId } from '@/shared/kernel/book/book';
@@ -17,6 +19,7 @@ export const MangaRootComment = (props: MangaRootCommentProps) => {
     const { getCommentUser, getComments, fetchNextPage, isRepliesFetching } =
         useMangaRepliesComments(mangaId, comment.id, comment.hasChildrens);
     const { isExpanded, toggleExpanded } = useExpandedComments(fetchNextPage);
+    const { replyCommentId, onReply } = useMangaReplyComment();
 
     const renderComments = (comment: ApiSchemas['Comment']) => (
         <SinglComment
@@ -27,6 +30,9 @@ export const MangaRootComment = (props: MangaRootCommentProps) => {
             user={getCommentUser(comment.userId)}
             replies={getComments(comment.id).map(renderComments)}
             isRepliesFetching={isRepliesFetching(comment.id)}
+            replyForm={<CommentForm />}
+            onReply={onReply}
+            isReplyNow={replyCommentId === comment.id}
         />
     );
 
@@ -39,6 +45,9 @@ export const MangaRootComment = (props: MangaRootCommentProps) => {
             user={user}
             replies={getComments(comment.id).map(renderComments)}
             isRepliesFetching={false}
+            replyForm={<CommentForm />}
+            onReply={onReply}
+            isReplyNow={replyCommentId === comment.id}
         />
     );
 };

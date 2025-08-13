@@ -16,11 +16,24 @@ export type SinglCommentProps = {
     isExpanded: boolean;
     onToggleExpanded: (commentId: number) => void;
     isRepliesFetching: boolean;
+    replyForm: ReactNode;
+    isReplyNow: boolean;
+    onReply: (commentId: number | null) => void;
 };
 
 export const SinglComment = (props: SinglCommentProps) => {
-    const { className, comment, user, replies, isExpanded, onToggleExpanded, isRepliesFetching } =
-        props;
+    const {
+        className,
+        comment,
+        user,
+        replies,
+        isExpanded,
+        onToggleExpanded,
+        isRepliesFetching,
+        replyForm,
+        isReplyNow,
+        onReply,
+    } = props;
     const { lang } = useAppLang();
 
     return (
@@ -42,6 +55,7 @@ export const SinglComment = (props: SinglCommentProps) => {
                     variant="clear"
                     size="clear"
                     className="text-primary hover:scale-95 transition-transform"
+                    onClick={() => onReply(comment.id)}
                 >
                     Reply
                 </Button>
@@ -56,6 +70,7 @@ export const SinglComment = (props: SinglCommentProps) => {
                     </Button>
                 )}
             </div>
+            {isReplyNow && replyForm}
             {isRepliesFetching && <Loader className="mx-auto" />}
             {isExpanded && <div className="border-l-2 border-accent pl-3">{replies}</div>}
         </div>

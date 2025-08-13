@@ -12,10 +12,13 @@ export function useMangaAddComment(mangaId: BookId, refetch: () => Promise<void>
             ...data,
             id: addedComments[addedComments.length - 1].id - 1,
         });
-        setAddedComments((prev) => [...prev, newComment]);
-        await mutateAsync({ params: { path: { mangaId } }, body: data });
-        await refetch();
-        setAddedComments((prev) => prev.filter((com) => com.id !== newComment.id));
+        try {
+            setAddedComments((prev) => [...prev, newComment]);
+            await mutateAsync({ params: { path: { mangaId } }, body: data });
+            await refetch();
+        } finally {
+            setAddedComments((prev) => prev.filter((com) => com.id !== newComment.id));
+        }
     };
 
     return { addedComments, addComment };
